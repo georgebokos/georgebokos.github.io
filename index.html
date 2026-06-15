@@ -748,7 +748,7 @@ body{font-family:'Inter',-apple-system,sans-serif;background:var(--bg);color:var
     </div>
     <div class="daily-meta">
       <div id="daily-lbl" class="daily-lbl-txt">Προτάσεις για σήμερα</div>
-      <button class="reshuffle" onclick="renderMeals(curCat)">🔀 Νέες</button>
+      <button class="reshuffle" onclick="newDailyMeals()">🔀 Νέες</button>
     </div>
   </div>
   <div class="meal-grid" id="meals-grid"></div>
@@ -1060,7 +1060,7 @@ body{font-family:'Inter',-apple-system,sans-serif;background:var(--bg);color:var
 <script>
 let curCat='all',curSec='daily',curSwCat='keik',curFestF='all',
     _meal=null,isTTS=false,recog=null,isLis=false,_guestScale=1,_curSrv=0,
-    curLang='el',curMode='daily',featIdx=0,_featPool=[];
+    curLang='el',curMode='daily',featIdx=0,_featPool=[],_dailyShownIds=new Set();
 
 
 const TH={
@@ -1898,7 +1898,17 @@ function selMode(mode,btn){
 function selCat(cat,btn){
   document.querySelectorAll('#cat-row .cpill').forEach(b=>b.classList.remove('on'));
   if(btn)btn.classList.add('on');
+  _dailyShownIds.clear();
   curCat=cat; applyTheme(cat); renderMeals(cat);
+}
+
+function newDailyMeals(){
+  // Σημείωσε τα τωρινά ως «ήδη εμφανισμένα» ώστε η επόμενη κλήση να φέρει εντελώς νέα
+  _featPool.forEach(m=>_dailyShownIds.add(m.id));
+  // Εκκαθάριση του αποθηκευμένου featured ώστε να αλλάξει κι αυτό
+  localStorage.removeItem('fd_feat');
+  featIdx=0;
+  renderMeals(curCat);
 }
 
 function renderFeatured(show,cat,todayPlan){
@@ -1995,6 +2005,11 @@ function renderMeals(cat){
     // Καλοκαίρι (Ιούν–Αύγ): αφαιρούνται σούπες από τις καθημερινές προτάσεις
     const _mo=new Date().getMonth();
     if(_mo>=5&&_mo<=7) pool=pool.filter(m=>!m.cats.includes('soups'));
+    // Εξαίρεση ήδη-εμφανισμένων (από «Νέες»): αν απομένουν ≥4, χρησιμοποίησέ τα
+    if(cat==='all'&&_dailyShownIds.size>0){
+      const rem=pool.filter(m=>!_dailyShownIds.has(m.id));
+      if(rem.length>=4) pool=rem; else _dailyShownIds.clear();
+    }
   } else {
     pool=pool.filter(m=>m.cats.includes(cat)&&!m.quickOnly);
   }
