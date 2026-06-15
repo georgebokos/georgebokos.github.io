@@ -287,7 +287,7 @@ body{font-family:'Inter',-apple-system,sans-serif;background:var(--bg);color:var
 .rrn{font-size:14px;font-weight:500;color:var(--tx);margin-bottom:2px;}
 .rrm{font-size:12px;color:var(--t3);}
 /* NOTIF MODAL */
-.nmod{position:fixed;inset:0;z-index:300;display:none;align-items:flex-end;background:rgba(0,0,0,.5);}
+.nmod{position:fixed;inset:0;z-index:2000;display:none;align-items:flex-end;background:rgba(0,0,0,.5);}
 .nmod.show{display:flex;}
 .nsh{width:100%;max-width:700px;margin:0 auto;background:#fff;border-radius:24px 24px 0 0;padding:1.5rem;}
 .nhdl{width:36px;height:4px;background:#DDD;border-radius:2px;margin:0 auto 1.25rem;}
@@ -2348,11 +2348,14 @@ function closeOv(){
 }
 function closeOvInstant(){
   const ov=document.getElementById('overlay');
-  if(!ov.classList.contains('show'))return;
+  ov.classList.remove('show');
+  ov.style.visibility='hidden';
   const sh=ov.querySelector('.ovsh');
   if(sh){sh.style.transition='none';sh.style.transform='translateY(100%)';}
-  ov.classList.remove('show');
-  requestAnimationFrame(()=>{if(sh){sh.style.transition='';sh.style.transform='';}});
+  requestAnimationFrame(()=>{
+    if(sh){sh.style.transition='';sh.style.transform='';}
+    ov.style.visibility='';
+  });
   document.body.style.overflow='';
   _guestScale=1;_curSrv=0;
   stopTTS();
