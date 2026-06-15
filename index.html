@@ -3279,9 +3279,9 @@ function scalePrice(costStr,factor){
     return v%1===0?String(v):v.toFixed(1);
   });
 }
-function openRWithScale(id,scale){
-  _guestScale=scale&&scale>1?Math.ceil(scale):1;
-  _curSrv=0; // let openR compute from _guestScale
+function openRWithScale(id,n){
+  _guestScale=1;
+  _curSrv=n&&n>0?n:0;
   openR(id);
 }
 function selGuest(n,btn){
@@ -3330,7 +3330,7 @@ function selGuest(n,btn){
     const cl=CAT_CL[mc]||'b-legumes';
     const img=MEAL_IMAGES[id]||'';
     const fav=isFav(id);
-    return `<div class="mcard" onclick="openRWithScale('${id}',${scale})">
+    return `<div class="mcard" onclick="openRWithScale('${id}',${n})">
       <div class="mtop" style="background:${bg}">
         ${img?`<img alt="${m.n}" src="${img}" onload="this.classList.add('loaded');this.nextElementSibling.style.opacity=0" onerror="this.style.display='none'">`:''}
         <div class="memoji">${m.e}</div>
