@@ -2346,6 +2346,19 @@ function closeOv(){
   if(_timerInterval && !_timerEndTime){clearInterval(_timerInterval);_timerInterval=null;}
   const nutrEl=document.getElementById('ov-nutr');if(nutrEl)nutrEl.innerHTML='';
 }
+function closeOvInstant(){
+  const ov=document.getElementById('overlay');
+  if(!ov.classList.contains('show'))return;
+  const sh=ov.querySelector('.ovsh');
+  if(sh){sh.style.transition='none';sh.style.transform='translateY(100%)';}
+  ov.classList.remove('show');
+  requestAnimationFrame(()=>{if(sh){sh.style.transition='';sh.style.transform='';}});
+  document.body.style.overflow='';
+  _guestScale=1;_curSrv=0;
+  stopTTS();
+  if(_timerInterval && !_timerEndTime){clearInterval(_timerInterval);_timerInterval=null;}
+  const nutrEl=document.getElementById('ov-nutr');if(nutrEl)nutrEl.innerHTML='';
+}
 
 function ovBgClick(e){if(e.target===document.getElementById('overlay'))closeOv();}
 
@@ -2427,7 +2440,7 @@ function renderTrialBanner(){
 // Premium screen
 let _curPlan='monthly';
 function openPremiumScreen(){
-  closeOv();
+  closeOvInstant();
   _curPlan='monthly';
   const state=getPremiumState();
   // Update header badge
@@ -2652,7 +2665,7 @@ function _urCheckReady(){
   const btn=document.getElementById('ur-submit');if(btn)btn.disabled=!ok;
 }
 function openUrform(){
-  closeOv();
+  closeOvInstant();
   document.getElementById('urform').classList.add('show');
   document.body.style.overflow='hidden';
   ['ur-name','ur-ing','ur-steps'].forEach(id=>document.getElementById(id)?.addEventListener('input',_urCheckReady));
@@ -2761,7 +2774,7 @@ function openWeekPlanGated(){
   openWeekPlan();
 }
 function openWeekPlan(){
-  closeOv();
+  closeOvInstant();
   renderWeekPlanDays();
   document.getElementById('wplan-sheet').classList.add('show');
   document.body.style.overflow='hidden';
@@ -3142,7 +3155,7 @@ function stopVoice(){if(recog){try{recog.stop();}catch(e){}recog=null;}isLis=fal
 
 // ── NOTIFICATIONS ─────────────────────────────────────────────
 function openNmod(){
-  closeOv();
+  closeOvInstant();
   document.getElementById('nmod').style.display='flex';
   const on=localStorage.getItem('notif_on')==='true';
   const ntog=document.getElementById('ntog');if(ntog)ntog.checked=on;
@@ -3372,7 +3385,7 @@ function deaccent(s){
     .replace(/[ωώΩΏ]/g,'ω');
 }
 function openSearch(){
-  closeOv();
+  closeOvInstant();
   const sb=document.getElementById('search-bar');
   const mg=document.getElementById('meals-grid');
   sb.style.display='flex';
@@ -3694,7 +3707,7 @@ function renderDislikeGrid(){
   if(note)note.textContent=isPremium()?'Οι αντιπάθειες φιλτράρουν τις καθημερινές προτάσεις.':'💎 Οι αντιπάθειες είναι Premium — Δοκίμασε 7 ημέρες δωρεάν.';
 }
 function openProfile(){
-  closeOv();
+  closeOvInstant();
   renderDislikeGrid();
   document.getElementById('prof-sheet').classList.add('show');
   document.body.style.overflow='hidden';
