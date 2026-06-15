@@ -135,7 +135,7 @@ body{font-family:'Inter',-apple-system,sans-serif;background:var(--bg);color:var
 .b-pasta{background:#FEF0C4;color:#8A4A08;}.b-seafood{background:#D4E8FF;color:#1050A0;}
 .b-meat{background:#FFCCCA;color:#901010;}.b-legumes{background:#CCEEDC;color:#1A5A38;}
 .b-vegetables{background:#C8ECD0;color:#1A5A38;}.b-salads{background:#C4E8E8;color:#0A4040;}
-.b-soups{background:#FFE5B4;color:#6A3A00;}.b-new{background:#F0FDF4;color:#16A34A;border:1px solid #86EFAC;}
+.b-soups{background:#FFE5B4;color:#6A3A00;}.b-sauces{background:#FFE0E8;color:#8A1040;}.b-pites{background:#FDEDC8;color:#7A4A10;}.b-desserts{background:#FFE8CC;color:#8A4A00;}.b-sweets{background:#FFF0D0;color:#8A5000;}.b-new{background:#F0FDF4;color:#16A34A;border:1px solid #86EFAC;}
 .remind{display:flex;flex-wrap:wrap;gap:7px;align-items:center;padding:10px 14px;margin-bottom:.875rem;background:var(--lt);border:1.5px solid var(--bd);border-radius:var(--rs);transition:all .5s;}
 .rpill{padding:3px 11px;border-radius:20px;font-size:12px;font-weight:500;background:var(--w);color:var(--pri);border:1.5px solid var(--bd);cursor:pointer;}
 .balance{background:var(--w);border:1.5px solid #EDE8DE;border-radius:var(--rs);padding:12px 15px;margin-bottom:.5rem;display:flex;justify-content:space-between;align-items:center;box-shadow:var(--sh);}
@@ -2069,7 +2069,8 @@ function renderMeals(cat){
   const _clog=getCookedLog();
   const _cookedRecently=id=>_clog[id]&&(Date.now()-_clog[id])<7*86400000;
   if(cat==='quick'){
-    // quickOnly pantry meals first (sorted by time), then genuinely fast existing meals (≤20 min)
+    // Εξαιρούνται σάλτσες/ντιπ και γλυκά — δεν αποτελούν κυρίως γεύμα
+    pool=pool.filter(m=>!m.cats.includes('sauces')&&!m.cats.includes('desserts'));
     const qOnly=pool.filter(m=>m.quickOnly).sort((a,b)=>parseInt(a.time)-parseInt(b.time));
     const fast=pool.filter(m=>!m.quickOnly&&parseInt(m.time)<=20).sort(()=>Math.random()-.5);
     show=[...qOnly,...fast];
@@ -2150,6 +2151,27 @@ function renderMeals(cat){
       </div>
     </div>`;
   }).join('');
+
+  // Append cakes from sweets when in desserts view
+  if(cat==='desserts'){
+    const keikHtml=SWEETS.keik.map((s,i)=>{
+      const imgSrc=SWEET_IMAGES['keik:'+i]||'';
+      const fid='sw:keik:'+i;
+      return `<div class="mcard" onclick="openSW('keik',${i})">
+        <div class="mtop" style="background:linear-gradient(145deg,#FFF8E7,#FFE082)">
+          ${imgSrc?`<img id="swmi-k${i}" alt="${s.n}" src="${imgSrc}" onload="this.classList.add('loaded');document.getElementById('swme-k${i}').style.opacity=0" onerror="this.style.display='none'">`:''}
+          <div class="memoji" id="swme-k${i}">${s.e}</div>
+          <div class="mtop-grad"></div>
+          <div class="mtop-badge"><span class="badge b-desserts">Γλυκό</span></div>
+        </div>
+        <div class="mbtm">
+          <div class="mname-row"><div class="mname">${s.n}</div><button class="fav-btn-sm" data-id="${fid}" onclick="event.stopPropagation();toggleFav('${fid}',event)">${isFav(fid)?'❤️':'🤍'}</button></div>
+          <div class="mmeta">🔥 ${s.cal} &nbsp;🍽 ${s.srv} μερ.</div>
+        </div>
+      </div>`;
+    }).join('');
+    grid.innerHTML+=keikHtml;
+  }
 
   // Reminder — only meaningful in the 'all' daily view
   const rw=document.getElementById('remind-wrap');
