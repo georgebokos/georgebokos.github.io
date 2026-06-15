@@ -1028,7 +1028,17 @@ body{font-family:'Inter',-apple-system,sans-serif;background:var(--bg);color:var
 <!-- NOTIFICATION MODAL -->
 <div class="nmod" id="nmod" style="display:none">
   <div class="nmod-inner">
-    <div class="nmod-t">🔔 Υπενθυμίσεις</div>
+    <div class="nmod-t">⚙️ Ρυθμίσεις</div>
+    <div style="font-size:12px;font-weight:600;color:var(--t3);letter-spacing:.06em;text-transform:uppercase;padding:6px 0 4px">Μερίδες</div>
+    <div class="nmod-row">
+      <label>Προεπιλογή μερίδων</label>
+      <div class="srv-stepper">
+        <button class="srv-btn" onclick="changeProfSrv(-1)">−</button>
+        <span id="prof-srv-val" style="font-weight:700;font-size:15px;min-width:22px;text-align:center">2</span>
+        <button class="srv-btn" onclick="changeProfSrv(1)">+</button>
+      </div>
+    </div>
+    <div style="font-size:12px;font-weight:600;color:var(--t3);letter-spacing:.06em;text-transform:uppercase;padding:14px 0 4px">🔔 Υπενθυμίσεις</div>
     <div class="nmod-row">
       <label>Ενεργοποίηση</label>
       <input type="checkbox" id="ntog">
@@ -2177,7 +2187,10 @@ function openR(id){
     <div class="ovhero-grad"></div>
     <div class="ovtitle"><h2>${mealName(m)}</h2></div>`;
   // Stats — init serving count
-  if(_curSrv===0)_curSrv=Math.round(m.srv*(_guestScale||1));
+  if(_curSrv===0){
+    const _ds=parseInt(localStorage.getItem('fd_default_srv'))||0;
+    _curSrv=_ds>0&&_guestScale===1?_ds:Math.round(m.srv*(_guestScale||1));
+  }
   const initCost=_curSrv!==m.srv?scalePrice(m.cost||'~5€',_curSrv/m.srv):m.cost||'~5€';
   document.getElementById('ov-stats').innerHTML=`
     <div class="ovstat"><label>${t('cal')}</label><span>${m.cal}</span></div>
@@ -3094,6 +3107,12 @@ function openNmod(){
   const ntog=document.getElementById('ntog');if(ntog)ntog.checked=on;
   document.getElementById('bell').classList.toggle('on',on);
   document.getElementById('ntime').value=localStorage.getItem('notif_time')||'09:00';
+  const ds=parseInt(localStorage.getItem('fd_default_srv'))||2;
+  const psvEl=document.getElementById('prof-srv-val');if(psvEl)psvEl.textContent=ds;
+}
+function changeProfSrv(d){
+  const el=document.getElementById('prof-srv-val');if(!el)return;
+  el.textContent=Math.max(1,Math.min(20,(parseInt(el.textContent)||2)+d));
 }
 function closeNmod(){document.getElementById('nmod').style.display='none';}
 function openNotif(){openNmod();}
@@ -3101,6 +3120,8 @@ function closeNotif(){closeNmod();}
 async function saveNotif(){
   const time=document.getElementById('ntime').value;
   localStorage.setItem('notif_time',time);
+  const psvEl=document.getElementById('prof-srv-val');
+  if(psvEl){const ds=parseInt(psvEl.textContent)||2;localStorage.setItem('fd_default_srv',ds);}
   const checked=document.getElementById('ntog').checked;
   if(checked){
     if(!('Notification' in window)){showToast('⚠️ Ο browser δεν υποστηρίζει ειδοποιήσεις');return;}
