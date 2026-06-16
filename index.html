@@ -2058,6 +2058,7 @@ function featNext(){
   // Persist the new choice so it survives refreshes today
   const today=new Date().toDateString();
   localStorage.setItem('fd_feat',JSON.stringify({id:_featPool[featIdx].id,date:today}));
+  storeFeaturedMealForSW(_featPool[featIdx]);
   // Re-render featured and grid
   const todayPlan=getTodayPlan();
   renderFeatured(_featPool,curCat,todayPlan);
@@ -2224,10 +2225,12 @@ function renderMeals(cat){
     if(stored.date===today&&stored.id){
       const si=show.findIndex(m=>m.id===stored.id);
       featIdx=si>=0?si:0;
-      if(si<0)localStorage.setItem('fd_feat',JSON.stringify({id:show[0].id,date:today}));
+      if(si<0){localStorage.setItem('fd_feat',JSON.stringify({id:show[0].id,date:today}));storeFeaturedMealForSW(show[0]);}
+      else storeFeaturedMealForSW(show[featIdx]);
     }else{
       featIdx=0;
       localStorage.setItem('fd_feat',JSON.stringify({id:show[0].id,date:today}));
+      storeFeaturedMealForSW(show[0]);
     }
   }else{
     featIdx=0;
@@ -3451,6 +3454,34 @@ async function syncNotifLastFromSW(){
     }
   }catch(e){}
 }
+// Store the featured meal in SW cache so background notifications show meal details
+function storeFeaturedMealForSW(meal){
+  if(!meal)return;
+  const today=new Date().toDateString();
+  const data={date:today,emoji:meal.e||'🍽️',name:meal.n||'',time:meal.time||'',cal:meal.cal||'',cost:meal.cost||'~5€'};
+  _swSend({type:'STORE_FEATURED_MEAL',meal:data});
+}
+// Show "new version" toast (used both from SW_UPDATED message and from _checkPendingSwUpdate)
+function _showUpdateToast(){
+  if(document.getElementById('sw-update-toast'))return;
+  const toast=document.createElement('div');
+  toast.id='sw-update-toast';
+  toast.style.cssText='position:fixed;bottom:90px;left:50%;transform:translateX(-50%);background:#333;color:#fff;padding:12px 18px;border-radius:12px;font-size:14px;z-index:9999;display:flex;align-items:center;gap:10px;box-shadow:0 4px 16px rgba(0,0,0,.35);';
+  toast.innerHTML=`<span>${curLang==='en'?'🔄 New version available!':'🔄 Νέα έκδοση διαθέσιμη!'}</span><button onclick="window.location.reload()" style="background:var(--pri);color:#fff;border:none;border-radius:8px;padding:5px 12px;cursor:pointer;font-size:13px;">${curLang==='en'?'Update':'Ενημέρωση'}</button>`;
+  document.body.appendChild(toast);
+}
+// Check if an update happened while the app was closed (SW activated with no open clients)
+async function _checkPendingSwUpdate(){
+  if(!('caches' in window))return;
+  try{
+    const cache=await caches.open('fd-prefs');
+    const resp=await cache.match('/fd-sw-update-pending');
+    if(resp){
+      await cache.delete('/fd-sw-update-pending');
+      _showUpdateToast();
+    }
+  }catch(e){}
+}
 function showToast(msg){
   let el=document.getElementById('toast');
   if(!el){el=document.createElement('div');el.id='toast';el.style.cssText='position:fixed;bottom:80px;left:50%;transform:translateX(-50%);background:#1C1A17;color:#fff;padding:9px 18px;border-radius:26px;font-size:13px;z-index:500;transition:opacity .3s;white-space:nowrap;';document.body.appendChild(el);}
@@ -3880,18 +3911,14 @@ function closeProfile(){
     registerPeriodicSync();
     scheduleDailyNotifInSW();
     document.getElementById('bell').classList.add('on');
-    syncNotifLastFromSW().then(()=>checkMissedNotif());
+    syncNotifLastFromSW().then(()=>checkMissedNotif()).catch(()=>checkMissedNotif());
   }
   // Service Worker registration
   if('serviceWorker' in navigator){
     navigator.serviceWorker.register('/service-worker.js').catch(()=>{});
     navigator.serviceWorker.addEventListener('message', e => {
       if(e.data && e.data.type==='SW_UPDATED'){
-        const toast=document.createElement('div');
-        toast.id='sw-update-toast';
-        toast.style.cssText='position:fixed;bottom:90px;left:50%;transform:translateX(-50%);background:#333;color:#fff;padding:12px 18px;border-radius:12px;font-size:14px;z-index:9999;display:flex;align-items:center;gap:10px;box-shadow:0 4px 16px rgba(0,0,0,.35);';
-        toast.innerHTML=`<span>${curLang==='en'?'🔄 New version available!':'🔄 Νέα έκδοση διαθέσιμη!'}</span><button onclick="window.location.reload()" style="background:var(--pri);color:#fff;border:none;border-radius:8px;padding:5px 12px;cursor:pointer;font-size:13px;">${curLang==='en'?'Update':'Ενημέρωση'}</button>`;
-        document.body.appendChild(toast);
+        _showUpdateToast();
       }
       if(e.data && e.data.type==='OPEN_TIMER_STEP' && e.data.mealId){
         openR(e.data.mealId);
@@ -3903,8 +3930,11 @@ function closeProfile(){
         },300);
       }
     });
-    // Request any pending navigation from before page was open (timer notification tap)
-    navigator.serviceWorker.ready.then(reg=>{if(reg.active)reg.active.postMessage({type:'GET_PENDING_NAV'});});
+    navigator.serviceWorker.ready.then(reg=>{
+      if(reg.active)reg.active.postMessage({type:'GET_PENDING_NAV'});
+      // Detect update that happened while app was closed (fix: SW_UPDATED not sent to closed pages)
+      _checkPendingSwUpdate();
+    });
   }
   // When app is minimised, tell SW to show/update timer notification
   document.addEventListener('visibilitychange',()=>{
