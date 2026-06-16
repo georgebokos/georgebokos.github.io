@@ -2211,7 +2211,7 @@ function renderMeals(cat){
     });
     const old=pool.filter(m=>rids.includes(m.id)&&!_cookedRecently(m.id));
     // Salads are sides — never feature them first
-    const allShow=[...fresh,...old].slice(0,8);
+    const allShow=[...fresh,...old].slice(0,12);
     const nonSalads=allShow.filter(m=>!m.cats.includes('salads'));
     const salads=allShow.filter(m=>m.cats.includes('salads'));
     show=[...nonSalads,...salads];
