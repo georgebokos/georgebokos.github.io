@@ -3631,18 +3631,21 @@ function selGuest(n,btn){
             'kreatopita','spanakopita','psarosoupa',
             'mosxari_kokkinisto','mosxari_stifado','mosxari_bamies',
             'paidakia','kotopoulo_fournou','pastitsada',
-            'mydia_saganaki','soupies','lazania'];
-  const P2=['kotopoulo','souvlakia','biftekia','kalamaria','tsipoura',
+            'mydia_saganaki','soupies','lazania',
+            'karbonara','pasta_thalassina','htapodi_krasato','tsipoura'];
+  const P2=['kotopoulo','souvlakia','biftekia','kalamaria',
             'dolmades','gemista','giouvarlaakia','psari_plaki','keftedes',
             'gigantes','fava','tyropita','hortopita','prasopita',
             'kotopoulo_kokkinisto','kotopoulo_manitaria','soutzoukakia',
-            'xoirina_paidakia','brizoles','imam_baialdi','manitaria_saganaki'];
+            'xoirina_paidakia','brizoles','imam_baialdi','manitaria_saganaki',
+            'spaghetti_bolognese','pasta_manitaria','kritharaki_kotopoulo',
+            'hylopites_kotopoulo','xoirino_prasa','kolokythopita'];
 
   const pick=ids=>ids.filter(id=>MEALS[id]&&!EXCL_GUEST.includes(id));
 
   // Shuffle within each tier for variety
   const shuffle=a=>[...a].sort(()=>Math.random()-.5);
-  const pool=[...shuffle(pick(P4)),...shuffle(pick(P3)),...shuffle(pick(P2))].slice(0,12);
+  const pool=[...shuffle(pick(P4)),...shuffle(pick(P3)),...shuffle(pick(P2))].slice(0,15);
   // Αρνί στη σούβλα — ειδική περίσταση, εμφανίζεται πάντα τελευταίο
   const suvIdx=pool.indexOf('arni_souvia');
   if(suvIdx>-1){pool.splice(suvIdx,1);pool.push('arni_souvia');}
