@@ -3594,19 +3594,24 @@ function selGuest(n,btn){
     'halvas','lagana','tzatziki_dish','skordalia','eliestoursi','kotosopa','mageiritsa'];
 
   // Priority buckets (most impressive first)
-  const P4=['arni_souvia','kontosouvi','gourounopoulo','galopoula'];
+  const P4=['arni_souvia','kontosouvi','gourounopoulo','galopoula','arni_kleftiko'];
   const P3=['giouvetsi','arnaki_lemonato','moussaka','pastitsio','stifado',
             'kokkinisto','htapodi','garides','bakaliaro','anginaresPolita',
-            'kreatopita','spanakopita','psarosoupa'];
+            'kreatopita','spanakopita','psarosoupa',
+            'mosxari_kokkinisto','mosxari_stifado','mosxari_bamies',
+            'paidakia','kotopoulo_fournou','pastitsada',
+            'mydia_saganaki','soupies','lazania'];
   const P2=['kotopoulo','souvlakia','biftekia','kalamaria','tsipoura',
             'dolmades','gemista','giouvarlaakia','psari_plaki','keftedes',
-            'gigantes','fava','tyropita','hortopita','prasopita'];
+            'gigantes','fava','tyropita','hortopita','prasopita',
+            'kotopoulo_kokkinisto','kotopoulo_manitaria','soutzoukakia',
+            'xoirina_paidakia','brizoles','imam_baialdi','manitaria_saganaki'];
 
   const pick=ids=>ids.filter(id=>MEALS[id]&&!EXCL_GUEST.includes(id));
 
   // Shuffle within each tier for variety
   const shuffle=a=>[...a].sort(()=>Math.random()-.5);
-  const pool=[...shuffle(pick(P4)),...shuffle(pick(P3)),...shuffle(pick(P2))].slice(0,9);
+  const pool=[...shuffle(pick(P4)),...shuffle(pick(P3)),...shuffle(pick(P2))].slice(0,12);
   // Αρνί στη σούβλα — ειδική περίσταση, εμφανίζεται πάντα τελευταίο
   const suvIdx=pool.indexOf('arni_souvia');
   if(suvIdx>-1){pool.splice(suvIdx,1);pool.push('arni_souvia');}
