@@ -3378,7 +3378,12 @@ function scheduleDailyNotifInSW(){
   const [h,m]=(localStorage.getItem('notif_time')||'09:00').split(':').map(Number);
   const next=new Date(now);next.setHours(h,m,0,0);
   if(next<=now)next.setDate(next.getDate()+1);
-  _swSend({type:'SCHEDULE_DAILY_NOTIF',delay:next-now});
+  let meal=null;
+  try{
+    const f=JSON.parse(localStorage.getItem('fd_feat')||'{}');
+    if(f.id&&MEALS[f.id]){const mx=MEALS[f.id];meal={e:mx.e,n:mx.n,time:mx.time,cal:mx.cal};}
+  }catch(ex){}
+  _swSend({type:'SCHEDULE_DAILY_NOTIF',delay:next-now,meal});
 }
 
 // On app open: if scheduled time has passed today with no notification → send now
@@ -3883,16 +3888,27 @@ function closeProfile(){
     syncNotifLastFromSW().then(()=>checkMissedNotif());
   }
   // Service Worker registration
+  function _showSwToast(){
+    if(document.getElementById('sw-update-toast'))return;
+    const toast=document.createElement('div');
+    toast.id='sw-update-toast';
+    toast.style.cssText='position:fixed;bottom:90px;left:50%;transform:translateX(-50%);background:#333;color:#fff;padding:12px 18px;border-radius:12px;font-size:14px;z-index:9999;display:flex;align-items:center;gap:10px;box-shadow:0 4px 16px rgba(0,0,0,.35);';
+    toast.innerHTML=`<span>${curLang==='en'?'🔄 New version available!':'🔄 Νέα έκδοση διαθέσιμη!'}</span><button onclick="window.location.reload()" style="background:var(--pri);color:#fff;border:none;border-radius:8px;padding:5px 12px;cursor:pointer;font-size:13px;">${curLang==='en'?'Update':'Ενημέρωση'}</button>`;
+    document.body.appendChild(toast);
+  }
   if('serviceWorker' in navigator){
-    navigator.serviceWorker.register('/service-worker.js').catch(()=>{});
+    navigator.serviceWorker.register('/service-worker.js').then(reg=>{
+      if(reg.waiting) _showSwToast();
+      reg.addEventListener('updatefound',()=>{
+        const nw=reg.installing;if(!nw)return;
+        nw.addEventListener('statechange',()=>{
+          if(nw.state==='installed'&&navigator.serviceWorker.controller) _showSwToast();
+        });
+      });
+      reg.update().catch(()=>{});
+    }).catch(()=>{});
     navigator.serviceWorker.addEventListener('message', e => {
-      if(e.data && e.data.type==='SW_UPDATED'){
-        const toast=document.createElement('div');
-        toast.id='sw-update-toast';
-        toast.style.cssText='position:fixed;bottom:90px;left:50%;transform:translateX(-50%);background:#333;color:#fff;padding:12px 18px;border-radius:12px;font-size:14px;z-index:9999;display:flex;align-items:center;gap:10px;box-shadow:0 4px 16px rgba(0,0,0,.35);';
-        toast.innerHTML=`<span>${curLang==='en'?'🔄 New version available!':'🔄 Νέα έκδοση διαθέσιμη!'}</span><button onclick="window.location.reload()" style="background:var(--pri);color:#fff;border:none;border-radius:8px;padding:5px 12px;cursor:pointer;font-size:13px;">${curLang==='en'?'Update':'Ενημέρωση'}</button>`;
-        document.body.appendChild(toast);
-      }
+      if(e.data && e.data.type==='SW_UPDATED') _showSwToast();
       if(e.data && e.data.type==='OPEN_TIMER_STEP' && e.data.mealId){
         openR(e.data.mealId);
         setTimeout(()=>{
