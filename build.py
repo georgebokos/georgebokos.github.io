@@ -46,16 +46,20 @@ def main():
 
     # --- 1. Copy static assets as-is ---
     print('\n[1/3] Copying assets...')
-    # All PNG icons at root
+    # Folders to copy entirely
+    COPY_DIRS = ['images', '.well-known']
+    for d in COPY_DIRS:
+        src_d = os.path.join(SRC, d)
+        if os.path.isdir(src_d):
+            shutil.copytree(src_d, os.path.join(DIST, d))
+            print(f'  ✓ {d}/ ({len(os.listdir(src_d))} files)')
+    # Root files to copy (everything except source files we handle separately)
+    SKIP = {'index.html', 'service-worker.js', 'build.py', 'dist', '.github', '.git', '.gitignore', 'LICENSE'}
     for f in os.listdir(SRC):
-        if f.endswith('.png') or f == 'manifest.json' or f == 'privacy.html':
-            shutil.copy2(os.path.join(SRC, f), os.path.join(DIST, f))
-            print(f'  ✓ {f}')
-    # images/ folder
-    img_src = os.path.join(SRC, 'images')
-    if os.path.isdir(img_src):
-        shutil.copytree(img_src, os.path.join(DIST, 'images'))
-        print(f'  ✓ images/ ({len(os.listdir(img_src))} files)')
+        if f in SKIP or f.startswith('.') or os.path.isdir(os.path.join(SRC, f)):
+            continue
+        shutil.copy2(os.path.join(SRC, f), os.path.join(DIST, f))
+        print(f'  ✓ {f}')
 
     # --- 2. Obfuscate index.html inline JS ---
     print('\n[2/3] Obfuscating index.html...')
