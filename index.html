@@ -920,7 +920,7 @@ body{font-family:'Inter',-apple-system,sans-serif;background:var(--bg);color:var
     <div class="ovhero" id="ov-hero"></div>
     <div class="ovstats" id="ov-stats"></div>
     <div id="ov-nutr"></div>
-    <button class="ov-tonight-btn" id="ov-tonight">🍳 Μαγειρεύω απόψε</button>
+    <button class="ov-tonight-btn" id="ov-tonight" onclick="if(_meal&&_meal.id)openCookTonight(_meal.id)">🍳 Μαγειρεύω απόψε</button>
     <div class="ov-rating" id="ov-rating"></div>
     <div class="ovtabs">
       <button class="otab on" id="otab-ing" data-i18n="ot_ing" onclick="ovTab('ing')">Υλικά</button>
@@ -4020,8 +4020,17 @@ function shareRecipe(id){
   const m=MEALS[id];if(!m)return;
   const url=location.origin+location.pathname+'?r='+id;
   const text=m.e+' '+mealName(m)+'  |  ⏱ '+m.time+"'  |  🔥 "+m.cal+' kcal';
-  if(navigator.share){navigator.share({title:mealName(m),text,url}).catch(()=>{});}
-  else if(navigator.clipboard){navigator.clipboard.writeText(url).then(()=>showToast('📋 Αντιγράφηκε ο σύνδεσμος!'));}
+  function _copyFallback(){
+    if(navigator.clipboard){
+      navigator.clipboard.writeText(url)
+        .then(()=>showToast('📋 Αντιγράφηκε ο σύνδεσμος!'))
+        .catch(()=>prompt('Αντίγραψε τον σύνδεσμο:',url));
+    }else{
+      prompt('Αντίγραψε τον σύνδεσμο:',url);
+    }
+  }
+  if(navigator.share){navigator.share({title:mealName(m),text,url}).catch(_copyFallback);}
+  else _copyFallback();
 }
 
 // ── COOK TONIGHT ───────────────────────────────────────────────
@@ -4115,6 +4124,13 @@ function dismissTonightBanner(){
   if(nlEmail){const w=document.getElementById('nl-form-wrap');if(w)w.innerHTML=`<div class="nl-done">✅ Εγγεγραμμένος ως ${nlEmail}</div>`}
   applyTheme('all');
   renderMeals('all');
+  // Scroll so category pills + meal grid are visible on first load (featured card would push grid off-screen)
+  setTimeout(()=>{
+    if(!window.scrollY){
+      const sh=document.querySelector('#s-daily .sec-head');
+      if(sh)window.scrollTo({top:Math.max(0,sh.offsetTop-6),behavior:'smooth'});
+    }
+  },250);
   rendFest('all');
   filtSw('keik');
   selGuest(4,null);
@@ -4192,5 +4208,45 @@ function dismissTonightBanner(){
 })();
 
 </script>
+
+<!-- Cook Mode Overlay -->
+<div id="cook-mode">
+  <div class="cm-hdr">
+    <button class="cm-cls" onclick="exitCookMode()">✕</button>
+    <span class="cm-recipe" id="cm-recipe-name"></span>
+    <span class="cm-cnt" id="cm-cnt"></span>
+  </div>
+  <div class="cm-bar"><div class="cm-fill" id="cm-fill"></div></div>
+  <div class="cm-body">
+    <div class="cm-snum" id="cm-snum"></div>
+    <div class="cm-stxt" id="cm-stxt"></div>
+  </div>
+  <div class="cm-nav">
+    <button class="cm-btn cm-prev" id="cm-prev" onclick="cookPrev()">← Πίσω</button>
+    <button class="cm-btn cm-next" id="cm-next" onclick="cookNext()">Επόμενο →</button>
+  </div>
+</div>
+
+<!-- Cook Tonight Modal -->
+<div class="ct-overlay" id="cook-tonight-modal" onclick="if(event.target===this)closeCookTonight()">
+  <div class="ct-sheet">
+    <div class="ct-hdr">
+      <span class="ct-title">🍳 Μαγειρεύω απόψε</span>
+      <button class="ct-cls" onclick="closeCookTonight()">✕</button>
+    </div>
+    <div class="ct-meal" id="ct-meal-name"></div>
+    <label class="ct-lbl">Σε ποια ώρα θέλεις να μαγειρέψεις;</label>
+    <input type="time" id="ct-time" class="ct-time" value="20:00">
+    <div class="ct-hint" id="ct-hint"></div>
+    <button class="ct-save" onclick="saveCookTonight()">🔔 Υπενθύμισέ μου</button>
+  </div>
+</div>
+
+<!-- Tonight Banner -->
+<div id="tonight-banner">
+  <span id="tonight-txt" style="flex:1"></span>
+  <button class="tonight-open" id="tonight-open-btn">Άνοιξε</button>
+  <button class="tonight-dismiss" onclick="dismissTonightBanner()">✕</button>
+</div>
 </body>
 </html>
