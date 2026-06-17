@@ -3579,7 +3579,7 @@ function _startTimerKeepalive(){
   _timerKeepalive=setInterval(()=>{
     if(!_timerEndTime){clearInterval(_timerKeepalive);_timerKeepalive=null;return;}
     _swSend({type:'TIMER_PING'});
-  },20000);
+  },10000);
 }
 function _stopTimerKeepalive(){if(_timerKeepalive){clearInterval(_timerKeepalive);_timerKeepalive=null;}}
 function _timerTick(){
