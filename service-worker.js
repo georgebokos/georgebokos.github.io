@@ -1,5 +1,5 @@
 // FoodDaily Service Worker v3.1
-const VERSION = '2026-06-16-02';
+const VERSION = '2026-06-17-02';
 const CACHE = `fooddaily-${VERSION}`;
 const ASSETS = [
   '/',
@@ -306,6 +306,21 @@ self.addEventListener('message', e => {
   if (e.data.type === 'CANCEL_DAILY_NOTIF') {
     if (self._dailyNotifTo) { clearTimeout(self._dailyNotifTo); self._dailyNotifTo = null; }
     caches.open('fd-prefs').then(c => c.delete('/fd-daily-fire-at'));
+  }
+
+  if (e.data.type === 'SCHEDULE_ONE_SHOT_NOTIF') {
+    const { delay, title, body, tag } = e.data;
+    if (self._oneShotTo) clearTimeout(self._oneShotTo);
+    self._oneShotTo = setTimeout(() => {
+      self.registration.showNotification(title || '🍳 FoodDaily', {
+        body: body || '',
+        icon: '/icon-192.png',
+        badge: '/icon-96.png',
+        tag: tag || 'fd-oneshot',
+        requireInteraction: false
+      });
+      self._oneShotTo = null;
+    }, Math.max(0, delay));
   }
 });
 
