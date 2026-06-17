@@ -920,7 +920,7 @@ body{font-family:'Inter',-apple-system,sans-serif;background:var(--bg);color:var
     <div class="ovhero" id="ov-hero"></div>
     <div class="ovstats" id="ov-stats"></div>
     <div id="ov-nutr"></div>
-    <button class="ov-tonight-btn" id="ov-tonight">🍳 Μαγειρεύω απόψε</button>
+    <button class="ov-tonight-btn" id="ov-tonight" onclick="if(_meal&&_meal.id)openCookTonight(_meal.id)">🍳 Μαγειρεύω απόψε</button>
     <div class="ov-rating" id="ov-rating"></div>
     <div class="ovtabs">
       <button class="otab on" id="otab-ing" data-i18n="ot_ing" onclick="ovTab('ing')">Υλικά</button>
@@ -2408,9 +2408,6 @@ function openR(id){
         <div class="nutr-item"><div class="nutr-ico">🫒</div><span>${mac.fat}γ</span><small>Λιπαρά</small></div>
       </div>`;
   }
-  // Cook Tonight button
-  const tonightEl=document.getElementById('ov-tonight');
-  if(tonightEl)tonightEl.onclick=()=>openCookTonight(id);
   // Tabs content
   _timerMealId_page=id;
   buildIngTab(m);buildStepsTab(m);buildPairTab(m);buildNotesTab(m);
@@ -3941,8 +3938,17 @@ function shareRecipe(id){
   const m=MEALS[id];if(!m)return;
   const url=location.origin+location.pathname+'?r='+id;
   const text=m.e+' '+mealName(m)+'  |  ⏱ '+m.time+"'  |  🔥 "+m.cal+' kcal';
-  if(navigator.share){navigator.share({title:mealName(m),text,url}).catch(()=>{});}
-  else if(navigator.clipboard){navigator.clipboard.writeText(url).then(()=>showToast('📋 Αντιγράφηκε ο σύνδεσμος!'));}
+  function _copyFallback(){
+    if(navigator.clipboard){
+      navigator.clipboard.writeText(url)
+        .then(()=>showToast('📋 Αντιγράφηκε ο σύνδεσμος!'))
+        .catch(()=>prompt('Αντίγραψε τον σύνδεσμο:',url));
+    }else{
+      prompt('Αντίγραψε τον σύνδεσμο:',url);
+    }
+  }
+  if(navigator.share){navigator.share({title:mealName(m),text,url}).catch(_copyFallback);}
+  else _copyFallback();
 }
 
 // ── COOK TONIGHT ───────────────────────────────────────────────
@@ -4036,6 +4042,13 @@ function dismissTonightBanner(){
   if(nlEmail){const w=document.getElementById('nl-form-wrap');if(w)w.innerHTML=`<div class="nl-done">✅ Εγγεγραμμένος ως ${nlEmail}</div>`}
   applyTheme('all');
   renderMeals('all');
+  // Scroll so category pills + meal grid are visible on first load (featured card would push grid off-screen)
+  setTimeout(()=>{
+    if(!window.scrollY){
+      const sh=document.querySelector('#s-daily .sec-head');
+      if(sh)window.scrollTo({top:Math.max(0,sh.offsetTop-6),behavior:'smooth'});
+    }
+  },250);
   rendFest('all');
   filtSw('keik');
   selGuest(4,null);
