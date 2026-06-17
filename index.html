@@ -1102,6 +1102,46 @@ body{font-family:'Inter',-apple-system,sans-serif;background:var(--bg);color:var
   </div>
 </div>
 
+<!-- Cook Mode Overlay -->
+<div id="cook-mode">
+  <div class="cm-hdr">
+    <button class="cm-cls" onclick="exitCookMode()">✕</button>
+    <span class="cm-recipe" id="cm-recipe-name"></span>
+    <span class="cm-cnt" id="cm-cnt"></span>
+  </div>
+  <div class="cm-bar"><div class="cm-fill" id="cm-fill"></div></div>
+  <div class="cm-body">
+    <div class="cm-snum" id="cm-snum"></div>
+    <div class="cm-stxt" id="cm-stxt"></div>
+  </div>
+  <div class="cm-nav">
+    <button class="cm-btn cm-prev" id="cm-prev" onclick="cookPrev()">← Πίσω</button>
+    <button class="cm-btn cm-next" id="cm-next" onclick="cookNext()">Επόμενο →</button>
+  </div>
+</div>
+
+<!-- Cook Tonight Modal -->
+<div class="ct-overlay" id="cook-tonight-modal" onclick="if(event.target===this)closeCookTonight()">
+  <div class="ct-sheet">
+    <div class="ct-hdr">
+      <span class="ct-title">🍳 Μαγειρεύω απόψε</span>
+      <button class="ct-cls" onclick="closeCookTonight()">✕</button>
+    </div>
+    <div class="ct-meal" id="ct-meal-name"></div>
+    <label class="ct-lbl">Σε ποια ώρα θέλεις να μαγειρέψεις;</label>
+    <input type="time" id="ct-time" class="ct-time" value="20:00">
+    <div class="ct-hint" id="ct-hint"></div>
+    <button class="ct-save" onclick="saveCookTonight()">🔔 Υπενθύμισέ μου</button>
+  </div>
+</div>
+
+<!-- Tonight Banner -->
+<div id="tonight-banner">
+  <span id="tonight-txt" style="flex:1"></span>
+  <button class="tonight-open" id="tonight-open-btn">Άνοιξε</button>
+  <button class="tonight-dismiss" onclick="dismissTonightBanner()">✕</button>
+</div>
+
 <script>
 let curCat='all',curSec='daily',curSwCat='keik',curFestF='all',
     _meal=null,isTTS=false,recog=null,isLis=false,_guestScale=1,_curSrv=0,
@@ -4152,45 +4192,5 @@ function dismissTonightBanner(){
 })();
 
 </script>
-
-<!-- Cook Mode Overlay -->
-<div id="cook-mode">
-  <div class="cm-hdr">
-    <button class="cm-cls" onclick="exitCookMode()">✕</button>
-    <span class="cm-recipe" id="cm-recipe-name"></span>
-    <span class="cm-cnt" id="cm-cnt"></span>
-  </div>
-  <div class="cm-bar"><div class="cm-fill" id="cm-fill"></div></div>
-  <div class="cm-body">
-    <div class="cm-snum" id="cm-snum"></div>
-    <div class="cm-stxt" id="cm-stxt"></div>
-  </div>
-  <div class="cm-nav">
-    <button class="cm-btn cm-prev" id="cm-prev" onclick="cookPrev()">← Πίσω</button>
-    <button class="cm-btn cm-next" id="cm-next" onclick="cookNext()">Επόμενο →</button>
-  </div>
-</div>
-
-<!-- Cook Tonight Modal -->
-<div class="ct-overlay" id="cook-tonight-modal" onclick="if(event.target===this)closeCookTonight()">
-  <div class="ct-sheet">
-    <div class="ct-hdr">
-      <span class="ct-title">🍳 Μαγειρεύω απόψε</span>
-      <button class="ct-cls" onclick="closeCookTonight()">✕</button>
-    </div>
-    <div class="ct-meal" id="ct-meal-name"></div>
-    <label class="ct-lbl">Σε ποια ώρα θέλεις να μαγειρέψεις;</label>
-    <input type="time" id="ct-time" class="ct-time" value="20:00">
-    <div class="ct-hint" id="ct-hint"></div>
-    <button class="ct-save" onclick="saveCookTonight()">🔔 Υπενθύμισέ μου</button>
-  </div>
-</div>
-
-<!-- Tonight Banner -->
-<div id="tonight-banner">
-  <span id="tonight-txt" style="flex:1"></span>
-  <button class="tonight-open" id="tonight-open-btn">Άνοιξε</button>
-  <button class="tonight-dismiss" onclick="dismissTonightBanner()">✕</button>
-</div>
 </body>
 </html>
