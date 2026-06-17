@@ -1,0 +1,138 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<style>
+body{background:#1a1a1a;display:flex;flex-wrap:wrap;gap:32px;padding:40px;font-family:sans-serif;justify-content:center;}
+.opt{display:flex;flex-direction:column;align-items:center;gap:12px;}
+.opt span{color:#fff;font-size:14px;font-weight:600;letter-spacing:.5px;}
+svg{border-radius:22.5%;box-shadow:0 8px 32px rgba(0,0,0,.5);}
+</style>
+</head>
+<body>
+
+<!-- OPTION A: Terracotta gradient + Fork & Leaf -->
+<div class="opt">
+<svg width="160" height="160" viewBox="0 0 160 160" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="gA" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#F0855A"/>
+      <stop offset="100%" stop-color="#B8400E"/>
+    </linearGradient>
+  </defs>
+  <rect width="160" height="160" fill="url(#gA)"/>
+  <!-- Fork -->
+  <g fill="none" stroke="#fff" stroke-width="6" stroke-linecap="round">
+    <line x1="72" y1="38" x2="72" y2="122"/>
+    <line x1="72" y1="38" x2="72" y2="68"/>
+    <line x1="60" y1="38" x2="60" y2="62"/>
+    <line x1="84" y1="38" x2="84" y2="62"/>
+    <path d="M60 62 Q66 74 72 68 Q78 74 84 62"/>
+  </g>
+  <!-- Olive leaf accent -->
+  <g fill="rgba(255,255,255,0.9)">
+    <ellipse cx="100" cy="72" rx="14" ry="6" transform="rotate(-35 100 72)"/>
+    <ellipse cx="110" cy="60" rx="11" ry="5" transform="rotate(-35 110 60)"/>
+    <line x1="90" y1="82" x2="115" y2="52" stroke="#fff" stroke-width="2.5" stroke-linecap="round"/>
+  </g>
+</svg>
+<span>A — Terracotta Fork</span>
+</div>
+
+<!-- OPTION B: Dark premium + Gold plate -->
+<div class="opt">
+<svg width="160" height="160" viewBox="0 0 160 160" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="gB" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#2A2520"/>
+      <stop offset="100%" stop-color="#16130F"/>
+    </linearGradient>
+    <linearGradient id="gBg" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#FFD580"/>
+      <stop offset="100%" stop-color="#E8A020"/>
+    </linearGradient>
+  </defs>
+  <rect width="160" height="160" fill="url(#gB)"/>
+  <!-- Plate -->
+  <circle cx="80" cy="82" r="44" fill="none" stroke="url(#gBg)" stroke-width="4"/>
+  <circle cx="80" cy="82" r="32" fill="none" stroke="url(#gBg)" stroke-width="2" stroke-dasharray="4 3"/>
+  <!-- Steam lines -->
+  <g stroke="url(#gBg)" stroke-width="3" stroke-linecap="round" fill="none">
+    <path d="M66 52 Q62 44 66 36"/>
+    <path d="M80 48 Q76 40 80 32"/>
+    <path d="M94 52 Q90 44 94 36"/>
+  </g>
+  <!-- FD monogram -->
+  <text x="80" y="89" text-anchor="middle" font-family="Georgia,serif" font-size="22" font-weight="700" fill="url(#gBg)" letter-spacing="1">FD</text>
+</svg>
+<span>B — Dark Gold</span>
+</div>
+
+<!-- OPTION C: Mediterranean Green + Fork/Olive -->
+<div class="opt">
+<svg width="160" height="160" viewBox="0 0 160 160" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="gC" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#3A7D44"/>
+      <stop offset="100%" stop-color="#1E4D28"/>
+    </linearGradient>
+  </defs>
+  <rect width="160" height="160" fill="url(#gC)"/>
+  <!-- Sun/circle accent -->
+  <circle cx="80" cy="80" r="52" fill="none" stroke="rgba(255,255,255,0.15)" stroke-width="1.5"/>
+  <!-- Fork & knife combined -->
+  <g fill="none" stroke="#fff" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round">
+    <!-- Fork left -->
+    <line x1="62" y1="36" x2="62" y2="124"/>
+    <line x1="52" y1="36" x2="52" y2="60"/>
+    <line x1="72" y1="36" x2="72" y2="60"/>
+    <path d="M52 60 Q57 70 62 66 Q67 70 72 60"/>
+    <!-- Knife right -->
+    <line x1="98" y1="36" x2="98" y2="124"/>
+    <path d="M98 36 Q110 48 108 66 L98 66"/>
+  </g>
+  <!-- Olive leaves -->
+  <g fill="rgba(255,255,255,0.85)">
+    <ellipse cx="80" cy="94" rx="8" ry="3.5" transform="rotate(20 80 94)"/>
+    <ellipse cx="86" cy="88" rx="7" ry="3" transform="rotate(20 86 88)"/>
+    <ellipse cx="74" cy="100" rx="7" ry="3" transform="rotate(20 74 100)"/>
+  </g>
+</svg>
+<span>C — Mediterranean Green</span>
+</div>
+
+<!-- OPTION D: Clean White + Terracotta minimal -->
+<div class="opt">
+<svg width="160" height="160" viewBox="0 0 160 160" xmlns="http://www.w3.org/2000/svg">
+  <defs>
+    <linearGradient id="gD" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#FDF6EE"/>
+      <stop offset="100%" stop-color="#F5E8D4"/>
+    </linearGradient>
+  </defs>
+  <rect width="160" height="160" fill="url(#gD)"/>
+  <!-- Big F letter stylized -->
+  <g fill="#C8501A">
+    <!-- Pot body -->
+    <path d="M42 74 Q40 110 80 116 Q120 110 118 74 Z"/>
+    <!-- Pot rim -->
+    <rect x="36" y="66" width="88" height="12" rx="6"/>
+    <!-- Handles -->
+    <path d="M36 70 Q24 70 24 80 Q24 88 36 86" fill="none" stroke="#C8501A" stroke-width="7" stroke-linecap="round"/>
+    <path d="M124 70 Q136 70 136 80 Q136 88 124 86" fill="none" stroke="#C8501A" stroke-width="7" stroke-linecap="round"/>
+    <!-- Lid -->
+    <ellipse cx="80" cy="64" rx="44" ry="8" fill="#C8501A"/>
+    <ellipse cx="80" cy="56" rx="12" ry="5" fill="#C8501A"/>
+    <!-- Steam -->
+  </g>
+  <g stroke="#C8501A" stroke-width="3.5" stroke-linecap="round" fill="none" opacity=".7">
+    <path d="M62 46 Q58 38 62 30"/>
+    <path d="M80 44 Q76 36 80 28"/>
+    <path d="M98 46 Q94 38 98 30"/>
+  </g>
+</svg>
+<span>D — Κατσαρόλα</span>
+</div>
+
+</body>
+</html>
