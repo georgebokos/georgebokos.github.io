@@ -621,6 +621,48 @@ body{font-family:'Inter',-apple-system,sans-serif;background:var(--bg);color:var
 .nl-submit:active{opacity:.8;}
 .nl-done{font-size:13px;font-weight:600;color:#33691E;text-align:center;padding:6px 0;}
 [data-theme="dark"] .nl-done{color:#AED581;}
+/* ── COOK MODE ───────────────────────────────────── */
+#cook-mode{position:fixed;inset:0;background:#111;z-index:600;display:none;flex-direction:column;overscroll-behavior:none;}
+#cook-mode.show{display:flex;}
+.cm-hdr{display:flex;align-items:center;justify-content:space-between;padding:16px 20px;background:rgba(255,255,255,.06);}
+.cm-recipe{color:#aaa;font-size:13px;flex:1;text-align:center;padding:0 8px;white-space:nowrap;overflow:hidden;text-overflow:ellipsis;}
+.cm-cls{background:none;border:none;color:#fff;font-size:22px;cursor:pointer;width:36px;height:36px;display:flex;align-items:center;justify-content:center;padding:0;}
+.cm-cnt{color:#aaa;font-size:13px;min-width:36px;text-align:right;}
+.cm-bar{height:3px;background:rgba(255,255,255,.12);}
+.cm-fill{height:100%;background:var(--pri);transition:width .35s;}
+.cm-body{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:28px 28px 16px;text-align:center;}
+.cm-snum{color:var(--pri);font-size:12px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:18px;}
+.cm-stxt{color:#f0f0f0;font-size:22px;line-height:1.7;max-width:520px;}
+.cm-nav{display:flex;gap:12px;padding:20px;width:100%;max-width:420px;margin:0 auto;}
+.cm-btn{flex:1;padding:14px;border:none;border-radius:14px;font-size:16px;cursor:pointer;font-weight:700;transition:opacity .15s;}
+.cm-btn:active{opacity:.7;}
+.cm-prev{background:rgba(255,255,255,.12);color:#fff;}
+.cm-next{background:var(--pri);color:#fff;}
+.cook-mode-btn{display:flex;align-items:center;justify-content:center;gap:6px;width:100%;margin:0 0 14px;padding:12px;background:#111;color:#fff;border:none;border-radius:12px;font-size:14px;font-weight:700;cursor:pointer;transition:opacity .15s;}
+.cook-mode-btn:active{opacity:.8;}
+/* ── SHARE BUTTON in overlay ─────────────────────── */
+.ov-share-btn{position:absolute;top:12px;right:56px;z-index:10;background:rgba(0,0,0,.3);border:none;border-radius:50%;width:36px;height:36px;font-size:18px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .2s;}
+.ov-share-btn:active{background:rgba(0,0,0,.5);}
+/* ── COOK TONIGHT ────────────────────────────────── */
+.ct-overlay{position:fixed;inset:0;z-index:550;background:rgba(0,0,0,.55);display:none;align-items:flex-end;justify-content:center;}
+.ct-overlay.show{display:flex;}
+.ct-sheet{background:var(--w);border-radius:20px 20px 0 0;padding:24px 20px 40px;width:100%;max-width:500px;}
+.ct-hdr{display:flex;align-items:center;justify-content:space-between;margin-bottom:14px;}
+.ct-title{font-size:16px;font-weight:700;color:var(--t1);}
+.ct-cls{background:none;border:none;font-size:22px;cursor:pointer;color:var(--t2);padding:0;}
+.ct-meal{font-size:14px;color:var(--t2);margin-bottom:16px;}
+.ct-lbl{font-size:13px;color:var(--t2);display:block;margin-bottom:6px;}
+.ct-time{width:100%;padding:12px;border:1.5px solid var(--bd);border-radius:10px;font-size:20px;background:var(--bg);color:var(--t1);margin-bottom:10px;box-sizing:border-box;}
+.ct-hint{font-size:12px;color:var(--t3);margin-bottom:20px;min-height:16px;}
+.ct-save{width:100%;padding:14px;background:var(--pri);color:#fff;border:none;border-radius:14px;font-size:16px;font-weight:700;cursor:pointer;}
+/* ── TONIGHT BANNER ──────────────────────────────── */
+#tonight-banner{position:fixed;top:0;left:0;right:0;z-index:400;background:var(--pri);color:#fff;padding:10px 16px;display:none;align-items:center;gap:10px;font-size:13px;font-weight:500;}
+#tonight-banner.show{display:flex;}
+.tonight-open{background:rgba(255,255,255,.25);border:none;color:#fff;border-radius:8px;padding:4px 10px;cursor:pointer;font-size:12px;font-weight:600;}
+.tonight-dismiss{background:none;border:none;color:#fff;font-size:20px;cursor:pointer;padding:0 2px;margin-left:auto;}
+/* ── OV TONIGHT BUTTON ───────────────────────────── */
+.ov-tonight-btn{display:flex;align-items:center;justify-content:center;gap:6px;margin:.5rem 1.25rem .25rem;padding:12px;background:var(--lt);border:1.5px solid var(--bd);border-radius:14px;font-size:14px;font-weight:700;color:var(--pri);cursor:pointer;transition:all .2s;width:calc(100% - 2.5rem);}
+.ov-tonight-btn:active{background:var(--pri);color:#fff;}
 </style>
 </head>
 <body>
@@ -743,6 +785,8 @@ body{font-family:'Inter',-apple-system,sans-serif;background:var(--bg);color:var
         <button class="cpill" onclick="selCat('sauces',this)">🫙 Σάλτσες & Ντιπ</button>
         <button class="cpill" onclick="selCat('desserts',this)">🍮 Γλυκά</button>
         <button class="cpill" onclick="selCat('vegan',this)">🌱 Vegan</button>
+        <button class="cpill" onclick="selCat('fast',this)">🌿 Νηστεία</button>
+        <button class="cpill" onclick="selCat('gf',this)">🌾 Χωρίς γλουτένη</button>
         <button class="cpill" id="fav-pill" onclick="selCat('favs',this)">❤️ Αγαπημένα</button>
       </div>
     </div>
@@ -876,6 +920,7 @@ body{font-family:'Inter',-apple-system,sans-serif;background:var(--bg);color:var
     <div class="ovhero" id="ov-hero"></div>
     <div class="ovstats" id="ov-stats"></div>
     <div id="ov-nutr"></div>
+    <button class="ov-tonight-btn" id="ov-tonight">🍳 Μαγειρεύω απόψε</button>
     <div class="ov-rating" id="ov-rating"></div>
     <div class="ovtabs">
       <button class="otab on" id="otab-ing" data-i18n="ot_ing" onclick="ovTab('ing')">Υλικά</button>
@@ -2113,6 +2158,10 @@ function renderMeals(cat){
     // no pool filter here — handled in show-building below
   } else if(cat==='vegan'){
     pool=pool.filter(m=>m.vegan&&!m.quickOnly&&!m.noDaily);
+  } else if(cat==='fast'){
+    pool=pool.filter(m=>DIET_FAST.has(m.id)&&!m.quickOnly);
+  } else if(cat==='gf'){
+    pool=pool.filter(m=>DIET_GF.has(m.id)&&!m.quickOnly);
   } else if(cat==='all'||cat==='favs'){
     pool=pool.filter(m=>!m.quickOnly&&!m.noDaily&&!m.cats.includes('salads')&&!m.cats.includes('desserts'));
     // Καλοκαίρι (Ιούν–Αύγ): αφαιρούνται σούπες από τις καθημερινές προτάσεις
@@ -2334,6 +2383,7 @@ function openR(id){
   hero.innerHTML=`
     <button class="ovcls" onclick="closeOv()">✕</button>
     <button id="ov-fav" onclick="toggleFav('${m.id}',event)" style="position:absolute;top:12px;left:12px;z-index:10;background:rgba(0,0,0,.3);border:none;border-radius:50%;width:36px;height:36px;font-size:18px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .2s;">${isFav(m.id)?'❤️':'🤍'}</button>
+    <button class="ov-share-btn" onclick="shareRecipe('${m.id}')" title="Κοινοποίηση">📤</button>
     <div class="ovhero-fb" style="background:${bg}"><span style="font-size:78px;filter:drop-shadow(0 6px 20px rgba(0,0,0,.15))">${m.e}</span></div>
     <img id="ov-img" alt="${m.n}" src="${MEAL_IMAGES[m.id]||''}" onload="this.classList.add('loaded');document.querySelector('#ov-hero .ovhero-fb').style.opacity=0" onerror="this.style.display='none'" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .6s;">
     <div class="ovhero-grad"></div>
@@ -2361,6 +2411,9 @@ function openR(id){
         <div class="nutr-item"><div class="nutr-ico">🫒</div><span>${mac.fat}γ</span><small>Λιπαρά</small></div>
       </div>`;
   }
+  // Cook Tonight button
+  const tonightEl=document.getElementById('ov-tonight');
+  if(tonightEl)tonightEl.onclick=()=>openCookTonight(id);
   // Tabs content
   _timerMealId_page=id;
   buildIngTab(m);buildStepsTab(m);buildPairTab(m);buildNotesTab(m);
@@ -2425,7 +2478,8 @@ function buildIngTab(m){
 }
 
 function buildStepsTab(m){
-  document.getElementById('ot-steps').innerHTML=`<div class="step-list">${m.steps.map((s,i)=>{
+  const cookBtn=`<button class="cook-mode-btn" onclick="enterCookMode()">🍳 Cook Mode — Ολοκλήρωση βήμα βήμα</button>`;
+  document.getElementById('ot-steps').innerHTML=cookBtn+`<div class="step-list">${m.steps.map((s,i)=>{
     const mins=parseStepTime(s);
     const timerBtn=mins>0?`<button class="step-timer-btn" data-timer="${mins*60}" data-step="${i}" onclick="startStepTimer(this,${mins})">⏱ ${mins}'</button>`:'';
     return `<div class="step-item" onclick="if(event.target.tagName!=='BUTTON'){this.classList.toggle('done');this.querySelector('.step-num').textContent=this.classList.contains('done')?'✓':'${i+1}'}"><div class="step-num">${i+1}</div><div class="step-txt">${s}${timerBtn}</div></div>`;
@@ -3877,6 +3931,115 @@ function closeProfile(){
   document.body.style.overflow='';
 }
 
+// ── DIETARY FILTER SETS ─────────────────────────────────────────
+const DIET_FAST=new Set(['fasolada','fakes','gigantes','fava','revythada','briami','arakas_laderos','bamies_laderes','imam_baialdi','fasolakia','mavromatika','patates_lemonates','taramosalata','htapodi','psari_plaki','bakaliaro','psarosoupa','sardeles_lemonates','htapodi_krasato','soupies','kolios','melitzanosalata','skordalia','anginaresPolita','spanakoryzo','soupa_manitarion','avgolemono_soupa','dolmades']);
+const DIET_GF=new Set(['fasolada','horiatiki','kotopoulo','fakes','gemista','spanakoryzo','giouvarlaakia','garides','revythada','briami','gigantes','fava','arnaki_lemonato','arni_souvia','kontosouvi','stifado','kokkinisto','mosxari_stifado','mosxari_bamies','mosxari_kokkinisto','psari_plaki','psarosoupa','kotosopa','arakas_laderos','bamies_laderes','imam_baialdi','fasolakia','mavromatika','patates_lemonates','sardeles_lemonates','htapodi_krasato','htapodi','soupies','kolios','melitzanosalata','anginaresPolita','tzatziki_dish','dolmades','salata_rodi','biftekia','avgolemono_soupa','soupa_manitarion','htipiti','tirokafteri','salata_rokka','gourounopoulo','xoirina_paidakia','kotopoulo_lemonato']);
+
+// ── COOK MODE ──────────────────────────────────────────────────
+let _cmSteps=[],_cmIdx=0,_wakeLock=null;
+
+async function enterCookMode(){
+  if(!_meal||!_meal.steps)return;
+  _cmSteps=_meal.steps;_cmIdx=0;
+  document.getElementById('cm-recipe-name').textContent=mealName(_meal);
+  _renderCookStep();
+  document.getElementById('cook-mode').classList.add('show');
+  document.body.style.overflow='hidden';
+  if('wakeLock' in navigator){try{_wakeLock=await navigator.wakeLock.request('screen');}catch(e){}}
+}
+
+function _renderCookStep(){
+  const total=_cmSteps.length;
+  document.getElementById('cm-fill').style.width=((_cmIdx+1)/total*100)+'%';
+  document.getElementById('cm-cnt').textContent=(_cmIdx+1)+'/'+total;
+  document.getElementById('cm-snum').textContent='Βήμα '+(_cmIdx+1);
+  document.getElementById('cm-stxt').textContent=_cmSteps[_cmIdx];
+  document.getElementById('cm-prev').style.visibility=_cmIdx>0?'visible':'hidden';
+  document.getElementById('cm-next').textContent=_cmIdx<total-1?'Επόμενο →':'✓ Τέλος!';
+}
+
+function cookNext(){if(_cmIdx<_cmSteps.length-1){_cmIdx++;_renderCookStep();}else exitCookMode();}
+function cookPrev(){if(_cmIdx>0){_cmIdx--;_renderCookStep();}}
+
+async function exitCookMode(){
+  document.getElementById('cook-mode').classList.remove('show');
+  document.body.style.overflow='';
+  if(_wakeLock){try{await _wakeLock.release();}catch(e){}_wakeLock=null;}
+}
+
+// Swipe gesture for Cook Mode
+(function(){
+  let _tx=0;
+  const cm=document.getElementById('cook-mode');
+  cm.addEventListener('touchstart',e=>{_tx=e.touches[0].clientX;},{passive:true});
+  cm.addEventListener('touchend',e=>{const dx=e.changedTouches[0].clientX-_tx;if(Math.abs(dx)>50){if(dx<0)cookNext();else cookPrev();}},{passive:true});
+})();
+
+// ── SHARE RECIPE ───────────────────────────────────────────────
+function shareRecipe(id){
+  const m=MEALS[id];if(!m)return;
+  const url=location.origin+location.pathname+'?r='+id;
+  const text=m.e+' '+mealName(m)+'  |  ⏱ '+m.time+"'  |  🔥 "+m.cal+' kcal';
+  if(navigator.share){navigator.share({title:mealName(m),text,url}).catch(()=>{});}
+  else if(navigator.clipboard){navigator.clipboard.writeText(url).then(()=>showToast('📋 Αντιγράφηκε ο σύνδεσμος!'));}
+}
+
+// ── COOK TONIGHT ───────────────────────────────────────────────
+let _ctMealId=null;
+
+function openCookTonight(id,e){
+  if(e){e.stopPropagation();e.preventDefault();}
+  _ctMealId=id;
+  const m=MEALS[id];if(!m)return;
+  document.getElementById('ct-meal-name').textContent=m.e+' '+mealName(m)+'  ·  ⏱ '+m.time+' λεπτά';
+  document.getElementById('ct-time').value='20:00';
+  _ctUpdateHint();
+  document.getElementById('cook-tonight-modal').classList.add('show');
+}
+
+function _ctUpdateHint(){
+  const m=MEALS[_ctMealId];if(!m)return;
+  const val=document.getElementById('ct-time').value;if(!val)return;
+  const [h,min]=val.split(':').map(Number);
+  const notifAt=new Date();notifAt.setHours(h,min,0,0);
+  notifAt.setTime(notifAt.getTime()-(m.time+10)*60000);
+  const hh=notifAt.getHours(),mm=String(notifAt.getMinutes()).padStart(2,'0');
+  document.getElementById('ct-hint').textContent='🔔 Θα λάβεις υπενθύμιση στις '+hh+':'+mm;
+}
+
+function closeCookTonight(){document.getElementById('cook-tonight-modal').classList.remove('show');}
+
+function saveCookTonight(){
+  const id=_ctMealId;const m=MEALS[id];if(!m)return;
+  const val=document.getElementById('ct-time').value;
+  const [h,min]=val.split(':').map(Number);
+  const cookAt=new Date();cookAt.setHours(h,min,0,0);
+  if(cookAt<=new Date())cookAt.setDate(cookAt.getDate()+1);
+  const notifAt=new Date(cookAt.getTime()-(m.time+10)*60000);
+  const delay=notifAt-Date.now();
+  setTodayMeal(id,'plan');
+  localStorage.setItem('fd_tonight',JSON.stringify({id,cookAt:cookAt.getTime()}));
+  _showTonightBanner(id,cookAt);
+  if(delay>0&&Notification.permission==='granted'){
+    _swSend({type:'SCHEDULE_ONE_SHOT_NOTIF',delay,title:'🍳 Ώρα να ξεκινήσεις!',body:m.e+' '+mealName(m)+' χρειάζεται '+m.time+" λεπτά. Ξεκίνα τώρα!",tag:'fd-tonight'});
+  }
+  closeCookTonight();
+  showToast('🔔 Υπενθύμιση ορίστηκε!');
+}
+
+function _showTonightBanner(id,cookAt){
+  const m=MEALS[id];if(!m)return;
+  const hh=cookAt.getHours(),mm=String(cookAt.getMinutes()).padStart(2,'0');
+  document.getElementById('tonight-txt').textContent='🍳 Απόψε: '+mealName(m)+' στις '+hh+':'+mm;
+  document.getElementById('tonight-open-btn').onclick=()=>{openR(id);};
+  document.getElementById('tonight-banner').classList.add('show');
+}
+
+function dismissTonightBanner(){
+  document.getElementById('tonight-banner').classList.remove('show');
+  localStorage.removeItem('fd_tonight');
+}
+
 (function init(){
   // Dark mode
   if(localStorage.getItem('fd_dark')==='1'){
@@ -3975,8 +4138,59 @@ function closeProfile(){
       if(_timerEndTime&&_timerEndTime>Date.now())_swSend({type:'TIMER_APP_HIDDEN'});
     }
   });
+  // Cook Tonight time input handler
+  const _ctInput=document.getElementById('ct-time');
+  if(_ctInput)_ctInput.addEventListener('change',_ctUpdateHint);
+  // Restore tonight banner if saved
+  try{
+    const ct=JSON.parse(localStorage.getItem('fd_tonight')||'null');
+    if(ct&&ct.id&&ct.cookAt>Date.now())_showTonightBanner(ct.id,new Date(ct.cookAt));
+  }catch(e){}
+  // Open recipe from URL param ?r=id
+  const _urlR=new URLSearchParams(location.search).get('r');
+  if(_urlR&&MEALS[_urlR])setTimeout(()=>openR(_urlR),500);
 })();
 
 </script>
+
+<!-- Cook Mode Overlay -->
+<div id="cook-mode">
+  <div class="cm-hdr">
+    <button class="cm-cls" onclick="exitCookMode()">✕</button>
+    <span class="cm-recipe" id="cm-recipe-name"></span>
+    <span class="cm-cnt" id="cm-cnt"></span>
+  </div>
+  <div class="cm-bar"><div class="cm-fill" id="cm-fill"></div></div>
+  <div class="cm-body">
+    <div class="cm-snum" id="cm-snum"></div>
+    <div class="cm-stxt" id="cm-stxt"></div>
+  </div>
+  <div class="cm-nav">
+    <button class="cm-btn cm-prev" id="cm-prev" onclick="cookPrev()">← Πίσω</button>
+    <button class="cm-btn cm-next" id="cm-next" onclick="cookNext()">Επόμενο →</button>
+  </div>
+</div>
+
+<!-- Cook Tonight Modal -->
+<div class="ct-overlay" id="cook-tonight-modal" onclick="if(event.target===this)closeCookTonight()">
+  <div class="ct-sheet">
+    <div class="ct-hdr">
+      <span class="ct-title">🍳 Μαγειρεύω απόψε</span>
+      <button class="ct-cls" onclick="closeCookTonight()">✕</button>
+    </div>
+    <div class="ct-meal" id="ct-meal-name"></div>
+    <label class="ct-lbl">Σε ποια ώρα θέλεις να μαγειρέψεις;</label>
+    <input type="time" id="ct-time" class="ct-time" value="20:00">
+    <div class="ct-hint" id="ct-hint"></div>
+    <button class="ct-save" onclick="saveCookTonight()">🔔 Υπενθύμισέ μου</button>
+  </div>
+</div>
+
+<!-- Tonight Banner -->
+<div id="tonight-banner">
+  <span id="tonight-txt" style="flex:1"></span>
+  <button class="tonight-open" id="tonight-open-btn">Άνοιξε</button>
+  <button class="tonight-dismiss" onclick="dismissTonightBanner()">✕</button>
+</div>
 </body>
 </html>
