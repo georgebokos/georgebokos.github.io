@@ -4935,13 +4935,6 @@ function dismissTonightBanner(){
   if(nlEmail){const w=document.getElementById('nl-form-wrap');if(w)w.innerHTML=`<div class="nl-done">✅ Εγγεγραμμένος ως ${nlEmail}</div>`}
   applyTheme('all');
   renderMeals('all');
-  // Scroll so category pills + meal grid are visible on first load (featured card would push grid off-screen)
-  setTimeout(()=>{
-    if(!window.scrollY){
-      const sh=document.querySelector('#s-daily .sec-head');
-      if(sh)window.scrollTo({top:Math.max(0,sh.offsetTop-6),behavior:'smooth'});
-    }
-  },250);
   rendFest('all');
   filtSw('keik');
   selGuest(4,null);
