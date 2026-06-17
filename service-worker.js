@@ -1,5 +1,5 @@
-// FoodDaily Service Worker v3.1
-const VERSION = '2026-06-17-04';
+// FoodDaily Service Worker v3.2
+const VERSION = '2026-06-17-05';
 const CACHE = `fooddaily-${VERSION}`;
 const ASSETS = [
   '/',
@@ -150,6 +150,8 @@ const _swShowRunning = () => {
 const _swFireDone = () => {
   if (self._timerPoll) { clearInterval(self._timerPoll); self._timerPoll = null; }
   if (self._timerTo)   { clearTimeout(self._timerTo);    self._timerTo   = null; }
+  // Resolve the keep-alive promise so the SW event lifecycle can end cleanly
+  if (self._timerWaitResolve) { self._timerWaitResolve(); self._timerWaitResolve = null; }
   // Clear persisted timer state
   caches.open('fd-prefs').then(c => c.delete('/fd-timer-state'));
   // Show done FIRST (running notification still keeping SW alive), THEN close running.
@@ -224,7 +226,12 @@ self.addEventListener('message', e => {
       end: self._timerEnd, mealId: self._timerMealId, stepIdx: self._timerStepIdx
     }), { headers: { 'Content-Type': 'application/json' } })));
 
-    e.waitUntil(_swShowRunning());
+    // Keep SW alive for the full timer duration via a long-lived waitUntil promise.
+    // This is the most reliable web mechanism — Android may still kill it for very long
+    // timers, but for typical cooking steps (2–60 min) this keeps it alive.
+    if (self._timerWaitResolve) { self._timerWaitResolve(); self._timerWaitResolve = null; }
+    const _keepAlive = new Promise(r => { self._timerWaitResolve = r; });
+    e.waitUntil((_swShowRunning() || Promise.resolve()).then(() => _keepAlive));
 
     self._timerPoll = setInterval(() => {
       if (self._timerEnd - Date.now() <= 0) _swFireDone();
@@ -236,6 +243,7 @@ self.addEventListener('message', e => {
   if (e.data.type === 'CANCEL_TIMER') {
     if (self._timerTo)   { clearTimeout(self._timerTo);    self._timerTo   = null; }
     if (self._timerPoll) { clearInterval(self._timerPoll); self._timerPoll = null; }
+    if (self._timerWaitResolve) { self._timerWaitResolve(); self._timerWaitResolve = null; }
     self._timerEnd = null;
     self._timerNotifDismissed = false;
     // Clear persisted state
@@ -349,6 +357,55 @@ self.addEventListener('notificationclick', e => {
     })
   );
 });
+
+// ── TOP-LEVEL RESTORE ────────────────────────────────────────────────────────
+// Runs every time Android kills & restarts the SW (not just on activate).
+// Without this, timers and daily notifications are lost silently after SW termination.
+(async () => {
+  try {
+    const cache = await caches.open('fd-prefs');
+
+    // Restore timer
+    if (!self._timerEnd) {
+      const tr = await cache.match('/fd-timer-state');
+      if (tr) {
+        const state = await tr.json();
+        if (state && state.end) {
+          const rem = state.end - Date.now();
+          self._timerMealId  = state.mealId  || '';
+          self._timerStepIdx = state.stepIdx || 0;
+          self._timerEnd     = state.end;
+          self._timerNotifDismissed = false;
+          if (rem > 0) {
+            _swShowRunning();
+            if (self._timerPoll) clearInterval(self._timerPoll);
+            self._timerPoll = setInterval(() => { if (self._timerEnd - Date.now() <= 0) _swFireDone(); }, 5000);
+            if (self._timerTo) clearTimeout(self._timerTo);
+            self._timerTo = setTimeout(_swFireDone, rem);
+          } else {
+            _swFireDone();
+          }
+        }
+      }
+    }
+
+    // Restore daily notification
+    if (!self._dailyNotifTo) {
+      const dr = await cache.match('/fd-daily-fire-at');
+      if (dr) {
+        const fireAt = parseInt(await dr.text());
+        if (!isNaN(fireAt)) {
+          const delay = fireAt - Date.now();
+          if (delay > 0 && delay < 24 * 60 * 60 * 1000) {
+            self._dailyNotifTo = setTimeout(() => _swFireDailyNotif(cache), delay);
+          } else if (delay <= 0) {
+            _swFireDailyNotif(cache);
+          }
+        }
+      }
+    }
+  } catch (_) {}
+})();
 
 // Periodic Background Sync — daily suggestion + evening prep reminders
 self.addEventListener('periodicsync', e => {
