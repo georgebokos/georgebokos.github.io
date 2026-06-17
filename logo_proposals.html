@@ -3,135 +3,320 @@
 <head>
 <meta charset="UTF-8">
 <style>
-body{background:#1a1a1a;display:flex;flex-wrap:wrap;gap:32px;padding:40px;font-family:sans-serif;justify-content:center;}
-.opt{display:flex;flex-direction:column;align-items:center;gap:12px;}
-.opt span{color:#fff;font-size:14px;font-weight:600;letter-spacing:.5px;}
-svg{border-radius:22.5%;box-shadow:0 8px 32px rgba(0,0,0,.5);}
+body{background:#111;display:flex;flex-wrap:wrap;gap:40px;padding:48px;font-family:sans-serif;justify-content:center;align-items:flex-start;}
+.opt{display:flex;flex-direction:column;align-items:center;gap:14px;}
+.opt span{color:#aaa;font-size:13px;font-weight:500;letter-spacing:.5px;}
+.opt small{color:#666;font-size:11px;}
+svg{border-radius:22.5%;box-shadow:0 12px 48px rgba(0,0,0,.7);}
 </style>
 </head>
 <body>
 
-<!-- OPTION A: Terracotta gradient + Fork & Leaf -->
+<!-- 3D-1: Steaming golden cloche/dome -->
 <div class="opt">
-<svg width="160" height="160" viewBox="0 0 160 160" xmlns="http://www.w3.org/2000/svg">
+<svg width="200" height="200" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
   <defs>
-    <linearGradient id="gA" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0%" stop-color="#F0855A"/>
-      <stop offset="100%" stop-color="#B8400E"/>
+    <radialGradient id="bg1" cx="40%" cy="35%">
+      <stop offset="0%" stop-color="#2E2820"/>
+      <stop offset="100%" stop-color="#0E0C09"/>
+    </radialGradient>
+    <linearGradient id="plate1" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#FFE090"/>
+      <stop offset="40%" stop-color="#D4920A"/>
+      <stop offset="100%" stop-color="#8A5C04"/>
     </linearGradient>
+    <linearGradient id="dome1" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="#FFD060"/>
+      <stop offset="35%" stop-color="#C88010"/>
+      <stop offset="100%" stop-color="#6A4406"/>
+    </linearGradient>
+    <linearGradient id="dome1hi" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0%" stop-color="rgba(255,240,180,0.55)"/>
+      <stop offset="100%" stop-color="rgba(255,200,80,0)"/>
+    </linearGradient>
+    <filter id="glow1">
+      <feGaussianBlur stdDeviation="3" result="blur"/>
+      <feMerge><feMergeNode in="blur"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <filter id="shadow1" x="-20%" y="-20%" width="140%" height="160%">
+      <feDropShadow dx="0" dy="8" stdDeviation="10" flood-color="rgba(0,0,0,0.8)"/>
+    </filter>
   </defs>
-  <rect width="160" height="160" fill="url(#gA)"/>
-  <!-- Fork -->
-  <g fill="none" stroke="#fff" stroke-width="6" stroke-linecap="round">
-    <line x1="72" y1="38" x2="72" y2="122"/>
-    <line x1="72" y1="38" x2="72" y2="68"/>
-    <line x1="60" y1="38" x2="60" y2="62"/>
-    <line x1="84" y1="38" x2="84" y2="62"/>
-    <path d="M60 62 Q66 74 72 68 Q78 74 84 62"/>
+
+  <!-- Background -->
+  <rect width="200" height="200" fill="url(#bg1)"/>
+  <!-- Subtle grid lines -->
+  <g stroke="rgba(255,200,80,0.04)" stroke-width="1">
+    <line x1="0" y1="60" x2="200" y2="60"/>
+    <line x1="0" y1="100" x2="200" y2="100"/>
+    <line x1="0" y1="140" x2="200" y2="140"/>
+    <line x1="60" y1="0" x2="60" y2="200"/>
+    <line x1="100" y1="0" x2="100" y2="200"/>
+    <line x1="140" y1="0" x2="140" y2="200"/>
   </g>
-  <!-- Olive leaf accent -->
-  <g fill="rgba(255,255,255,0.9)">
-    <ellipse cx="100" cy="72" rx="14" ry="6" transform="rotate(-35 100 72)"/>
-    <ellipse cx="110" cy="60" rx="11" ry="5" transform="rotate(-35 110 60)"/>
-    <line x1="90" y1="82" x2="115" y2="52" stroke="#fff" stroke-width="2.5" stroke-linecap="round"/>
+
+  <!-- Plate shadow on surface -->
+  <ellipse cx="100" cy="148" rx="58" ry="10" fill="rgba(0,0,0,0.5)"/>
+
+  <!-- Plate base (3D ellipse) -->
+  <ellipse cx="100" cy="143" rx="56" ry="10" fill="url(#plate1)" filter="url(#shadow1)"/>
+  <ellipse cx="100" cy="141" rx="52" ry="8" fill="#B87808"/>
+  <ellipse cx="100" cy="140" rx="48" ry="6.5" fill="#E8A010"/>
+
+  <!-- Dome body -->
+  <path d="M44 138 Q44 84 100 80 Q156 84 156 138 Z" fill="url(#dome1)" filter="url(#shadow1)"/>
+  <!-- Dome bottom rim -->
+  <ellipse cx="100" cy="138" rx="56" ry="9" fill="#C88010"/>
+  <ellipse cx="100" cy="136" rx="54" ry="7" fill="#E8A820"/>
+
+  <!-- Dome highlight (specular) -->
+  <ellipse cx="78" cy="102" rx="28" ry="18" fill="url(#dome1hi)" transform="rotate(-15 78 102)"/>
+
+  <!-- Handle on top -->
+  <ellipse cx="100" cy="82" rx="14" ry="5" fill="#C88010"/>
+  <ellipse cx="100" cy="79" rx="12" ry="8" fill="url(#dome1)"/>
+  <ellipse cx="96" cy="76" rx="5" ry="3" fill="rgba(255,240,160,0.4)"/>
+
+  <!-- Steam wisps -->
+  <g stroke="#FFD580" stroke-width="2.5" stroke-linecap="round" fill="none" opacity="0.7" filter="url(#glow1)">
+    <path d="M76 68 Q72 58 76 48 Q80 38 76 28"/>
+    <path d="M100 64 Q96 54 100 44 Q104 34 100 24"/>
+    <path d="M124 68 Q120 58 124 48 Q128 38 124 28"/>
   </g>
+
+  <!-- Glow ring around dome -->
+  <ellipse cx="100" cy="138" rx="56" ry="9" fill="none" stroke="rgba(255,200,60,0.3)" stroke-width="1.5"/>
 </svg>
-<span>A — Terracotta Fork</span>
+<span>1 — Cloche 3D</span>
+<small>σκεπαστό πιάτο</small>
 </div>
 
-<!-- OPTION B: Dark premium + Gold plate -->
+<!-- 3D-2: Metallic bowl from above with food -->
 <div class="opt">
-<svg width="160" height="160" viewBox="0 0 160 160" xmlns="http://www.w3.org/2000/svg">
+<svg width="200" height="200" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
   <defs>
-    <linearGradient id="gB" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0%" stop-color="#2A2520"/>
-      <stop offset="100%" stop-color="#16130F"/>
-    </linearGradient>
-    <linearGradient id="gBg" x1="0" y1="0" x2="0" y2="1">
-      <stop offset="0%" stop-color="#FFD580"/>
-      <stop offset="100%" stop-color="#E8A020"/>
-    </linearGradient>
+    <radialGradient id="bg2" cx="50%" cy="40%">
+      <stop offset="0%" stop-color="#241E18"/>
+      <stop offset="100%" stop-color="#0A0806"/>
+    </radialGradient>
+    <radialGradient id="bowl2outer" cx="45%" cy="40%">
+      <stop offset="0%" stop-color="#FFD060"/>
+      <stop offset="60%" stop-color="#C07808"/>
+      <stop offset="100%" stop-color="#7A4A04"/>
+    </radialGradient>
+    <radialGradient id="bowl2inner" cx="42%" cy="38%">
+      <stop offset="0%" stop-color="#2A2218"/>
+      <stop offset="70%" stop-color="#1A1410"/>
+      <stop offset="100%" stop-color="#0E0A06"/>
+    </radialGradient>
+    <radialGradient id="food2" cx="50%" cy="40%">
+      <stop offset="0%" stop-color="#E8703A"/>
+      <stop offset="60%" stop-color="#C04820"/>
+      <stop offset="100%" stop-color="#8A2808"/>
+    </radialGradient>
+    <filter id="s2">
+      <feDropShadow dx="0" dy="10" stdDeviation="14" flood-color="rgba(0,0,0,0.9)"/>
+    </filter>
+    <filter id="glow2">
+      <feGaussianBlur stdDeviation="4" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
   </defs>
-  <rect width="160" height="160" fill="url(#gB)"/>
-  <!-- Plate -->
-  <circle cx="80" cy="82" r="44" fill="none" stroke="url(#gBg)" stroke-width="4"/>
-  <circle cx="80" cy="82" r="32" fill="none" stroke="url(#gBg)" stroke-width="2" stroke-dasharray="4 3"/>
-  <!-- Steam lines -->
-  <g stroke="url(#gBg)" stroke-width="3" stroke-linecap="round" fill="none">
-    <path d="M66 52 Q62 44 66 36"/>
-    <path d="M80 48 Q76 40 80 32"/>
-    <path d="M94 52 Q90 44 94 36"/>
+
+  <rect width="200" height="200" fill="url(#bg2)"/>
+
+  <!-- Bowl shadow -->
+  <ellipse cx="102" cy="152" rx="62" ry="10" fill="rgba(0,0,0,0.6)"/>
+
+  <!-- Bowl outer -->
+  <ellipse cx="100" cy="112" rx="68" ry="46" fill="url(#bowl2outer)" filter="url(#s2)"/>
+  <!-- Bowl inner dark -->
+  <ellipse cx="100" cy="106" rx="58" ry="36" fill="url(#bowl2inner)"/>
+
+  <!-- Food in bowl (pasta/stew) -->
+  <ellipse cx="100" cy="103" rx="50" ry="30" fill="url(#food2)"/>
+  <!-- Food texture swirls -->
+  <g fill="none" stroke="rgba(255,160,80,0.4)" stroke-width="2" stroke-linecap="round">
+    <path d="M76 97 Q88 88 100 97 Q112 106 124 97"/>
+    <path d="M82 107 Q94 98 106 107 Q118 116 82 107"/>
+    <path d="M90 116 Q100 109 110 116"/>
   </g>
-  <!-- FD monogram -->
-  <text x="80" y="89" text-anchor="middle" font-family="Georgia,serif" font-size="22" font-weight="700" fill="url(#gBg)" letter-spacing="1">FD</text>
+  <!-- Food highlight -->
+  <ellipse cx="88" cy="96" rx="18" ry="10" fill="rgba(255,180,80,0.2)" transform="rotate(-10 88 96)"/>
+
+  <!-- Bowl rim highlight -->
+  <ellipse cx="100" cy="112" rx="68" ry="46" fill="none" stroke="rgba(255,220,100,0.5)" stroke-width="3"/>
+  <!-- Bowl top specular -->
+  <path d="M48 98 Q52 86 68 82" stroke="rgba(255,240,180,0.6)" stroke-width="3" stroke-linecap="round" fill="none"/>
+
+  <!-- Steam -->
+  <g stroke="#FFD580" stroke-width="2.5" stroke-linecap="round" fill="none" opacity="0.65" filter="url(#glow2)">
+    <path d="M78 66 Q74 56 78 46 Q82 36 78 26"/>
+    <path d="M100 62 Q96 52 100 42 Q104 32 100 22"/>
+    <path d="M122 66 Q118 56 122 46 Q126 36 122 26"/>
+  </g>
+
+  <!-- Rim glow -->
+  <ellipse cx="100" cy="112" rx="68" ry="46" fill="none" stroke="rgba(255,180,40,0.2)" stroke-width="8"/>
 </svg>
-<span>B — Dark Gold</span>
+<span>2 — Bowl 3D</span>
+<small>μπολ με φαγητό</small>
 </div>
 
-<!-- OPTION C: Mediterranean Green + Fork/Olive -->
+<!-- 3D-3: Golden fork standing upright, 3D metallic -->
 <div class="opt">
-<svg width="160" height="160" viewBox="0 0 160 160" xmlns="http://www.w3.org/2000/svg">
+<svg width="200" height="200" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
   <defs>
-    <linearGradient id="gC" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0%" stop-color="#3A7D44"/>
-      <stop offset="100%" stop-color="#1E4D28"/>
+    <radialGradient id="bg3" cx="50%" cy="30%">
+      <stop offset="0%" stop-color="#1E1A14"/>
+      <stop offset="100%" stop-color="#080604"/>
+    </radialGradient>
+    <linearGradient id="fork3" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#8A5A04"/>
+      <stop offset="25%" stop-color="#FFE090"/>
+      <stop offset="50%" stop-color="#D4900A"/>
+      <stop offset="75%" stop-color="#FFD060"/>
+      <stop offset="100%" stop-color="#7A4804"/>
+    </linearGradient>
+    <linearGradient id="fork3b" x1="0" y1="0" x2="1" y2="0">
+      <stop offset="0%" stop-color="#6A4004"/>
+      <stop offset="30%" stop-color="#E8B030"/>
+      <stop offset="60%" stop-color="#C88010"/>
+      <stop offset="100%" stop-color="#5A3404"/>
+    </linearGradient>
+    <filter id="s3">
+      <feDropShadow dx="4" dy="8" stdDeviation="12" flood-color="rgba(0,0,0,0.9)"/>
+    </filter>
+    <filter id="glow3">
+      <feGaussianBlur stdDeviation="6" result="b"/>
+      <feMerge><feMergeNode in="b"/><feMergeNode in="SourceGraphic"/></feMerge>
+    </filter>
+    <linearGradient id="plate3" x1="0" y1="0" x2="0" y2="1">
+      <stop offset="0%" stop-color="#FFD060"/>
+      <stop offset="100%" stop-color="#8A5804"/>
     </linearGradient>
   </defs>
-  <rect width="160" height="160" fill="url(#gC)"/>
-  <!-- Sun/circle accent -->
-  <circle cx="80" cy="80" r="52" fill="none" stroke="rgba(255,255,255,0.15)" stroke-width="1.5"/>
-  <!-- Fork & knife combined -->
-  <g fill="none" stroke="#fff" stroke-width="5.5" stroke-linecap="round" stroke-linejoin="round">
-    <!-- Fork left -->
-    <line x1="62" y1="36" x2="62" y2="124"/>
-    <line x1="52" y1="36" x2="52" y2="60"/>
-    <line x1="72" y1="36" x2="72" y2="60"/>
-    <path d="M52 60 Q57 70 62 66 Q67 70 72 60"/>
-    <!-- Knife right -->
-    <line x1="98" y1="36" x2="98" y2="124"/>
-    <path d="M98 36 Q110 48 108 66 L98 66"/>
+
+  <rect width="200" height="200" fill="url(#bg3)"/>
+
+  <!-- Glow behind fork -->
+  <ellipse cx="100" cy="100" rx="30" ry="80" fill="rgba(255,180,40,0.06)" filter="url(#glow3)"/>
+
+  <!-- Fork shadow -->
+  <rect x="91" y="40" width="18" height="140" rx="9" fill="rgba(0,0,0,0.5)" transform="skewX(8) translate(8,0)"/>
+
+  <!-- Fork handle -->
+  <rect x="88" y="96" width="24" height="76" rx="12" fill="url(#fork3)" filter="url(#s3)"/>
+  <!-- Handle detail line -->
+  <rect x="98" y="100" width="4" height="68" rx="2" fill="rgba(255,240,160,0.3)"/>
+  <!-- Handle bottom cap -->
+  <ellipse cx="100" cy="172" rx="12" ry="5" fill="url(#fork3b)"/>
+
+  <!-- Fork neck -->
+  <rect x="91" y="72" width="18" height="30" rx="4" fill="url(#fork3)"/>
+
+  <!-- Fork tines (4 tines) -->
+  <g filter="url(#s3)">
+    <rect x="80" y="30" width="8" height="46" rx="4" fill="url(#fork3)"/>
+    <rect x="92" y="28" width="8" height="48" rx="4" fill="url(#fork3)"/>
+    <rect x="104" y="28" width="8" height="48" rx="4" fill="url(#fork3)"/>
+    <rect x="116" y="30" width="8" height="46" rx="4" fill="url(#fork3)"/>
   </g>
-  <!-- Olive leaves -->
-  <g fill="rgba(255,255,255,0.85)">
-    <ellipse cx="80" cy="94" rx="8" ry="3.5" transform="rotate(20 80 94)"/>
-    <ellipse cx="86" cy="88" rx="7" ry="3" transform="rotate(20 86 88)"/>
-    <ellipse cx="74" cy="100" rx="7" ry="3" transform="rotate(20 74 100)"/>
+
+  <!-- Tine highlight -->
+  <g fill="rgba(255,240,160,0.4)">
+    <rect x="82" y="30" width="3" height="40" rx="1.5"/>
+    <rect x="94" y="28" width="3" height="42" rx="1.5"/>
+    <rect x="106" y="28" width="3" height="42" rx="1.5"/>
+    <rect x="118" y="30" width="3" height="40" rx="1.5"/>
   </g>
+
+  <!-- Base plate -->
+  <ellipse cx="100" cy="176" rx="44" ry="8" fill="url(#plate3)" opacity=".8"/>
+  <ellipse cx="100" cy="174" rx="40" ry="5" fill="rgba(255,220,100,0.3)"/>
+
+  <!-- Glow ring on plate -->
+  <ellipse cx="100" cy="176" rx="44" ry="8" fill="none" stroke="rgba(255,200,60,0.4)" stroke-width="1.5"/>
 </svg>
-<span>C — Mediterranean Green</span>
+<span>3 — Golden Fork</span>
+<small>3D μεταλλικό</small>
 </div>
 
-<!-- OPTION D: Clean White + Terracotta minimal -->
+<!-- 3D-4: Embossed medallion / coin style -->
 <div class="opt">
-<svg width="160" height="160" viewBox="0 0 160 160" xmlns="http://www.w3.org/2000/svg">
+<svg width="200" height="200" viewBox="0 0 200 200" xmlns="http://www.w3.org/2000/svg">
   <defs>
-    <linearGradient id="gD" x1="0" y1="0" x2="1" y2="1">
-      <stop offset="0%" stop-color="#FDF6EE"/>
-      <stop offset="100%" stop-color="#F5E8D4"/>
+    <radialGradient id="bg4" cx="40%" cy="35%">
+      <stop offset="0%" stop-color="#1C1810"/>
+      <stop offset="100%" stop-color="#080604"/>
+    </radialGradient>
+    <linearGradient id="coin4" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#FFE090"/>
+      <stop offset="30%" stop-color="#E8A020"/>
+      <stop offset="60%" stop-color="#C07808"/>
+      <stop offset="80%" stop-color="#FFD060"/>
+      <stop offset="100%" stop-color="#8A5404"/>
     </linearGradient>
+    <linearGradient id="coin4inner" x1="0%" y1="0%" x2="100%" y2="100%">
+      <stop offset="0%" stop-color="#D4900A"/>
+      <stop offset="50%" stop-color="#A06006"/>
+      <stop offset="100%" stop-color="#C88010"/>
+    </linearGradient>
+    <filter id="s4">
+      <feDropShadow dx="0" dy="6" stdDeviation="16" flood-color="rgba(0,0,0,0.95)"/>
+    </filter>
+    <filter id="emboss">
+      <feConvolveMatrix order="3" kernelMatrix="-1 -1 0 -1 1 1 0 1 1" result="e"/>
+      <feBlend in="SourceGraphic" in2="e" mode="overlay"/>
+    </filter>
   </defs>
-  <rect width="160" height="160" fill="url(#gD)"/>
-  <!-- Big F letter stylized -->
-  <g fill="#C8501A">
-    <!-- Pot body -->
-    <path d="M42 74 Q40 110 80 116 Q120 110 118 74 Z"/>
-    <!-- Pot rim -->
-    <rect x="36" y="66" width="88" height="12" rx="6"/>
-    <!-- Handles -->
-    <path d="M36 70 Q24 70 24 80 Q24 88 36 86" fill="none" stroke="#C8501A" stroke-width="7" stroke-linecap="round"/>
-    <path d="M124 70 Q136 70 136 80 Q136 88 124 86" fill="none" stroke="#C8501A" stroke-width="7" stroke-linecap="round"/>
-    <!-- Lid -->
-    <ellipse cx="80" cy="64" rx="44" ry="8" fill="#C8501A"/>
-    <ellipse cx="80" cy="56" rx="12" ry="5" fill="#C8501A"/>
-    <!-- Steam -->
+
+  <rect width="200" height="200" fill="url(#bg4)"/>
+
+  <!-- Coin shadow -->
+  <circle cx="102" cy="104" r="72" fill="rgba(0,0,0,0.7)" filter="url(#s4)"/>
+
+  <!-- Coin outer ring -->
+  <circle cx="100" cy="100" r="72" fill="url(#coin4)"/>
+  <!-- Coin bevel outer dark -->
+  <circle cx="100" cy="100" r="72" fill="none" stroke="#6A4004" stroke-width="5"/>
+  <!-- Coin bevel outer light -->
+  <circle cx="100" cy="100" r="70" fill="none" stroke="rgba(255,240,160,0.6)" stroke-width="2"/>
+
+  <!-- Coin inner surface -->
+  <circle cx="100" cy="100" r="62" fill="url(#coin4inner)"/>
+
+  <!-- Inner ring decoration -->
+  <circle cx="100" cy="100" r="58" fill="none" stroke="rgba(255,210,80,0.5)" stroke-width="1.5" stroke-dasharray="6 4"/>
+
+  <!-- Fork & knife embossed -->
+  <g fill="rgba(255,230,120,0.9)" filter="url(#s4)">
+    <!-- Fork -->
+    <rect x="74" y="56" width="7" height="44" rx="3.5"/>
+    <rect x="66" y="56" width="5" height="26" rx="2.5"/>
+    <rect x="83" y="56" width="5" height="26" rx="2.5"/>
+    <path d="M66 78 Q70 86 77.5 82 Q85 86 89 78" fill="rgba(255,230,120,0.9)"/>
+
+    <!-- Knife -->
+    <rect x="119" y="56" width="7" height="44" rx="3.5"/>
+    <path d="M119 56 Q130 62 130 78 L119 78 Z" fill="rgba(255,230,120,0.9)"/>
   </g>
-  <g stroke="#C8501A" stroke-width="3.5" stroke-linecap="round" fill="none" opacity=".7">
-    <path d="M62 46 Q58 38 62 30"/>
-    <path d="M80 44 Q76 36 80 28"/>
-    <path d="M98 46 Q94 38 98 30"/>
+
+  <!-- Olive branch between -->
+  <g fill="rgba(255,220,100,0.7)">
+    <ellipse cx="100" cy="88" rx="7" ry="3" transform="rotate(-30 100 88)"/>
+    <ellipse cx="100" cy="97" rx="7" ry="3" transform="rotate(30 100 97)"/>
+    <ellipse cx="100" cy="106" rx="7" ry="3" transform="rotate(-30 100 106)"/>
+    <ellipse cx="100" cy="115" rx="7" ry="3" transform="rotate(30 100 115)"/>
+    <line x1="100" y1="82" x2="100" y2="122" stroke="rgba(255,220,100,0.7)" stroke-width="2.5" stroke-linecap="round"/>
   </g>
+
+  <!-- Highlight on coin -->
+  <ellipse cx="72" cy="72" rx="24" ry="16" fill="rgba(255,240,180,0.15)" transform="rotate(-30 72 72)"/>
+  <circle cx="100" cy="100" r="72" fill="none" stroke="rgba(255,230,120,0.2)" stroke-width="10"/>
 </svg>
-<span>D — Κατσαρόλα</span>
+<span>4 — Χρυσό Μετάλλιο</span>
+<small>embossed coin style</small>
 </div>
 
 </body>
