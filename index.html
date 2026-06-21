@@ -3425,7 +3425,10 @@ function renderMeals(cat){
   }else{
     const dow=new Date().getDay();
     const isSunday=dow===0;
-    const _dSeed=new Date().toDateString().split('').reduce((h,c)=>(h*31+c.charCodeAt(0))|0,1);
+    // Persistent per-device user token so daily order differs per user
+    let _uid=localStorage.getItem('fd_uid');
+    if(!_uid){_uid=Math.random().toString(36).slice(2)+Date.now().toString(36);localStorage.setItem('fd_uid',_uid);}
+    const _dSeed=(new Date().toDateString()+_uid).split('').reduce((h,c)=>(h*31+c.charCodeAt(0))|0,1);
     const _mHash=id=>id.split('').reduce((h,c)=>(h*37+c.charCodeAt(0))|0,_dSeed);
     const fresh=pool.filter(m=>!rids.includes(m.id)&&!_cookedRecently(m.id)).sort((a,b)=>{
       const pa=MEAL_PRIORITY[a.id]||2, pb=MEAL_PRIORITY[b.id]||2;
