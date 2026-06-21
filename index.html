@@ -5044,8 +5044,18 @@ let _obSlide=0;
 const OB_SLIDES=1;
 function _obCookieSet(){document.cookie='fd_ob=1;max-age=31536000;path=/;SameSite=Lax';}
 function _obCookieGet(){return document.cookie.split(';').some(c=>c.trim().startsWith('fd_ob='));}
-function initOnboarding(){
+async function initOnboarding(){
   if(localStorage.getItem('fd_onboard_done')||_obCookieGet())return;
+  if('caches' in window){
+    try{
+      const c=await caches.open('fd-prefs');
+      if(await c.match('/fd-onboard-done')){
+        localStorage.setItem('fd_onboard_done','1');
+        _obCookieSet();
+        return;
+      }
+    }catch(e){}
+  }
   document.getElementById('onboard').classList.remove('hidden');
   document.body.style.overflow='hidden';
 }
@@ -5290,7 +5300,9 @@ function dismissTonightBanner(){
           if(nw.state==='installed'&&navigator.serviceWorker.controller) _showSwToast();
         });
       });
-      reg.update().catch(()=>{});
+      // throttle SW update check to once per day to avoid false update toasts
+      const _lastUpd=+localStorage.getItem('fd_sw_upd_ts')||0;
+      if(Date.now()-_lastUpd>86400000){localStorage.setItem('fd_sw_upd_ts',Date.now());reg.update().catch(()=>{});}
     }).catch(()=>{});
     navigator.serviceWorker.addEventListener('message', e => {
       if(e.data && e.data.type==='SW_UPDATED') _showSwToast();
