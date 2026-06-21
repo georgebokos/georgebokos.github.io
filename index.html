@@ -1281,7 +1281,7 @@ function submitNewsletter(){
   inp.style.borderColor='';
   localStorage.setItem('fd_nl_email',email);
   const wrap=document.getElementById('nl-form-wrap');
-  if(wrap)wrap.innerHTML=`<div class="nl-done">✅ Σε βάλαμε στη λίστα! Σύντομα θα λαμβάνεις νέα στο ${email}</div>`;
+  if(wrap){const _safe=email.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');wrap.innerHTML=`<div class="nl-done">✅ Σε βάλαμε στη λίστα! Σύντομα θα λαμβάνεις νέα στο ${_safe}</div>`;}
 }
 
 function applyTheme(c){
@@ -1321,7 +1321,7 @@ const TR={
     c0:'🌿 All',c1:'🍝 Pasta',c2:'🐟 Seafood',c3:'🥩 Meat',
     c4:'🫘 Legumes',c5:'🥦 Vegetables',c6:'🥗 Salads',c7:'🍲 Soups',
     cl_pasta:'Pasta',cl_seafood:'Seafood',cl_meat:'Meat',cl_legumes:'Legume',
-    cl_vegetables:'Vegetable',cl_salads:'Salad',cl_soups:'Soup',cl_sauces:'Sauce',cl_pites:'Pie',
+    cl_vegetables:'Vegetable',cl_salads:'Salad',cl_soups:'Soup',cl_sauces:'Sauce',cl_pites:'Pie',cl_desserts:'Dessert',
     daily_lbl:"Today's suggestions",fresh:'✦ New',new_sug:'✨ New',days_ago:'days ago',
     remind:"Haven't had recently:",bal_t:'Weekly balance',reshuf:'🔀 New suggestions',
     cal:'Calories',time:'Time',srv:'Servings',cost:'Ingredient cost',per_srv:'/serv.',cost_yr:'prices 2026',
@@ -1632,7 +1632,7 @@ const MEALS={
         'Σερβίρισμα: Αναποδογυρίζεις τη φόρμα σε πιατέλα και πασπαλίζεις με κανέλα. Σερβίρεις χλιαρό ή κρύο.'
       ],
     wine:'Ούζο ή γλυκό κρασί.',beer:'',plate:'Φόρμα αναποδογυρισμένη, κανέλα, σταφίδες.'},
-  lagana:{en:'Fasting Flatbread',n:'Λαγάνα',e:'🫓',cats:['soups'],cal:180,time:90,srv:8,pop:1,cost:'~2.50€',cps:'~0.30€',
+  lagana:{en:'Fasting Flatbread',n:'Λαγάνα',e:'🫓',cats:['pites'],cal:180,time:90,srv:8,pop:1,cost:'~2.50€',cps:'~0.30€',
     ing:['Αλεύρι 500γρ','Νερό χλιαρό 300ml','Μαγιά ξηρή 7γρ','Ελαιόλαδο 3 κ.σ.','Αλάτι','Σησάμι'],
     steps: [
         'Ενεργοποίηση μαγιάς: Διάλυσε τα 7γρ ξηρή μαγιά στα 300ml χλιαρό νερό (όχι καυτό, γύρω στους 35°C). ΣΗΜΑΝΤΙΚΟ: αν το νερό είναι πολύ ζεστό σκοτώνει τη μαγιά και η ζύμη δεν φουσκώνει. Άφησε 5 λεπτά μέχρι να αφρίσει ελαφρά, σημάδι ότι η μαγιά ζωντάνεψε.',
@@ -3354,10 +3354,10 @@ function renderMeals(cat){
       if(dislikes.includes('seafood')&&m.cats.includes('seafood'))return false;
       if(dislikes.includes('legumes')&&m.cats.includes('legumes'))return false;
       if(dislikes.includes('vegetables')&&m.cats.includes('vegetables'))return false;
-      if(dislikes.includes('pork')&&['souvlakia','keftedes','kontosouvi','gourounopoulo'].includes(m.id))return false;
-      if(dislikes.includes('lamb')&&['arnaki_lemonato','giouvetsi','mageiritsa','stifado','kokkinisto','arni_souvia'].includes(m.id))return false;
+      if(dislikes.includes('pork')&&['souvlakia','kontosouvi','gourounopoulo','brizoles','xoirini_tiganias','xoirino_prasa','xoirina_paidakia','loukanka_piperies'].includes(m.id))return false;
+      if(dislikes.includes('lamb')&&['arnaki_lemonato','giouvetsi','mageiritsa','stifado','kokkinisto','arni_souvia','arni_kleftiko','paidakia'].includes(m.id))return false;
       if(dislikes.includes('garlic')&&['aglio','skordalia','bakaliaro','tzatziki_dish'].includes(m.id))return false;
-      if(dislikes.includes('eggplant')&&['moussaka','briami','melitzanosalata'].includes(m.id))return false;
+      if(dislikes.includes('eggplant')&&['moussaka','briami','melitzanosalata','imam_baialdi','papoutsakia'].includes(m.id))return false;
       return true;
     });
   }
@@ -4496,12 +4496,12 @@ function startVoice(){
   const SR=window.SpeechRecognition||window.webkitSpeechRecognition;
   if(!SR){setVS('Chrome/Edge μόνο');return;}
   recog=new SR();recog.lang='el-GR';recog.interimResults=false;
-  recog.onstart=()=>{isLis=true;document.getElementById('mic').classList.add('on');setVS('🎤 Ακούω...');};
+  recog.onstart=()=>{isLis=true;const _mc=document.getElementById('mic');if(_mc)_mc.classList.add('on');setVS('🎤 Ακούω...');};
   recog.onresult=e=>{procVoice(e.results[0][0].transcript);stopVoice();};
   recog.onerror=recog.onend=()=>stopVoice();
   recog.start();
 }
-function stopVoice(){if(recog){try{recog.stop();}catch(e){}recog=null;}isLis=false;document.getElementById('mic').classList.remove('on');}
+function stopVoice(){if(recog){try{recog.stop();}catch(e){}recog=null;}isLis=false;const _mc=document.getElementById('mic');if(_mc)_mc.classList.remove('on');}
 
 // ── NOTIFICATIONS ─────────────────────────────────────────────
 function openNmod(){
@@ -4810,7 +4810,7 @@ function doSearch(q){
   }
   mg.style.display='none';
   if(results.length===0){
-    res.innerHTML=`<div class="search-empty">😕 Δεν βρέθηκαν αποτελέσματα για "<b>${q}</b>"</div>`;
+    const _sq=q.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');res.innerHTML=`<div class="search-empty">😕 Δεν βρέθηκαν αποτελέσματα για "<b>${_sq}</b>"</div>`;
   } else {
     res.innerHTML=results.map(r=>`
       <div class="search-res-item" onclick="${r.onclick}">
@@ -5120,7 +5120,7 @@ function closeProfile(){
 
 // ── DIETARY FILTER SETS ─────────────────────────────────────────
 const DIET_FAST=new Set(['fasolada','fakes','gigantes','fava','revythada','briami','arakas_laderos','bamies_laderes','imam_baialdi','fasolakia','mavromatika','patates_lemonates','taramosalata','htapodi','psari_plaki','bakaliaro','psarosoupa','sardeles_lemonates','htapodi_krasato','soupies','kolios','melitzanosalata','skordalia','anginaresPolita','spanakoryzo','soupa_manitarion','avgolemono_soupa','dolmades']);
-const DIET_GF=new Set(['fasolada','horiatiki','kotopoulo','fakes','gemista','spanakoryzo','giouvarlaakia','garides','revythada','briami','gigantes','fava','arnaki_lemonato','arni_souvia','kontosouvi','stifado','kokkinisto','mosxari_stifado','mosxari_bamies','mosxari_kokkinisto','psari_plaki','psarosoupa','kotosopa','arakas_laderos','bamies_laderes','imam_baialdi','fasolakia','mavromatika','patates_lemonates','sardeles_lemonates','htapodi_krasato','htapodi','soupies','kolios','melitzanosalata','anginaresPolita','tzatziki_dish','dolmades','salata_rodi','biftekia','avgolemono_soupa','soupa_manitarion','htipiti','tirokafteri','salata_rokka','gourounopoulo','xoirina_paidakia','kotopoulo_lemonato']);
+const DIET_GF=new Set(['fasolada','horiatiki','kotopoulo','fakes','gemista','spanakoryzo','giouvarlaakia','garides','revythada','briami','gigantes','fava','arnaki_lemonato','arni_souvia','kontosouvi','stifado','kokkinisto','mosxari_stifado','mosxari_bamies','mosxari_kokkinisto','psari_plaki','psarosoupa','kotosopa','arakas_laderos','bamies_laderes','imam_baialdi','fasolakia','mavromatika','patates_lemonates','sardeles_lemonates','htapodi_krasato','htapodi','soupies','kolios','melitzanosalata','anginaresPolita','tzatziki_dish','dolmades','salata_rodi','biftekia','avgolemono_soupa','soupa_manitarion','htipiti','tirokafteri','salata_rokka','gourounopoulo','xoirina_paidakia','kotopoulo']);
 
 // ── COOK MODE ──────────────────────────────────────────────────
 let _cmSteps=[],_cmIdx=0,_wakeLock=null;
@@ -5242,7 +5242,7 @@ function dismissTonightBanner(){
     document.documentElement.setAttribute('data-theme','dark');
     const db=document.getElementById('dark-btn');if(db)db.textContent='☀️';
   }
-  localStorage.removeItem('fd_lang');
+  // Language preference is intentionally persisted — do NOT removeItem here
   // Hero greeting + date
   const days=['Κυριακή','Δευτέρα','Τρίτη','Τετάρτη','Πέμπτη','Παρασκευή','Σάββατο'];
   const months=['Ιαν','Φεβ','Μαρ','Απρ','Μαΐ','Ιουν','Ιουλ','Αυγ','Σεπ','Οκτ','Νοε','Δεκ'];
@@ -5351,44 +5351,5 @@ function dismissTonightBanner(){
 
 </script>
 
-<!-- Cook Mode Overlay -->
-<div id="cook-mode">
-  <div class="cm-hdr">
-    <button class="cm-cls" onclick="exitCookMode()">✕</button>
-    <span class="cm-recipe" id="cm-recipe-name"></span>
-    <span class="cm-cnt" id="cm-cnt"></span>
-  </div>
-  <div class="cm-bar"><div class="cm-fill" id="cm-fill"></div></div>
-  <div class="cm-body">
-    <div class="cm-snum" id="cm-snum"></div>
-    <div class="cm-stxt" id="cm-stxt"></div>
-  </div>
-  <div class="cm-nav">
-    <button class="cm-btn cm-prev" id="cm-prev" onclick="cookPrev()">← Πίσω</button>
-    <button class="cm-btn cm-next" id="cm-next" onclick="cookNext()">Επόμενο →</button>
-  </div>
-</div>
-
-<!-- Cook Tonight Modal -->
-<div class="ct-overlay" id="cook-tonight-modal" onclick="if(event.target===this)closeCookTonight()">
-  <div class="ct-sheet">
-    <div class="ct-hdr">
-      <span class="ct-title">🍳 Μαγειρεύω απόψε</span>
-      <button class="ct-cls" onclick="closeCookTonight()">✕</button>
-    </div>
-    <div class="ct-meal" id="ct-meal-name"></div>
-    <label class="ct-lbl">Σε ποια ώρα θέλεις να μαγειρέψεις;</label>
-    <input type="time" id="ct-time" class="ct-time" value="20:00">
-    <div class="ct-hint" id="ct-hint"></div>
-    <button class="ct-save" onclick="saveCookTonight()">🔔 Υπενθύμισέ μου</button>
-  </div>
-</div>
-
-<!-- Tonight Banner -->
-<div id="tonight-banner">
-  <span id="tonight-txt" style="flex:1"></span>
-  <button class="tonight-open" id="tonight-open-btn">Άνοιξε</button>
-  <button class="tonight-dismiss" onclick="dismissTonightBanner()">✕</button>
-</div>
 </body>
 </html>

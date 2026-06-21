@@ -1,6 +1,6 @@
 // FoodDaily Service Worker v3.2
-const VERSION = '2026-06-21-01';
-const CACHE = `fooddaily-2026-06-21-01`;
+const VERSION = '2026-06-21-02';
+const CACHE = `fooddaily-2026-06-21-02`;
 const ASSETS = [
   '/',
   '/index.html',
@@ -125,7 +125,7 @@ self.addEventListener('fetch', e => {
           return resp;
         }).catch(() => null);
 
-        return cached || fetchPromise || caches.match('/index.html');
+        return cached || fetchPromise.then(r => r || caches.match('/index.html'));
       })
     )
   );
