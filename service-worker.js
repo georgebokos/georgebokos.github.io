@@ -1,6 +1,6 @@
-// FoodDaily Service Worker v3.3
-const VERSION = '2026-06-21-03';
-const CACHE = `fooddaily-2026-06-21-03`;
+// FoodDaily Service Worker v3.4
+const VERSION = '2026-06-21-04';
+const CACHE = `fooddaily-2026-06-21-04`;
 const ASSETS = [
   '/',
   '/index.html',
@@ -311,6 +311,14 @@ self.addEventListener('message', e => {
       cache.put('/fd-daily-fire-at', new Response(String(nextFireAt), { headers: { 'Content-Type': 'text/plain' } }));
     };
     self._dailyNotifTo = setTimeout(fireAndReschedule, e.data.delay);
+  }
+
+  if (e.data.type === 'STORE_FEATURED_MEAL') {
+    if (e.data.meal) {
+      caches.open('fd-prefs').then(c => c.put('/fd-featured-meal',
+        new Response(JSON.stringify(e.data.meal), { headers: { 'Content-Type': 'application/json' } })
+      ));
+    }
   }
 
   if (e.data.type === 'CANCEL_DAILY_NOTIF') {

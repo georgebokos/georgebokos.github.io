@@ -3911,12 +3911,16 @@ function _startTimerKeepalive(){
 }
 function _stopTimerKeepalive(){if(_timerKeepalive){clearInterval(_timerKeepalive);_timerKeepalive=null;}}
 function _timerTick(){
-  if(!_timerBtn||!_timerEndTime)return;
+  if(!_timerEndTime)return;
   const rem=Math.ceil((_timerEndTime-Date.now())/1000);
   if(rem<=0){_timerFireDone(_timerBtn);return;}
   const m2=Math.floor(rem/60),s2=rem%60;
-  _timerBtn.textContent=`⏱ ${m2}:${String(s2).padStart(2,'0')}`;
-  _timerBtn.dataset.timer=rem;
+  // Re-locate button in case overlay was rebuilt (different recipe opened)
+  if(_timerBtn&&!document.contains(_timerBtn)){
+    const newBtn=document.querySelector('#ot-steps .step-timer-btn.running');
+    if(newBtn)_timerBtn=newBtn;
+  }
+  if(_timerBtn){_timerBtn.textContent=`⏱ ${m2}:${String(s2).padStart(2,'0')}`;_timerBtn.dataset.timer=rem;}
 }
 function parseStepTime(txt){
   // Extract minutes from step text: "20 λεπτά", "30-35 λεπτά", "2 ώρες", "1.5 ώρα", "45-50 λεπτά"
@@ -4551,6 +4555,9 @@ async function saveNotif(){
   } else {
     localStorage.setItem('notif_on','false');
     document.getElementById('bell').classList.remove('on');
+    storeNotifPrefsForSW(time,'false');
+    _swSend({type:'CANCEL_DAILY_NOTIF'});
+    if(_notifInt){clearInterval(_notifInt);_notifInt=null;}
     showToast('Ειδοποιήσεις απενεργοποιήθηκαν');
   }
   closeNmod();
