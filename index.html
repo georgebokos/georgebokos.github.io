@@ -3612,7 +3612,9 @@ function openR(id){
   const ttsBtn=document.getElementById('ov-tts-btn');if(ttsBtn)ttsBtn.textContent=t('tts_p');
   const ttsLbl=document.getElementById('ov-tts-lbl');if(ttsLbl)ttsLbl.textContent=mealName(m);
   ovTab('ing');
-  document.getElementById('overlay').classList.add('show');
+  const _ovEl=document.getElementById('overlay');
+  _ovEl.classList.add('show');
+  const _sh=_ovEl.querySelector('.ovsh');if(_sh)_sh.scrollTop=0;
   document.body.style.overflow='hidden';
   }catch(e){console.error('openR:',id,e);alert('Σφάλμα: '+e.message);}
 }
@@ -5242,7 +5244,8 @@ function dismissTonightBanner(){
     document.documentElement.setAttribute('data-theme','dark');
     const db=document.getElementById('dark-btn');if(db)db.textContent='☀️';
   }
-  // Language preference is intentionally persisted — do NOT removeItem here
+  // Restore language preference
+  const _sl=localStorage.getItem('fd_lang');if(_sl==='en'||_sl==='el')curLang=_sl;
   // Hero greeting + date
   const days=['Κυριακή','Δευτέρα','Τρίτη','Τετάρτη','Πέμπτη','Παρασκευή','Σάββατο'];
   const months=['Ιαν','Φεβ','Μαρ','Απρ','Μαΐ','Ιουν','Ιουλ','Αυγ','Σεπ','Οκτ','Νοε','Δεκ'];
