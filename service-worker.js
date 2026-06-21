@@ -1,6 +1,6 @@
 // FoodDaily Service Worker v3.2
-const VERSION = '2026-06-18-01';
-const CACHE = `fooddaily-${VERSION}`;
+const VERSION = '2026-06-21-01';
+const CACHE = `fooddaily-2026-06-21-01`;
 const ASSETS = [
   '/',
   '/index.html',
@@ -74,10 +74,12 @@ self.addEventListener('activate', e => {
       }
     } catch (e) {}
 
-    // 5. Notify any open tabs about the new version
-    self.clients.matchAll({ type: 'window' }).then(clients => {
-      clients.forEach(c => c.postMessage({ type: 'SW_UPDATED' }));
-    });
+    // 5. Notify open tabs only when a genuinely older cache existed (real update)
+    if (keys.some(k => k !== CACHE && k.startsWith('fooddaily-'))) {
+      self.clients.matchAll({ type: 'window' }).then(clients => {
+        clients.forEach(c => c.postMessage({ type: 'SW_UPDATED' }));
+      });
+    }
   })());
 });
 
