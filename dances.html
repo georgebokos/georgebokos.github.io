@@ -4,7 +4,6 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
 <meta name="theme-color" content="#8B1515">
-<meta name="description" content="Μάθε ελληνικούς παραδοσιακούς χορούς βήμα-βήμα, με αναλυτικές οδηγίες ποδιών και ρυθμού.">
 <title>Ελληνικοί Παραδοσιακοί Χοροί</title>
 <style>
 :root{
@@ -12,381 +11,177 @@
   --acc:#C8941A;--acc2:#A07010;
   --tx:#1C0A06;--tx2:#5C3D2E;--tx3:#9B7B6A;
   --brd:#E0D0C0;--brd2:#C8B09A;
-  --foot-r:#C0392B;--foot-b:#1A4F8A;--foot-p:#6B2F8A;
+  --fr:#C0392B;--fb:#1A4F8A;--fp:#6B2F8A;
   --sh:0 2px 12px rgba(28,10,6,.08);--shl:0 8px 40px rgba(28,10,6,.18);
   --r:16px;--rs:10px;
-  --beat-quick:#E8C870;--beat-slow:#8B1515;
 }
 *{box-sizing:border-box;margin:0;padding:0}
 html{overflow-x:hidden}
-body{
-  font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',Helvetica,Arial,sans-serif;
-  background:var(--bg);color:var(--tx);max-width:680px;margin:0 auto;
-  min-height:100vh;overflow-x:hidden;
-}
-::-webkit-scrollbar{width:3px}
-::-webkit-scrollbar-thumb{background:var(--brd2);border-radius:3px}
+body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;background:var(--bg);color:var(--tx);max-width:680px;margin:0 auto;min-height:100vh;overflow-x:hidden}
+::-webkit-scrollbar{width:3px}::-webkit-scrollbar-thumb{background:var(--brd2);border-radius:3px}
 
-/* ── HEADER ── */
-.site-header{
-  padding:24px 20px 12px;
-  display:flex;flex-direction:column;gap:4px;
-}
-.back-link{
-  font-size:13px;color:var(--pri);text-decoration:none;
-  display:inline-flex;align-items:center;gap:4px;
-  opacity:.8;
-}
+.site-header{padding:22px 20px 10px;display:flex;flex-direction:column;gap:4px}
+.back-link{font-size:13px;color:var(--pri);text-decoration:none;opacity:.8}
 .back-link:hover{opacity:1}
-.header-content{margin-top:8px}
-.header-eyebrow{
-  font-size:11px;letter-spacing:.12em;text-transform:uppercase;
-  color:var(--acc2);font-weight:600;
-}
-.header-title{
-  font-size:clamp(26px,6vw,34px);font-weight:800;color:var(--tx);
-  font-family:Georgia,'Times New Roman',serif;
-  line-height:1.1;margin-top:4px;
-}
-.header-sub{
-  font-size:14px;color:var(--tx2);margin-top:6px;line-height:1.5;
-}
-.header-divider{
-  height:1px;background:var(--brd);margin:16px 20px 0;
-}
+.header-eyebrow{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--acc2);font-weight:600;margin-top:8px}
+.header-title{font-size:clamp(26px,6vw,34px);font-weight:800;color:var(--tx);font-family:Georgia,serif;line-height:1.1;margin-top:4px}
+.header-sub{font-size:14px;color:var(--tx2);margin-top:6px}
+.header-divider{height:1px;background:var(--brd);margin:14px 20px 0}
 
-/* ── FILTERS ── */
-.filters{
-  display:flex;gap:8px;padding:16px 20px;
-  overflow-x:auto;-webkit-overflow-scrolling:touch;
-  scrollbar-width:none;
-}
+.filters{display:flex;gap:8px;padding:14px 20px;overflow-x:auto;scrollbar-width:none}
 .filters::-webkit-scrollbar{display:none}
-.chip{
-  flex-shrink:0;padding:7px 16px;border-radius:100px;
-  border:1.5px solid var(--brd2);background:var(--card);
-  color:var(--tx2);font-size:13px;font-weight:500;cursor:pointer;
-  transition:all .2s;
-}
+.chip{flex-shrink:0;padding:7px 16px;border-radius:100px;border:1.5px solid var(--brd2);background:var(--card);color:var(--tx2);font-size:13px;font-weight:500;cursor:pointer;transition:all .2s}
 .chip:hover{border-color:var(--pri);color:var(--pri)}
 .chip.active{background:var(--pri);border-color:var(--pri);color:#fff}
 
-/* ── DANCE CARDS ── */
-.grid{
-  display:flex;flex-direction:column;gap:20px;
-  padding:4px 16px 100px;
-}
-.card{
-  background:var(--card);border-radius:var(--r);
-  box-shadow:var(--sh);overflow:hidden;cursor:pointer;
-  border:1px solid var(--brd);
-  transition:transform .2s,box-shadow .2s;
-}
+.grid{display:flex;flex-direction:column;gap:20px;padding:4px 16px 100px}
+.card{background:var(--card);border-radius:var(--r);box-shadow:var(--sh);overflow:hidden;cursor:pointer;border:1px solid var(--brd);transition:transform .2s,box-shadow .2s}
 .card:hover{transform:translateY(-3px);box-shadow:var(--shl)}
 .card:active{transform:translateY(0)}
 
-.card-img{
-  height:240px;position:relative;overflow:hidden;
-}
-.card-img img{
-  position:absolute;inset:0;width:100%;height:100%;
-  object-fit:cover;display:block;
-  transition:transform .4s;
-}
-.card:hover .card-img img{transform:scale(1.03)}
-.card-img-overlay{
-  position:absolute;inset:0;
-  background:linear-gradient(to bottom, transparent 30%, rgba(10,4,2,.72) 100%);
-  z-index:1;
-}
-.card-img-text{
-  position:absolute;bottom:0;left:0;right:0;
-  padding:20px 18px 16px;z-index:2;
-}
-.card-name{
-  font-size:22px;font-weight:800;color:#fff;
-  font-family:Georgia,serif;line-height:1.1;
-  text-shadow:0 2px 8px rgba(0,0,0,.4);
-}
-.card-region{
-  font-size:12px;color:rgba(255,255,255,.8);
-  margin-top:4px;letter-spacing:.05em;
-}
+.card-img{height:240px;position:relative;overflow:hidden}
+.card-img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;display:block;opacity:0;transition:opacity .6s,transform .4s}
+.card-img img.loaded{opacity:1}
+.card:hover .card-img img{transform:scale(1.04)}
+.card-img-ov{position:absolute;inset:0;background:linear-gradient(to bottom,transparent 30%,rgba(10,4,2,.76) 100%);z-index:1}
+.card-img-txt{position:absolute;bottom:0;left:0;right:0;padding:20px 18px 16px;z-index:2}
+.card-name{font-size:22px;font-weight:800;color:#fff;font-family:Georgia,serif;line-height:1.1;text-shadow:0 2px 8px rgba(0,0,0,.5)}
+.card-region{font-size:12px;color:rgba(255,255,255,.8);margin-top:4px}
 
 .card-info{padding:14px 18px 16px}
-.card-meta{
-  display:flex;gap:8px;align-items:center;flex-wrap:wrap;
-  margin-bottom:10px;
-}
-.badge{
-  font-size:11px;font-weight:600;padding:3px 9px;border-radius:100px;
-  letter-spacing:.04em;
-}
-.badge-rhythm{
-  background:rgba(139,21,21,.1);color:var(--pri);
-  border:1px solid rgba(139,21,21,.2);
-}
-.badge-diff{
-  background:rgba(200,148,26,.12);color:var(--acc2);
-  border:1px solid rgba(200,148,26,.25);
-}
-.difficulty-dots{display:flex;gap:3px;align-items:center}
+.card-meta{display:flex;gap:8px;align-items:center;flex-wrap:wrap;margin-bottom:10px}
+.badge{font-size:11px;font-weight:600;padding:3px 9px;border-radius:100px;letter-spacing:.04em}
+.badge-r{background:rgba(139,21,21,.1);color:var(--pri);border:1px solid rgba(139,21,21,.2)}
+.badge-d{background:rgba(200,148,26,.12);color:var(--acc2);border:1px solid rgba(200,148,26,.25)}
+.dots{display:flex;gap:3px}
 .dot{width:7px;height:7px;border-radius:50%}
-.dot.on{background:var(--acc)}
-.dot.off{background:var(--brd2)}
-
-.card-desc{
-  font-size:13.5px;color:var(--tx2);line-height:1.6;
-  display:-webkit-box;-webkit-line-clamp:2;
-  -webkit-box-orient:vertical;overflow:hidden;
-}
-.card-btn{
-  display:inline-flex;align-items:center;gap:6px;
-  margin-top:14px;padding:10px 18px;border-radius:var(--rs);
-  background:var(--pri);color:#fff;
-  font-size:13.5px;font-weight:600;
-  border:none;cursor:pointer;
-  transition:background .2s;
-}
+.dot.on{background:var(--acc)}.dot.off{background:var(--brd2)}
+.card-desc{font-size:13.5px;color:var(--tx2);line-height:1.6;display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden}
+.card-btn{display:inline-flex;align-items:center;gap:6px;margin-top:14px;padding:10px 18px;border-radius:var(--rs);background:var(--pri);color:#fff;font-size:13.5px;font-weight:600;border:none;cursor:pointer;transition:background .2s}
 .card-btn:hover{background:var(--pri2)}
-.card-btn svg{width:14px;height:14px;opacity:.9}
 
-/* ── DETAIL SHEET ── */
-.backdrop{
-  position:fixed;inset:0;background:rgba(10,4,2,.6);
-  z-index:100;opacity:0;pointer-events:none;
-  transition:opacity .3s;
-  backdrop-filter:blur(2px);-webkit-backdrop-filter:blur(2px);
-}
+/* SHEET */
+.backdrop{position:fixed;inset:0;background:rgba(10,4,2,.6);z-index:100;opacity:0;pointer-events:none;transition:opacity .3s;backdrop-filter:blur(2px);-webkit-backdrop-filter:blur(2px)}
 .backdrop.open{opacity:1;pointer-events:auto}
-
-.sheet{
-  position:fixed;bottom:0;left:50%;transform:translateX(-50%) translateY(100%);
-  width:100%;max-width:680px;
-  background:var(--card);border-radius:24px 24px 0 0;
-  box-shadow:0 -8px 60px rgba(10,4,2,.25);
-  z-index:101;max-height:92dvh;
-  display:flex;flex-direction:column;
-  transition:transform .35s cubic-bezier(.34,1.2,.64,1);
-}
+.sheet{position:fixed;bottom:0;left:50%;transform:translateX(-50%) translateY(100%);width:100%;max-width:680px;background:var(--card);border-radius:24px 24px 0 0;box-shadow:0 -8px 60px rgba(10,4,2,.25);z-index:101;max-height:92dvh;display:flex;flex-direction:column;transition:transform .35s cubic-bezier(.34,1.2,.64,1)}
 .sheet.open{transform:translateX(-50%) translateY(0)}
-
-.sheet-handle{
-  width:40px;height:4px;border-radius:2px;
-  background:var(--brd2);margin:12px auto 0;flex-shrink:0;
-}
-.sheet-head{
-  display:flex;justify-content:space-between;align-items:flex-start;
-  padding:14px 20px 0;flex-shrink:0;
-}
-.sheet-head h2{
-  font-size:24px;font-weight:800;
-  font-family:Georgia,serif;color:var(--tx);
-}
+.sheet-handle{width:40px;height:4px;border-radius:2px;background:var(--brd2);margin:12px auto 0;flex-shrink:0}
+.sheet-head{display:flex;justify-content:space-between;align-items:flex-start;padding:14px 20px 0;flex-shrink:0}
+.sheet-head h2{font-size:24px;font-weight:800;font-family:Georgia,serif;color:var(--tx)}
 .sheet-head p{font-size:13px;color:var(--tx3);margin-top:2px}
-.close-btn{
-  width:32px;height:32px;border-radius:50%;
-  background:var(--bg);border:1px solid var(--brd);
-  color:var(--tx2);font-size:16px;cursor:pointer;
-  display:flex;align-items:center;justify-content:center;
-  flex-shrink:0;margin-left:12px;
-  transition:background .15s;
-}
+.close-btn{width:32px;height:32px;border-radius:50%;background:var(--bg);border:1px solid var(--brd);color:var(--tx2);font-size:16px;cursor:pointer;display:flex;align-items:center;justify-content:center;flex-shrink:0;margin-left:12px;transition:background .15s}
 .close-btn:hover{background:var(--brd)}
-
-/* ── TABS ── */
-.tabs{
-  display:flex;gap:0;padding:14px 20px 0;
-  border-bottom:2px solid var(--brd);flex-shrink:0;
-}
-.tab{
-  flex:1;padding:8px 4px;
-  font-size:13px;font-weight:600;
-  color:var(--tx3);background:none;border:none;
-  border-bottom:2px solid transparent;
-  margin-bottom:-2px;cursor:pointer;
-  transition:color .2s,border-color .2s;
-}
+.tabs{display:flex;padding:14px 20px 0;border-bottom:2px solid var(--brd);flex-shrink:0}
+.tab{flex:1;padding:8px 4px;font-size:13px;font-weight:600;color:var(--tx3);background:none;border:none;border-bottom:2px solid transparent;margin-bottom:-2px;cursor:pointer;transition:color .2s,border-color .2s}
 .tab.active{color:var(--pri);border-bottom-color:var(--pri)}
+.sheet-body{overflow-y:auto;-webkit-overflow-scrolling:touch;padding:20px 20px 40px;flex:1;overscroll-behavior:contain}
 
-/* ── SHEET BODY ── */
-.sheet-body{
-  overflow-y:auto;-webkit-overflow-scrolling:touch;
-  padding:20px 20px 40px;flex:1;
-  overscroll-behavior:contain;
-}
-
-/* ── DESCRIPTION TAB ── */
-.desc-section{margin-bottom:20px}
-.desc-section h4{
-  font-size:11px;letter-spacing:.1em;text-transform:uppercase;
-  color:var(--tx3);font-weight:600;margin-bottom:8px;
-}
-.desc-text{font-size:14.5px;line-height:1.75;color:var(--tx2)}
-.meta-grid{
-  display:grid;grid-template-columns:1fr 1fr;gap:10px;
-  margin-top:4px;
-}
-.meta-item{
-  background:var(--bg);border-radius:var(--rs);
-  padding:12px 14px;border:1px solid var(--brd);
-}
-.meta-item label{
-  font-size:10px;letter-spacing:.1em;text-transform:uppercase;
-  color:var(--tx3);display:block;margin-bottom:4px;
-}
+/* DESC TAB */
+.sec{margin-bottom:20px}
+.sec h4{font-size:11px;letter-spacing:.1em;text-transform:uppercase;color:var(--tx3);font-weight:600;margin-bottom:8px}
+.desc-text{font-size:14.5px;line-height:1.8;color:var(--tx2)}
+.meta-grid{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+.meta-item{background:var(--bg);border-radius:var(--rs);padding:12px 14px;border:1px solid var(--brd)}
+.meta-item label{font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--tx3);display:block;margin-bottom:4px}
 .meta-item span{font-size:13px;font-weight:600;color:var(--tx)}
+.meta-full{grid-column:1/-1}
 
-/* ── STEPS TAB ── */
-.steps-intro{
-  font-size:13px;color:var(--tx3);
-  margin-bottom:16px;line-height:1.6;
-  padding:10px 14px;background:rgba(139,21,21,.05);
-  border-left:3px solid var(--pri);border-radius:0 var(--rs) var(--rs) 0;
-}
-.step-item{
-  display:grid;grid-template-columns:28px 40px 1fr auto;
-  gap:10px;align-items:start;
-  padding:14px 0;border-bottom:1px solid var(--brd);
-}
+/* STEP NAVIGATOR */
+.step-nav{background:linear-gradient(135deg,rgba(139,21,21,.04),rgba(200,148,26,.07));border-radius:var(--r);border:1.5px solid rgba(139,21,21,.15);padding:18px;margin-bottom:20px}
+.sn-label{font-size:10px;letter-spacing:.12em;text-transform:uppercase;color:var(--tx3);font-weight:600;margin-bottom:14px;display:flex;justify-content:space-between;align-items:center}
+.sn-dots-row{display:flex;gap:4px}
+.sn-d{width:8px;height:8px;border-radius:50%;background:var(--brd2);transition:background .2s,transform .2s}
+.sn-d.done{background:var(--acc)}.sn-d.now{background:var(--pri);transform:scale(1.3)}
+.sn-main{display:grid;grid-template-columns:56px 1fr;gap:14px;align-items:start;margin-bottom:14px}
+.sn-foot{width:52px;height:52px;border-radius:12px;display:flex;align-items:center;justify-content:center;font-size:20px;font-weight:900;flex-shrink:0}
+.sn-foot.D{background:rgba(26,79,138,.12);color:var(--fb);border:2px solid rgba(26,79,138,.3)}
+.sn-foot.A{background:rgba(192,57,43,.1);color:var(--fr);border:2px solid rgba(192,57,43,.25)}
+.sn-foot.AD{background:rgba(107,47,138,.1);color:var(--fp);border:2px solid rgba(107,47,138,.25)}
+.sn-dir{font-size:22px;line-height:1;margin-bottom:3px}
+.sn-move{font-size:16px;font-weight:800;color:var(--tx);margin-bottom:5px}
+.sn-beat-row{display:flex;gap:8px;align-items:center;margin-bottom:8px}
+.sn-detail{font-size:13px;color:var(--tx2);line-height:1.65}
+.sn-btns{display:grid;grid-template-columns:1fr auto 1fr;gap:8px;align-items:center;margin-top:14px}
+.sn-btn{padding:9px 16px;border-radius:var(--rs);font-size:13px;font-weight:700;cursor:pointer;border:none;transition:all .2s}
+.sn-prev{background:var(--bg);color:var(--tx2);border:1.5px solid var(--brd2)}.sn-prev:hover:not(:disabled){background:var(--brd)}
+.sn-next{background:var(--pri);color:#fff}.sn-next:hover:not(:disabled){background:var(--pri2)}
+.sn-btn:disabled{opacity:.35;cursor:not-allowed}
+.sn-counter{font-size:12px;font-weight:700;color:var(--tx3);text-align:center}
+
+/* STEPS LIST */
+.steps-intro{font-size:13px;color:var(--tx2);margin-bottom:16px;padding:10px 14px;background:rgba(139,21,21,.05);border-left:3px solid var(--pri);border-radius:0 var(--rs) var(--rs) 0;line-height:1.6}
+.foot-legend{display:flex;gap:12px;margin-bottom:14px;font-size:12px;color:var(--tx2);flex-wrap:wrap}
+.fl-item{display:flex;align-items:center;gap:5px}
+.foot-badge{display:inline-flex;align-items:center;justify-content:center;width:32px;height:32px;border-radius:8px;font-size:12px;font-weight:800;flex-shrink:0}
+.fD{background:rgba(26,79,138,.12);color:var(--fb);border:1.5px solid rgba(26,79,138,.25)}
+.fA{background:rgba(192,57,43,.1);color:var(--fr);border:1.5px solid rgba(192,57,43,.2)}
+.fAD{background:rgba(107,47,138,.1);color:var(--fp);border:1.5px solid rgba(107,47,138,.2)}
+.step-item{display:grid;grid-template-columns:22px 34px 22px 1fr;gap:8px;align-items:start;padding:13px 0;border-bottom:1px solid var(--brd);transition:background .25s,padding .25s}
 .step-item:last-child{border-bottom:none}
-.step-n{
-  font-size:13px;font-weight:700;color:var(--tx3);
-  padding-top:1px;
-}
-.foot-badge{
-  display:inline-flex;align-items:center;justify-content:center;
-  width:32px;height:32px;border-radius:8px;
-  font-size:12px;font-weight:800;letter-spacing:-.01em;
-  flex-shrink:0;
-}
-.foot-D{background:rgba(26,79,138,.12);color:var(--foot-b);border:1.5px solid rgba(26,79,138,.25)}
-.foot-A{background:rgba(192,57,43,.1);color:var(--foot-r);border:1.5px solid rgba(192,57,43,.2)}
-.foot-AD{background:rgba(107,47,138,.1);color:var(--foot-p);border:1.5px solid rgba(107,47,138,.2)}
-.step-content{}
-.step-move{font-size:14px;font-weight:700;color:var(--tx);margin-bottom:4px}
+.step-item.active{background:rgba(139,21,21,.05);border-radius:var(--rs);padding:13px 10px;margin:0 -10px;border-color:transparent}
+.step-n{font-size:12px;font-weight:700;color:var(--tx3);padding-top:3px}
+.step-dir{font-size:18px;padding-top:1px;text-align:center;line-height:1}
+.step-move{font-size:14px;font-weight:700;color:var(--tx);margin-bottom:3px}
 .step-detail{font-size:13px;color:var(--tx2);line-height:1.6}
-.beat-chip{
-  font-size:10px;font-weight:700;padding:3px 7px;
-  border-radius:6px;white-space:nowrap;flex-shrink:0;
-  margin-top:2px;
-}
-.beat-quick{background:var(--beat-quick);color:#5C3D00}
-.beat-slow{background:var(--beat-slow);color:#fff}
-.beat-neutral{background:var(--bg);color:var(--tx3);border:1px solid var(--brd2)}
+.beat-chip{font-size:10px;font-weight:700;padding:3px 7px;border-radius:6px;white-space:nowrap;display:inline-block;margin-top:4px}
+.bq{background:#E8C870;color:#5C3D00}.bs{background:var(--pri);color:#fff}.bn{background:var(--bg);color:var(--tx3);border:1px solid var(--brd2)}
 
-/* foot legend */
-.foot-legend{
-  display:flex;gap:12px;margin-bottom:14px;
-  font-size:12px;color:var(--tx2);flex-wrap:wrap;
-}
-.foot-legend-item{display:flex;align-items:center;gap:5px}
-.foot-legend-item .foot-badge{width:26px;height:26px;font-size:11px;border-radius:6px}
+/* METRONOME */
+.metro-box{background:var(--bg);border-radius:var(--r);border:1px solid var(--brd);padding:18px;margin-bottom:16px}
+.metro-beats{display:flex;flex-wrap:wrap;gap:10px;align-items:center;margin-bottom:14px;min-height:36px}
+.mbd{border-radius:50%;transition:background .08s,transform .08s,box-shadow .08s;flex-shrink:0}
+.mbd.acc{width:26px;height:26px;background:rgba(139,21,21,.2);border:2px solid rgba(139,21,21,.4)}
+.mbd.light{width:18px;height:18px;background:rgba(200,148,26,.2);border:1.5px solid rgba(200,148,26,.4)}
+.mbd.sep{width:2px;height:26px;background:var(--brd2);border-radius:1px}
+.mbd.acc.lit{background:var(--pri);border-color:var(--pri);transform:scale(1.3);box-shadow:0 0 0 4px rgba(139,21,21,.2)}
+.mbd.light.lit{background:var(--acc);border-color:var(--acc);transform:scale(1.25)}
+.metro-controls{display:flex;gap:10px;align-items:center}
+.metro-btn{padding:9px 18px;border-radius:var(--rs);background:var(--pri);color:#fff;font-size:13px;font-weight:700;border:none;cursor:pointer;transition:background .2s}
+.metro-btn:hover{background:var(--pri2)}.metro-btn.playing{background:#444}
+.metro-tempo{font-size:12px;color:var(--tx3)}
+.metro-cd{font-size:18px;font-weight:900;color:var(--pri);margin-left:auto;min-width:50px;text-align:right;font-family:Georgia,serif;transition:opacity .1s}
 
-/* ── RHYTHM TAB ── */
-.rhythm-section{margin-bottom:24px}
-.rhythm-section h4{
-  font-size:11px;letter-spacing:.1em;text-transform:uppercase;
-  color:var(--tx3);margin-bottom:12px;
-}
-.beat-display{
-  display:flex;flex-wrap:wrap;gap:8px;align-items:center;
-  padding:18px;background:var(--bg);border-radius:var(--r);
-  border:1px solid var(--brd);margin-bottom:12px;
-}
-.beat-dot{
-  width:18px;height:18px;border-radius:50%;
-  transition:transform .15s,opacity .15s;
-}
-.beat-dot.accent{
-  width:24px;height:24px;
-  background:var(--pri);
-  box-shadow:0 0 0 3px rgba(139,21,21,.2);
-}
-.beat-dot.light{background:var(--acc);width:14px;height:14px}
-.beat-dot.rest{background:var(--brd2)}
-.beat-separator{width:2px;height:20px;background:var(--brd2);border-radius:1px}
-.beat-label{
-  font-size:22px;font-weight:800;color:var(--tx);
-  font-family:Georgia,serif;
-  line-height:1.2;
-}
-.beat-count-display{
-  font-size:15px;color:var(--tx2);
-  font-style:italic;
-  padding:10px 14px;background:var(--bg);
-  border-radius:var(--rs);border:1px solid var(--brd);
-  line-height:1.6;
-}
+.beat-count-display{font-size:15px;color:var(--tx2);font-style:italic;padding:10px 14px;background:var(--bg);border-radius:var(--rs);border:1px solid var(--brd);line-height:1.7;margin-bottom:16px}
 .beat-count-display strong{color:var(--pri);font-style:normal}
 
+.mnemonic-box{padding:16px 18px;background:rgba(200,148,26,.08);border-radius:var(--r);border:1px solid rgba(200,148,26,.22);margin-bottom:16px}
+.mnemonic-label{font-size:10px;letter-spacing:.1em;text-transform:uppercase;color:var(--acc2);font-weight:600;margin-bottom:6px}
+.mnemonic-phrase{font-size:24px;font-weight:900;color:var(--pri);font-family:Georgia,serif;letter-spacing:.04em;line-height:1.2}
+.mnemonic-hint{font-size:12px;color:var(--tx3);margin-top:5px}
+
 .tips-list{list-style:none;display:flex;flex-direction:column;gap:10px}
-.tips-list li{
-  display:flex;gap:10px;align-items:flex-start;
-  font-size:13.5px;color:var(--tx2);line-height:1.6;
-}
-.tips-list li::before{
-  content:'→';color:var(--acc2);font-weight:700;
-  flex-shrink:0;margin-top:1px;
-}
-.mistakes-list{list-style:none;display:flex;flex-direction:column;gap:10px}
-.mistakes-list li{
-  display:flex;gap:10px;align-items:flex-start;
-  font-size:13px;color:var(--tx2);line-height:1.6;
-  padding:10px 12px;background:rgba(192,57,43,.05);
-  border-radius:var(--rs);border:1px solid rgba(192,57,43,.12);
-}
-.mistakes-list li::before{
-  content:'⚠';font-size:14px;
-  flex-shrink:0;
-}
-
-/* ── BEAT ANIMATION ── */
-@keyframes pulse{0%,100%{transform:scale(1)}50%{transform:scale(1.3)}}
-.beat-dot.playing{animation:pulse .3s ease}
-
-/* ── EMPTY STATE ── */
-.empty{
-  text-align:center;padding:60px 20px;color:var(--tx3);
-}
-.empty p{font-size:16px;margin-top:8px}
+.tips-list li{display:flex;gap:10px;align-items:flex-start;font-size:13.5px;color:var(--tx2);line-height:1.6}
+.tips-list li::before{content:'→';color:var(--acc2);font-weight:700;flex-shrink:0;margin-top:1px}
+.mistakes-list{list-style:none;display:flex;flex-direction:column;gap:8px}
+.mistakes-list li{display:flex;gap:10px;align-items:flex-start;font-size:13px;color:var(--tx2);line-height:1.6;padding:10px 12px;background:rgba(192,57,43,.05);border-radius:var(--rs);border:1px solid rgba(192,57,43,.12)}
+.mistakes-list li::before{content:'⚠';flex-shrink:0}
 </style>
 </head>
 <body>
-
 <div id="app">
   <header class="site-header">
     <a href="index.html" class="back-link">← Αρχική</a>
-    <div class="header-content">
-      <div class="header-eyebrow">Παραδοσιακοί Χοροί</div>
-      <h1 class="header-title">Μάθε να χορεύεις</h1>
-      <p class="header-sub">Αναλυτικά βήματα για κάθε χορό — τα πόδια, ο ρυθμός, τα μυστικά.</p>
-    </div>
+    <div class="header-eyebrow">Παραδοσιακοί Χοροί</div>
+    <h1 class="header-title">Μάθε να χορεύεις</h1>
+    <p class="header-sub">Αναλυτικά βήματα · Ρυθμός με ήχο · Εξάσκηση βήμα-βήμα</p>
   </header>
   <div class="header-divider"></div>
-
   <div class="filters" id="filters">
     <button class="chip active" data-diff="0">Όλοι</button>
     <button class="chip" data-diff="1">Εύκολοι</button>
     <button class="chip" data-diff="2">Μέτριοι</button>
     <button class="chip" data-diff="3">Δύσκολοι</button>
   </div>
-
   <div class="grid" id="grid"></div>
 </div>
-
 <div class="backdrop" id="backdrop" onclick="closeDetail()"></div>
-
 <div class="sheet" id="sheet">
   <div class="sheet-handle"></div>
   <div class="sheet-head">
-    <div>
-      <h2 id="sh-name"></h2>
-      <p id="sh-region"></p>
-    </div>
+    <div><h2 id="sh-name"></h2><p id="sh-region"></p></div>
     <button class="close-btn" onclick="closeDetail()">✕</button>
   </div>
-  <div class="tabs" id="tabs">
+  <div class="tabs">
     <button class="tab active" data-tab="desc" onclick="switchTab('desc')">Περιγραφή</button>
     <button class="tab" data-tab="steps" onclick="switchTab('steps')">Βήματα</button>
     <button class="tab" data-tab="rhythm" onclick="switchTab('rhythm')">Ρυθμός</button>
@@ -397,645 +192,527 @@ body{
 <script>
 const DANCES = [
   {
-    id: 'kalamatianos',
-    name: 'Καλαματιανός',
-    region: 'Πελοπόννησος · Πανελλήνιος',
-    difficulty: 1,
-    diffLabel: 'Εύκολος',
-    rhythm: '7/8',
-    rhythmGroups: [2,2,3],
-    rhythmCount: '<strong>ΈΝΑ</strong>-δύο, <strong>ΈΝΑ</strong>-δύο, <strong>ΈΝΑ</strong>-δύο-τρία',
-    rhythmFeel: 'γρήγ. – γρήγ. – αρ-γό',
-    tempo: 'Μέτριο προς γρήγορο',
-    hold: 'V-πιασιά — χέρια τεντωμένα προς τα κάτω, αγκαλιά από τα χέρια με τους διπλανούς',
-    direction: 'Αριστερόστροφα — ο κύκλος κινείται πάντα προς τα δεξιά (δεξί πόδι ηγείται)',
-    image: 'photo-1504609813442-a8924e83f76e',
-    gradient: 'linear-gradient(160deg,#7A5010 0%,#C8941A 55%,#8B4500 100%)',
-    description: 'Ο Καλαματιανός είναι ο εθνικός χορός της Ελλάδας και ο πιο γνωστός σε όλο τον κόσμο. Το όνομά του προέρχεται από την Καλαμάτα Μεσσηνίας, αν και χορεύεται από τη Μακεδονία μέχρι την Κρήτη. Ο ρυθμός 7/8 ομαδοποιείται σε δύο «γρήγορα» (2+2 οκτάβες) και ένα «αργό» (3 οκτάβες), δίνοντας μια ζωντανή «αναπνοή» που τον κάνει αμέσως αναγνωρίσιμο. Χορεύεται σε ανοιχτό κύκλο: ο πρώτος κρατά μαντήλι και αυτοσχεδιάζει, ενώ οι υπόλοιποι κάνουν το βασικό βήμα.',
-    steps: [
-      { n:1, foot:'Δ', count:'ΈΝΑ', tempo:'γρ.', move:'Βήμα πλαγίως δεξιά', detail:'Άνοιξε το δεξί πόδι πλαγίως δεξιά σε πλάτος ώμων. Μεταφέρεις το βάρος σου εξολοκλήρου στο δεξί πόδι. Τα γόνατα παραμένουν ελαφρά λυγισμένα — ποτέ τεντωμένα.' },
-      { n:2, foot:'Α', count:'δύο', tempo:'γρ.', move:'Σταύρωμα μπρος', detail:'Φέρε το αριστερό πόδι μπροστά από το δεξί, σταυρώνοντάς το. Βάρος στο αριστερό. Το σώμα στρέφεται ελαφρά αριστερά.' },
-      { n:3, foot:'Δ', count:'ΈΝΑ', tempo:'γρ.', move:'Βήμα πλαγίως δεξιά', detail:'Ξαναανοίγεις το δεξί πόδι πλαγίως. Βάρος στο δεξί. Αυτό είναι ακριβώς ίδιο με το βήμα 1 — ο κύκλος έχει κινηθεί λίγο δεξιά.' },
-      { n:4, foot:'Α', count:'δύο', tempo:'γρ.', move:'Σταύρωμα πίσω', detail:'Φέρε το αριστερό πόδι πίσω από το δεξί (σταύρωμα πίσω). Βάρος στο αριστερό. Πρόσεξε: το βήμα 2 ήταν σταύρωμα ΜΠΡΟΣ — αυτό είναι σταύρωμα ΠΙΣΩ. Εναλλάσσονται.' },
-      { n:5, foot:'Δ', count:'ΈΝΑ', tempo:'αργ.', move:'Βήμα πλαγίως δεξιά', detail:'Ξαναανοίγεις το δεξί πόδι. Ξεκινά το «αργό» μέρος — νιώσε ότι ο χρόνος «τεντώνεται». Μην βιαστείς.' },
-      { n:6, foot:'Α', count:'δύο', tempo:'αργ.', move:'Ανασήκωση αριστερού', detail:'Σήκωσε ελαφρά το αριστερό πόδι (γόνατο σε γωνία ~45°). Ισορροπία στο δεξί πόδι. Αυτή η ανασήκωση δίνει την «αναπνοή» και την ομορφιά του χορού — μην την παραλείπεις.' },
-      { n:7, foot:'Α', count:'τρία', tempo:'αργ.', move:'Κατέβασμα — κλείσιμο', detail:'Κατέβασε το αριστερό δίπλα στο δεξί ή ελαφρά πίσω-δίπλα. Είσαι έτοιμος να επαναλάβεις από το βήμα 1.' },
+    id:'kalamatianos',name:'Καλαματιανός',region:'Πελοπόννησος · Πανελλήνιος',
+    difficulty:1,rhythm:'7/8',rhythmGroups:[2,2,3],
+    rhythmCount:'<strong>ΈΝΑ</strong>-δύο, <strong>ΈΝΑ</strong>-δύο, <strong>ΈΝΑ</strong>-δύο-τρία',
+    rhythmFeel:'ΓΡΗΓ – ΓΡΗΓ – ΑΑΑΡΓΟ',
+    mnemonic:'ΑΣ · ΠΑ-Ω · ΚΙ · Ε-ΓΩ',mnemonicHint:'7 συλλαβές = 7 χτύποι (2+2+3)',
+    tempo:'Μέτριο – Γρήγορο',eighthMs:230,
+    wikiTitle:'Kalamatianos',wikiTitleEl:'Καλαματιανός',
+    hold:'V-πιασιά — χέρια τεντωμένα κάτω, αγκαλιά από τα χέρια',
+    direction:'Αριστερόστροφα — δεξί πόδι ηγείται, κύκλος κινείται προς τα δεξιά',
+    gradient:'linear-gradient(160deg,#7A5010 0%,#C8941A 55%,#8B4500 100%)',
+    description:'Ο Καλαματιανός είναι ο εθνικός χορός της Ελλάδας και ο πιο γνωστός σε όλο τον κόσμο. Το όνομά του προέρχεται από την Καλαμάτα Μεσσηνίας. Ο ρυθμός 7/8 ομαδοποιείται σε δύο «γρήγορα» (2+2 οκτόλεπτα) και ένα «αργό» (3 οκτόλεπτα), δίνοντας μια ζωντανή «αναπνοή». Χορεύεται σε ανοιχτό κύκλο: ο πρώτος κρατά μαντήλι και αυτοσχεδιάζει, οι υπόλοιποι ακολουθούν.',
+    steps:[
+      {n:1,foot:'Δ',count:'ΈΝΑ',tempo:'γρ.',dir:'→',move:'Βήμα πλαγίως δεξιά',detail:'Άνοιξε το δεξί πόδι πλαγίως δεξιά σε πλάτος ώμων. Βάρος εξολοκλήρου στο δεξί. Γόνατα ελαφρά λυγισμένα — ποτέ τεντωμένα.'},
+      {n:2,foot:'Α',count:'δύο',tempo:'γρ.',dir:'↗',move:'Σταύρωμα μπρος',detail:'Φέρε το αριστερό μπροστά από το δεξί, σταυρώνοντάς το. Βάρος στο αριστερό. Σώμα στρέφεται ελαφρά αριστερά.'},
+      {n:3,foot:'Δ',count:'ΈΝΑ',tempo:'γρ.',dir:'→',move:'Βήμα πλαγίως δεξιά',detail:'Ξαναανοίγεις το δεξί. Βάρος στο δεξί. Ίδιο με βήμα 1 — ο κύκλος έχει προχωρήσει.'},
+      {n:4,foot:'Α',count:'δύο',tempo:'γρ.',dir:'↙',move:'Σταύρωμα πίσω',detail:'Φέρε το αριστερό πίσω από το δεξί. Βάρος στο αριστερό. Βήμα 2 = μπρος, βήμα 4 = πίσω — εναλλάσσονται.'},
+      {n:5,foot:'Δ',count:'ΈΝΑ',tempo:'αργ.',dir:'→',move:'Βήμα δεξιά — αρχή «αργού»',detail:'Ξαναανοίγεις το δεξί. Αρχίζει το αργό μέρος — νιώσε ότι ο χρόνος «τεντώνεται». Μην βιαστείς.'},
+      {n:6,foot:'Α',count:'δύο',tempo:'αργ.',dir:'↑',move:'Ανασήκωση αριστερού',detail:'Σήκωσε ελαφρά το αριστερό (γόνατο ~45°). Ισορροπία στο δεξί. Αυτή η ανασήκωση δίνει την «αναπνοή» και την ομορφιά του χορού.'},
+      {n:7,foot:'Α',count:'τρία',tempo:'αργ.',dir:'↓',move:'Κατέβασμα — κλείσιμο',detail:'Κατέβασε το αριστερό δίπλα ή ελαφρά πίσω-δίπλα. Έτοιμος για επανάληψη από βήμα 1.'},
     ],
-    tips: [
-      'Μέτρα πρώτα μόνο τον ρυθμό: χτύπα τα χέρια σου ΓΡΗΓ-ΓΡΗΓ-ΑΑΑΡΓΟ πριν προσθέσεις τα πόδια.',
-      'Τα χέρια κρατούνται χαλαρά — φαντάσου ότι κρατάς ένα ποτήρι νερό χωρίς να το χύσεις.',
-      'Μην κοιτάς κάτω στα πόδια. Αν χαθείς, κοίτα τον διπλανό σου.',
-      'Το «αργό» (βήματα 5-6-7) ΔΕΝ είναι τρία γρήγορα βήματα — είναι ένα βήμα + ανασήκωση + κατέβασμα.',
-      'Κινείσαι ΠΑΝΤΑ προς τα δεξιά — αντίθετα από τους δείκτες ρολογιού.',
-    ],
-    mistakes: [
-      'Λάθος: Σταύρωμα πάντα μπρος. Σωστό: Βήμα 2 = μπρος, Βήμα 4 = πίσω. Εναλλάσσονται.',
-      'Λάθος: Βιάζεσαι στο αργό μέρος. Σωστό: Το αργό είναι 3 χτύποι — νιώσε κάθε έναν.',
-      'Λάθος: Τεντωμένα γόνατα. Σωστό: Ελαφρά λύγισμα πάντα — ο χορός ζωντανεύει.',
-    ],
+    tips:['Χτύπα πρώτα τον ρυθμό με τα χέρια: ΓΡΗΓ-ΓΡΗΓ-ΑΑΑΡΓΟ πριν προσθέσεις τα πόδια.','Τα χέρια κρατούνται χαλαρά — σαν να κρατάς ένα ποτήρι νερό χωρίς να το χύσεις.','Μην κοιτάς κάτω στα πόδια. Αν χαθείς, κοίτα τον διπλανό.','Κινείσαι ΠΑΝΤΑ προς τα δεξιά — αντίθετα από τους δείκτες ρολογιού.'],
+    mistakes:['Λάθος: Σταύρωμα πάντα μπρος. Σωστό: Βήμα 2 = μπρος, Βήμα 4 = πίσω.','Λάθος: Βιάζεσαι στο αργό. Σωστό: 3 χτύποι — νιώσε κάθε έναν.','Λάθος: Τεντωμένα γόνατα. Σωστό: Ελαφρά λύγισμα πάντα.'],
   },
   {
-    id: 'syrtos',
-    name: 'Συρτός',
-    region: 'Πανελλήνιος',
-    difficulty: 1,
-    diffLabel: 'Εύκολος',
-    rhythm: '2/4',
-    rhythmGroups: [2,2],
-    rhythmCount: '<strong>ΈΝΑ</strong>-και, <strong>ΔΎΟ</strong>-και',
-    rhythmFeel: 'ομαλό – κυματιστό',
-    tempo: 'Μέτριο',
-    hold: 'V-πιασιά (χαμηλά) ή W-πιασιά (ώμοι) ανάλογα με την περιοχή',
-    direction: 'Αριστερόστροφα — το δεξί πόδι ανοίγει πρώτο',
-    image: 'photo-1559827260-dc66d52bef19',
-    gradient: 'linear-gradient(160deg,#1A4070 0%,#2D6BC0 60%,#0F2A50 100%)',
-    description: 'Ο Συρτός είναι ο αρχαιότερος και πιο διαδεδομένος ελληνικός χορός — η βάση από την οποία προέκυψαν όλοι οι υπόλοιποι. Το όνομα «συρτός» σημαίνει «αυτός που σέρνεται» και αναφέρεται στο κυματιστό, ρέον βηματισμό του χορού. Υπάρχουν δεκάδες τοπικές παραλλαγές, αλλά όλες μοιράζονται τον 2/4 ρυθμό και τον ανοιχτό κύκλο. Αν μάθεις τον Συρτό, έχεις τη βάση για να αρχίσεις κάθε άλλο ελληνικό χορό.',
-    steps: [
-      { n:1, foot:'Δ', count:'1', tempo:'βαρύ', move:'Βήμα πλαγίως δεξιά', detail:'Άνοιξε το δεξί πόδι πλαγίως δεξιά. Βάρος στο δεξί. Αυτό είναι το «βαρύ» χτύπημα — ελαφρά δυνατότερο από τα υπόλοιπα.' },
-      { n:2, foot:'Α', count:'και', tempo:'ελαφ.', move:'Φέρνεις αριστερό δίπλα', detail:'Φέρε το αριστερό κοντά στο δεξί (ή ελαφρά πίσω από αυτό). Βάρος στο αριστερό. Μικρό βήμα, όχι άλμα.' },
-      { n:3, foot:'Δ', count:'2', tempo:'βαρύ', move:'Βήμα πλαγίως δεξιά', detail:'Ξαναανοίγεις το δεξί. Βάρος στο δεξί. Ο κύκλος έχει προχωρήσει λίγο δεξιά.' },
-      { n:4, foot:'Α', count:'και', tempo:'ελαφ.', move:'Ανύψωση ή μικρό χτύπος', detail:'Σήκωσε ελαφρά το αριστερό ή κάνε ένα μικρό χτυπητό. Αυτό δίνει ζωντάνια. Ανάλογα με την περιοχή, μπορεί να είναι κλωτσάκι ή απλά ανύψωση γόνατος.' },
-      { n:5, foot:'Α', count:'1', tempo:'βαρύ', move:'Βήμα αριστερά-πίσω', detail:'Κάνε ένα μικρό βήμα πλαγίως-πίσω με το αριστερό. Βάρος στο αριστερό. Αυτό δίνει το «κυματιστό» χαρακτηριστικό του χορού.' },
-      { n:6, foot:'Δ', count:'2', tempo:'βαρύ', move:'Βήμα δεξιά-μπρος', detail:'Επιστρέφεις με το δεξί ελαφρά μπρος-δεξιά. Βάρος στο δεξί. Συνεχίζεις την κυκλική κίνηση.' },
+    id:'syrtos',name:'Συρτός',region:'Πανελλήνιος',
+    difficulty:1,rhythm:'2/4',rhythmGroups:[2,2],
+    rhythmCount:'<strong>ΈΝΑ</strong>-και, <strong>ΔΎΟ</strong>-και',
+    rhythmFeel:'ομαλό – κυματιστό',
+    mnemonic:'ΠΆΜΕ · ΕΛΑ',mnemonicHint:'Απλό, ρέον — η βάση όλων των χορών',
+    tempo:'Μέτριο',eighthMs:260,
+    wikiTitle:'Syrtos',wikiTitleEl:'Συρτός',
+    hold:'V-πιασιά ή W-πιασιά ανάλογα με την περιοχή',
+    direction:'Αριστερόστροφα — δεξί πόδι ανοίγει πρώτο',
+    gradient:'linear-gradient(160deg,#1A4070 0%,#2D6BC0 60%,#0F2A50 100%)',
+    description:'Ο Συρτός είναι ο αρχαιότερος ελληνικός χορός — η βάση από την οποία προέκυψαν όλοι οι υπόλοιποι. «Συρτός» = αυτός που σέρνεται, αναφερόμενος στο ρέον, κυματιστό βηματισμό. Υπάρχουν δεκάδες τοπικές παραλλαγές. Αν μάθεις τον Συρτό, έχεις τη βάση για κάθε άλλο χορό.',
+    steps:[
+      {n:1,foot:'Δ',count:'1',tempo:'βαρύ',dir:'→',move:'Βήμα δεξιά',detail:'Άνοιξε το δεξί πλαγίως δεξιά. Βάρος στο δεξί. Αυτό είναι το «βαρύ» χτύπημα — ελαφρά δυνατότερο.'},
+      {n:2,foot:'Α',count:'και',tempo:'ελαφ.',dir:'→',move:'Φέρνεις αριστερό κοντά',detail:'Αριστερό κοντά στο δεξί (ή ελαφρά πίσω). Βάρος στο αριστερό. Μικρό βήμα.'},
+      {n:3,foot:'Δ',count:'2',tempo:'βαρύ',dir:'→',move:'Βήμα δεξιά',detail:'Ξαναανοίγεις το δεξί. Ο κύκλος έχει προχωρήσει δεξιά.'},
+      {n:4,foot:'Α',count:'και',tempo:'ελαφ.',dir:'↑',move:'Ανύψωση ή μικρό χτύπος',detail:'Σήκωσε ελαφρά το αριστερό ή κάνε μικρό χτυπητό. Δίνει ζωντάνια στον χορό.'},
+      {n:5,foot:'Α',count:'1',tempo:'βαρύ',dir:'↓',move:'Βήμα αριστερά-πίσω',detail:'Μικρό βήμα πλαγίως-πίσω με το αριστερό. Αυτό δίνει το «κυματιστό» χαρακτηριστικό.'},
+      {n:6,foot:'Δ',count:'2',tempo:'βαρύ',dir:'↑',move:'Βήμα δεξιά-μπρος',detail:'Επιστρέφεις με το δεξί ελαφρά μπρος-δεξιά. Συνεχίζεις την κυκλική κίνηση.'},
     ],
-    tips: [
-      'Ο Συρτός είναι η αρχή κάθε χορού — μάθε τον τέλεια πριν προχωρήσεις σε άλλους.',
-      'Η ομάδα κινείται ως ένα σώμα — πρόσεξε τον ρυθμό των διπλανών σου.',
-      'Ο πρωτοχορευτής (κεφαλή) κάνει φιγούρες μόνο όταν ξέρει το βασικό βήμα τέλεια.',
-      'Η «σύρση» σημαίνει ομαλή ροή — μη χτυπάς βαριά κάθε βήμα.',
-    ],
-    mistakes: [
-      'Λάθος: Υπερβολικά μεγάλα βήματα. Σωστό: Μικρά, ελεγχόμενα βήματα που κρατούν τον κύκλο ομοιόμορφο.',
-      'Λάθος: Κοιτάς κάτω στα πόδια. Σωστό: Κεφάλι ψηλά — βλέπεις μπρος και προσαρμόζεσαι.',
-      'Λάθος: Δυνατό χτύπημα σε κάθε βήμα. Σωστό: Μόνο το πρώτο χτύπημα τονίζεται.',
-    ],
+    tips:['Ο Συρτός είναι η αρχή — μάθε τον τέλεια πριν προχωρήσεις.','Η ομάδα κινείται ως ένα σώμα — πρόσεξε τον ρυθμό των διπλανών.','«Σύρση» = ομαλή ροή, όχι βαριά χτυπήματα.'],
+    mistakes:['Λάθος: Υπερβολικά μεγάλα βήματα. Σωστό: Μικρά, ελεγχόμενα.','Λάθος: Βλέπεις κάτω. Σωστό: Κεφάλι ψηλά.','Λάθος: Ίδια δύναμη παντού. Σωστό: Μόνο το πρώτο χτύπημα τονίζεται.'],
   },
   {
-    id: 'tsamiko',
-    name: 'Τσάμικο',
-    region: 'Ήπειρος · Δυτ. Μακεδονία',
-    difficulty: 2,
-    diffLabel: 'Μέτριος',
-    rhythm: '3/4',
-    rhythmGroups: [3],
-    rhythmCount: '<strong>ΈΝΑ</strong>-δύο-τρία, <strong>ΈΝΑ</strong>-δύο-τρία',
-    rhythmFeel: 'βαρύ – ελαφρύ – ελαφρύ',
-    tempo: 'Μέτριο – Αρκετά αργό',
-    hold: 'W-πιασιά — χέρια ψηλά, αγκώνες λυγισμένοι, μεταξύ ώμων και κεφαλιού',
-    direction: 'Αριστερόστροφα. Ο πρωτοχορευτής (με μαντήλι) αυτοσχεδιάζει μπρος.',
-    image: 'photo-1533174072545-7a4b6ad7a6c3',
-    gradient: 'linear-gradient(160deg,#1A4020 0%,#3A7030 60%,#0A2010 100%)',
-    description: 'Το Τσάμικο είναι ένας από τους πιο ηρωικούς και περήφανους χορούς της Ελλάδας, συνδεδεμένος με τους αγώνες για ελευθερία. Χορεύεται σε ρυθμό 3/4, με έντονα, επίπεδα βήματα και αισθητά "κτυπητά" χαρακτηριστικά. Ο άντρας πρωτοχορευτής (αρχηγός) κρατά μαντήλι και εκτελεί ατομικές φιγούρες — άλματα, περιστροφές, στροφές — ενώ οι υπόλοιποι χορεύουν συγκρατημένα. Ο ρυθμός 3/4 μοιάζει με βαλς, αλλά η αίσθηση είναι εντελώς διαφορετική: δυναμική, αρρενωπή, βαρύνουσα.',
-    steps: [
-      { n:1, foot:'Δ', count:'1', tempo:'βαρύ', move:'Δυναμικό βήμα δεξιά', detail:'Ζωηρό, δυναμικό βήμα πλαγίως δεξιά. Η πατούσα ακουμπά ολόκληρη. Αίσθηση αποφασιστικότητας — αυτό είναι το «βαρύ» χτύπημα του 3/4.' },
-      { n:2, foot:'Α', count:'2', tempo:'ελαφ.', move:'Σταύρωμα μπρος', detail:'Το αριστερό σταυρώνει μπροστά από το δεξί. Μικρό βήμα. Βάρος στο αριστερό.' },
-      { n:3, foot:'Δ', count:'3', tempo:'ελαφ.', move:'Ανύψωση δεξιού ή μικρό hop', detail:'Σήκωσε ελαφρά το δεξί πόδι (ή κάνε ένα πολύ μικρό αναπήδημα στο αριστερό). Αυτό προετοιμάζει το επόμενο δυναμικό βήμα.' },
-      { n:4, foot:'Α', count:'1', tempo:'βαρύ', move:'Δυναμικό βήμα αριστερά', detail:'Ζωηρό βήμα αριστερά (ή ελαφρά αριστερά-πίσω, ανάλογα με την κατεύθυνση). Βάρος στο αριστερό. Πάλι το «βαρύ» χτύπημα.' },
-      { n:5, foot:'Δ', count:'2', tempo:'ελαφ.', move:'Φέρνεις δεξί κοντά', detail:'Φέρε το δεξί κοντά στο αριστερό ή ελαφρά πίσω. Μικρό βήμα.' },
-      { n:6, foot:'Α', count:'3', tempo:'ελαφ.', move:'Ανύψωση αριστερού', detail:'Σήκωσε ελαφρά το αριστερό (ή μικρό αναπήδημα). Ξαναέτοιμος για επανάληψη.' },
+    id:'tsamiko',name:'Τσάμικο',region:'Ήπειρος · Δυτ. Μακεδονία',
+    difficulty:2,rhythm:'3/4',rhythmGroups:[3],
+    rhythmCount:'<strong>ΈΝΑ</strong>-δύο-τρία, <strong>ΈΝΑ</strong>-δύο-τρία',
+    rhythmFeel:'ΒΑΡΎ – ελαφρύ – ελαφρύ',
+    mnemonic:'ΠΆΝΩ · κά-τω · πά',mnemonicHint:'3 συλλαβές = 3 χτύποι — δυναμικό πρώτο',
+    tempo:'Μέτριο – Αργό',eighthMs:320,
+    wikiTitle:'Tsamiko',wikiTitleEl:'Τσάμικο',
+    hold:'W-πιασιά — χέρια ψηλά, αγκώνες λυγισμένοι',
+    direction:'Αριστερόστροφα. Πρωτοχορευτής με μαντήλι αυτοσχεδιάζει.',
+    gradient:'linear-gradient(160deg,#1A4020 0%,#3A7030 60%,#0A2010 100%)',
+    description:'Το Τσάμικο είναι ο ηρωικός χορός της Ελλάδας, συνδεδεμένος με τους αγώνες για ελευθερία. Ρυθμός 3/4 με έντονα, επίπεδα βήματα. Ο πρωτοχορευτής κρατά μαντήλι και εκτελεί φιγούρες — άλματα, στροφές — ενώ οι υπόλοιποι κάνουν το βασικό βήμα.',
+    steps:[
+      {n:1,foot:'Δ',count:'1',tempo:'βαρύ',dir:'→',move:'Δυναμικό βήμα δεξιά',detail:'Ζωηρό, αποφασιστικό βήμα πλαγίως δεξιά. Η πατούσα ακουμπά ολόκληρη. Αίσθηση αποφασιστικότητας — αυτό είναι το «βαρύ» χτύπημα.'},
+      {n:2,foot:'Α',count:'2',tempo:'ελαφ.',dir:'↗',move:'Σταύρωμα μπρος',detail:'Αριστερό σταυρώνει μπροστά από το δεξί. Μικρό βήμα. Βάρος στο αριστερό.'},
+      {n:3,foot:'Δ',count:'3',tempo:'ελαφ.',dir:'↑',move:'Ανύψωση ή μικρό αναπήδημα',detail:'Σήκωσε ελαφρά το δεξί ή κάνε πολύ μικρό αναπήδημα. Προετοιμάζει το επόμενο δυναμικό βήμα.'},
+      {n:4,foot:'Α',count:'1',tempo:'βαρύ',dir:'←',move:'Δυναμικό βήμα αριστερά',detail:'Ζωηρό βήμα αριστερά (ή αριστερά-πίσω). Πάλι το «βαρύ» χτύπημα. Βάρος στο αριστερό.'},
+      {n:5,foot:'Δ',count:'2',tempo:'ελαφ.',dir:'→',move:'Φέρνεις δεξί κοντά',detail:'Δεξί κοντά στο αριστερό ή ελαφρά πίσω. Μικρό βήμα.'},
+      {n:6,foot:'Α',count:'3',tempo:'ελαφ.',dir:'↑',move:'Ανύψωση αριστερού',detail:'Σήκωσε ελαφρά το αριστερό. Ξαναέτοιμος για επανάληψη.'},
     ],
-    tips: [
-      'Το Τσάμικο θέλει περηφάνια — στήσε τη μέση, ύψωσε το κεφάλι, έξω το στήθος.',
-      'Ο ρυθμός 3/4 μετριέται σαν «ΒΑΡΎ-ελαφρύ-ελαφρύ» — σαν μια βαριά πατιά και δύο ελαφριές.',
-      'Τα χέρια στο W ψηλά — αγκώνες ψηλότερα από ώμους, παλάμες προς τα έξω.',
-      'Φιγούρες μόνο αφού μάθεις άψογα το βασικό βήμα — πρώτα η βάση.',
-    ],
-    mistakes: [
-      'Λάθος: Μαλακά, διστακτικά βήματα. Σωστό: Κάθε βήμα είναι αποφασιστικό, ιδίως το «1».',
-      'Λάθος: Χαμηλά χέρια. Σωστό: W-πιασιά πάντα ψηλά — είναι το σήμα της αξιοπρέπειας.',
-      'Λάθος: Βαλσάρεις (κυματιστή κίνηση). Σωστό: Επίπεδος χορός, χωρίς κύμα σώματος.',
-    ],
+    tips:['Το Τσάμικο θέλει περηφάνια — στήσε τη μέση, ύψωσε το κεφάλι, έξω το στήθος.','Ο ρυθμός 3/4: «ΒΑΡΎ-ελαφρύ-ελαφρύ» — βαριά πατιά και δύο ελαφριές.','W-πιασιά πάντα ψηλά — αγκώνες ψηλότερα από ώμους.'],
+    mistakes:['Λάθος: Μαλακά βήματα. Σωστό: Κάθε «1» είναι αποφασιστικό.','Λάθος: Χαμηλά χέρια. Σωστό: W-πιασιά πάντα ψηλά.','Λάθος: Κυματισμός σώματος. Σωστό: Επίπεδος χορός.'],
   },
   {
-    id: 'hasapiko',
-    name: 'Χασάπικο',
-    region: 'Μικρά Ασία · Μακεδονία',
-    difficulty: 2,
-    diffLabel: 'Μέτριος',
-    rhythm: '2/4',
-    rhythmGroups: [2,2],
-    rhythmCount: '<strong>ΈΝΑ</strong>-και-<strong>ΔΎΟ</strong>-και',
-    rhythmFeel: 'αργό – συγκρατημένο',
-    tempo: 'Αργό προς μέτριο',
-    hold: 'Ώμοι — ο χορευτής βάζει το χέρι του στον ώμο του διπλανού (στη γραμμή)',
-    direction: 'Πλαγίως δεξιά. Η γραμμή κινείται ως ένας — σε συγχρονισμό.',
-    image: 'photo-1518834107812-67b0b7c58434',
-    gradient: 'linear-gradient(160deg,#2A1040 0%,#4A2070 60%,#1A0830 100%)',
-    description: 'Το Χασάπικο (από το τουρκικό «kasap» = χασάπης) ήταν αρχικά ο χορός των κρεοπωλών της Κωνσταντινούπολης. Σήμερα χορεύεται σε όλη την Ελλάδα ως ένας από τους πιο συγκρατημένους και επίσημους χορούς. Το βασικό χαρακτηριστικό του είναι ο τέλειος συγχρονισμός μεταξύ των χορευτών — κάθε βήμα γίνεται ταυτόχρονα. Υπάρχει και το «Χασαποσέρβικο» (γρηγορότερη εκδοχή) και το «Χασαπόσπαστο» (πολύ γρήγορο). Το βασικό Χασάπικο είναι αργό και σοβαρό.',
-    steps: [
-      { n:1, foot:'Δ', count:'1', tempo:'βαρύ', move:'Βήμα πλαγίως δεξιά', detail:'Μέτριο βήμα πλαγίως δεξιά. Βάρος στο δεξί. Αυτό είναι το ζυγισμένο, σταθερό βήμα που χαρακτηρίζει το Χασάπικο.' },
-      { n:2, foot:'Α', count:'και', tempo:'ελαφ.', move:'Φέρνεις αριστερό πίσω', detail:'Φέρε το αριστερό κοντά πίσω από το δεξί. Βάρος στο αριστερό. Μικρό, ελεγχόμενο βήμα.' },
-      { n:3, foot:'Δ', count:'2', tempo:'βαρύ', move:'Βήμα πλαγίως δεξιά', detail:'Ξαναανοίγεις το δεξί πλαγίως. Βάρος στο δεξί.' },
-      { n:4, foot:'Α', count:'και', tempo:'ελαφ.', move:'Σταύρωμα μπρος', detail:'Το αριστερό σταυρώνει μπρος από το δεξί. Βάρος στο αριστερό.' },
-      { n:5, foot:'Α', count:'1', tempo:'βαρύ', move:'Βήμα πλαγίως αριστερά', detail:'Μικρό βήμα αριστερά, επιστρέφεις ελαφρά. Βάρος στο αριστερό.' },
-      { n:6, foot:'Δ', count:'και', tempo:'ελαφ.', move:'Φέρνεις δεξί κοντά', detail:'Δεξί κοντά στο αριστερό. Βάρος στο δεξί.' },
-      { n:7, foot:'Α', count:'2', tempo:'βαρύ', move:'Βήμα πλαγίως αριστερά', detail:'Αριστερά πάλι.' },
-      { n:8, foot:'Δ', count:'και', tempo:'ελαφ.', move:'Χτυπητό κλείσιμο', detail:'Φέρε το δεξί με ελαφρύ χτύπο δίπλα στο αριστερό. Αυτό τερματίζει τη φράση.' },
+    id:'hasapiko',name:'Χασάπικο',region:'Μικρά Ασία · Μακεδονία',
+    difficulty:2,rhythm:'2/4',rhythmGroups:[2,2],
+    rhythmCount:'<strong>ΈΝΑ</strong>-και-<strong>ΔΎΟ</strong>-και',
+    rhythmFeel:'αργό – συγκρατημένο',
+    mnemonic:'ΔΕ-ξιά · ΑΡΙ-στε-ρά',mnemonicHint:'Συγχρονισμένα με τον διπλανό σου πάντα',
+    tempo:'Αργό – Μέτριο',eighthMs:320,
+    wikiTitle:'Hasapiko',wikiTitleEl:'Χασάπικο',
+    hold:'Ώμοι — χέρι στον ώμο του διπλανού',
+    direction:'Πλαγίως δεξιά. Γραμμή κινείται ως ένας.',
+    gradient:'linear-gradient(160deg,#2A1040 0%,#4A2070 60%,#1A0830 100%)',
+    description:'Το Χασάπικο ήταν αρχικά ο χορός των κρεοπωλών της Κωνσταντινούπολης. Σήμερα χορεύεται παντού ως ένας από τους πιο συγκρατημένους, επίσημους χορούς. Βασικό χαρακτηριστικό: τέλειος συγχρονισμός. Υπάρχει και το Χασαποσέρβικο (γρηγορότερο) και το Χασαπόσπαστο (πολύ γρήγορο).',
+    steps:[
+      {n:1,foot:'Δ',count:'1',tempo:'βαρύ',dir:'→',move:'Βήμα δεξιά',detail:'Μέτριο βήμα πλαγίως δεξιά. Σταθερό, ζυγισμένο.'},
+      {n:2,foot:'Α',count:'και',tempo:'ελαφ.',dir:'↙',move:'Φέρνεις αριστερό πίσω',detail:'Αριστερό κοντά πίσω από το δεξί. Μικρό, ελεγχόμενο.'},
+      {n:3,foot:'Δ',count:'2',tempo:'βαρύ',dir:'→',move:'Βήμα δεξιά',detail:'Ξαναανοίγεις το δεξί.'},
+      {n:4,foot:'Α',count:'και',tempo:'ελαφ.',dir:'↗',move:'Σταύρωμα μπρος',detail:'Αριστερό σταυρώνει μπρος.'},
+      {n:5,foot:'Α',count:'1',tempo:'βαρύ',dir:'←',move:'Βήμα αριστερά',detail:'Μικρό βήμα αριστερά.'},
+      {n:6,foot:'Δ',count:'και',tempo:'ελαφ.',dir:'→',move:'Φέρνεις δεξί κοντά',detail:'Δεξί κοντά στο αριστερό.'},
+      {n:7,foot:'Α',count:'2',tempo:'βαρύ',dir:'←',move:'Βήμα αριστερά',detail:'Αριστερά ξανά.'},
+      {n:8,foot:'Δ',count:'και',tempo:'ελαφ.',dir:'↔',move:'Χτυπητό κλείσιμο',detail:'Δεξί με ελαφρύ χτύπο δίπλα στο αριστερό. Τερματίζει τη φράση.'},
     ],
-    tips: [
-      'Ο συγχρονισμός με τη γραμμή είναι πιο σημαντικός από οποιαδήποτε φιγούρα.',
-      'Τα χέρια στους ώμους ακουμπούν μόνο — δεν σφίγγεις, δεν κρέμεσαι.',
-      'Βλέπεις ίσια μπρος — κεφάλι ψηλό, στάση αρχοντική.',
-      'Αν χαθείς από τον ρυθμό, συγχρονίσου ήσυχα χωρίς να διακόψεις τη γραμμή.',
-    ],
-    mistakes: [
-      'Λάθος: Βιαστικά βήματα. Σωστό: Το Χασάπικο είναι αργό — κάθε βήμα έχει βάρος.',
-      'Λάθος: Κοιτάς κάτω. Σωστό: Μάτια ίσια — η στάση του σώματος λέει πολλά.',
-      'Λάθος: Σκύβεις στους ώμους. Σωστό: Ορθόσωμος πάντα, χέρια οριζόντια.',
-    ],
+    tips:['Συγχρονισμός με τη γραμμή — πιο σημαντικό από φιγούρες.','Χέρια στους ώμους: ακουμπούν μόνο, δεν σφίγγεις.','Βλέπεις ίσια μπρος — στάση αρχοντική.'],
+    mistakes:['Λάθος: Βιαστικά. Σωστό: Αργό — κάθε βήμα έχει βάρος.','Λάθος: Κοιτάς κάτω. Σωστό: Μάτια ίσια.','Λάθος: Σκύβεις. Σωστό: Ορθόσωμος πάντα.'],
   },
   {
-    id: 'zeibekiko',
-    name: 'Ζεϊμπέκικο',
-    region: 'Μικρά Ασία · Αιγαίο',
-    difficulty: 2,
-    diffLabel: 'Μέτριος',
-    rhythm: '9/8',
-    rhythmGroups: [2,2,2,3],
-    rhythmCount: '<strong>ΈΝΑ</strong>-δύο, <strong>ΈΝΑ</strong>-δύο, <strong>ΈΝΑ</strong>-δύο, <strong>ΈΝΑ</strong>-δύο-τρία',
-    rhythmFeel: 'γρήγ. – γρήγ. – γρήγ. – αρ-γό',
-    tempo: 'Αργό — ποτέ δεν βιάζεσαι',
-    hold: 'Σόλο ανδρικός χορός — κανείς δεν πλησιάζει τον χορευτή χωρίς πρόσκληση',
-    direction: 'Ελεύθερη — εσωτερική έκφραση, χωρίς κατεύθυνση',
-    image: 'photo-1516802273409-f8e6f8dd97a3',
-    gradient: 'linear-gradient(160deg,#0F1D40 0%,#1E3570 60%,#050D20 100%)',
-    description: 'Το Ζεϊμπέκικο είναι ο πιο προσωπικός χορός της ελληνικής παράδοσης — χορός ψυχής, μοναξιάς και εσωτερικής έκφρασης. Χορεύεται σόλο από έναν άντρα που νιώθει τη μουσική βαθιά. Κανείς δεν τον ενοχλεί στην πίστα, κανείς δεν τον χτυπά στην πλάτη. Ο ρυθμός 9/8 (ομαδοποιημένος 2+2+2+3) δίνει μια «ταλαντευόμενη» αίσθηση, σαν αετός που πλέει στον αέρα. Δεν υπάρχει «σωστός» τρόπος — κάθε χορευτής τον κάνει δικό του.',
-    steps: [
-      { n:1, foot:'Δ', count:'1', tempo:'γρ.', move:'Βήμα μπρος-δεξιά', detail:'Το δεξί πόδι προχωρά ελαφρά μπρος-δεξιά. Αρχίζεις να γυρίζεις αριστερά. Βάρος στο δεξί.' },
-      { n:2, foot:'Α', count:'2', tempo:'γρ.', move:'Σταύρωμα μπρος', detail:'Το αριστερό σταυρώνει μπρος από το δεξί. Βάρος στο αριστερό. Το σώμα συνεχίζει να γυρίζει αριστερά.' },
-      { n:3, foot:'Δ', count:'1', tempo:'γρ.', move:'Βήμα πλαγίως δεξιά', detail:'Το δεξί ανοίγει πλαγίως. Βάρος στο δεξί.' },
-      { n:4, foot:'Α', count:'2', tempo:'γρ.', move:'Κλωτσιά μπρος', detail:'Ελαφρά κλωτσιά με το αριστερό προς τα μπρος-αριστερά. Χαλαρή — σαν νάζι, όχι δύναμη. Βάρος παραμένει στο δεξί.' },
-      { n:5, foot:'Α', count:'1', tempo:'γρ.', move:'Βήμα αριστερά', detail:'Το αριστερό κατεβαίνει πλαγίως-αριστερά. Βάρος στο αριστερό.' },
-      { n:6, foot:'Δ', count:'2', tempo:'γρ.', move:'Φέρνεις δεξί κοντά', detail:'Δεξί κοντά στο αριστερό. Βάρος στο δεξί.' },
-      { n:7, foot:'Α', count:'1', tempo:'γρ.', move:'Βήμα αριστερά', detail:'Αριστερό ξαναβγαίνει πλαγίως-αριστερά.' },
-      { n:8, foot:'Δ', count:'2', tempo:'αργ.', move:'Ανύψωση δεξιού', detail:'Σήκωσε το δεξί σε μέση ύψος (γόνατο ~60°). Τα χέρια ανοίγουν σαν φτερά αετού — αργά, ελεγχόμενα.' },
-      { n:9, foot:'Δ', count:'3', tempo:'αργ.', move:'Κατέβασμα', detail:'Κατέβασε το δεξί αργά. Ισορροπία. Ετοιμάζεσαι για επανάληψη.' },
+    id:'zeibekiko',name:'Ζεϊμπέκικο',region:'Μικρά Ασία · Αιγαίο',
+    difficulty:2,rhythm:'9/8',rhythmGroups:[2,2,2,3],
+    rhythmCount:'<strong>ΈΝΑ</strong>-δύο, <strong>ΈΝΑ</strong>-δύο, <strong>ΈΝΑ</strong>-δύο, <strong>ΈΝΑ</strong>-δύο-τρία',
+    rhythmFeel:'ΓΡΗΓ – ΓΡΗΓ – ΓΡΗΓ – ΑΑΑΡΓΟ',
+    mnemonic:'ΑΕ-ΤΟΣ · πλέ-ει · στον · αέ-ρα',mnemonicHint:'9 συλλαβές για 9/8 — αργά, με αξιοπρέπεια',
+    tempo:'Αργό — ποτέ δεν βιάζεσαι',eighthMs:350,
+    wikiTitle:'Zeimbekiko',wikiTitleEl:'Ζεϊμπέκικο',
+    hold:'Σόλο ανδρικός — κανείς δεν πλησιάζει χωρίς πρόσκληση',
+    direction:'Ελεύθερη — εσωτερική έκφραση',
+    gradient:'linear-gradient(160deg,#0F1D40 0%,#1E3570 60%,#050D20 100%)',
+    description:'Το Ζεϊμπέκικο είναι ο πιο προσωπικός χορός — χορός ψυχής, μοναξιάς, εσωτερικής έκφρασης. Χορεύεται σόλο από έναν άντρα που νιώθει τη μουσική βαθιά. Κανείς δεν τον ενοχλεί. Ο ρυθμός 9/8 (2+2+2+3) δίνει «ταλαντευόμενη» αίσθηση, σαν αετός που πλέει.',
+    steps:[
+      {n:1,foot:'Δ',count:'1',tempo:'γρ.',dir:'↗',move:'Βήμα μπρος-δεξιά',detail:'Δεξί βήμα ελαφρά μπρος-δεξιά. Αρχίζεις να γυρίζεις αριστερά.'},
+      {n:2,foot:'Α',count:'2',tempo:'γρ.',dir:'↗',move:'Σταύρωμα μπρος',detail:'Αριστερό σταυρώνει μπρος. Σώμα συνεχίζει να γυρίζει.'},
+      {n:3,foot:'Δ',count:'1',tempo:'γρ.',dir:'→',move:'Βήμα πλαγίως δεξιά',detail:'Δεξί ανοίγει πλαγίως.'},
+      {n:4,foot:'Α',count:'2',tempo:'γρ.',dir:'↑',move:'Κλωτσιά αριστερού',detail:'Ελαφρά κλωτσιά μπρος-αριστερά. Χαλαρό γόνατο — νάζι, όχι δύναμη.'},
+      {n:5,foot:'Α',count:'1',tempo:'γρ.',dir:'←',move:'Βήμα αριστερά',detail:'Αριστερό κατεβαίνει πλαγίως-αριστερά.'},
+      {n:6,foot:'Δ',count:'2',tempo:'γρ.',dir:'←',move:'Φέρνεις δεξί κοντά',detail:'Δεξί κοντά στο αριστερό.'},
+      {n:7,foot:'Α',count:'1',tempo:'γρ.',dir:'←',move:'Βήμα αριστερά',detail:'Αριστερό ξαναβγαίνει πλαγίως.'},
+      {n:8,foot:'Δ',count:'2',tempo:'αργ.',dir:'↑',move:'Ανύψωση δεξιού — αετός',detail:'Σήκωσε το δεξί (γόνατο ~60°). Χέρια ανοίγουν σαν φτερά αετού — αργά, ελεγχόμενα.'},
+      {n:9,foot:'Δ',count:'3',tempo:'αργ.',dir:'↓',move:'Κατέβασμα — ισορροπία',detail:'Κατέβασε το δεξί αργά. Ετοιμάζεσαι για επανάληψη.'},
     ],
-    tips: [
-      'Ζεϊμπέκικο: ΔΕΝ ζητάς άδεια — αν η μουσική σε καλεί, μπαίνεις. Αλλά κανείς δεν μπαίνει στην πίστα σου.',
-      'Τα χέρια κινούνται σαν αετός που πλέει — αργά, με βάρος, με σκοπό.',
-      'Το βλέμμα στο πάτωμα μπροστά σου — εσωτερική συγκέντρωση, όχι παράσταση.',
-      'Μέτρα με λέξεις: «τα-κα-τα-κα-τα-κα-τα-κα-ΤΑ» (9 συλλαβές για 9/8).',
-      'Μην ντρέπεσαι να είσαι αργός — η μεγαλοπρέπεια έρχεται με ηρεμία.',
-    ],
-    mistakes: [
-      'Λάθος: Βιάζεσαι να κάνεις φιγούρες. Σωστό: Πρώτα νιώσε τον ρυθμό, μετά το σώμα ακολουθεί μόνο του.',
-      'Λάθος: Κοιτάς γύρω σου. Σωστό: Εσωτερική προσοχή — ο χορευτής είναι μόνος με τη μουσική.',
-      'Λάθος: Χαμηλές, γρήγορες ανυψώσεις. Σωστό: Αργές, υψηλές, με ανάσα.',
-    ],
+    tips:['Κανείς δεν μπαίνει στην πίστα σου — και εσύ δεν μπαίνεις σε άλλον.','Χέρια σαν αετός που πλέει — αργά, με βάρος, με σκοπό.','Βλέμμα στο πάτωμα μπρος — εσωτερική συγκέντρωση.','Μέτρα: «τα-κα, τα-κα, τα-κα, τα-κα-τα» (9 συλλαβές).'],
+    mistakes:['Λάθος: Βιαστικές φιγούρες. Σωστό: Πρώτα νιώσε — το σώμα ακολουθεί.','Λάθος: Κοιτάς γύρω. Σωστό: Εσωτερική προσοχή.','Λάθος: Χαμηλές γρήγορες ανυψώσεις. Σωστό: Αργές, ψηλές, με ανάσα.'],
   },
   {
-    id: 'pentozalis',
-    name: 'Πεντοζάλης',
-    region: 'Κρήτη',
-    difficulty: 3,
-    diffLabel: 'Δύσκολος',
-    rhythm: '5/4',
-    rhythmGroups: [2,3],
-    rhythmCount: '<strong>ΈΝΑ</strong>-δύο, <strong>ΈΝΑ</strong>-δύο-τρία',
-    rhythmFeel: 'γρήγ. – αρ-γό',
-    tempo: 'Γρήγορο',
-    hold: 'W-πιασιά — χέρια ψηλά, αγκώνες λυγισμένοι, συνδεδεμένοι με τους ώμους',
-    direction: 'Αριστερόστροφα. Χορός αντρικός αλλά και μεικτός — κυρίαρχος χορός της Κρήτης.',
-    image: 'photo-1502481851512-e9e2529bfbf9',
-    gradient: 'linear-gradient(160deg,#4A3010 0%,#8B6020 60%,#2A1A08 100%)',
-    description: 'Ο Πεντοζάλης είναι ο βασιλιάς των κρητικών χορών και ένας από τους πιο δυναμικούς χορούς της Ελλάδας. Το όνομα σημαίνει «πέντε ζάλια» (πέντε τινάγματα) και αναφέρεται στα πέντε ζωηρά βήματα-χτυπήματα της βασικής φράσης. Χορεύεται σε 5/4 ρυθμό (2+3), που του δίνει μια έντονη, ανάλαφρη αίσθηση. Ο Πεντοζάλης απαιτεί δύναμη, συντονισμό και τέλεια αίσθηση ρυθμού — αλλά η χαρά του αξίζει τον κόπο.',
-    steps: [
-      { n:1, foot:'Δ', count:'1', tempo:'γρ.', move:'Ζωηρό βήμα δεξιά', detail:'Ενεργητικό βήμα πλαγίως δεξιά. Η πατούσα χτυπά γερά — αυτό είναι το πρώτο «ζάλι». Βάρος στο δεξί.' },
-      { n:2, foot:'Α', count:'2', tempo:'γρ.', move:'Χτυπητό σταύρωμα μπρος', detail:'Το αριστερό σταυρώνει μπρος με χτυπητό — δεύτερο «ζάλι». Βάρος στο αριστερό. Αυτό το χτύπημα ακούγεται στη μουσική.' },
-      { n:3, foot:'Δ', count:'1', tempo:'αργ.', move:'Βήμα δεξιά', detail:'Ξαναβγαίνει το δεξί πλαγίως. Βάρος στο δεξί. Αρχίζει το «αργό» μέρος (3 χτύποι).' },
-      { n:4, foot:'Α', count:'2', tempo:'αργ.', move:'Ανύψωση αριστερού', detail:'Σήκωσε το αριστερό — τρίτο «ζάλι». Γόνατο σε γωνία. Ισορροπία στο δεξί.' },
-      { n:5, foot:'Α', count:'3', tempo:'αργ.', move:'Χτύπος κάτω', detail:'Χτύπα το αριστερό κάτω δίπλα στο δεξί — τέταρτο «ζάλι». Δυναμικό.' },
-      { n:6, foot:'Α', count:'1', tempo:'γρ.', move:'Βήμα αριστερά', detail:'Αριστερό πλαγίως αριστερά. Αρχίζει το μέρος επιστροφής.' },
-      { n:7, foot:'Δ', count:'2', tempo:'γρ.', move:'Σταύρωμα πίσω', detail:'Δεξί σταυρώνει πίσω από το αριστερό. Βάρος στο δεξί.' },
-      { n:8, foot:'Α', count:'1', tempo:'αργ.', move:'Βήμα αριστερά', detail:'Ξαναβγαίνει το αριστερό.' },
-      { n:9, foot:'Δ', count:'2', tempo:'αργ.', move:'Ανύψωση δεξιού', detail:'Σήκωσε το δεξί — πέμπτο «ζάλι».' },
-      { n:10, foot:'Δ', count:'3', tempo:'αργ.', move:'Κλείσιμο', detail:'Κατεβάζεις το δεξί δίπλα στο αριστερό. Ξεκινά η επόμενη φράση.' },
+    id:'pentozalis',name:'Πεντοζάλης',region:'Κρήτη',
+    difficulty:3,rhythm:'5/4',rhythmGroups:[2,3],
+    rhythmCount:'<strong>ΈΝΑ</strong>-δύο, <strong>ΈΝΑ</strong>-δύο-τρία',
+    rhythmFeel:'ΓΡΗΓ – ΑΑΑΡΓΟ',
+    mnemonic:'ΠΈΝΤΕ · ζά-λι-α',mnemonicHint:'5 χτύποι = 5 ζάλια (τινάγματα)',
+    tempo:'Γρήγορο',eighthMs:200,
+    wikiTitle:'Pentozalis',wikiTitleEl:'Πεντοζάλης',
+    hold:'W-πιασιά — χέρια ψηλά, αγκώνες λυγισμένοι',
+    direction:'Αριστερόστροφα. Κρητικός χορός — δυναμικός.',
+    gradient:'linear-gradient(160deg,#4A3010 0%,#8B6020 60%,#2A1A08 100%)',
+    description:'Ο Πεντοζάλης είναι ο βασιλιάς των κρητικών χορών. Το όνομα σημαίνει «πέντε ζάλια» (τινάγματα). Χορεύεται σε 5/4 ρυθμό (2+3), με έντονα χτυπήματα και δυναμισμό. Απαιτεί δύναμη, συντονισμό, τέλεια αίσθηση ρυθμού.',
+    steps:[
+      {n:1,foot:'Δ',count:'1',tempo:'γρ.',dir:'→',move:'Ζωηρό βήμα δεξιά',detail:'Ενεργητικό βήμα πλαγίως δεξιά — πρώτο «ζάλι».'},
+      {n:2,foot:'Α',count:'2',tempo:'γρ.',dir:'↗',move:'Χτυπητό σταύρωμα μπρος',detail:'Αριστερό σταυρώνει μπρος με χτυπητό — δεύτερο «ζάλι».'},
+      {n:3,foot:'Δ',count:'1',tempo:'αργ.',dir:'→',move:'Βήμα δεξιά — αρχή αργού',detail:'Δεξί πλαγίως. Αρχίζει το «αργό» (3 χτύποι).'},
+      {n:4,foot:'Α',count:'2',tempo:'αργ.',dir:'↑',move:'Ανύψωση αριστερού',detail:'Σήκωσε το αριστερό — τρίτο «ζάλι». Ισορροπία στο δεξί.'},
+      {n:5,foot:'Α',count:'3',tempo:'αργ.',dir:'↓',move:'Χτύπος κάτω',detail:'Χτύπα το αριστερό κάτω — τέταρτο «ζάλι». Δυναμικό.'},
+      {n:6,foot:'Α',count:'1',tempo:'γρ.',dir:'←',move:'Βήμα αριστερά',detail:'Αριστερό πλαγίως. Αρχίζει επιστροφή.'},
+      {n:7,foot:'Δ',count:'2',tempo:'γρ.',dir:'↙',move:'Σταύρωμα πίσω',detail:'Δεξί σταυρώνει πίσω.'},
+      {n:8,foot:'Α',count:'1',tempo:'αργ.',dir:'←',move:'Βήμα αριστερά',detail:'Αριστερό ξαναβγαίνει.'},
+      {n:9,foot:'Δ',count:'2',tempo:'αργ.',dir:'↑',move:'Ανύψωση δεξιού',detail:'Σήκωσε το δεξί — πέμπτο «ζάλι».'},
+      {n:10,foot:'Δ',count:'3',tempo:'αργ.',dir:'↓',move:'Κλείσιμο',detail:'Κατεβάζεις δίπλα στο αριστερό. Ξεκινά η επόμενη φράση.'},
     ],
-    tips: [
-      'Τα «ζάλια» (χτυπήματα) είναι η ψυχή του χορού — χτυπάς με δύναμη και αυτοπεποίθηση.',
-      'W-πιασιά ψηλά και σταθερά — τα χέρια δεν κατεβαίνουν ποτέ.',
-      'Πρακτίκαρε τον ρυθμό 5/4 με χτύπους: «ΈΝΑ-δύο-ΈΝΑ-δύο-τρία» μέχρι να γίνει αυτόματο.',
-      'Μάθε πρώτα αργά, μετά ανέβασε ταχύτητα — ο ρυθμός πρέπει να είναι στο σώμα.',
-    ],
-    mistakes: [
-      'Λάθος: Αδύναμα, σιωπηλά χτυπήματα. Σωστό: Κάθε «ζάλι» ακούγεται — δύναμη και αυτοπεποίθηση.',
-      'Λάθος: Ξεχάς το αργό μέρος. Σωστό: 5/4 = 2+3, όχι 5 ίσα χτυπήματα.',
-      'Λάθος: Χαμηλά χέρια. Σωστό: W-πιασιά πάντα ψηλά — είναι το σήμα της Κρήτης.',
-    ],
+    tips:['Τα «ζάλια» (χτυπήματα) είναι η ψυχή — χτυπάς με δύναμη.','W-πιασιά ψηλά και σταθερά πάντα.','Πρακτίκαρε 5/4: «ΈΝΑ-δύο-ΈΝΑ-δύο-τρία» μέχρι να γίνει αυτόματο.'],
+    mistakes:['Λάθος: Αδύναμα χτυπήματα. Σωστό: Κάθε «ζάλι» ακούγεται.','Λάθος: Ξεχάς το αργό. Σωστό: 5/4 = 2+3, όχι 5 ίσα.','Λάθος: Χαμηλά χέρια. Σωστό: W-πιασιά ψηλά.'],
   },
   {
-    id: 'haniōtis',
-    name: 'Χανιώτης',
-    region: 'Κρήτη (Χανιά)',
-    difficulty: 2,
-    diffLabel: 'Μέτριος',
-    rhythm: '4/4',
-    rhythmGroups: [2,2],
-    rhythmCount: '<strong>ΈΝΑ</strong>-και-<strong>ΔΎΟ</strong>-και',
-    rhythmFeel: 'αέρινο – χαρούμενο',
-    tempo: 'Μέτριο — ελαφρύ',
-    hold: 'W-πιασιά — χέρια ψηλά, ανοιχτός κύκλος',
-    direction: 'Αριστερόστροφα. Χορός των Χανιών — αέρινος και χαρούμενος.',
-    image: 'photo-1548013016-dc9f6ed42e25',
-    gradient: 'linear-gradient(160deg,#7A2A10 0%,#C05020 60%,#4A1808 100%)',
-    description: 'Ο Χανιώτης είναι ο κατεξοχήν χορός των Χανίων και ένας από τους πιο αγαπημένους κρητικούς χορούς. Χορεύεται σε 4/4 ρυθμό με γρήγορα, «πεταχτά» βήματα που δίνουν μια αέρινη, χαρούμενη αίσθηση. Σε σχέση με τον Πεντοζάλη, ο Χανιώτης είναι πιο ελαφρύς και λυρικός. Ιδιαίτερα δημοφιλής στα γλέντια της Κρήτης, χορεύεται από άντρες και γυναίκες μαζί.',
-    steps: [
-      { n:1, foot:'Δ', count:'1', tempo:'βαρύ', move:'Βήμα δεξιά', detail:'Άνοιξε πλαγίως δεξιά. Βάρος στο δεξί.' },
-      { n:2, foot:'Α', count:'και', tempo:'ελαφ.', move:'Σταύρωμα μπρος', detail:'Αριστερό σταυρώνει μπρος από το δεξί. Βάρος στο αριστερό.' },
-      { n:3, foot:'Δ', count:'2', tempo:'βαρύ', move:'Βήμα δεξιά', detail:'Ξαναανοίγεις το δεξί.' },
-      { n:4, foot:'Α', count:'και', tempo:'ελαφ.', move:'Ελαφρύ χτυπητό δίπλα', detail:'Το αριστερό χτυπά ελαφρά δίπλα στο δεξί (δεν ρίχνεις βάρος). Χαρακτηριστικό «χτυπητό» του Χανιώτη.' },
-      { n:5, foot:'Α', count:'1', tempo:'βαρύ', move:'Βήμα αριστερά-πίσω', detail:'Μικρό βήμα πλαγίως-πίσω με το αριστερό. Βάρος στο αριστερό.' },
-      { n:6, foot:'Δ', count:'και', tempo:'ελαφ.', move:'Ανύψωση δεξιού', detail:'Σήκωσε γρήγορα το δεξί (γόνατο σε 45°). Ισορροπία στο αριστερό.' },
-      { n:7, foot:'Α', count:'2', tempo:'βαρύ', move:'Βήμα αριστερά', detail:'Αριστερό βγαίνει ελαφρά μπρος-αριστερά.' },
-      { n:8, foot:'Δ', count:'και', tempo:'ελαφ.', move:'Κλείσιμο δεξιά', detail:'Δεξί κλείνει κοντά στο αριστερό. Έτοιμος για επανάληψη.' },
+    id:'haniōtis',name:'Χανιώτης',region:'Κρήτη (Χανιά)',
+    difficulty:2,rhythm:'4/4',rhythmGroups:[2,2],
+    rhythmCount:'<strong>ΈΝΑ</strong>-και-<strong>ΔΎΟ</strong>-και',
+    rhythmFeel:'αέρινο – «πεταχτό»',
+    mnemonic:'ΠΕ-τα-ΧΤΟΣ · σαν · πε-ΤΑ-λο',mnemonicHint:'Ελαφρύ — σαν να πατάς σε ελατήριο',
+    tempo:'Μέτριο – Ελαφρύ',eighthMs:220,
+    wikiTitle:'Chaniotis',wikiTitleEl:'Χανιώτης',
+    hold:'W-πιασιά — χέρια ψηλά',
+    direction:'Αριστερόστροφα. Αέρινος, χαρούμενος.',
+    gradient:'linear-gradient(160deg,#7A2A10 0%,#C05020 60%,#4A1808 100%)',
+    description:'Ο Χανιώτης είναι ο κατεξοχήν χορός των Χανίων — αέρινος, χαρούμενος, «πεταχτός». Χορεύεται σε 4/4 με γρήγορα βήματα που δίνουν ελαφριά, αναλαφρή αίσθηση. Πιο ελαφρύς από τον Πεντοζάλη. Δημοφιλής στα γλέντια της Κρήτης.',
+    steps:[
+      {n:1,foot:'Δ',count:'1',tempo:'βαρύ',dir:'→',move:'Βήμα δεξιά',detail:'Άνοιξε πλαγίως δεξιά.'},
+      {n:2,foot:'Α',count:'και',tempo:'ελαφ.',dir:'↗',move:'Σταύρωμα μπρος',detail:'Αριστερό σταυρώνει μπρος.'},
+      {n:3,foot:'Δ',count:'2',tempo:'βαρύ',dir:'→',move:'Βήμα δεξιά',detail:'Ξαναανοίγεις το δεξί.'},
+      {n:4,foot:'Α',count:'και',tempo:'ελαφ.',dir:'↓',move:'Ελαφρύ χτυπητό δίπλα',detail:'Αριστερό χτυπά ελαφρά δίπλα στο δεξί (χωρίς βάρος). Χαρακτηριστικό του Χανιώτη.'},
+      {n:5,foot:'Α',count:'1',tempo:'βαρύ',dir:'↙',move:'Βήμα αριστερά-πίσω',detail:'Μικρό βήμα πλαγίως-πίσω.'},
+      {n:6,foot:'Δ',count:'και',tempo:'ελαφ.',dir:'↑',move:'Ανύψωση δεξιού',detail:'Σήκωσε γρήγορα το δεξί (45°). Ισορροπία στο αριστερό.'},
+      {n:7,foot:'Α',count:'2',tempo:'βαρύ',dir:'←',move:'Βήμα αριστερά',detail:'Αριστερό βγαίνει μπρος-αριστερά.'},
+      {n:8,foot:'Δ',count:'και',tempo:'ελαφ.',dir:'→',move:'Κλείσιμο',detail:'Δεξί κλείνει κοντά. Έτοιμος για επανάληψη.'},
     ],
-    tips: [
-      'Ο Χανιώτης είναι «πεταχτός» — φαντάσου ότι πατάς σε ζεστή άμμο και σηκώνεις γρήγορα τα πόδια.',
-      'Το χτυπητό στο «και» (βήμα 4) είναι ελαφρύ και γρήγορο — δεν ρίχνεις βάρος.',
-      'Ο ρυθμός 4/4 μετριέται σαν «ΈΝΑ-και-ΔΎΟ-και» — δύο βαριά και δύο ελαφριά.',
-    ],
-    mistakes: [
-      'Λάθος: Βαρύ χτύπημα στο «και». Σωστό: Ελαφρύ, γρήγορο — σαν μια αφή.',
-      'Λάθος: Μεγάλο βήμα αριστερά-πίσω. Σωστό: Μικρό, ελεγχόμενο.',
-      'Λάθος: Αργός ρυθμός. Σωστό: Ο Χανιώτης έχει ζωντάνια — κρατάς τον ρυθμό.',
-    ],
+    tips:['«Πεταχτό» — φαντάσου ότι πατάς σε ζεστή άμμο.','Χτυπητό (βήμα 4) = ελαφρύ, χωρίς βάρος.','Αέρινο ρυθμό: ΈΝΑ-και-ΔΎΟ-και.'],
+    mistakes:['Λάθος: Βαρύ χτύπημα. Σωστό: Ελαφρύ, γρήγορο.','Λάθος: Μεγάλο βήμα πίσω. Σωστό: Μικρό.','Λάθος: Αργός ρυθμός. Σωστό: Ζωντάνια.'],
   },
   {
-    id: 'serra',
-    name: 'Σέρρα',
-    region: 'Πόντος',
-    difficulty: 3,
-    diffLabel: 'Δύσκολος',
-    rhythm: '7/8',
-    rhythmGroups: [2,2,3],
-    rhythmCount: '<strong>ΈΝΑ</strong>-δύο, <strong>ΈΝΑ</strong>-δύο, <strong>ΈΝΑ</strong>-δύο-τρία',
-    rhythmFeel: 'πολεμικό – δυναμικό',
-    tempo: 'Γρήγορο',
-    hold: 'Ώμοι — οι χορευτές πιάνουν τους ώμους ο ένας του άλλου',
-    direction: 'Αριστερόστροφα. Ανδρικός πολεμικός χορός — χορεύεται με έναν άντρα στο κέντρο.',
-    image: 'photo-1578662996442-48f60103fc96',
-    gradient: 'linear-gradient(160deg,#2A2A30 0%,#505060 60%,#1A1A20 100%)',
-    description: 'Η Σέρρα (ή Σέρρας) είναι ο πολεμικός χορός του Πόντου και από τους πιο επιβλητικούς χορούς της ελληνικής παράδοσης. Χορευόταν πριν από τις μάχες για να αναπτερώσει το ηθικό των πολεμιστών. Κάθε κίνηση εκφράζει δύναμη, αποφασιστικότητα και αξιοπρέπεια. Τα χτυπήματα γίνονται με τη ράχη της πατούσας — χαρακτηριστικό του Ποντιακού χορού. Χορεύεται σε 7/8 ή 5/8 ρυθμό, πάντα γρήγορα και δυναμικά.',
-    steps: [
-      { n:1, foot:'Δ', count:'1', tempo:'γρ.', move:'Ισχυρό βήμα δεξιά', detail:'Ισχυρό, αποφασιστικό βήμα πλαγίως δεξιά. Βάρος στο δεξί. Πολεμική αίσθηση σε κάθε κίνηση.' },
-      { n:2, foot:'Α', count:'2', tempo:'γρ.', move:'Χτυπητό σταύρωμα μπρος', detail:'Το αριστερό σταυρώνει μπρος με δυναμικό χτύπο της ράχης πατούσας. Βάρος στο αριστερό.' },
-      { n:3, foot:'Δ', count:'1', tempo:'γρ.', move:'Βήμα δεξιά', detail:'Ξαναβγαίνει το δεξί.' },
-      { n:4, foot:'Α', count:'2', tempo:'γρ.', move:'Σταύρωμα πίσω', detail:'Αριστερό σταυρώνει πίσω. Εναλλαγή με βήμα 2.' },
-      { n:5, foot:'Δ', count:'1', tempo:'αργ.', move:'Βήμα δεξιά', detail:'Τελευταίο άνοιγμα — αρχίζει το «αργό» μέρος.' },
-      { n:6, foot:'Α', count:'2', tempo:'αργ.', move:'Υψηλή ανύψωση', detail:'Σήκωσε το αριστερό ΨΗΛΑ (γόνατο στο ύψος της μέσης). Αυτή η ψηλή ανύψωση είναι το σήμα κατατεθέν της Σέρρας.' },
-      { n:7, foot:'Α', count:'3', tempo:'αργ.', move:'Δυνατός χτύπος κάτω', detail:'Κατέβαση με δυναμικό χτύπο — ακούγεται. Ο ρυθμός κλείνει και ξεκινά η επόμενη φράση.' },
+    id:'serra',name:'Σέρρα',region:'Πόντος',
+    difficulty:3,rhythm:'7/8',rhythmGroups:[2,2,3],
+    rhythmCount:'<strong>ΈΝΑ</strong>-δύο, <strong>ΈΝΑ</strong>-δύο, <strong>ΈΝΑ</strong>-δύο-τρία',
+    rhythmFeel:'πολεμικό – δυναμικό',
+    mnemonic:'ΠΟΛΕ-μι-ΣΤΗΣ · στέ-κει · ΨΗ-λά',mnemonicHint:'Κάθε κίνηση = αξιοπρέπεια πολεμιστή',
+    tempo:'Γρήγορο',eighthMs:190,
+    wikiTitle:'Serra (dance)',wikiTitleEl:'Σέρρα (χορός)',
+    hold:'Ώμοι — πιάνεις τον ώμο του διπλανού',
+    direction:'Αριστερόστροφα. Ανδρικός πολεμικός χορός.',
+    gradient:'linear-gradient(160deg,#2A2A30 0%,#505060 60%,#1A1A20 100%)',
+    description:'Η Σέρρα (ή Σέρρας) είναι ο πολεμικός χορός του Πόντου — από τους πιο επιβλητικούς. Χορευόταν πριν τις μάχες για να αναπτερώσει το ηθικό. Τα χτυπήματα γίνονται με τη ράχη της πατούσας — χαρακτηριστικό Ποντιακού χορού.',
+    steps:[
+      {n:1,foot:'Δ',count:'1',tempo:'γρ.',dir:'→',move:'Ισχυρό βήμα δεξιά',detail:'Ισχυρό, αποφασιστικό βήμα. Πολεμική αίσθηση.'},
+      {n:2,foot:'Α',count:'2',tempo:'γρ.',dir:'↗',move:'Χτυπητό σταύρωμα μπρος',detail:'Αριστερό σταυρώνει μπρος με δυναμικό χτύπο ράχης πατούσας.'},
+      {n:3,foot:'Δ',count:'1',tempo:'γρ.',dir:'→',move:'Βήμα δεξιά',detail:'Ξαναβγαίνει το δεξί.'},
+      {n:4,foot:'Α',count:'2',tempo:'γρ.',dir:'↙',move:'Σταύρωμα πίσω',detail:'Αριστερό σταυρώνει πίσω.'},
+      {n:5,foot:'Δ',count:'1',tempo:'αργ.',dir:'→',move:'Βήμα δεξιά — αρχή αργού',detail:'Τελευταίο άνοιγμα.'},
+      {n:6,foot:'Α',count:'2',tempo:'αργ.',dir:'⬆',move:'Υψηλή ανύψωση — σήμα Σέρρας',detail:'Σήκωσε το αριστερό ΨΗΛΑ (γόνατο στη μέση). Αυτή η υψηλή ανύψωση είναι το σήμα κατατεθέν.'},
+      {n:7,foot:'Α',count:'3',tempo:'αργ.',dir:'↓',move:'Δυνατός χτύπος κάτω',detail:'Κατέβαση με δυναμικό χτύπο — ακούγεται. Ξεκινά η επόμενη φράση.'},
     ],
-    tips: [
-      'Κάθε κίνηση εκφράζει πολεμική αξιοπρέπεια — μη χαλαρώνεις την έκφραση.',
-      'Τα χτυπήματα γίνονται με τη ράχη της πατούσας (ψαρωτό βήμα) — χαρακτηριστικό Ποντιακού χορού.',
-      'Στάση: ορθόσωμος, ώμοι πίσω, κεφάλι ψηλά — πολεμιστής.',
-      'Ο ρυθμός 7/8 είναι ίδιος με τον Καλαματιανό (2+2+3) — αλλά η αίσθηση είναι εντελώς διαφορετική.',
-    ],
-    mistakes: [
-      'Λάθος: Χαμηλή ανύψωση στο βήμα 6. Σωστό: Το γόνατο ανεβαίνει ψηλά — αυτό διαχωρίζει τη Σέρρα.',
-      'Λάθος: Αδύναμα χτυπήματα. Σωστό: Κάθε χτύπο πρέπει να ακούγεται.',
-      'Λάθος: Πεσμένος ώμος. Σωστό: Κρατάς τον ώμο των διπλανών ψηλά — η γραμμή είναι ισχυρή.',
-    ],
+    tips:['Κάθε κίνηση εκφράζει πολεμική αξιοπρέπεια.','Χτυπήματα με τη ράχη πατούσας — Ποντιακό χαρακτηριστικό.','Στάση: ορθόσωμος, ώμοι πίσω, κεφάλι ψηλά.'],
+    mistakes:['Λάθος: Χαμηλή ανύψωση. Σωστό: Γόνατο ψηλά.','Λάθος: Αδύναμα χτυπήματα. Σωστό: Κάθε χτύπο ακούγεται.','Λάθος: Πεσμένος ώμος. Σωστό: Γραμμή ψηλά και ισχυρή.'],
   },
   {
-    id: 'sousta',
-    name: 'Σούστα',
-    region: 'Κρήτη · Δωδεκάνησα',
-    difficulty: 2,
-    diffLabel: 'Μέτριος',
-    rhythm: '2/4',
-    rhythmGroups: [2,2],
-    rhythmCount: '<strong>ΈΝΑ</strong>-και, <strong>ΔΎΟ</strong>-και',
-    rhythmFeel: 'ελατήριο – αέρινο',
-    tempo: 'Ζωηρό — γρήγορο',
-    hold: 'Ζευγάρι — κρατιούνται αντικριστά, χέρια στα πλάγια (σταυρωτά ή ίσια)',
-    direction: 'Κυκλικά — το ζευγάρι κινείται αντίθετα (κατοπτρικά)',
-    image: 'photo-1507003211169-0a1dd7228f2d',
-    gradient: 'linear-gradient(160deg,#6A2030 0%,#C04060 60%,#3A1020 100%)',
-    description: 'Η Σούστα (από το ιταλικό «sosta» = παύση) είναι ο ερωτικός χορός της Κρήτης και των Δωδεκανήσων. Χορεύεται από ζευγάρια με αέρινα, «ελατηριοειδή» βήματα — σαν να πηδάς σε μαλακό έδαφος. Το ζευγάρι κινείται κατοπτρικά: ό,τι κάνει ο ένας, το κάνει ανάποδα ο άλλος. Πλούσια σε ατομικές φιγούρες — στροφές, βαλς-κίνηση, κοντινές προσεγγίσεις — αλλά η βάση είναι αυτό το αέρινο «ελατήριο».',
-    steps: [
-      { n:1, foot:'Δ', count:'1', tempo:'βαρύ', move:'Ζωηρό βήμα δεξιά', detail:'Ζωηρό βήμα πλαγίως δεξιά. Βάρος στο δεξί. Το σώμα έχει ελαφρά ανοδική κίνηση.' },
-      { n:2, foot:'ΑΔ', count:'και', tempo:'ελαφ.', move:'Μικρό αναπήδημα', detail:'Μικρό, ελαφρύ αναπήδημα στο δεξί πόδι ενώ το αριστερό σηκώνεται. Αυτό είναι η «σούστα» — το ελατήριο.' },
-      { n:3, foot:'Α', count:'2', tempo:'βαρύ', move:'Βήμα αριστερά', detail:'Βήμα πλαγίως αριστερά (ή σταύρωμα αριστερά). Βάρος στο αριστερό.' },
-      { n:4, foot:'ΑΔ', count:'και', tempo:'ελαφ.', move:'Μικρό αναπήδημα', detail:'Αναπήδημα στο αριστερό. Δεξί σηκώνεται ελαφρά. Ο ρυθμός «αναπηδά» συνεχώς.' },
-      { n:5, foot:'Δ', count:'1', tempo:'βαρύ', move:'Βήμα δεξιά', detail:'Επανάληψη — βγαίνεις πάλι δεξιά.' },
-      { n:6, foot:'ΑΔ', count:'και', tempo:'ελαφ.', move:'Αναπήδημα', detail:'Αναπήδημα — η αδιάκοπη κίνηση ελατηρίου.' },
-      { n:7, foot:'Α', count:'2', tempo:'βαρύ', move:'Βήμα αριστερά ή στροφή', detail:'Αριστερά πάλι — ή αρχή μισής στροφής αν θέλεις φιγούρα.' },
-      { n:8, foot:'ΑΔ', count:'και', tempo:'ελαφ.', move:'Αναπήδημα ολοκλήρωσης', detail:'Τελευταίο αναπήδημα της φράσης.' },
+    id:'sousta',name:'Σούστα',region:'Κρήτη · Δωδεκάνησα',
+    difficulty:2,rhythm:'2/4',rhythmGroups:[2,2],
+    rhythmCount:'<strong>ΈΝΑ</strong>-και, <strong>ΔΎΟ</strong>-και',
+    rhythmFeel:'ελατήριο – αέρινο',
+    mnemonic:'ΕΛΑΤΗ-ριο · ΠΑ-με',mnemonicHint:'«Σούστα» = ελατήριο — αναπηδάς ελαφρά',
+    tempo:'Ζωηρό',eighthMs:220,
+    wikiTitle:'Sousta',wikiTitleEl:'Σούστα',
+    hold:'Ζευγάρι αντικριστά — χέρια στα πλάγια',
+    direction:'Κυκλικά — κατοπτρικά με τον σύντροφο',
+    gradient:'linear-gradient(160deg,#6A2030 0%,#C04060 60%,#3A1020 100%)',
+    description:'Η Σούστα (ιταλ. «sosta») είναι ο ερωτικός χορός Κρήτης και Δωδεκανήσων. Αέρινα, «ελατηριοειδή» βήματα. Το ζευγάρι κινείται κατοπτρικά: ό,τι κάνει ο ένας, το κάνει ανάποδα ο άλλος.',
+    steps:[
+      {n:1,foot:'Δ',count:'1',tempo:'βαρύ',dir:'→',move:'Ζωηρό βήμα δεξιά',detail:'Ζωηρό βήμα πλαγίως δεξιά. Σώμα ελαφρά ανοδική κίνηση.'},
+      {n:2,foot:'ΑΔ',count:'και',tempo:'ελαφ.',dir:'↑',move:'Μικρό αναπήδημα',detail:'Μικρό, ελαφρύ αναπήδημα — αριστερό σηκώνεται. Αυτό είναι η «σούστα».'},
+      {n:3,foot:'Α',count:'2',tempo:'βαρύ',dir:'←',move:'Βήμα αριστερά',detail:'Βήμα πλαγίως αριστερά.'},
+      {n:4,foot:'ΑΔ',count:'και',tempo:'ελαφ.',dir:'↑',move:'Αναπήδημα',detail:'Αναπήδημα στο αριστερό — δεξί σηκώνεται.'},
+      {n:5,foot:'Δ',count:'1',tempo:'βαρύ',dir:'→',move:'Βήμα δεξιά',detail:'Επανάληψη — ξαναβγαίνεις δεξιά.'},
+      {n:6,foot:'ΑΔ',count:'και',tempo:'ελαφ.',dir:'↑',move:'Αναπήδημα',detail:'Αδιάκοπη κίνηση ελατηρίου.'},
+      {n:7,foot:'Α',count:'2',tempo:'βαρύ',dir:'←',move:'Βήμα αριστερά ή στροφή',detail:'Αριστερά — ή αρχή μισής στροφής για φιγούρα.'},
+      {n:8,foot:'ΑΔ',count:'και',tempo:'ελαφ.',dir:'↑',move:'Αναπήδημα ολοκλήρωσης',detail:'Τελευταίο αναπήδημα φράσης.'},
     ],
-    tips: [
-      '«Σούστα» = ελατήριο — φαντάσου ότι πατάς σε ελατήριο και σε ανεβοκατεβάζει.',
-      'Ο/η σύντροφος κινείται κατοπτρικά: όταν εσύ πας δεξιά, εκείνος/η πάει αριστερά.',
-      'Τα αναπηδήματα είναι ΜΙΚΡΑ — δεν είναι χορός γυμναστικής αλλά χαρούμενος συμβολισμός.',
-      'Ο οδηγός (συνήθως ο άντρας) καθοδηγεί με ελαφριές πιέσεις στα χέρια.',
-    ],
-    mistakes: [
-      'Λάθος: Βαριά, χαμηλά πατήματα. Σωστό: Αέρινα, ελαφριά — σαν ελατήριο.',
-      'Λάθος: Ασύγχρονο με τον σύντροφο. Σωστό: Κοιτάτε ο ένας τον άλλον.',
-      'Λάθος: Μεγάλα αναπηδήματα. Σωστό: Μικρά, ρυθμικά — η ομορφιά είναι στο μέτρο.',
-    ],
+    tips:['Φαντάσου ότι πατάς σε ελατήριο.','Σύντροφος κατοπτρικά: εσύ δεξιά → εκείνος αριστερά.','Αναπηδήματα ΜΙΚΡΑ — συμβολισμός, όχι γυμναστική.'],
+    mistakes:['Λάθος: Βαριά πατήματα. Σωστό: Αέρινα.','Λάθος: Ασύγχρονο. Σωστό: Κοιτάτε ο ένας τον άλλον.','Λάθος: Μεγάλα αναπηδήματα. Σωστό: Μικρά, ρυθμικά.'],
   },
   {
-    id: 'balos',
-    name: 'Μπάλος',
-    region: 'Αιγαίο · Κυκλάδες',
-    difficulty: 2,
-    diffLabel: 'Μέτριος',
-    rhythm: '7/8',
-    rhythmGroups: [2,2,3],
-    rhythmCount: '<strong>ΈΝΑ</strong>-δύο, <strong>ΈΝΑ</strong>-δύο, <strong>ΈΝΑ</strong>-δύο-τρία',
-    rhythmFeel: 'παιχνιδιάρικο – ζευγαρωτό',
-    tempo: 'Μέτριο',
-    hold: 'Ζευγάρι — αντικριστά, πιασμένοι από τα χέρια (σε μήκος)',
-    direction: 'Κυκλικά και αντίθετα. Με κλωτσιές και ναζιάρικες κινήσεις.',
-    image: 'photo-1570077742793-f6ef0e10c89d',
-    gradient: 'linear-gradient(160deg,#0A4050 0%,#1080A0 60%,#052030 100%)',
-    description: 'Ο Μπάλος είναι ο χορός του Αιγαίου — παιχνιδιάρικος, ναζιάρικος, γεμάτος χαρά. Χορεύεται από ζευγάρια που κινούνται αντίθετα, κάνοντας ναζιάρικες κλωτσιές ο ένας προς τον άλλον. Ο ρυθμός 7/8 (ίδιος με τον Καλαματιανό) δίνει μια ζωηρή «αναπνοή». Ο Μπάλος είναι παράδοση γάμων και πανηγυριών — πάντα με χαμόγελο.',
-    steps: [
-      { n:1, foot:'Δ', count:'1', tempo:'γρ.', move:'Βήμα πλαγίως δεξιά', detail:'Άνοιξε πλαγίως δεξιά. Βάρος στο δεξί.' },
-      { n:2, foot:'Α', count:'2', tempo:'γρ.', move:'Κλωτσιά αριστερού μπρος', detail:'Μικρή, ναζιάρικη κλωτσιά με το αριστερό προς τον σύντροφο (μπρος-πλαγίως). Χαλαρό γόνατο — είναι νάζι, όχι κλωτσιά αληθινή.' },
-      { n:3, foot:'Α', count:'1', tempo:'γρ.', move:'Βήμα αριστερά', detail:'Το αριστερό κατεβαίνει αριστερά. Βάρος στο αριστερό.' },
-      { n:4, foot:'Δ', count:'2', tempo:'γρ.', move:'Κλωτσιά δεξιού μπρος', detail:'Μικρή ναζιάρικη κλωτσιά με το δεξί. Εναλλάσσεις κλωτσιές.' },
-      { n:5, foot:'Δ', count:'1', tempo:'αργ.', move:'Βήμα δεξιά', detail:'Ξαναβγαίνεις δεξιά — αρχή «αργού».' },
-      { n:6, foot:'Α', count:'2', tempo:'αργ.', move:'Φέρνεις αριστερό κοντά', detail:'Αριστερό κοντά στο δεξί.' },
-      { n:7, foot:'ΑΔ', count:'3', tempo:'αργ.', move:'Μικρό αναπήδημα ή στροφή', detail:'Μικρό αναπήδημα στη θέση ή μισή στροφή — χαρούμενη, ελαφρά κίνηση.' },
+    id:'balos',name:'Μπάλος',region:'Αιγαίο · Κυκλάδες',
+    difficulty:2,rhythm:'7/8',rhythmGroups:[2,2,3],
+    rhythmCount:'<strong>ΈΝΑ</strong>-δύο, <strong>ΈΝΑ</strong>-δύο, <strong>ΈΝΑ</strong>-δύο-τρία',
+    rhythmFeel:'παιχνιδιάρικο – ναζιάρικο',
+    mnemonic:'ΚΛΩΤ-σιά · ΚΛΩΤ-σιά · ΓΎ-ρνα',mnemonicHint:'Εναλλάξ ναζιάρικες κλωτσιές',
+    tempo:'Μέτριο',eighthMs:250,
+    wikiTitle:'Balos (dance)',wikiTitleEl:'Μπάλος',
+    hold:'Ζευγάρι αντικριστά — χέρια σε μήκος',
+    direction:'Κυκλικά — με κλωτσιές και χαμόγελο',
+    gradient:'linear-gradient(160deg,#0A4050 0%,#1080A0 60%,#052030 100%)',
+    description:'Ο Μπάλος είναι ο χορός του Αιγαίου — παιχνιδιάρικος, ναζιάρικος, γεμάτος χαρά. Χορεύεται από ζευγάρια με ναζιάρικες κλωτσιές ο ένας προς τον άλλον. Πάντα με χαμόγελο.',
+    steps:[
+      {n:1,foot:'Δ',count:'1',tempo:'γρ.',dir:'→',move:'Βήμα δεξιά',detail:'Άνοιξε πλαγίως δεξιά.'},
+      {n:2,foot:'Α',count:'2',tempo:'γρ.',dir:'↑',move:'Κλωτσιά αριστερού',detail:'Μικρή, ναζιάρικη κλωτσιά προς τον σύντροφο. Χαλαρό γόνατο.'},
+      {n:3,foot:'Α',count:'1',tempo:'γρ.',dir:'←',move:'Βήμα αριστερά',detail:'Αριστερό κατεβαίνει αριστερά.'},
+      {n:4,foot:'Δ',count:'2',tempo:'γρ.',dir:'↑',move:'Κλωτσιά δεξιού',detail:'Μικρή κλωτσιά με το δεξί. Εναλλάσσεις.'},
+      {n:5,foot:'Δ',count:'1',tempo:'αργ.',dir:'→',move:'Βήμα δεξιά',detail:'Ξαναβγαίνεις δεξιά — αρχή «αργού».'},
+      {n:6,foot:'Α',count:'2',tempo:'αργ.',dir:'←',move:'Φέρνεις αριστερό',detail:'Αριστερό κοντά.'},
+      {n:7,foot:'ΑΔ',count:'3',tempo:'αργ.',dir:'↺',move:'Αναπήδημα ή στροφή',detail:'Μικρό αναπήδημα ή μισή στροφή — χαρούμενη κίνηση.'},
     ],
-    tips: [
-      'Ο Μπάλος είναι ΧΑΡΑ — χαμογελάς πάντα. Σοβαρή έκφραση είναι λάθος.',
-      'Οι κλωτσιές είναι συμβολικές — σαν να λέτε «σε προκαλώ» στον σύντροφο.',
-      'Το ζευγάρι κοιτάζεται — η επαφή ματιών είναι μέρος του χορού.',
-      'Μετά τη βάση, δοκίμασε μισές στροφές στο «αργό» μέρος.',
-    ],
-    mistakes: [
-      'Λάθος: Δυνατές κλωτσιές. Σωστό: Ελαφριές, παιχνιδιάρικες — σύμβολο, όχι επίθεση.',
-      'Λάθος: Σοβαρός/η. Σωστό: Ο Μπάλος απαιτεί χαρά στο πρόσωπο.',
-      'Λάθος: Ξεχνάς τον σύντροφο. Σωστό: Πάντα επαφή ματιών.',
-    ],
+    tips:['Ο Μπάλος = ΧΑΡΑ. Σοβαρή έκφραση είναι λάθος.','Κλωτσιές συμβολικές — νάζι, όχι επίθεση.','Επαφή ματιών με τον σύντροφο πάντα.'],
+    mistakes:['Λάθος: Δυνατές κλωτσιές. Σωστό: Ελαφριές, ναζιάρικες.','Λάθος: Σοβαρός/η. Σωστό: Χαμόγελο πάντα.','Λάθος: Ξεχνάς τον σύντροφο. Σωστό: Επαφή ματιών.'],
   },
   {
-    id: 'tik',
-    name: 'Τικ',
-    region: 'Θράκη · Πόντος',
-    difficulty: 2,
-    diffLabel: 'Μέτριος',
-    rhythm: '4/4',
-    rhythmGroups: [2,2],
-    rhythmCount: '<strong>ΈΝΑ</strong>-δύο-<strong>ΤΡΊΑ</strong>-τέσσερα',
-    rhythmFeel: 'εσωτερικό – βαθύ',
-    tempo: 'Αργό έως μέτριο',
-    hold: 'W-πιασιά — χέρια ψηλά σε ανοιχτό κύκλο',
-    direction: 'Αριστερόστροφα. Βαθύς, εσωτερικός χορός — νιώθεις κάθε χτύπο.',
-    image: 'photo-1555685812-4b943f1cb0eb',
-    gradient: 'linear-gradient(160deg,#3A1040 0%,#6A2070 60%,#1A0820 100%)',
-    description: 'Το Τικ είναι ένας από τους πιο εσωτερικούς και συγκινητικούς χορούς της ελληνικής παράδοσης. Χορεύεται στη Θράκη και τον Πόντο με βαθιά, αργά βήματα που εκφράζουν λαχτάρα, μελαγχολία και ομορφιά. Ο 4/4 ρυθμός του δίνει μια σταθερή, σοβαρή βάση. Τα χέρια κρατούνται ψηλά σε W-πιασιά καθ\' όλη τη διάρκεια. Ο Τικ χορεύεται με σοβαρή, περιστεγμένη έκφραση — δείχνει τη βαρύτητα της ζωής.',
-    steps: [
-      { n:1, foot:'Δ', count:'1', tempo:'βαρύ', move:'Βήμα πλαγίως δεξιά', detail:'Μικρό, ζυγισμένο βήμα δεξιά. Βάρος στο δεξί. Αργό ρυθμό — κάθε βήμα έχει βάρος.' },
-      { n:2, foot:'Α', count:'2', tempo:'ελαφ.', move:'Σταύρωμα μπρος', detail:'Αριστερό σταυρώνει μπρος. Βάρος στο αριστερό.' },
-      { n:3, foot:'Δ', count:'3', tempo:'βαρύ', move:'Βήμα πλαγίως δεξιά', detail:'Ξαναανοίγεις δεξιά.' },
-      { n:4, foot:'Α', count:'4', tempo:'ελαφ.', move:'Ανύψωση ή χτύπος', detail:'Σήκωσε ελαφρά το αριστερό ή κάνε ένα ελαφρύ χτύπο. Αργό, με αξιοπρέπεια.' },
-      { n:5, foot:'Α', count:'1', tempo:'βαρύ', move:'Βήμα πλαγίως αριστερά', detail:'Αριστερά — επιστροφή.' },
-      { n:6, foot:'Δ', count:'2', tempo:'ελαφ.', move:'Σταύρωμα πίσω', detail:'Δεξί σταυρώνει πίσω.' },
-      { n:7, foot:'Α', count:'3', tempo:'βαρύ', move:'Βήμα αριστερά', detail:'Αριστερά ξανά.' },
-      { n:8, foot:'Δ', count:'4', tempo:'ελαφ.', move:'Ανύψωση δεξιού', detail:'Δεξί σηκώνεται αργά, κλείνοντας τη φράση.' },
+    id:'tik',name:'Τικ',region:'Θράκη · Πόντος',
+    difficulty:2,rhythm:'4/4',rhythmGroups:[2,2],
+    rhythmCount:'<strong>ΈΝΑ</strong>-δύο-<strong>ΤΡΊΑ</strong>-τέσσερα',
+    rhythmFeel:'εσωτερικό – βαθύ',
+    mnemonic:'ΑΡ-γά · ΚΑΙ · ΒΑ-θιά',mnemonicHint:'Νιώθεις κάθε χτύπο — αργό, σοβαρό',
+    tempo:'Αργό – Μέτριο',eighthMs:330,
+    wikiTitle:'Tik (dance)',wikiTitleEl:'Τικ (χορός)',
+    hold:'W-πιασιά — χέρια ψηλά σε ανοιχτό κύκλο',
+    direction:'Αριστερόστροφα. Εσωτερικός, βαθύς χορός.',
+    gradient:'linear-gradient(160deg,#3A1040 0%,#6A2070 60%,#1A0820 100%)',
+    description:'Το Τικ είναι ένας από τους πιο εσωτερικούς χορούς — εκφράζει λαχτάρα, μελαγχολία, ομορφιά. Χορεύεται με βαθιά, αργά βήματα. Τα χέρια κρατούνται ψηλά σε W-πιασιά.',
+    steps:[
+      {n:1,foot:'Δ',count:'1',tempo:'βαρύ',dir:'→',move:'Βήμα δεξιά',detail:'Μικρό, ζυγισμένο βήμα δεξιά. Κάθε βήμα έχει βάρος.'},
+      {n:2,foot:'Α',count:'2',tempo:'ελαφ.',dir:'↗',move:'Σταύρωμα μπρος',detail:'Αριστερό σταυρώνει μπρος.'},
+      {n:3,foot:'Δ',count:'3',tempo:'βαρύ',dir:'→',move:'Βήμα δεξιά',detail:'Ξαναανοίγεις δεξιά.'},
+      {n:4,foot:'Α',count:'4',tempo:'ελαφ.',dir:'↑',move:'Ανύψωση ή χτύπος',detail:'Σήκωσε ελαφρά το αριστερό. Αργό, με αξιοπρέπεια.'},
+      {n:5,foot:'Α',count:'1',tempo:'βαρύ',dir:'←',move:'Βήμα αριστερά',detail:'Αριστερά — επιστροφή.'},
+      {n:6,foot:'Δ',count:'2',tempo:'ελαφ.',dir:'↙',move:'Σταύρωμα πίσω',detail:'Δεξί σταυρώνει πίσω.'},
+      {n:7,foot:'Α',count:'3',tempo:'βαρύ',dir:'←',move:'Βήμα αριστερά',detail:'Αριστερά ξανά.'},
+      {n:8,foot:'Δ',count:'4',tempo:'ελαφ.',dir:'↑',move:'Ανύψωση δεξιού',detail:'Δεξί σηκώνεται αργά, κλείνοντας τη φράση.'},
     ],
-    tips: [
-      'Νιώσε τη μουσική βαθιά πριν χορέψεις — ο Τικ βγαίνει από μέσα, όχι από έξω.',
-      'W-πιασιά πάντα ψηλά και σταθερά — είναι σήμα ενότητας.',
-      'Αργός ρυθμός = κάθε βήμα έχει χρόνο. Μην βιάζεσαι.',
-      'Η σοβαρή έκφραση προσθέτει βάθος — ο Τικ δεν είναι χαρούμενος χορός.',
-    ],
-    mistakes: [
-      'Λάθος: Βιαστικά βήματα. Σωστό: Αργά, σκόπιμα — κάθε βήμα μετρά.',
-      'Λάθος: Χαμηλά χέρια. Σωστό: W-πιασιά ψηλά πάντα.',
-      'Λάθος: Μεγάλα βήματα. Σωστό: Μικρά, ελεγχόμενα — ο Τικ δεν ταξιδεύει πολύ.',
-    ],
+    tips:['Νιώσε τη μουσική βαθιά πριν χορέψεις.','W-πιασιά πάντα ψηλά — σήμα ενότητας.','Αργό = κάθε βήμα έχει χρόνο. Μην βιάζεσαι.'],
+    mistakes:['Λάθος: Βιαστικά. Σωστό: Αργά, σκόπιμα.','Λάθος: Χαμηλά χέρια. Σωστό: W-πιασιά ψηλά.','Λάθος: Μεγάλα βήματα. Σωστό: Μικρά, ελεγχόμενα.'],
   },
   {
-    id: 'tsifteteli',
-    name: 'Τσιφτετέλι',
-    region: 'Μικρά Ασία · Πανελλήνιος',
-    difficulty: 2,
-    diffLabel: 'Μέτριος',
-    rhythm: '4/4',
-    rhythmGroups: [4],
-    rhythmCount: '<strong>ΈΝΑ</strong>-δύο-τρία-τέσσερα',
-    rhythmFeel: 'κυματιστό – αισθησιακό',
-    tempo: 'Αργό — ρέον',
-    hold: 'Σόλο ή ζευγάρι χωρίς επαφή. Τα χέρια κινούνται ελεύθερα.',
-    direction: 'Ελεύθερη — σόλο έκφραση με ισχίο, χέρια και σώμα.',
-    image: 'photo-1488085061387-422e29b40080',
-    gradient: 'linear-gradient(160deg,#6A3010 0%,#C87030 60%,#3A1808 100%)',
-    description: 'Το Τσιφτετέλι (από το τουρκικό «çiftetelli» = δίχορδο) είναι ο χορός της αισθησιακής έκφρασης — ρυθμικές κινήσεις ισχίου, κυματιστά χέρια, και μια αίσθηση ελευθερίας. Αν και συχνά θεωρείται «bellydance», η ελληνική εκδοχή έχει τη δική της αισθητική: πιο συγκρατημένη, πιο αρχοντική. Χορεύεται σε γλέντια, γάμους, και παραλιακά μπαρ από γυναίκες κυρίως αλλά και άντρες. Δεν χρειάζεσαι τέλεια τεχνική — χρειάζεσαι αυτοπεποίθηση.',
-    steps: [
-      { n:1, foot:'Δ', count:'1', tempo:'βαρύ', move:'Βάρος στο δεξί', detail:'Μεταφέρεις αργά το βάρος στο δεξί πόδι. Το αριστερό γόνατο λυγίζει ελαφρά. Το ισχίο ακολουθεί αυτόματα — δεν «σπρώχνεις» το ισχίο, απλά μεταφέρεις βάρος.' },
-      { n:2, foot:'Δ', count:'2', tempo:'ελαφ.', move:'Κύμα ισχίου δεξιά', detail:'Με το βάρος στο δεξί, το δεξί ισχίο ανεβαίνει ελαφρά. Αυτό είναι το «κύμα» — αργό, ρέον.' },
-      { n:3, foot:'Α', count:'3', tempo:'βαρύ', move:'Βάρος στο αριστερό', detail:'Μεταφέρεις αργά στο αριστερό. Δεξί γόνατο λυγίζει. Ισχίο ακολουθεί.' },
-      { n:4, foot:'Α', count:'4', tempo:'ελαφ.', move:'Κύμα ισχίου αριστερά', detail:'Αριστερό ισχίο ανεβαίνει. Ολόκληρη η κίνηση είναι ένα αδιάκοπο κύμα δεξιά-αριστερά.' },
-      { n:5, foot:'Δ', count:'1', tempo:'βαρύ', move:'Βήμα δεξιά + κύμα', detail:'Μικρό βήμα πλαγίως δεξιά, βάρος στο δεξί, κύμα ισχίου. Συνδυάζεις κίνηση με κύμα.' },
-      { n:6, foot:'ΑΔ', count:'2-3', tempo:'ελαφ.', move:'Κυκλική κίνηση ισχίου', detail:'Το ισχίο κάνει μια ημικυκλική κίνηση (μπρος → δεξιά ή αριστερά). Τα χέρια ανεβαίνουν στα πλάγια.' },
-      { n:7, foot:'Α', count:'4', tempo:'βαρύ', move:'Βήμα αριστερά + κύμα', detail:'Μικρό βήμα αριστερά, κύμα αριστερά. Τα χέρια κατεβαίνουν αργά, δάχτυλα ρέουν.' },
-      { n:8, foot:'ΑΔ', count:'και', tempo:'ελαφ.', move:'Κύκλωμα χεριών', detail:'Τα χέρια κάνουν αργό κύκλο μπρος από το σώμα ή πάνω από το κεφάλι — σαν κύμα θάλασσας.' },
+    id:'tsifteteli',name:'Τσιφτετέλι',region:'Μικρά Ασία · Πανελλήνιος',
+    difficulty:2,rhythm:'4/4',rhythmGroups:[4],
+    rhythmCount:'<strong>ΈΝΑ</strong>-δύο-τρία-τέσσερα',
+    rhythmFeel:'κυματιστό – ρέον',
+    mnemonic:'ΡΈ-ω · σαν · κύ-μα · θα-λάσ-σης',mnemonicHint:'Ρευστό σώμα — ισχίο ακολουθεί βάρος μόνο του',
+    tempo:'Αργό – Ρέον',eighthMs:380,
+    wikiTitle:'Tsifteteli',wikiTitleEl:'Τσιφτετέλι',
+    hold:'Σόλο ή ζευγάρι — χωρίς επαφή, χέρια ελεύθερα',
+    direction:'Ελεύθερη — σόλο έκφραση με ισχίο και χέρια',
+    gradient:'linear-gradient(160deg,#6A3010 0%,#C87030 60%,#3A1808 100%)',
+    description:'Το Τσιφτετέλι (τουρκ. «çiftetelli») είναι ο χορός της αισθησιακής έκφρασης — κυματιστές κινήσεις ισχίου, ρέοντα χέρια. Δεν χρειάζεσαι τέλεια τεχνική — χρειάζεσαι αυτοπεποίθηση.',
+    steps:[
+      {n:1,foot:'Δ',count:'1',tempo:'βαρύ',dir:'→',move:'Βάρος στο δεξί',detail:'Μεταφέρεις αργά το βάρος στο δεξί. Ισχίο ακολουθεί αυτόματα — δεν «σπρώχνεις» το ισχίο.'},
+      {n:2,foot:'Δ',count:'2',tempo:'ελαφ.',dir:'〜',move:'Κύμα ισχίου δεξιά',detail:'Δεξί ισχίο ανεβαίνει ελαφρά. Αργό, ρέον κύμα.'},
+      {n:3,foot:'Α',count:'3',tempo:'βαρύ',dir:'←',move:'Βάρος στο αριστερό',detail:'Μεταφέρεις στο αριστερό. Δεξί γόνατο λυγίζει.'},
+      {n:4,foot:'Α',count:'4',tempo:'ελαφ.',dir:'〜',move:'Κύμα ισχίου αριστερά',detail:'Αριστερό ισχίο ανεβαίνει. Αδιάκοπο κύμα δεξιά-αριστερά.'},
+      {n:5,foot:'Δ',count:'1',tempo:'βαρύ',dir:'→',move:'Βήμα δεξιά + κύμα',detail:'Μικρό βήμα δεξιά, βάρος στο δεξί, κύμα ισχίου.'},
+      {n:6,foot:'ΑΔ',count:'2-3',tempo:'ελαφ.',dir:'↺',move:'Κυκλική κίνηση ισχίου',detail:'Ισχίο κάνει ημικυκλική κίνηση. Χέρια ανεβαίνουν στα πλάγια.'},
+      {n:7,foot:'Α',count:'4',tempo:'βαρύ',dir:'←',move:'Βήμα αριστερά + κύμα',detail:'Μικρό βήμα αριστερά. Χέρια κατεβαίνουν αργά, δάχτυλα ρέουν.'},
+      {n:8,foot:'ΑΔ',count:'και',tempo:'ελαφ.',dir:'↺',move:'Κύκλωμα χεριών',detail:'Χέρια κάνουν αργό κύκλο μπρος ή πάνω από το κεφάλι — σαν κύμα.'},
     ],
-    tips: [
-      'Το ισχίο ακολουθεί το βάρος — όταν μεταφέρεις βάρος δεξιά, το δεξί ισχίο ανεβαίνει μόνο του.',
-      'Τα χέρια κινούνται σαν κύμα: ξεκινά από τον ώμο → αγκώνα → καρπό → δάχτυλα.',
-      'Αργές, ρέουσες κινήσεις — η ομορφιά του Τσιφτετελιού είναι στο «ρέω», όχι στη δύναμη.',
-      'Αυτοπεποίθηση: κοίτα μπρος, χαμόγελο — ακόμα και αν κάνεις λάθος.',
-    ],
-    mistakes: [
-      'Λάθος: «Σπρώχνεις» το ισχίο με μυϊκή προσπάθεια. Σωστό: Μεταφορά βάρους → ισχίο ακολουθεί αυτόματα.',
-      'Λάθος: Σφιχτό σώμα. Σωστό: Όλες οι αρθρώσεις χαλαρές — ρευστότητα.',
-      'Λάθος: Βιαστικές κινήσεις. Σωστό: Αργά, αδιάκοπα κύματα.',
-    ],
+    tips:['Ισχίο ακολουθεί βάρος — μεταφορά βάρους → ισχίο ανεβαίνει μόνο του.','Χέρια: κύμα από ώμο → αγκώνα → καρπό → δάχτυλα.','Αργά, ρέουσα κίνηση — ρέεις, δεν δυναμώνεις.','Αυτοπεποίθηση: κοίτα μπρος, χαμόγελο — ακόμα και αν κάνεις λάθος.'],
+    mistakes:['Λάθος: «Σπρώχνεις» το ισχίο. Σωστό: Μεταφορά βάρους → ισχίο αυτόματα.','Λάθος: Σφιχτό σώμα. Σωστό: Ρευστότητα παντού.','Λάθος: Βιαστικές κινήσεις. Σωστό: Αργά, αδιάκοπα κύματα.'],
   },
 ];
 
-let activeDiff = 0;
-let currentDance = null;
-let currentTab = 'desc';
+// ── STATE ─────────────────────────────────────────
+let activeDiff=0,currentDance=null,currentTab='desc',practiceStep=0;
+let metroActive=false,metroTimeout=null,metroBeat=0,audioCtx=null;
+const $=id=>document.getElementById(id);
+const diffLabel=d=>d===1?'Εύκολος':d===2?'Μέτριος':'Δύσκολος';
+const footCls=f=>f==='Δ'?'fD':f==='Α'?'fA':'fAD';
+const footTxt=f=>f==='Δ'?'Δ':f==='Α'?'Α':'ΑΔ';
+const beatCls=t=>t==='γρ.'?'bq':t==='αργ.'?'bs':'bn';
+const snFC=f=>f==='Δ'?'D':f==='Α'?'A':'AD';
 
-function difficultyLabel(d){return d===1?'Εύκολος':d===2?'Μέτριος':'Δύσκολος'}
-
-function renderCards(){
-  const grid = document.getElementById('grid');
-  const filtered = activeDiff === 0 ? DANCES : DANCES.filter(d => d.difficulty === activeDiff);
-  if(!filtered.length){
-    grid.innerHTML = '<div class="empty"><div style="font-size:40px">🕺</div><p>Δεν βρέθηκαν χοροί.</p></div>';
-    return;
+// ── WIKIPEDIA IMAGES ──────────────────────────────
+async function loadWikiImage(dance){
+  for(const [lang,title] of [['el',dance.wikiTitleEl],['en',dance.wikiTitle]]){
+    if(!title) continue;
+    try{
+      const r=await fetch(`https://${lang}.wikipedia.org/w/api.php?action=query&titles=${encodeURIComponent(title)}&prop=pageimages&format=json&pithumbsize=700&origin=*`);
+      const j=await r.json();
+      const src=Object.values(j.query.pages)[0]?.thumbnail?.source;
+      if(src){const img=$('img-'+dance.id);if(img){img.src=src;img.onload=()=>img.classList.add('loaded');}return;}
+    }catch(e){}
   }
-  grid.innerHTML = filtered.map(d => `
+}
+
+// ── AUDIO ─────────────────────────────────────────
+function getCtx(){if(!audioCtx)audioCtx=new(window.AudioContext||window.webkitAudioContext)();if(audioCtx.state==='suspended')audioCtx.resume();return audioCtx;}
+function playBeat(accent){
+  try{
+    const ctx=getCtx(),osc=ctx.createOscillator(),g=ctx.createGain();
+    osc.connect(g);g.connect(ctx.destination);osc.type='triangle';
+    osc.frequency.value=accent?900:540;
+    const t=ctx.currentTime;
+    g.gain.setValueAtTime(accent?.45:.25,t);g.gain.exponentialRampToValueAtTime(.001,t+(accent?.09:.06));
+    osc.start(t);osc.stop(t+.12);
+  }catch(e){}
+}
+
+// ── METRONOME ─────────────────────────────────────
+function startMetro(){
+  if(!currentDance)return;
+  if(metroActive){stopMetro();return;}
+  metroActive=true;metroBeat=0;
+  const btn=$('metro-btn');if(btn){btn.classList.add('playing');btn.textContent='⏹ Σταμάτα';}
+  tickMetro();
+}
+function stopMetro(){
+  metroActive=false;clearTimeout(metroTimeout);
+  document.querySelectorAll('.mbd').forEach(d=>d.classList.remove('lit'));
+  const btn=$('metro-btn');if(btn){btn.classList.remove('playing');btn.textContent='▶ Άκου τον ρυθμό';}
+  const cd=$('metro-cd');if(cd)cd.textContent='';
+}
+function tickMetro(){
+  if(!metroActive||!currentDance)return;
+  const d=currentDance,groups=d.rhythmGroups,total=groups.reduce((a,b)=>a+b,0);
+  let pos=0,isAccent=false;
+  for(const g of groups){if(metroBeat===pos){isAccent=true;break;}pos+=g;}
+  playBeat(isAccent);
+  document.querySelectorAll('.mbd[data-i]').forEach(dot=>{
+    dot.classList.remove('lit');
+    if(parseInt(dot.dataset.i)===metroBeat)dot.classList.add('lit');
+  });
+  const cd=$('metro-cd');if(cd){
+    let label='',idx=0;
+    outer:for(const g of groups){for(let b=0;b<g;b++){if(idx===metroBeat){label=b===0?'ΈΝΑ':String(b+1);break outer;}idx++;}}
+    cd.textContent=label;
+  }
+  metroBeat=(metroBeat+1)%total;
+  metroTimeout=setTimeout(tickMetro,d.eighthMs);
+}
+function buildDots(dance){
+  let h='',i=0;
+  dance.rhythmGroups.forEach((g,gi)=>{
+    for(let b=0;b<g;b++){h+=`<div class="mbd ${b===0?'acc':'light'}" data-i="${i++}"></div>`;}
+    if(gi<dance.rhythmGroups.length-1)h+=`<div class="mbd sep"></div>`;
+  });
+  return h;
+}
+
+// ── STEP NAVIGATOR ────────────────────────────────
+function renderNav(dance){
+  const s=dance.steps[practiceStep];
+  const dots=dance.steps.map((_,i)=>`<div class="sn-d${i<practiceStep?' done':i===practiceStep?' now':''}"></div>`).join('');
+  return `<div class="step-nav">
+    <div class="sn-label"><span>ΕΞΑΣΚΗΣΗ ΒΗΜΑΤΙΣΜΟΥ</span><div class="sn-dots-row">${dots}</div></div>
+    <div class="sn-main">
+      <div class="sn-foot ${snFC(s.foot)}">${footTxt(s.foot)}</div>
+      <div>
+        <div class="sn-dir">${s.dir||''}</div>
+        <div class="sn-move">${s.move}</div>
+        <div class="sn-beat-row"><span class="beat-chip ${beatCls(s.tempo)}">${s.count}</span><span style="font-size:11px;color:var(--tx3);margin-left:4px">${s.tempo}</span></div>
+        <div class="sn-detail">${s.detail}</div>
+      </div>
+    </div>
+    <div class="sn-btns">
+      <button class="sn-btn sn-prev" onclick="prevStep()" ${practiceStep===0?'disabled':''}>← Πίσω</button>
+      <span class="sn-counter">${practiceStep+1} / ${dance.steps.length}</span>
+      <button class="sn-btn sn-next" onclick="nextStep()" ${practiceStep===dance.steps.length-1?'disabled':''}>Επόμενο →</button>
+    </div>
+  </div>`;
+}
+function prevStep(){if(practiceStep>0){practiceStep--;reSteps();}}
+function nextStep(){if(currentDance&&practiceStep<currentDance.steps.length-1){practiceStep++;reSteps();}}
+function reSteps(){if(currentTab!=='steps'||!currentDance)return;const b=$('sheet-body'),y=b.scrollTop;renderTab();b.scrollTop=y;}
+
+// ── RENDER ────────────────────────────────────────
+function renderCards(){
+  const g=$('grid'),list=activeDiff===0?DANCES:DANCES.filter(d=>d.difficulty===activeDiff);
+  if(!list.length){g.innerHTML='<div style="padding:60px 20px;text-align:center;color:var(--tx3)">Δεν βρέθηκαν χοροί.</div>';return;}
+  g.innerHTML=list.map(d=>`
     <div class="card" onclick="openDetail('${d.id}')">
       <div class="card-img" style="background:${d.gradient}">
-        <img src="https://images.unsplash.com/${d.image}?w=800&q=75&auto=format&fit=crop"
-             onerror="this.style.display='none'" alt="${d.name}" loading="lazy">
-        <div class="card-img-overlay"></div>
-        <div class="card-img-text">
-          <div class="card-name">${d.name}</div>
-          <div class="card-region">📍 ${d.region}</div>
-        </div>
+        <img id="img-${d.id}" src="" alt="${d.name}" onerror="this.style.display='none'">
+        <div class="card-img-ov"></div>
+        <div class="card-img-txt"><div class="card-name">${d.name}</div><div class="card-region">📍 ${d.region}</div></div>
       </div>
       <div class="card-info">
         <div class="card-meta">
-          <span class="badge badge-rhythm">${d.rhythm}</span>
-          <span class="badge badge-diff">${difficultyLabel(d.difficulty)}</span>
-          <div class="difficulty-dots">
-            ${[1,2,3].map(i=>`<div class="dot ${i<=d.difficulty?'on':'off'}"></div>`).join('')}
-          </div>
+          <span class="badge badge-r">${d.rhythm}</span>
+          <span class="badge badge-d">${diffLabel(d.difficulty)}</span>
+          <div class="dots">${[1,2,3].map(i=>`<div class="dot ${i<=d.difficulty?'on':'off'}"></div>`).join('')}</div>
         </div>
         <p class="card-desc">${d.description}</p>
-        <button class="card-btn">
-          Μάθε τα βήματα
-          <svg viewBox="0 0 16 16" fill="currentColor"><path d="M6 3l5 5-5 5"/></svg>
-        </button>
+        <button class="card-btn">Μάθε τα βήματα →</button>
       </div>
-    </div>
-  `).join('');
+    </div>`).join('');
+  list.forEach(d=>loadWikiImage(d));
 }
 
 function openDetail(id){
-  currentDance = DANCES.find(d => d.id === id);
-  if(!currentDance) return;
-  currentTab = 'desc';
-  document.getElementById('sh-name').textContent = currentDance.name;
-  document.getElementById('sh-region').textContent = `${currentDance.region} · ${currentDance.rhythm}`;
-  document.querySelectorAll('.tab').forEach(t => t.classList.toggle('active', t.dataset.tab === 'desc'));
-  renderTabContent();
-  document.getElementById('backdrop').classList.add('open');
-  document.getElementById('sheet').classList.add('open');
-  document.body.style.overflow = 'hidden';
+  currentDance=DANCES.find(d=>d.id===id);if(!currentDance)return;
+  practiceStep=0;currentTab='desc';
+  $('sh-name').textContent=currentDance.name;
+  $('sh-region').textContent=`${currentDance.region} · ${currentDance.rhythm}`;
+  document.querySelectorAll('.tab').forEach(t=>t.classList.toggle('active',t.dataset.tab==='desc'));
+  renderTab();
+  $('backdrop').classList.add('open');$('sheet').classList.add('open');
+  document.body.style.overflow='hidden';
 }
-
 function closeDetail(){
-  document.getElementById('backdrop').classList.remove('open');
-  document.getElementById('sheet').classList.remove('open');
-  document.body.style.overflow = '';
-  setTimeout(() => { currentDance = null; }, 350);
+  stopMetro();
+  $('backdrop').classList.remove('open');$('sheet').classList.remove('open');
+  document.body.style.overflow='';
+  setTimeout(()=>{currentDance=null;},350);
 }
-
 function switchTab(tab){
-  currentTab = tab;
-  document.querySelectorAll('.tab').forEach(t => t.classList.toggle('active', t.dataset.tab === tab));
-  renderTabContent();
-  document.getElementById('sheet-body').scrollTop = 0;
+  if(tab!=='rhythm')stopMetro();
+  currentTab=tab;
+  document.querySelectorAll('.tab').forEach(t=>t.classList.toggle('active',t.dataset.tab===tab));
+  renderTab();$('sheet-body').scrollTop=0;
 }
 
-function footClass(f){ return f==='Δ'?'foot-D':f==='Α'?'foot-A':'foot-AD'; }
-function footLabel(f){ return f==='Δ'?'Δ':f==='Α'?'Α':'ΑΔ'; }
-function beatClass(t){ return t==='γρ.'?'beat-quick':t==='αργ.'?'beat-slow':'beat-neutral'; }
-
-function renderTabContent(){
-  const d = currentDance;
-  if(!d) return;
-  const body = document.getElementById('sheet-body');
-
-  if(currentTab === 'desc'){
-    body.innerHTML = `
-      <div class="desc-section">
-        <h4>Ιστορία & Περιγραφή</h4>
-        <p class="desc-text">${d.description}</p>
-      </div>
-      <div class="desc-section">
-        <h4>Πληροφορίες χορού</h4>
+function renderTab(){
+  const d=currentDance;if(!d)return;
+  const body=$('sheet-body');
+  if(currentTab==='desc'){
+    body.innerHTML=`
+      <div class="sec"><h4>Ιστορία & Περιγραφή</h4><p class="desc-text">${d.description}</p></div>
+      <div class="sec"><h4>Στοιχεία Χορού</h4>
         <div class="meta-grid">
           <div class="meta-item"><label>Περιοχή</label><span>${d.region}</span></div>
           <div class="meta-item"><label>Ρυθμός</label><span>${d.rhythm}</span></div>
           <div class="meta-item"><label>Τέμπο</label><span>${d.tempo}</span></div>
-          <div class="meta-item"><label>Δυσκολία</label><span>${difficultyLabel(d.difficulty)}</span></div>
+          <div class="meta-item"><label>Δυσκολία</label><span>${diffLabel(d.difficulty)}</span></div>
+          <div class="meta-item meta-full"><label>Πιασιά</label><span>${d.hold}</span></div>
+          <div class="meta-item meta-full"><label>Κατεύθυνση</label><span>${d.direction}</span></div>
         </div>
-      </div>
-      <div class="desc-section">
-        <h4>Πιασιά & Κατεύθυνση</h4>
-        <div class="meta-item" style="margin-bottom:8px"><label>Πιασιά</label><span>${d.hold}</span></div>
-        <div class="meta-item"><label>Κατεύθυνση</label><span>${d.direction}</span></div>
-      </div>
-    `;
-  } else if(currentTab === 'steps'){
-    const legend = `<div class="foot-legend">
-      <span class="foot-legend-item"><div class="foot-badge foot-D">Δ</div> Δεξί πόδι</span>
-      <span class="foot-legend-item"><div class="foot-badge foot-A">Α</div> Αριστερό πόδι</span>
-      <span class="foot-legend-item"><div class="foot-badge foot-AD">ΑΔ</div> Αμφότερα</span>
+      </div>`;
+  } else if(currentTab==='steps'){
+    const legend=`<div class="foot-legend">
+      <span class="fl-item"><div class="foot-badge fD" style="width:26px;height:26px;font-size:11px">Δ</div>Δεξί πόδι</span>
+      <span class="fl-item"><div class="foot-badge fA" style="width:26px;height:26px;font-size:11px">Α</div>Αριστερό</span>
+      <span class="fl-item"><div class="foot-badge fAD" style="width:26px;height:26px;font-size:11px">ΑΔ</div>Αμφότερα</span>
     </div>`;
-    const stepsHtml = d.steps.map(s => `
-      <div class="step-item">
+    const intro=`<div class="steps-intro">Αίσθηση: <strong>${d.rhythmFeel}</strong> — Ξεκίνα αργά, μέτρα δυνατά, μετά ανέβασε ταχύτητα.</div>`;
+    const steps=d.steps.map(s=>`
+      <div class="step-item${s.n===d.steps[practiceStep].n?' active':''}">
         <div class="step-n">${s.n}.</div>
-        <div class="foot-badge ${footClass(s.foot)}">${footLabel(s.foot)}</div>
-        <div class="step-content">
+        <div class="foot-badge ${footCls(s.foot)}">${footTxt(s.foot)}</div>
+        <div class="step-dir">${s.dir||''}</div>
+        <div>
           <div class="step-move">${s.move}</div>
           <div class="step-detail">${s.detail}</div>
+          <span class="beat-chip ${beatCls(s.tempo)}">${s.count} · ${s.tempo}</span>
         </div>
-        <div><span class="beat-chip ${beatClass(s.tempo)}">${s.count}</span></div>
-      </div>
-    `).join('');
-    const intro = `<div class="steps-intro">
-      Μέτρα: <strong>${d.rhythmFeel}</strong> — Ξεκίνα αργά, μέτρα δυνατά, μετά ανέβασε ταχύτητα.
-    </div>`;
-    body.innerHTML = legend + intro + stepsHtml;
+      </div>`).join('');
+    body.innerHTML=legend+renderNav(d)+intro+steps;
   } else {
-    // rhythm tab
-    const groups = d.rhythmGroups;
-    const dotsHtml = groups.map((g, gi) => {
-      const dots = Array.from({length:g}, (_, i) => {
-        const isAccent = i === 0;
-        return `<div class="beat-dot ${isAccent?'accent':'light'}"></div>`;
-      }).join('');
-      return dots + (gi < groups.length-1 ? '<div class="beat-separator"></div>' : '');
-    }).join('');
-
-    const tipsHtml = d.tips.map(t=>`<li>${t}</li>`).join('');
-    const mistakesHtml = d.mistakes.map(m=>`<li>${m}</li>`).join('');
-
-    body.innerHTML = `
-      <div class="rhythm-section">
-        <h4>Μέτρημα ρυθμού</h4>
-        <div class="beat-display">
-          <div class="beat-label">${d.rhythm}</div>
-          ${dotsHtml}
+    body.innerHTML=`
+      <div class="sec"><h4>Άκου τον Ρυθμό — Μετρονόμος</h4>
+        <div class="metro-box">
+          <div class="metro-beats">${buildDots(d)}</div>
+          <div class="metro-controls">
+            <button class="metro-btn" id="metro-btn" onclick="startMetro()">▶ Άκου τον ρυθμό</button>
+            <span class="metro-tempo">${Math.round(60000/d.eighthMs/2)} BPM</span>
+            <span class="metro-cd" id="metro-cd"></span>
+          </div>
         </div>
         <div class="beat-count-display">${d.rhythmCount}</div>
       </div>
-      <div class="rhythm-section">
-        <h4>Αίσθηση ρυθμού</h4>
-        <div class="meta-item">
-          <label>Χαρακτήρας</label>
-          <span>${d.rhythmFeel} — Τέμπο: ${d.tempo}</span>
+      <div class="sec"><h4>Μνημονικό — Θυμήσου τον Ρυθμό</h4>
+        <div class="mnemonic-box">
+          <div class="mnemonic-label">Φώναζε αυτό ενώ χορεύεις</div>
+          <div class="mnemonic-phrase">${d.mnemonic}</div>
+          <div class="mnemonic-hint">${d.mnemonicHint}</div>
         </div>
       </div>
-      <div class="rhythm-section">
-        <h4>Συμβουλές επαγγελματία</h4>
-        <ul class="tips-list">${tipsHtml}</ul>
+      <div class="sec"><h4>Συμβουλές Επαγγελματία</h4>
+        <ul class="tips-list">${d.tips.map(t=>`<li>${t}</li>`).join('')}</ul>
       </div>
-      <div class="rhythm-section">
-        <h4>Συχνά λάθη αρχαρίων</h4>
-        <ul class="mistakes-list">${mistakesHtml}</ul>
-      </div>
-    `;
+      <div class="sec"><h4>Συχνά Λάθη Αρχαρίων</h4>
+        <ul class="mistakes-list">${d.mistakes.map(m=>`<li>${m}</li>`).join('')}</ul>
+      </div>`;
   }
 }
 
-// Filters
-document.getElementById('filters').addEventListener('click', e => {
-  const chip = e.target.closest('.chip');
-  if(!chip) return;
-  activeDiff = parseInt(chip.dataset.diff);
-  document.querySelectorAll('.chip').forEach(c => c.classList.toggle('active', c === chip));
+$('filters').addEventListener('click',e=>{
+  const c=e.target.closest('.chip');if(!c)return;
+  activeDiff=parseInt(c.dataset.diff);
+  document.querySelectorAll('.chip').forEach(x=>x.classList.toggle('active',x===c));
   renderCards();
 });
-
-// Close on backdrop click or ESC
-document.addEventListener('keydown', e => { if(e.key === 'Escape') closeDetail(); });
-
-// Touch swipe-down to close sheet
-let touchStartY = 0;
-document.getElementById('sheet').addEventListener('touchstart', e => {
-  touchStartY = e.touches[0].clientY;
-}, {passive:true});
-document.getElementById('sheet').addEventListener('touchend', e => {
-  const dy = e.changedTouches[0].clientY - touchStartY;
-  if(dy > 80 && document.getElementById('sheet-body').scrollTop < 10) closeDetail();
-}, {passive:true});
-
-// Init
+document.addEventListener('keydown',e=>{if(e.key==='Escape')closeDetail();});
+let ty=0;
+$('sheet').addEventListener('touchstart',e=>{ty=e.touches[0].clientY;},{passive:true});
+$('sheet').addEventListener('touchend',e=>{if(e.changedTouches[0].clientY-ty>80&&$('sheet-body').scrollTop<10)closeDetail();},{passive:true});
 renderCards();
 </script>
 </body>
