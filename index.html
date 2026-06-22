@@ -743,6 +743,7 @@ body{font-family:'Inter',-apple-system,sans-serif;background:var(--bg);color:var
         <button class="cpill" onclick="selCat('salads',this)">🥗 Σαλάτες</button>
         <button class="cpill" onclick="selCat('soups',this)">🍲 Σούπες</button>
         <button class="cpill" onclick="selCat('pites',this)">🫓 Πίτες</button>
+        <button class="cpill" onclick="selCat('pizza',this)">🍕 Πίτσες</button>
         <button class="cpill" onclick="selCat('sauces',this)">🫙 Σάλτσες & Ντιπ</button>
         <button class="cpill" onclick="selCat('desserts',this)">🍮 Γλυκά</button>
         <button class="cpill" onclick="selCat('vegan',this)">🌱 Vegan</button>
@@ -1135,7 +1136,8 @@ const TH={
   salads:{bg:'#F0FAFA',pri:'#28888A',lt:'#C4E8E8',bd:'#8AD0D0'},
   soups:{bg:'#FFF9F0',pri:'#9A6010',lt:'#FFE5B4',bd:'#EED088'},
   sauces:{bg:'#FFF5F5',pri:'#B72840',lt:'#FFD6DC',bd:'#F4A0B0'},
-  pites:{bg:'#FFF8F0',pri:'#C85010',lt:'#FFE5CC',bd:'#FFCC80'}
+  pites:{bg:'#FFF8F0',pri:'#C85010',lt:'#FFE5CC',bd:'#FFCC80'},
+  pizza:{bg:'#FFF5EE',pri:'#C8380A',lt:'#FFE0CC',bd:'#FFAA80'}
 };
 const CAT_GRAD={
   pasta:'linear-gradient(145deg,#FFF8E7,#FFE082)',
@@ -1147,10 +1149,11 @@ const CAT_GRAD={
   soups:'linear-gradient(145deg,#FFFDE7,#FFF176)',
   sauces:'linear-gradient(145deg,#FFF0F0,#FFAAB8)',
   pites:'linear-gradient(145deg,#FFF3E0,#FFCC80)',
+  pizza:'linear-gradient(145deg,#FFF0E0,#FFBB80)',
   desserts:'linear-gradient(145deg,#FFF8F0,#FFD6A0)'
 };
 const CAT_CL={pasta:'b-pasta',seafood:'b-seafood',meat:'b-meat',
-  legumes:'b-legumes',vegetables:'b-vegetables',salads:'b-salads',soups:'b-soups',sauces:'b-sauces',pites:'b-pites',desserts:'b-desserts'};
+  legumes:'b-legumes',vegetables:'b-vegetables',salads:'b-salads',soups:'b-soups',sauces:'b-sauces',pites:'b-pites',pizza:'b-pizza',desserts:'b-desserts'};
 // Meal priority: 1=everyday affordable, 2=regular weekday, 3=weekend, 4=special occasion
 const MEAL_PRIORITY={
   fasolada:1,fakes:1,aglio:1,spanakoryzo:1,keftedes:1,kima:1,briami:1,revythada:1,
@@ -3018,6 +3021,19 @@ const MEALS={
       'Σερβίρισμα: Ανακατεύεις όλα μαζί ή τα στρώνεις σε πιατέλα. Περιχύνεις με ελαιόλαδο και λεμόνι. Αλάτι, πιπέρι, φρέσκα μυρωδικά. Σέρβιρε αμέσως.'
     ],
     wine:'Λευκό Sauvignon Blanc.',beer:'Wheat beer.',plate:'Σε πιατέλα με φρέσκο βασιλικό.'},
+
+  pizza_margarita:{en:'Margherita Pizza',n:'Πίτσα Μαργαρίτα',e:'🍕',cats:['pizza'],noDaily:true,cal:820,time:60,srv:2,pop:1,cost:'~6€',cps:'~3€',
+  i:['Αλεύρι για πίτσα 300γρ','Νερό χλιαρό 180ml','Μαγιά ξηρή 7γρ','Ελαιόλαδο 2κσ','Αλάτι 1κγ','Σάλτσα ντομάτας 150ml','Μοτσαρέλα 200γρ','Βασιλικός φρέσκος'],
+  s:['Διαλύεις τη μαγιά στο χλιαρό νερό και αφήνεις 5 λεπτά να αφρίσει.','Ανακατεύεις αλεύρι, αλάτι, ελαιόλαδο και το νερό με τη μαγιά. Ζυμώνεις 8-10 λεπτά.','Αφήνεις τη ζύμη να φουσκώσει 1 ώρα σκεπασμένη.','Ανοίγεις τη ζύμη σε στρογγυλό φύλλο. Απλώνεις σάλτσα ντομάτας.','Βάζεις τη μοτσαρέλα σε κομμάτια.','Ψήνεις στους 250°C για 12-15 λεπτά μέχρι να ροδίσει.','Βγάζεις από το φούρνο, βάζεις φρέσκο βασιλικό και σερβίρεις αμέσως.']},
+  pizza_prosciutto:{en:'Prosciutto & Mushroom Pizza',n:'Πίτσα Πρεσούτο-Μανιτάρια',e:'🍕',cats:['pizza'],noDaily:true,cal:920,time:55,srv:2,pop:2,cost:'~10€',cps:'~5€',
+  i:['Ζύμη πίτσας 1 μερίδα','Σάλτσα ντομάτας 150ml','Μοτσαρέλα 200γρ','Πρεσούτο 80γρ','Μανιτάρια 120γρ','Ελιές 50γρ','Ρίγανη'],
+  s:['Ανοίγεις τη ζύμη σε φύλλο και απλώνεις σάλτσα ντομάτας.','Βάζεις μοτσαρέλα, φέτες μανιταριού και ελιές.','Ψήνεις στους 250°C για 12 λεπτά.','Βγάζεις από το φούρνο και βάζεις το πρεσούτο από πάνω.','Πασπαλίζεις με ρίγανη και σερβίρεις.']},
+  pizza_4formaggi:{en:'Four Cheese Pizza',n:'Πίτσα 4 Τυριά',e:'🍕',cats:['pizza'],noDaily:true,cal:980,time:55,srv:2,pop:2,cost:'~11€',cps:'~5.50€',
+  i:['Ζύμη πίτσας 1 μερίδα','Σάλτσα ντομάτας 100ml','Μοτσαρέλα 120γρ','Γκοργκοντζόλα 60γρ','Παρμεζάνα τριμμένη 40γρ','Ταλέτζιο ή γκράνα 60γρ','Βασιλικός'],
+  s:['Ανοίγεις τη ζύμη και απλώνεις λίγη σάλτσα.','Μοιράζεις ομοιόμορφα τα 4 τυριά.','Ψήνεις στους 250°C για 12-14 λεπτά μέχρι τα τυριά να λιώσουν και να ροδίσουν.','Γαρνίρεις με βασιλικό και σερβίρεις.']},
+  pizza_verdure:{en:'Vegetable Pizza',n:'Πίτσα Λαχανικών',e:'🍕',cats:['pizza'],noDaily:true,cal:750,time:55,srv:2,pop:1,cost:'~8€',cps:'~4€',
+  i:['Ζύμη πίτσας 1 μερίδα','Σάλτσα ντομάτας 150ml','Μοτσαρέλα 150γρ','Πιπεριές χρωματιστές 1','Κολοκυθάκι 1 μικρό','Μελιτζάνα 1/2','Ελιές 40γρ','Ρίγανη','Ελαιόλαδο'],
+  s:['Κόβεις τα λαχανικά σε λεπτές φέτες. Ψήνεις ελαφρά σε τηγάνι με λίγο λάδι.','Ανοίγεις τη ζύμη και απλώνεις σάλτσα ντομάτας.','Βάζεις μοτσαρέλα και τα λαχανικά.','Πασπαλίζεις με ρίγανη και λίγο ελαιόλαδο.','Ψήνεις στους 250°C για 13-15 λεπτά.','Σερβίρεις ζεστή.']}
 };
 
 
@@ -3172,6 +3188,10 @@ const MEAL_IMAGES={
   pilafi_laxanikon:'images/pilafi_laxanikon.jpg',
   kimadopita:'images/kimadopita.jpg',
   salata_avokanto:'images/salata_avokanto.jpg',
+  pizza_margarita:'images/pizza_margarita.jpg',
+  pizza_prosciutto:'images/pizza_prosciutto.jpg',
+  pizza_4formaggi:'images/pizza_4formaggi.jpg',
+  pizza_verdure:'images/pizza_verdure.jpg',
 };
 
 const SWEET_IMAGES={
