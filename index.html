@@ -3408,8 +3408,18 @@ function renderMeals(cat){
       return (pa-pb)||tie;
     });
     const old=pool.filter(m=>rids.includes(m.id)&&!_cookedRecently(m.id));
-    // Salads are sides — never feature them first
-    const allShow=[...fresh,...old].slice(0,12);
+    // Διανομή ποικιλίας: max 2 ανά κατηγορία, ώστε κάθε μέρα να υπάρχει mix
+    const _catCount={};
+    const varied=[];
+    const leftover=[];
+    for(const m of [...fresh,...old]){
+      const c=m.cats[0];
+      if(!c||c==='salads'){leftover.push(m);continue;}
+      if((_catCount[c]||0)<2){_catCount[c]=(_catCount[c]||0)+1;varied.push(m);}
+      else leftover.push(m);
+      if(varied.length>=12)break;
+    }
+    const allShow=[...varied,...leftover].slice(0,12);
     const nonSalads=allShow.filter(m=>!m.cats.includes('salads'));
     const salads=allShow.filter(m=>m.cats.includes('salads'));
     show=[...nonSalads,...salads];
