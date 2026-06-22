@@ -554,27 +554,6 @@ body{font-family:'Inter',-apple-system,sans-serif;background:var(--bg);color:var
 .mpicker-item-prep{font-size:11px;color:#D97706;font-weight:600;margin-top:2px;display:flex;align-items:center;gap:3px;}
 .b-pites{background:#FFF3E0;color:#C85010;border:1px solid #FFCC80;}
 [data-theme="dark"] .b-pites{background:#2A1800;color:#FFCC80;}
-/* ── ONBOARDING ── */
-.onboard{position:fixed;inset:0;z-index:4000;background:#fff;display:flex;flex-direction:column;}
-[data-theme="dark"] .onboard{background:#1A1814;}
-.onboard.hidden{display:none;}
-.onboard-slides{flex:1;display:flex;overflow:hidden;position:relative;}
-.onboard-slide{min-width:100%;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:32px 28px;text-align:center;transition:transform .35s ease;}
-.onboard-art{font-size:90px;margin-bottom:20px;line-height:1;}
-.onboard-art-logo{width:110px;height:110px;border-radius:26px;overflow:hidden;margin:0 auto 20px;box-shadow:0 8px 32px rgba(0,0,0,.18);}
-.onboard-art-logo img{width:100%;height:100%;display:block;}
-.onboard-h{font-size:26px;font-weight:800;color:var(--txt);margin-bottom:10px;line-height:1.2;}
-.onboard-s{font-size:15px;color:var(--t3);line-height:1.6;max-width:300px;}
-.onboard-feats{margin-top:20px;display:flex;flex-direction:column;gap:10px;width:100%;max-width:320px;}
-.onboard-feat{display:flex;align-items:center;gap:12px;background:var(--lt);border-radius:12px;padding:10px 14px;text-align:left;}
-.onboard-feat-ico{font-size:22px;}
-.onboard-feat-txt{font-size:13px;font-weight:600;color:var(--txt);}
-.onboard-dots{display:flex;gap:6px;justify-content:center;padding:16px 0 8px;}
-.onboard-dot{width:8px;height:8px;border-radius:50%;background:var(--bd);transition:all .3s;}
-.onboard-dot.on{width:22px;border-radius:4px;background:var(--pri);}
-.onboard-footer{padding:16px 24px calc(env(safe-area-inset-bottom,0px) + 16px);display:flex;flex-direction:column;gap:10px;}
-.onboard-next{padding:15px;background:var(--pri);color:#fff;border:none;border-radius:14px;font-size:16px;font-weight:800;cursor:pointer;width:100%;}
-.onboard-skip{background:transparent;border:none;color:var(--t3);font-size:13px;cursor:pointer;padding:4px;}
 /* ── PROFILE SHEET ── */
 .prof-sheet{display:none;position:fixed;inset:0;z-index:1800;background:rgba(0,0,0,.5);align-items:flex-end;justify-content:center;}
 .prof-sheet.show{display:flex;}
@@ -668,27 +647,6 @@ body{font-family:'Inter',-apple-system,sans-serif;background:var(--bg);color:var
 <body>
 
 <!-- ONBOARDING -->
-<div class="onboard hidden" id="onboard">
-  <div class="onboard-slides" id="onboard-slides">
-    <div class="onboard-slide">
-      <div class="onboard-art-logo"><img src="/icon-192.png" alt="FoodDaily"></div>
-      <div class="onboard-h">Καλωσόρισες στο FoodDaily!</div>
-      <div class="onboard-s">Οι καλύτερες μεσογειακές συνταγές — κάθε μέρα μια νέα πρόταση για το τραπέζι σου.</div>
-      <div class="onboard-feats">
-        <div class="onboard-feat"><span class="onboard-feat-ico">☀️</span><span class="onboard-feat-txt">Καθημερινές προτάσεις βάσει εποχής</span></div>
-        <div class="onboard-feat"><span class="onboard-feat-ico">⚡</span><span class="onboard-feat-txt">Γρήγορες ιδέες με υλικά που έχεις</span></div>
-        <div class="onboard-feat"><span class="onboard-feat-ico">⏱️</span><span class="onboard-feat-txt">Timer ανά βήμα & αυτόματη ζύγιση</span></div>
-      </div>
-    </div>
-  </div>
-  <div class="onboard-dots" id="onboard-dots">
-    <div class="onboard-dot on"></div>
-  </div>
-  <div class="onboard-footer">
-    <button class="onboard-next" id="onboard-next" onclick="onboardNext()">Ξεκινάμε! 🍽️</button>
-    <button class="onboard-skip" onclick="onboardFinish()">Παράλειψη</button>
-  </div>
-</div>
 
 <div class="hero-hdr">
   <div class="hero-hdr-img"></div>
@@ -1098,6 +1056,19 @@ body{font-family:'Inter',-apple-system,sans-serif;background:var(--bg);color:var
     <div class="nmod-btns">
       <button class="nmod-save" onclick="saveNotif()">Αποθήκευση</button>
       <button class="nmod-cls" onclick="closeNotif()">Άκυρο</button>
+    </div>
+    <div style="font-size:12px;font-weight:600;color:var(--t3);letter-spacing:.06em;text-transform:uppercase;padding:18px 0 4px">ℹ️ Σχετικά με την εφαρμογή</div>
+    <div style="background:var(--lt);border-radius:14px;padding:14px 16px;font-size:13.5px;color:var(--tx);line-height:1.6;">
+      <div style="font-weight:800;font-size:15px;margin-bottom:8px;">🍽️ FoodDaily</div>
+      <p style="margin:0 0 8px">Οι καλύτερες μεσογειακές συνταγές — κάθε μέρα μια νέα πρόταση για το τραπέζι σου.</p>
+      <div style="display:flex;flex-direction:column;gap:6px;margin-top:6px;">
+        <div>☀️ <b>Καθημερινές προτάσεις</b> βάσει εποχής & προτιμήσεών σου</div>
+        <div>⏱️ <b>Timer βήματος</b> — χτυπά όταν τελειώσει ο χρόνος</div>
+        <div>🛒 <b>Λίστα αγορών</b> — αντιγράψτη με ένα πάτημα</div>
+        <div>🍳 <b>Cook Mode</b> — βήμα-βήμα οδηγίες ενώ μαγειρεύεις</div>
+        <div>🔔 <b>Υπενθύμιση</b> — στέλνει πρόταση συνταγής κάθε μέρα</div>
+        <div>❤️ <b>Αγαπημένα</b> — αποθήκευσε τις συνταγές σου</div>
+      </div>
     </div>
   </div>
 </div>
@@ -5053,38 +5024,6 @@ function copyShoppingList(){
 
 // ── ONBOARDING ─────────────────────────────────────────────────
 let _obSlide=0;
-const OB_SLIDES=1;
-function _obCookieSet(){document.cookie='fd_ob=1;max-age=31536000;path=/;SameSite=Lax';}
-function _obCookieGet(){return document.cookie.split(';').some(c=>c.trim().startsWith('fd_ob='));}
-async function initOnboarding(){
-  if(localStorage.getItem('fd_onboard_done')||_obCookieGet())return;
-  if('caches' in window){
-    try{
-      const c=await caches.open('fd-prefs');
-      if(await c.match('/fd-onboard-done')){
-        localStorage.setItem('fd_onboard_done','1');
-        _obCookieSet();
-        return;
-      }
-    }catch(e){}
-  }
-  document.getElementById('onboard').classList.remove('hidden');
-  document.body.style.overflow='hidden';
-}
-function onboardNext(){onboardFinish();}
-function onboardFinish(){
-  localStorage.setItem('fd_onboard_done','1');
-  _obCookieSet();
-  if('caches' in window){
-    caches.open('fd-prefs').then(c=>c.put('/fd-onboard-done',new Response('1',{headers:{'Content-Type':'text/plain'}})));
-  }
-  startTrial(); // start trial when onboarding completes
-  document.getElementById('onboard').classList.add('hidden');
-  document.body.style.overflow='';
-  renderTrialBanner();
-}
-
-
 // ── PROFILE & DISLIKES ─────────────────────────────────────────
 const DISLIKE_OPTS=[
   {id:'meat',ico:'🥩',lbl:'Κρεατικά'},
@@ -5266,8 +5205,6 @@ function dismissTonightBanner(){
   const dailyPool=Object.keys(MEALS).filter(id=>!excl2.includes(id)&&!MEALS[id]?.noDaily&&!MEALS[id]?.quickOnly);
   const dailyCount=Math.min(dailyPool.length,6);
   if(sl)sl.textContent=`🍽️ ${dailyCount} προτάσεις σήμερα · ${mealCount}+ συνταγές`;
-  // Onboarding for new users
-  initOnboarding();
   // Premium: start trial on first launch, render banner
   startTrial();
   renderTrialBanner();
