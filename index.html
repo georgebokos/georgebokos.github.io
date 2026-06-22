@@ -3078,7 +3078,7 @@ const MEAL_IMAGES={
   kreatopita:'images/kreatopita.png',
   hortopita:'images/hortopita.png',
   kolokythopita:'images/kolokythopita.png',
-  prasopita:'images/prasopita.png',
+  prasopita:'images/prasopita.jpg',
   moussaka:'images/moussaka.png',
   tartaFragola:'images/tarta_fraoulas.png',
   karbonara:'images/karbonara.png',
@@ -5349,7 +5349,7 @@ function dismissTonightBanner(){
   const mealCount=Object.keys(MEALS).length;
   const excl2=['anginaresPolita','tartaFragola','halvas','lagana','eliestoursi','salata_rodi'];
   const dailyPool=Object.keys(MEALS).filter(id=>!excl2.includes(id)&&!MEALS[id]?.noDaily&&!MEALS[id]?.quickOnly);
-  const dailyCount=Math.min(dailyPool.length,6);
+  const dailyCount=Math.min(dailyPool.length,12);
   if(sl)sl.textContent=`🍽️ ${dailyCount} προτάσεις σήμερα · ${mealCount}+ συνταγές`;
   // Premium: start trial on first launch, render banner
   startTrial();
