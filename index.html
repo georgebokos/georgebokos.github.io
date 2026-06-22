@@ -4198,7 +4198,7 @@ async function submitUserRecipe(){
   // Primary: Web Share API — passes Unicode directly, attaches photo if present
   if(navigator.share){
     try{
-      const shareData={title:subject,text:`Αποστολή σε: g.bokos1984@gmail.com\n\n${body}`};
+      const shareData={title:subject,text:`Αποστολή σε: fooddaily.app@gmail.com\n\n${body}`};
       if(_urPhoto&&navigator.canShare&&navigator.canShare({files:[_urPhoto]})){
         shareData.files=[_urPhoto];
       }
@@ -4211,14 +4211,14 @@ async function submitUserRecipe(){
   }
 
   // Fallback: copy to clipboard (avoids mailto encoding issues in Yahoo/other clients)
-  const fullText=`Προς: g.bokos1984@gmail.com\nΘέμα: ${subject}\n\n${body}`;
+  const fullText=`Προς: fooddaily.app@gmail.com\nΘέμα: ${subject}\n\n${body}`;
   try{
     await navigator.clipboard.writeText(fullText);
     clearForm();closeUrform();
     showToast('📋 Αντιγράφηκε! Άνοιξε το email σου και κόλλα το κείμενο');
   }catch(e){
     // Last resort: mailto
-    window.location.href=`mailto:g.bokos1984@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
+    window.location.href=`mailto:fooddaily.app@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
     clearForm();closeUrform();showToast('📤 Ανοίγει το email σου...');
   }
 }
