@@ -520,6 +520,9 @@ body{font-family:'Inter',-apple-system,sans-serif;background:var(--bg);color:var
 .wplan-head{display:flex;align-items:center;justify-content:space-between;padding:16px 18px 10px;border-bottom:1px solid var(--bd);}
 .wplan-title{font-size:17px;font-weight:800;color:var(--txt);display:flex;align-items:center;gap:7px;}
 .wplan-close{background:var(--lt);border:none;border-radius:50%;width:30px;height:30px;font-size:15px;cursor:pointer;color:var(--t3);display:flex;align-items:center;justify-content:center;}
+.wplan-rand-btn{background:var(--pri);color:#fff;border:none;border-radius:20px;padding:6px 14px;font-size:13px;font-weight:700;cursor:pointer;letter-spacing:.01em;}
+.wplan-rand-btn:active{opacity:.8;}
+.wplan-day-shuffle{background:transparent;border:none;color:var(--t3);font-size:16px;cursor:pointer;padding:4px;margin-left:2px;}
 .wplan-sub{font-size:12px;color:var(--t3);padding:6px 18px 10px;}
 .wplan-day{display:flex;align-items:center;gap:10px;padding:11px 18px;border-bottom:1px solid var(--bd);cursor:pointer;-webkit-tap-highlight-color:transparent;transition:background .15s;}
 .wplan-day:active{background:var(--lt);}
@@ -991,7 +994,10 @@ body{font-family:'Inter',-apple-system,sans-serif;background:var(--bg);color:var
   <div class="wplan-inner">
     <div class="wplan-head">
       <div class="wplan-title">📅 Εβδομαδιαίο Πρόγραμμα</div>
-      <button class="wplan-close" onclick="closeWeekPlan()">✕</button>
+      <div style="display:flex;gap:8px;align-items:center;">
+        <button class="wplan-rand-btn" onclick="randomizeWeekPlan()" title="Τυχαία επιλογή">🎲 Τυχαία</button>
+        <button class="wplan-close" onclick="closeWeekPlan()">✕</button>
+      </div>
     </div>
     <div class="wplan-sub">Επίλεξε φαγητό για κάθε μέρα — θα σου στέλνουμε έξυπνες υπενθυμίσεις για προετοιμασία!</div>
     <div id="wplan-days"></div>
@@ -4273,8 +4279,10 @@ function renderWeekPlanDays(){
           <span class="wplan-day-meal-ico">${m.e}</span>
           <div><div class="wplan-day-meal-txt">${m.n}</div>${prep?`<div class="wplan-day-meal-prep">${prep.ico} ${prep.msg.split('—')[0].trim()}</div>`:''}</div>
         </div>
+        <button class="wplan-day-shuffle" onclick="event.stopPropagation();randomizeDayMeal('${dk}');renderWeekPlanDays();" title="Αλλαγή">🔀</button>
         <button class="wplan-day-clr" onclick="event.stopPropagation();setMealForDay('${dk}',null);renderWeekPlanDays();" title="Αφαίρεση">✕</button>`
-      :`<span class="wplan-day-empty">Δεν έχει επιλεγεί</span><button class="wplan-day-add" onclick="event.stopPropagation();openMealPicker('${dk}','${dayName} ${dateTxt}')">+ Επίλεξε</button>`;
+      :`<span class="wplan-day-empty">Δεν έχει επιλεγεί</span><button class="wplan-day-add" onclick="event.stopPropagation();openMealPicker('${dk}','${dayName} ${dateTxt}')">+ Επίλεξε</button>
+        <button class="wplan-day-shuffle" onclick="event.stopPropagation();randomizeDayMeal('${dk}');renderWeekPlanDays();" title="Τυχαία επιλογή">🎲</button>`;
     return `<div class="wplan-day${isToday?' today':''}" onclick="openMealPicker('${dk}','${dayName} ${dateTxt}')">
       <div class="wplan-day-lbl"><div class="wplan-day-name">${dayName}${todayBadge}</div><div class="wplan-day-date">${dateTxt}</div></div>
       ${mealHtml}
@@ -4319,6 +4327,29 @@ function filterMealPicker(q){
 function selectMealForDay(mealId){
   setMealForDay(_pickerDateKey,mealId);
   closeMealPicker();
+  renderWeekPlanDays();
+}
+function _randomMealPool(){
+  return Object.entries(MEALS)
+    .filter(([,m])=>!m.quickOnly&&!m.noDaily!==false)
+    .filter(([,m])=>!m.quickOnly)
+    .map(([id])=>id);
+}
+function randomizeDayMeal(dk){
+  const pool=_randomMealPool();
+  const plan=getWeekPlan();
+  // avoid picking the same meal already assigned to another day
+  const used=new Set(Object.values(plan).filter(Boolean));
+  const fresh=pool.filter(id=>!used.has(id));
+  const src=fresh.length>0?fresh:pool;
+  const id=src[Math.floor(Math.random()*src.length)];
+  setMealForDay(dk,id);
+}
+function randomizeWeekPlan(){
+  const pool=_randomMealPool();
+  const days=getWeekDates().map(d=>dateKey(d));
+  const shuffled=[...pool].sort(()=>Math.random()-.5);
+  days.forEach((dk,i)=>setMealForDay(dk,shuffled[i%shuffled.length]));
   renderWeekPlanDays();
 }
 
