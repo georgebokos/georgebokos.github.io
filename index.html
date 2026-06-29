@@ -405,6 +405,11 @@ body{font-family:'Inter',-apple-system,sans-serif;background:var(--bg);color:var
 #srv-val{font-weight:700;font-size:15px;min-width:22px;text-align:center;}
 .scale-badge{position:absolute;top:4px;right:4px;background:var(--pri);color:#fff;border-radius:12px;font-size:10px;font-weight:700;padding:2px 6px;z-index:2;}
 .fav-cat-hdr{grid-column:1/-1;font-size:13px;font-weight:700;color:var(--pri);padding:10px 2px 4px;border-bottom:1.5px solid var(--bd);margin-top:6px;letter-spacing:.3px;}
+.browse-cat-hdr{grid-column:1/-1;font-size:15px;font-weight:800;color:var(--pri);padding:14px 2px 6px;border-bottom:1.5px solid var(--bd);margin-top:8px;letter-spacing:.2px;}
+.browse-cat-hdr:first-child{margin-top:0;}
+.browse-cat-cnt{font-size:12px;font-weight:600;color:var(--t3);}
+.cpill-browse{background:var(--pri);color:#fff;border-color:var(--pri);}
+.cpill-browse.on{background:var(--pri);color:#fff;}
 .fav-cat-hdr:first-child{margin-top:0;}
 .b-sweets{background:#FFF0C4;color:#9A6010;border:1px solid #EDD888;}
 [data-theme="dark"] .b-sweets{background:#2A220A;color:#EDD888;}
@@ -744,6 +749,7 @@ body{font-family:'Inter',-apple-system,sans-serif;background:var(--bg);color:var
     <div class="cat-row-wrap">
       <div class="cat-row" id="cat-row">
         <button class="cpill on" id="cpill-all" onclick="selCat('all',this)">☀️ Σημερινές</button>
+        <button class="cpill cpill-browse" id="cpill-browse" onclick="selCat('browse',this)">📚 Όλες</button>
         <button class="cpill" id="cpill-quick" onclick="selCat('quick',this)">⚡ Γρήγορες ιδέες</button>
         <button class="cpill" onclick="selCat('pasta',this)">🍝 Ζυμαρικά</button>
         <button class="cpill" onclick="selCat('seafood',this)">🐟 Θαλασσινά</button>
@@ -3804,6 +3810,55 @@ function renderMeals(cat){
         <div class="mtop" style="background:linear-gradient(145deg,#FFF8E7,#FFE082)"><div class="memoji">${s.e}</div><div class="mtop-grad"></div><div class="mtop-badge"><span class="badge b-sweets">Γλυκό</span></div></div>
         <div class="mbtm"><div class="mname-row"><div class="mname">${s.n}</div><button class="fav-btn-sm" data-id="${s._fid}" onclick="toggleFav('${s._fid}',event)">❤️</button></div>
         <div class="mmeta">🔥 ${s.cal} θερμ./μερ. &nbsp;🍽 ${s.srv} μερ.</div></div></div>`).join('');
+    }
+    grid.innerHTML=html;
+    return;
+  }
+
+  if(cat==='browse'){
+    // Clear featured card — full catalog view
+    const fwB=document.getElementById('featured-wrap');if(fwB)fwB.innerHTML='';
+    const rwB=document.getElementById('remind-wrap');if(rwB)rwB.innerHTML='';
+    const CATLBLS={pasta:'🍝 Ζυμαρικά',seafood:'🐟 Θαλασσινά',meat:'🥩 Κρεατικά',
+      legumes:'🫘 Όσπρια',vegetables:'🥦 Λαχανικά',salads:'🥗 Σαλάτες',soups:'🍲 Σούπες',
+      sauces:'🫙 Σάλτσες & Ντιπ',pites:'🫓 Πίτες',pizza:'🍕 Πίτσες',desserts:'🍮 Γλυκά'};
+    const ORDER=['pasta','seafood','meat','legumes','vegetables','salads','soups','pites','pizza','sauces','desserts'];
+    const byCat={};
+    Object.entries(MEALS).forEach(([id,m])=>{
+      if(excl.includes(id))return;
+      const c=m.cats[0];
+      (byCat[c]=byCat[c]||[]).push({...m,id});
+    });
+    const todayPlanB=getTodayPlan();
+    let html='';
+    const cats=[...ORDER.filter(c=>byCat[c]),...Object.keys(byCat).filter(c=>!ORDER.includes(c))];
+    for(const c of cats){
+      const meals=byCat[c].sort((a,b)=>mealName(a).localeCompare(mealName(b),'el'));
+      html+=`<div class="browse-cat-hdr">${CATLBLS[c]||catLabel(c)} <span class="browse-cat-cnt">(${meals.length})</span></div>`;
+      html+=meals.map(m=>{
+        const mc=m.cats[0];
+        const bg=CAT_GRAD[mc]||CAT_GRAD.legumes;
+        const cl=CAT_CL[mc]||'b-legumes';
+        const fav=isFav(m.id);
+        const planStatus=todayPlanB[m.id];
+        const actHtml=planStatus==='plan'
+          ?`<span class="thumb-planned">✓ Θα το φτιάξω!</span>`
+          :`<button class="thumb-up" onclick="thumbUp('${m.id}',event)">👍 Θα το φτιάξω!</button><button class="thumb-dn" onclick="thumbDown('${m.id}',event)">👎</button>`;
+        return `<div class="mcard" data-mid="${m.id}" onclick="openR('${m.id}')">
+          <div class="mtop" style="background:${bg}">
+            <img id="mi-${m.id}" alt="${m.n}" src="${MEAL_IMAGES[m.id]||''}" onload="this.classList.add('loaded');var e=document.getElementById('me-${m.id}');if(e)e.style.opacity=0" onerror="this.style.display='none'">
+            <div class="memoji" id="me-${m.id}">${m.e}</div>
+            <div class="mtop-grad"></div>
+            <div class="mtop-badge"><span class="badge ${cl}">${catLabel(mc)}</span></div>
+            ${m.vegan?'<div class="mc-vegan">🌱 Vegan</div>':''}
+          </div>
+          <div class="mbtm">
+            <div class="mname-row"><div class="mname">${mealName(m)}</div><button class="fav-btn-sm" data-id="${m.id}" onclick="toggleFav('${m.id}',event)">${fav?'❤️':'🤍'}</button></div>
+            <div class="mmeta">⏱ ${m.time}' &nbsp;🔥 ${m.cal} &nbsp;💰 ${m.cps||'~2€'}${t('per_srv')}</div>
+            <div class="card-actions" id="ca-${m.id}">${actHtml}</div>
+          </div>
+        </div>`;
+      }).join('');
     }
     grid.innerHTML=html;
     return;

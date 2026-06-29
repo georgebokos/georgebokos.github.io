@@ -1,6 +1,6 @@
 // FoodDaily Service Worker v3.5
-const VERSION = '2026-06-23-07';
-const CACHE = `fooddaily-2026-06-23-07`;
+const VERSION = '2026-06-23-08';
+const CACHE = `fooddaily-2026-06-23-08`;
 const ASSETS = [
   '/',
   '/index.html',
