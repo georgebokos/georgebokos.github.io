@@ -408,8 +408,21 @@ body{font-family:'Inter',-apple-system,sans-serif;background:var(--bg);color:var
 .browse-cat-hdr{grid-column:1/-1;font-size:15px;font-weight:800;color:var(--pri);padding:14px 2px 6px;border-bottom:1.5px solid var(--bd);margin-top:8px;letter-spacing:.2px;}
 .browse-cat-hdr:first-child{margin-top:0;}
 .browse-cat-cnt{font-size:12px;font-weight:600;color:var(--t3);}
-.cpill-browse{background:var(--pri);color:#fff;border-color:var(--pri);}
-.cpill-browse.on{background:var(--pri);color:#fff;}
+/* ── Νέο μενού κατηγοριών (θεματικές ομάδες) ── */
+.cat-menu{padding:.25rem 1rem .5rem;}
+.cat-modes{display:flex;gap:6px;background:var(--lt);padding:4px;border-radius:16px;margin-bottom:14px;}
+.cmode{flex:1;justify-content:center;border:none!important;background:transparent!important;border-radius:12px!important;margin:0!important;padding:9px 6px!important;font-weight:600!important;color:var(--t2)!important;}
+.cmode.on{background:var(--pri)!important;color:#fff!important;box-shadow:0 2px 8px rgba(200,80,26,.3);}
+.cat-grp-lbl{font-size:11px;font-weight:700;color:var(--t3);letter-spacing:.08em;text-transform:uppercase;margin:4px 2px 8px;}
+.cat-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;margin-bottom:14px;}
+.ccat{justify-content:center;margin:0!important;padding:11px 6px!important;border-radius:14px!important;font-weight:600!important;font-size:13px;}
+.cat-diet{display:grid;grid-template-columns:repeat(2,1fr);gap:8px;}
+.cdiet{justify-content:center;margin:0!important;padding:9px 6px!important;border-radius:12px!important;border-style:dashed!important;background:var(--em)!important;color:var(--t2)!important;font-size:12px;font-weight:600!important;}
+.cdiet.on{background:var(--pri)!important;color:#fff!important;border-style:solid!important;border-color:var(--pri)!important;}
+.cfav{width:100%;justify-content:center;margin:8px 0 0!important;padding:11px!important;border-radius:14px!important;border:1.5px solid #E8B4B4!important;background:#FFF0F0!important;color:#C0392B!important;font-weight:700!important;}
+.cfav.on{background:#C0392B!important;color:#fff!important;border-color:#C0392B!important;}
+[data-theme="dark"] .cdiet{background:#231F1A!important;}
+[data-theme="dark"] .cfav{background:#2A1A18!important;border-color:#5A2A2A!important;color:#E89292!important;}
 .fav-cat-hdr:first-child{margin-top:0;}
 .b-sweets{background:#FFF0C4;color:#9A6010;border:1px solid #EDD888;}
 [data-theme="dark"] .b-sweets{background:#2A220A;color:#EDD888;}
@@ -746,27 +759,36 @@ body{font-family:'Inter',-apple-system,sans-serif;background:var(--bg);color:var
   <div id="featured-wrap"></div>
   <!-- Category pills — below featured -->
   <div class="sec-head">
-    <div class="cat-row-wrap">
-      <div class="cat-row" id="cat-row">
-        <button class="cpill on" id="cpill-all" onclick="selCat('all',this)">☀️ Σημερινές</button>
-        <button class="cpill cpill-browse" id="cpill-browse" onclick="selCat('browse',this)">📚 Όλες</button>
-        <button class="cpill" id="cpill-quick" onclick="selCat('quick',this)">⚡ Γρήγορες ιδέες</button>
-        <button class="cpill" onclick="selCat('pasta',this)">🍝 Ζυμαρικά</button>
-        <button class="cpill" onclick="selCat('seafood',this)">🐟 Θαλασσινά</button>
-        <button class="cpill" onclick="selCat('meat',this)">🥩 Κρεατικά</button>
-        <button class="cpill" onclick="selCat('legumes',this)">🫘 Όσπρια</button>
-        <button class="cpill" onclick="selCat('vegetables',this)">🥦 Λαχανικά</button>
-        <button class="cpill" onclick="selCat('salads',this)">🥗 Σαλάτες</button>
-        <button class="cpill" onclick="selCat('soups',this)">🍲 Σούπες</button>
-        <button class="cpill" onclick="selCat('pites',this)">🫓 Πίτες</button>
-        <button class="cpill" onclick="selCat('pizza',this)">🍕 Πίτσες</button>
-        <button class="cpill" onclick="selCat('sauces',this)">🫙 Σάλτσες & Ντιπ</button>
-        <button class="cpill" onclick="selCat('desserts',this)">🍮 Γλυκά</button>
-        <button class="cpill" onclick="selCat('vegan',this)">🌱 Vegan</button>
-        <button class="cpill" onclick="selCat('fast',this)">🌿 Νηστεία</button>
-        <button class="cpill" onclick="selCat('gf',this)">🌾 Χωρίς γλουτένη</button>
-        <button class="cpill" id="fav-pill" onclick="selCat('favs',this)">❤️ Αγαπημένα</button>
+    <div class="cat-menu" id="cat-row">
+      <!-- Τρόποι προβολής -->
+      <div class="cat-modes">
+        <button class="cmode cpill on" id="cpill-all" data-i18n="mToday" onclick="selCat('all',this)">☀️ Σημερινές</button>
+        <button class="cmode cpill" id="cpill-quick" data-i18n="mQuick" onclick="selCat('quick',this)">⚡ Γρήγορες</button>
+        <button class="cmode cpill cpill-browse" id="cpill-browse" data-i18n="mAll" onclick="selCat('browse',this)">📚 Όλες</button>
       </div>
+      <!-- Κατηγορίες φαγητού -->
+      <div class="cat-grp-lbl" data-i18n="grpFood">🍽️ Κατηγορίες φαγητού</div>
+      <div class="cat-grid">
+        <button class="ccat cpill" data-i18n="cPasta" onclick="selCat('pasta',this)">🍝 Ζυμαρικά</button>
+        <button class="ccat cpill" data-i18n="cMeat" onclick="selCat('meat',this)">🥩 Κρεατικά</button>
+        <button class="ccat cpill" data-i18n="cSeafood" onclick="selCat('seafood',this)">🐟 Θαλασσινά</button>
+        <button class="ccat cpill" data-i18n="cLegumes" onclick="selCat('legumes',this)">🫘 Όσπρια</button>
+        <button class="ccat cpill" data-i18n="cVeg" onclick="selCat('vegetables',this)">🥦 Λαχανικά</button>
+        <button class="ccat cpill" data-i18n="cSalads" onclick="selCat('salads',this)">🥗 Σαλάτες</button>
+        <button class="ccat cpill" data-i18n="cSoups" onclick="selCat('soups',this)">🍲 Σούπες</button>
+        <button class="ccat cpill" data-i18n="cPites" onclick="selCat('pites',this)">🫓 Πίτες</button>
+        <button class="ccat cpill" data-i18n="cPizza" onclick="selCat('pizza',this)">🍕 Πίτσες</button>
+        <button class="ccat cpill" data-i18n="cSauces" onclick="selCat('sauces',this)">🫙 Σάλτσες</button>
+        <button class="ccat cpill" data-i18n="cDesserts" onclick="selCat('desserts',this)">🍮 Γλυκά</button>
+        <button class="ccat cpill" data-i18n="cVegan" onclick="selCat('vegan',this)">🌱 Vegan</button>
+      </div>
+      <!-- Ειδικές διατροφές -->
+      <div class="cat-grp-lbl" data-i18n="grpDiet">🌿 Ειδικές διατροφές</div>
+      <div class="cat-diet">
+        <button class="cdiet cpill" data-i18n="dFast" onclick="selCat('fast',this)">🌿 Νηστεία</button>
+        <button class="cdiet cpill" data-i18n="dGf" onclick="selCat('gf',this)">🌾 Χ. γλουτένη</button>
+      </div>
+      <button class="cfav cpill" id="fav-pill" data-i18n="mFav" onclick="selCat('favs',this)">❤️ Τα αγαπημένα μου</button>
     </div>
     <div class="daily-meta">
       <div id="daily-lbl" class="daily-lbl-txt">Προτάσεις για σήμερα</div>
@@ -1313,6 +1335,10 @@ const TR={
     n0:'☀️ Σήμερα',n1:'⭐ Εορτές',n2:'🍯 Γλυκά',n3:'🧊 Ψυγείο',n4:'👥 Καλεσμένοι',n5:'🌿 Εποχιακά',
     c0:'🌿 Όλα',c1:'🍝 Ζυμαρικά',c2:'🐟 Θαλασσινά',c3:'🥩 Κρεατικά',
     c4:'🫘 Όσπρια',c5:'🥦 Λαχανικά',c6:'🥗 Σαλάτες',c7:'🍲 Σούπες',
+    mToday:'☀️ Σημερινές',mQuick:'⚡ Γρήγορες',mAll:'📚 Όλες',
+    cPasta:'🍝 Ζυμαρικά',cSeafood:'🐟 Θαλασσινά',cMeat:'🥩 Κρεατικά',cLegumes:'🫘 Όσπρια',cVeg:'🥦 Λαχανικά',cSalads:'🥗 Σαλάτες',cSoups:'🍲 Σούπες',cPites:'🫓 Πίτες',cPizza:'🍕 Πίτσες',cSauces:'🫙 Σάλτσες',cDesserts:'🍮 Γλυκά',cVegan:'🌱 Vegan',
+    dFast:'🌿 Νηστεία',dGf:'🌾 Χ. γλουτένη',mFav:'❤️ Τα αγαπημένα μου',
+    grpFood:'🍽️ Κατηγορίες φαγητού',grpDiet:'🌿 Ειδικές διατροφές',
     cl_pasta:'Ζυμαρικό',cl_seafood:'Θαλασσινό',cl_meat:'Κρεατικό',cl_legumes:'Όσπριο',
     cl_vegetables:'Λαχανικό',cl_salads:'Σαλάτα',cl_soups:'Σούπα',cl_sauces:'Σάλτσα',cl_pites:'Πίτα',cl_pizza:'Πίτσα',cl_desserts:'Γλυκό',
     daily_lbl:'Προτάσεις για σήμερα',fresh:'✦ Φρέσκο',new_sug:'✨ Νέα πρόταση',days_ago:'μέρες πριν',
@@ -1340,6 +1366,10 @@ const TR={
     n0:'☀️ Today',n1:'⭐ Feasts',n2:'🍯 Sweets',n3:'🧊 Fridge',n4:'👥 Guests',n5:'🌿 Seasonal',
     c0:'🌿 All',c1:'🍝 Pasta',c2:'🐟 Seafood',c3:'🥩 Meat',
     c4:'🫘 Legumes',c5:'🥦 Vegetables',c6:'🥗 Salads',c7:'🍲 Soups',
+    mToday:'☀️ Today',mQuick:'⚡ Quick',mAll:'📚 All',
+    cPasta:'🍝 Pasta',cSeafood:'🐟 Seafood',cMeat:'🥩 Meat',cLegumes:'🫘 Legumes',cVeg:'🥦 Vegetables',cSalads:'🥗 Salads',cSoups:'🍲 Soups',cPites:'🫓 Pies',cPizza:'🍕 Pizza',cSauces:'🫙 Sauces',cDesserts:'🍮 Desserts',cVegan:'🌱 Vegan',
+    dFast:'🌿 Fasting',dGf:'🌾 Gluten-free',mFav:'❤️ My favorites',
+    grpFood:'🍽️ Food categories',grpDiet:'🌿 Special diets',
     cl_pasta:'Pasta',cl_seafood:'Seafood',cl_meat:'Meat',cl_legumes:'Legume',
     cl_vegetables:'Vegetable',cl_salads:'Salad',cl_soups:'Soup',cl_sauces:'Sauce',cl_pites:'Pie',cl_pizza:'Pizza',cl_desserts:'Dessert',
     daily_lbl:"Today's suggestions",fresh:'✦ New',new_sug:'✨ New',days_ago:'days ago',
@@ -5250,7 +5280,7 @@ function showSec(id,btn){
   // Tapping "Συνταγές" tab always resets to all-categories view and scrolls to categories
   if(id==='daily'){
     selCat('all',document.getElementById('cpill-all'));
-    const catWrap=document.querySelector('.cat-row-wrap');
+    const catWrap=document.getElementById('cat-row');
     if(catWrap)catWrap.scrollIntoView({behavior:'smooth',block:'start'});
     else window.scrollTo({top:0,behavior:'smooth'});
   }
