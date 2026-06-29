@@ -60,6 +60,14 @@ body{font-family:'Inter',-apple-system,sans-serif;background:var(--bg);color:var
 .feat-meal-meta span{font-size:12px;color:rgba(255,255,255,.82);font-weight:600;}
 .feat-go-btn{margin-top:11px;display:inline-flex;align-items:center;gap:5px;background:rgba(255,255,255,.92);color:var(--pri);border:none;border-radius:12px;padding:7px 14px;font-size:12px;font-weight:700;cursor:pointer;width:fit-content;transition:transform .18s;}
 .feat-go-btn:hover{transform:scale(1.04);}
+.feat-actions{margin-top:11px;}
+.feat-act-row{display:flex;gap:8px;flex-wrap:wrap;}
+.feat-act-btn{display:inline-flex;align-items:center;gap:5px;border:none;border-radius:12px;padding:7px 13px;font-size:12px;font-weight:700;cursor:pointer;transition:transform .18s;font-family:'Inter',sans-serif;}
+.feat-act-btn:hover{transform:scale(1.04);}
+.feat-act-up{background:rgba(255,255,255,.92);color:var(--pri);}
+.feat-act-cook{background:rgba(34,197,94,.92);color:#fff;}
+.feat-cooked-badge{margin-top:11px;display:inline-flex;align-items:center;gap:5px;background:rgba(34,197,94,.92);color:#fff;border-radius:12px;padding:7px 14px;font-size:12px;font-weight:700;width:fit-content;}
+.feat-actions .thumb-planned,.feat-actions .cooked-badge{color:#fff;background:rgba(34,197,94,.92);padding:7px 14px;border-radius:12px;width:fit-content;}
 .feat-fav{position:absolute;top:10px;right:10px;z-index:2;background:rgba(0,0,0,.32);border:none;border-radius:50%;width:32px;height:32px;display:flex;align-items:center;justify-content:center;font-size:17px;cursor:pointer;backdrop-filter:blur(4px);}
 .more-hdr{display:flex;align-items:center;justify-content:space-between;padding:.75rem 1.25rem .2rem;}
 .more-hdr h3{font-size:14px;font-weight:700;color:var(--t2);}
@@ -3628,6 +3636,16 @@ function renderFeatured(show,cat,todayPlan){
   const ffav=isFav(fm.id);
   const fplan=todayPlan[fm.id];
   const badge=cat==='quick'?'⚡ Γρήγορη ιδέα':'⭐ Πρόταση ημέρας';
+  const _fclog=getCookedLog();
+  const _fcd=_fclog[fm.id]?Math.floor((Date.now()-_fclog[fm.id])/86400000):null;
+  const factHtml=_fcd!==null&&_fcd<4
+    ?`<span class="feat-cooked-badge">✓ ${_fcd===0?'Μαγειρεύτηκε σήμερα':_fcd+' μέρ. πριν'}</span>`
+    :fplan==='plan'
+    ?`<div class="feat-go-btn" style="background:rgba(34,197,94,.9);color:#fff">✓ Θα το φτιάξω σήμερα!</div>`
+    :`<div class="feat-act-row">
+        <button class="feat-act-btn feat-act-up" onclick="thumbUp('${fm.id}',event)">👍 Θα το φτιάξω!</button>
+        <button class="feat-act-btn feat-act-cook" onclick="markCooked('${fm.id}',event)">✓ Το έφτιαξα</button>
+      </div>`;
   fw.innerHTML=`<div class="feat-meal-wrap" style="padding:12px 1.1rem 0;position:relative;">
     <div class="feat-meal" onclick="openR('${fm.id}')">
       ${fimg?`<img src="${fimg}" alt="${fm.n}" onerror="this.style.display='none'">`:`<div style="position:absolute;inset:0;background:${fbg}"></div>`}
@@ -3637,9 +3655,7 @@ function renderFeatured(show,cat,todayPlan){
         <div class="feat-badge-pill">${badge}</div>
         <div class="feat-meal-name">${mealName(fm)}</div>
         <div class="feat-meal-meta"><span>⏱ ${fm.time}'</span><span>💰 ${fm.cost||'~5€'}</span><span>👥 ${fm.srv} μερ.</span></div>
-        ${fplan==='plan'
-          ?`<div class="feat-go-btn" style="background:rgba(34,197,94,.9);color:#fff">✓ Θα το φτιάξω σήμερα!</div>`
-          :`<button class="feat-go-btn" onclick="event.stopPropagation();openR('${fm.id}')">Δες τη συνταγή →</button>`}
+        <div class="feat-actions" id="ca-${fm.id}">${factHtml}</div>
       </div>
       <button class="feat-fav" data-id="${fm.id}" onclick="toggleFav('${fm.id}',event)">${ffav?'❤️':'🤍'}</button>
       <button class="feat-next-btn" title="Επόμενη πρόταση" onclick="event.stopPropagation();featNext()">👎</button>
