@@ -4341,8 +4341,8 @@ function updatePremiumCTA(state){
     btn.textContent='✅ Είσαι ήδη Premium!';btn.disabled=true;btn.style.opacity='.7';
     if(note)note.textContent='Η συνδρομή σου είναι ενεργή.';
   }else if(state==='trial'){
-    btn.textContent='💎 Αναβάθμισε πριν λήξει το trial';btn.disabled=false;btn.style.opacity='1';
-    if(note)note.textContent='Σύνδεσε κάρτα για να συνεχίσεις χωρίς διακοπή.';
+    btn.textContent='💎 Premium';btn.disabled=false;btn.style.opacity='1';
+    if(note)note.textContent='Έχεις πλήρη πρόσβαση σε όλες τις λειτουργίες.';
   }else if(state==='expired'){
     btn.textContent='💎 Συνδρομή Premium';btn.disabled=false;btn.style.opacity='1';
     if(note)note.textContent='Ανάκτησε πλήρη πρόσβαση αμέσως.';
