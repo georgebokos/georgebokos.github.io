@@ -3604,6 +3604,20 @@ function findRecipeForItem(text){
 function getH(){return JSON.parse(localStorage.getItem('fd_h')||'[]');}
 function saveH(id){const h=getH(),i=h.findIndex(x=>x.id===id);if(i>=0)h.splice(i,1);h.unshift({id,ts:Date.now()});localStorage.setItem('fd_h',JSON.stringify(h.slice(0,40)));}
 function recIds(days){const c=Date.now()-days*86400000;return getH().filter(x=>x.ts>c).map(x=>x.id);}
+// ── Μνήμη καθημερινών προτάσεων: αποφυγή επανάληψης ίδιων συνταγών διαδοχικές μέρες ──
+function getDailyHist(){try{return JSON.parse(localStorage.getItem('fd_daily_hist')||'[]');}catch(e){return [];}}
+function prevDaysShownIds(){
+  const today=new Date().toDateString();
+  const s=new Set();
+  getDailyHist().forEach(d=>{if(d.date!==today)(d.ids||[]).forEach(i=>s.add(i));});
+  return s;
+}
+function saveDailyShown(ids){
+  const today=new Date().toDateString();
+  let hist=getDailyHist().filter(d=>d.date!==today);
+  hist.push({date:today,ids});
+  localStorage.setItem('fd_daily_hist',JSON.stringify(hist.slice(-3))); // κράτα τις τελευταίες 3 μέρες
+}
 function dSince(id){const h=getH().find(x=>x.id===id);return h?Math.floor((Date.now()-h.ts)/86400000):999;}
 function getDefCat(){
   const r=recIds(7),cats=['seafood','pasta','meat','legumes','vegetables','soups','salads'];
@@ -3918,7 +3932,12 @@ function renderMeals(cat){
       const rand=(_mHash(m.id)>>>0)/4294967295;
       return normW*0.3 + rand*0.7; // πραγματικό 30% priority / 70% τυχαιότητα
     };
-    const fresh=pool.filter(m=>!rids.includes(m.id)&&!_cookedRecently(m.id)).sort((a,b)=>_score(a)-_score(b));
+    let fresh=pool.filter(m=>!rids.includes(m.id)&&!_cookedRecently(m.id));
+    // Εξαίρεση όσων προτάθηκαν τις προηγούμενες μέρες ώστε κάθε μέρα να είναι διαφορετική
+    const _prevShown=prevDaysShownIds();
+    const freshUnseen=fresh.filter(m=>!_prevShown.has(m.id));
+    if(freshUnseen.length>=12) fresh=freshUnseen; // αν δεν μένουν αρκετές, κράτα όλες
+    fresh=fresh.sort((a,b)=>_score(a)-_score(b));
     const old=pool.filter(m=>rids.includes(m.id)&&!_cookedRecently(m.id)).sort((a,b)=>_score(a)-_score(b));
     // Διανομή ποικιλίας: max 2 ανά κατηγορία
     const _catCount={};
@@ -3936,6 +3955,8 @@ function renderMeals(cat){
     const salads=allShow.filter(m=>m.cats.includes('salads'));
     show=[...nonSalads,...salads];
   }
+  // Κατέγραψε τις σημερινές προτάσεις ώστε να μην επαναληφθούν αύριο
+  if(cat==='all'&&show.length){saveDailyShown(show.map(m=>m.id));}
   _featPool=show;
   // Restore today's featured meal so it doesn't change on refresh
   if(cat==='all'&&show.length){
@@ -4242,11 +4263,9 @@ function stopTTS(){if(window.speechSynthesis)speechSynthesis.cancel();isTTS=fals
 // ── PREMIUM STATE MACHINE ──────────────────────────────────────
 const TRIAL_DAYS=7;
 function getPremiumState(){
+  // Φάση δοκιμών (closed testing): το trial ΔΕΝ λήγει — όλα ξεκλείδωτα, χωρίς περιορισμό.
   if(localStorage.getItem('fd_premium')==='true')return 'premium';
-  const ts=parseInt(localStorage.getItem('fd_trial_start')||'0');
-  if(!ts)return 'free';
-  const elapsed=(Date.now()-ts)/(1000*60*60*24);
-  return elapsed<=TRIAL_DAYS?'trial':'expired';
+  return 'trial';
 }
 function trialDaysLeft(){
   const ts=parseInt(localStorage.getItem('fd_trial_start')||'0');
@@ -4272,8 +4291,7 @@ function renderTrialBanner(){
     return;
   }
   if(state==='trial'){
-    const d=trialDaysLeft();
-    el.innerHTML=`<div class="trial-banner" onclick="openPremiumScreen()"><div class="trial-banner-l"><span class="trial-banner-icon">🎁</span><span class="trial-banner-txt">Trial: <span>${d} ${d===1?'ημέρα':'ημέρες'}</span> απομένουν</span></div><span class="trial-banner-cta">Αναβάθμιση →</span></div>`;
+    el.innerHTML=`<div class="trial-banner" onclick="openPremiumScreen()"><div class="trial-banner-l"><span class="trial-banner-icon">🎁</span><span class="trial-banner-txt">Έχεις <span>πλήρη πρόσβαση</span> σε όλες τις λειτουργίες</span></div><span class="trial-banner-cta">Premium →</span></div>`;
     return;
   }
   if(state==='expired'){
