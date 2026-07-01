@@ -4795,7 +4795,7 @@ function renderWeekPlanDays(){
     const dateTxt=`${d.getDate()} ${MONTHS_SHORT[d.getMonth()]}`;
     const todayBadge=isToday?`<span class="wplan-today-badge">ΣΗΜΕΡΑ</span>`:'';
     const mealHtml=m
-      ?`<div class="wplan-day-meal">
+      ?`<div class="wplan-day-meal" onclick="event.stopPropagation();closeWeekPlan();openR('${mealId}')" style="cursor:pointer">
           <span class="wplan-day-meal-ico">${m.e}</span>
           <div><div class="wplan-day-meal-txt">${m.n}</div>${prep?`<div class="wplan-day-meal-prep">${prep.ico} ${prep.msg.split('—')[0].trim()}</div>`:''}</div>
         </div>
