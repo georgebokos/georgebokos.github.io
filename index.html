@@ -1098,6 +1098,9 @@ body{font-family:'Inter',-apple-system,sans-serif;background:var(--bg);color:var
       <input type="time" id="nt2" value="12:00" style="display:none">
       <input type="time" id="nt3" value="18:00" style="display:none">
     </div>
+    <div class="nmod-row" style="border-bottom:none;padding-top:4px;">
+      <button onclick="testNotif()" style="width:100%;padding:10px;border-radius:12px;border:1.5px dashed var(--bd);background:var(--em);color:var(--pri);font-size:13px;font-weight:700;cursor:pointer;font-family:'Inter',sans-serif;">🔔 Δοκιμαστική ειδοποίηση τώρα</button>
+    </div>
     <div class="nmod-btns">
       <button class="nmod-save" onclick="saveNotif()">Αποθήκευση</button>
       <button class="nmod-cls" onclick="closeNotif()">Άκυρο</button>
@@ -5238,7 +5241,12 @@ async function toggleNotif(){
   } else {tog.checked=false;document.getElementById('bell').classList.remove('on');localStorage.setItem('notif_on','false');showToast('Απενεργοποιήθηκαν');}
 }
 async function testNotif(){
-  if(Notification.permission!=='granted'){showToast('⚠️ Πρώτα ενεργοποίησε τις ειδοποιήσεις');return;}
+  if(!('Notification' in window)){showToast('⚠️ Ο browser δεν υποστηρίζει ειδοποιήσεις');return;}
+  if(Notification.permission!=='granted'){
+    try{const p=await Notification.requestPermission();}catch(e){}
+    if(Notification.permission==='denied'){showToast('⚠️ Οι ειδοποιήσεις είναι μπλοκαρισμένες. Ενεργοποίησέ τες στις ρυθμίσεις της συσκευής για το FoodDaily.');return;}
+    if(Notification.permission!=='granted'){showToast('⚠️ Δεν δόθηκε άδεια για ειδοποιήσεις');return;}
+  }
   await sendNotif();
   showToast('🔔 Ειδοποίηση εστάλη!');
 }
