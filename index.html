@@ -5325,16 +5325,19 @@ function startNotifTimer(){
   _notifInt=setInterval(async ()=>{
     if(localStorage.getItem('notif_on')!=='true'||Notification.permission!=='granted')return;
     const nd=new Date(),t2=(localStorage.getItem('notif_time')||'09:00').split(':');
-    if(nd.getHours()===+t2[0]&&nd.getMinutes()===+t2[1]){
+    const sched=new Date(nd);sched.setHours(+t2[0],+t2[1],0,0);
+    // Χτύπα αν έφτασε/πέρασε η ώρα σήμερα και δεν έχει σταλεί ήδη (πιο ανθεκτικό από ακριβές λεπτό)
+    if(nd>=sched){
       const ld=localStorage.getItem('notif_last');
       if(ld!==nd.toDateString()){
         await sendNotif();
         localStorage.setItem('notif_last',nd.toDateString());
+        if('caches' in window){try{const c=await caches.open('fd-prefs');await c.put('/fd-notif-last',new Response(nd.toDateString(),{headers:{'Content-Type':'text/plain'}}));}catch(e){}}
       }
     }
     // Smart prep notification every minute while app is open
     checkPrepNotif();
-  },60000);
+  },30000);
 }
 // Register Periodic Background Sync for notifications when app is closed
 async function registerPeriodicSync(){
