@@ -5203,23 +5203,21 @@ async function saveNotif(){
   const checked=document.getElementById('ntog').checked;
   if(checked){
     if(!('Notification' in window)){showToast('⚠️ Ο browser δεν υποστηρίζει ειδοποιήσεις');return;}
-    if(Notification.permission!=='granted'){
-      const p=await Notification.requestPermission();
-      if(p!=='granted'){
-        document.getElementById('ntog').checked=false;
-        localStorage.setItem('notif_on','false');
-        document.getElementById('bell').classList.remove('on');
-        showToast('⚠️ Δεν δόθηκε άδεια για ειδοποιήσεις');
-        closeNmod();return;
-      }
-    }
+    // Κράτα την επιλογή του χρήστη ΑΜΕΣΩΣ (το τικ παραμένει ακόμη κι αν η άδεια εκκρεμεί)
     localStorage.setItem('notif_on','true');
     document.getElementById('bell').classList.add('on');
+    if(Notification.permission!=='granted'){
+      try{await Notification.requestPermission();}catch(e){}
+    }
     startNotifTimer();
     storeNotifPrefsForSW(time,'true');
     registerPeriodicSync();
     scheduleDailyNotifInSW();
-    showToast('✅ Ειδοποιήσεις ενεργοποιήθηκαν!');
+    if(Notification.permission==='denied'){
+      showToast('⚠️ Ενεργό — αλλά οι ειδοποιήσεις είναι μπλοκαρισμένες στις ρυθμίσεις της συσκευής');
+    }else{
+      showToast('✅ Ειδοποιήσεις ενεργοποιήθηκαν!');
+    }
   } else {
     localStorage.setItem('notif_on','false');
     document.getElementById('bell').classList.remove('on');
