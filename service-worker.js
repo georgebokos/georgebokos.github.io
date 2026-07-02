@@ -1,6 +1,6 @@
 // FoodDaily Service Worker v3.5
-const VERSION = '2026-06-23-23';
-const CACHE = `fooddaily-2026-06-23-23`;
+const VERSION = '2026-06-23-24';
+const CACHE = `fooddaily-2026-06-23-24`;
 const ASSETS = [
   '/',
   '/index.html',
@@ -88,11 +88,34 @@ self.addEventListener('activate', e => {
 });
 
 // ── DAILY NOTIF FIRE HELPER ───────────────────────────────────────────────────
+// Compute next fire timestamp from stored prefs time (h:m tomorrow-or-today)
+const _swNextFireAt = async (cache) => {
+  let h = 9, m = 0;
+  try {
+    const pR = await cache.match('/fd-notif-prefs');
+    if (pR) { const p = await pR.json(); const t = (p.time || '09:00').split(':'); h = +t[0]; m = +t[1]; }
+  } catch (e) {}
+  const next = new Date(); next.setHours(h, m, 0, 0);
+  if (next <= new Date()) next.setDate(next.getDate() + 1);
+  return next.getTime();
+};
+
 const _swFireDailyNotif = async (cache) => {
   if (!cache) cache = await caches.open('fd-prefs');
+  // Respect user prefs: if notifications are off, clean up and stop
+  try {
+    const pR = await cache.match('/fd-notif-prefs');
+    if (pR) { const p = await pR.json(); if (p.on !== 'true') { await cache.delete('/fd-daily-fire-at'); return; } }
+  } catch (e) {}
   const today = new Date().toDateString();
   const lastResp = await cache.match('/fd-notif-last');
-  if (lastResp && (await lastResp.text()) === today) return; // already sent today
+  if (lastResp && (await lastResp.text()) === today) {
+    // Already sent today — roll the schedule forward so a stale past timestamp
+    // can't cause an off-hours fire on the next SW wake-up
+    const nx = await _swNextFireAt(cache);
+    await cache.put('/fd-daily-fire-at', new Response(String(nx), { headers: { 'Content-Type': 'text/plain' } }));
+    return;
+  }
   let title = '🍽️ FoodDaily — Πρόταση Μέρας';
   let body  = 'Τι μαγειρεύουμε σήμερα; Δες τις προτάσεις σου!';
   try {
@@ -109,8 +132,12 @@ const _swFireDailyNotif = async (cache) => {
     });
     await cache.put('/fd-notif-last', new Response(today, { headers: { 'Content-Type': 'text/plain' } }));
   } catch (err) {}
-  await cache.delete('/fd-daily-fire-at');
-  self._dailyNotifTo = null;
+  // Reschedule for tomorrow at the user's chosen time (instead of dropping the schedule)
+  const nextAt = await _swNextFireAt(cache);
+  await cache.put('/fd-daily-fire-at', new Response(String(nextAt), { headers: { 'Content-Type': 'text/plain' } }));
+  const nd = nextAt - Date.now();
+  if (self._dailyNotifTo) clearTimeout(self._dailyNotifTo);
+  self._dailyNotifTo = (nd > 0 && nd < 25 * 60 * 60 * 1000) ? setTimeout(() => _swFireDailyNotif(null), nd) : null;
 };
 
 // Fetch: stale-while-revalidate for same-origin, network-only for external
