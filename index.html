@@ -5547,20 +5547,25 @@ function selGuest(n,btn){
             'mosxari_kokkinisto','mosxari_stifado','mosxari_bamies',
             'paidakia','kotopoulo_fournou','pastitsada',
             'mydia_saganaki','soupies','lazania',
-            'karbonara','pasta_thalassina','htapodi_krasato','tsipoura'];
+            'karbonara','pasta_thalassina','htapodi_krasato','tsipoura',
+            // Επιπλέον ζυμαρικά & θαλασσινά εκλεκτά για καλεσμένους
+            'sardeles_lemonates','lavraki_fournou','lavraki_alati','solomos_fournou','kolios',
+            'farfale_tonos','pasta_garides_feta','cacio_e_pepe','spaghetti_poutanesca',
+            'papoutsakia','kounoupidi_fournou'];
   const P2=['kotopoulo','souvlakia','biftekia','kalamaria',
             'dolmades','gemista','giouvarlaakia','psari_plaki','keftedes',
             'gigantes','fava','tyropita','hortopita','prasopita',
             'kotopoulo_kokkinisto','kotopoulo_manitaria','soutzoukakia',
             'xoirina_paidakia','brizoles','imam_baialdi','manitaria_saganaki',
             'spaghetti_bolognese','pasta_manitaria','kritharaki_kotopoulo',
-            'hylopites_kotopoulo','xoirino_prasa','kolokythopita'];
+            'hylopites_kotopoulo','xoirino_prasa','kolokythopita',
+            'kotopoulo_paprika','sofrito'];
 
   const pick=ids=>ids.filter(id=>MEALS[id]&&!EXCL_GUEST.includes(id));
 
   // Shuffle within each tier for variety
   const shuffle=a=>[...a].sort(()=>Math.random()-.5);
-  const pool=[...shuffle(pick(P4)),...shuffle(pick(P3)),...shuffle(pick(P2))].slice(0,15);
+  const pool=[...shuffle(pick(P4)),...shuffle(pick(P3)),...shuffle(pick(P2))].slice(0,20);
   // Αρνί στη σούβλα — ειδική περίσταση, εμφανίζεται πάντα τελευταίο
   const suvIdx=pool.indexOf('arni_souvia');
   if(suvIdx>-1){pool.splice(suvIdx,1);pool.push('arni_souvia');}
