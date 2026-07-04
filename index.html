@@ -6103,6 +6103,87 @@ function dismissTonightBanner(){
   if(_urlR&&MEALS[_urlR])setTimeout(()=>openR(_urlR),500);
 })();
 
+// ── ΚΟΥΜΠΙ ΠΙΣΩ (Android/TWA): κλείνει την τρέχουσα οθόνη/modal αντί να βγαίνει από την εφαρμογή ──
+(function(){
+  let _fdDepth=0, _fdSuppressPop=false;
+  const _origFns={};
+
+  const OPEN_FNS=['openR','openSW','openPremiumScreen','openUrform','openWeekPlan','openMealPicker','openNmod','openSearch','openProfile','openCookTonight','enterCookMode','showFD'];
+  const CLOSE_FNS=['closeOv','closeOvInstant','closePremiumScreen','closePremiumGate','closeUrform','closeWeekPlan','closeMealPicker','closeNmod','closeSearch','closeProfile','closeCookTonight','exitCookMode','backFest'];
+  // [elementId, class-ή-null-για-style.display, όνομα συνάρτησης κλεισίματος]
+  const OVERLAY_CHECKS=[
+    ['cook-mode','show','exitCookMode'],
+    ['overlay','show','closeOv'],
+    ['pscreen','show','closePremiumScreen'],
+    ['pgate','show','closePremiumGate'],
+    ['urform','show','closeUrform'],
+    ['wplan-sheet','show','closeWeekPlan'],
+    ['mpicker','show','closeMealPicker'],
+    ['cook-tonight-modal','show','closeCookTonight'],
+    ['prof-sheet','show','closeProfile'],
+  ];
+
+  OPEN_FNS.forEach(name=>{
+    const orig=window[name];
+    if(typeof orig!=='function')return;
+    _origFns[name]=orig;
+    window[name]=function(...args){
+      _fdDepth++;
+      try{history.pushState({fdNav:_fdDepth},'');}catch(e){}
+      return orig.apply(this,args);
+    };
+  });
+
+  // Αλλαγή καρτέλας (Εορτές/Γλυκά/Ψυγείο/Καλεσμένοι κ.λπ.): πίσω γυρνά στις «Σημερινές» αντί να βγαίνει
+  const _origShowSec=window.showSec;
+  if(typeof _origShowSec==='function'){
+    window.showSec=function(id,btn){
+      if(id!=='daily'&&id!=='favs'){
+        _fdDepth++;
+        try{history.pushState({fdNav:_fdDepth},'');}catch(e){}
+      }
+      return _origShowSec.apply(this,arguments);
+    };
+  }
+
+  CLOSE_FNS.forEach(name=>{
+    const orig=window[name];
+    if(typeof orig!=='function')return;
+    _origFns[name]=orig;
+    window[name]=function(...args){
+      const result=orig.apply(this,args);
+      if(_fdDepth>0){
+        _fdDepth--;
+        _fdSuppressPop=true;
+        try{history.back();}catch(e){}
+      }
+      return result;
+    };
+  });
+
+  function _fdCloseTopOverlay(){
+    const nmodEl=document.getElementById('nmod');
+    if(nmodEl&&nmodEl.style.display==='flex'){(_origFns.closeNmod||window.closeNmod)();return true;}
+    const srEl=document.getElementById('search-results');
+    if(srEl&&srEl.style.display&&srEl.style.display!=='none'){(_origFns.closeSearch||window.closeSearch)();return true;}
+    const fdEl=document.getElementById('fest-det');
+    if(fdEl&&fdEl.style.display==='block'){(_origFns.backFest||window.backFest)();return true;}
+    for(const[elId,cls,fnName]of OVERLAY_CHECKS){
+      const el=document.getElementById(elId);
+      if(el&&el.classList.contains(cls)){(_origFns[fnName]||window[fnName])();return true;}
+    }
+    // Καμία οθόνη/modal ανοιχτή: αν δεν είμαστε στην αρχική καρτέλα, γύρνα εκεί αντί να βγεις
+    if(typeof curSec!=='undefined'&&curSec!=='daily'){showSec('daily','daily');return true;}
+    return false;
+  }
+
+  window.addEventListener('popstate',function(){
+    if(_fdSuppressPop){_fdSuppressPop=false;return;}
+    if(_fdDepth>0)_fdDepth--;
+    _fdCloseTopOverlay();
+  });
+})();
+
 </script>
 
 </body>
