@@ -640,7 +640,7 @@ body{font-family:'Inter',-apple-system,sans-serif;background:var(--bg);color:var
 .cm-cnt{color:#aaa;font-size:13px;min-width:36px;text-align:right;}
 .cm-bar{height:3px;background:rgba(255,255,255,.12);}
 .cm-fill{height:100%;background:var(--pri);transition:width .35s;}
-.cm-body{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:28px 28px 16px;text-align:center;}
+.cm-body{flex:1;display:flex;flex-direction:column;align-items:center;justify-content:center;padding:28px 28px 16px;text-align:center;overflow-y:auto;-webkit-overflow-scrolling:touch;min-height:0;}
 .cm-snum{color:var(--pri);font-size:12px;font-weight:700;letter-spacing:1.5px;text-transform:uppercase;margin-bottom:18px;}
 .cm-stxt{color:#f0f0f0;font-size:22px;line-height:1.7;max-width:520px;}
 .cm-nav{display:flex;gap:12px;padding:20px;width:100%;max-width:420px;margin:0 auto;}
@@ -5865,6 +5865,9 @@ function thumbUp(id,e){
   if(e){e.stopPropagation();e.preventDefault();}
   setTodayMeal(id,'plan');
   saveH(id);
+  // «Θα το φτιάξω» αποκλείει τη ΣΥΓΚΕΚΡΙΜΕΝΗ συνταγή (όχι όλη την κατηγορία) από τις επόμενες προτάσεις, όπως και το «Το έφτιαξα»
+  const log=getCookedLog();log[id]=Date.now();
+  localStorage.setItem('fd_cooked_log',JSON.stringify(log));
   const ca=document.getElementById('ca-'+id);
   if(ca)ca.innerHTML='<span class="thumb-planned">✓ Θα το φτιάξω σήμερα!</span>';
   showToast('👍 Ωραία επιλογή!');
@@ -6101,6 +6104,7 @@ function saveCookTonight(){
   const notifAt=new Date(cookAt.getTime()-(m.time+10)*60000);
   const delay=notifAt-Date.now();
   setTodayMeal(id,'plan');
+  {const log=getCookedLog();log[id]=Date.now();localStorage.setItem('fd_cooked_log',JSON.stringify(log));}
   localStorage.setItem('fd_tonight',JSON.stringify({id,cookAt:cookAt.getTime()}));
   _showTonightBanner(id,cookAt);
   if(delay>0&&Notification.permission==='granted'){
