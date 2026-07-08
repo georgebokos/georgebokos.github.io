@@ -4289,6 +4289,9 @@ function renderMeals(cat){
     const qOnly=pool.filter(m=>m.quickOnly).sort((a,b)=>parseInt(a.time)-parseInt(b.time));
     const fast=pool.filter(m=>!m.quickOnly&&parseInt(m.time)<=20).sort(()=>Math.random()-.5);
     show=[...qOnly,...fast];
+  }else if(cat!=='all'){
+    // Συγκεκριμένη κατηγορία (π.χ. Γλυκά, Ζυμαρικά, Vegan, Νηστεία...): δείξε ΟΛΕΣ τις συνταγές, όχι τυχαία υποσύνολο
+    show=pool.slice().sort((a,b)=>mealName(a).localeCompare(mealName(b),'el'));
   }else{
     const dow=new Date().getDay();
     const isSunday=dow===0;
