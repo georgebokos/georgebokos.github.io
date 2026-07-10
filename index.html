@@ -5015,6 +5015,14 @@ function setMealForDay(dateStr,mealId){
   if(mealId)p[dateStr]=mealId;else delete p[dateStr];
   localStorage.setItem('fd_week_plan',JSON.stringify(p));
   storeWeekPlanForSW(p);
+  // Η υπενθύμιση προετοιμασίας («Αύριο: ...») χρειάζεται periodic sync ΑΝΕΞΑΡΤΗΤΑ από το αν είναι ενεργό το 🔔 ημερήσιων προτάσεων
+  if(mealId&&isPremium()&&'Notification' in window){
+    if(Notification.permission==='granted'){
+      registerPeriodicSync();
+    }else if(Notification.permission==='default'){
+      Notification.requestPermission().then(perm=>{if(perm==='granted')registerPeriodicSync();});
+    }
+  }
 }
 function getWeekDates(){
   const today=new Date();today.setHours(0,0,0,0);
@@ -6201,6 +6209,11 @@ function dismissTonightBanner(){
       scheduleDailyNotifInSW();
       syncNotifLastFromSW().then(()=>checkMissedNotif()).catch(()=>checkMissedNotif());
     }
+  }
+  // Υπενθύμιση προετοιμασίας εβδομαδιαίου προγράμματος: ανεξάρτητη από το 🔔 bell —
+  // αν υπάρχει ήδη πρόγραμμα και άδεια ειδοποιήσεων, φρόντισε να είναι ενεργό το periodic sync
+  if(isPremium()&&Notification.permission==='granted'&&Object.keys(getWeekPlan()).length){
+    registerPeriodicSync();
   }
   // Service Worker registration
   function _showSwToast(){
