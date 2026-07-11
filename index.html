@@ -5030,7 +5030,12 @@ function getWeekDates(){
     const d=new Date(today);d.setDate(today.getDate()+i);return d;
   });
 }
-function dateKey(d){return d.toISOString().split('T')[0];}
+function dateKey(d){
+  // ΣΗΜΑΝΤΙΚΟ: toISOString() μετατρέπει σε UTC — σε ζώνες ώρας πριν το UTC (π.χ. Ελλάδα, UTC+2/+3)
+  // τα τοπικά μεσάνυχτα γίνονται λανθασμένα η ΠΡΟΗΓΟΥΜΕΝΗ ημερολογιακή μέρα. Χρησιμοποιούμε τοπικά στοιχεία ημερομηνίας.
+  const y=d.getFullYear(),m=String(d.getMonth()+1).padStart(2,'0'),day=String(d.getDate()).padStart(2,'0');
+  return `${y}-${m}-${day}`;
+}
 const DAY_NAMES=['Κυρ','Δευ','Τρι','Τετ','Πεμ','Παρ','Σαβ'];
 const MONTHS_SHORT=['Ιαν','Φεβ','Μαρ','Απρ','Μαΐ','Ιουν','Ιουλ','Αυγ','Σεπ','Οκτ','Νοε','Δεκ'];
 
