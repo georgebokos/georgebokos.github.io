@@ -4350,6 +4350,16 @@ function renderMeals(cat){
   if(cat==='all'&&show.length){
     const today=new Date().toDateString();
     let stored={};try{stored=JSON.parse(localStorage.getItem('fd_feat')||'{}');}catch(e){}
+    // Αν υπάρχει επιλεγμένο γεύμα στο εβδομαδιαίο πρόγραμμα για ΣΗΜΕΡΑ, αυτό έχει προτεραιότητα
+    // ως πρώτη πρόταση ημέρας — αλλά μόνο όταν δεν έχει ήδη οριστεί πρόταση για σήμερα
+    // (ώστε το 👎 «άλλη πρόταση» να συνεχίζει να δουλεύει κανονικά μετά την πρώτη εμφάνιση).
+    if(stored.date!==today){
+      const wpMealId=getWeekPlan()[dateKey(new Date())];
+      if(wpMealId&&MEALS[wpMealId]){
+        stored={id:wpMealId,date:today};
+        localStorage.setItem('fd_feat',JSON.stringify(stored));
+      }
+    }
     if(stored.date===today&&stored.id){
       let si=show.findIndex(m=>m.id===stored.id);
       // Αν το αποθηκευμένο πιάτο ημέρας δεν είναι στο σημερινό set (π.χ. μετά από «Νέες»),
