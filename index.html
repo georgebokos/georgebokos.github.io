@@ -5033,6 +5033,21 @@ function setMealForDay(dateStr,mealId){
       Notification.requestPermission().then(perm=>{if(perm==='granted')registerPeriodicSync();});
     }
   }
+  // Αν η μέρα που άλλαξε είναι η ΣΗΜΕΡΙΝΗ, συγχρόνισε αμέσως την πρώτη πρόταση ημέρας
+  // ώστε να συμβαδίζει πάντα με την επιλογή του εβδομαδιαίου προγράμματος, ακόμα κι αν
+  // υπήρχε ήδη διαφορετική πρόταση εμφανισμένη για σήμερα.
+  const todayKey=dateKey(new Date());
+  if(dateStr===todayKey){
+    const today=new Date().toDateString();
+    if(mealId&&MEALS[mealId]){
+      localStorage.setItem('fd_feat',JSON.stringify({id:mealId,date:today}));
+      storeFeaturedMealForSW({...MEALS[mealId],id:mealId});
+    }else{
+      // Αφαιρέθηκε το γεύμα της ημέρας — άσε την κανονική τυχαία λογική να διαλέξει ξανά
+      localStorage.removeItem('fd_feat');
+    }
+    if(curCat==='all')renderMeals('all');
+  }
 }
 function getWeekDates(){
   const today=new Date();today.setHours(0,0,0,0);
