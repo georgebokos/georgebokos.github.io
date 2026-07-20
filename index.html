@@ -689,6 +689,10 @@ body{font-family:'Inter',-apple-system,sans-serif;background:var(--bg);color:var
         <span class="hero-name">FoodDaily</span>
       </div>
       <div class="hero-btns">
+        <div class="lang-sw" title="Γλώσσα / Language">
+          <button class="lbtn" id="lb-el" onclick="setLang('el')">ΕΛ</button>
+          <button class="lbtn" id="lb-en" onclick="setLang('en')">EN</button>
+        </div>
         <button id="dark-btn" class="hero-btn" onclick="toggleDark()" title="Dark mode">🌙</button>
         <button id="bell" class="hero-btn" onclick="openNotif()" title="Ρυθμίσεις">⚙️</button>
         <button id="prof-btn" class="hero-btn" onclick="openProfile()" title="Προφίλ">👤</button>
@@ -5395,8 +5399,9 @@ function genGuests(){
 }
 
 // ── i18n ─────────────────────────────────────────────────────
-function setLang(lang){
-  curLang=lang;localStorage.setItem('fd_lang',lang);
+// Συγχρονίζει όλα τα στατικά κείμενα του UI με την τρέχουσα curLang — χρησιμοποιείται
+// τόσο από setLang() (αλλαγή γλώσσας από τον χρήστη) όσο και στο αρχικό load (restore προτίμησης).
+function applyLangTexts(lang){
   document.querySelectorAll('.lbtn').forEach(b=>b.classList.remove('on'));
   const lb=document.getElementById('lb-'+lang);if(lb)lb.classList.add('on');
   // Nav
@@ -5416,6 +5421,10 @@ function setLang(lang){
   const bt=document.querySelector('.bal-t');if(bt)bt.textContent=t('bal_t');
   // Update all data-i18n elements
   document.querySelectorAll('[data-i18n]').forEach(el=>{const k=el.getAttribute('data-i18n');const v=t(k);if(v&&v!==k)el.textContent=v;});
+}
+function setLang(lang){
+  curLang=lang;localStorage.setItem('fd_lang',lang);
+  applyLangTexts(lang);
   // Re-render
   renderMeals(curCat);
   filtSw(curSwCat);
@@ -6197,6 +6206,7 @@ function dismissTonightBanner(){
   }
   // Restore language preference
   const _sl=localStorage.getItem('fd_lang');if(_sl==='en'||_sl==='el')curLang=_sl;
+  applyLangTexts(curLang);
   // Hero greeting + date
   const days=['Κυριακή','Δευτέρα','Τρίτη','Τετάρτη','Πέμπτη','Παρασκευή','Σάββατο'];
   const months=['Ιαν','Φεβ','Μαρ','Απρ','Μαΐ','Ιουν','Ιουλ','Αυγ','Σεπ','Οκτ','Νοε','Δεκ'];
