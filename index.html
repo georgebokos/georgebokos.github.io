@@ -6128,6 +6128,7 @@ function markCooked(id,ev){
   if(ev){ev.stopPropagation();ev.preventDefault();}
   const log=getCookedLog();log[id]=Date.now();
   localStorage.setItem('fd_cooked_log',JSON.stringify(log));
+  saveH(id); // ενημέρωσε και το ιστορικό, ώστε η υπενθύμιση «Έχεις καιρό χωρίς...» να το καταλάβει
   const ca=document.getElementById('ca-'+id);
   if(ca)ca.innerHTML=`<span class="cooked-badge">✓ ${curLang==='en'?'Cooked today':'Μαγειρεύτηκε σήμερα'}</span>`;
   showToast(curLang==='en'?'✓ Logged!':'✓ Καταχωρήθηκε!');
@@ -6379,6 +6380,7 @@ function saveCookTonight(){
   const delay=notifAt-Date.now();
   setTodayMeal(id,'plan');
   {const log=getCookedLog();log[id]=Date.now();localStorage.setItem('fd_cooked_log',JSON.stringify(log));}
+  saveH(id);
   localStorage.setItem('fd_tonight',JSON.stringify({id,cookAt:cookAt.getTime()}));
   _showTonightBanner(id,cookAt);
   if(delay>0&&Notification.permission==='granted'){
