@@ -4213,7 +4213,9 @@ function renderMeals(cat){
     const sweetFavIds=allFavIds.filter(id=>id.startsWith('sw:'));
     const rw=document.getElementById('remind-wrap');if(rw)rw.innerHTML='';
     if(!allFavIds.length){
-      grid.innerHTML=`<div class="fav-empty"><div style="font-size:38px">🤍</div><div style="font-size:15px;margin-top:.5rem">Δεν έχεις αγαπημένα ακόμα.</div><div style="font-size:13px;margin-top:4px">Πάτα ❤️ σε οποιαδήποτε συνταγή ή γλυκό!</div></div>`;
+      grid.innerHTML=curLang==='en'
+        ?`<div class="fav-empty"><div style="font-size:38px">🤍</div><div style="font-size:15px;margin-top:.5rem">No favorites yet.</div><div style="font-size:13px;margin-top:4px">Tap ❤️ on any recipe or sweet!</div></div>`
+        :`<div class="fav-empty"><div style="font-size:38px">🤍</div><div style="font-size:15px;margin-top:.5rem">Δεν έχεις αγαπημένα ακόμα.</div><div style="font-size:13px;margin-top:4px">Πάτα ❤️ σε οποιαδήποτε συνταγή ή γλυκό!</div></div>`;
       return;
     }
     const CATLBLS={pasta:'🍝 Ζυμαρικά',seafood:'🐟 Θαλασσινά',meat:'🥩 Κρεατικά',
@@ -6069,11 +6071,12 @@ function copyShoppingList(){
     lines=mIng(_meal);
   }
   const list=`📋 ${name}\n\n${lines.map(i=>'• '+i).join('\n')}`;
+  const en=curLang==='en';
   if(navigator.clipboard&&navigator.clipboard.writeText){
-    navigator.clipboard.writeText(list).then(()=>showToast('✅ Λίστα αντιγράφηκε!')).catch(()=>showToast('⚠️ Σφάλμα αντιγραφής'));
+    navigator.clipboard.writeText(list).then(()=>showToast(en?'✅ List copied!':'✅ Λίστα αντιγράφηκε!')).catch(()=>showToast(en?'⚠️ Copy error':'⚠️ Σφάλμα αντιγραφής'));
   } else {
     const ta=document.createElement('textarea');ta.value=list;document.body.appendChild(ta);ta.select();
-    try{document.execCommand('copy');showToast('✅ Λίστα αντιγράφηκε!');}catch(e){showToast('⚠️ Σφάλμα');}
+    try{document.execCommand('copy');showToast(en?'✅ List copied!':'✅ Λίστα αντιγράφηκε!');}catch(e){showToast(en?'⚠️ Error':'⚠️ Σφάλμα');}
     document.body.removeChild(ta);
   }
 }
@@ -6172,12 +6175,13 @@ function shareRecipe(id){
   const url=location.origin+location.pathname+'?r='+id;
   const text=m.e+' '+mealName(m)+'  |  ⏱ '+m.time+"'  |  🔥 "+m.cal+' kcal';
   function _copyFallback(){
+    const en=curLang==='en';
     if(navigator.clipboard){
       navigator.clipboard.writeText(url)
-        .then(()=>showToast('📋 Αντιγράφηκε ο σύνδεσμος!'))
-        .catch(()=>prompt('Αντίγραψε τον σύνδεσμο:',url));
+        .then(()=>showToast(en?'📋 Link copied!':'📋 Αντιγράφηκε ο σύνδεσμος!'))
+        .catch(()=>prompt(en?'Copy the link:':'Αντίγραψε τον σύνδεσμο:',url));
     }else{
-      prompt('Αντίγραψε τον σύνδεσμο:',url);
+      prompt(en?'Copy the link:':'Αντίγραψε τον σύνδεσμο:',url);
     }
   }
   if(navigator.share){navigator.share({title:mealName(m),text,url}).catch(_copyFallback);}
@@ -6191,7 +6195,7 @@ function openCookTonight(id,e){
   if(e){e.stopPropagation();e.preventDefault();}
   _ctMealId=id;
   const m=MEALS[id];if(!m)return;
-  document.getElementById('ct-meal-name').textContent=m.e+' '+mealName(m)+'  ·  ⏱ '+m.time+' λεπτά';
+  document.getElementById('ct-meal-name').textContent=m.e+' '+mealName(m)+'  ·  ⏱ '+m.time+(curLang==='en'?' min':' λεπτά');
   document.getElementById('ct-time').value='20:00';
   _ctUpdateHint();
   document.getElementById('cook-tonight-modal').classList.add('show');
@@ -6204,7 +6208,7 @@ function _ctUpdateHint(){
   const notifAt=new Date();notifAt.setHours(h,min,0,0);
   notifAt.setTime(notifAt.getTime()-(m.time+10)*60000);
   const hh=notifAt.getHours(),mm=String(notifAt.getMinutes()).padStart(2,'0');
-  document.getElementById('ct-hint').textContent='🔔 Θα λάβεις υπενθύμιση στις '+hh+':'+mm;
+  document.getElementById('ct-hint').textContent=(curLang==='en'?"🔔 You'll get a reminder at ":'🔔 Θα λάβεις υπενθύμιση στις ')+hh+':'+mm;
 }
 
 function closeCookTonight(){document.getElementById('cook-tonight-modal').classList.remove('show');}
@@ -6222,16 +6226,17 @@ function saveCookTonight(){
   localStorage.setItem('fd_tonight',JSON.stringify({id,cookAt:cookAt.getTime()}));
   _showTonightBanner(id,cookAt);
   if(delay>0&&Notification.permission==='granted'){
-    _swSend({type:'SCHEDULE_ONE_SHOT_NOTIF',delay,title:'🍳 Ώρα να ξεκινήσεις!',body:m.e+' '+mealName(m)+' χρειάζεται '+m.time+" λεπτά. Ξεκίνα τώρα!",tag:'fd-tonight'});
+    const en=curLang==='en';
+    _swSend({type:'SCHEDULE_ONE_SHOT_NOTIF',delay,title:en?'🍳 Time to start!':'🍳 Ώρα να ξεκινήσεις!',body:en?(m.e+' '+mealName(m)+' needs '+m.time+' minutes. Start now!'):(m.e+' '+mealName(m)+' χρειάζεται '+m.time+" λεπτά. Ξεκίνα τώρα!"),tag:'fd-tonight'});
   }
   closeCookTonight();
-  showToast('🔔 Υπενθύμιση ορίστηκε!');
+  showToast(curLang==='en'?'🔔 Reminder set!':'🔔 Υπενθύμιση ορίστηκε!');
 }
 
 function _showTonightBanner(id,cookAt){
   const m=MEALS[id];if(!m)return;
   const hh=cookAt.getHours(),mm=String(cookAt.getMinutes()).padStart(2,'0');
-  document.getElementById('tonight-txt').textContent='🍳 Απόψε: '+mealName(m)+' στις '+hh+':'+mm;
+  document.getElementById('tonight-txt').textContent=(curLang==='en'?'🍳 Tonight: ':'🍳 Απόψε: ')+mealName(m)+(curLang==='en'?' at ':' στις ')+hh+':'+mm;
   document.getElementById('tonight-open-btn').onclick=()=>{openR(id);};
   document.getElementById('tonight-banner').classList.add('show');
 }
