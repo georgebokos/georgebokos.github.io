@@ -704,7 +704,7 @@ body{font-family:'Inter',-apple-system,sans-serif;background:var(--bg);color:var
     </div>
     <div class="hero-spacer"></div>
     <div class="hero-greeting" id="hero-greeting"></div>
-    <div class="hero-title">Τι μαγειρεύουμε<br>σήμερα;</div>
+    <div class="hero-title" data-i18n="hero_q">Τι μαγειρεύουμε<br>σήμερα;</div>
     <div class="hero-sub" id="hero-sub">✨ Βρες τη συνταγή της ημέρας</div>
     <div class="hero-search" onclick="openSearch()">
       <span class="hero-search-icon">🔍</span>
@@ -1417,6 +1417,7 @@ const TR={
     ab_a6:'❤️ <b>Αγαπημένα</b> — αποθήκευσε & βρες αμέσως τις συνταγές σου',
     ab_a7:'📱 <b>Εγκαθίσταται σαν κανονική εφαρμογή</b> στο κινητό σου',
     search_ph:'Αναζήτηση συνταγής...',fab_recipe:'👨‍🍳 Η συνταγή μου',
+    hero_q:'Τι μαγειρεύουμε<br>σήμερα;',
   },
   en:{sub:'Mediterranean Recipes',
     n0:'☀️ Today',n1:'⭐ Feasts',n2:'🍯 Sweets',n3:'🧊 Fridge',n4:'👥 Guests',n5:'🌿 Seasonal',
@@ -1488,6 +1489,7 @@ const TR={
     ab_a6:'❤️ <b>Favorites</b> — save & instantly find your recipes',
     ab_a7:'📱 <b>Installs like a regular app</b> on your phone',
     search_ph:'Search recipes...',fab_recipe:'👨‍🍳 My recipe',
+    hero_q:'What are we<br>cooking today?',
   }
 };
 function t(k){return TR[curLang]?.[k]||TR.el[k]||k;}
@@ -1503,6 +1505,15 @@ function mPrepMsg(prep){return curLang==='en'&&prep.msg_en?prep.msg_en:prep.msg;
 function sweetName(s){return curLang==='en'&&s.n_en?s.n_en:s.n;}
 function sweetIng(s){return curLang==='en'&&s.ing_en&&s.ing_en.length===s.ing.length?s.ing_en:s.ing;}
 function sweetSteps(s){return curLang==='en'&&s.steps_en&&s.steps_en.length===s.steps.length?s.steps_en:s.steps;}
+function fN(f){return curLang==='en'&&f.n_en?f.n_en:f.n;}
+function fD(f){return curLang==='en'&&f.d_en?f.d_en:f.d;}
+function fTl(f){return curLang==='en'&&f.tl_en?f.tl_en:f.tl;}
+function fSub(f){return curLang==='en'&&f.sub_en?f.sub_en:f.sub;}
+function fFn(f){return curLang==='en'&&f.fn_en!==undefined?f.fn_en:f.fn;}
+function fMenu(f){return curLang==='en'&&f.menu_en&&f.menu_en.length===f.menu.length?f.menu_en:f.menu;}
+function fWine(f){return curLang==='en'&&f.wine_en?f.wine_en:f.wine;}
+function fWt(f){return curLang==='en'&&f.wt_en?f.wt_en:f.wt;}
+function fTl2(f){return curLang==='en'&&f.tl2_en&&f.tl2_en.length===f.tl2.length?f.tl2_en:f.tl2;}
 function catLabel(cat){return t('cl_'+cat)||cat;}
 
 
@@ -4041,15 +4052,15 @@ const SWEETS={
 };
 
 const FESTIVE=[
-  {id:'kathari',e:'🪁',n:'Καθαρά Δευτέρα',d:'Φεβ/Μαρ',type:'fasting',tl:'Νηστεία αυστηρή',sub:'Αποκριάτικο νηστίσιμο τραπέζι',fn:'Χωρίς κρέας, γαλακτοκομικά, αυγά. Επιτρέπονται: χταπόδι, καλαμάρι, γαρίδες, μύδια.',menu:['🥖 Λαγάνα','🐙 Χταπόδι κρασάτο','🫐 Ταραμοσαλάτα','🍬 Χαλβάς σιμιγδαλένιος','🫒 Ελιές & τουρσί','🦑 Καλαμάρια τηγανητά'],wine:'Ούζο ή τσίπουρο!',wt:'Ούζο & τσίπουρο',tl2:['Πρωί — Εκδρομή με χαρταετό','12:00 — Χταπόδι στα κάρβουνα','13:00 — Ταραμοσαλάτα, ελιές, λαγάνα','14:00 — Χαλβάς & χαρταετός!']},
-  {id:'evangelismos',e:'🐟',n:'25η Μαρτίου',d:'25 Μαρτίου',type:'fish',also:'national',tl:'Ψάρι & Εθνική εορτή',sub:'Εθνική εορτή — μπακαλιάρος σκορδαλιά!',fn:'Σαρακοστή αλλά επιτρέπεται ψάρι. Παραδοσιακό: ΜΠΑΚΑΛΙΑΡΟΣ ΣΚΟΡΔΑΛΙΑ!',menu:['🐟 Μπακαλιάρος σκορδαλιά','🧄 Σκορδαλιά','🌿 Σπανακόρυζο','🥬 Λαχανοσαλάτα','🍬 Χαλβάς σιμιγδαλένιος'],wine:'Λευκό Ασύρτικο.',wt:'Λευκό για μπακαλιάρο',tl2:['Παραμονή — Μουλιάζεις μπακαλιάρο 24 ώρες!','25/3 11:00 — Σκορδαλιά','12:30 — Τηγανίζεις μπακαλιάρο','13:00 — Τραπέζι!']},
-  {id:'megaliebd',e:'✝️',n:'Μεγάλη Εβδομάδα',d:'Εβδομάδα πριν το Πάσχα',type:'fasting',tl:'Νηστεία αυστηρή',sub:'Η πιο ιερή εβδομάδα — αυστηρή νηστεία',fn:'Χωρίς κρέας, ψάρι, γαλακτοκομικά, αυγά, λάδι & κρασί. Μ. Πέμπτη: βάφουμε κόκκινα αυγά! Μ. Παρασκευή: πλήρης αποχή — ψωμί & νερό μόνο. Μ. Σάββατο μεσάνυχτα: Ανάσταση & Μαγειρίτσα.',menu:['🫒 Ελιές & τουρσί','🥗 Σαλάτα λαχανικών','🍲 Φακές νηστίσιμες','🐙 Χταπόδι (Δευτ–Τετ)','🥚 Κόκκινα αυγά (Μ. Πέμπτη)','🍲 Μαγειρίτσα (Μ. Σάββατο)'],wine:'Νερό & ζωμός μόνο.',wt:'Αυστηρή νηστεία',tl2:['Μ. Πέμπτη — Βάφεις κόκκινα αυγά!','Μ. Παρασκευή — Νηστεία & Επιτάφιος','Μ. Σάββατο 23:00 — Ανάσταση!','Μεσάνυχτα — Μαγειρίτσα & Τσουρέκι']},
-  {id:'easter',e:'🐣',n:'Πάσχα',d:'Κυριακή Ανάστασης',type:'major',tl:'Μεγάλη εορτή',sub:'Το πιο σημαντικό τραπέζι του χρόνου',fn:null,menu:['🍲 Μαγειρίτσα','🥚 Τσουρέκι πασχαλινό','🥩 Αρνί στη σούβλα','🥩 Κοντοσούβλι','🥗 Χωριάτικη σαλάτα','🧄 Τζατζίκι'],wine:'Ερυθρό ξηρό.',wt:'Κόκκινο για αρνί',tl2:['Μ. Σάββατο 22:00 — Μαγειρίτσα','Κυριακή 08:00 — Ανάβεις σούβλα','13:00 — Σαλάτες & τζατζίκι','14:00 — Χριστός Ανέστη!']},
-  {id:'protomagia',e:'🌸',n:'Πρωτομαγιά',d:'1 Μαΐου',type:'folk',tl:'Λαϊκή γιορτή',sub:'Εκδρομή, γκριλ & φύση',fn:null,menu:['🥩 Σουβλάκια','🧆 Κεφτέδες','🧄 Τζατζίκι','🥗 Χωριάτικη σαλάτα','🍺 Μπύρα παγωμένη'],wine:'Κρύα μπύρα & ούζο!',wt:'Μπύρα & ούζο',tl2:['Πρωί — Εκδρομή στη φύση','11:00 — Ανάβεις γκριλ','13:00 — Σουβλάκια & κεφτέδες','17:00 — Καρπούζι!']},
-  {id:'aug15',e:'🕊️',n:'Δεκαπενταύγουστος',d:'15 Αυγούστου',type:'folk',tl:'Η γιορτή της σούβλας',sub:'Κοίμηση της Θεοτόκου',fn:'Νηστεία 1-14 Αυγ. Στις 15 λύνεται η νηστεία — τα τραπέζια γεμίζουν με σουβλιστά αρνιά, κατσίκια & ψητά!',menu:['🥩 Αρνί στη σούβλα','🥩 Κατσίκι ψητό','🧆 Κεφτέδες & σουβλάκια','🥗 Χωριάτικη σαλάτα','🧄 Τζατζίκι','🍺 Κρύα μπύρα & ούζο'],wine:'Κόκκινο ξηρό ή ούζο!',wt:'Κόκκινο για σούβλα',tl2:['Πρωί — Εκκλησία & Λιτανεία','10:00 — Αναβολή σούβλας','13:00 — Πανηγύρι & χορός','14:00 — Τραπέζι με σουβλιστά!']},
-  {id:'okt28',e:'🇬🇷',n:'28η Οκτωβρίου',d:'28 Οκτωβρίου',type:'national',tl:'Εθνική εορτή',sub:'ΟΧΙ — Παραδοσιακό εορταστικό τραπέζι',fn:null,menu:['🥩 Κοκκινιστό αρνί','🍚 Γιουβέτσι αρνί','🥘 Στιφάδο κουνελιού','🥗 Χωριάτικη σαλάτα','🍰 Γαλακτομπούρεκο'],wine:'Ερυθρό ξηρό.',wt:'Ελληνικό κόκκινο',tl2:['Πρωί — Παρέλαση','12:30 — Γιουβέτσι στον φούρνο','14:00 — Τραπέζι!','16:00 — Γαλακτομπούρεκο']},
-  {id:'xmas',e:'🎄',n:'Χριστούγεννα',d:'25 Δεκεμβρίου',type:'major',tl:'Μεγάλη εορτή',sub:'Γουρουνόπουλο & χριστουγεννιάτικα γλυκά',fn:null,menu:['🦃 Γαλοπούλα γεμιστή','🥩 Γουρουνόπουλο φούρνου','🥗 Σαλάτα ρόκα-παρμεζάνα','🍪 Μελομακάρονα','⬜ Κουραμπιέδες'],wine:'Ερυθρό ξηρό.',wt:'Κόκκινο για γουρουνόπουλο',tl2:['24/12 πρωί — Μαρινάρεις','24/12 βράδυ — Μπακαλιάρος','25/12 09:00 — Φούρνος','14:00 — Καλά Χριστούγεννα!']},
-  {id:'newyear',e:'🥂',n:'Πρωτοχρονιά',d:'31 Δεκεμβρίου',type:'major',tl:'Μεγάλη εορτή',sub:'Γαλοπούλα, βασιλόπιτα & Champagne',fn:null,menu:['🥗 Σαλάτα με ρόδι','🦃 Γαλοπούλα γεμιστή','🎂 Βασιλόπιτα','🍪 Μελομακάρονα'],wine:'Champagne & Chardonnay!',wt:'Champagne',tl2:['14:00 — Γαλοπούλα στον φούρνο','20:00 — Κυρίως δείπνο','23:55 — Βασιλόπιτα','00:00 — Καλή Χρονιά!']},
+  {n_en:"Clean Monday",d_en:"Feb/Mar",tl_en:"Strict fasting",sub_en:"Carnival fasting table",fn_en:"No meat, dairy, or eggs. Allowed: octopus, squid, shrimp, mussels.",menu_en:["🥖 Lagana flatbread", "🐙 Octopus in wine sauce", "🫐 Taramosalata", "🍬 Semolina halva", "🫒 Olives & pickles", "🦑 Fried squid"],wine_en:"Ouzo or tsipouro!",wt_en:"Ouzo & tsipouro",tl2_en:["Morning — Kite-flying outing", "12:00 — Octopus on the coals", "13:00 — Taramosalata, olives, lagana", "14:00 — Halva & kites!"],id:'kathari',e:'🪁',n:'Καθαρά Δευτέρα',d:'Φεβ/Μαρ',type:'fasting',tl:'Νηστεία αυστηρή',sub:'Αποκριάτικο νηστίσιμο τραπέζι',fn:'Χωρίς κρέας, γαλακτοκομικά, αυγά. Επιτρέπονται: χταπόδι, καλαμάρι, γαρίδες, μύδια.',menu:['🥖 Λαγάνα','🐙 Χταπόδι κρασάτο','🫐 Ταραμοσαλάτα','🍬 Χαλβάς σιμιγδαλένιος','🫒 Ελιές & τουρσί','🦑 Καλαμάρια τηγανητά'],wine:'Ούζο ή τσίπουρο!',wt:'Ούζο & τσίπουρο',tl2:['Πρωί — Εκδρομή με χαρταετό','12:00 — Χταπόδι στα κάρβουνα','13:00 — Ταραμοσαλάτα, ελιές, λαγάνα','14:00 — Χαλβάς & χαρταετός!']},
+  {n_en:"March 25th",d_en:"March 25",tl_en:"Fish & National holiday",sub_en:"National holiday — salt cod with skordalia!",fn_en:"Lent, but fish is allowed. Traditional: SALT COD WITH GARLIC SAUCE!",menu_en:["🐟 Salt cod with skordalia", "🧄 Skordalia (garlic sauce)", "🌿 Spinach & rice", "🥬 Cabbage salad", "🍬 Semolina halva"],wine_en:"White Assyrtiko.",wt_en:"White, for salt cod",tl2_en:["Eve — Soak the salt cod for 24 hours!", "3/25 11:00 — Make the skordalia", "12:30 — Fry the salt cod", "13:00 — Table's set!"],id:'evangelismos',e:'🐟',n:'25η Μαρτίου',d:'25 Μαρτίου',type:'fish',also:'national',tl:'Ψάρι & Εθνική εορτή',sub:'Εθνική εορτή — μπακαλιάρος σκορδαλιά!',fn:'Σαρακοστή αλλά επιτρέπεται ψάρι. Παραδοσιακό: ΜΠΑΚΑΛΙΑΡΟΣ ΣΚΟΡΔΑΛΙΑ!',menu:['🐟 Μπακαλιάρος σκορδαλιά','🧄 Σκορδαλιά','🌿 Σπανακόρυζο','🥬 Λαχανοσαλάτα','🍬 Χαλβάς σιμιγδαλένιος'],wine:'Λευκό Ασύρτικο.',wt:'Λευκό για μπακαλιάρο',tl2:['Παραμονή — Μουλιάζεις μπακαλιάρο 24 ώρες!','25/3 11:00 — Σκορδαλιά','12:30 — Τηγανίζεις μπακαλιάρο','13:00 — Τραπέζι!']},
+  {n_en:"Holy Week",d_en:"Week before Easter",tl_en:"Strict fasting",sub_en:"The holiest week — strict fasting",fn_en:"No meat, fish, dairy, eggs, oil, or wine. Holy Thursday: we dye red eggs! Good Friday: complete abstinence — bread & water only. Holy Saturday midnight: Resurrection & Mageiritsa.",menu_en:["🫒 Olives & pickles", "🥗 Vegetable salad", "🍲 Lenten lentils", "🐙 Octopus (Mon–Wed)", "🥚 Red eggs (Holy Thursday)", "🍲 Mageiritsa (Holy Saturday)"],wine_en:"Water & broth only.",wt_en:"Strict fasting",tl2_en:["Holy Thursday — Dye the red eggs!", "Good Friday — Fasting & Epitaphios procession", "Holy Saturday 23:00 — Resurrection!", "Midnight — Mageiritsa & Tsoureki"],id:'megaliebd',e:'✝️',n:'Μεγάλη Εβδομάδα',d:'Εβδομάδα πριν το Πάσχα',type:'fasting',tl:'Νηστεία αυστηρή',sub:'Η πιο ιερή εβδομάδα — αυστηρή νηστεία',fn:'Χωρίς κρέας, ψάρι, γαλακτοκομικά, αυγά, λάδι & κρασί. Μ. Πέμπτη: βάφουμε κόκκινα αυγά! Μ. Παρασκευή: πλήρης αποχή — ψωμί & νερό μόνο. Μ. Σάββατο μεσάνυχτα: Ανάσταση & Μαγειρίτσα.',menu:['🫒 Ελιές & τουρσί','🥗 Σαλάτα λαχανικών','🍲 Φακές νηστίσιμες','🐙 Χταπόδι (Δευτ–Τετ)','🥚 Κόκκινα αυγά (Μ. Πέμπτη)','🍲 Μαγειρίτσα (Μ. Σάββατο)'],wine:'Νερό & ζωμός μόνο.',wt:'Αυστηρή νηστεία',tl2:['Μ. Πέμπτη — Βάφεις κόκκινα αυγά!','Μ. Παρασκευή — Νηστεία & Επιτάφιος','Μ. Σάββατο 23:00 — Ανάσταση!','Μεσάνυχτα — Μαγειρίτσα & Τσουρέκι']},
+  {n_en:"Easter",d_en:"Resurrection Sunday",tl_en:"Major feast",sub_en:"The most important table of the year",fn_en:null,menu_en:["🍲 Mageiritsa", "🥚 Easter tsoureki", "🥩 Spit-roasted lamb", "🥩 Kontosouvli", "🥗 Greek salad", "🧄 Tzatziki"],wine_en:"Dry red wine.",wt_en:"Red, for lamb",tl2_en:["Holy Saturday 22:00 — Mageiritsa", "Sunday 08:00 — Light the spit", "13:00 — Salads & tzatziki", "14:00 — Christ is Risen!"],id:'easter',e:'🐣',n:'Πάσχα',d:'Κυριακή Ανάστασης',type:'major',tl:'Μεγάλη εορτή',sub:'Το πιο σημαντικό τραπέζι του χρόνου',fn:null,menu:['🍲 Μαγειρίτσα','🥚 Τσουρέκι πασχαλινό','🥩 Αρνί στη σούβλα','🥩 Κοντοσούβλι','🥗 Χωριάτικη σαλάτα','🧄 Τζατζίκι'],wine:'Ερυθρό ξηρό.',wt:'Κόκκινο για αρνί',tl2:['Μ. Σάββατο 22:00 — Μαγειρίτσα','Κυριακή 08:00 — Ανάβεις σούβλα','13:00 — Σαλάτες & τζατζίκι','14:00 — Χριστός Ανέστη!']},
+  {n_en:"May Day",d_en:"May 1",tl_en:"Folk holiday",sub_en:"Outing, grill & nature",fn_en:null,menu_en:["🥩 Souvlaki skewers", "🧆 Keftedes (meatballs)", "🧄 Tzatziki", "🥗 Greek salad", "🍺 Ice-cold beer"],wine_en:"Cold beer & ouzo!",wt_en:"Beer & ouzo",tl2_en:["Morning — Outing in nature", "11:00 — Light the grill", "13:00 — Souvlaki & keftedes", "17:00 — Watermelon!"],id:'protomagia',e:'🌸',n:'Πρωτομαγιά',d:'1 Μαΐου',type:'folk',tl:'Λαϊκή γιορτή',sub:'Εκδρομή, γκριλ & φύση',fn:null,menu:['🥩 Σουβλάκια','🧆 Κεφτέδες','🧄 Τζατζίκι','🥗 Χωριάτικη σαλάτα','🍺 Μπύρα παγωμένη'],wine:'Κρύα μπύρα & ούζο!',wt:'Μπύρα & ούζο',tl2:['Πρωί — Εκδρομή στη φύση','11:00 — Ανάβεις γκριλ','13:00 — Σουβλάκια & κεφτέδες','17:00 — Καρπούζι!']},
+  {n_en:"Assumption Day (Aug 15)",d_en:"August 15",tl_en:"The spit-roast holiday",sub_en:"Dormition of the Theotokos",fn_en:"Fasting Aug 1-14. On the 15th the fast breaks — tables fill with spit-roasted lamb, goat & grilled meats!",menu_en:["🥩 Spit-roasted lamb", "🥩 Roast goat", "🧆 Keftedes & souvlaki", "🥗 Greek salad", "🧄 Tzatziki", "🍺 Cold beer & ouzo"],wine_en:"Dry red or ouzo!",wt_en:"Red, for spit-roast",tl2_en:["Morning — Church & procession", "10:00 — Start the spit", "13:00 — Festival & dancing", "14:00 — Spit-roast feast!"],id:'aug15',e:'🕊️',n:'Δεκαπενταύγουστος',d:'15 Αυγούστου',type:'folk',tl:'Η γιορτή της σούβλας',sub:'Κοίμηση της Θεοτόκου',fn:'Νηστεία 1-14 Αυγ. Στις 15 λύνεται η νηστεία — τα τραπέζια γεμίζουν με σουβλιστά αρνιά, κατσίκια & ψητά!',menu:['🥩 Αρνί στη σούβλα','🥩 Κατσίκι ψητό','🧆 Κεφτέδες & σουβλάκια','🥗 Χωριάτικη σαλάτα','🧄 Τζατζίκι','🍺 Κρύα μπύρα & ούζο'],wine:'Κόκκινο ξηρό ή ούζο!',wt:'Κόκκινο για σούβλα',tl2:['Πρωί — Εκκλησία & Λιτανεία','10:00 — Αναβολή σούβλας','13:00 — Πανηγύρι & χορός','14:00 — Τραπέζι με σουβλιστά!']},
+  {n_en:"October 28th (Ohi Day)",d_en:"October 28",tl_en:"National holiday",sub_en:"Ohi Day — traditional festive table",fn_en:null,menu_en:["🥩 Lamb kokkinisto", "🍚 Lamb giouvetsi", "🥘 Rabbit stifado", "🥗 Greek salad", "🍰 Galaktoboureko"],wine_en:"Dry red wine.",wt_en:"Greek red",tl2_en:["Morning — Parade", "12:30 — Giouvetsi in the oven", "14:00 — Table's set!", "16:00 — Galaktoboureko"],id:'okt28',e:'🇬🇷',n:'28η Οκτωβρίου',d:'28 Οκτωβρίου',type:'national',tl:'Εθνική εορτή',sub:'ΟΧΙ — Παραδοσιακό εορταστικό τραπέζι',fn:null,menu:['🥩 Κοκκινιστό αρνί','🍚 Γιουβέτσι αρνί','🥘 Στιφάδο κουνελιού','🥗 Χωριάτικη σαλάτα','🍰 Γαλακτομπούρεκο'],wine:'Ερυθρό ξηρό.',wt:'Ελληνικό κόκκινο',tl2:['Πρωί — Παρέλαση','12:30 — Γιουβέτσι στον φούρνο','14:00 — Τραπέζι!','16:00 — Γαλακτομπούρεκο']},
+  {n_en:"Christmas",d_en:"December 25",tl_en:"Major feast",sub_en:"Roast suckling pig & Christmas sweets",fn_en:null,menu_en:["🦃 Stuffed turkey", "🥩 Oven-roasted suckling pig", "🥗 Arugula-parmesan salad", "🍪 Melomakarona", "⬜ Kourabiedes"],wine_en:"Dry red wine.",wt_en:"Red, for suckling pig",tl2_en:["12/24 morning — Marinate", "12/24 evening — Salt cod", "12/25 09:00 — Into the oven", "14:00 — Merry Christmas!"],id:'xmas',e:'🎄',n:'Χριστούγεννα',d:'25 Δεκεμβρίου',type:'major',tl:'Μεγάλη εορτή',sub:'Γουρουνόπουλο & χριστουγεννιάτικα γλυκά',fn:null,menu:['🦃 Γαλοπούλα γεμιστή','🥩 Γουρουνόπουλο φούρνου','🥗 Σαλάτα ρόκα-παρμεζάνα','🍪 Μελομακάρονα','⬜ Κουραμπιέδες'],wine:'Ερυθρό ξηρό.',wt:'Κόκκινο για γουρουνόπουλο',tl2:['24/12 πρωί — Μαρινάρεις','24/12 βράδυ — Μπακαλιάρος','25/12 09:00 — Φούρνος','14:00 — Καλά Χριστούγεννα!']},
+  {n_en:"New Year's Eve",d_en:"December 31",tl_en:"Major feast",sub_en:"Turkey, vasilopita & Champagne",fn_en:null,menu_en:["🥗 Pomegranate salad", "🦃 Stuffed turkey", "🎂 Vasilopita (New Year's cake)", "🍪 Melomakarona"],wine_en:"Champagne & Chardonnay!",wt_en:"Champagne",tl2_en:["14:00 — Turkey into the oven", "20:00 — Main dinner", "23:55 — Vasilopita", "00:00 — Happy New Year!"],id:'newyear',e:'🥂',n:'Πρωτοχρονιά',d:'31 Δεκεμβρίου',type:'major',tl:'Μεγάλη εορτή',sub:'Γαλοπούλα, βασιλόπιτα & Champagne',fn:null,menu:['🥗 Σαλάτα με ρόδι','🦃 Γαλοπούλα γεμιστή','🎂 Βασιλόπιτα','🍪 Μελομακάρονα'],wine:'Champagne & Chardonnay!',wt:'Champagne',tl2:['14:00 — Γαλοπούλα στον φούρνο','20:00 — Κυρίως δείπνο','23:55 — Βασιλόπιτα','00:00 — Καλή Χρονιά!']},
 ];
 
 
@@ -4171,7 +4182,7 @@ function renderFeatured(show,cat,todayPlan){
   const fbg=CAT_GRAD[fm.cats[0]]||CAT_GRAD.legumes;
   const ffav=isFav(fm.id);
   const fplan=todayPlan[fm.id];
-  const badge=cat==='quick'?'⚡ Γρήγορη ιδέα':'⭐ Πρόταση ημέρας';
+  const badge=curLang==='en'?(cat==='quick'?'⚡ Quick idea':"⭐ Today's pick"):(cat==='quick'?'⚡ Γρήγορη ιδέα':'⭐ Πρόταση ημέρας');
   const _fclog=getCookedLog();
   const _fcd=_fclog[fm.id]?Math.floor((Date.now()-_fclog[fm.id])/86400000):null;
   const factHtml=_fcd!==null&&_fcd<4
@@ -4184,7 +4195,7 @@ function renderFeatured(show,cat,todayPlan){
       </div>`;
   fw.innerHTML=`<div class="feat-meal-wrap" style="padding:12px 1.1rem 0;position:relative;">
     <div class="feat-meal" onclick="openR('${fm.id}')">
-      ${fimg?`<img src="${fimg}" alt="${fm.n}" onerror="this.style.display='none'">`:`<div style="position:absolute;inset:0;background:${fbg}"></div>`}
+      ${fimg?`<img src="${fimg}" alt="${mealName(fm)}" onerror="this.style.display='none'">`:`<div style="position:absolute;inset:0;background:${fbg}"></div>`}
       <div class="feat-meal-ov"></div>
       ${!fimg?`<div class="feat-meal-e">${fm.e}</div>`:''}
       <div class="feat-meal-body">
@@ -4194,10 +4205,10 @@ function renderFeatured(show,cat,todayPlan){
         <div class="feat-actions" id="ca-${fm.id}">${factHtml}</div>
       </div>
       <button class="feat-fav" data-id="${fm.id}" onclick="toggleFav('${fm.id}',event)">${ffav?'❤️':'🤍'}</button>
-      <button class="feat-next-btn" title="Επόμενη πρόταση" onclick="event.stopPropagation();featNext()">👎</button>
+      <button class="feat-next-btn" title="${curLang==='en'?'Next suggestion':'Επόμενη πρόταση'}" onclick="event.stopPropagation();featNext()">👎</button>
     </div>
   </div>
-  <div class="more-hdr"><h3>🌞 Περισσότερες προτάσεις</h3></div>`;
+  <div class="more-hdr"><h3>🌞 ${curLang==='en'?'More suggestions':'Περισσότερες προτάσεις'}</h3></div>`;
 }
 
 function featNext(){
@@ -4225,7 +4236,7 @@ function featNext(){
         :`<button class="thumb-up" onclick="thumbUp('${m.id}',event)">👍 ${curLang==='en'?"I'll make this!":'Θα το φτιάξω!'}</button><button class="thumb-dn" onclick="thumbDown('${m.id}',event)">👎</button>`;
       return `<div class="mcard" data-mid="${m.id}" onclick="openR('${m.id}')">
         <div class="mtop" style="background:${bg}">
-          <img id="mi-${m.id}" alt="${m.n}" src="${MEAL_IMAGES[m.id]||''}" onload="this.classList.add('loaded');document.getElementById('me-${m.id}').style.opacity=0" onerror="this.style.display='none'">
+          <img id="mi-${m.id}" alt="${mealName(m)}" src="${MEAL_IMAGES[m.id]||''}" onload="this.classList.add('loaded');document.getElementById('me-${m.id}').style.opacity=0" onerror="this.style.display='none'">
           <div class="memoji" id="me-${m.id}">${m.e}</div>
           <div class="mtop-grad"></div>
           <div class="mtop-badge"><span class="badge ${cl}">${catLabel(mc)}</span></div>
@@ -4379,7 +4390,7 @@ function renderMeals(cat){
           :`<button class="thumb-up" onclick="thumbUp('${m.id}',event)">👍 ${curLang==='en'?"I'll make this!":'Θα το φτιάξω!'}</button><button class="thumb-cook" onclick="markCooked('${m.id}',event)">✓ ${curLang==='en'?'Made it':'Το έφτιαξα'}</button>`;
         return `<div class="mcard" data-mid="${m.id}" onclick="openR('${m.id}')">
           <div class="mtop" style="background:${bg}">
-            <img id="mi-${m.id}" alt="${m.n}" src="${MEAL_IMAGES[m.id]||''}" onload="this.classList.add('loaded');var e=document.getElementById('me-${m.id}');if(e)e.style.opacity=0" onerror="this.style.display='none'">
+            <img id="mi-${m.id}" alt="${mealName(m)}" src="${MEAL_IMAGES[m.id]||''}" onload="this.classList.add('loaded');var e=document.getElementById('me-${m.id}');if(e)e.style.opacity=0" onerror="this.style.display='none'">
             <div class="memoji" id="me-${m.id}">${m.e}</div>
             <div class="mtop-grad"></div>
             <div class="mtop-badge"><span class="badge ${cl}">${catLabel(mc)}</span></div>
@@ -4511,7 +4522,7 @@ function renderMeals(cat){
       :`<button class="thumb-up" onclick="thumbUp('${m.id}',event)">👍 ${curLang==='en'?"I'll make this!":'Θα το φτιάξω!'}</button><button class="thumb-cook" onclick="markCooked('${m.id}',event)">✓ ${curLang==='en'?'Made it':'Το έφτιαξα'}</button><button class="thumb-dn" onclick="thumbDown('${m.id}',event)">👎</button>`;
     return `<div class="mcard" data-mid="${m.id}" onclick="openR('${m.id}')">
       <div class="mtop" style="background:${bg}">
-        <img id="mi-${m.id}" alt="${m.n}" src="${MEAL_IMAGES[m.id]||''}" onload="this.classList.add('loaded');document.getElementById('me-${m.id}').style.opacity=0" onerror="this.style.display='none'">
+        <img id="mi-${m.id}" alt="${mealName(m)}" src="${MEAL_IMAGES[m.id]||''}" onload="this.classList.add('loaded');document.getElementById('me-${m.id}').style.opacity=0" onerror="this.style.display='none'">
         <div class="memoji" id="me-${m.id}">${m.e}</div>
         <div class="mtop-grad"></div>
         <div class="mtop-badge"><span class="badge ${cl}">${catLabel(mc)}</span></div>
@@ -4582,7 +4593,7 @@ function openR(id){
     <button id="ov-fav" onclick="toggleFav('${id}',event)" style="position:absolute;top:12px;left:12px;z-index:10;background:rgba(0,0,0,.3);border:none;border-radius:50%;width:36px;height:36px;font-size:18px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .2s;">${isFav(id)?'❤️':'🤍'}</button>
     <button class="ov-share-btn" onclick="shareRecipe('${id}')" title="Κοινοποίηση">📤</button>
     <div class="ovhero-fb" style="background:${bg}"><span style="font-size:78px;filter:drop-shadow(0 6px 20px rgba(0,0,0,.15))">${m.e}</span></div>
-    <img id="ov-img" alt="${m.n}" src="${MEAL_IMAGES[id]||''}" onload="this.style.opacity='1';this.classList.add('loaded');document.querySelector('#ov-hero .ovhero-fb').style.opacity=0" onerror="this.style.display='none'" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .6s;">
+    <img id="ov-img" alt="${mealName(m)}" src="${MEAL_IMAGES[id]||''}" onload="this.style.opacity='1';this.classList.add('loaded');document.querySelector('#ov-hero .ovhero-fb').style.opacity=0" onerror="this.style.display='none'" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .6s;">
     <div class="ovhero-grad"></div>
     <div class="ovtitle"><h2>${mealName(m)}</h2></div>`;
   // Stats — init serving count
@@ -5374,9 +5385,9 @@ function rendFest(f){
   document.getElementById('fest-grid').innerHTML=list.map(x=>`
     <div class="fcard ${['fasting','fish'].includes(x.type)?x.type:''}" onclick="showFD('${x.id}')">
       <div class="fe">${x.e}</div>
-      <div class="fn">${x.n}</div>
-      <div class="fd">${x.d}</div>
-      <span class="ftag ft-${x.type}">${x.tl}</span>
+      <div class="fn">${fN(x)}</div>
+      <div class="fd">${fD(x)}</div>
+      <span class="ftag ft-${x.type}">${fTl(x)}</span>
     </div>`).join('');
 }
 
@@ -5391,18 +5402,22 @@ function showFD(id){
   document.getElementById('fest-main').style.display='none';
   document.getElementById('fest-det').style.display='block';
   window.scrollTo(0,0);
-  document.getElementById('fd-t').textContent=f.e+' '+f.n;
-  document.getElementById('fd-s').textContent=f.sub;
-  document.getElementById('fd-fn').innerHTML=f.fn?`<div class="fn-box"><div class="fn-t">🌿 ${t('ff_fasting').replace('🌿 ','')}</div><div class="fn-d">${f.fn}</div></div>`:'';
+  document.getElementById('fd-t').textContent=f.e+' '+fN(f);
+  document.getElementById('fd-s').textContent=fSub(f);
+  const fn=fFn(f);
+  document.getElementById('fd-fn').innerHTML=fn?`<div class="fn-box"><div class="fn-t">🌿 ${t('ff_fasting').replace('🌿 ','')}</div><div class="fn-d">${fn}</div></div>`:'';
 
-  // Clickable menu items
-  document.getElementById('fd-menu').innerHTML=f.menu.map(item=>{
+  // Clickable menu items — match against the ORIGINAL Greek text (lookup table is Greek-keyed),
+  // but display the language-appropriate text
+  const menuDisplay=fMenu(f);
+  document.getElementById('fd-menu').innerHTML=f.menu.map((item,i)=>{
+    const label=menuDisplay[i]||item;
     const recipe=findRecipeForItem(item);
     if(recipe&&recipe.type==='meal'&&MEALS[recipe.id]){
       const m=MEALS[recipe.id];
       return `<div class="fmenu-item clickable" onclick="openR('${recipe.id}')">
         <div class="fmdot" style="background:var(--pri)"></div>
-        <div class="fmname">${item}</div>
+        <div class="fmname">${label}</div>
         <div class="fmbadge">⏱ ${m.time}' · 🔥 ${m.cal} · 💰 ${m.cost}</div>
         <div class="fmarrow">📖</div>
       </div>`;
@@ -5410,16 +5425,16 @@ function showFD(id){
     if(recipe&&recipe.type==='sweet'){const sw=SWEETS[recipe.cat]?.[recipe.idx];
       if(sw)return `<div class="fmenu-item clickable" onclick="openSW('${recipe.cat}',${recipe.idx})">
         <div class="fmdot" style="background:#B87818"></div>
-        <div class="fmname">${item}</div>
+        <div class="fmname">${label}</div>
         <div class="fmbadge">🍰 ${sw.cal} ${curLang==='en'?'cal/serv.':'θερμ./μερ.'}</div>
         <div class="fmarrow">📖</div>
       </div>`;
     }
-    return `<div class="fmenu-item"><div class="fmdot" style="background:#DDD"></div><div class="fmname">${item}</div></div>`;
+    return `<div class="fmenu-item"><div class="fmdot" style="background:#DDD"></div><div class="fmname">${label}</div></div>`;
   }).join('');;
 
-  document.getElementById('fd-wine').innerHTML=`<div class="pair-box"><div class="pair-t">${t('wine')} — ${f.wt}</div><div class="pair-d">${f.wine}</div></div>`;
-  document.getElementById('fd-tl').innerHTML=f.tl2.map((tx,i,a)=>`
+  document.getElementById('fd-wine').innerHTML=`<div class="pair-box"><div class="pair-t">${t('wine')} — ${fWt(f)}</div><div class="pair-d">${fWine(f)}</div></div>`;
+  document.getElementById('fd-tl').innerHTML=fTl2(f).map((tx,i,a)=>`
     <div class="tl-row">
       <div style="display:flex;flex-direction:column;align-items:center;margin-right:11px;">
         <div class="tl-dot"></div>
@@ -5923,8 +5938,8 @@ function doSearch(q){
   // Search SWEETS
   for(const[cat,arr] of Object.entries(SWEETS)){
     arr.forEach((s,i)=>{
-      if(deaccent(s.n).includes(dq)){
-        results.push({type:'sweet',name:s.n,emoji:s.e,cat:t('sw')[['keik','koulourakia','tiganites','paradosiaka','epochiaka'].indexOf(cat)]||cat,onclick:`openSW('${cat}',${i})`});
+      if(deaccent(s.n).includes(dq)||(s.n_en&&deaccent(s.n_en).includes(dq))){
+        results.push({type:'sweet',name:sweetName(s),emoji:s.e,cat:t('sw')[['keik','koulourakia','tiganites','paradosiaka','epochiaka'].indexOf(cat)]||cat,onclick:`openSW('${cat}',${i})`});
       }
     });
   }
@@ -6035,7 +6050,7 @@ function selGuest(n,btn){
     const fav=isFav(id);
     return `<div class="mcard" onclick="openRWithScale('${id}',${n})">
       <div class="mtop" style="background:${bg}">
-        ${img?`<img alt="${m.n}" src="${img}" onload="this.classList.add('loaded');this.nextElementSibling.style.opacity=0" onerror="this.style.display='none'">`:''}
+        ${img?`<img alt="${mealName(m)}" src="${img}" onload="this.classList.add('loaded');this.nextElementSibling.style.opacity=0" onerror="this.style.display='none'">`:''}
         <div class="memoji">${m.e}</div>
         <div class="mtop-grad"></div>
         <div class="mtop-badge"><span class="badge ${cl}">${catLabel(mc)}</span></div>
