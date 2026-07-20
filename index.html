@@ -4814,9 +4814,10 @@ function renderOvRating(id){
   if(!wrap)return;
   const r=getRatings();
   const cur=r[id]||0;
-  wrap.innerHTML=`<label>Αξιολόγηση:</label><div class="star-row" id="star-row">${
-    [1,2,3,4,5].map(n=>`<span class="star${cur>=n?' on':''}" onclick="rateRecipe('${id}',${n})" role="button" aria-label="${n} αστέρια">★</span>`).join('')
-  }</div><span class="ov-rating-saved" id="rating-saved">✓ Αποθηκεύτηκε</span>`;
+  const en=curLang==='en';
+  wrap.innerHTML=`<label>${en?'Rating:':'Αξιολόγηση:'}</label><div class="star-row" id="star-row">${
+    [1,2,3,4,5].map(n=>`<span class="star${cur>=n?' on':''}" onclick="rateRecipe('${id}',${n})" role="button" aria-label="${n} ${en?'stars':'αστέρια'}">★</span>`).join('')
+  }</div><span class="ov-rating-saved" id="rating-saved">✓ ${en?'Saved':'Αποθηκεύτηκε'}</span>`;
 }
 function rateRecipe(id,stars){
   setRating(id,stars);
@@ -4868,7 +4869,7 @@ function _timerFireDone(btn){
   clearInterval(_timerInterval);_timerInterval=null;_timerEndTime=null;_timerBtn=null;
   _activeTimerMealId='';_timerStepIdx_page=-1;
   _stopTimerKeepalive();
-  btn.classList.remove('running');btn.classList.add('done');btn.textContent='✓ Έτοιμο!';
+  btn.classList.remove('running');btn.classList.add('done');btn.textContent=curLang==='en'?'✓ Done!':'✓ Έτοιμο!';
   if(navigator.vibrate)navigator.vibrate([300,150,300,150,300]);
   // AudioContext was unlocked at button-tap time, so it plays reliably here
   try{
@@ -4883,7 +4884,7 @@ function _timerFireDone(btn){
       o.start(ctx.currentTime+t);o.stop(ctx.currentTime+t+.3);
     });
   }catch(e){}
-  _swSend({type:'SHOW_NOTIFICATION',title:'⏱️ FoodDaily — Timer',body:'Ο χρόνος τελείωσε! Δες το επόμενο βήμα.',tag:'fd-timer'});
+  _swSend({type:'SHOW_NOTIFICATION',title:'⏱️ FoodDaily — Timer',body:curLang==='en'?'Time is up! Check the next step.':'Ο χρόνος τελείωσε! Δες το επόμενο βήμα.',tag:'fd-timer'});
 }
 function startStepTimer(btn,minutes){
   if(btn.classList.contains('done')){
@@ -4938,12 +4939,13 @@ function getNotes(id){try{const n=JSON.parse(localStorage.getItem('fd_notes')||'
 function saveNote(id,text){try{const n=JSON.parse(localStorage.getItem('fd_notes')||'{}');n[id]=text;localStorage.setItem('fd_notes',JSON.stringify(n));}catch(e){}}
 function buildNotesTab(m){
   const wrap=document.getElementById('ot-notes');if(!wrap)return;
+  const en=curLang==='en';
   if(!isPremium()){
-    wrap.innerHTML=`<div class="notes-locked"><div class="pgate-icon">📝</div><div class="notes-locked-t">Σημειώσεις συνταγής</div><div class="notes-locked-s">Κράτα τα δικά σου μυστικά για κάθε συνταγή — προσθήκες, αλλαγές, βαθμολογίες.</div><button class="notes-unlock-btn" onclick="showPremiumGate('Τα Σημειώσεις είναι διαθέσιμα στο Premium.')">💎 Ξεκλείδωμα Premium</button></div>`;
+    wrap.innerHTML=`<div class="notes-locked"><div class="pgate-icon">📝</div><div class="notes-locked-t">${en?'Recipe notes':'Σημειώσεις συνταγής'}</div><div class="notes-locked-s">${en?"Keep your own secrets for each recipe — tweaks, substitutions, ratings.":'Κράτα τα δικά σου μυστικά για κάθε συνταγή — προσθήκες, αλλαγές, βαθμολογίες.'}</div><button class="notes-unlock-btn" onclick="showPremiumGate('${en?'Notes are available on Premium.':'Τα Σημειώσεις είναι διαθέσιμα στο Premium.'}')">💎 ${en?'Unlock Premium':'Ξεκλείδωμα Premium'}</button></div>`;
     return;
   }
   const txt=getNotes(m.id);
-  wrap.innerHTML=`<div class="notes-wrap"><textarea class="notes-area" id="notes-ta" placeholder="Γράψε τις δικές σου σημειώσεις για αυτή τη συνταγή...">${txt}</textarea><button class="notes-save-btn" onclick="saveNote('${m.id}',document.getElementById('notes-ta').value);showToast('📝 Αποθηκεύτηκε!')">💾 Αποθήκευση</button></div>`;
+  wrap.innerHTML=`<div class="notes-wrap"><textarea class="notes-area" id="notes-ta" placeholder="${en?'Write your own notes for this recipe...':'Γράψε τις δικές σου σημειώσεις για αυτή τη συνταγή...'}">${txt}</textarea><button class="notes-save-btn" onclick="saveNote('${m.id}',document.getElementById('notes-ta').value);showToast('${en?'📝 Saved!':'📝 Αποθηκεύτηκε!'}')">💾 ${en?'Save':'Αποθήκευση'}</button></div>`;
 }
 
 // ── USER RECIPE FORM ────────────────────────────────────────────
@@ -5828,7 +5830,7 @@ function doSearch(q){
   }
   mg.style.display='none';
   if(results.length===0){
-    const _sq=q.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');res.innerHTML=`<div class="search-empty">😕 Δεν βρέθηκαν αποτελέσματα για "<b>${_sq}</b>"</div>`;
+    const _sq=q.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');res.innerHTML=curLang==='en'?`<div class="search-empty">😕 No results found for "<b>${_sq}</b>"</div>`:`<div class="search-empty">😕 Δεν βρέθηκαν αποτελέσματα για "<b>${_sq}</b>"</div>`;
   } else {
     res.innerHTML=results.map(r=>`
       <div class="search-res-item" onclick="${r.onclick}">
@@ -6023,13 +6025,14 @@ function toggleFav(id,e){
   const ob=document.getElementById('ov-fav');if(ob)ob.textContent=isNowFav?'❤️':'🤍';
   // Update favorites pill count
   updateFavPill();
-  showToast(isNowFav?'❤️ Αγαπημένο!':'🤍 Αφαιρέθηκε');
+  showToast(isNowFav?(curLang==='en'?'❤️ Favorited!':'❤️ Αγαπημένο!'):(curLang==='en'?'🤍 Removed':'🤍 Αφαιρέθηκε'));
 }
 function updateFavPill(){
   const pill=document.getElementById('fav-pill');
   if(!pill)return;
   const n=getFavs().length;
-  pill.textContent=n>0?`❤️ Αγαπημένα (${n})`:'❤️ Αγαπημένα';
+  const lbl=curLang==='en'?'Favorites':'Αγαπημένα';
+  pill.textContent=n>0?`❤️ ${lbl} (${n})`:`❤️ ${lbl}`;
 }
 
 // ── SERVING STEPPER ───────────────────────────────────────────
@@ -6076,19 +6079,19 @@ function copyShoppingList(){
 let _obSlide=0;
 // ── PROFILE & DISLIKES ─────────────────────────────────────────
 const DISLIKE_OPTS=[
-  {id:'meat',ico:'🥩',lbl:'Κρεατικά'},
-  {id:'seafood',ico:'🐟',lbl:'Θαλασσινά'},
-  {id:'pork',ico:'🐷',lbl:'Χοιρινό'},
-  {id:'lamb',ico:'🐑',lbl:'Αρνί'},
-  {id:'legumes',ico:'🫘',lbl:'Όσπρια'},
-  {id:'vegetables',ico:'🥦',lbl:'Λαχανικά'},
-  {id:'garlic',ico:'🧄',lbl:'Σκόρδο'},
-  {id:'eggplant',ico:'🍆',lbl:'Μελιτζάνα'},
+  {id:'meat',ico:'🥩',lbl:'Κρεατικά',lbl_en:'Meat'},
+  {id:'seafood',ico:'🐟',lbl:'Θαλασσινά',lbl_en:'Seafood'},
+  {id:'pork',ico:'🐷',lbl:'Χοιρινό',lbl_en:'Pork'},
+  {id:'lamb',ico:'🐑',lbl:'Αρνί',lbl_en:'Lamb'},
+  {id:'legumes',ico:'🫘',lbl:'Όσπρια',lbl_en:'Legumes'},
+  {id:'vegetables',ico:'🥦',lbl:'Λαχανικά',lbl_en:'Vegetables'},
+  {id:'garlic',ico:'🧄',lbl:'Σκόρδο',lbl_en:'Garlic'},
+  {id:'eggplant',ico:'🍆',lbl:'Μελιτζάνα',lbl_en:'Eggplant'},
 ];
 function getDislikes(){try{return JSON.parse(localStorage.getItem('fd_dislikes')||'[]');}catch(e){return [];}}
 function saveDislikes(arr){localStorage.setItem('fd_dislikes',JSON.stringify(arr));}
 function toggleDislike(id){
-  if(!isPremium()){showPremiumGate('Οι αντιπάθειες είναι διαθέσιμες στο Premium.');return;}
+  if(!isPremium()){showPremiumGate(curLang==='en'?'Dislikes are available on Premium.':'Οι αντιπάθειες είναι διαθέσιμες στο Premium.');return;}
   const d=getDislikes();
   const idx=d.indexOf(id);
   if(idx>=0)d.splice(idx,1);else d.push(id);
@@ -6100,10 +6103,10 @@ function renderDislikeGrid(){
   const d=getDislikes();
   document.getElementById('dislike-grid').innerHTML=DISLIKE_OPTS.map(o=>`
     <div class="dislike-chip${d.includes(o.id)?' on':''}" onclick="toggleDislike('${o.id}')">
-      <span class="dislike-chip-ico">${o.ico}</span>${o.lbl}
+      <span class="dislike-chip-ico">${o.ico}</span>${curLang==='en'?o.lbl_en:o.lbl}
     </div>`).join('');
   const note=document.getElementById('prof-prem-note');
-  if(note)note.textContent=isPremium()?'Οι αντιπάθειες φιλτράρουν τις καθημερινές προτάσεις.':'💎 Οι αντιπάθειες είναι Premium — Δοκίμασε 7 ημέρες δωρεάν.';
+  if(note)note.textContent=isPremium()?(curLang==='en'?'Dislikes filter your daily suggestions.':'Οι αντιπάθειες φιλτράρουν τις καθημερινές προτάσεις.'):(curLang==='en'?'💎 Dislikes are Premium — Try 7 days free.':'💎 Οι αντιπάθειες είναι Premium — Δοκίμασε 7 ημέρες δωρεάν.');
 }
 function openProfile(){
   closeOvInstant();
