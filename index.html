@@ -1004,22 +1004,22 @@ body{font-family:'Inter',-apple-system,sans-serif;background:var(--bg);color:var
     <div class="pscreen-head">
       <button class="pscreen-close" onclick="closePremiumScreen()">✕</button>
       <div class="pscreen-badge">💎 FoodDaily Premium</div>
-      <div class="pscreen-title">Μαγείρεψε καλύτερα</div>
-      <div class="pscreen-sub">Το πλήρες εργαλείο για την κουζίνα σου</div>
+      <div class="pscreen-title" data-i18n="ps_title">Μαγείρεψε καλύτερα</div>
+      <div class="pscreen-sub" data-i18n="ps_sub">Το πλήρες εργαλείο για την κουζίνα σου</div>
       <div class="pscreen-trial-badge" id="pscreen-trial-badge">🎁 7 ημέρες δωρεάν</div>
     </div>
     <div class="pscreen-body">
       <div class="pscreen-feats">
-        <div class="pscreen-feat"><div class="pscreen-feat-ico">📝</div><div class="pscreen-feat-txt"><div class="pscreen-feat-name">Σημειώσεις ανά συνταγή</div><div class="pscreen-feat-desc">Κράτα τις δικές σου παραλλαγές, μυστικά και αλλαγές σε κάθε συνταγή.</div></div></div>
-        <div class="pscreen-feat"><div class="pscreen-feat-ico">📅</div><div class="pscreen-feat-txt"><div class="pscreen-feat-name">Εβδομαδιαίο meal plan</div><div class="pscreen-feat-desc">Προγραμμάτισε τα φαγητά της εβδομάδας με αυτόματη λίστα αγορών.</div></div></div>
-        <div class="pscreen-feat"><div class="pscreen-feat-ico">🔔</div><div class="pscreen-feat-txt"><div class="pscreen-feat-name">Έξυπνες ειδοποιήσεις</div><div class="pscreen-feat-desc">Εξατομικευμένες υπενθυμίσεις βάσει των προτιμήσεών σου.</div></div></div>
-        <div class="pscreen-feat"><div class="pscreen-feat-ico">❤️</div><div class="pscreen-feat-txt"><div class="pscreen-feat-name">Απεριόριστα αγαπημένα</div><div class="pscreen-feat-desc">Οργάνωσε τις αγαπημένες σου συνταγές χωρίς όριο.</div></div></div>
-        <div class="pscreen-feat"><div class="pscreen-feat-ico">🚫</div><div class="pscreen-feat-txt"><div class="pscreen-feat-name">Χωρίς διαφημίσεις</div><div class="pscreen-feat-desc">Καθαρή εμπειρία χωρίς διακοπές.</div></div></div>
-        <div class="pscreen-feat"><div class="pscreen-feat-ico">⭐</div><div class="pscreen-feat-txt"><div class="pscreen-feat-name">Νέες συνταγές πρώτος</div><div class="pscreen-feat-desc">Πρόσβαση σε νέες συνταγές πριν βγουν στο δωρεάν.</div></div></div>
+        <div class="pscreen-feat"><div class="pscreen-feat-ico">📝</div><div class="pscreen-feat-txt"><div class="pscreen-feat-name" data-i18n="ps_f1_n">Σημειώσεις ανά συνταγή</div><div class="pscreen-feat-desc" data-i18n="ps_f1_d">Κράτα τις δικές σου παραλλαγές, μυστικά και αλλαγές σε κάθε συνταγή.</div></div></div>
+        <div class="pscreen-feat"><div class="pscreen-feat-ico">📅</div><div class="pscreen-feat-txt"><div class="pscreen-feat-name" data-i18n="ps_f2_n">Εβδομαδιαίο meal plan</div><div class="pscreen-feat-desc" data-i18n="ps_f2_d">Προγραμμάτισε τα φαγητά της εβδομάδας με αυτόματη λίστα αγορών.</div></div></div>
+        <div class="pscreen-feat"><div class="pscreen-feat-ico">🔔</div><div class="pscreen-feat-txt"><div class="pscreen-feat-name" data-i18n="ps_f3_n">Έξυπνες ειδοποιήσεις</div><div class="pscreen-feat-desc" data-i18n="ps_f3_d">Εξατομικευμένες υπενθυμίσεις βάσει των προτιμήσεών σου.</div></div></div>
+        <div class="pscreen-feat"><div class="pscreen-feat-ico">❤️</div><div class="pscreen-feat-txt"><div class="pscreen-feat-name" data-i18n="ps_f4_n">Απεριόριστα αγαπημένα</div><div class="pscreen-feat-desc" data-i18n="ps_f4_d">Οργάνωσε τις αγαπημένες σου συνταγές χωρίς όριο.</div></div></div>
+        <div class="pscreen-feat"><div class="pscreen-feat-ico">🚫</div><div class="pscreen-feat-txt"><div class="pscreen-feat-name" data-i18n="ps_f5_n">Χωρίς διαφημίσεις</div><div class="pscreen-feat-desc" data-i18n="ps_f5_d">Καθαρή εμπειρία χωρίς διακοπές.</div></div></div>
+        <div class="pscreen-feat"><div class="pscreen-feat-ico">⭐</div><div class="pscreen-feat-txt"><div class="pscreen-feat-name" data-i18n="ps_f6_n">Νέες συνταγές πρώτος</div><div class="pscreen-feat-desc" data-i18n="ps_f6_d">Πρόσβαση σε νέες συνταγές πριν βγουν στο δωρεάν.</div></div></div>
       </div>
       <div class="pscreen-plan-toggle">
-        <button class="pplan-btn on" id="pplan-monthly" onclick="setPlan('monthly')">Μηνιαία</button>
-        <button class="pplan-btn" id="pplan-annual" onclick="setPlan('annual')">Ετήσια <span class="pplan-save">-37%</span></button>
+        <button class="pplan-btn on" id="pplan-monthly" onclick="setPlan('monthly')" data-i18n="ps_monthly">Μηνιαία</button>
+        <button class="pplan-btn" id="pplan-annual" onclick="setPlan('annual')"><span data-i18n="ps_annual">Ετήσια</span> <span class="pplan-save">-37%</span></button>
       </div>
       <div class="pscreen-price" id="pscreen-price">
         <div class="pscreen-price-main">1,99€<span style="font-size:18px;font-weight:400">/μήνα</span></div>
@@ -1027,7 +1027,7 @@ body{font-family:'Inter',-apple-system,sans-serif;background:var(--bg);color:var
       </div>
       <button class="pscreen-cta" id="pscreen-cta" onclick="handlePremiumCTA()">🎁 Ξεκίνα δωρεάν για 7 ημέρες</button>
       <div class="pscreen-cta-note" id="pscreen-cta-note">Δεν απαιτείται κάρτα για το trial · Ακύρωση οποιαδήποτε στιγμή</div>
-      <button class="pscreen-restore" onclick="restorePurchase()">Επαναφορά αγοράς</button>
+      <button class="pscreen-restore" onclick="restorePurchase()" data-i18n="ps_restore">Επαναφορά αγοράς</button>
     </div>
   </div>
 </div>
@@ -1036,13 +1036,13 @@ body{font-family:'Inter',-apple-system,sans-serif;background:var(--bg);color:var
 <div class="wplan-sheet" id="wplan-sheet" onclick="if(event.target===this)closeWeekPlan()">
   <div class="wplan-inner">
     <div class="wplan-head">
-      <div class="wplan-title">📅 Εβδομαδιαίο Πρόγραμμα</div>
+      <div class="wplan-title" data-i18n="wp_title">📅 Εβδομαδιαίο Πρόγραμμα</div>
       <div style="display:flex;gap:8px;align-items:center;">
-        <button class="wplan-rand-btn" onclick="randomizeWeekPlan()" title="Τυχαία επιλογή">🎲 Τυχαία</button>
+        <button class="wplan-rand-btn" onclick="randomizeWeekPlan()" title="Τυχαία επιλογή" data-i18n="wp_rand">🎲 Τυχαία</button>
         <button class="wplan-close" onclick="closeWeekPlan()">✕</button>
       </div>
     </div>
-    <div class="wplan-sub">Επίλεξε φαγητό για κάθε μέρα — θα σου στέλνουμε έξυπνες υπενθυμίσεις για προετοιμασία!</div>
+    <div class="wplan-sub" data-i18n="wp_sub">Επίλεξε φαγητό για κάθε μέρα — θα σου στέλνουμε έξυπνες υπενθυμίσεις για προετοιμασία!</div>
     <div id="wplan-days"></div>
   </div>
 </div>
@@ -1385,6 +1385,16 @@ const TR={
     ur_lbl_author:'Το όνομά σου (προαιρετικά)',ur_ph_author:'π.χ. Μαρία από Θεσσαλονίκη',
     ur_trad:'🏛️ Παραδοσιακό τόπου',ur_lbl_region:'Τόπος καταγωγής',ur_ph_region:'π.χ. Σύρος, Κρήτη, Ήπειρος, Μακεδονία…',
     ur_cancel:'Άκυρο',ur_submit:'📤 Αποστολή',
+    ps_title:'Μαγείρεψε καλύτερα',ps_sub:'Το πλήρες εργαλείο για την κουζίνα σου',
+    ps_f1_n:'Σημειώσεις ανά συνταγή',ps_f1_d:'Κράτα τις δικές σου παραλλαγές, μυστικά και αλλαγές σε κάθε συνταγή.',
+    ps_f2_n:'Εβδομαδιαίο meal plan',ps_f2_d:'Προγραμμάτισε τα φαγητά της εβδομάδας με αυτόματη λίστα αγορών.',
+    ps_f3_n:'Έξυπνες ειδοποιήσεις',ps_f3_d:'Εξατομικευμένες υπενθυμίσεις βάσει των προτιμήσεών σου.',
+    ps_f4_n:'Απεριόριστα αγαπημένα',ps_f4_d:'Οργάνωσε τις αγαπημένες σου συνταγές χωρίς όριο.',
+    ps_f5_n:'Χωρίς διαφημίσεις',ps_f5_d:'Καθαρή εμπειρία χωρίς διακοπές.',
+    ps_f6_n:'Νέες συνταγές πρώτος',ps_f6_d:'Πρόσβαση σε νέες συνταγές πριν βγουν στο δωρεάν.',
+    ps_monthly:'Μηνιαία',ps_annual:'Ετήσια',ps_restore:'Επαναφορά αγοράς',
+    wp_title:'📅 Εβδομαδιαίο Πρόγραμμα',wp_rand:'🎲 Τυχαία',
+    wp_sub:'Επίλεξε φαγητό για κάθε μέρα — θα σου στέλνουμε έξυπνες υπενθυμίσεις για προετοιμασία!',
   },
   en:{sub:'Mediterranean Recipes',
     n0:'☀️ Today',n1:'⭐ Feasts',n2:'🍯 Sweets',n3:'🧊 Fridge',n4:'👥 Guests',n5:'🌿 Seasonal',
@@ -1427,6 +1437,16 @@ const TR={
     ur_lbl_author:'Your name (optional)',ur_ph_author:'e.g. Maria from Thessaloniki',
     ur_trad:'🏛️ Traditional to a region',ur_lbl_region:'Region of origin',ur_ph_region:'e.g. Syros, Crete, Epirus, Macedonia…',
     ur_cancel:'Cancel',ur_submit:'📤 Submit',
+    ps_title:'Cook better',ps_sub:'The complete toolkit for your kitchen',
+    ps_f1_n:'Notes per recipe',ps_f1_d:'Keep your own variations, secrets, and tweaks for every recipe.',
+    ps_f2_n:'Weekly meal plan',ps_f2_d:'Plan your week\'s meals with an automatic shopping list.',
+    ps_f3_n:'Smart notifications',ps_f3_d:'Personalized reminders based on your preferences.',
+    ps_f4_n:'Unlimited favorites',ps_f4_d:'Organize your favorite recipes with no limit.',
+    ps_f5_n:'No ads',ps_f5_d:'A clean experience with no interruptions.',
+    ps_f6_n:'New recipes first',ps_f6_d:'Access new recipes before they go free.',
+    ps_monthly:'Monthly',ps_annual:'Annual',ps_restore:'Restore purchase',
+    wp_title:'📅 Weekly Plan',wp_rand:'🎲 Random',
+    wp_sub:"Pick a meal for each day — we'll send you smart prep reminders!",
   }
 };
 function t(k){return TR[curLang]?.[k]||TR.el[k]||k;}
