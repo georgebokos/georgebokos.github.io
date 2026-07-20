@@ -963,37 +963,37 @@ body{font-family:'Inter',-apple-system,sans-serif;background:var(--bg);color:var
 <!-- USER RECIPE FORM -->
 <div class="urform" id="urform" onclick="if(event.target===this)closeUrform()">
   <div class="urform-inner">
-    <div class="urform-t">👨‍🍳 Η συνταγή σου</div>
-    <div class="urform-sub">Στείλε μας τη συνταγή σου και μπορεί να μπει στην εφαρμογή!</div>
-    <div class="urform-note">💡 Προτεραιότητα δίνεται σε συνταγές που <b>δεν υπάρχουν ήδη</b> στην εφαρμογή — μοναδικές, τοπικές ή οικογενειακές.</div>
-    <div class="urform-lbl">Όνομα συνταγής *</div>
-    <input type="text" id="ur-name" placeholder="π.χ. Αχνιστά μύδια σαγανάκι">
-    <div class="urform-lbl">Κατηγορία</div>
-    <input type="text" id="ur-cat" placeholder="π.χ. Κρεατικό, Λαχανικό, Ζυμαρικό...">
-    <div class="urform-lbl">Υλικά *</div>
-    <textarea id="ur-ing" placeholder="Ένα υλικό ανά γραμμή&#10;π.χ. Κιμάς μοσχαρίσιος 500γρ"></textarea>
-    <div class="urform-lbl">Βήματα εκτέλεσης *</div>
-    <textarea id="ur-steps" placeholder="Ένα βήμα ανά γραμμή"></textarea>
-    <div class="urform-lbl">Φωτογραφία πιάτου (προαιρετική)</div>
-    <button type="button" class="ur-photo-btn" onclick="document.getElementById('ur-photo-input').click()">📷 Τράβηξε φωτογραφία</button>
+    <div class="urform-t" data-i18n="ur_t">👨‍🍳 Η συνταγή σου</div>
+    <div class="urform-sub" data-i18n="ur_sub">Στείλε μας τη συνταγή σου και μπορεί να μπει στην εφαρμογή!</div>
+    <div class="urform-note" data-i18n="ur_note">💡 Προτεραιότητα δίνεται σε συνταγές που <b>δεν υπάρχουν ήδη</b> στην εφαρμογή — μοναδικές, τοπικές ή οικογενειακές.</div>
+    <div class="urform-lbl" data-i18n="ur_lbl_name">Όνομα συνταγής *</div>
+    <input type="text" id="ur-name" placeholder="π.χ. Αχνιστά μύδια σαγανάκι" data-i18n-ph="ur_ph_name">
+    <div class="urform-lbl" data-i18n="ur_lbl_cat">Κατηγορία</div>
+    <input type="text" id="ur-cat" placeholder="π.χ. Κρεατικό, Λαχανικό, Ζυμαρικό..." data-i18n-ph="ur_ph_cat">
+    <div class="urform-lbl" data-i18n="ur_lbl_ing">Υλικά *</div>
+    <textarea id="ur-ing" placeholder="Ένα υλικό ανά γραμμή&#10;π.χ. Κιμάς μοσχαρίσιος 500γρ" data-i18n-ph="ur_ph_ing"></textarea>
+    <div class="urform-lbl" data-i18n="ur_lbl_steps">Βήματα εκτέλεσης *</div>
+    <textarea id="ur-steps" placeholder="Ένα βήμα ανά γραμμή" data-i18n-ph="ur_ph_steps"></textarea>
+    <div class="urform-lbl" data-i18n="ur_lbl_photo">Φωτογραφία πιάτου (προαιρετική)</div>
+    <button type="button" class="ur-photo-btn" onclick="document.getElementById('ur-photo-input').click()" data-i18n="ur_photo_btn">📷 Τράβηξε φωτογραφία</button>
     <input type="file" id="ur-photo-input" accept="image/*" capture="environment" style="display:none" onchange="handlePhotoCapture(this)">
     <div class="ur-photo-preview" id="ur-photo-preview" style="display:none">
       <img id="ur-photo-img" alt="Φωτογραφία πιάτου">
       <button type="button" class="ur-photo-rm" onclick="removePhoto()">✕</button>
     </div>
-    <div class="urform-lbl">Το όνομά σου (προαιρετικά)</div>
-    <input type="text" id="ur-author" placeholder="π.χ. Μαρία από Θεσσαλονίκη">
+    <div class="urform-lbl" data-i18n="ur_lbl_author">Το όνομά σου (προαιρετικά)</div>
+    <input type="text" id="ur-author" placeholder="π.χ. Μαρία από Θεσσαλονίκη" data-i18n-ph="ur_ph_author">
     <label class="urform-check-row" for="ur-trad">
       <input type="checkbox" id="ur-trad" onchange="document.getElementById('ur-trad-region').classList.toggle('show',this.checked)">
-      <span class="urform-check-lbl">🏛️ Παραδοσιακό τόπου</span>
+      <span class="urform-check-lbl" data-i18n="ur_trad">🏛️ Παραδοσιακό τόπου</span>
     </label>
     <div class="urform-trad-region" id="ur-trad-region">
-      <div class="urform-lbl">Τόπος καταγωγής</div>
-      <input type="text" id="ur-region" placeholder="π.χ. Σύρος, Κρήτη, Ήπειρος, Μακεδονία…">
+      <div class="urform-lbl" data-i18n="ur_lbl_region">Τόπος καταγωγής</div>
+      <input type="text" id="ur-region" placeholder="π.χ. Σύρος, Κρήτη, Ήπειρος, Μακεδονία…" data-i18n-ph="ur_ph_region">
     </div>
     <div class="urform-btns">
-      <button class="urform-cancel" onclick="closeUrform()">Άκυρο</button>
-      <button class="urform-submit" id="ur-submit" onclick="submitUserRecipe()" disabled>📤 Αποστολή</button>
+      <button class="urform-cancel" onclick="closeUrform()" data-i18n="ur_cancel">Άκυρο</button>
+      <button class="urform-submit" id="ur-submit" onclick="submitUserRecipe()" disabled data-i18n="ur_submit">📤 Αποστολή</button>
     </div>
   </div>
 </div>
@@ -1375,6 +1375,16 @@ const TR={
     back:'← Πίσω',g_people:'Άτομα:',
     bnRecipes:'Συνταγές',bnFavs:'Αγαπημένα',bnFest:'Εορτές',bnGuests:'Καλεσμένοι',bnPlan:'Πρόγραμμα',
     shDaily:'📅 Καθημερινά',shFridge:'🧊 Ψυγείο',shQuick:'⚡ Γρήγορα',
+    ur_t:'👨‍🍳 Η συνταγή σου',ur_sub:'Στείλε μας τη συνταγή σου και μπορεί να μπει στην εφαρμογή!',
+    ur_note:'💡 Προτεραιότητα δίνεται σε συνταγές που <b>δεν υπάρχουν ήδη</b> στην εφαρμογή — μοναδικές, τοπικές ή οικογενειακές.',
+    ur_lbl_name:'Όνομα συνταγής *',ur_ph_name:'π.χ. Αχνιστά μύδια σαγανάκι',
+    ur_lbl_cat:'Κατηγορία',ur_ph_cat:'π.χ. Κρεατικό, Λαχανικό, Ζυμαρικό...',
+    ur_lbl_ing:'Υλικά *',ur_ph_ing:'Ένα υλικό ανά γραμμή\nπ.χ. Κιμάς μοσχαρίσιος 500γρ',
+    ur_lbl_steps:'Βήματα εκτέλεσης *',ur_ph_steps:'Ένα βήμα ανά γραμμή',
+    ur_lbl_photo:'Φωτογραφία πιάτου (προαιρετική)',ur_photo_btn:'📷 Τράβηξε φωτογραφία',
+    ur_lbl_author:'Το όνομά σου (προαιρετικά)',ur_ph_author:'π.χ. Μαρία από Θεσσαλονίκη',
+    ur_trad:'🏛️ Παραδοσιακό τόπου',ur_lbl_region:'Τόπος καταγωγής',ur_ph_region:'π.χ. Σύρος, Κρήτη, Ήπειρος, Μακεδονία…',
+    ur_cancel:'Άκυρο',ur_submit:'📤 Αποστολή',
   },
   en:{sub:'Mediterranean Recipes',
     n0:'☀️ Today',n1:'⭐ Feasts',n2:'🍯 Sweets',n3:'🧊 Fridge',n4:'👥 Guests',n5:'🌿 Seasonal',
@@ -1407,6 +1417,16 @@ const TR={
     back:'← Back',g_people:'People:',
     bnRecipes:'Recipes',bnFavs:'Favorites',bnFest:'Feasts',bnGuests:'Guests',bnPlan:'Plan',
     shDaily:'📅 Daily',shFridge:'🧊 Fridge',shQuick:'⚡ Quick',
+    ur_t:'👨‍🍳 Your recipe',ur_sub:'Send us your recipe and it might be added to the app!',
+    ur_note:'💡 Priority is given to recipes that <b>don\'t already exist</b> in the app — unique, local, or family recipes.',
+    ur_lbl_name:'Recipe name *',ur_ph_name:'e.g. Steamed mussels saganaki',
+    ur_lbl_cat:'Category',ur_ph_cat:'e.g. Meat, Vegetable, Pasta...',
+    ur_lbl_ing:'Ingredients *',ur_ph_ing:'One ingredient per line\ne.g. Ground beef 500g',
+    ur_lbl_steps:'Instructions *',ur_ph_steps:'One step per line',
+    ur_lbl_photo:'Dish photo (optional)',ur_photo_btn:'📷 Take a photo',
+    ur_lbl_author:'Your name (optional)',ur_ph_author:'e.g. Maria from Thessaloniki',
+    ur_trad:'🏛️ Traditional to a region',ur_lbl_region:'Region of origin',ur_ph_region:'e.g. Syros, Crete, Epirus, Macedonia…',
+    ur_cancel:'Cancel',ur_submit:'📤 Submit',
   }
 };
 function t(k){return TR[curLang]?.[k]||TR.el[k]||k;}
@@ -5010,7 +5030,7 @@ async function submitUserRecipe(){
   const name=document.getElementById('ur-name').value.trim();
   const ing=document.getElementById('ur-ing').value.trim();
   const steps=document.getElementById('ur-steps').value.trim();
-  if(!name||!ing||!steps){showToast('⚠️ Συμπλήρωσε τουλάχιστον όνομα, υλικά και βήματα');return;}
+  if(!name||!ing||!steps){showToast(curLang==='en'?'⚠️ Fill in at least the name, ingredients, and steps':'⚠️ Συμπλήρωσε τουλάχιστον όνομα, υλικά και βήματα');return;}
   const cat=document.getElementById('ur-cat').value.trim();
   const author=document.getElementById('ur-author').value.trim();
   const isTrad=document.getElementById('ur-trad').checked;
@@ -5035,7 +5055,7 @@ async function submitUserRecipe(){
         shareData.files=[_urPhoto];
       }
       await navigator.share(shareData);
-      clearForm();closeUrform();showToast('📤 Ευχαριστούμε για τη συνταγή!');
+      clearForm();closeUrform();showToast(curLang==='en'?'📤 Thanks for the recipe!':'📤 Ευχαριστούμε για τη συνταγή!');
       return;
     }catch(err){
       if(err.name==='AbortError')return;
@@ -5047,11 +5067,11 @@ async function submitUserRecipe(){
   try{
     await navigator.clipboard.writeText(fullText);
     clearForm();closeUrform();
-    showToast('📋 Αντιγράφηκε! Άνοιξε το email σου και κόλλα το κείμενο');
+    showToast(curLang==='en'?'📋 Copied! Open your email and paste the text':'📋 Αντιγράφηκε! Άνοιξε το email σου και κόλλα το κείμενο');
   }catch(e){
     // Last resort: mailto
     window.location.href=`mailto:fooddaily.app@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-    clearForm();closeUrform();showToast('📤 Ανοίγει το email σου...');
+    clearForm();closeUrform();showToast(curLang==='en'?'📤 Opening your email...':'📤 Ανοίγει το email σου...');
   }
 }
 
@@ -5471,7 +5491,8 @@ function applyLangTexts(lang){
   const rb=document.querySelector('.reshuffle');if(rb)rb.textContent=t('reshuf');
   const bt=document.querySelector('.bal-t');if(bt)bt.textContent=t('bal_t');
   // Update all data-i18n elements
-  document.querySelectorAll('[data-i18n]').forEach(el=>{const k=el.getAttribute('data-i18n');const v=t(k);if(v&&v!==k)el.textContent=v;});
+  document.querySelectorAll('[data-i18n]').forEach(el=>{const k=el.getAttribute('data-i18n');const v=t(k);if(v&&v!==k){if(v.includes('<'))el.innerHTML=v;else el.textContent=v;}});
+  document.querySelectorAll('[data-i18n-ph]').forEach(el=>{const k=el.getAttribute('data-i18n-ph');const v=t(k);if(v&&v!==k)el.placeholder=v;});
 }
 function setLang(lang){
   curLang=lang;localStorage.setItem('fd_lang',lang);
