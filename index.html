@@ -4701,16 +4701,17 @@ function renderTrialBanner(){
   const el=document.getElementById('trial-banner');if(!el)return;
   const state=getPremiumState();
   if(state==='premium'){el.innerHTML='';return;}
+  const en=curLang==='en';
   if(state==='free'){
-    el.innerHTML=`<div class="trial-banner" onclick="openPremiumScreen()"><div class="trial-banner-l"><span class="trial-banner-icon">💎</span><span class="trial-banner-txt">Δοκίμασε <span>Premium</span> δωρεάν 7 ημέρες</span></div><span class="trial-banner-cta">Δωρεάν →</span></div>`;
+    el.innerHTML=`<div class="trial-banner" onclick="openPremiumScreen()"><div class="trial-banner-l"><span class="trial-banner-icon">💎</span><span class="trial-banner-txt">${en?'Try <span>Premium</span> free for 7 days':'Δοκίμασε <span>Premium</span> δωρεάν 7 ημέρες'}</span></div><span class="trial-banner-cta">${en?'Free →':'Δωρεάν →'}</span></div>`;
     return;
   }
   if(state==='trial'){
-    el.innerHTML=`<div class="trial-banner" onclick="openPremiumScreen()"><div class="trial-banner-l"><span class="trial-banner-icon">🎁</span><span class="trial-banner-txt">Έχεις <span>πλήρη πρόσβαση</span> σε όλες τις λειτουργίες</span></div><span class="trial-banner-cta">Premium →</span></div>`;
+    el.innerHTML=`<div class="trial-banner" onclick="openPremiumScreen()"><div class="trial-banner-l"><span class="trial-banner-icon">🎁</span><span class="trial-banner-txt">${en?'You have <span>full access</span> to all features':'Έχεις <span>πλήρη πρόσβαση</span> σε όλες τις λειτουργίες'}</span></div><span class="trial-banner-cta">Premium →</span></div>`;
     return;
   }
   if(state==='expired'){
-    el.innerHTML=`<div class="trial-banner trial-expired-banner" onclick="openPremiumScreen()"><div class="trial-banner-l"><span class="trial-banner-icon">⚠️</span><span class="trial-banner-txt">Το trial σου <span>έληξε</span></span></div><span class="trial-banner-cta">Συνδρομή →</span></div>`;
+    el.innerHTML=`<div class="trial-banner trial-expired-banner" onclick="openPremiumScreen()"><div class="trial-banner-l"><span class="trial-banner-icon">⚠️</span><span class="trial-banner-txt">${en?'Your trial has <span>expired</span>':'Το trial σου <span>έληξε</span>'}</span></div><span class="trial-banner-cta">${en?'Subscribe →':'Συνδρομή →'}</span></div>`;
   }
 }
 
@@ -4723,10 +4724,11 @@ function openPremiumScreen(){
   // Update header badge
   const badge=document.getElementById('pscreen-trial-badge');
   if(badge){
-    if(state==='trial'){badge.textContent='🎁 Πλήρης πρόσβαση — δωρεάν';}
-    else if(state==='expired'){badge.textContent='⚠️ Trial έληξε';}
-    else if(state==='premium'){badge.textContent='✅ Είσαι Premium!';}
-    else{badge.textContent='🎁 7 ημέρες δωρεάν';}
+    const en=curLang==='en';
+    if(state==='trial'){badge.textContent=en?'🎁 Full access — free':'🎁 Πλήρης πρόσβαση — δωρεάν';}
+    else if(state==='expired'){badge.textContent=en?'⚠️ Trial expired':'⚠️ Trial έληξε';}
+    else if(state==='premium'){badge.textContent=en?"✅ You're Premium!":'✅ Είσαι Premium!';}
+    else{badge.textContent=en?'🎁 7 days free':'🎁 7 ημέρες δωρεάν';}
   }
   updatePremiumCTA(state);
   document.getElementById('pscreen').classList.add('show');
@@ -4741,10 +4743,11 @@ function setPlan(plan){
   document.getElementById('pplan-monthly').classList.toggle('on',plan==='monthly');
   document.getElementById('pplan-annual').classList.toggle('on',plan==='annual');
   const priceEl=document.getElementById('pscreen-price');
+  const en=curLang==='en';
   if(plan==='monthly'){
-    priceEl.innerHTML=`<div class="pscreen-price-main">1,99€<span style="font-size:18px;font-weight:400">/μήνα</span></div><div class="pscreen-price-sub">Ακύρωση οποιαδήποτε στιγμή</div>`;
+    priceEl.innerHTML=`<div class="pscreen-price-main">1,99€<span style="font-size:18px;font-weight:400">${en?'/month':'/μήνα'}</span></div><div class="pscreen-price-sub">${en?'Cancel anytime':'Ακύρωση οποιαδήποτε στιγμή'}</div>`;
   }else{
-    priceEl.innerHTML=`<div class="pscreen-price-main">14,99€<span style="font-size:18px;font-weight:400">/χρόνο</span></div><div class="pscreen-price-sub">Εξοικονόμηση ~9€ · Ισοδύναμο 1,25€/μήνα</div>`;
+    priceEl.innerHTML=`<div class="pscreen-price-main">14,99€<span style="font-size:18px;font-weight:400">${en?'/year':'/χρόνο'}</span></div><div class="pscreen-price-sub">${en?'Save ~€9 · Equivalent to €1.25/month':'Εξοικονόμηση ~9€ · Ισοδύναμο 1,25€/μήνα'}</div>`;
   }
   updatePremiumCTA(getPremiumState());
 }
@@ -4752,18 +4755,19 @@ function updatePremiumCTA(state){
   const btn=document.getElementById('pscreen-cta');
   const note=document.getElementById('pscreen-cta-note');
   if(!btn)return;
+  const en=curLang==='en';
   if(state==='premium'){
-    btn.textContent='✅ Είσαι ήδη Premium!';btn.disabled=true;btn.style.opacity='.7';
-    if(note)note.textContent='Η συνδρομή σου είναι ενεργή.';
+    btn.textContent=en?"✅ You're already Premium!":'✅ Είσαι ήδη Premium!';btn.disabled=true;btn.style.opacity='.7';
+    if(note)note.textContent=en?'Your subscription is active.':'Η συνδρομή σου είναι ενεργή.';
   }else if(state==='trial'){
     btn.textContent='💎 Premium';btn.disabled=false;btn.style.opacity='1';
-    if(note)note.textContent='Έχεις πλήρη πρόσβαση σε όλες τις λειτουργίες.';
+    if(note)note.textContent=en?'You have full access to all features.':'Έχεις πλήρη πρόσβαση σε όλες τις λειτουργίες.';
   }else if(state==='expired'){
-    btn.textContent='💎 Συνδρομή Premium';btn.disabled=false;btn.style.opacity='1';
-    if(note)note.textContent='Ανάκτησε πλήρη πρόσβαση αμέσως.';
+    btn.textContent=en?'💎 Premium Subscription':'💎 Συνδρομή Premium';btn.disabled=false;btn.style.opacity='1';
+    if(note)note.textContent=en?'Regain full access instantly.':'Ανάκτησε πλήρη πρόσβαση αμέσως.';
   }else{
-    btn.textContent='🎁 Ξεκίνα δωρεάν για 7 ημέρες';btn.disabled=false;btn.style.opacity='1';
-    if(note)note.textContent='Δεν απαιτείται κάρτα για το trial · Ακύρωση οποιαδήποτε στιγμή';
+    btn.textContent=en?'🎁 Start free for 7 days':'🎁 Ξεκίνα δωρεάν για 7 ημέρες';btn.disabled=false;btn.style.opacity='1';
+    if(note)note.textContent=en?'No card required for the trial · Cancel anytime':'Δεν απαιτείται κάρτα για το trial · Ακύρωση οποιαδήποτε στιγμή';
   }
 }
 function handlePremiumCTA(){
@@ -4774,16 +4778,16 @@ function handlePremiumCTA(){
     localStorage.setItem('fd_premium','false'); // explicitly free, trial running
     closePremiumScreen();
     renderTrialBanner();
-    showToast('🎉 Το 7-day trial ξεκίνησε! Απόλαυσε το Premium.');
+    showToast(curLang==='en'?'🎉 7-day trial started! Enjoy Premium.':'🎉 Το 7-day trial ξεκίνησε! Απόλαυσε το Premium.');
   }else{
     // Redirect to payment — placeholder until payment is integrated
-    showToast('💎 Σύντομα διαθέσιμο! Θα ειδοποιηθείς.');
+    showToast(curLang==='en'?"💎 Coming soon! You'll be notified.":'💎 Σύντομα διαθέσιμο! Θα ειδοποιηθείς.');
     closePremiumScreen();
   }
 }
 function restorePurchase(){
-  showToast('⏳ Έλεγχος συνδρομής...');
-  setTimeout(()=>showToast('Δεν βρέθηκε ενεργή συνδρομή.'),1500);
+  showToast(curLang==='en'?'⏳ Checking subscription...':'⏳ Έλεγχος συνδρομής...');
+  setTimeout(()=>showToast(curLang==='en'?'No active subscription found.':'Δεν βρέθηκε ενεργή συνδρομή.'),1500);
 }
 
 // Gate modal (quick inline prompt when a feature is tapped)
