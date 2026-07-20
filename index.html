@@ -31,6 +31,9 @@ body{font-family:'Inter',-apple-system,sans-serif;background:var(--bg);color:var
 .hero-btns{display:flex;gap:7px;}
 .hero-btn{width:34px;height:34px;border-radius:50%;border:1.5px solid rgba(255,255,255,.22);background:rgba(255,255,255,.14);backdrop-filter:blur(8px);font-size:16px;cursor:pointer;display:flex;align-items:center;justify-content:center;color:#fff;transition:background .2s;}
 .hero-btn:hover{background:rgba(255,255,255,.28);}
+.hero-lang-row{justify-content:flex-end;margin-top:6px;}
+.hero-btn-lang{width:auto;min-width:34px;padding:0 9px;border-radius:17px;font-size:12px;font-weight:800;letter-spacing:.02em;}
+.hero-btn-lang.on{background:rgba(255,255,255,.4);border-color:rgba(255,255,255,.5);}
 .hero-btn.on{background:rgba(255,255,255,.9);color:#333;}
 .hero-spacer{flex:.18;min-height:6px;max-height:16px;}
 .hero-greeting{font-size:12px;font-weight:700;color:rgba(255,255,255,.72);letter-spacing:.5px;text-transform:uppercase;margin-bottom:3px;}
@@ -689,15 +692,15 @@ body{font-family:'Inter',-apple-system,sans-serif;background:var(--bg);color:var
         <span class="hero-name">FoodDaily</span>
       </div>
       <div class="hero-btns">
-        <div class="lang-sw" title="Γλώσσα / Language">
-          <button class="lbtn" id="lb-el" onclick="setLang('el')">ΕΛ</button>
-          <button class="lbtn" id="lb-en" onclick="setLang('en')">EN</button>
-        </div>
         <button id="dark-btn" class="hero-btn" onclick="toggleDark()" title="Dark mode">🌙</button>
         <button id="bell" class="hero-btn" onclick="openNotif()" title="Ρυθμίσεις">⚙️</button>
         <button id="prof-btn" class="hero-btn" onclick="openProfile()" title="Προφίλ">👤</button>
         <button id="prem-btn" class="hero-btn" onclick="openPremiumScreen()" title="Premium" style="font-size:14px;font-weight:700;letter-spacing:-.3px;">💎</button>
       </div>
+    </div>
+    <div class="hero-btns hero-lang-row">
+      <button id="lb-el" class="hero-btn hero-btn-lang" onclick="setLang('el')" title="Ελληνικά">ΕΛ</button>
+      <button id="lb-en" class="hero-btn hero-btn-lang" onclick="setLang('en')" title="English">EN</button>
     </div>
     <div class="hero-spacer"></div>
     <div class="hero-greeting" id="hero-greeting"></div>
@@ -5529,7 +5532,7 @@ function updateHeroTexts(){
   if(sl)sl.textContent=curLang==='en'?`🍽️ ${dailyCount} suggestions today · ${mealCount}+ recipes`:`🍽️ ${dailyCount} προτάσεις σήμερα · ${mealCount}+ συνταγές`;
 }
 function applyLangTexts(lang){
-  document.querySelectorAll('.lbtn').forEach(b=>b.classList.remove('on'));
+  document.querySelectorAll('.hero-btn-lang').forEach(b=>b.classList.remove('on'));
   const lb=document.getElementById('lb-'+lang);if(lb)lb.classList.add('on');
   // Nav
   document.querySelectorAll('.ntab').forEach((b,i)=>{const k='n'+i;if(TR[lang][k])b.textContent=TR[lang][k];});
