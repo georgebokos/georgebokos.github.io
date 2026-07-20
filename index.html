@@ -1404,6 +1404,10 @@ function t(k){return TR[curLang]?.[k]||TR.el[k]||k;}
 const _CAT_I18N={pasta:'cPasta',seafood:'cSeafood',meat:'cMeat',legumes:'cLegumes',vegetables:'cVeg',salads:'cSalads',soups:'cSoups',sauces:'cSauces',pites:'cPites',pizza:'cPizza',desserts:'cDesserts'};
 function catHdr(c){const k=_CAT_I18N[c];return k?t(k):catLabel(c);}
 function mealName(m){return curLang==='en'&&m.en?m.en:m.n;}
+function mIng(m){return curLang==='en'&&m.ing_en&&m.ing_en.length===m.ing.length?m.ing_en:m.ing;}
+function mSteps(m){return curLang==='en'&&m.steps_en&&m.steps_en.length===m.steps.length?m.steps_en:m.steps;}
+function mWine(m){return curLang==='en'&&m.wine_en!==undefined?m.wine_en:m.wine;}
+function mPlate(m){return curLang==='en'&&m.plate_en!==undefined?m.plate_en:m.plate;}
 function catLabel(cat){return t('cl_'+cat)||cat;}
 
 
@@ -4076,12 +4080,12 @@ function renderFeatured(show,cat,todayPlan){
   const _fclog=getCookedLog();
   const _fcd=_fclog[fm.id]?Math.floor((Date.now()-_fclog[fm.id])/86400000):null;
   const factHtml=_fcd!==null&&_fcd<4
-    ?`<span class="feat-cooked-badge">✓ ${_fcd===0?'Μαγειρεύτηκε σήμερα':_fcd+' μέρ. πριν'}</span>`
+    ?`<span class="feat-cooked-badge">✓ ${_fcd===0?(curLang==='en'?'Cooked today':'Μαγειρεύτηκε σήμερα'):_fcd+(curLang==='en'?' days ago':' μέρ. πριν')}</span>`
     :fplan==='plan'
-    ?`<div class="feat-go-btn" style="background:rgba(34,197,94,.9);color:#fff">✓ Θα το φτιάξω σήμερα!</div>`
+    ?`<div class="feat-go-btn" style="background:rgba(34,197,94,.9);color:#fff">✓ ${curLang==='en'?"I'll make this today!":'Θα το φτιάξω σήμερα!'}</div>`
     :`<div class="feat-act-row">
-        <button class="feat-act-btn feat-act-up" onclick="thumbUp('${fm.id}',event)">👍 Θα το φτιάξω!</button>
-        <button class="feat-act-btn feat-act-cook" onclick="markCooked('${fm.id}',event)">✓ Το έφτιαξα</button>
+        <button class="feat-act-btn feat-act-up" onclick="thumbUp('${fm.id}',event)">👍 ${curLang==='en'?"I'll make this!":'Θα το φτιάξω!'}</button>
+        <button class="feat-act-btn feat-act-cook" onclick="markCooked('${fm.id}',event)">✓ ${curLang==='en'?'Made it':'Το έφτιαξα'}</button>
       </div>`;
   fw.innerHTML=`<div class="feat-meal-wrap" style="padding:12px 1.1rem 0;position:relative;">
     <div class="feat-meal" onclick="openR('${fm.id}')">
@@ -4122,8 +4126,8 @@ function featNext(){
       const fav=isFav(m.id);
       const planStatus=todayPlan[m.id];
       const actHtml=planStatus==='plan'
-        ?`<span class="thumb-planned">✓ Θα το φτιάξω σήμερα!</span>`
-        :`<button class="thumb-up" onclick="thumbUp('${m.id}',event)">👍 Θα το φτιάξω!</button><button class="thumb-dn" onclick="thumbDown('${m.id}',event)">👎</button>`;
+        ?`<span class="thumb-planned">✓ ${curLang==='en'?"I'll make this today!":'Θα το φτιάξω σήμερα!'}</span>`
+        :`<button class="thumb-up" onclick="thumbUp('${m.id}',event)">👍 ${curLang==='en'?"I'll make this!":'Θα το φτιάξω!'}</button><button class="thumb-dn" onclick="thumbDown('${m.id}',event)">👎</button>`;
       return `<div class="mcard" data-mid="${m.id}" onclick="openR('${m.id}')">
         <div class="mtop" style="background:${bg}">
           <img id="mi-${m.id}" alt="${m.n}" src="${MEAL_IMAGES[m.id]||''}" onload="this.classList.add('loaded');document.getElementById('me-${m.id}').style.opacity=0" onerror="this.style.display='none'">
@@ -4227,7 +4231,7 @@ function renderMeals(cat){
         const bg=CAT_GRAD[m.cats[0]]||CAT_GRAD.legumes;
         const cl=CAT_CL[m.cats[0]]||'b-legumes';
         const planStatus=todayPlan[m.id];
-        const actHtml=planStatus==='plan'?`<span class="thumb-planned">✓ Θα το φτιάξω!</span>`:`<button class="thumb-up" onclick="thumbUp('${m.id}',event)">👍 Θα το φτιάξω!</button><button class="thumb-dn" onclick="thumbDown('${m.id}',event)">👎</button>`;
+        const actHtml=planStatus==='plan'?`<span class="thumb-planned">✓ ${curLang==='en'?"I'll make this!":'Θα το φτιάξω!'}</span>`:`<button class="thumb-up" onclick="thumbUp('${m.id}',event)">👍 ${curLang==='en'?"I'll make this!":'Θα το φτιάξω!'}</button><button class="thumb-dn" onclick="thumbDown('${m.id}',event)">👎</button>`;
         return `<div class="mcard" data-mid="${m.id}" onclick="openR('${m.id}')">
           <div class="mtop" style="background:${bg}"><div class="memoji">${m.e}</div><div class="mtop-grad"></div><div class="mtop-badge"><span class="badge ${cl}">${catLabel(m.cats[0])}</span></div>${m.vegan?'<div class="mc-vegan">🌱 Vegan</div>':''}</div>
           <div class="mbtm"><div class="mname-row"><div class="mname">${mealName(m)}</div><button class="fav-btn-sm" data-id="${m.id}" onclick="toggleFav('${m.id}',event)">❤️</button></div>
@@ -4274,8 +4278,8 @@ function renderMeals(cat){
         const planStatus=todayPlanB[m.id];
         // Στον κατάλογο δεν υπάρχει 👎 — δεν είναι «πρόταση» για αλλαγή
         const actHtml=planStatus==='plan'
-          ?`<span class="thumb-planned">✓ Θα το φτιάξω!</span>`
-          :`<button class="thumb-up" onclick="thumbUp('${m.id}',event)">👍 Θα το φτιάξω!</button><button class="thumb-cook" onclick="markCooked('${m.id}',event)">✓ Το έφτιαξα</button>`;
+          ?`<span class="thumb-planned">✓ ${curLang==='en'?"I'll make this!":'Θα το φτιάξω!'}</span>`
+          :`<button class="thumb-up" onclick="thumbUp('${m.id}',event)">👍 ${curLang==='en'?"I'll make this!":'Θα το φτιάξω!'}</button><button class="thumb-cook" onclick="markCooked('${m.id}',event)">✓ ${curLang==='en'?'Made it':'Το έφτιαξα'}</button>`;
         return `<div class="mcard" data-mid="${m.id}" onclick="openR('${m.id}')">
           <div class="mtop" style="background:${bg}">
             <img id="mi-${m.id}" alt="${m.n}" src="${MEAL_IMAGES[m.id]||''}" onload="this.classList.add('loaded');var e=document.getElementById('me-${m.id}');if(e)e.style.opacity=0" onerror="this.style.display='none'">
@@ -4404,10 +4408,10 @@ function renderMeals(cat){
     const _clog=getCookedLog();
     const _cd=_clog[m.id]?Math.floor((Date.now()-_clog[m.id])/86400000):null;
     const actHtml=_cd!==null&&_cd<4
-      ?`<span class="cooked-badge">✓ ${_cd===0?'Μαγειρεύτηκε σήμερα':_cd+' μέρ. πριν'}</span>`
+      ?`<span class="cooked-badge">✓ ${_cd===0?(curLang==='en'?'Cooked today':'Μαγειρεύτηκε σήμερα'):_cd+(curLang==='en'?' days ago':' μέρ. πριν')}</span>`
       :planStatus==='plan'
-      ?`<span class="thumb-planned">✓ Θα το φτιάξω σήμερα!</span>`
-      :`<button class="thumb-up" onclick="thumbUp('${m.id}',event)">👍 Θα το φτιάξω!</button><button class="thumb-cook" onclick="markCooked('${m.id}',event)">✓ Το έφτιαξα</button><button class="thumb-dn" onclick="thumbDown('${m.id}',event)">👎</button>`;
+      ?`<span class="thumb-planned">✓ ${curLang==='en'?"I'll make this today!":'Θα το φτιάξω σήμερα!'}</span>`
+      :`<button class="thumb-up" onclick="thumbUp('${m.id}',event)">👍 ${curLang==='en'?"I'll make this!":'Θα το φτιάξω!'}</button><button class="thumb-cook" onclick="markCooked('${m.id}',event)">✓ ${curLang==='en'?'Made it':'Το έφτιαξα'}</button><button class="thumb-dn" onclick="thumbDown('${m.id}',event)">👎</button>`;
     return `<div class="mcard" data-mid="${m.id}" onclick="openR('${m.id}')">
       <div class="mtop" style="background:${bg}">
         <img id="mi-${m.id}" alt="${m.n}" src="${MEAL_IMAGES[m.id]||''}" onload="this.classList.add('loaded');document.getElementById('me-${m.id}').style.opacity=0" onerror="this.style.display='none'">
@@ -4567,7 +4571,7 @@ function buildIngTab(m){
   const base=m.srv||4;
   const srv=_curSrv>0?_curSrv:Math.round(base*(_guestScale||1));
   const sc=srv/base;
-  const items=m.ing.map(i=>`<div class="ing-item" onclick="this.classList.toggle('done');this.querySelector('.ing-chk').textContent=this.classList.contains('done')?'✓':''"><div class="ing-chk"></div><span>${sc!==1?scaleQty(i,sc):i}</span></div>`).join('');
+  const items=mIng(m).map(i=>`<div class="ing-item" onclick="this.classList.toggle('done');this.querySelector('.ing-chk').textContent=this.classList.contains('done')?'✓':''"><div class="ing-chk"></div><span>${sc!==1?scaleQty(i,sc):i}</span></div>`).join('');
   const scaledCost=sc!==1?scalePrice(m.cost,sc):m.cost;
   const scaleNote=sc!==1?`<div class="scale-note">📊 ${t('qty_for')} <b>${srv} ${t('people')}</b></div>`:'';
   const note=m.cost?`<div class="cost-note">💰 ${scaledCost} ${t('total_cost')} · ${m.cps||''} ${t('per_srv_lbl')} &nbsp;<span style="color:var(--t3)">(${t('cost_yr')})</span></div>`:'';
@@ -4577,7 +4581,7 @@ function buildIngTab(m){
 
 function buildStepsTab(m){
   const cookBtn=`<button class="cook-mode-btn" onclick="enterCookMode()">🍳 Cook Mode — Ολοκλήρωση βήμα βήμα</button>`;
-  document.getElementById('ot-steps').innerHTML=cookBtn+`<div class="step-list">${m.steps.map((s,i)=>{
+  document.getElementById('ot-steps').innerHTML=cookBtn+`<div class="step-list">${mSteps(m).map((s,i)=>{
     const mins=parseStepTime(s);
     const timerBtn=mins>0?`<button class="step-timer-btn" data-timer="${mins*60}" data-step="${i}" onclick="startStepTimer(this,${mins})">⏱ ${mins}'</button>`:'';
     return `<div class="step-item" onclick="if(event.target.tagName!=='BUTTON'){this.classList.toggle('done');this.querySelector('.step-num').textContent=this.classList.contains('done')?'✓':'${i+1}'}"><div class="step-num">${i+1}</div><div class="step-txt">${s}${timerBtn}</div></div>`;
@@ -4586,17 +4590,18 @@ function buildStepsTab(m){
 
 function buildPairTab(m){
   const dipIds=m.dip?(Array.isArray(m.dip)?m.dip:[m.dip]):[];
-  if(!m.wine&&!m.beer&&!m.plate&&!dipIds.length&&!m.salad){document.getElementById('ot-pair').innerHTML='';return;}
-  const dipHtml=dipIds.map(id=>{const d=MEALS[id];if(!d)return '';return `<div class="pair-dip" onclick="openR('${id}',event)">${d.e||''} ${d.n||id}<span class="pair-dip-arr">→</span></div>`;}).join('');
+  const wine=mWine(m),plate=mPlate(m);
+  if(!wine&&!m.beer&&!plate&&!dipIds.length&&!m.salad){document.getElementById('ot-pair').innerHTML='';return;}
+  const dipHtml=dipIds.map(id=>{const d=MEALS[id];if(!d)return '';return `<div class="pair-dip" onclick="openR('${id}',event)">${d.e||''} ${mealName(d)||id}<span class="pair-dip-arr">→</span></div>`;}).join('');
   const saladM=m.salad?MEALS[m.salad]:null;
-  const saladHtml=saladM?`<div class="pair-box"><div class="pair-t">🥗 Ταιριαστή σαλάτα</div><div class="pair-dip" onclick="openR('${m.salad}',event)">${saladM.e||''} ${saladM.n}<span class="pair-dip-arr">→</span></div></div>`:'';
+  const saladHtml=saladM?`<div class="pair-box"><div class="pair-t">🥗 ${curLang==='en'?'Matching salad':'Ταιριαστή σαλάτα'}</div><div class="pair-dip" onclick="openR('${m.salad}',event)">${saladM.e||''} ${mealName(saladM)}<span class="pair-dip-arr">→</span></div></div>`:'';
   document.getElementById('ot-pair').innerHTML=`
-    ${m.wine?`<div class="pair-box"><div class="pair-t">${t('wine')}</div><div class="pair-d">${m.wine}</div></div>`:''}
+    ${wine?`<div class="pair-box"><div class="pair-t">${t('wine')}</div><div class="pair-d">${wine}</div></div>`:''}
     ${m.beer?`<div class="pair-box"><div class="pair-t">${t('beer')}</div><div class="pair-d">${m.beer}</div></div>`:''}
     ${saladHtml}
-    ${m.plate?`<div class="pair-box"><div class="pair-t">${t('plate')}</div><div class="pair-d">${m.plate}</div></div>`:''}
-    ${dipHtml?`<div class="pair-box"><div class="pair-t">🥣 Ταιριαστό ντιπ</div>${dipHtml}</div>`:''}
-    <a class="ext-btn" href="https://www.google.com/search?q=${encodeURIComponent((m.n||m.id)+' συνταγή')}" target="_blank">${t('ext')}</a>`;
+    ${plate?`<div class="pair-box"><div class="pair-t">${t('plate')}</div><div class="pair-d">${plate}</div></div>`:''}
+    ${dipHtml?`<div class="pair-box"><div class="pair-t">🥣 ${curLang==='en'?'Matching dip':'Ταιριαστό ντιπ'}</div>${dipHtml}</div>`:''}
+    <a class="ext-btn" href="https://www.google.com/search?q=${encodeURIComponent((mealName(m)||m.id)+' recipe')}" target="_blank">${t('ext')}</a>`;
 }
 
 function ovTab(tab){
@@ -4634,17 +4639,22 @@ function ovBgClick(e){if(e.target===document.getElementById('overlay'))closeOv()
 
 // ── TTS ───────────────────────────────────────────────────────
 function buildTTSText(m){
-  const name=m.n||'';
-  const ings=m.ing?'Υλικά. '+m.ing.join('. ')+'.':'';
-  const steps=m.steps?'Εκτέλεση. '+m.steps.map((s,i)=>'Βήμα '+(i+1)+'. '+s).join('. '):'';
+  const name=mealName(m)||'';
+  const ingArr=mIng(m),stepArr=mSteps(m);
+  const ingLbl=curLang==='en'?'Ingredients. ':'Υλικά. ';
+  const stepLbl=curLang==='en'?'Instructions. ':'Εκτέλεση. ';
+  const stepWord=curLang==='en'?'Step ':'Βήμα ';
+  const ings=ingArr?ingLbl+ingArr.join('. ')+'.':'';
+  const steps=stepArr?stepLbl+stepArr.map((s,i)=>stepWord+(i+1)+'. '+s).join('. '):'';
   return [name,ings,steps].filter(Boolean).join(' ');
 }
 function pickVoice(){
   const vv=speechSynthesis.getVoices();
-  return vv.find(v=>v.lang.startsWith('el')&&v.name.toLowerCase().includes('google'))
-    ||vv.find(v=>v.lang.startsWith('el')&&!v.localService)
-    ||vv.find(v=>v.lang==='el-GR')
-    ||vv.find(v=>v.lang.startsWith('el'))
+  const lang=curLang==='en'?'en':'el';
+  return vv.find(v=>v.lang.startsWith(lang)&&v.name.toLowerCase().includes('google'))
+    ||vv.find(v=>v.lang.startsWith(lang)&&!v.localService)
+    ||vv.find(v=>v.lang===(lang==='en'?'en-US':'el-GR'))
+    ||vv.find(v=>v.lang.startsWith(lang))
     ||null;
 }
 function toggleTTS(){isTTS?stopTTS():startTTS();}
@@ -4653,7 +4663,7 @@ function startTTS(){
   stopTTS();
   const doSpeak=()=>{
     const u=new SpeechSynthesisUtterance(buildTTSText(_meal));
-    u.lang='el-GR';u.rate=0.84;u.pitch=1.05;
+    u.lang=curLang==='en'?'en-US':'el-GR';u.rate=0.84;u.pitch=1.05;
     const gv=pickVoice();if(gv)u.voice=gv;
     u.onstart=()=>{isTTS=true;document.getElementById('ov-tts-btn').textContent=t('tts_s');};
     u.onend=u.onerror=()=>{isTTS=false;document.getElementById('ov-tts-btn').textContent=t('tts_p');};
@@ -4839,13 +4849,13 @@ function _timerTick(){
   if(_timerBtn){_timerBtn.textContent=`⏱ ${m2}:${String(s2).padStart(2,'0')}`;_timerBtn.dataset.timer=rem;}
 }
 function parseStepTime(txt){
-  // Extract minutes from step text: "20 λεπτά", "30-35 λεπτά", "2 ώρες", "1.5 ώρα", "45-50 λεπτά"
+  // Extract minutes from step text — Greek: "20 λεπτά", "2 ώρες" — English: "20 minutes", "2 hours"
   let m;
-  m=txt.match(/(\d+(?:\.\d+)?)\s*(?:-\s*\d+)?\s*(ώρ[εα]|ωρ)/i);
+  m=txt.match(/(\d+(?:\.\d+)?)\s*(?:-\s*\d+)?\s*(ώρ[εα]|ωρ|hours?|hrs?)\b/i);
   if(m)return Math.round(parseFloat(m[1])*60);
-  m=txt.match(/(\d+)\s*-\s*(\d+)\s*λεπτ/i);
+  m=txt.match(/(\d+)\s*-\s*(\d+)\s*(?:λεπτ|min)/i);
   if(m)return Math.round((+m[1]+ +m[2])/2);
-  m=txt.match(/(\d+)\s*λεπτ/i);
+  m=txt.match(/(\d+)\s*(?:λεπτ|minutes?|mins?)\b/i);
   if(m)return +m[1];
   return 0;
 }
@@ -4909,11 +4919,12 @@ function shareIngredients(){
   const items=checked.length>0?checked:all;
   const list=[...items].map(s=>s.textContent.trim()).filter(Boolean);
   if(!list.length)return;
-  const text=`🛒 Λίστα αγορών για ${_meal.n}:\n${list.map(i=>`• ${i}`).join('\n')}\n\n📱 FoodDaily`;
+  const label=curLang==='en'?`🛒 Shopping list for ${mealName(_meal)}:`:`🛒 Λίστα αγορών για ${mealName(_meal)}:`;
+  const text=`${label}\n${list.map(i=>`• ${i}`).join('\n')}\n\n📱 FoodDaily`;
   if(navigator.share){
     navigator.share({text}).catch(()=>{});
   } else {
-    navigator.clipboard?.writeText(text).then(()=>showToast('📋 Αντιγράφηκε!')).catch(()=>showToast('Δεν υποστηρίζεται'));
+    navigator.clipboard?.writeText(text).then(()=>showToast(curLang==='en'?'📋 Copied!':'📋 Αντιγράφηκε!')).catch(()=>showToast(curLang==='en'?'Not supported':'Δεν υποστηρίζεται'));
   }
 }
 
@@ -5439,6 +5450,8 @@ function rebuildOverlayTexts(){
   if(!ov||!ov.classList.contains('show'))return;
   // Rebuild ingredient tab — copy btn, cost note, scale note all call t()
   buildIngTab(_meal);
+  // Rebuild steps tab so ing/steps text reflects the new language
+  buildStepsTab(_meal);
   // Rebuild pair tab — wine/beer/plate labels call t()
   if(_meal.wine||_meal.beer||_meal.plate)buildPairTab(_meal);
   // Update stats labels without touching values/stepper
@@ -5929,8 +5942,8 @@ function markCooked(id,ev){
   const log=getCookedLog();log[id]=Date.now();
   localStorage.setItem('fd_cooked_log',JSON.stringify(log));
   const ca=document.getElementById('ca-'+id);
-  if(ca)ca.innerHTML='<span class="cooked-badge">✓ Μαγειρεύτηκε σήμερα</span>';
-  showToast('✓ Καταχωρήθηκε!');
+  if(ca)ca.innerHTML=`<span class="cooked-badge">✓ ${curLang==='en'?'Cooked today':'Μαγειρεύτηκε σήμερα'}</span>`;
+  showToast(curLang==='en'?'✓ Logged!':'✓ Καταχωρήθηκε!');
 }
 function thumbUp(id,e){
   if(e){e.stopPropagation();e.preventDefault();}
@@ -5940,8 +5953,8 @@ function thumbUp(id,e){
   const log=getCookedLog();log[id]=Date.now();
   localStorage.setItem('fd_cooked_log',JSON.stringify(log));
   const ca=document.getElementById('ca-'+id);
-  if(ca)ca.innerHTML='<span class="thumb-planned">✓ Θα το φτιάξω σήμερα!</span>';
-  showToast('👍 Ωραία επιλογή!');
+  if(ca)ca.innerHTML=`<span class="thumb-planned">✓ ${curLang==='en'?"I'll make this today!":'Θα το φτιάξω σήμερα!'}</span>`;
+  showToast(curLang==='en'?'👍 Great choice!':'👍 Ωραία επιλογή!');
 }
 function thumbDown(id,e){
   if(e){e.stopPropagation();e.preventDefault();}
@@ -6023,7 +6036,7 @@ function copyShoppingList(){
     if(!unchecked.length){showToast(t('all_have'));return;}
     lines=unchecked.map(el=>el.querySelector('span').textContent);
   }else{
-    lines=(_meal.ing||[]);
+    lines=mIng(_meal);
   }
   const list=`📋 ${name}\n\n${lines.map(i=>'• '+i).join('\n')}`;
   if(navigator.clipboard&&navigator.clipboard.writeText){
@@ -6088,7 +6101,7 @@ let _cmSteps=[],_cmIdx=0,_wakeLock=null;
 
 async function enterCookMode(){
   if(!_meal||!_meal.steps)return;
-  _cmSteps=_meal.steps;_cmIdx=0;
+  _cmSteps=mSteps(_meal);_cmIdx=0;
   document.getElementById('cm-recipe-name').textContent=mealName(_meal);
   _renderCookStep();
   document.getElementById('cook-mode').classList.add('show');
@@ -6100,10 +6113,10 @@ function _renderCookStep(){
   const total=_cmSteps.length;
   document.getElementById('cm-fill').style.width=((_cmIdx+1)/total*100)+'%';
   document.getElementById('cm-cnt').textContent=(_cmIdx+1)+'/'+total;
-  document.getElementById('cm-snum').textContent='Βήμα '+(_cmIdx+1);
+  document.getElementById('cm-snum').textContent=(curLang==='en'?'Step ':'Βήμα ')+(_cmIdx+1);
   document.getElementById('cm-stxt').textContent=_cmSteps[_cmIdx];
   document.getElementById('cm-prev').style.visibility=_cmIdx>0?'visible':'hidden';
-  document.getElementById('cm-next').textContent=_cmIdx<total-1?'Επόμενο →':'✓ Τέλος!';
+  document.getElementById('cm-next').textContent=_cmIdx<total-1?(curLang==='en'?'Next →':'Επόμενο →'):(curLang==='en'?'✓ Done!':'✓ Τέλος!');
 }
 
 function cookNext(){if(_cmIdx<_cmSteps.length-1){_cmIdx++;_renderCookStep();}else exitCookMode();}
