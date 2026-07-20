@@ -724,31 +724,31 @@ body{font-family:'Inter',-apple-system,sans-serif;background:var(--bg);color:var
 <nav class="bnav" id="bnav">
   <button class="bntab on" id="bnt-daily" onclick="showSec('daily','daily')">
     <span class="bntab-ico">🍳</span>
-    <span class="bntab-lbl">Συνταγές</span>
+    <span class="bntab-lbl" data-i18n="bnRecipes">Συνταγές</span>
   </button>
   <button class="bntab" id="bnt-favs" onclick="showSec('favs','favs')">
     <span class="bntab-ico">❤️</span>
-    <span class="bntab-lbl">Αγαπημένα</span>
+    <span class="bntab-lbl" data-i18n="bnFavs">Αγαπημένα</span>
   </button>
   <button class="bntab" id="bnt-festive" onclick="showSec('festive','festive')">
     <span class="bntab-ico">🎉</span>
-    <span class="bntab-lbl">Εορτές</span>
+    <span class="bntab-lbl" data-i18n="bnFest">Εορτές</span>
   </button>
   <button class="bntab" id="bnt-guests" onclick="showSec('guests','guests')">
     <span class="bntab-ico">👥</span>
-    <span class="bntab-lbl">Καλεσμένοι</span>
+    <span class="bntab-lbl" data-i18n="bnGuests">Καλεσμένοι</span>
   </button>
   <button class="bntab" id="bnt-plan" onclick="openWeekPlanGated()">
     <span class="bntab-ico">📅</span>
-    <span class="bntab-lbl">Πρόγραμμα</span>
+    <span class="bntab-lbl" data-i18n="bnPlan">Πρόγραμμα</span>
   </button>
 </nav>
 
 <!-- SHORTCUTS (κάτω από hero search) -->
 <div class="hero-shcts" id="hero-shcts">
-  <button class="hshct on" id="hshct-daily" onclick="selMode('daily',this)">📅 Καθημερινά</button>
-  <button class="hshct" id="hshct-fridge" onclick="showSec('fridge','fridge')">🧊 Ψυγείο</button>
-  <button class="hshct" id="hshct-quick" onclick="selMode('quick',this)">⚡ Γρήγορα</button>
+  <button class="hshct on" id="hshct-daily" onclick="selMode('daily',this)" data-i18n="shDaily">📅 Καθημερινά</button>
+  <button class="hshct" id="hshct-fridge" onclick="showSec('fridge','fridge')" data-i18n="shFridge">🧊 Ψυγείο</button>
+  <button class="hshct" id="hshct-quick" onclick="selMode('quick',this)" data-i18n="shQuick">⚡ Γρήγορα</button>
 </div>
 
 <!-- DAILY -->
@@ -1373,6 +1373,8 @@ const TR={
     ff_all:'🌟 Όλες',ff_fasting:'🌿 Νηστεία',ff_fish:'🐟 Ψάρι',
     ff_major:'🎉 Μεγάλες',ff_national:'🇬🇷 Εθνικές',ff_folk:'🌸 Λαϊκές',
     back:'← Πίσω',g_people:'Άτομα:',
+    bnRecipes:'Συνταγές',bnFavs:'Αγαπημένα',bnFest:'Εορτές',bnGuests:'Καλεσμένοι',bnPlan:'Πρόγραμμα',
+    shDaily:'📅 Καθημερινά',shFridge:'🧊 Ψυγείο',shQuick:'⚡ Γρήγορα',
   },
   en:{sub:'Mediterranean Recipes',
     n0:'☀️ Today',n1:'⭐ Feasts',n2:'🍯 Sweets',n3:'🧊 Fridge',n4:'👥 Guests',n5:'🌿 Seasonal',
@@ -1403,6 +1405,8 @@ const TR={
     ff_all:'🌟 All',ff_fasting:'🌿 Fasting',ff_fish:'🐟 Fish',
     ff_major:'🎉 Major feasts',ff_national:'🇬🇷 National',ff_folk:'🌸 Folk',
     back:'← Back',g_people:'People:',
+    bnRecipes:'Recipes',bnFavs:'Favorites',bnFest:'Feasts',bnGuests:'Guests',bnPlan:'Plan',
+    shDaily:'📅 Daily',shFridge:'🧊 Fridge',shQuick:'⚡ Quick',
   }
 };
 function t(k){return TR[curLang]?.[k]||TR.el[k]||k;}
