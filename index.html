@@ -758,7 +758,7 @@ body{font-family:'Inter',-apple-system,sans-serif;background:var(--bg);color:var
 <div class="sec show" id="s-daily">
   <div class="search-bar" id="search-bar" style="display:none">
     <span>🔍</span>
-    <input type="text" id="search-inp" placeholder="Αναζήτηση συνταγής..." oninput="doSearch(this.value)">
+    <input type="text" id="search-inp" placeholder="Αναζήτηση συνταγής..." data-i18n-ph="search_ph" oninput="doSearch(this.value)">
     <button class="search-close" onclick="closeSearch()">✕</button>
   </div>
   <div id="search-results" style="display:none"></div>
@@ -1078,7 +1078,7 @@ body{font-family:'Inter',-apple-system,sans-serif;background:var(--bg);color:var
 </div>
 
 <!-- FAB: submit recipe -->
-<button class="fab-recipe" onclick="openUrform()" title="Στείλε τη συνταγή σου">👨‍🍳 Η συνταγή μου</button>
+<button class="fab-recipe" onclick="openUrform()" title="Στείλε τη συνταγή σου" data-i18n="fab_recipe">👨‍🍳 Η συνταγή μου</button>
 
 <!-- NOTIFICATION MODAL -->
 <div class="nmod" id="nmod" style="display:none">
@@ -1416,6 +1416,7 @@ const TR={
     ab_a5:'🍳 <b>«Μαγειρεύω απόψε»</b> — όρισε ώρα και η εφαρμογή σου θυμίζει πότε να ξεκινήσεις',
     ab_a6:'❤️ <b>Αγαπημένα</b> — αποθήκευσε & βρες αμέσως τις συνταγές σου',
     ab_a7:'📱 <b>Εγκαθίσταται σαν κανονική εφαρμογή</b> στο κινητό σου',
+    search_ph:'Αναζήτηση συνταγής...',fab_recipe:'👨‍🍳 Η συνταγή μου',
   },
   en:{sub:'Mediterranean Recipes',
     n0:'☀️ Today',n1:'⭐ Feasts',n2:'🍯 Sweets',n3:'🧊 Fridge',n4:'👥 Guests',n5:'🌿 Seasonal',
@@ -1486,6 +1487,7 @@ const TR={
     ab_a5:'🍳 <b>"Cooking tonight"</b> — set a time and the app reminds you when to start',
     ab_a6:'❤️ <b>Favorites</b> — save & instantly find your recipes',
     ab_a7:'📱 <b>Installs like a regular app</b> on your phone',
+    search_ph:'Search recipes...',fab_recipe:'👨‍🍳 My recipe',
   }
 };
 function t(k){return TR[curLang]?.[k]||TR.el[k]||k;}
