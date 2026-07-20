@@ -694,8 +694,8 @@ body{font-family:'Inter',-apple-system,sans-serif;background:var(--bg);color:var
       </div>
       <div class="hero-btns">
         <button id="dark-btn" class="hero-btn" onclick="toggleDark()" title="Dark mode">🌙</button>
-        <button id="bell" class="hero-btn" onclick="openNotif()" title="Ρυθμίσεις">⚙️</button>
-        <button id="prof-btn" class="hero-btn" onclick="openProfile()" title="Προφίλ">👤</button>
+        <button id="bell" class="hero-btn" onclick="openNotif()" title="Ρυθμίσεις" data-i18n-title="set_t2">⚙️</button>
+        <button id="prof-btn" class="hero-btn" onclick="openProfile()" title="Προφίλ" data-i18n-title="prof_t2">👤</button>
         <button id="prem-btn" class="hero-btn" onclick="openPremiumScreen()" title="Premium" style="font-size:14px;font-weight:700;letter-spacing:-.3px;">💎</button>
       </div>
     </div>
@@ -853,7 +853,7 @@ body{font-family:'Inter',-apple-system,sans-serif;background:var(--bg);color:var
     <div class="fridge-t" id="fridge-t" data-i18n="fridge_t2">🧊 Τι έχεις στο ψυγείο;</div>
     <div class="fridge-s" data-i18n="fridge_sub">Βάλε υλικά και θα βρω τι να μαγειρέψεις!</div>
     <div class="fridge-inp-row">
-      <input type="text" id="fridge-inp" placeholder="π.χ. κιμάς, ντομάτα, τυρί..."
+      <input type="text" id="fridge-inp" placeholder="π.χ. κιμάς, ντομάτα, τυρί..." data-i18n-ph="fridge_ph"
         onkeydown="if(event.key==='Enter')addTag()">
       <button class="fbtn-add" onclick="addTag()">＋</button>
     </div>
@@ -885,37 +885,37 @@ body{font-family:'Inter',-apple-system,sans-serif;background:var(--bg);color:var
   <div class="season-grid">
     <div class="season-card" onclick="openR('anginaresPolita')">
       <div class="sc-top" style="background:linear-gradient(145deg,#E8F5E9,#A5D6A7)"><span style="font-size:52px">🌿</span></div>
-      <div class="sc-info"><div class="sc-n">Αγκινάρες αλά πολίτα</div><div class="sc-s">🌸 Άνοιξη</div></div>
+      <div class="sc-info"><div class="sc-n" data-i18n="sc_n1">Αγκινάρες αλά πολίτα</div><div class="sc-s" data-i18n="sc_s1">🌸 Άνοιξη</div></div>
     </div>
     <div class="season-card" onclick="openR('gigantes')">
       <div class="sc-top" style="background:linear-gradient(145deg,#F1F8E9,#C5E1A5)"><span style="font-size:52px">🫘</span></div>
-      <div class="sc-info"><div class="sc-n">Γίγαντες πλακί</div><div class="sc-s">🍂 Χειμώνας</div></div>
+      <div class="sc-info"><div class="sc-n" data-i18n="sc_n2">Γίγαντες πλακί</div><div class="sc-s" data-i18n="sc_s2">🍂 Χειμώνας</div></div>
     </div>
     <div class="season-card" onclick="openR('tartaFragola')">
       <div class="sc-top" style="background:linear-gradient(145deg,#FCE4EC,#F48FB1)"><span style="font-size:52px">🍓</span></div>
-      <div class="sc-info"><div class="sc-n">Τάρτα φράουλας</div><div class="sc-s">🌸 Άνοιξη</div></div>
+      <div class="sc-info"><div class="sc-n" data-i18n="sc_n3">Τάρτα φράουλας</div><div class="sc-s" data-i18n="sc_s3">🌸 Άνοιξη</div></div>
     </div>
     <div class="season-card" onclick="openR('htapodi')">
       <div class="sc-top" style="background:linear-gradient(145deg,#E3F2FD,#90CAF9)"><span style="font-size:52px">🐙</span></div>
-      <div class="sc-info"><div class="sc-n">Χταπόδι κρασάτο</div><div class="sc-s">☀️ Καλοκαίρι</div></div>
+      <div class="sc-info"><div class="sc-n" data-i18n="sc_n4">Χταπόδι κρασάτο</div><div class="sc-s" data-i18n="sc_s4">☀️ Καλοκαίρι</div></div>
     </div>
     <div class="season-card" onclick="openR('revythada')">
       <div class="sc-top" style="background:linear-gradient(145deg,#FFF8E7,#FFE082)"><span style="font-size:52px">🫘</span></div>
-      <div class="sc-info"><div class="sc-n">Ρεβυθάδα</div><div class="sc-s">❄️ Χειμώνας</div></div>
+      <div class="sc-info"><div class="sc-n" data-i18n="sc_n5">Ρεβυθάδα</div><div class="sc-s" data-i18n="sc_s5">❄️ Χειμώνας</div></div>
     </div>
     <div class="season-card" onclick="openR('briami')">
       <div class="sc-top" style="background:linear-gradient(145deg,#F4FBF4,#A0D8B0)"><span style="font-size:52px">🥦</span></div>
-      <div class="sc-info"><div class="sc-n">Μπριάμ</div><div class="sc-s">☀️ Καλοκαίρι</div></div>
+      <div class="sc-info"><div class="sc-n" data-i18n="sc_n6">Μπριάμ</div><div class="sc-s" data-i18n="sc_s6">☀️ Καλοκαίρι</div></div>
     </div>
   </div>
   <!-- Newsletter card -->
   <div class="nl-card" id="nl-card">
-    <div class="nl-card-hdr">📬 Εβδομαδιαίο Newsletter</div>
-    <div class="nl-card-sub">Νέες συνταγές, εποχικές ιδέες & tips κάθε εβδομάδα στο email σου.</div>
+    <div class="nl-card-hdr" data-i18n="nl_hdr">📬 Εβδομαδιαίο Newsletter</div>
+    <div class="nl-card-sub" data-i18n="nl_sub">Νέες συνταγές, εποχικές ιδέες & tips κάθε εβδομάδα στο email σου.</div>
     <div id="nl-form-wrap">
       <div class="nl-row">
-        <input type="email" class="nl-input" id="nl-email" placeholder="το email σου...">
-        <button class="nl-submit" onclick="submitNewsletter()">Εγγραφή</button>
+        <input type="email" class="nl-input" id="nl-email" placeholder="το email σου..." data-i18n-ph="nl_ph">
+        <button class="nl-submit" onclick="submitNewsletter()" data-i18n="nl_submit">Εγγραφή</button>
       </div>
     </div>
   </div>
@@ -928,7 +928,7 @@ body{font-family:'Inter',-apple-system,sans-serif;background:var(--bg);color:var
     <div class="ovhero" id="ov-hero"></div>
     <div class="ovstats" id="ov-stats"></div>
     <div id="ov-nutr"></div>
-    <button class="ov-tonight-btn" id="ov-tonight" onclick="if(_meal&&_meal.id)openCookTonight(_meal.id)">🍳 Μαγειρεύω απόψε</button>
+    <button class="ov-tonight-btn" id="ov-tonight" onclick="if(_meal&&_meal.id)openCookTonight(_meal.id)" data-i18n="ct_btn">🍳 Μαγειρεύω απόψε</button>
     <div class="ov-rating" id="ov-rating"></div>
     <div class="ovtabs">
       <button class="otab on" id="otab-ing" data-i18n="ot_ing" onclick="ovTab('ing')">Υλικά</button>
@@ -958,9 +958,9 @@ body{font-family:'Inter',-apple-system,sans-serif;background:var(--bg);color:var
   <div class="pgate-inner">
     <div class="pgate-icon">💎</div>
     <div class="pgate-t">FoodDaily Premium</div>
-    <div class="pgate-s" id="pgate-s">Αυτή η λειτουργία είναι διαθέσιμη στο Premium.</div>
-    <button class="pgate-btn" onclick="closePremiumGate()">Σύντομα διαθέσιμο!</button>
-    <button class="pgate-skip" onclick="closePremiumGate()">Κλείσιμο</button>
+    <div class="pgate-s" id="pgate-s" data-i18n="pgate_s">Αυτή η λειτουργία είναι διαθέσιμη στο Premium.</div>
+    <button class="pgate-btn" onclick="closePremiumGate()" data-i18n="pgate_btn">Σύντομα διαθέσιμο!</button>
+    <button class="pgate-skip" onclick="closePremiumGate()" data-i18n="pgate_skip">Κλείσιμο</button>
   </div>
 </div>
 
@@ -982,7 +982,7 @@ body{font-family:'Inter',-apple-system,sans-serif;background:var(--bg);color:var
     <button type="button" class="ur-photo-btn" onclick="document.getElementById('ur-photo-input').click()" data-i18n="ur_photo_btn">📷 Τράβηξε φωτογραφία</button>
     <input type="file" id="ur-photo-input" accept="image/*" capture="environment" style="display:none" onchange="handlePhotoCapture(this)">
     <div class="ur-photo-preview" id="ur-photo-preview" style="display:none">
-      <img id="ur-photo-img" alt="Φωτογραφία πιάτου">
+      <img id="ur-photo-img" alt="Φωτογραφία πιάτου" data-i18n-alt="ur_photo_alt">
       <button type="button" class="ur-photo-rm" onclick="removePhoto()">✕</button>
     </div>
     <div class="urform-lbl" data-i18n="ur_lbl_author">Το όνομά σου (προαιρετικά)</div>
@@ -1058,7 +1058,7 @@ body{font-family:'Inter',-apple-system,sans-serif;background:var(--bg);color:var
       <div class="mpicker-title" id="mpicker-title">Επίλεξε φαγητό</div>
       <button class="mpicker-close" onclick="closeMealPicker()">✕</button>
     </div>
-    <input class="mpicker-search" id="mpicker-search" type="text" placeholder="Αναζήτηση..." oninput="filterMealPicker(this.value)">
+    <input class="mpicker-search" id="mpicker-search" type="text" placeholder="Αναζήτηση..." data-i18n-ph="mp_search_ph" oninput="filterMealPicker(this.value)">
     <div class="mpicker-list" id="mpicker-list"></div>
   </div>
 </div>
@@ -1067,11 +1067,11 @@ body{font-family:'Inter',-apple-system,sans-serif;background:var(--bg);color:var
 <div class="prof-sheet" id="prof-sheet" onclick="if(event.target===this)closeProfile()">
   <div class="prof-inner">
     <div class="prof-head">
-      <div class="prof-title">👤 Προφίλ & Προτιμήσεις</div>
+      <div class="prof-title" data-i18n="prof_title">👤 Προφίλ & Προτιμήσεις</div>
       <button class="prof-close" onclick="closeProfile()">✕</button>
     </div>
     <div class="prof-section">
-      <div class="prof-sect-title">Δεν μου αρέσει / Αποφεύγω</div>
+      <div class="prof-sect-title" data-i18n="prof_dislikes">Δεν μου αρέσει / Αποφεύγω</div>
       <div class="dislike-grid" id="dislike-grid"></div>
     </div>
     <div class="prof-prem-note" id="prof-prem-note"></div>
@@ -1079,7 +1079,7 @@ body{font-family:'Inter',-apple-system,sans-serif;background:var(--bg);color:var
 </div>
 
 <!-- FAB: submit recipe -->
-<button class="fab-recipe" onclick="openUrform()" title="Στείλε τη συνταγή σου" data-i18n="fab_recipe">👨‍🍳 Η συνταγή μου</button>
+<button class="fab-recipe" onclick="openUrform()" title="Στείλε τη συνταγή σου" data-i18n-title="fab_title" data-i18n="fab_recipe">👨‍🍳 Η συνταγή μου</button>
 
 <!-- NOTIFICATION MODAL -->
 <div class="nmod" id="nmod" style="display:none">
@@ -1149,7 +1149,7 @@ body{font-family:'Inter',-apple-system,sans-serif;background:var(--bg);color:var
     <div class="cm-stxt" id="cm-stxt"></div>
   </div>
   <div class="cm-nav">
-    <button class="cm-btn cm-prev" id="cm-prev" onclick="cookPrev()">← Πίσω</button>
+    <button class="cm-btn cm-prev" id="cm-prev" onclick="cookPrev()" data-i18n="back">← Πίσω</button>
     <button class="cm-btn cm-next" id="cm-next" onclick="cookNext()">Επόμενο →</button>
   </div>
 </div>
@@ -1158,21 +1158,21 @@ body{font-family:'Inter',-apple-system,sans-serif;background:var(--bg);color:var
 <div class="ct-overlay" id="cook-tonight-modal" onclick="if(event.target===this)closeCookTonight()">
   <div class="ct-sheet">
     <div class="ct-hdr">
-      <span class="ct-title">🍳 Μαγειρεύω απόψε</span>
+      <span class="ct-title" data-i18n="ct_btn">🍳 Μαγειρεύω απόψε</span>
       <button class="ct-cls" onclick="closeCookTonight()">✕</button>
     </div>
     <div class="ct-meal" id="ct-meal-name"></div>
-    <label class="ct-lbl">Σε ποια ώρα θέλεις να μαγειρέψεις;</label>
+    <label class="ct-lbl" data-i18n="ct_lbl">Σε ποια ώρα θέλεις να μαγειρέψεις;</label>
     <input type="time" id="ct-time" class="ct-time" value="20:00">
     <div class="ct-hint" id="ct-hint"></div>
-    <button class="ct-save" onclick="saveCookTonight()">🔔 Υπενθύμισέ μου</button>
+    <button class="ct-save" onclick="saveCookTonight()" data-i18n="ct_save">🔔 Υπενθύμισέ μου</button>
   </div>
 </div>
 
 <!-- Tonight Banner -->
 <div id="tonight-banner">
   <span id="tonight-txt" style="flex:1"></span>
-  <button class="tonight-open" id="tonight-open-btn">Άνοιξε</button>
+  <button class="tonight-open" id="tonight-open-btn" data-i18n="tonight_open">Άνοιξε</button>
   <button class="tonight-dismiss" onclick="dismissTonightBanner()">✕</button>
 </div>
 
@@ -1419,6 +1419,17 @@ const TR={
     ab_a7:'📱 <b>Εγκαθίσταται σαν κανονική εφαρμογή</b> στο κινητό σου',
     search_ph:'Αναζήτηση συνταγής...',fab_recipe:'👨‍🍳 Η συνταγή μου',
     hero_q:'Τι μαγειρεύουμε<br>σήμερα;',hero_search_ph:'Ψάξε συνταγή, υλικό...',
+    set_t2:'Ρυθμίσεις',prof_t2:'Προφίλ',fab_title:'Στείλε τη συνταγή σου',
+    sc_n1:'Αγκινάρες αλά πολίτα',sc_s1:'🌸 Άνοιξη',sc_n2:'Γίγαντες πλακί',sc_s2:'🍂 Χειμώνας',
+    sc_n3:'Τάρτα φράουλας',sc_s3:'🌸 Άνοιξη',sc_n4:'Χταπόδι κρασάτο',sc_s4:'☀️ Καλοκαίρι',
+    sc_n5:'Ρεβυθάδα',sc_s5:'❄️ Χειμώνας',sc_n6:'Μπριάμ',sc_s6:'☀️ Καλοκαίρι',
+    nl_hdr:'📬 Εβδομαδιαίο Newsletter',nl_sub:'Νέες συνταγές, εποχικές ιδέες & tips κάθε εβδομάδα στο email σου.',
+    nl_ph:'το email σου...',nl_submit:'Εγγραφή',
+    ct_btn:'🍳 Μαγειρεύω απόψε',ct_lbl:'Σε ποια ώρα θέλεις να μαγειρέψεις;',ct_save:'🔔 Υπενθύμισέ μου',
+    tonight_open:'Άνοιξε',
+    pgate_s:'Αυτή η λειτουργία είναι διαθέσιμη στο Premium.',pgate_btn:'Σύντομα διαθέσιμο!',pgate_skip:'Κλείσιμο',
+    ur_photo_alt:'Φωτογραφία πιάτου',mp_search_ph:'Αναζήτηση...',
+    prof_title:'👤 Προφίλ & Προτιμήσεις',prof_dislikes:'Δεν μου αρέσει / Αποφεύγω',
   },
   en:{sub:'Mediterranean Recipes',
     n0:'☀️ Today',n1:'⭐ Feasts',n2:'🍯 Sweets',n3:'🧊 Fridge',n4:'👥 Guests',n5:'🌿 Seasonal',
@@ -1491,6 +1502,17 @@ const TR={
     ab_a7:'📱 <b>Installs like a regular app</b> on your phone',
     search_ph:'Search recipes...',fab_recipe:'👨‍🍳 My recipe',
     hero_q:'What are we<br>cooking today?',hero_search_ph:'Search recipe, ingredient...',
+    set_t2:'Settings',prof_t2:'Profile',fab_title:'Send us your recipe',
+    sc_n1:'Artichokes à la Polita',sc_s1:'🌸 Spring',sc_n2:'Giant Beans Bake',sc_s2:'🍂 Winter',
+    sc_n3:'Strawberry Tart',sc_s3:'🌸 Spring',sc_n4:'Octopus in Wine Sauce',sc_s4:'☀️ Summer',
+    sc_n5:'Chickpea Stew',sc_s5:'❄️ Winter',sc_n6:'Briam (Roasted Vegetables)',sc_s6:'☀️ Summer',
+    nl_hdr:'📬 Weekly Newsletter',nl_sub:'New recipes, seasonal ideas & tips in your inbox every week.',
+    nl_ph:'your email...',nl_submit:'Subscribe',
+    ct_btn:'🍳 Cooking tonight',ct_lbl:'What time do you want to cook?',ct_save:'🔔 Remind me',
+    tonight_open:'Open',
+    pgate_s:'This feature is available on Premium.',pgate_btn:'Coming soon!',pgate_skip:'Close',
+    ur_photo_alt:'Dish photo',mp_search_ph:'Search...',
+    prof_title:'👤 Profile & Preferences',prof_dislikes:"Dislikes / Avoid",
   }
 };
 function t(k){return TR[curLang]?.[k]||TR.el[k]||k;}
@@ -5570,6 +5592,8 @@ function applyLangTexts(lang){
   // Update all data-i18n elements
   document.querySelectorAll('[data-i18n]').forEach(el=>{const k=el.getAttribute('data-i18n');const v=t(k);if(v&&v!==k){if(v.includes('<'))el.innerHTML=v;else el.textContent=v;}});
   document.querySelectorAll('[data-i18n-ph]').forEach(el=>{const k=el.getAttribute('data-i18n-ph');const v=t(k);if(v&&v!==k)el.placeholder=v;});
+  document.querySelectorAll('[data-i18n-title]').forEach(el=>{const k=el.getAttribute('data-i18n-title');const v=t(k);if(v&&v!==k)el.title=v;});
+  document.querySelectorAll('[data-i18n-alt]').forEach(el=>{const k=el.getAttribute('data-i18n-alt');const v=t(k);if(v&&v!==k)el.alt=v;});
 }
 function setLang(lang){
   curLang=lang;localStorage.setItem('fd_lang',lang);
