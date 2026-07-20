@@ -468,7 +468,7 @@ self.addEventListener('periodicsync', e => {
               const lastPrep = lastPrepResp ? await lastPrepResp.text() : '';
               if (lastPrep !== today) {
                 await self.registration.showNotification(
-                  `🍽️ Αύριο: ${prepData.mealName}`,
+                  `${prepData.titlePrefix || '🍽️ Αύριο: '}${prepData.mealName}`,
                   { body: prepData.prepMsg, icon: '/icon-192.png', badge: '/icon-96.png', tag: 'fd-prep', vibrate: [200, 100, 200, 100, 200] }
                 );
                 await cache.put('/fd-prep-last', new Response(today, { headers: { 'Content-Type': 'text/plain' } }));
