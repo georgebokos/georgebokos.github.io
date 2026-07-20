@@ -5544,7 +5544,7 @@ async function saveNotif(){
   if(psvEl){const ds=parseInt(psvEl.textContent)||2;localStorage.setItem('fd_default_srv',ds);}
   const checked=document.getElementById('ntog').checked;
   if(checked){
-    if(!('Notification' in window)){showToast('⚠️ Ο browser δεν υποστηρίζει ειδοποιήσεις');return;}
+    if(!('Notification' in window)){showToast(curLang==='en'?'⚠️ Your browser does not support notifications':'⚠️ Ο browser δεν υποστηρίζει ειδοποιήσεις');return;}
     // Κράτα την επιλογή του χρήστη ΑΜΕΣΩΣ (το τικ παραμένει ακόμη κι αν η άδεια εκκρεμεί)
     localStorage.setItem('notif_on','true');
     document.getElementById('bell').classList.add('on');
@@ -5556,9 +5556,9 @@ async function saveNotif(){
     registerPeriodicSync();
     scheduleDailyNotifInSW();
     if(Notification.permission==='denied'){
-      showToast('⚠️ Ενεργό — αλλά οι ειδοποιήσεις είναι μπλοκαρισμένες στις ρυθμίσεις της συσκευής');
+      showToast(curLang==='en'?'⚠️ Enabled — but notifications are blocked in device settings':'⚠️ Ενεργό — αλλά οι ειδοποιήσεις είναι μπλοκαρισμένες στις ρυθμίσεις της συσκευής');
     }else{
-      showToast('✅ Ειδοποιήσεις ενεργοποιήθηκαν!');
+      showToast(curLang==='en'?'✅ Notifications enabled!':'✅ Ειδοποιήσεις ενεργοποιήθηκαν!');
     }
   } else {
     localStorage.setItem('notif_on','false');
@@ -5566,19 +5566,19 @@ async function saveNotif(){
     storeNotifPrefsForSW(time,'false');
     _swSend({type:'CANCEL_DAILY_NOTIF'});
     if(_notifInt){clearInterval(_notifInt);_notifInt=null;}
-    showToast('Ειδοποιήσεις απενεργοποιήθηκαν');
+    showToast(curLang==='en'?'Notifications disabled':'Ειδοποιήσεις απενεργοποιήθηκαν');
   }
   closeNmod();
 }
 async function testNotif(){
-  if(!('Notification' in window)){showToast('⚠️ Ο browser δεν υποστηρίζει ειδοποιήσεις');return;}
+  if(!('Notification' in window)){showToast(curLang==='en'?'⚠️ Your browser does not support notifications':'⚠️ Ο browser δεν υποστηρίζει ειδοποιήσεις');return;}
   if(Notification.permission!=='granted'){
     try{const p=await Notification.requestPermission();}catch(e){}
-    if(Notification.permission==='denied'){showToast('⚠️ Οι ειδοποιήσεις είναι μπλοκαρισμένες. Ενεργοποίησέ τες στις ρυθμίσεις της συσκευής για το FoodDaily.');return;}
-    if(Notification.permission!=='granted'){showToast('⚠️ Δεν δόθηκε άδεια για ειδοποιήσεις');return;}
+    if(Notification.permission==='denied'){showToast(curLang==='en'?'⚠️ Notifications are blocked. Enable them in your device settings for FoodDaily.':'⚠️ Οι ειδοποιήσεις είναι μπλοκαρισμένες. Ενεργοποίησέ τες στις ρυθμίσεις της συσκευής για το FoodDaily.');return;}
+    if(Notification.permission!=='granted'){showToast(curLang==='en'?'⚠️ Notification permission not granted':'⚠️ Δεν δόθηκε άδεια για ειδοποιήσεις');return;}
   }
   await sendNotif();
-  showToast('🔔 Ειδοποίηση εστάλη!');
+  showToast(curLang==='en'?'🔔 Notification sent!':'🔔 Ειδοποίηση εστάλη!');
 }
 async function sendNotif(){
   // Use today's featured meal if available, otherwise pick a non-recently-cooked meal
@@ -5591,8 +5591,8 @@ async function sendNotif(){
     m=(pool.length?pool:Object.values(MEALS))[Math.floor(Math.random()*(pool.length||Object.keys(MEALS).length))];
   }
   if(!m)return;
-  const title='🍽️ FoodDaily — Πρόταση Μέρας';
-  const body=`${m.e} ${m.n}  |  ⏱ ${m.time}'  |  🔥 ${m.cal}  |  💰 ${m.cost||'~5€'}`;
+  const title=curLang==='en'?'🍽️ FoodDaily — Daily Pick':'🍽️ FoodDaily — Πρόταση Μέρας';
+  const body=`${m.e} ${mealName(m)}  |  ⏱ ${m.time}'  |  🔥 ${m.cal}  |  💰 ${m.cost||'~5€'}`;
   // 1. Via SW controller message (most reliable on Android TWA)
   if(navigator.serviceWorker?.controller){
     navigator.serviceWorker.controller.postMessage({type:'SHOW_NOTIFICATION',title,body,tag:'fd-meal-daily'});
