@@ -5412,6 +5412,22 @@ function genGuests(){
 // ── i18n ─────────────────────────────────────────────────────
 // Συγχρονίζει όλα τα στατικά κείμενα του UI με την τρέχουσα curLang — χρησιμοποιείται
 // τόσο από setLang() (αλλαγή γλώσσας από τον χρήστη) όσο και στο αρχικό load (restore προτίμησης).
+function updateHeroTexts(){
+  const days=curLang==='en'?['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday']:['Κυριακή','Δευτέρα','Τρίτη','Τετάρτη','Πέμπτη','Παρασκευή','Σάββατο'];
+  const months=curLang==='en'?['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec']:['Ιαν','Φεβ','Μαρ','Απρ','Μαΐ','Ιουν','Ιουλ','Αυγ','Σεπ','Οκτ','Νοε','Δεκ'];
+  const nd=new Date();const hr=nd.getHours();
+  const greet=curLang==='en'
+    ?(hr<6?'🌙 Good evening':hr<12?'☀️ Good morning':hr<17?'🌤 Good morning':hr<21?'🌆 Good evening':'🌙 Good evening')
+    :(hr<6?'🌙 Καλό βράδυ':hr<12?'☀️ Καλημέρα':hr<17?'🌤 Καλημέρα':hr<21?'🌆 Καλησπέρα':'🌙 Καλό βράδυ');
+  const gl=document.getElementById('hero-greeting');
+  if(gl)gl.textContent=`${greet} · ${days[nd.getDay()]}, ${nd.getDate()} ${months[nd.getMonth()]}`;
+  const sl=document.getElementById('hero-sub');
+  const mealCount=Object.keys(MEALS).length;
+  const excl2=['anginaresPolita','tartaFragola','halvas','lagana','eliestoursi','salata_rodi'];
+  const dailyPool=Object.keys(MEALS).filter(id=>!excl2.includes(id)&&!MEALS[id]?.noDaily&&!MEALS[id]?.quickOnly);
+  const dailyCount=Math.min(dailyPool.length,12);
+  if(sl)sl.textContent=curLang==='en'?`🍽️ ${dailyCount} suggestions today · ${mealCount}+ recipes`:`🍽️ ${dailyCount} προτάσεις σήμερα · ${mealCount}+ συνταγές`;
+}
 function applyLangTexts(lang){
   document.querySelectorAll('.lbtn').forEach(b=>b.classList.remove('on'));
   const lb=document.getElementById('lb-'+lang);if(lb)lb.classList.add('on');
@@ -5436,6 +5452,7 @@ function applyLangTexts(lang){
 function setLang(lang){
   curLang=lang;localStorage.setItem('fd_lang',lang);
   applyLangTexts(lang);
+  updateHeroTexts();
   // Re-render
   renderMeals(curCat);
   filtSw(curSwCat);
@@ -6221,18 +6238,7 @@ function dismissTonightBanner(){
   const _sl=localStorage.getItem('fd_lang');if(_sl==='en'||_sl==='el')curLang=_sl;
   applyLangTexts(curLang);
   // Hero greeting + date
-  const days=['Κυριακή','Δευτέρα','Τρίτη','Τετάρτη','Πέμπτη','Παρασκευή','Σάββατο'];
-  const months=['Ιαν','Φεβ','Μαρ','Απρ','Μαΐ','Ιουν','Ιουλ','Αυγ','Σεπ','Οκτ','Νοε','Δεκ'];
-  const nd=new Date();const hr=nd.getHours();
-  const greet=hr<6?'🌙 Καλό βράδυ':hr<12?'☀️ Καλημέρα':hr<17?'🌤 Καλημέρα':hr<21?'🌆 Καλησπέρα':'🌙 Καλό βράδυ';
-  const gl=document.getElementById('hero-greeting');
-  if(gl)gl.textContent=`${greet} · ${days[nd.getDay()]}, ${nd.getDate()} ${months[nd.getMonth()]}`;
-  const sl=document.getElementById('hero-sub');
-  const mealCount=Object.keys(MEALS).length;
-  const excl2=['anginaresPolita','tartaFragola','halvas','lagana','eliestoursi','salata_rodi'];
-  const dailyPool=Object.keys(MEALS).filter(id=>!excl2.includes(id)&&!MEALS[id]?.noDaily&&!MEALS[id]?.quickOnly);
-  const dailyCount=Math.min(dailyPool.length,12);
-  if(sl)sl.textContent=`🍽️ ${dailyCount} προτάσεις σήμερα · ${mealCount}+ συνταγές`;
+  updateHeroTexts();
   // Premium: start trial on first launch, render banner
   startTrial();
   renderTrialBanner();
