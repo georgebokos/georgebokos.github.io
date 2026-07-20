@@ -1295,14 +1295,18 @@ function estimateMacros(m){
 
 // #23 Seasonal guide
 const SEASONAL_GUIDE={
-  spring:{ico:'🌸',name:'Άνοιξη',
-    ings:['🌿 Αγκινάρες','🥬 Σπανάκι','🍓 Φράουλες','🟢 Μπιζέλια','🌱 Αρακάς','🧅 Φρέσκα κρεμμύδια']},
-  summer:{ico:'☀️',name:'Καλοκαίρι',
-    ings:['🍅 Ντομάτες','🍆 Μελιτζάνες','🥒 Κολοκυθάκια','🫑 Πιπεριές','🌽 Καλαμπόκι','🍑 Ροδάκινα']},
-  autumn:{ico:'🍂',name:'Φθινόπωρο',
-    ings:['🍄 Μανιτάρια','🍇 Σταφύλια','🍎 Μήλα','🌰 Κάστανα','🟠 Κολοκύθα','🧅 Κρεμμύδια']},
-  winter:{ico:'❄️',name:'Χειμώνας',
-    ings:['🍊 Πορτοκάλια','🥦 Κουνουπίδι','🥬 Λάχανο','🌿 Σπανάκι','🥕 Καρότα','🫒 Ελιές']}
+  spring:{ico:'🌸',name:'Άνοιξη',name_en:'Spring',
+    ings:['🌿 Αγκινάρες','🥬 Σπανάκι','🍓 Φράουλες','🟢 Μπιζέλια','🌱 Αρακάς','🧅 Φρέσκα κρεμμύδια'],
+    ings_en:['🌿 Artichokes','🥬 Spinach','🍓 Strawberries','🟢 Green peas','🌱 Fresh peas','🧅 Spring onions']},
+  summer:{ico:'☀️',name:'Καλοκαίρι',name_en:'Summer',
+    ings:['🍅 Ντομάτες','🍆 Μελιτζάνες','🥒 Κολοκυθάκια','🫑 Πιπεριές','🌽 Καλαμπόκι','🍑 Ροδάκινα'],
+    ings_en:['🍅 Tomatoes','🍆 Eggplants','🥒 Zucchini','🫑 Peppers','🌽 Corn','🍑 Peaches']},
+  autumn:{ico:'🍂',name:'Φθινόπωρο',name_en:'Autumn',
+    ings:['🍄 Μανιτάρια','🍇 Σταφύλια','🍎 Μήλα','🌰 Κάστανα','🟠 Κολοκύθα','🧅 Κρεμμύδια'],
+    ings_en:['🍄 Mushrooms','🍇 Grapes','🍎 Apples','🌰 Chestnuts','🟠 Pumpkin','🧅 Onions']},
+  winter:{ico:'❄️',name:'Χειμώνας',name_en:'Winter',
+    ings:['🍊 Πορτοκάλια','🥦 Κουνουπίδι','🥬 Λάχανο','🌿 Σπανάκι','🥕 Καρότα','🫒 Ελιές'],
+    ings_en:['🍊 Oranges','🥦 Cauliflower','🥬 Cabbage','🌿 Spinach','🥕 Carrots','🫒 Olives']}
 };
 function getCurrentSeason(){
   const mo=new Date().getMonth();
@@ -1314,10 +1318,12 @@ function getCurrentSeason(){
 function buildSeasonalGuide(){
   const s=getCurrentSeason();
   const g=SEASONAL_GUIDE[s]||SEASONAL_GUIDE.winter;
+  const en=curLang==='en';
+  const ings=en?g.ings_en:g.ings;
   return`<div class="sea-guide">
-    <div class="sea-guide-lbl">Τώρα στην εποχή τους</div>
-    <div class="sea-guide-title">${g.ico} ${g.name}</div>
-    <div class="sea-ing-list">${g.ings.map(i=>`<span class="sea-ing-chip">${i}</span>`).join('')}</div>
+    <div class="sea-guide-lbl">${en?'In season now':'Τώρα στην εποχή τους'}</div>
+    <div class="sea-guide-title">${g.ico} ${en?g.name_en:g.name}</div>
+    <div class="sea-ing-list">${ings.map(i=>`<span class="sea-ing-chip">${i}</span>`).join('')}</div>
   </div>`;
 }
 
@@ -1330,7 +1336,7 @@ function submitNewsletter(){
   inp.style.borderColor='';
   localStorage.setItem('fd_nl_email',email);
   const wrap=document.getElementById('nl-form-wrap');
-  if(wrap){const _safe=email.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');wrap.innerHTML=`<div class="nl-done">✅ Σε βάλαμε στη λίστα! Σύντομα θα λαμβάνεις νέα στο ${_safe}</div>`;}
+  if(wrap){const _safe=email.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');wrap.innerHTML=curLang==='en'?`<div class="nl-done">✅ You're on the list! You'll receive news at ${_safe} soon</div>`:`<div class="nl-done">✅ Σε βάλαμε στη λίστα! Σύντομα θα λαμβάνεις νέα στο ${_safe}</div>`;}
 }
 
 function applyTheme(c){
@@ -5302,7 +5308,7 @@ function showFD(id){
   window.scrollTo(0,0);
   document.getElementById('fd-t').textContent=f.e+' '+f.n;
   document.getElementById('fd-s').textContent=f.sub;
-  document.getElementById('fd-fn').innerHTML=f.fn?`<div class="fn-box"><div class="fn-t">🌿 Νηστεία</div><div class="fn-d">${f.fn}</div></div>`:'';
+  document.getElementById('fd-fn').innerHTML=f.fn?`<div class="fn-box"><div class="fn-t">🌿 ${t('ff_fasting').replace('🌿 ','')}</div><div class="fn-d">${f.fn}</div></div>`:'';
 
   // Clickable menu items
   document.getElementById('fd-menu').innerHTML=f.menu.map(item=>{
@@ -5471,6 +5477,9 @@ function setLang(lang){
   renderMeals(curCat);
   filtSw(curSwCat);
   rendFest(curFestF);
+  const sgw=document.getElementById('sea-guide-wrap');if(sgw)sgw.innerHTML=buildSeasonalGuide();
+  const nlEmail=localStorage.getItem('fd_nl_email');
+  if(nlEmail){const w=document.getElementById('nl-form-wrap');if(w)w.innerHTML=`<div class="nl-done">✅ ${curLang==='en'?'Registered as':'Εγγεγραμμένος ως'} ${nlEmail}</div>`;}
   // If overlay is open, rebuild its translated content
   rebuildOverlayTexts();
 }
@@ -5916,10 +5925,15 @@ function selGuest(n,btn){
   if(suvIdx>-1){pool.splice(suvIdx,1);pool.push('arni_souvia');}
 
   // Section hints based on group size
-  const hint= n<=2 ? '🍽️ Για ρομαντικό δείπνο ή μικρή παρέα'
-            : n<=4 ? '🥘 Ιδανικά για οικογενειακό τραπέζι'
-            : n<=6 ? '🎉 Για παρέα φίλων — σερβίρει καλά σε μεγάλα τεμάχια'
-            : '🍖 Για μεγάλο τραπέζι — φαγητά που κάνουν εντύπωση';
+  const hint= curLang==='en'
+            ? (n<=2 ? '🍽️ For a romantic dinner or small get-together'
+              : n<=4 ? '🥘 Ideal for a family table'
+              : n<=6 ? '🎉 For a group of friends — serves well in large portions'
+              : '🍖 For a big table — dishes that make an impression')
+            : (n<=2 ? '🍽️ Για ρομαντικό δείπνο ή μικρή παρέα'
+              : n<=4 ? '🥘 Ιδανικά για οικογενειακό τραπέζι'
+              : n<=6 ? '🎉 Για παρέα φίλων — σερβίρει καλά σε μεγάλα τεμάχια'
+              : '🍖 Για μεγάλο τραπέζι — φαγητά που κάνουν εντύπωση');
 
   const res=document.getElementById('guest-res');
   if(!res)return;
