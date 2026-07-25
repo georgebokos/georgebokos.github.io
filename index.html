@@ -5173,11 +5173,33 @@ async function submitUserRecipe(){
 }
 
 // ── WEEK PLAN ─────────────────────────────────────────────────
-function getWeekPlan(){try{return JSON.parse(localStorage.getItem('fd_week_plan')||'{}');}catch(e){return {};}}
+// Fallback in-memory store: κάποιοι browsers (π.χ. Brave σε αυστηρό Shields/private mode)
+// μπορεί να μπλοκάρουν σιωπηλά το localStorage.setItem — χωρίς αυτό, η αποθήκευση θα χανόταν
+// αθόρυβα χωρίς καμία ένδειξη στον χρήστη.
+let _fdWeekPlanMem=null;
+function getWeekPlan(){
+  try{
+    const raw=localStorage.getItem('fd_week_plan');
+    if(raw!==null)return JSON.parse(raw);
+  }catch(e){}
+  return _fdWeekPlanMem?{..._fdWeekPlanMem}:{};
+}
 function setMealForDay(dateStr,mealId){
   const p=getWeekPlan();
   if(mealId)p[dateStr]=mealId;else delete p[dateStr];
-  localStorage.setItem('fd_week_plan',JSON.stringify(p));
+  _fdWeekPlanMem=p; // κράτα πάντα και στη μνήμη, ό,τι κι αν γίνει με το localStorage
+  let saved=false;
+  try{
+    localStorage.setItem('fd_week_plan',JSON.stringify(p));
+    // Επαλήθευση: διάβασε ξανά αμέσως για να βεβαιωθούμε ότι πράγματι αποθηκεύτηκε
+    const verify=JSON.parse(localStorage.getItem('fd_week_plan')||'null');
+    saved=!!verify&&JSON.stringify(verify)===JSON.stringify(p);
+  }catch(e){saved=false;}
+  if(!saved){
+    showToast(curLang==='en'
+      ?'⚠️ Your browser is blocking saved data — the weekly plan may not persist. Check your browser\'s privacy/shield settings for this site.'
+      :'⚠️ Ο browser σου μπλοκάρει την αποθήκευση δεδομένων — το εβδομαδιαίο πρόγραμμα μπορεί να μη διατηρηθεί. Έλεγξε τις ρυθμίσεις απορρήτου/shields του browser για αυτόν τον ιστότοπο.');
+  }
   storeWeekPlanForSW(p);
   // Η υπενθύμιση προετοιμασίας («Αύριο: ...») χρειάζεται periodic sync ΑΝΕΞΑΡΤΗΤΑ από το αν είναι ενεργό το 🔔 ημερήσιων προτάσεων
   if(mealId&&isPremium()&&'Notification' in window){
