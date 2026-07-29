@@ -4864,6 +4864,7 @@ function openPremiumScreen(){
     else{badge.textContent=en?'🎁 7 days free':'🎁 7 ημέρες δωρεάν';}
   }
   updatePremiumCTA(state);
+  fetchRealPlanPrice('monthly');
   document.getElementById('pscreen').classList.add('show');
   document.body.style.overflow='hidden';
 }
@@ -4878,11 +4879,28 @@ function setPlan(plan){
   const priceEl=document.getElementById('pscreen-price');
   const en=curLang==='en';
   if(plan==='monthly'){
-    priceEl.innerHTML=`<div class="pscreen-price-main">1,99€<span style="font-size:18px;font-weight:400">${en?'/month':'/μήνα'}</span></div><div class="pscreen-price-sub">${en?'Cancel anytime':'Ακύρωση οποιαδήποτε στιγμή'}</div>`;
+    priceEl.innerHTML=`<div class="pscreen-price-main">1,99€<span style="font-size:18px;font-weight:400">${en?'/month + VAT':'/μήνα + ΦΠΑ'}</span></div><div class="pscreen-price-sub">${en?'Cancel anytime · Final price shown at checkout':'Ακύρωση οποιαδήποτε στιγμή · Η τελική τιμή εμφανίζεται στην ολοκλήρωση αγοράς'}</div>`;
   }else{
-    priceEl.innerHTML=`<div class="pscreen-price-main">14,99€<span style="font-size:18px;font-weight:400">${en?'/year':'/χρόνο'}</span></div><div class="pscreen-price-sub">${en?'Save ~€9 · Equivalent to €1.25/month':'Εξοικονόμηση ~9€ · Ισοδύναμο 1,25€/μήνα'}</div>`;
+    priceEl.innerHTML=`<div class="pscreen-price-main">14,99€<span style="font-size:18px;font-weight:400">${en?'/year + VAT':'/χρόνο + ΦΠΑ'}</span></div><div class="pscreen-price-sub">${en?'Save ~€9 · Final price shown at checkout':'Εξοικονόμηση ~9€ · Η τελική τιμή εμφανίζεται στην ολοκλήρωση αγοράς'}</div>`;
   }
   updatePremiumCTA(getPremiumState());
+  fetchRealPlanPrice(plan);
+}
+async function fetchRealPlanPrice(plan){
+  const service=await getDigitalGoodsService();
+  if(!service)return;
+  const itemId=PREMIUM_SKUS[plan]||PREMIUM_SKUS.monthly;
+  try{
+    const details=await service.getDetails([itemId]);
+    if(!details.length||_curPlan!==plan)return; // user switched plan while we were fetching
+    const d=details[0];
+    const en=curLang==='en';
+    const formatted=new Intl.NumberFormat(en?'en-US':'el-GR',{style:'currency',currency:d.price.currency}).format(parseFloat(d.price.value));
+    const suffix=plan==='monthly'?(en?'/month':'/μήνα'):(en?'/year':'/χρόνο');
+    const sub=plan==='monthly'?(en?'Cancel anytime · VAT included':'Ακύρωση οποιαδήποτε στιγμή · Με ΦΠΑ'):(en?'Save vs. monthly · VAT included':'Έκπτωση έναντι μηνιαίου · Με ΦΠΑ');
+    const priceEl=document.getElementById('pscreen-price');
+    if(priceEl)priceEl.innerHTML=`<div class="pscreen-price-main">${formatted}<span style="font-size:18px;font-weight:400">${suffix}</span></div><div class="pscreen-price-sub">${sub}</div>`;
+  }catch(e){/* keep the fallback price shown */}
 }
 function updatePremiumCTA(state){
   const btn=document.getElementById('pscreen-cta');
