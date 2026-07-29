@@ -4913,14 +4913,75 @@ function handlePremiumCTA(){
     renderTrialBanner();
     showToast(curLang==='en'?'🎉 7-day trial started! Enjoy Premium.':'🎉 Το 7-day trial ξεκίνησε! Απόλαυσε το Premium.');
   }else{
-    // Redirect to payment — placeholder until payment is integrated
-    showToast(curLang==='en'?"💎 Coming soon! You'll be notified.":'💎 Σύντομα διαθέσιμο! Θα ειδοποιηθείς.');
-    closePremiumScreen();
+    purchasePremium(_curPlan);
   }
 }
-function restorePurchase(){
-  showToast(curLang==='en'?'⏳ Checking subscription...':'⏳ Έλεγχος συνδρομής...');
-  setTimeout(()=>showToast(curLang==='en'?'No active subscription found.':'Δεν βρέθηκε ενεργή συνδρομή.'),1500);
+
+// ── GOOGLE PLAY BILLING (Payment Request API) ──────────────────
+const PLAY_BILLING_METHOD='https://play.google.com/billing';
+const PREMIUM_SKUS={monthly:'premium_monthly',annual:'premium_yearly'};
+async function getDigitalGoodsService(){
+  if(!('getDigitalGoodsService' in window))return null;
+  try{return await window.getDigitalGoodsService(PLAY_BILLING_METHOD);}
+  catch(e){return null;}
+}
+async function purchasePremium(plan){
+  const en=curLang==='en';
+  const itemId=PREMIUM_SKUS[plan]||PREMIUM_SKUS.monthly;
+  if(!window.PaymentRequest){
+    showToast(en?'💎 Purchases are only available in the FoodDaily Android app.':'💎 Οι αγορές είναι διαθέσιμες μόνο μέσα από την εφαρμογή FoodDaily για Android.');
+    return;
+  }
+  const service=await getDigitalGoodsService();
+  if(!service){
+    showToast(en?'💎 Purchases are only available in the FoodDaily Android app.':'💎 Οι αγορές είναι διαθέσιμες μόνο μέσα από την εφαρμογή FoodDaily για Android.');
+    return;
+  }
+  try{
+    const details=await service.getDetails([itemId]);
+    if(!details.length){
+      showToast(en?'⚠️ Product not found. Please try again later.':'⚠️ Το προϊόν δεν βρέθηκε. Δοκίμασε ξανά αργότερα.');
+      return;
+    }
+    const request=new PaymentRequest(
+      [{supportedMethods:PLAY_BILLING_METHOD,data:{sku:itemId}}],
+      {total:{label:details[0].title||'FoodDaily Premium',amount:{currency:details[0].price.currency,value:'0'}}}
+    );
+    const response=await request.show();
+    await response.complete('success');
+    localStorage.setItem('fd_premium','true');
+    localStorage.setItem('fd_premium_plan',plan);
+    closePremiumScreen();
+    renderTrialBanner();
+    showToast(en?'🎉 Welcome to Premium!':'🎉 Καλώς ήρθες στο Premium!');
+  }catch(e){
+    if(e&&e.name==='AbortError')return; // user cancelled the purchase sheet
+    console.error('Purchase failed',e);
+    showToast(en?'⚠️ Purchase failed. Please try again.':'⚠️ Η αγορά απέτυχε. Δοκίμασε ξανά.');
+  }
+}
+async function restorePurchase(){
+  const en=curLang==='en';
+  showToast(en?'⏳ Checking subscription...':'⏳ Έλεγχος συνδρομής...');
+  const service=await getDigitalGoodsService();
+  if(!service){
+    setTimeout(()=>showToast(en?'No active subscription found.':'Δεν βρέθηκε ενεργή συνδρομή.'),1000);
+    return;
+  }
+  try{
+    const purchases=await service.listPurchases();
+    const owned=purchases.find(p=>Object.values(PREMIUM_SKUS).includes(p.itemId));
+    if(owned){
+      localStorage.setItem('fd_premium','true');
+      renderTrialBanner();
+      updatePremiumCTA(getPremiumState());
+      showToast(en?'✅ Premium restored!':'✅ Το Premium αποκαταστάθηκε!');
+    }else{
+      showToast(en?'No active subscription found.':'Δεν βρέθηκε ενεργή συνδρομή.');
+    }
+  }catch(e){
+    showToast(en?'No active subscription found.':'Δεν βρέθηκε ενεργή συνδρομή.');
+  }
 }
 
 // Gate modal (quick inline prompt when a feature is tapped)
