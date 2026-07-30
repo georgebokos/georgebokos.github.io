@@ -4953,22 +4953,17 @@ async function purchasePremium(plan){
   const en=curLang==='en';
   const itemId=PREMIUM_SKUS[plan]||PREMIUM_SKUS.monthly;
   if(!window.PaymentRequest){
-    alert('DEBUG: window.PaymentRequest is NOT available on this browser.');
     showToast(en?'💎 Purchases are only available in the FoodDaily Android app.':'💎 Οι αγορές είναι διαθέσιμες μόνο μέσα από την εφαρμογή FoodDaily για Android.');
     return;
   }
   const service=await getDigitalGoodsService();
   if(!service){
-    alert('DEBUG REAL REASON:\n'+_dgsLastError
-      +'\n\nBrave detected: '+(!!navigator.brave)
-      +'\nUA: '+navigator.userAgent);
-    showToast(en?'💎 Purchases are only available in the FoodDaily Android app.':'💎 Οι αγορές είναι διαθέσιμες μόνο μέσα από την εφαρμογή FoodDaily για Android.');
+    // Ορισμένοι browsers (π.χ. Brave) εκθέτουν το API αλλά δεν υλοποιούν το Google Play Billing.
+    showPremiumBrowserNotice();
     return;
   }
-  alert('DEBUG: Digital Goods service ACQUIRED successfully! Fetching item details for '+itemId+'...');
   try{
     const details=await service.getDetails([itemId]);
-    alert('DEBUG: getDetails returned '+details.length+' item(s). '+(details[0]?JSON.stringify(details[0]):''));
     if(!details.length){
       showToast(en?'⚠️ Product not found. Please try again later.':'⚠️ Το προϊόν δεν βρέθηκε. Δοκίμασε ξανά αργότερα.');
       return;
@@ -4977,7 +4972,6 @@ async function purchasePremium(plan){
       [{supportedMethods:PLAY_BILLING_METHOD,data:{sku:itemId}}],
       {total:{label:details[0].title||'FoodDaily Premium',amount:{currency:details[0].price.currency,value:'0'}}}
     );
-    alert('DEBUG: About to call request.show()...');
     const response=await request.show();
     await response.complete('success');
     localStorage.setItem('fd_premium','true');
@@ -4986,11 +4980,17 @@ async function purchasePremium(plan){
     renderTrialBanner();
     showToast(en?'🎉 Welcome to Premium!':'🎉 Καλώς ήρθες στο Premium!');
   }catch(e){
-    alert('DEBUG ERROR: '+(e&&e.name)+' — '+(e&&e.message));
     if(e&&e.name==='AbortError')return; // user cancelled the purchase sheet
     console.error('Purchase failed',e);
     showToast(en?'⚠️ Purchase failed. Please try again.':'⚠️ Η αγορά απέτυχε. Δοκίμασε ξανά.');
   }
+}
+// Σαφής εξήγηση όταν ο browser που φιλοξενεί την εφαρμογή δεν υποστηρίζει Google Play Billing
+function showPremiumBrowserNotice(){
+  const en=curLang==='en';
+  alert(en
+    ?'Purchases are not available right now.\n\nThis app is currently running through a browser that does not support Google Play purchases (e.g. Brave).\n\nTo subscribe:\n1. Open Settings → Apps → Default apps → Browser app\n2. Select Chrome\n3. Reopen FoodDaily and try again'
+    :'Οι αγορές δεν είναι διαθέσιμες αυτή τη στιγμή.\n\nΗ εφαρμογή τρέχει μέσω browser που δεν υποστηρίζει τις αγορές Google Play (π.χ. Brave).\n\nΓια να κάνεις συνδρομή:\n1. Ρυθμίσεις → Εφαρμογές → Προεπιλεγμένες εφαρμογές → Εφαρμογή browser\n2. Επίλεξε Chrome\n3. Άνοιξε ξανά το FoodDaily και δοκίμασε πάλι');
 }
 async function restorePurchase(){
   const en=curLang==='en';
