@@ -4938,10 +4938,16 @@ function handlePremiumCTA(){
 // ── GOOGLE PLAY BILLING (Payment Request API) ──────────────────
 const PLAY_BILLING_METHOD='https://play.google.com/billing';
 const PREMIUM_SKUS={monthly:'premium_monthly',annual:'premium_yearly'};
+let _dgsLastError=null;
 async function getDigitalGoodsService(){
-  if(!('getDigitalGoodsService' in window))return null;
-  try{return await window.getDigitalGoodsService(PLAY_BILLING_METHOD);}
-  catch(e){return null;}
+  _dgsLastError=null;
+  if(!('getDigitalGoodsService' in window)){_dgsLastError='API missing from window';return null;}
+  try{
+    const svc=await window.getDigitalGoodsService(PLAY_BILLING_METHOD);
+    if(!svc)_dgsLastError='resolved but returned empty value';
+    return svc;
+  }
+  catch(e){_dgsLastError=(e&&e.name?e.name:'Error')+': '+(e&&e.message?e.message:String(e));return null;}
 }
 async function purchasePremium(plan){
   const en=curLang==='en';
@@ -4953,7 +4959,9 @@ async function purchasePremium(plan){
   }
   const service=await getDigitalGoodsService();
   if(!service){
-    alert('DEBUG: getDigitalGoodsService STILL returns null/undefined after the assetlinks.json fix.');
+    alert('DEBUG REAL REASON:\n'+_dgsLastError
+      +'\n\nBrave detected: '+(!!navigator.brave)
+      +'\nUA: '+navigator.userAgent);
     showToast(en?'💎 Purchases are only available in the FoodDaily Android app.':'💎 Οι αγορές είναι διαθέσιμες μόνο μέσα από την εφαρμογή FoodDaily για Android.');
     return;
   }
