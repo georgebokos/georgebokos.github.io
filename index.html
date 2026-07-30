@@ -4946,23 +4946,17 @@ async function getDigitalGoodsService(){
 async function purchasePremium(plan){
   const en=curLang==='en';
   const itemId=PREMIUM_SKUS[plan]||PREMIUM_SKUS.monthly;
-  alert('DEBUG 1: purchasePremium started, plan='+plan+', itemId='+itemId);
   if(!window.PaymentRequest){
-    alert('DEBUG: window.PaymentRequest is NOT available on this browser.');
     showToast(en?'💎 Purchases are only available in the FoodDaily Android app.':'💎 Οι αγορές είναι διαθέσιμες μόνο μέσα από την εφαρμογή FoodDaily για Android.');
     return;
   }
-  alert('DEBUG 2: PaymentRequest exists. Checking getDigitalGoodsService in window: '+('getDigitalGoodsService' in window));
   const service=await getDigitalGoodsService();
   if(!service){
-    alert('DEBUG: getDigitalGoodsService returned null/undefined — not running inside a TWA with Play Billing support.');
     showToast(en?'💎 Purchases are only available in the FoodDaily Android app.':'💎 Οι αγορές είναι διαθέσιμες μόνο μέσα από την εφαρμογή FoodDaily για Android.');
     return;
   }
-  alert('DEBUG 3: Digital Goods service acquired. Fetching item details...');
   try{
     const details=await service.getDetails([itemId]);
-    alert('DEBUG 4: getDetails returned '+details.length+' item(s). '+(details[0]?JSON.stringify(details[0]):''));
     if(!details.length){
       showToast(en?'⚠️ Product not found. Please try again later.':'⚠️ Το προϊόν δεν βρέθηκε. Δοκίμασε ξανά αργότερα.');
       return;
@@ -4971,7 +4965,6 @@ async function purchasePremium(plan){
       [{supportedMethods:PLAY_BILLING_METHOD,data:{sku:itemId}}],
       {total:{label:details[0].title||'FoodDaily Premium',amount:{currency:details[0].price.currency,value:'0'}}}
     );
-    alert('DEBUG 5: About to call request.show()...');
     const response=await request.show();
     await response.complete('success');
     localStorage.setItem('fd_premium','true');
@@ -4980,7 +4973,6 @@ async function purchasePremium(plan){
     renderTrialBanner();
     showToast(en?'🎉 Welcome to Premium!':'🎉 Καλώς ήρθες στο Premium!');
   }catch(e){
-    alert('DEBUG ERROR: '+(e&&e.name)+' — '+(e&&e.message));
     if(e&&e.name==='AbortError')return; // user cancelled the purchase sheet
     console.error('Purchase failed',e);
     showToast(en?'⚠️ Purchase failed. Please try again.':'⚠️ Η αγορά απέτυχε. Δοκίμασε ξανά.');
