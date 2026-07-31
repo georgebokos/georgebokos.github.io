@@ -4958,6 +4958,9 @@ async function purchasePremium(plan){
   }
   const service=await getDigitalGoodsService();
   if(!service){
+    alert('DEBUG v17:\nreason = '+_dgsLastError
+      +'\nBrave = '+(!!navigator.brave)
+      +'\nUA = '+navigator.userAgent);
     // Ορισμένοι browsers (π.χ. Brave) εκθέτουν το API αλλά δεν υλοποιούν το Google Play Billing.
     showPremiumBrowserNotice();
     return;
