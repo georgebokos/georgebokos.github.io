@@ -4949,18 +4949,87 @@ async function getDigitalGoodsService(){
   }
   catch(e){_dgsLastError=(e&&e.name?e.name:'Error')+': '+(e&&e.message?e.message:String(e));return null;}
 }
+// ── REVENUECAT (Capacitor native billing) ──────────────────────
+// Χρησιμοποιείται όταν η εφαρμογή τρέχει ως native Capacitor app (ενσωματωμένο WebView).
+// Δεν εξαρτάται από τον browser του χρήστη, σε αντίθεση με το Digital Goods API.
+const RC_API_KEY='goog_wlLGtgfQNNakMXhZIqFioFaiPoX';
+const RC_ENTITLEMENT='FoodDaily Pro';
+const RC_PKG={monthly:'$rc_monthly',annual:'$rc_annual'};
+let _rcReady=false;
+function rcPlugin(){
+  try{return (window.Capacitor&&window.Capacitor.Plugins&&window.Capacitor.Plugins.Purchases)||null;}
+  catch(e){return null;}
+}
+async function rcInit(){
+  const P=rcPlugin();
+  if(!P)return null;
+  if(!_rcReady){
+    await P.configure({apiKey:RC_API_KEY});
+    _rcReady=true;
+  }
+  return P;
+}
+function rcHasEntitlement(customerInfo){
+  try{return !!(customerInfo&&customerInfo.entitlements&&customerInfo.entitlements.active&&customerInfo.entitlements.active[RC_ENTITLEMENT]);}
+  catch(e){return false;}
+}
+function applyPremiumUnlocked(){
+  localStorage.setItem('fd_premium','true');
+  try{renderTrialBanner();updatePremiumCTA(getPremiumState());}catch(e){}
+}
+// Έλεγχος συνδρομής στο άνοιγμα της εφαρμογής (μόνο σε native περιβάλλον)
+async function rcSyncOnStart(){
+  const P=await rcInit();
+  if(!P)return;
+  try{
+    const {customerInfo}=await P.getCustomerInfo();
+    if(rcHasEntitlement(customerInfo))applyPremiumUnlocked();
+  }catch(e){}
+}
+async function rcPurchase(plan){
+  const en=curLang==='en';
+  const P=await rcInit();
+  if(!P)return false;
+  const wanted=RC_PKG[plan]||RC_PKG.monthly;
+  try{
+    const offerings=await P.getOfferings();
+    const cur=offerings&&offerings.current;
+    const list=(cur&&cur.availablePackages)||[];
+    const pkg=list.find(p=>p.identifier===wanted)||list[0];
+    if(!pkg){
+      showToast(en?'⚠️ Subscription plans are not available right now.':'⚠️ Τα πακέτα συνδρομής δεν είναι διαθέσιμα αυτή τη στιγμή.');
+      return true;
+    }
+    const res=await P.purchasePackage({aPackage:pkg});
+    if(rcHasEntitlement(res&&res.customerInfo)){
+      localStorage.setItem('fd_premium_plan',plan);
+      applyPremiumUnlocked();
+      closePremiumScreen();
+      showToast(en?'🎉 Welcome to Premium!':'🎉 Καλώς ήρθες στο Premium!');
+    }else{
+      showToast(en?'⚠️ Purchase could not be verified.':'⚠️ Η αγορά δεν επαληθεύτηκε.');
+    }
+  }catch(e){
+    // Ο χρήστης ακύρωσε το παράθυρο αγοράς — δεν είναι σφάλμα
+    const msg=(e&&(e.message||e.code)||'')+'';
+    if(/cancel/i.test(msg)||(e&&e.code==='1'))return true;
+    console.error('RevenueCat purchase failed',e);
+    showToast(en?'⚠️ Purchase failed. Please try again.':'⚠️ Η αγορά απέτυχε. Δοκίμασε ξανά.');
+  }
+  return true;
+}
 async function purchasePremium(plan){
   const en=curLang==='en';
   const itemId=PREMIUM_SKUS[plan]||PREMIUM_SKUS.monthly;
+  // 1η επιλογή: native αγορά μέσω RevenueCat (Capacitor) — ανεξάρτητη από browser
+  if(await rcPurchase(plan))return;
+  // 2η επιλογή: Digital Goods API (TWA μέσω Chrome)
   if(!window.PaymentRequest){
     showToast(en?'💎 Purchases are only available in the FoodDaily Android app.':'💎 Οι αγορές είναι διαθέσιμες μόνο μέσα από την εφαρμογή FoodDaily για Android.');
     return;
   }
   const service=await getDigitalGoodsService();
   if(!service){
-    alert('DEBUG v17:\nreason = '+_dgsLastError
-      +'\nBrave = '+(!!navigator.brave)
-      +'\nUA = '+navigator.userAgent);
     // Ορισμένοι browsers (π.χ. Brave) εκθέτουν το API αλλά δεν υλοποιούν το Google Play Billing.
     showPremiumBrowserNotice();
     return;
@@ -4998,6 +5067,23 @@ function showPremiumBrowserNotice(){
 async function restorePurchase(){
   const en=curLang==='en';
   showToast(en?'⏳ Checking subscription...':'⏳ Έλεγχος συνδρομής...');
+  // 1η επιλογή: RevenueCat (native)
+  const P=await rcInit();
+  if(P){
+    try{
+      const {customerInfo}=await P.restorePurchases();
+      if(rcHasEntitlement(customerInfo)){
+        applyPremiumUnlocked();
+        showToast(en?'✅ Premium restored!':'✅ Το Premium αποκαταστάθηκε!');
+      }else{
+        showToast(en?'No active subscription found.':'Δεν βρέθηκε ενεργή συνδρομή.');
+      }
+    }catch(e){
+      showToast(en?'No active subscription found.':'Δεν βρέθηκε ενεργή συνδρομή.');
+    }
+    return;
+  }
+  // 2η επιλογή: Digital Goods API
   const service=await getDigitalGoodsService();
   if(!service){
     setTimeout(()=>showToast(en?'No active subscription found.':'Δεν βρέθηκε ενεργή συνδρομή.'),1000);
@@ -6536,6 +6622,8 @@ function dismissTonightBanner(){
   // Premium: start trial on first launch, render banner
   startTrial();
   renderTrialBanner();
+  // Native (Capacitor): επανάκτησε την κατάσταση συνδρομής από το RevenueCat
+  try{rcSyncOnStart();}catch(e){}
   // Sync week plan prep data to SW cache
   storeWeekPlanForSW(getWeekPlan());
   // #23 Seasonal guide
