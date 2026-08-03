@@ -2581,7 +2581,7 @@ const MEALS={
         'Σερβίρισμα: Σερβίρεις αμέσως, όσο είναι ζεστές, περιχυμένες με το λαδολέμονο, ρίγανη και χοντρό αλάτι.'
       ],salad:'horiatiki',
     wine:'Λευκό ξηρό.',beer:'Lager ή Pilsner.',plate:'Με λεμόνι, ελιές και φρέσκο ψωμί. Το πιο ελληνικό καλοκαίρι.'},
-  htapodi_krasato:{ing_en:["Octopus 1kg", "Red wine 200ml", "Vinegar 2 tbsp", "Grated tomato 400g", "Onion 1", "Olive oil 3 tbsp", "Cinnamon, allspice, bay leaf", "Salt & pepper"],steps_en:["Cutting the octopus: Cut the 1kg octopus into bite-sized pieces. No water is needed for cooking, as the octopus will release its own liquid.", "Sautéing: Sauté the octopus with 1 onion in 3 tbsp olive oil for about 5 minutes until it releases its liquid and browns lightly. Important: let the octopus cook in its own juices before adding other ingredients, as this tenderizes it naturally.", "Deglazing: Deglaze with the 200ml red wine and the 2 tbsp vinegar and let the alcohol evaporate. The vinegar tenderizes the octopus and balances the flavor.", "Adding tomato and spices: Add the 400g grated tomato, cinnamon, allspice and bay leaf. The warm spices give the dish its characteristic 'krasato' (wine-braised) character. Be careful with the salt, as the octopus is already salty.", "Slow cooking: Cover and simmer gently over low heat for 60-70 minutes until the octopus becomes tender and the sauce thickens. Important: if it dries out too soon, add a little hot water — octopus needs time to become tender.", "Serving: Remove the bay leaf, let it rest briefly and serve with bread or hilopites."],wine_en:"Rosé or light red.",plate_en:"With hilopites or bread to soak up the sauce.",en:'Octopus in Wine',n:'Χταπόδι κρασάτο',e:'🐙',cats:['seafood'],cal:290,time:80,srv:4,pop:2,cost:'~16€',cps:'~4€',
+  htapodi_krasato:{ing_en:["Octopus 1kg", "Red wine 200ml", "Vinegar 2 tbsp", "Grated tomato 400g", "Onion 1", "Olive oil 3 tbsp", "Cinnamon, allspice, bay leaf", "Salt & pepper"],steps_en:["Cutting the octopus: Cut the 1kg octopus into bite-sized pieces. No water is needed for cooking, as the octopus will release its own liquid.", "Sautéing: Sauté the octopus with 1 onion in 3 tbsp olive oil for about 5 minutes until it releases its liquid and browns lightly. Important: let the octopus cook in its own juices before adding other ingredients, as this tenderizes it naturally.", "Deglazing: Deglaze with the 200ml red wine and the 2 tbsp vinegar and let the alcohol evaporate. The vinegar tenderizes the octopus and balances the flavor.", "Adding tomato and spices: Add the 400g grated tomato, cinnamon, allspice and bay leaf. The warm spices give the dish its characteristic 'krasato' (wine-braised) character. Be careful with the salt, as the octopus is already salty.", "Slow cooking: Cover and simmer gently over low heat for 60-70 minutes until the octopus becomes tender and the sauce thickens. Important: if it dries out too soon, add a little hot water — octopus needs time to become tender.", "Serving: Remove the bay leaf, let it rest briefly and serve with bread or hilopites."],wine_en:"Rosé or light red.",plate_en:"With hilopites or bread to soak up the sauce.",en:'Spiced Octopus in Red Sauce',n:'Χταπόδι κοκκινιστό με μπαχαρικά',e:'🐙',cats:['seafood'],cal:290,time:80,srv:4,pop:2,cost:'~16€',cps:'~4€',
     ing:['Χταπόδι 1kg','Κόκκινο κρασί 200ml','Ξύδι 2 κ.σ.','Ντομάτα τριμμένη 400γρ','Κρεμμύδι 1','Ελαιόλαδο 3 κ.σ.','Κανέλα, μπαχάρι, δάφνη','Αλάτι & πιπέρι'],
     steps: [
         'Κόψιμο χταπιού: Κόβεις το 1kg χταπόδι σε κομμάτια μπουκιάς. Δεν χρειάζεται νερό για το βράσιμο, καθώς το χταπόδι θα βγάλει τα δικά του υγρά.',
@@ -4353,8 +4353,8 @@ function renderMeals(cat){
     }
     const CATLBLS={pasta:'🍝 Ζυμαρικά',seafood:'🐟 Θαλασσινά',meat:'🥩 Κρεατικά',
       legumes:'🫘 Όσπρια',vegetables:'🥦 Λαχανικά',salads:'🥗 Σαλάτες',soups:'🍲 Σούπες',sauces:'🫙 Σάλτσες & Συνοδευτικά',pites:'🫓 Πίτες',pizza:'🍕 Πίτσες',desserts:'🍮 Γλυκά'};
-    const SWLBLS={keik:'🎂 Κέικ',koulourakia:'🍪 Κουλουράκια',tiganites:'🥞 Τηγανίτες',
-      paradosiaka:'🍯 Παραδοσιακά',epochiaka:'🌸 Εποχιακά'};
+    const SW_ORDER=['keik','koulourakia','tiganites','paradosiaka','epochiaka'];
+    const swLabel=c=>{const l=t('sw');const i=SW_ORDER.indexOf(c);return (Array.isArray(l)&&l[i])?l[i]:t('sweets_lbl');};
     const byCat={};
     mealFavIds.forEach(id=>{const m=MEALS[id];if(!m)return;const c=m.cats[0];(byCat[c]=byCat[c]||[]).push({...m,id});});
     const bySwCat={};
@@ -4380,7 +4380,7 @@ function renderMeals(cat){
       }).join('');
     }
     for(const[c,sweets] of Object.entries(bySwCat)){
-      html+=`<div class="fav-cat-hdr">${SWLBLS[c]||t('sweets_lbl')}</div>`;
+      html+=`<div class="fav-cat-hdr">${swLabel(c)}</div>`;
       html+=sweets.map(s=>{
         const swImgSrc=SWEET_IMAGES[`${s._swc}:${s._swi}`]||'';
         const swUid=`${s._swc}-${s._swi}`;
@@ -4694,7 +4694,7 @@ function openSW(cat,idx){
   const hero=document.getElementById('ov-hero');
   hero.innerHTML=`
     <button class="ovcls" onclick="closeOv()">✕</button>
-    <button id="ov-fav" onclick="toggleFav('${fid}',event)" style="position:absolute;top:12px;left:12px;z-index:10;background:rgba(0,0,0,.3);border:none;border-radius:50%;width:36px;height:36px;font-size:18px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .2s;">${isFav(fid)?'❤️':'🤍'}</button>
+    <button id="ov-fav-sw" onclick="toggleFav('${fid}',event)" style="position:absolute;top:12px;left:12px;z-index:10;background:rgba(0,0,0,.3);border:none;border-radius:50%;width:36px;height:36px;font-size:18px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .2s;">${isFav(fid)?'❤️':'🤍'}</button>
     <div class="ovhero-fb" style="background:linear-gradient(145deg,#FFF8E7,#FFE082)"><span style="font-size:78px">${s.e}</span></div>
     <div class="ovhero-grad"></div>
     <div class="ovtitle"><h2>${sweetName(s)}</h2></div>`;
@@ -6379,7 +6379,7 @@ function storeNotifPrefsForSW(time,on){
   if(!('caches' in window))return;
   caches.open('fd-prefs').then(c=>c.put('/fd-notif-prefs',
     new Response(JSON.stringify({time,on}),{headers:{'Content-Type':'application/json'}})
-  ));
+  )).catch(()=>{}); // η cache μπορεί να μην είναι διαθέσιμη (ιδιωτική περιήγηση, γεμάτος χώρος)
 }
 // Tell SW exactly when to fire today's daily notification via SCHEDULE_DAILY_NOTIF.
 // Called on every app open and on save — SW holds the scheduled setTimeout even when app is closed.
@@ -6802,7 +6802,7 @@ function toggleFav(id,e){
     setTimeout(()=>b.style.transform='',200);
   });
   // Update heart in overlay
-  const ob=document.getElementById('ov-fav');if(ob)ob.textContent=isNowFav?'❤️':'🤍';
+  ['ov-fav','ov-fav-sw'].forEach(k=>{const ob=document.getElementById(k);if(ob)ob.textContent=isNowFav?'❤️':'🤍';});
   // Update favorites pill count
   updateFavPill();
   showToast(isNowFav?(curLang==='en'?'❤️ Favorited!':'❤️ Αγαπημένο!'):(curLang==='en'?'🤍 Removed':'🤍 Αφαιρέθηκε'));
