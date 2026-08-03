@@ -1116,6 +1116,18 @@ body{font-family:'Inter',-apple-system,sans-serif;background:var(--bg);color:var
       <button class="nmod-save" onclick="saveNotif()" data-i18n="set_save">Αποθήκευση</button>
       <button class="nmod-cls" onclick="closeNotif()" data-i18n="ur_cancel">Άκυρο</button>
     </div>
+    <div style="font-size:12px;font-weight:600;color:var(--t3);letter-spacing:.06em;text-transform:uppercase;padding:18px 0 4px" data-i18n="set_voice_hdr">🔊 Φωνή εκφώνησης</div>
+    <div id="voice-wrap" style="background:var(--lt);border-radius:14px;padding:12px 14px;">
+      <div id="voice-list" style="display:flex;flex-direction:column;gap:7px;"></div>
+      <div class="nmod-row" style="margin-top:12px">
+        <label data-i18n="set_voice_speed">Ταχύτητα</label>
+        <div class="srv-stepper">
+          <button class="srv-btn" onclick="changeTtsRate(-1)">−</button>
+          <span id="tts-rate-val" style="font-weight:700;font-size:15px;min-width:38px;text-align:center">1.0×</span>
+          <button class="srv-btn" onclick="changeTtsRate(1)">+</button>
+        </div>
+      </div>
+    </div>
     <div style="font-size:12px;font-weight:600;color:var(--t3);letter-spacing:.06em;text-transform:uppercase;padding:18px 0 4px" data-i18n="ab_hdr">ℹ️ Σχετικά με την εφαρμογή</div>
     <div style="background:var(--lt);border-radius:14px;padding:14px 16px;font-size:13.5px;color:var(--tx);line-height:1.6;">
       <div style="font-weight:800;font-size:15px;margin-bottom:8px;">🍽️ FoodDaily</div>
@@ -1407,6 +1419,7 @@ const TR={
     wp_sub:'Επίλεξε φαγητό για κάθε μέρα — θα σου στέλνουμε έξυπνες υπενθυμίσεις για προετοιμασία!',
     set_t:'⚙️ Ρυθμίσεις',set_srv:'Μερίδες',set_srv_def:'Προεπιλογή μερίδων',
     set_reminders:'🔔 Υπενθυμίσεις',set_enable:'Ενεργοποίηση',set_time:'Ώρα',set_save:'Αποθήκευση',
+    set_voice_hdr:'🔊 Φωνή εκφώνησης',set_voice_speed:'Ταχύτητα',
     ab_hdr:'ℹ️ Σχετικά με την εφαρμογή',
     ab_intro:'Πάνω από <b>200 αυθεντικές μεσογειακές & ελληνικές συνταγές</b> με πραγματικές φωτογραφίες — κάθε μέρα μια νέα ιδέα για το τραπέζι σου, χωρίς να σκέφτεσαι «τι θα φάμε σήμερα».',
     ab_strengths:'⭐ Δυνατά σημεία',
@@ -1491,6 +1504,7 @@ const TR={
     wp_sub:"Pick a meal for each day — we'll send you smart prep reminders!",
     set_t:'⚙️ Settings',set_srv:'Servings',set_srv_def:'Default servings',
     set_reminders:'🔔 Reminders',set_enable:'Enable',set_time:'Time',set_save:'Save',
+    set_voice_hdr:'🔊 Narration voice',set_voice_speed:'Speed',
     ab_hdr:'ℹ️ About the app',
     ab_intro:'Over <b>200 authentic Mediterranean & Greek recipes</b> with real photos — a new idea for your table every day, without wondering "what should we eat today".',
     ab_strengths:'⭐ Highlights',
@@ -4802,6 +4816,9 @@ function buildTTSText(m){
 function pickVoice(){
   const vv=speechSynthesis.getVoices();
   const lang=curLang==='en'?'en':'el';
+  // Προτεραιότητα στη φωνή που έχει επιλέξει ο χρήστης
+  const saved=localStorage.getItem('fd_tts_voice');
+  if(saved){const s=vv.find(v=>v.name===saved);if(s)return s;}
   return vv.find(v=>v.lang.startsWith(lang)&&v.name.toLowerCase().includes('google'))
     ||vv.find(v=>v.lang.startsWith(lang)&&!v.localService)
     ||vv.find(v=>v.lang===(lang==='en'?'en-US':'el-GR'))
@@ -4824,11 +4841,14 @@ async function nativeStartTTS(){
   try{await TTS.stop();}catch(e){}
   _ttsBtnState(true);
   try{
-    await TTS.speak({
+    const opt={
       text:buildTTSText(_meal),
       lang:curLang==='en'?'en-US':'el-GR',
-      rate:0.9, pitch:1.05, volume:1.0
-    });
+      rate:ttsRate(), pitch:1.05, volume:1.0
+    };
+    const idx=await resolveVoiceIdx();
+    if(idx>=0)opt.voice=idx;
+    await TTS.speak(opt);
   }catch(e){}
   _ttsBtnState(false);
 }
@@ -4838,6 +4858,87 @@ async function nativeStopTTS(){
   _ttsBtnState(false);
 }
 
+// ── ΕΠΙΛΟΓΗ ΦΩΝΗΣ ──────────────────────────────────────────────
+function ttsRate(){
+  const r=parseFloat(localStorage.getItem('fd_tts_rate'));
+  return (isFinite(r)&&r>=0.5&&r<=1.5)?r:0.9;
+}
+function changeTtsRate(d){
+  let r=Math.round((ttsRate()+d*0.1)*10)/10;
+  r=Math.max(0.5,Math.min(1.5,r));
+  localStorage.setItem('fd_tts_rate',String(r));
+  const el=document.getElementById('tts-rate-val');
+  if(el)el.textContent=r.toFixed(1)+'×';
+}
+// Κανονικοποιημένη λίστα φωνών για την τρέχουσα γλώσσα
+async function ttsVoiceList(){
+  const pref=curLang==='en'?'en':'el';
+  const TTS=ttsPlugin();
+  if(TTS){
+    try{
+      const r=await TTS.getSupportedVoices();
+      const all=(r&&r.voices)||[];
+      return all.map((v,i)=>({idx:i,name:v.name||v.voiceURI||('Voice '+i),lang:v.lang||''}))
+                .filter(v=>(v.lang||'').toLowerCase().startsWith(pref));
+    }catch(e){return [];}
+  }
+  if(!window.speechSynthesis)return [];
+  return speechSynthesis.getVoices()
+    .map((v,i)=>({idx:i,name:v.name,lang:v.lang}))
+    .filter(v=>(v.lang||'').toLowerCase().startsWith(pref));
+}
+function savedVoiceName(){return localStorage.getItem('fd_tts_voice')||'';}
+async function resolveVoiceIdx(){
+  const want=savedVoiceName();
+  if(!want)return -1;
+  const list=await ttsVoiceList();
+  const hit=list.find(v=>v.name===want);
+  return hit?hit.idx:-1;
+}
+async function ttsSample(name){
+  localStorage.setItem('fd_tts_voice',name);
+  await renderVoiceList();
+  const txt=curLang==='en'
+    ?'Saute the onion for three minutes until soft, then add the garlic.'
+    :'Σοτάρισε το κρεμμύδι για τρία λεπτά μέχρι να μαλακώσει και πρόσθεσε το σκόρδο.';
+  const idx=await resolveVoiceIdx();
+  const TTS=ttsPlugin();
+  if(TTS){
+    try{await TTS.stop();}catch(e){}
+    const opt={text:txt,lang:curLang==='en'?'en-US':'el-GR',rate:ttsRate(),pitch:1.05,volume:1.0};
+    if(idx>=0)opt.voice=idx;
+    try{await TTS.speak(opt);}catch(e){}
+    return;
+  }
+  if(!window.speechSynthesis)return;
+  speechSynthesis.cancel();
+  const u=new SpeechSynthesisUtterance(txt);
+  u.lang=curLang==='en'?'en-US':'el-GR';u.rate=ttsRate();u.pitch=1.05;
+  const vs=speechSynthesis.getVoices();
+  if(idx>=0&&vs[idx])u.voice=vs[idx];
+  speechSynthesis.speak(u);
+}
+async function renderVoiceList(){
+  const box=document.getElementById('voice-list');
+  if(!box)return;
+  const en=curLang==='en';
+  const list=await ttsVoiceList();
+  if(!list.length){
+    box.innerHTML=`<div style="font-size:13px;color:var(--t2);line-height:1.5">${en
+      ?'No voices found for this language on your device. Install or update <b>Google Speech Services</b> from the Play Store, then reopen the app.'
+      :'Δεν βρέθηκαν φωνές για αυτή τη γλώσσα στη συσκευή σου. Εγκατέστησε ή ενημέρωσε τις <b>Υπηρεσίες ομιλίας της Google</b> από το Play Store και ξανάνοιξε την εφαρμογή.'}</div>`;
+    return;
+  }
+  const sel=savedVoiceName();
+  box.innerHTML=list.map(v=>{
+    const on=v.name===sel;
+    return `<button onclick="ttsSample(${JSON.stringify(v.name).replace(/"/g,'&quot;')})" style="display:flex;align-items:center;justify-content:space-between;gap:10px;width:100%;text-align:left;padding:10px 12px;border-radius:11px;border:1.5px solid ${on?'var(--pri)':'var(--bd)'};background:${on?'rgba(58,117,88,.10)':'var(--w)'};color:var(--tx);font-size:13.5px;font-weight:${on?'700':'500'};cursor:pointer;">
+      <span style="overflow:hidden;text-overflow:ellipsis;white-space:nowrap">${on?'✓ ':''}${v.name}</span>
+      <span style="flex:0 0 auto;font-size:12px;color:var(--t2)">▶ ${en?'Play':'Δοκιμή'}</span>
+    </button>`;
+  }).join('');
+}
+
 function toggleTTS(){isTTS?stopTTS():startTTS();}
 function startTTS(){
   if(ttsPlugin()){nativeStartTTS();return;}
@@ -4845,7 +4946,7 @@ function startTTS(){
   stopTTS();
   const doSpeak=()=>{
     const u=new SpeechSynthesisUtterance(buildTTSText(_meal));
-    u.lang=curLang==='en'?'en-US':'el-GR';u.rate=0.84;u.pitch=1.05;
+    u.lang=curLang==='en'?'en-US':'el-GR';u.rate=ttsRate();u.pitch=1.05;
     const gv=pickVoice();if(gv)u.voice=gv;
     u.onstart=()=>{isTTS=true;document.getElementById('ov-tts-btn').textContent=t('tts_s');};
     u.onend=u.onerror=()=>{isTTS=false;document.getElementById('ov-tts-btn').textContent=t('tts_p');};
@@ -6255,6 +6356,15 @@ function openNmod(){
   document.getElementById('ntime').value=localStorage.getItem('notif_time')||'09:00';
   const ds=parseInt(localStorage.getItem('fd_default_srv'))||2;
   const psvEl=document.getElementById('prof-srv-val');if(psvEl)psvEl.textContent=ds;
+  // Φωνή εκφώνησης
+  const rv=document.getElementById('tts-rate-val');if(rv)rv.textContent=ttsRate().toFixed(1)+'×';
+  try{
+    renderVoiceList();
+    // Στον browser οι φωνές φορτώνονται ασύγχρονα
+    if(!ttsPlugin()&&window.speechSynthesis&&!speechSynthesis.getVoices().length){
+      speechSynthesis.addEventListener('voiceschanged',()=>renderVoiceList(),{once:true});
+    }
+  }catch(e){}
 }
 function changeProfSrv(d){
   const el=document.getElementById('prof-srv-val');if(!el)return;
