@@ -4977,6 +4977,148 @@ function applyPremiumUnlocked(){
   localStorage.setItem('fd_premium','true');
   try{renderTrialBanner();updatePremiumCTA(getPremiumState());}catch(e){}
 }
+
+// ── NATIVE ΕΙΔΟΠΟΙΗΣΕΙΣ (Capacitor Local Notifications) ────────
+// Το WebView δεν υποστηρίζει ειδοποιήσεις service worker, οπότε σε native
+// περιβάλλον χρησιμοποιούμε τις τοπικές ειδοποιήσεις του Android.
+const LN_ID_DAILY=1001, LN_ID_TIMER=1002, LN_ID_PREP=1004;
+function lnPlugin(){
+  try{return (window.Capacitor&&window.Capacitor.Plugins&&window.Capacitor.Plugins.LocalNotifications)||null;}
+  catch(e){return null;}
+}
+function isNativeApp(){return !!lnPlugin();}
+async function lnEnsurePerm(){
+  const LN=lnPlugin();
+  if(!LN)return false;
+  try{
+    let st=await LN.checkPermissions();
+    if(st.display!=='granted')st=await LN.requestPermissions();
+    return st.display==='granted';
+  }catch(e){return false;}
+}
+async function lnCancel(id){
+  const LN=lnPlugin();if(!LN)return;
+  try{await LN.cancel({notifications:[{id}]});}catch(e){}
+}
+// Καθημερινή ειδοποίηση που επαναλαμβάνεται στην ώρα που έχει επιλέξει ο χρήστης
+async function lnScheduleDaily(){
+  const LN=lnPlugin();if(!LN)return;
+  await lnCancel(LN_ID_DAILY);
+  if(localStorage.getItem('notif_on')!=='true')return;
+  if(!await lnEnsurePerm())return;
+  const [h,m]=(localStorage.getItem('notif_time')||'09:00').split(':').map(Number);
+  const en=curLang==='en';
+  try{
+    await LN.schedule({notifications:[{
+      id:LN_ID_DAILY,
+      title:en?'🍽️ FoodDaily — Daily Pick':'🍽️ FoodDaily — Πρόταση Μέρας',
+      body:en?"What are we cooking today? See your suggestion!":'Τι μαγειρεύουμε σήμερα; Δες την πρότασή σου!',
+      schedule:{on:{hour:h,minute:m},allowWhileIdle:true}
+    }]});
+  }catch(e){}
+}
+// Άμεση ειδοποίηση (χρησιμοποιείται στη «δοκιμή»)
+async function lnShowNow(title,body){
+  const LN=lnPlugin();if(!LN)return false;
+  if(!await lnEnsurePerm())return false;
+  try{
+    await LN.schedule({notifications:[{
+      id:Math.floor(Math.random()*100000)+2000,
+      title,body,
+      schedule:{at:new Date(Date.now()+1000)}
+    }]});
+    return true;
+  }catch(e){return false;}
+}
+// Ειδοποίηση τέλους χρόνου μαγειρικής
+async function lnScheduleTimer(ms){
+  const LN=lnPlugin();if(!LN)return;
+  await lnCancel(LN_ID_TIMER);
+  if(!await lnEnsurePerm())return;
+  const en=curLang==='en';
+  try{
+    await LN.schedule({notifications:[{
+      id:LN_ID_TIMER,
+      title:'⏱️ FoodDaily — Timer',
+      body:en?'Time is up! Check the next step.':'Ο χρόνος τελείωσε! Δες το επόμενο βήμα.',
+      schedule:{at:new Date(Date.now()+ms),allowWhileIdle:true}
+    }]});
+  }catch(e){}
+}
+// Υπενθύμιση προετοιμασίας για το αυριανό γεύμα (σήμερα στις 18:00)
+async function lnSchedulePrep(plan){
+  const LN=lnPlugin();if(!LN)return;
+  await lnCancel(LN_ID_PREP);
+  if(localStorage.getItem('notif_on')!=='true')return;
+  if(!await lnEnsurePerm())return;
+  try{
+    const tomorrow=new Date();tomorrow.setDate(tomorrow.getDate()+1);tomorrow.setHours(0,0,0,0);
+    const mealId=(plan||getWeekPlan())[dateKey(tomorrow)];
+    if(!mealId)return;
+    const prep=MEAL_PREP[mealId], meal=MEALS[mealId];
+    if(!prep||!meal)return;
+    const at=new Date();at.setHours(18,0,0,0);
+    if(at<=new Date())return; // η ώρα πέρασε για σήμερα
+    const en=curLang==='en';
+    await LN.schedule({notifications:[{
+      id:LN_ID_PREP,
+      title:(en?'🍽️ Tomorrow: ':'🍽️ Αύριο: ')+mealName(meal),
+      body:mPrepMsg(prep),
+      schedule:{at,allowWhileIdle:true}
+    }]});
+  }catch(e){}
+}
+
+// ── ANDROID HARDWARE BACK BUTTON (Capacitor) ───────────────────
+// Κλείνει με τη σειρά ό,τι είναι ανοιχτό, αντί να βγαίνει από την εφαρμογή.
+// Η σειρά ακολουθεί το z-index: ό,τι είναι πιο «πάνω» κλείνει πρώτο.
+const FD_BACK_LAYERS=[
+  {id:'cook-mode',       close:()=>exitCookMode()},
+  {id:'pgate',           close:()=>closePremiumGate()},
+  {id:'pscreen',         close:()=>closePremiumScreen()},
+  {id:'mpicker',         close:()=>closeMealPicker()},
+  {id:'nmod',            close:()=>closeNmod(),   shown:el=>el.style.display&&el.style.display!=='none'},
+  {id:'urform',          close:()=>closeUrform()},
+  {id:'wplan-sheet',     close:()=>closeWeekPlan()},
+  {id:'prof-sheet',      close:()=>closeProfile()},
+  {id:'cook-tonight-modal',close:()=>closeCookTonight()},
+  {id:'overlay',         close:()=>closeOv()},
+  {id:'search-bar',      close:()=>closeSearch(), shown:el=>el.style.display&&el.style.display!=='none'}
+];
+function fdHandleBack(){
+  for(const layer of FD_BACK_LAYERS){
+    const el=document.getElementById(layer.id);
+    if(!el)continue;
+    const open=layer.shown?layer.shown(el):el.classList.contains('show');
+    if(open){
+      try{layer.close();}catch(e){}
+      return true; // το χειριστήκαμε, δεν βγαίνουμε από την εφαρμογή
+    }
+  }
+  // Τίποτα ανοιχτό: αν δεν είμαστε στην αρχική ενότητα, γύρνα εκεί
+  if(typeof curSec!=='undefined'&&curSec&&curSec!=='daily'){
+    try{showSec('daily');return true;}catch(e){}
+  }
+  return false; // αρχική οθόνη χωρίς τίποτα ανοιχτό → έξοδος
+}
+async function initBackButton(){
+  try{
+    const App=window.Capacitor&&window.Capacitor.Plugins&&window.Capacitor.Plugins.App;
+    if(!App||!App.addListener)return;
+    let _lastBack=0;
+    App.addListener('backButton',()=>{
+      if(fdHandleBack())return;
+      // Διπλό πάτημα μέσα σε 2 δευτερόλεπτα για έξοδο (αποφυγή κατά λάθος εξόδου)
+      const now=Date.now();
+      if(now-_lastBack<2000){
+        try{App.exitApp();}catch(e){}
+      }else{
+        _lastBack=now;
+        showToast(curLang==='en'?'Press back again to exit':'Πάτησε ξανά «πίσω» για έξοδο');
+      }
+    });
+  }catch(e){}
+}
 // Έλεγχος συνδρομής στο άνοιγμα της εφαρμογής (μόνο σε native περιβάλλον)
 async function rcSyncOnStart(){
   const P=await rcInit();
@@ -5209,6 +5351,7 @@ function startStepTimer(btn,minutes){
     _activeTimerMealId='';
     _stopTimerKeepalive();
     _swSend({type:'CANCEL_TIMER'});
+    if(isNativeApp())lnCancel(LN_ID_TIMER);
     btn.classList.remove('running');btn.textContent=`⏱ ${minutes}'`;
     return;
   }
@@ -5227,6 +5370,7 @@ function startStepTimer(btn,minutes){
     if(_audioCtx.state==='suspended')_audioCtx.resume();
   }catch(e){}
   _swSend({type:'SCHEDULE_TIMER',delay:secs*1000,mealId:_activeTimerMealId,stepIdx:_timerStepIdx_page});
+  if(isNativeApp())lnScheduleTimer(secs*1000);
   _startTimerKeepalive();
   _timerInterval=setInterval(_timerTick,500);
 }
@@ -5544,6 +5688,8 @@ async function storeWeekPlanForSW(plan){
     const cache=await caches.open('fd-prefs');
     await cache.put('/fd-tomorrow-prep',new Response(JSON.stringify(data),{headers:{'Content-Type':'application/json'}}));
   }catch(e){}
+  // Native (Capacitor): ξαναπρογραμμάτισε την υπενθύμιση προετοιμασίας
+  try{if(isNativeApp())lnSchedulePrep(plan);}catch(e){}
 }
 
 // Smart prep notification check (called when app is open)
@@ -5894,8 +6040,27 @@ async function saveNotif(){
   const psvEl=document.getElementById('prof-srv-val');
   if(psvEl){const ds=parseInt(psvEl.textContent)||2;localStorage.setItem('fd_default_srv',ds);}
   const checked=document.getElementById('ntog').checked;
+  // Native (Capacitor): χρησιμοποίησε τις τοπικές ειδοποιήσεις του Android
+  if(isNativeApp()){
+    localStorage.setItem('notif_on',checked?'true':'false');
+    document.getElementById('bell').classList.toggle('on',checked);
+    if(checked){
+      const ok=await lnEnsurePerm();
+      await lnScheduleDaily();
+      await lnSchedulePrep();
+      showToast(ok
+        ?(curLang==='en'?'✅ Notifications enabled!':'✅ Ειδοποιήσεις ενεργοποιήθηκαν!')
+        :(curLang==='en'?'⚠️ Enabled — but notifications are blocked in device settings':'⚠️ Ενεργό — αλλά οι ειδοποιήσεις είναι μπλοκαρισμένες στις ρυθμίσεις της συσκευής'));
+    }else{
+      await lnCancel(LN_ID_DAILY);
+      await lnCancel(LN_ID_PREP);
+      showToast(curLang==='en'?'Notifications disabled':'Ειδοποιήσεις απενεργοποιήθηκαν');
+    }
+    closeNmod();
+    return;
+  }
+  if(!('Notification' in window)){showToast(curLang==='en'?'⚠️ Your browser does not support notifications':'⚠️ Ο browser δεν υποστηρίζει ειδοποιήσεις');return;}
   if(checked){
-    if(!('Notification' in window)){showToast(curLang==='en'?'⚠️ Your browser does not support notifications':'⚠️ Ο browser δεν υποστηρίζει ειδοποιήσεις');return;}
     // Κράτα την επιλογή του χρήστη ΑΜΕΣΩΣ (το τικ παραμένει ακόμη κι αν η άδεια εκκρεμεί)
     localStorage.setItem('notif_on','true');
     document.getElementById('bell').classList.add('on');
@@ -5922,6 +6087,14 @@ async function saveNotif(){
   closeNmod();
 }
 async function testNotif(){
+  // Native (Capacitor)
+  if(isNativeApp()){
+    const ok=await sendNotif();
+    showToast(ok===false
+      ?(curLang==='en'?'⚠️ Notifications are blocked. Enable them in device settings.':'⚠️ Οι ειδοποιήσεις είναι μπλοκαρισμένες. Ενεργοποίησέ τες στις ρυθμίσεις της συσκευής.')
+      :(curLang==='en'?'🔔 Notification sent!':'🔔 Ειδοποίηση εστάλη!'));
+    return;
+  }
   if(!('Notification' in window)){showToast(curLang==='en'?'⚠️ Your browser does not support notifications':'⚠️ Ο browser δεν υποστηρίζει ειδοποιήσεις');return;}
   if(Notification.permission!=='granted'){
     try{const p=await Notification.requestPermission();}catch(e){}
@@ -5944,6 +6117,8 @@ async function sendNotif(){
   if(!m)return;
   const title=curLang==='en'?'🍽️ FoodDaily — Daily Pick':'🍽️ FoodDaily — Πρόταση Μέρας';
   const body=`${m.e} ${mealName(m)}  |  ⏱ ${m.time}'  |  🔥 ${m.cal}  |  💰 ${m.cost||'~5€'}`;
+  // 0. Native (Capacitor)
+  if(isNativeApp())return await lnShowNow(title,body);
   // 1. Via SW controller message (most reliable on Android TWA)
   if(navigator.serviceWorker?.controller){
     navigator.serviceWorker.controller.postMessage({type:'SHOW_NOTIFICATION',title,body,tag:'fd-meal-daily'});
@@ -6624,6 +6799,10 @@ function dismissTonightBanner(){
   renderTrialBanner();
   // Native (Capacitor): επανάκτησε την κατάσταση συνδρομής από το RevenueCat
   try{rcSyncOnStart();}catch(e){}
+  // Native (Capacitor): χειρισμός του κουμπιού «πίσω» του Android
+  try{initBackButton();}catch(e){}
+  // Native (Capacitor): επαναπρογραμμάτισε τις τοπικές ειδοποιήσεις
+  try{if(isNativeApp()){lnScheduleDaily();lnSchedulePrep();}}catch(e){}
   // Sync week plan prep data to SW cache
   storeWeekPlanForSW(getWeekPlan());
   // #23 Seasonal guide
