@@ -5062,6 +5062,35 @@ async function lnCancel(id){
   const LN=lnPlugin();if(!LN)return;
   try{await LN.cancel({notifications:[{id}]});}catch(e){}
 }
+// Προγραμματισμός με αυτόματη υποχώρηση: από Android 14 η άδεια «ακριβούς
+// χρονισμού» δεν δίνεται αυτόματα, οπότε αν απορριφθεί ξαναδοκιμάζουμε χωρίς αυτήν.
+async function lnSchedule(notifications){
+  const LN=lnPlugin();if(!LN)return false;
+  try{await LN.schedule({notifications});return true;}
+  catch(e){
+    try{
+      const relaxed=notifications.map(n=>{
+        const c=Object.assign({},n);
+        if(c.schedule&&c.schedule.allowWhileIdle){
+          c.schedule=Object.assign({},c.schedule);
+          delete c.schedule.allowWhileIdle;
+        }
+        return c;
+      });
+      await LN.schedule({notifications:relaxed});
+      return true;
+    }catch(e2){
+      console.error('Local notification scheduling failed',e2);
+      return false;
+    }
+  }
+}
+// Πόσες ειδοποιήσεις είναι όντως προγραμματισμένες (για επαλήθευση)
+async function lnPendingCount(){
+  const LN=lnPlugin();if(!LN)return -1;
+  try{const r=await LN.getPending();return (r&&r.notifications&&r.notifications.length)||0;}
+  catch(e){return -1;}
+}
 // Καθημερινή ειδοποίηση που επαναλαμβάνεται στην ώρα που έχει επιλέξει ο χρήστης
 async function lnScheduleDaily(){
   const LN=lnPlugin();if(!LN)return;
@@ -5070,27 +5099,22 @@ async function lnScheduleDaily(){
   if(!await lnEnsurePerm())return;
   const [h,m]=(localStorage.getItem('notif_time')||'09:00').split(':').map(Number);
   const en=curLang==='en';
-  try{
-    await LN.schedule({notifications:[{
-      id:LN_ID_DAILY,
-      title:en?'🍽️ FoodDaily — Daily Pick':'🍽️ FoodDaily — Πρόταση Μέρας',
-      body:en?"What are we cooking today? See your suggestion!":'Τι μαγειρεύουμε σήμερα; Δες την πρότασή σου!',
-      schedule:{on:{hour:h,minute:m},allowWhileIdle:true}
-    }]});
-  }catch(e){}
+  return await lnSchedule([{
+    id:LN_ID_DAILY,
+    title:en?'🍽️ FoodDaily — Daily Pick':'🍽️ FoodDaily — Πρόταση Μέρας',
+    body:en?"What are we cooking today? See your suggestion!":'Τι μαγειρεύουμε σήμερα; Δες την πρότασή σου!',
+    schedule:{on:{hour:h,minute:m},allowWhileIdle:true}
+  }]);
 }
 // Άμεση ειδοποίηση (χρησιμοποιείται στη «δοκιμή»)
 async function lnShowNow(title,body){
   const LN=lnPlugin();if(!LN)return false;
   if(!await lnEnsurePerm())return false;
-  try{
-    await LN.schedule({notifications:[{
-      id:Math.floor(Math.random()*100000)+2000,
-      title,body,
-      schedule:{at:new Date(Date.now()+1000)}
-    }]});
-    return true;
-  }catch(e){return false;}
+  return await lnSchedule([{
+    id:Math.floor(Math.random()*100000)+2000,
+    title,body,
+    schedule:{at:new Date(Date.now()+1000)}
+  }]);
 }
 // Ειδοποίηση τέλους χρόνου μαγειρικής
 async function lnScheduleTimer(ms){
@@ -5098,14 +5122,12 @@ async function lnScheduleTimer(ms){
   await lnCancel(LN_ID_TIMER);
   if(!await lnEnsurePerm())return;
   const en=curLang==='en';
-  try{
-    await LN.schedule({notifications:[{
-      id:LN_ID_TIMER,
-      title:'⏱️ FoodDaily — Timer',
-      body:en?'Time is up! Check the next step.':'Ο χρόνος τελείωσε! Δες το επόμενο βήμα.',
-      schedule:{at:new Date(Date.now()+ms),allowWhileIdle:true}
-    }]});
-  }catch(e){}
+  return await lnSchedule([{
+    id:LN_ID_TIMER,
+    title:'⏱️ FoodDaily — Timer',
+    body:en?'Time is up! Check the next step.':'Ο χρόνος τελείωσε! Δες το επόμενο βήμα.',
+    schedule:{at:new Date(Date.now()+ms),allowWhileIdle:true}
+  }]);
 }
 // Υπενθύμιση προετοιμασίας για το αυριανό γεύμα (σήμερα στις 18:00)
 async function lnSchedulePrep(plan){
@@ -5122,12 +5144,12 @@ async function lnSchedulePrep(plan){
     const at=new Date();at.setHours(18,0,0,0);
     if(at<=new Date())return; // η ώρα πέρασε για σήμερα
     const en=curLang==='en';
-    await LN.schedule({notifications:[{
+    await lnSchedule([{
       id:LN_ID_PREP,
       title:(en?'🍽️ Tomorrow: ':'🍽️ Αύριο: ')+mealName(meal),
       body:mPrepMsg(prep),
       schedule:{at,allowWhileIdle:true}
-    }]});
+    }]);
   }catch(e){}
 }
 
@@ -6110,11 +6132,17 @@ async function saveNotif(){
     document.getElementById('bell').classList.toggle('on',checked);
     if(checked){
       const ok=await lnEnsurePerm();
-      await lnScheduleDaily();
+      const sched=await lnScheduleDaily();
       await lnSchedulePrep();
-      showToast(ok
-        ?(curLang==='en'?'✅ Notifications enabled!':'✅ Ειδοποιήσεις ενεργοποιήθηκαν!')
-        :(curLang==='en'?'⚠️ Enabled — but notifications are blocked in device settings':'⚠️ Ενεργό — αλλά οι ειδοποιήσεις είναι μπλοκαρισμένες στις ρυθμίσεις της συσκευής'));
+      const pending=await lnPendingCount();
+      const en=curLang==='en';
+      if(!ok){
+        showToast(en?'⚠️ Enabled — but notifications are blocked in device settings':'⚠️ Ενεργό — αλλά οι ειδοποιήσεις είναι μπλοκαρισμένες στις ρυθμίσεις της συσκευής');
+      }else if(!sched||pending===0){
+        showToast(en?'⚠️ Could not schedule the reminder. Check the app\'s alarm permission.':'⚠️ Δεν προγραμματίστηκε η υπενθύμιση. Έλεγξε την άδεια «ξυπνητήρια & υπενθυμίσεις» της εφαρμογής.');
+      }else{
+        showToast(en?`✅ Notifications enabled (${pending} scheduled)`:`✅ Ειδοποιήσεις ενεργές (${pending} προγραμματισμένες)`);
+      }
     }else{
       await lnCancel(LN_ID_DAILY);
       await lnCancel(LN_ID_PREP);
