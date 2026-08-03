@@ -792,7 +792,7 @@ body{font-family:'Inter',-apple-system,sans-serif;background:var(--bg);color:var
         <button class="ccat cpill" data-i18n="cSoups" onclick="selCat('soups',this)">🍲 Σούπες</button>
         <button class="ccat cpill" data-i18n="cPites" onclick="selCat('pites',this)">🫓 Πίτες</button>
         <button class="ccat cpill" data-i18n="cPizza" onclick="selCat('pizza',this)">🍕 Πίτσες</button>
-        <button class="ccat cpill" data-i18n="cSauces" onclick="selCat('sauces',this)">🫙 Σάλτσες & Ντιπ</button>
+        <button class="ccat cpill" data-i18n="cSauces" onclick="selCat('sauces',this)">🫙 Σάλτσες & Συνοδευτικά</button>
         <button class="ccat cpill" data-i18n="cDesserts" onclick="selCat('desserts',this)">🍮 Γλυκά</button>
         <button class="ccat cpill" data-i18n="cVegan" onclick="selCat('vegan',this)">🌱 Vegan</button>
       </div>
@@ -1359,11 +1359,11 @@ const TR={
     c0:'🌿 Όλα',c1:'🍝 Ζυμαρικά',c2:'🐟 Θαλασσινά',c3:'🥩 Κρεατικά',
     c4:'🫘 Όσπρια',c5:'🥦 Λαχανικά',c6:'🥗 Σαλάτες',c7:'🍲 Σούπες',
     mToday:'☀️ Σημερινές',mQuick:'⚡ Γρήγορες',mAll:'📚 Όλες',
-    cPasta:'🍝 Ζυμαρικά',cSeafood:'🐟 Θαλασσινά',cMeat:'🥩 Κρεατικά',cLegumes:'🫘 Όσπρια',cVeg:'🥦 Λαχανικά',cSalads:'🥗 Σαλάτες',cSoups:'🍲 Σούπες',cPites:'🫓 Πίτες',cPizza:'🍕 Πίτσες',cSauces:'🫙 Σάλτσες & Ντιπ',cDesserts:'🍮 Γλυκά',cVegan:'🌱 Vegan',
+    cPasta:'🍝 Ζυμαρικά',cSeafood:'🐟 Θαλασσινά',cMeat:'🥩 Κρεατικά',cLegumes:'🫘 Όσπρια',cVeg:'🥦 Λαχανικά',cSalads:'🥗 Σαλάτες',cSoups:'🍲 Σούπες',cPites:'🫓 Πίτες',cPizza:'🍕 Πίτσες',cSauces:'🫙 Σάλτσες & Συνοδευτικά',cDesserts:'🍮 Γλυκά',cVegan:'🌱 Vegan',
     dFast:'🌿 Νηστεία',dGf:'🌾 Χ. γλουτένη',mFav:'❤️ Τα αγαπημένα μου',
     grpFood:'🍽️ Κατηγορίες φαγητού',grpDiet:'🌿 Ειδικές διατροφές',
     cl_pasta:'Ζυμαρικό',cl_seafood:'Θαλασσινό',cl_meat:'Κρεατικό',cl_legumes:'Όσπριο',
-    cl_vegetables:'Λαχανικό',cl_salads:'Σαλάτα',cl_soups:'Σούπα',cl_sauces:'Σάλτσα',cl_pites:'Πίτα',cl_pizza:'Πίτσα',cl_desserts:'Γλυκό',
+    cl_vegetables:'Λαχανικό',cl_salads:'Σαλάτα',cl_soups:'Σούπα',cl_sauces:'Συνοδευτικό',cl_pites:'Πίτα',cl_pizza:'Πίτσα',cl_desserts:'Γλυκό',
     daily_lbl:'Προτάσεις για σήμερα',fresh:'✦ Φρέσκο',new_sug:'✨ Νέα πρόταση',days_ago:'μέρες πριν',
     remind:'Έχεις καιρό χωρίς:',bal_t:'Εβδομαδιαία ισορροπία',reshuf:'🔀 Νέες προτάσεις',
     cal:'Θερμίδες',time:'Χρόνος',srv:'Μερίδες',cost:'Κόστος υλικών',per_srv:'/μερ.',cost_yr:'τιμές 2026',
@@ -1443,11 +1443,11 @@ const TR={
     c0:'🌿 All',c1:'🍝 Pasta',c2:'🐟 Seafood',c3:'🥩 Meat',
     c4:'🫘 Legumes',c5:'🥦 Vegetables',c6:'🥗 Salads',c7:'🍲 Soups',
     mToday:'☀️ Today',mQuick:'⚡ Quick',mAll:'📚 All',
-    cPasta:'🍝 Pasta',cSeafood:'🐟 Seafood',cMeat:'🥩 Meat',cLegumes:'🫘 Legumes',cVeg:'🥦 Vegetables',cSalads:'🥗 Salads',cSoups:'🍲 Soups',cPites:'🫓 Pies',cPizza:'🍕 Pizza',cSauces:'🫙 Sauces & Dips',cDesserts:'🍮 Desserts',cVegan:'🌱 Vegan',
+    cPasta:'🍝 Pasta',cSeafood:'🐟 Seafood',cMeat:'🥩 Meat',cLegumes:'🫘 Legumes',cVeg:'🥦 Vegetables',cSalads:'🥗 Salads',cSoups:'🍲 Soups',cPites:'🫓 Pies',cPizza:'🍕 Pizza',cSauces:'🫙 Sauces & Sides',cDesserts:'🍮 Desserts',cVegan:'🌱 Vegan',
     dFast:'🌿 Fasting',dGf:'🌾 Gluten-free',mFav:'❤️ My favorites',
     grpFood:'🍽️ Food categories',grpDiet:'🌿 Special diets',
     cl_pasta:'Pasta',cl_seafood:'Seafood',cl_meat:'Meat',cl_legumes:'Legume',
-    cl_vegetables:'Vegetable',cl_salads:'Salad',cl_soups:'Soup',cl_sauces:'Sauce',cl_pites:'Pie',cl_pizza:'Pizza',cl_desserts:'Dessert',
+    cl_vegetables:'Vegetable',cl_salads:'Salad',cl_soups:'Soup',cl_sauces:'Side',cl_pites:'Pie',cl_pizza:'Pizza',cl_desserts:'Dessert',
     daily_lbl:"Today's suggestions",fresh:'✦ New',new_sug:'✨ New',days_ago:'days ago',
     remind:"Haven't had recently:",bal_t:'Weekly balance',reshuf:'🔀 New suggestions',
     cal:'Calories',time:'Time',srv:'Servings',cost:'Ingredient cost',per_srv:'/serv.',cost_yr:'prices 2026',
@@ -4267,7 +4267,7 @@ function featNext(){
         :`<button class="thumb-up" onclick="thumbUp('${m.id}',event)">👍 ${curLang==='en'?"I'll make this!":'Θα το φτιάξω!'}</button><button class="thumb-dn" onclick="thumbDown('${m.id}',event)">👎</button>`;
       return `<div class="mcard" data-mid="${m.id}" onclick="openR('${m.id}')">
         <div class="mtop" style="background:${bg}">
-          <img id="mi-${m.id}" alt="${mealName(m)}" src="${MEAL_IMAGES[m.id]||''}" onload="this.classList.add('loaded');document.getElementById('me-${m.id}').style.opacity=0" onerror="this.style.display='none'">
+          <img id="mi-${m.id}" alt="${mealName(m)}" src="${MEAL_IMAGES[m.id]||''}" onload="this.classList.add('loaded');var e=document.getElementById('me-${m.id}');if(e)e.style.opacity=0" onerror="this.style.display='none'">
           <div class="memoji" id="me-${m.id}">${m.e}</div>
           <div class="mtop-grad"></div>
           <div class="mtop-badge"><span class="badge ${cl}">${catLabel(mc)}</span></div>
@@ -4352,7 +4352,7 @@ function renderMeals(cat){
       return;
     }
     const CATLBLS={pasta:'🍝 Ζυμαρικά',seafood:'🐟 Θαλασσινά',meat:'🥩 Κρεατικά',
-      legumes:'🫘 Όσπρια',vegetables:'🥦 Λαχανικά',salads:'🥗 Σαλάτες',soups:'🍲 Σούπες',sauces:'🫙 Σάλτσες & Ντιπ',pites:'🫓 Πίτες',pizza:'🍕 Πίτσες',desserts:'🍮 Γλυκά'};
+      legumes:'🫘 Όσπρια',vegetables:'🥦 Λαχανικά',salads:'🥗 Σαλάτες',soups:'🍲 Σούπες',sauces:'🫙 Σάλτσες & Συνοδευτικά',pites:'🫓 Πίτες',pizza:'🍕 Πίτσες',desserts:'🍮 Γλυκά'};
     const SWLBLS={keik:'🎂 Κέικ',koulourakia:'🍪 Κουλουράκια',tiganites:'🥞 Τηγανίτες',
       paradosiaka:'🍯 Παραδοσιακά',epochiaka:'🌸 Εποχιακά'};
     const byCat={};
@@ -4400,7 +4400,7 @@ function renderMeals(cat){
     const rwB=document.getElementById('remind-wrap');if(rwB)rwB.innerHTML='';
     const CATLBLS={pasta:'🍝 Ζυμαρικά',seafood:'🐟 Θαλασσινά',meat:'🥩 Κρεατικά',
       legumes:'🫘 Όσπρια',vegetables:'🥦 Λαχανικά',salads:'🥗 Σαλάτες',soups:'🍲 Σούπες',
-      sauces:'🫙 Σάλτσες & Ντιπ',pites:'🫓 Πίτες',pizza:'🍕 Πίτσες',desserts:'🍮 Γλυκά'};
+      sauces:'🫙 Σάλτσες & Συνοδευτικά',pites:'🫓 Πίτες',pizza:'🍕 Πίτσες',desserts:'🍮 Γλυκά'};
     const ORDER=['pasta','seafood','meat','legumes','vegetables','salads','soups','pites','pizza','sauces','desserts'];
     const byCat={};
     Object.entries(MEALS).forEach(([id,m])=>{
@@ -4558,7 +4558,7 @@ function renderMeals(cat){
       :`<button class="thumb-up" onclick="thumbUp('${m.id}',event)">👍 ${curLang==='en'?"I'll make this!":'Θα το φτιάξω!'}</button><button class="thumb-cook" onclick="markCooked('${m.id}',event)">✓ ${curLang==='en'?'Made it':'Το έφτιαξα'}</button><button class="thumb-dn" onclick="thumbDown('${m.id}',event)">👎</button>`;
     return `<div class="mcard" data-mid="${m.id}" onclick="openR('${m.id}')">
       <div class="mtop" style="background:${bg}">
-        <img id="mi-${m.id}" alt="${mealName(m)}" src="${MEAL_IMAGES[m.id]||''}" onload="this.classList.add('loaded');document.getElementById('me-${m.id}').style.opacity=0" onerror="this.style.display='none'">
+        <img id="mi-${m.id}" alt="${mealName(m)}" src="${MEAL_IMAGES[m.id]||''}" onload="this.classList.add('loaded');var e=document.getElementById('me-${m.id}');if(e)e.style.opacity=0" onerror="this.style.display='none'">
         <div class="memoji" id="me-${m.id}">${m.e}</div>
         <div class="mtop-grad"></div>
         <div class="mtop-badge"><span class="badge ${cl}">${catLabel(mc)}</span></div>
