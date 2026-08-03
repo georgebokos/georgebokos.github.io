@@ -27,6 +27,17 @@ git push origin <branch εργασίας>:main
 
 **Εικόνες:** κάθε νέα συνταγή χρειάζεται πραγματική φωτογραφία **χωρίς πνευματικά δικαιώματα** — αποκλειστικά από **Wikimedia Commons**. Καμία εικόνα με αμφίβολη άδεια.
 
+Κάθε εικόνα που μπαίνει στο `images/` **συμπιέζεται πάντα πριν το commit**:
+```python
+from PIL import Image
+im = Image.open(src).convert('RGB')
+if im.width > 1000:
+    im = im.resize((1000, round(im.height*1000/im.width)), Image.LANCZOS)
+im.save(dst, 'JPEG', quality=82, optimize=True, progressive=True)
+```
+Μόνο `.jpg` — όχι PNG για φωτογραφίες. Στόχος: **80–150 KB** ανά εικόνα.
+Μετά την προσθήκη, επαλήθευσε ότι κάθε αναφορά στο `MEAL_IMAGES`/`SWEET_IMAGES` αντιστοιχεί σε υπαρκτό αρχείο.
+
 ## Δεδομένα
 `MEALS` (συνταγές), `SWEETS` (γλυκά), `FESTIVE` (γιορτές), `MEAL_PREP`, `DISLIKE_OPTS`.
 Κάθε αντικείμενο έχει και πεδία με κατάληξη `_en` για τα αγγλικά (`ing_en`, `steps_en`, `n_en`, `d_en`, ...).
