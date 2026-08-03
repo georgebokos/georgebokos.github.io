@@ -458,6 +458,8 @@ body{font-family:'Inter',-apple-system,sans-serif;background:var(--bg);color:var
 .step-timer-wrap .step-timer-btn{margin-top:0;min-width:64px;justify-content:center;}
 .step-timer-adj{width:26px;height:26px;flex:0 0 26px;border:1.5px solid var(--bd);border-radius:50%;background:var(--lt);color:var(--tx);font-size:15px;font-weight:700;line-height:1;cursor:pointer;display:flex;align-items:center;justify-content:center;padding:0;-webkit-tap-highlight-color:transparent;transition:all .15s;}
 .step-timer-adj:active{background:var(--pri);color:#fff;border-color:var(--pri);}
+.step-timer-rst{width:26px;height:26px;flex:0 0 26px;border:1.5px dashed var(--t3);border-radius:50%;background:transparent;color:var(--t2);font-size:13px;line-height:1;cursor:pointer;align-items:center;justify-content:center;padding:0;margin-left:2px;-webkit-tap-highlight-color:transparent;}
+.step-timer-rst:active{background:var(--lt);color:var(--tx);}
 /* ── SHARE BUTTON ── */
 .share-ing-btn{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;margin-top:8px;padding:11px;border:1.5px solid var(--pri);border-radius:12px;background:transparent;color:var(--pri);font-size:14px;font-weight:600;cursor:pointer;transition:all .2s;-webkit-tap-highlight-color:transparent;}
 .share-ing-btn:active{background:var(--pri);color:#fff;}
@@ -4724,8 +4726,9 @@ function buildStepsTab(m){
     const secs=det>0?getStepSecs(mid,i,det):0;
     const timerBtn=secs>0?`<span class="step-timer-wrap">`
       +`<button class="step-timer-adj" onclick="adjStepTimer(event,-1)" aria-label="${curLang==='en'?'Less time':'Λιγότερος χρόνος'}">−</button>`
-      +`<button class="step-timer-btn" data-timer="${secs}" data-step="${i}" data-meal="${mid}" onclick="startStepTimer(this)">⏱ ${fmtDur(secs)}</button>`
+      +`<button class="step-timer-btn" data-timer="${secs}" data-def="${det}" data-step="${i}" data-meal="${mid}" onclick="startStepTimer(this)">⏱ ${fmtDur(secs)}</button>`
       +`<button class="step-timer-adj" onclick="adjStepTimer(event,1)" aria-label="${curLang==='en'?'More time':'Περισσότερος χρόνος'}">+</button>`
+      +`<button class="step-timer-rst" onclick="resetStepTimer(event)" title="${curLang==='en'?'Reset to recipe time':'Επαναφορά στον χρόνο της συνταγής'}" aria-label="${curLang==='en'?'Reset':'Επαναφορά'}" style="display:${secs!==det?'flex':'none'}">↺</button>`
       +`</span>`:'';
     return `<div class="step-item" onclick="if(event.target.tagName!=='BUTTON'){this.classList.toggle('done');this.querySelector('.step-num').textContent=this.classList.contains('done')?'✓':'${i+1}'}"><div class="step-num">${i+1}</div><div class="step-txt">${s}${timerBtn}</div></div>`;
   }).join('')}</div>`;
@@ -5433,18 +5436,25 @@ function parseStepSeconds(txt){
   else if(/^(ώρ|hour|hr)/.test(unit))secs=val*3600;
   else secs=val*60;
   secs=Math.round(secs);
+  // Στρογγυλοποίηση σε «στρογγυλές» τιμές, ώστε η ένδειξη να συμφωνεί
+  // ακριβώς με τον χρόνο που θα μετρήσει το χρονόμετρο.
+  secs=secs<60?Math.round(secs/5)*5:Math.round(secs/60)*60;
   // Λογικά όρια: από 10 δευτερόλεπτα έως 24 ώρες
   if(secs<10||secs>24*3600)return 0;
   return secs;
 }
 function parseStepTime(txt){return Math.round(parseStepSeconds(txt)/60);}
 
-// Μορφοποίηση διάρκειας: 45″ · 10′ · 1ω 30′
+// Μορφοποίηση διάρκειας — ΑΚΡΙΒΗΣ, χωρίς στρογγυλοποίηση: 45″ · 10′ · 2′30″ · 1ω 30′
 function fmtDur(secs){
+  secs=Math.max(0,Math.round(secs));
   if(secs<60)return secs+'″';
-  const h=Math.floor(secs/3600), m=Math.round((secs%3600)/60);
-  if(h>0)return m?`${h}ω ${m}′`:`${h}ω`;
-  return m+'′';
+  const h=Math.floor(secs/3600), rem=secs%3600, m=Math.floor(rem/60), s=rem%60;
+  let out='';
+  if(h)out+=h+'ω';
+  if(m)out+=(out?' ':'')+m+'′';
+  if(s)out+=(out?' ':'')+s+'″';
+  return out||'0″';
 }
 // Αποθηκευμένες προσαρμογές χρόνου ανά συνταγή/βήμα
 function _stepTimerStore(){try{return JSON.parse(localStorage.getItem('fd_step_timers')||'{}');}catch(e){return {};}}
@@ -5457,11 +5467,23 @@ function setStepSecs(mealId,idx,secs){
   st[mealId+'|'+idx]=secs;
   try{localStorage.setItem('fd_step_timers',JSON.stringify(st));}catch(e){}
 }
+function clearStepSecs(mealId,idx){
+  const st=_stepTimerStore();
+  delete st[mealId+'|'+idx];
+  try{localStorage.setItem('fd_step_timers',JSON.stringify(st));}catch(e){}
+}
 // Βήμα προσαρμογής ανάλογα με τη διάρκεια
 function _adjStep(secs){
   if(secs<120)return 15;
   if(secs<1800)return 60;
   return 300;
+}
+function _syncResetBtn(wrap,btn){
+  const rst=wrap.querySelector('.step-timer-rst');
+  if(!rst)return;
+  const def=parseInt(btn.dataset.def)||0;
+  const cur=parseInt(btn.dataset.timer)||0;
+  rst.style.display=(def&&cur!==def)?'flex':'none';
 }
 function adjStepTimer(ev,dir){
   ev.stopPropagation();ev.preventDefault();
@@ -5477,6 +5499,24 @@ function adjStepTimer(ev,dir){
   btn.textContent='⏱ '+fmtDur(secs);
   const mid=btn.dataset.meal||'';
   if(mid)setStepSecs(mid,idx,secs);
+  _syncResetBtn(wrap,btn);
+}
+// Επαναφορά στον χρόνο που προτείνει η συνταγή
+function resetStepTimer(ev){
+  ev.stopPropagation();ev.preventDefault();
+  const wrap=ev.target.closest('.step-timer-wrap');
+  if(!wrap)return;
+  const btn=wrap.querySelector('.step-timer-btn');
+  if(!btn||btn.classList.contains('running'))return;
+  const def=parseInt(btn.dataset.def)||0;
+  if(!def)return;
+  btn.dataset.timer=def;
+  btn.classList.remove('done');
+  btn.textContent='⏱ '+fmtDur(def);
+  const mid=btn.dataset.meal||'';
+  if(mid)clearStepSecs(mid,parseInt(btn.dataset.step));
+  _syncResetBtn(wrap,btn);
+  showToast(curLang==='en'?'↺ Restored to the recipe time':'↺ Επαναφορά στον χρόνο της συνταγής');
 }
 function _timerFireDone(btn){
   clearInterval(_timerInterval);_timerInterval=null;_timerEndTime=null;_timerBtn=null;
