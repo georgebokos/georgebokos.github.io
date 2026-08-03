@@ -4371,8 +4371,9 @@ function renderMeals(cat){
         const cl=CAT_CL[m.cats[0]]||'b-legumes';
         const planStatus=todayPlan[m.id];
         const actHtml=planStatus==='plan'?`<span class="thumb-planned">✓ ${curLang==='en'?"I'll make this!":'Θα το φτιάξω!'}</span>`:`<button class="thumb-up" onclick="thumbUp('${m.id}',event)">👍 ${curLang==='en'?"I'll make this!":'Θα το φτιάξω!'}</button><button class="thumb-dn" onclick="thumbDown('${m.id}',event)">👎</button>`;
+        const fimgSrc=MEAL_IMAGES[m.id]||'';
         return `<div class="mcard" data-mid="${m.id}" onclick="openR('${m.id}')">
-          <div class="mtop" style="background:${bg}"><div class="memoji">${m.e}</div><div class="mtop-grad"></div><div class="mtop-badge"><span class="badge ${cl}">${catLabel(m.cats[0])}</span></div>${m.vegan?'<div class="mc-vegan">🌱 Vegan</div>':''}</div>
+          <div class="mtop" style="background:${bg}">${fimgSrc?`<img alt="${mealName(m)}" src="${fimgSrc}" onload="this.classList.add('loaded');var e=document.getElementById('fvme-${m.id}');if(e)e.style.opacity=0" onerror="this.style.display='none'">`:''}<div class="memoji" id="fvme-${m.id}">${m.e}</div><div class="mtop-grad"></div><div class="mtop-badge"><span class="badge ${cl}">${catLabel(m.cats[0])}</span></div>${m.vegan?'<div class="mc-vegan">🌱 Vegan</div>':''}</div>
           <div class="mbtm"><div class="mname-row"><div class="mname">${mealName(m)}</div><button class="fav-btn-sm" data-id="${m.id}" onclick="toggleFav('${m.id}',event)">❤️</button></div>
           <div class="mmeta">⏱ ${m.time}' &nbsp;🔥 ${m.cal} &nbsp;💰 ${m.cps||'~2€'}${t('per_srv')}</div>
           <div class="card-actions" id="ca-${m.id}">${actHtml}</div></div></div>`;
@@ -4380,10 +4381,14 @@ function renderMeals(cat){
     }
     for(const[c,sweets] of Object.entries(bySwCat)){
       html+=`<div class="fav-cat-hdr">${SWLBLS[c]||t('sweets_lbl')}</div>`;
-      html+=sweets.map(s=>`<div class="mcard" onclick="openSW('${s._swc}',${s._swi})">
-        <div class="mtop" style="background:linear-gradient(145deg,#FFF8E7,#FFE082)"><div class="memoji">${s.e}</div><div class="mtop-grad"></div><div class="mtop-badge"><span class="badge b-sweets">${t('sweets_lbl')}</span></div></div>
+      html+=sweets.map(s=>{
+        const swImgSrc=SWEET_IMAGES[`${s._swc}:${s._swi}`]||'';
+        const swUid=`${s._swc}-${s._swi}`;
+        return `<div class="mcard" onclick="openSW('${s._swc}',${s._swi})">
+        <div class="mtop" style="background:linear-gradient(145deg,#FFF8E7,#FFE082)">${swImgSrc?`<img alt="${sweetName(s)}" src="${swImgSrc}" onload="this.classList.add('loaded');var e=document.getElementById('fvsw-${swUid}');if(e)e.style.opacity=0" onerror="this.style.display='none'">`:''}<div class="memoji" id="fvsw-${swUid}">${s.e}</div><div class="mtop-grad"></div><div class="mtop-badge"><span class="badge b-sweets">${t('sweets_lbl')}</span></div></div>
         <div class="mbtm"><div class="mname-row"><div class="mname">${sweetName(s)}</div><button class="fav-btn-sm" data-id="${s._fid}" onclick="toggleFav('${s._fid}',event)">❤️</button></div>
-        <div class="mmeta">🔥 ${s.cal} ${curLang==='en'?'cal/serv.':'θερμ./μερ.'} &nbsp;🍽 ${s.srv} ${curLang==='en'?'serv.':'μερ.'}</div></div></div>`).join('');
+        <div class="mmeta">🔥 ${s.cal} ${curLang==='en'?'cal/serv.':'θερμ./μερ.'} &nbsp;🍽 ${s.srv} ${curLang==='en'?'serv.':'μερ.'}</div></div></div>`;
+      }).join('');
     }
     grid.innerHTML=html;
     return;
