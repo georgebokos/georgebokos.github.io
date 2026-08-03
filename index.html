@@ -4893,9 +4893,18 @@ const TRIAL_DAYS=7;
 // Η δωρεάν δοκιμή διαχειρίζεται πλέον από το Google Play (προσφορά στη συνδρομή),
 // ώστε η επιλεξιμότητα να ελέγχεται ανά λογαριασμό Google και να μη μηδενίζεται
 // με απεγκατάσταση/επανεγκατάσταση.
+// Υπάρχει αξιόπιστος native τρόπος αγοράς; (μόνο στην Capacitor έκδοση)
+function hasNativeBilling(){
+  try{return !!(window.Capacitor&&window.Capacitor.Plugins&&window.Capacitor.Plugins.Purchases);}
+  catch(e){return false;}
+}
 // Καταστάσεις: 'premium' (ενεργή συνδρομή ή δοκιμή) · 'free' (χωρίς πρόσβαση)
 function getPremiumState(){
-  return localStorage.getItem('fd_premium')==='true'?'premium':'free';
+  if(localStorage.getItem('fd_premium')==='true')return 'premium';
+  // TWA / browser: δεν υπάρχει αξιόπιστη ροή αγοράς (εξαρτάται από τον browser),
+  // οπότε δεν εμφανίζουμε paywall — όλα παραμένουν ξεκλείδωτα.
+  if(!hasNativeBilling())return 'premium';
+  return 'free';
 }
 // Είναι σε δωρεάν δοκιμή του Google Play;
 function isPlayTrial(){return localStorage.getItem('fd_premium_period')==='TRIAL';}
@@ -4930,6 +4939,8 @@ function applyEntitlement(customerInfo){
 function renderTrialBanner(){
   const el=document.getElementById('trial-banner');if(!el)return;
   const en=curLang==='en';
+  // TWA/browser: καμία προτροπή συνδρομής, αφού δεν μπορεί να ολοκληρωθεί αγορά
+  if(!hasNativeBilling()&&localStorage.getItem('fd_premium')!=='true'){el.innerHTML='';return;}
   if(getPremiumState()==='premium'){
     // Σε δωρεάν δοκιμή του Play: δείξε πόσες ημέρες απομένουν
     if(isPlayTrial()){
