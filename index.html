@@ -4890,10 +4890,13 @@ async function fdShare({title,text,url}){
 
 // ── PREMIUM STATE MACHINE ──────────────────────────────────────
 const TRIAL_DAYS=7;
+// Καταστάσεις: 'premium' (πληρωμένη συνδρομή) · 'trial' (δωρεάν δοκιμή σε ισχύ)
+//              'expired' (η δοκιμή έληξε) · 'free' (δεν ξεκίνησε ακόμα δοκιμή)
 function getPremiumState(){
-  // Φάση δοκιμών (closed testing): το trial ΔΕΝ λήγει — όλα ξεκλείδωτα, χωρίς περιορισμό.
   if(localStorage.getItem('fd_premium')==='true')return 'premium';
-  return 'trial';
+  const ts=parseInt(localStorage.getItem('fd_trial_start')||'0');
+  if(!ts)return 'free';
+  return trialDaysLeft()>0?'trial':'expired';
 }
 function trialDaysLeft(){
   const ts=parseInt(localStorage.getItem('fd_trial_start')||'0');
@@ -4920,7 +4923,11 @@ function renderTrialBanner(){
     return;
   }
   if(state==='trial'){
-    el.innerHTML=`<div class="trial-banner" onclick="openPremiumScreen()"><div class="trial-banner-l"><span class="trial-banner-icon">🎁</span><span class="trial-banner-txt">${en?'You have <span>full access</span> to all features':'Έχεις <span>πλήρη πρόσβαση</span> σε όλες τις λειτουργίες'}</span></div><span class="trial-banner-cta">Premium →</span></div>`;
+    const d=trialDaysLeft();
+    const txt=en
+      ?(d===1?'Last day of your <span>free trial</span>':`<span>${d} days</span> left in your free trial`)
+      :(d===1?'Τελευταία ημέρα <span>δωρεάν δοκιμής</span>':`Απομένουν <span>${d} ημέρες</span> δωρεάν δοκιμής`);
+    el.innerHTML=`<div class="trial-banner" onclick="openPremiumScreen()"><div class="trial-banner-l"><span class="trial-banner-icon">🎁</span><span class="trial-banner-txt">${txt}</span></div><span class="trial-banner-cta">Premium →</span></div>`;
     return;
   }
   if(state==='expired'){
@@ -4991,8 +4998,11 @@ function updatePremiumCTA(state){
     btn.textContent=en?"✅ You're already Premium!":'✅ Είσαι ήδη Premium!';btn.disabled=true;btn.style.opacity='.7';
     if(note)note.textContent=en?'Your subscription is active.':'Η συνδρομή σου είναι ενεργή.';
   }else if(state==='trial'){
-    btn.textContent='💎 Premium';btn.disabled=false;btn.style.opacity='1';
-    if(note)note.textContent=en?'You have full access to all features.':'Έχεις πλήρη πρόσβαση σε όλες τις λειτουργίες.';
+    const d=trialDaysLeft();
+    btn.textContent=en?'💎 Subscribe to Premium':'💎 Απόκτησε Premium';btn.disabled=false;btn.style.opacity='1';
+    if(note)note.textContent=en
+      ?(d===1?'Last day of your free trial.':`${d} days left in your free trial.`)
+      :(d===1?'Τελευταία ημέρα της δωρεάν δοκιμής σου.':`Απομένουν ${d} ημέρες δωρεάν δοκιμής.`);
   }else if(state==='expired'){
     btn.textContent=en?'💎 Premium Subscription':'💎 Συνδρομή Premium';btn.disabled=false;btn.style.opacity='1';
     if(note)note.textContent=en?'Regain full access instantly.':'Ανάκτησε πλήρη πρόσβαση αμέσως.';
@@ -5227,8 +5237,14 @@ async function rcSyncOnStart(){
   if(!P)return;
   try{
     const {customerInfo}=await P.getCustomerInfo();
-    if(rcHasEntitlement(customerInfo))applyPremiumUnlocked();
-  }catch(e){}
+    if(rcHasEntitlement(customerInfo)){
+      applyPremiumUnlocked();
+    }else if(localStorage.getItem('fd_premium')==='true'){
+      // Η συνδρομή ακυρώθηκε ή έληξε — ανάκληση πρόσβασης
+      localStorage.setItem('fd_premium','false');
+      try{renderTrialBanner();updatePremiumCTA(getPremiumState());}catch(e){}
+    }
+  }catch(e){/* χωρίς δίκτυο: διατηρούμε την τρέχουσα κατάσταση */}
 }
 async function rcPurchase(plan){
   const en=curLang==='en';
