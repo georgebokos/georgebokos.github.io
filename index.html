@@ -454,6 +454,10 @@ body{font-family:'Inter',-apple-system,sans-serif;background:var(--bg);color:var
 .step-timer-btn{display:inline-flex;align-items:center;gap:5px;margin-top:7px;padding:4px 12px;border:1.5px solid var(--pri);border-radius:20px;background:transparent;color:var(--pri);font-size:12px;font-weight:700;cursor:pointer;transition:all .2s;-webkit-tap-highlight-color:transparent;}
 .step-timer-btn.running{background:var(--pri);color:#fff;}
 .step-timer-btn.done{background:#DCFCE7;border-color:#16A34A;color:#15803D;}
+.step-timer-wrap{display:inline-flex;align-items:center;gap:4px;margin-top:7px;}
+.step-timer-wrap .step-timer-btn{margin-top:0;min-width:64px;justify-content:center;}
+.step-timer-adj{width:26px;height:26px;flex:0 0 26px;border:1.5px solid var(--bd);border-radius:50%;background:var(--lt);color:var(--tx);font-size:15px;font-weight:700;line-height:1;cursor:pointer;display:flex;align-items:center;justify-content:center;padding:0;-webkit-tap-highlight-color:transparent;transition:all .15s;}
+.step-timer-adj:active{background:var(--pri);color:#fff;border-color:var(--pri);}
 /* ── SHARE BUTTON ── */
 .share-ing-btn{display:flex;align-items:center;justify-content:center;gap:8px;width:100%;margin-top:8px;padding:11px;border:1.5px solid var(--pri);border-radius:12px;background:transparent;color:var(--pri);font-size:14px;font-weight:600;cursor:pointer;transition:all .2s;-webkit-tap-highlight-color:transparent;}
 .share-ing-btn:active{background:var(--pri);color:#fff;}
@@ -4715,8 +4719,14 @@ function buildIngTab(m){
 function buildStepsTab(m){
   const cookBtn=`<button class="cook-mode-btn" onclick="enterCookMode()">🍳 Cook Mode — ${curLang==='en'?'Step by step':'Ολοκλήρωση βήμα βήμα'}</button>`;
   document.getElementById('ot-steps').innerHTML=cookBtn+`<div class="step-list">${mSteps(m).map((s,i)=>{
-    const mins=parseStepTime(s);
-    const timerBtn=mins>0?`<button class="step-timer-btn" data-timer="${mins*60}" data-step="${i}" onclick="startStepTimer(this,${mins})">⏱ ${mins}'</button>`:'';
+    const det=parseStepSeconds(s);
+    const mid=_timerMealId_page||'';
+    const secs=det>0?getStepSecs(mid,i,det):0;
+    const timerBtn=secs>0?`<span class="step-timer-wrap">`
+      +`<button class="step-timer-adj" onclick="adjStepTimer(event,-1)" aria-label="${curLang==='en'?'Less time':'Λιγότερος χρόνος'}">−</button>`
+      +`<button class="step-timer-btn" data-timer="${secs}" data-step="${i}" data-meal="${mid}" onclick="startStepTimer(this)">⏱ ${fmtDur(secs)}</button>`
+      +`<button class="step-timer-adj" onclick="adjStepTimer(event,1)" aria-label="${curLang==='en'?'More time':'Περισσότερος χρόνος'}">+</button>`
+      +`</span>`:'';
     return `<div class="step-item" onclick="if(event.target.tagName!=='BUTTON'){this.classList.toggle('done');this.querySelector('.step-num').textContent=this.classList.contains('done')?'✓':'${i+1}'}"><div class="step-num">${i+1}</div><div class="step-txt">${s}${timerBtn}</div></div>`;
   }).join('')}</div>`;
 }
@@ -5394,16 +5404,79 @@ function _timerTick(){
   }
   if(_timerBtn){_timerBtn.textContent=`⏱ ${m2}:${String(s2).padStart(2,'0')}`;_timerBtn.dataset.timer=rem;}
 }
-function parseStepTime(txt){
-  // Extract minutes from step text — Greek: "20 λεπτά", "2 ώρες" — English: "20 minutes", "2 hours"
-  let m;
-  m=txt.match(/(\d+(?:\.\d+)?)\s*(?:-\s*\d+)?\s*(ώρ[εα]|ωρ|hours?|hrs?)\b/i);
-  if(m)return Math.round(parseFloat(m[1])*60);
-  m=txt.match(/(\d+)\s*-\s*(\d+)\s*(?:λεπτ|min)/i);
-  if(m)return Math.round((+m[1]+ +m[2])/2);
-  m=txt.match(/(\d+)\s*(?:λεπτ|minutes?|mins?)\b/i);
-  if(m)return +m[1];
-  return 0;
+// Εντοπισμός χρόνου μέσα στο κείμενο ενός βήματος — επιστρέφει ΔΕΥΤΕΡΟΛΕΠΤΑ.
+// Προσοχή: το \b των regex δουλεύει μόνο με λατινικούς χαρακτήρες, γι' αυτό
+// εδώ χρησιμοποιούνται ρητές ελληνικές καταλήξεις αντί για όρια λέξης.
+const _TIME_RE=new RegExp(
+  '(\\d+(?:[.,]\\d+)?)\\s*(?:[-–]\\s*(\\d+(?:[.,]\\d+)?))?\\s*('
+  +'δευτερόλεπτα|δευτερόλεπτο|δευτερολέπτων|δευτ\\.'          // δευτερόλεπτα
+  +'|λεπτά|λεπτό|λεπτών|λεπτ\\.'                                // λεπτά
+  +'|ώρες|ώρα|ωρών|ώρας'                                       // ώρες
+  +'|seconds|second|secs|sec'
+  +'|minutes|minute|mins|min'
+  +'|hours|hour|hrs|hr'
+  +')','i');
+function parseStepSeconds(txt){
+  if(!txt)return 0;
+  // Λεκτικές εκφράσεις χωρίς αριθμό
+  if(/μισή\s+ώρα|half\s+an?\s+hour/i.test(txt))return 30*60;
+  if(/μιά?μιση\s+ώρα|μία\s+ώρα\s+και\s+μισή/i.test(txt))return 90*60;
+  if(/(μία|μια|μιας)\s+ώρας?/i.test(txt)&&!_TIME_RE.test(txt))return 60*60;
+  const m=txt.match(_TIME_RE);
+  if(!m)return 0;
+  const a=parseFloat(String(m[1]).replace(',','.'));
+  const b=m[2]?parseFloat(String(m[2]).replace(',','.')):null;
+  const val=b!==null?(a+b)/2:a;
+  const unit=m[3].toLowerCase();
+  let secs;
+  if(/^(δευτ|sec)/.test(unit))secs=val;
+  else if(/^(ώρ|hour|hr)/.test(unit))secs=val*3600;
+  else secs=val*60;
+  secs=Math.round(secs);
+  // Λογικά όρια: από 10 δευτερόλεπτα έως 24 ώρες
+  if(secs<10||secs>24*3600)return 0;
+  return secs;
+}
+function parseStepTime(txt){return Math.round(parseStepSeconds(txt)/60);}
+
+// Μορφοποίηση διάρκειας: 45″ · 10′ · 1ω 30′
+function fmtDur(secs){
+  if(secs<60)return secs+'″';
+  const h=Math.floor(secs/3600), m=Math.round((secs%3600)/60);
+  if(h>0)return m?`${h}ω ${m}′`:`${h}ω`;
+  return m+'′';
+}
+// Αποθηκευμένες προσαρμογές χρόνου ανά συνταγή/βήμα
+function _stepTimerStore(){try{return JSON.parse(localStorage.getItem('fd_step_timers')||'{}');}catch(e){return {};}}
+function getStepSecs(mealId,idx,def){
+  const s=_stepTimerStore()[mealId+'|'+idx];
+  return (typeof s==='number'&&s>=10)?s:def;
+}
+function setStepSecs(mealId,idx,secs){
+  const st=_stepTimerStore();
+  st[mealId+'|'+idx]=secs;
+  try{localStorage.setItem('fd_step_timers',JSON.stringify(st));}catch(e){}
+}
+// Βήμα προσαρμογής ανάλογα με τη διάρκεια
+function _adjStep(secs){
+  if(secs<120)return 15;
+  if(secs<1800)return 60;
+  return 300;
+}
+function adjStepTimer(ev,dir){
+  ev.stopPropagation();ev.preventDefault();
+  const wrap=ev.target.closest('.step-timer-wrap');
+  if(!wrap)return;
+  const btn=wrap.querySelector('.step-timer-btn');
+  if(!btn||btn.classList.contains('running'))return;
+  const idx=parseInt(btn.dataset.step);
+  let secs=parseInt(btn.dataset.timer)||60;
+  secs=Math.max(10,Math.min(24*3600,secs+dir*_adjStep(secs)));
+  btn.dataset.timer=secs;
+  btn.classList.remove('done');
+  btn.textContent='⏱ '+fmtDur(secs);
+  const mid=btn.dataset.meal||'';
+  if(mid)setStepSecs(mid,idx,secs);
 }
 function _timerFireDone(btn){
   clearInterval(_timerInterval);_timerInterval=null;_timerEndTime=null;_timerBtn=null;
@@ -5426,9 +5499,10 @@ function _timerFireDone(btn){
   }catch(e){}
   _swSend({type:'SHOW_NOTIFICATION',title:'⏱️ FoodDaily — Timer',body:curLang==='en'?'Time is up! Check the next step.':'Ο χρόνος τελείωσε! Δες το επόμενο βήμα.',tag:'fd-timer'});
 }
-function startStepTimer(btn,minutes){
+function startStepTimer(btn){
+  const setSecs=parseInt(btn.dataset.timer)||60;
   if(btn.classList.contains('done')){
-    btn.classList.remove('done');btn.dataset.timer=minutes*60;btn.textContent=`⏱ ${minutes}'`;return;
+    btn.classList.remove('done');btn.textContent='⏱ '+fmtDur(setSecs);return;
   }
   if(btn.classList.contains('running')){
     clearInterval(_timerInterval);_timerInterval=null;_timerEndTime=null;_timerBtn=null;
@@ -5436,13 +5510,13 @@ function startStepTimer(btn,minutes){
     _stopTimerKeepalive();
     _swSend({type:'CANCEL_TIMER'});
     if(isNativeApp())lnCancel(LN_ID_TIMER);
-    btn.classList.remove('running');btn.textContent=`⏱ ${minutes}'`;
+    btn.classList.remove('running');btn.textContent='⏱ '+fmtDur(setSecs);
     return;
   }
   // Clean up any previously running button from a different step
   if(_timerBtn && _timerBtn!==btn){_timerBtn.classList.remove('running');_timerBtn=null;}
   clearInterval(_timerInterval);
-  const secs=parseInt(btn.dataset.timer||minutes*60);
+  const secs=setSecs;
   _timerEndTime=Date.now()+secs*1000;
   _timerBtn=btn;
   _activeTimerMealId=_timerMealId_page;
