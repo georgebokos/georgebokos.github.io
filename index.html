@@ -4890,49 +4890,60 @@ async function fdShare({title,text,url}){
 
 // ── PREMIUM STATE MACHINE ──────────────────────────────────────
 const TRIAL_DAYS=7;
-// Καταστάσεις: 'premium' (πληρωμένη συνδρομή) · 'trial' (δωρεάν δοκιμή σε ισχύ)
-//              'expired' (η δοκιμή έληξε) · 'free' (δεν ξεκίνησε ακόμα δοκιμή)
+// Η δωρεάν δοκιμή διαχειρίζεται πλέον από το Google Play (προσφορά στη συνδρομή),
+// ώστε η επιλεξιμότητα να ελέγχεται ανά λογαριασμό Google και να μη μηδενίζεται
+// με απεγκατάσταση/επανεγκατάσταση.
+// Καταστάσεις: 'premium' (ενεργή συνδρομή ή δοκιμή) · 'free' (χωρίς πρόσβαση)
 function getPremiumState(){
-  if(localStorage.getItem('fd_premium')==='true')return 'premium';
-  const ts=parseInt(localStorage.getItem('fd_trial_start')||'0');
-  if(!ts)return 'free';
-  return trialDaysLeft()>0?'trial':'expired';
+  return localStorage.getItem('fd_premium')==='true'?'premium':'free';
 }
+// Είναι σε δωρεάν δοκιμή του Google Play;
+function isPlayTrial(){return localStorage.getItem('fd_premium_period')==='TRIAL';}
+// Ημέρες που απομένουν μέχρι τη λήξη/ανανέωση
 function trialDaysLeft(){
-  const ts=parseInt(localStorage.getItem('fd_trial_start')||'0');
-  if(!ts)return TRIAL_DAYS;
-  return Math.max(0,TRIAL_DAYS-Math.floor((Date.now()-ts)/(1000*60*60*24)));
+  const exp=localStorage.getItem('fd_premium_exp');
+  if(!exp)return 0;
+  const ms=new Date(exp).getTime()-Date.now();
+  if(!isFinite(ms)||ms<=0)return 0;
+  return Math.max(1,Math.ceil(ms/(1000*60*60*24)));
 }
-function startTrial(){
-  if(!localStorage.getItem('fd_trial_start')){
-    localStorage.setItem('fd_trial_start',Date.now().toString());
+function startTrial(){/* δεν χρησιμοποιείται πλέον — η δοκιμή ξεκινά από το Google Play */}
+function isPremium(){return getPremiumState()==='premium';}
+// Καταγραφή της κατάστασης συνδρομής όπως την επιστρέφει το RevenueCat
+function applyEntitlement(customerInfo){
+  let ent=null;
+  try{ent=customerInfo&&customerInfo.entitlements&&customerInfo.entitlements.active&&customerInfo.entitlements.active[RC_ENTITLEMENT];}catch(e){}
+  if(ent){
+    localStorage.setItem('fd_premium','true');
+    localStorage.setItem('fd_premium_period',ent.periodType||'');
+    localStorage.setItem('fd_premium_exp',ent.expirationDate||'');
+  }else{
+    localStorage.setItem('fd_premium','false');
+    localStorage.removeItem('fd_premium_period');
+    localStorage.removeItem('fd_premium_exp');
   }
-}
-function isPremium(){
-  const s=getPremiumState();return s==='premium'||s==='trial';
+  try{renderTrialBanner();updatePremiumCTA(getPremiumState());}catch(e){}
+  return !!ent;
 }
 
 // Trial banner in hero
 function renderTrialBanner(){
   const el=document.getElementById('trial-banner');if(!el)return;
-  const state=getPremiumState();
-  if(state==='premium'){el.innerHTML='';return;}
   const en=curLang==='en';
-  if(state==='free'){
-    el.innerHTML=`<div class="trial-banner" onclick="openPremiumScreen()"><div class="trial-banner-l"><span class="trial-banner-icon">💎</span><span class="trial-banner-txt">${en?'Try <span>Premium</span> free for 7 days':'Δοκίμασε <span>Premium</span> δωρεάν 7 ημέρες'}</span></div><span class="trial-banner-cta">${en?'Free →':'Δωρεάν →'}</span></div>`;
-    return;
+  if(getPremiumState()==='premium'){
+    // Σε δωρεάν δοκιμή του Play: δείξε πόσες ημέρες απομένουν
+    if(isPlayTrial()){
+      const d=trialDaysLeft();
+      const txt=d>0
+        ?(en?(d===1?'Last day of your <span>free trial</span>':`<span>${d} days</span> left in your free trial`)
+             :(d===1?'Τελευταία ημέρα <span>δωρεάν δοκιμής</span>':`Απομένουν <span>${d} ημέρες</span> δωρεάν δοκιμής`))
+        :(en?'Your <span>free trial</span> is active':'Η <span>δωρεάν δοκιμή</span> σου είναι ενεργή');
+      el.innerHTML=`<div class="trial-banner" onclick="openPremiumScreen()"><div class="trial-banner-l"><span class="trial-banner-icon">🎁</span><span class="trial-banner-txt">${txt}</span></div><span class="trial-banner-cta">Premium →</span></div>`;
+      return;
+    }
+    el.innerHTML='';return;
   }
-  if(state==='trial'){
-    const d=trialDaysLeft();
-    const txt=en
-      ?(d===1?'Last day of your <span>free trial</span>':`<span>${d} days</span> left in your free trial`)
-      :(d===1?'Τελευταία ημέρα <span>δωρεάν δοκιμής</span>':`Απομένουν <span>${d} ημέρες</span> δωρεάν δοκιμής`);
-    el.innerHTML=`<div class="trial-banner" onclick="openPremiumScreen()"><div class="trial-banner-l"><span class="trial-banner-icon">🎁</span><span class="trial-banner-txt">${txt}</span></div><span class="trial-banner-cta">Premium →</span></div>`;
-    return;
-  }
-  if(state==='expired'){
-    el.innerHTML=`<div class="trial-banner trial-expired-banner" onclick="openPremiumScreen()"><div class="trial-banner-l"><span class="trial-banner-icon">⚠️</span><span class="trial-banner-txt">${en?'Your trial has <span>expired</span>':'Το trial σου <span>έληξε</span>'}</span></div><span class="trial-banner-cta">${en?'Subscribe →':'Συνδρομή →'}</span></div>`;
-  }
+  el.innerHTML=`<div class="trial-banner" onclick="openPremiumScreen()"><div class="trial-banner-l"><span class="trial-banner-icon">💎</span><span class="trial-banner-txt">${en?'Try <span>Premium</span> free for 7 days':'Δοκίμασε <span>Premium</span> δωρεάν 7 ημέρες'}</span></div><span class="trial-banner-cta">${en?'Free →':'Δωρεάν →'}</span></div>`;
 }
 
 // Premium screen
@@ -4995,34 +5006,26 @@ function updatePremiumCTA(state){
   if(!btn)return;
   const en=curLang==='en';
   if(state==='premium'){
-    btn.textContent=en?"✅ You're already Premium!":'✅ Είσαι ήδη Premium!';btn.disabled=true;btn.style.opacity='.7';
-    if(note)note.textContent=en?'Your subscription is active.':'Η συνδρομή σου είναι ενεργή.';
-  }else if(state==='trial'){
-    const d=trialDaysLeft();
-    btn.textContent=en?'💎 Subscribe to Premium':'💎 Απόκτησε Premium';btn.disabled=false;btn.style.opacity='1';
-    if(note)note.textContent=en
-      ?(d===1?'Last day of your free trial.':`${d} days left in your free trial.`)
-      :(d===1?'Τελευταία ημέρα της δωρεάν δοκιμής σου.':`Απομένουν ${d} ημέρες δωρεάν δοκιμής.`);
-  }else if(state==='expired'){
-    btn.textContent=en?'💎 Premium Subscription':'💎 Συνδρομή Premium';btn.disabled=false;btn.style.opacity='1';
-    if(note)note.textContent=en?'Regain full access instantly.':'Ανάκτησε πλήρη πρόσβαση αμέσως.';
+    btn.disabled=true;btn.style.opacity='.7';
+    if(isPlayTrial()){
+      const d=trialDaysLeft();
+      btn.textContent=en?'🎁 Free trial active':'🎁 Δωρεάν δοκιμή σε ισχύ';
+      if(note)note.textContent=d>0
+        ?(en?(d===1?'Last day — renews tomorrow unless you cancel.':`${d} days left — renews automatically unless you cancel.`)
+             :(d===1?'Τελευταία ημέρα — ανανεώνεται αύριο αν δεν ακυρώσεις.':`Απομένουν ${d} ημέρες — ανανεώνεται αυτόματα αν δεν ακυρώσεις.`))
+        :(en?'Your free trial is active.':'Η δωρεάν δοκιμή σου είναι ενεργή.');
+    }else{
+      btn.textContent=en?"✅ You're already Premium!":'✅ Είσαι ήδη Premium!';
+      if(note)note.textContent=en?'Your subscription is active.':'Η συνδρομή σου είναι ενεργή.';
+    }
   }else{
-    btn.textContent=en?'🎁 Start free for 7 days':'🎁 Ξεκίνα δωρεάν για 7 ημέρες';btn.disabled=false;btn.style.opacity='1';
-    if(note)note.textContent=en?'No card required for the trial · Cancel anytime':'Δεν απαιτείται κάρτα για το trial · Ακύρωση οποιαδήποτε στιγμή';
+    btn.textContent=en?'🎁 Start 7 days free':'🎁 Ξεκίνα 7 ημέρες δωρεάν';btn.disabled=false;btn.style.opacity='1';
+    if(note)note.textContent=en?'Free for 7 days · Cancel anytime before it renews':'Δωρεάν για 7 ημέρες · Ακύρωση οποιαδήποτε στιγμή πριν την ανανέωση';
   }
 }
 function handlePremiumCTA(){
-  const state=getPremiumState();
-  if(state==='free'){
-    // Start trial + close screen
-    startTrial();
-    localStorage.setItem('fd_premium','false'); // explicitly free, trial running
-    closePremiumScreen();
-    renderTrialBanner();
-    showToast(curLang==='en'?'🎉 7-day trial started! Enjoy Premium.':'🎉 Το 7-day trial ξεκίνησε! Απόλαυσε το Premium.');
-  }else{
-    purchasePremium(_curPlan);
-  }
+  // Η δωρεάν δοκιμή ξεκινά μέσα από τη ροή αγοράς του Google Play
+  purchasePremium(_curPlan);
 }
 
 // ── GOOGLE PLAY BILLING (Payment Request API) ──────────────────
@@ -5237,13 +5240,7 @@ async function rcSyncOnStart(){
   if(!P)return;
   try{
     const {customerInfo}=await P.getCustomerInfo();
-    if(rcHasEntitlement(customerInfo)){
-      applyPremiumUnlocked();
-    }else if(localStorage.getItem('fd_premium')==='true'){
-      // Η συνδρομή ακυρώθηκε ή έληξε — ανάκληση πρόσβασης
-      localStorage.setItem('fd_premium','false');
-      try{renderTrialBanner();updatePremiumCTA(getPremiumState());}catch(e){}
-    }
+    applyEntitlement(customerInfo);
   }catch(e){/* χωρίς δίκτυο: διατηρούμε την τρέχουσα κατάσταση */}
 }
 async function rcPurchase(plan){
@@ -5261,11 +5258,12 @@ async function rcPurchase(plan){
       return true;
     }
     const res=await P.purchasePackage({aPackage:pkg});
-    if(rcHasEntitlement(res&&res.customerInfo)){
+    if(applyEntitlement(res&&res.customerInfo)){
       localStorage.setItem('fd_premium_plan',plan);
-      applyPremiumUnlocked();
       closePremiumScreen();
-      showToast(en?'🎉 Welcome to Premium!':'🎉 Καλώς ήρθες στο Premium!');
+      showToast(isPlayTrial()
+        ?(en?'🎁 Your 7-day free trial has started!':'🎁 Ξεκίνησε η δωρεάν δοκιμή 7 ημερών!')
+        :(en?'🎉 Welcome to Premium!':'🎉 Καλώς ήρθες στο Premium!'));
     }else{
       showToast(en?'⚠️ Purchase could not be verified.':'⚠️ Η αγορά δεν επαληθεύτηκε.');
     }
@@ -5332,8 +5330,7 @@ async function restorePurchase(){
   if(P){
     try{
       const {customerInfo}=await P.restorePurchases();
-      if(rcHasEntitlement(customerInfo)){
-        applyPremiumUnlocked();
+      if(applyEntitlement(customerInfo)){
         showToast(en?'✅ Premium restored!':'✅ Το Premium αποκαταστάθηκε!');
       }else{
         showToast(en?'No active subscription found.':'Δεν βρέθηκε ενεργή συνδρομή.');
@@ -7020,8 +7017,7 @@ function dismissTonightBanner(){
   applyLangTexts(curLang);
   // Hero greeting + date
   updateHeroTexts();
-  // Premium: start trial on first launch, render banner
-  startTrial();
+  // Premium: εμφάνιση banner (η δοκιμή ξεκινά από το Google Play)
   renderTrialBanner();
   // Native (Capacitor): επανάκτησε την κατάσταση συνδρομής από το RevenueCat
   try{rcSyncOnStart();}catch(e){}
