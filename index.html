@@ -4708,7 +4708,7 @@ function buildIngTab(m){
   const scaledCost=sc!==1?scalePrice(m.cost,sc):m.cost;
   const scaleNote=sc!==1?`<div class="scale-note">📊 ${t('qty_for')} <b>${srv} ${t('people')}</b></div>`:'';
   const note=m.cost?`<div class="cost-note">💰 ${scaledCost} ${t('total_cost')} · ${m.cps||''} ${t('per_srv_lbl')} &nbsp;<span style="color:var(--t3)">(${t('cost_yr')})</span></div>`:'';
-  const shareBtn=navigator.share||navigator.clipboard?`<button class="share-ing-btn" onclick="shareIngredients()">📤 ${curLang==='en'?'Share ingredients':'Κοινοποίηση υλικών'}</button>`:'';
+  const shareBtn=canShare()?`<button class="share-ing-btn" onclick="shareIngredients()">📤 ${curLang==='en'?'Share ingredients':'Κοινοποίηση υλικών'}</button>`:'';
   document.getElementById('ot-ing').innerHTML=`${scaleNote}<div class="ing-grid">${items}</div><button class="copy-list-btn" onclick="copyShoppingList()">${t('copy_list')}</button>${shareBtn}${note}`;
 }
 
@@ -4790,8 +4790,39 @@ function pickVoice(){
     ||vv.find(v=>v.lang.startsWith(lang))
     ||null;
 }
+// ── NATIVE ΕΚΦΩΝΗΣΗ (Capacitor Text-to-Speech) ─────────────────
+// Το WebView δεν υποστηρίζει το speechSynthesis του browser.
+function ttsPlugin(){
+  try{return (window.Capacitor&&window.Capacitor.Plugins&&window.Capacitor.Plugins.TextToSpeech)||null;}
+  catch(e){return null;}
+}
+function _ttsBtnState(playing){
+  isTTS=playing;
+  const b=document.getElementById('ov-tts-btn');
+  if(b)b.textContent=playing?t('tts_s'):t('tts_p');
+}
+async function nativeStartTTS(){
+  const TTS=ttsPlugin();if(!TTS||!_meal)return;
+  try{await TTS.stop();}catch(e){}
+  _ttsBtnState(true);
+  try{
+    await TTS.speak({
+      text:buildTTSText(_meal),
+      lang:curLang==='en'?'en-US':'el-GR',
+      rate:0.9, pitch:1.05, volume:1.0
+    });
+  }catch(e){}
+  _ttsBtnState(false);
+}
+async function nativeStopTTS(){
+  const TTS=ttsPlugin();if(!TTS)return;
+  try{await TTS.stop();}catch(e){}
+  _ttsBtnState(false);
+}
+
 function toggleTTS(){isTTS?stopTTS():startTTS();}
 function startTTS(){
+  if(ttsPlugin()){nativeStartTTS();return;}
   if(!_meal||!window.speechSynthesis)return;
   stopTTS();
   const doSpeak=()=>{
@@ -4806,7 +4837,38 @@ function startTTS(){
   if(speechSynthesis.getVoices().length){doSpeak();}
   else{speechSynthesis.addEventListener('voiceschanged',doSpeak,{once:true});}
 }
-function stopTTS(){if(window.speechSynthesis)speechSynthesis.cancel();isTTS=false;const b=document.getElementById('ov-tts-btn');if(b)b.textContent=t('tts_p');}
+function stopTTS(){
+  if(ttsPlugin()){nativeStopTTS();return;}
+  if(window.speechSynthesis)speechSynthesis.cancel();
+  isTTS=false;const b=document.getElementById('ov-tts-btn');if(b)b.textContent=t('tts_p');
+}
+
+// ── ΚΟΙΝΟΠΟΙΗΣΗ (native σε Capacitor, Web Share αλλού) ─────────
+function sharePlugin(){
+  try{return (window.Capacitor&&window.Capacitor.Plugins&&window.Capacitor.Plugins.Share)||null;}
+  catch(e){return null;}
+}
+function canShare(){return !!(sharePlugin()||navigator.share||navigator.clipboard);}
+// Επιστρέφει true αν άνοιξε παράθυρο κοινοποίησης, false αν χρειάζεται fallback
+async function fdShare({title,text,url}){
+  const S=sharePlugin();
+  if(S){
+    try{
+      await S.share({title,text,url,dialogTitle:curLang==='en'?'Share':'Κοινοποίηση'});
+      return true;
+    }catch(e){
+      // Ο χρήστης έκλεισε το παράθυρο — δεν θέλουμε fallback σε αντιγραφή
+      const msg=((e&&e.message)||'')+'';
+      if(/cancel|abort/i.test(msg))return true;
+      return false;
+    }
+  }
+  if(navigator.share){
+    try{await navigator.share({title,text,url});return true;}
+    catch(e){if(e&&e.name==='AbortError')return true;return false;}
+  }
+  return false;
+}
 
 // ── PREMIUM STATE MACHINE ──────────────────────────────────────
 const TRIAL_DAYS=7;
@@ -5385,11 +5447,10 @@ function shareIngredients(){
   if(!list.length)return;
   const label=curLang==='en'?`🛒 Shopping list for ${mealName(_meal)}:`:`🛒 Λίστα αγορών για ${mealName(_meal)}:`;
   const text=`${label}\n${list.map(i=>`• ${i}`).join('\n')}\n\n📱 FoodDaily`;
-  if(navigator.share){
-    navigator.share({text}).catch(()=>{});
-  } else {
+  fdShare({text}).then(ok=>{
+    if(ok)return;
     navigator.clipboard?.writeText(text).then(()=>showToast(curLang==='en'?'📋 Copied!':'📋 Αντιγράφηκε!')).catch(()=>showToast(curLang==='en'?'Not supported':'Δεν υποστηρίζεται'));
-  }
+  });
 }
 
 // ── NOTES ──────────────────────────────────────────────────────
@@ -5470,8 +5531,11 @@ async function submitUserRecipe(){
     const btn=document.getElementById('ur-submit');if(btn)btn.disabled=true;
   };
 
-  // Primary: Web Share API — passes Unicode directly, attaches photo if present
-  if(navigator.share){
+  // Primary: native κοινοποίηση (Capacitor) ή Web Share API
+  if(sharePlugin()){
+    const ok=await fdShare({title:subject,text:`Αποστολή σε: fooddaily.app@gmail.com\n\n${body}`});
+    if(ok){clearForm();closeUrform();showToast(curLang==='en'?'📤 Thanks for the recipe!':'📤 Ευχαριστούμε για τη συνταγή!');return;}
+  }else if(navigator.share){
     try{
       const shareData={title:subject,text:`Αποστολή σε: fooddaily.app@gmail.com\n\n${body}`};
       if(_urPhoto&&navigator.canShare&&navigator.canShare({files:[_urPhoto]})){
@@ -6720,8 +6784,7 @@ function shareRecipe(id){
       prompt(en?'Copy the link:':'Αντίγραψε τον σύνδεσμο:',url);
     }
   }
-  if(navigator.share){navigator.share({title:mealName(m),text,url}).catch(_copyFallback);}
-  else _copyFallback();
+  fdShare({title:mealName(m),text,url}).then(ok=>{if(!ok)_copyFallback();});
 }
 
 // ── COOK TONIGHT ───────────────────────────────────────────────
