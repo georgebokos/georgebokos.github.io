@@ -1119,14 +1119,6 @@ body{font-family:'Inter',-apple-system,sans-serif;background:var(--bg);color:var
     <div style="font-size:12px;font-weight:600;color:var(--t3);letter-spacing:.06em;text-transform:uppercase;padding:18px 0 4px" data-i18n="set_voice_hdr">🔊 Φωνή εκφώνησης</div>
     <div id="voice-wrap" style="background:var(--lt);border-radius:14px;padding:12px 14px;">
       <div id="voice-list" style="display:flex;flex-direction:column;gap:7px;"></div>
-      <div class="nmod-row" style="margin-top:12px">
-        <label data-i18n="set_voice_speed">Ταχύτητα</label>
-        <div class="srv-stepper">
-          <button class="srv-btn" onclick="changeTtsRate(-1)">−</button>
-          <span id="tts-rate-val" style="font-weight:700;font-size:15px;min-width:38px;text-align:center">1.0×</span>
-          <button class="srv-btn" onclick="changeTtsRate(1)">+</button>
-        </div>
-      </div>
     </div>
     <div style="font-size:12px;font-weight:600;color:var(--t3);letter-spacing:.06em;text-transform:uppercase;padding:18px 0 4px" data-i18n="ab_hdr">ℹ️ Σχετικά με την εφαρμογή</div>
     <div style="background:var(--lt);border-radius:14px;padding:14px 16px;font-size:13.5px;color:var(--tx);line-height:1.6;">
@@ -1419,7 +1411,7 @@ const TR={
     wp_sub:'Επίλεξε φαγητό για κάθε μέρα — θα σου στέλνουμε έξυπνες υπενθυμίσεις για προετοιμασία!',
     set_t:'⚙️ Ρυθμίσεις',set_srv:'Μερίδες',set_srv_def:'Προεπιλογή μερίδων',
     set_reminders:'🔔 Υπενθυμίσεις',set_enable:'Ενεργοποίηση',set_time:'Ώρα',set_save:'Αποθήκευση',
-    set_voice_hdr:'🔊 Φωνή εκφώνησης',set_voice_speed:'Ταχύτητα',
+    set_voice_hdr:'🔊 Φωνή εκφώνησης',
     ab_hdr:'ℹ️ Σχετικά με την εφαρμογή',
     ab_intro:'Πάνω από <b>200 αυθεντικές μεσογειακές & ελληνικές συνταγές</b> με πραγματικές φωτογραφίες — κάθε μέρα μια νέα ιδέα για το τραπέζι σου, χωρίς να σκέφτεσαι «τι θα φάμε σήμερα».',
     ab_strengths:'⭐ Δυνατά σημεία',
@@ -1504,7 +1496,7 @@ const TR={
     wp_sub:"Pick a meal for each day — we'll send you smart prep reminders!",
     set_t:'⚙️ Settings',set_srv:'Servings',set_srv_def:'Default servings',
     set_reminders:'🔔 Reminders',set_enable:'Enable',set_time:'Time',set_save:'Save',
-    set_voice_hdr:'🔊 Narration voice',set_voice_speed:'Speed',
+    set_voice_hdr:'🔊 Narration voice',
     ab_hdr:'ℹ️ About the app',
     ab_intro:'Over <b>200 authentic Mediterranean & Greek recipes</b> with real photos — a new idea for your table every day, without wondering "what should we eat today".',
     ab_strengths:'⭐ Highlights',
@@ -4859,17 +4851,8 @@ async function nativeStopTTS(){
 }
 
 // ── ΕΠΙΛΟΓΗ ΦΩΝΗΣ ──────────────────────────────────────────────
-function ttsRate(){
-  const r=parseFloat(localStorage.getItem('fd_tts_rate'));
-  return (isFinite(r)&&r>=0.5&&r<=1.5)?r:0.9;
-}
-function changeTtsRate(d){
-  let r=Math.round((ttsRate()+d*0.1)*10)/10;
-  r=Math.max(0.5,Math.min(1.5,r));
-  localStorage.setItem('fd_tts_rate',String(r));
-  const el=document.getElementById('tts-rate-val');
-  if(el)el.textContent=r.toFixed(1)+'×';
-}
+// Σταθερή ταχύτητα εκφώνησης
+function ttsRate(){return 1.1;}
 // Κανονικοποιημένη λίστα φωνών για την τρέχουσα γλώσσα
 async function ttsVoiceList(){
   const pref=curLang==='en'?'en':'el';
@@ -6357,7 +6340,6 @@ function openNmod(){
   const ds=parseInt(localStorage.getItem('fd_default_srv'))||2;
   const psvEl=document.getElementById('prof-srv-val');if(psvEl)psvEl.textContent=ds;
   // Φωνή εκφώνησης
-  const rv=document.getElementById('tts-rate-val');if(rv)rv.textContent=ttsRate().toFixed(1)+'×';
   try{
     renderVoiceList();
     // Στον browser οι φωνές φορτώνονται ασύγχρονα
