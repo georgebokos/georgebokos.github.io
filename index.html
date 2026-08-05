@@ -1119,7 +1119,7 @@ body{font-family:'Inter',-apple-system,sans-serif;background:var(--bg);color:var
     <div style="font-size:12px;font-weight:600;color:var(--t3);letter-spacing:.06em;text-transform:uppercase;padding:18px 0 4px" data-i18n="ab_hdr">ℹ️ Σχετικά με την εφαρμογή</div>
     <div style="background:var(--lt);border-radius:14px;padding:14px 16px;font-size:13.5px;color:var(--tx);line-height:1.6;">
       <div style="font-weight:800;font-size:15px;margin-bottom:8px;">🍽️ FoodDaily</div>
-      <p style="margin:0 0 8px" data-i18n="ab_intro">Πάνω από <b>200 αυθεντικές μεσογειακές & ελληνικές συνταγές</b> με πραγματικές φωτογραφίες — κάθε μέρα μια νέα ιδέα για το τραπέζι σου, χωρίς να σκέφτεσαι «τι θα φάμε σήμερα».</p>
+      <p style="margin:0 0 8px" data-i18n="ab_intro">Πάνω από <b>295 αυθεντικές μεσογειακές & ελληνικές συνταγές</b> με πραγματικές φωτογραφίες — κάθε μέρα μια νέα ιδέα για το τραπέζι σου, χωρίς να σκέφτεσαι «τι θα φάμε σήμερα».</p>
       <div style="font-weight:700;font-size:12px;color:var(--t3);letter-spacing:.05em;text-transform:uppercase;margin:12px 0 4px;" data-i18n="ab_strengths">⭐ Δυνατά σημεία</div>
       <div style="display:flex;flex-direction:column;gap:6px;">
         <div data-i18n="ab_s1">📅 <b>Εβδομαδιαίο πλάνο γευμάτων</b> — έτοιμο μενού για όλη τη βδομάδα με ένα πάτημα & επανατυχαιοποίηση ανά ημέρα</div>
@@ -1408,7 +1408,7 @@ const TR={
     set_t:'⚙️ Ρυθμίσεις',set_srv:'Μερίδες',set_srv_def:'Προεπιλογή μερίδων',
     set_reminders:'🔔 Υπενθυμίσεις',set_enable:'Ενεργοποίηση',set_time:'Ώρα',set_save:'Αποθήκευση',
     ab_hdr:'ℹ️ Σχετικά με την εφαρμογή',
-    ab_intro:'Πάνω από <b>200 αυθεντικές μεσογειακές & ελληνικές συνταγές</b> με πραγματικές φωτογραφίες — κάθε μέρα μια νέα ιδέα για το τραπέζι σου, χωρίς να σκέφτεσαι «τι θα φάμε σήμερα».',
+    ab_intro:'Πάνω από <b>{N} αυθεντικές μεσογειακές & ελληνικές συνταγές</b> με πραγματικές φωτογραφίες — κάθε μέρα μια νέα ιδέα για το τραπέζι σου, χωρίς να σκέφτεσαι «τι θα φάμε σήμερα».',
     ab_strengths:'⭐ Δυνατά σημεία',
     ab_s1:'📅 <b>Εβδομαδιαίο πλάνο γευμάτων</b> — έτοιμο μενού για όλη τη βδομάδα με ένα πάτημα & επανατυχαιοποίηση ανά ημέρα',
     ab_s2:'🤖 <b>Έξυπνες καθημερινές προτάσεις</b> — προσαρμόζονται στην εποχή, τις προτιμήσεις σου και δεν επαναλαμβάνονται',
@@ -1492,7 +1492,7 @@ const TR={
     set_t:'⚙️ Settings',set_srv:'Servings',set_srv_def:'Default servings',
     set_reminders:'🔔 Reminders',set_enable:'Enable',set_time:'Time',set_save:'Save',
     ab_hdr:'ℹ️ About the app',
-    ab_intro:'Over <b>200 authentic Mediterranean & Greek recipes</b> with real photos — a new idea for your table every day, without wondering "what should we eat today".',
+    ab_intro:'Over <b>{N} authentic Mediterranean & Greek recipes</b> with real photos — a new idea for your table every day, without wondering "what should we eat today".',
     ab_strengths:'⭐ Highlights',
     ab_s1:'📅 <b>Weekly meal plan</b> — a ready menu for the whole week with one tap & per-day reshuffle',
     ab_s2:'🤖 <b>Smart daily suggestions</b> — adapt to the season, your preferences, and never repeat',
@@ -6201,7 +6201,8 @@ function applyLangTexts(lang){
   const rb=document.querySelector('.reshuffle');if(rb)rb.textContent=t('reshuf');
   const bt=document.querySelector('.bal-t');if(bt)bt.textContent=t('bal_t');
   // Update all data-i18n elements
-  document.querySelectorAll('[data-i18n]').forEach(el=>{const k=el.getAttribute('data-i18n');const v=t(k);if(v&&v!==k){if(v.includes('<'))el.innerHTML=v;else el.textContent=v;}});
+  const _N=Object.keys(MEALS).length;
+  document.querySelectorAll('[data-i18n]').forEach(el=>{const k=el.getAttribute('data-i18n');let v=t(k);if(v&&v!==k){if(typeof v==='string'&&v.includes('{N}'))v=v.replace(/\{N\}/g,_N);if(v.includes('<'))el.innerHTML=v;else el.textContent=v;}});
   document.querySelectorAll('[data-i18n-ph]').forEach(el=>{const k=el.getAttribute('data-i18n-ph');const v=t(k);if(v&&v!==k)el.placeholder=v;});
   document.querySelectorAll('[data-i18n-title]').forEach(el=>{const k=el.getAttribute('data-i18n-title');const v=t(k);if(v&&v!==k)el.title=v;});
   document.querySelectorAll('[data-i18n-alt]').forEach(el=>{const k=el.getAttribute('data-i18n-alt');const v=t(k);if(v&&v!==k)el.alt=v;});
