@@ -1078,10 +1078,7 @@ body{font-family:'Inter',-apple-system,sans-serif;background:var(--bg);color:var
     </div>
     <div class="prof-section" id="prof-uid-sect" style="display:none">
       <div class="prof-sect-title" data-i18n="prof_uid">🆔 Κωδικός χρήστη</div>
-      <div style="display:flex;align-items:center;gap:8px">
-        <code id="prof-uid" style="flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;background:var(--lt);border:1.5px solid var(--bd);border-radius:10px;padding:9px 11px;font-size:12px;color:var(--tx)">—</code>
-        <button onclick="copyUserId()" style="flex:0 0 auto;border:1.5px solid var(--pri);background:transparent;color:var(--pri);border-radius:10px;padding:9px 13px;font-size:12.5px;font-weight:700;cursor:pointer" data-i18n="prof_uid_copy">Αντιγραφή</button>
-      </div>
+      <code id="prof-uid" style="display:block;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;background:var(--lt);border:1.5px solid var(--bd);border-radius:10px;padding:9px 11px;font-size:12px;color:var(--tx);user-select:text;-webkit-user-select:text;">—</code>
     </div>
     <div class="prof-section">
       <div class="prof-sect-title" data-i18n="prof_dislikes">Δεν μου αρέσει / Αποφεύγω</div>
@@ -1413,7 +1410,7 @@ const TR={
     wp_title:'📅 Εβδομαδιαίο Πρόγραμμα',wp_rand:'🎲 Τυχαία',
     wp_sub:'Επίλεξε φαγητό για κάθε μέρα — θα σου στέλνουμε έξυπνες υπενθυμίσεις για προετοιμασία!',
     set_t:'⚙️ Ρυθμίσεις',set_srv:'Μερίδες',set_srv_def:'Προεπιλογή μερίδων',
-    prof_uid:'🆔 Κωδικός χρήστη',prof_uid_copy:'Αντιγραφή',
+    prof_uid:'🆔 Κωδικός χρήστη',
     set_reminders:'🔔 Υπενθυμίσεις',set_enable:'Ενεργοποίηση',set_time:'Ώρα',set_save:'Αποθήκευση',
     ab_hdr:'ℹ️ Σχετικά με την εφαρμογή',
     ab_intro:'Πάνω από <b>{N} αυθεντικές μεσογειακές & ελληνικές συνταγές</b> με πραγματικές φωτογραφίες — κάθε μέρα μια νέα ιδέα για το τραπέζι σου, χωρίς να σκέφτεσαι «τι θα φάμε σήμερα».',
@@ -1498,7 +1495,7 @@ const TR={
     wp_title:'📅 Weekly Plan',wp_rand:'🎲 Random',
     wp_sub:"Pick a meal for each day — we'll send you smart prep reminders!",
     set_t:'⚙️ Settings',set_srv:'Servings',set_srv_def:'Default servings',
-    prof_uid:'🆔 User code',prof_uid_copy:'Copy',
+    prof_uid:'🆔 User code',
     set_reminders:'🔔 Reminders',set_enable:'Enable',set_time:'Time',set_save:'Save',
     ab_hdr:'ℹ️ About the app',
     ab_intro:'Over <b>{N} authentic Mediterranean & Greek recipes</b> with real photos — a new idea for your table every day, without wondering "what should we eat today".',
@@ -6958,6 +6955,21 @@ async function copyUserId(){
     if(!ok)showToast(en?'⚠️ Could not copy. Select the code manually.':'⚠️ Δεν αντιγράφηκε. Επίλεξε τον κωδικό χειροκίνητα.');
   }
 }
+// Παρατεταμένο πάτημα στον κωδικό → αντιγραφή
+(function(){
+  let _t=null;
+  const start=()=>{clearTimeout(_t);_t=setTimeout(()=>{_t=null;copyUserId();},550);};
+  const cancel=()=>{clearTimeout(_t);_t=null;};
+  document.addEventListener('DOMContentLoaded',()=>{
+    const el=document.getElementById('prof-uid');
+    if(!el)return;
+    el.addEventListener('touchstart',start,{passive:true});
+    ['touchend','touchmove','touchcancel'].forEach(ev=>el.addEventListener(ev,cancel,{passive:true}));
+    el.addEventListener('mousedown',start);
+    ['mouseup','mouseleave'].forEach(ev=>el.addEventListener(ev,cancel));
+    el.addEventListener('contextmenu',e=>{e.preventDefault();cancel();copyUserId();});
+  });
+})();
 function closeProfile(){
   document.getElementById('prof-sheet').classList.remove('show');
   document.body.style.overflow='';
