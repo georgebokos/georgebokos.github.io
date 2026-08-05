@@ -1080,6 +1080,14 @@ body{font-family:'Inter',-apple-system,sans-serif;background:var(--bg);color:var
       <div class="prof-sect-title" data-i18n="prof_dislikes">Δεν μου αρέσει / Αποφεύγω</div>
       <div class="dislike-grid" id="dislike-grid"></div>
     </div>
+    <div class="prof-section" id="prof-uid-sect" style="display:none">
+      <div class="prof-sect-title" data-i18n="prof_uid">🆔 Κωδικός χρήστη</div>
+      <div style="font-size:12.5px;color:var(--t2);line-height:1.5;margin-bottom:8px" data-i18n="prof_uid_hint">Στείλε αυτόν τον κωδικό στον δημιουργό της εφαρμογής αν σου έχει υποσχεθεί δωρεάν πρόσβαση Premium.</div>
+      <div style="display:flex;align-items:center;gap:8px">
+        <code id="prof-uid" style="flex:1;min-width:0;overflow:hidden;text-overflow:ellipsis;white-space:nowrap;background:var(--lt);border:1.5px solid var(--bd);border-radius:10px;padding:9px 11px;font-size:12px;color:var(--tx)">—</code>
+        <button onclick="copyUserId()" style="flex:0 0 auto;border:1.5px solid var(--pri);background:transparent;color:var(--pri);border-radius:10px;padding:9px 13px;font-size:12.5px;font-weight:700;cursor:pointer" data-i18n="prof_uid_copy">Αντιγραφή</button>
+      </div>
+    </div>
     <div class="prof-prem-note" id="prof-prem-note"></div>
   </div>
 </div>
@@ -1406,6 +1414,7 @@ const TR={
     wp_title:'📅 Εβδομαδιαίο Πρόγραμμα',wp_rand:'🎲 Τυχαία',
     wp_sub:'Επίλεξε φαγητό για κάθε μέρα — θα σου στέλνουμε έξυπνες υπενθυμίσεις για προετοιμασία!',
     set_t:'⚙️ Ρυθμίσεις',set_srv:'Μερίδες',set_srv_def:'Προεπιλογή μερίδων',
+    prof_uid:'🆔 Κωδικός χρήστη',prof_uid_copy:'Αντιγραφή',prof_uid_hint:'Στείλε αυτόν τον κωδικό στον δημιουργό της εφαρμογής αν σου έχει υποσχεθεί δωρεάν πρόσβαση Premium.',
     set_reminders:'🔔 Υπενθυμίσεις',set_enable:'Ενεργοποίηση',set_time:'Ώρα',set_save:'Αποθήκευση',
     ab_hdr:'ℹ️ Σχετικά με την εφαρμογή',
     ab_intro:'Πάνω από <b>{N} αυθεντικές μεσογειακές & ελληνικές συνταγές</b> με πραγματικές φωτογραφίες — κάθε μέρα μια νέα ιδέα για το τραπέζι σου, χωρίς να σκέφτεσαι «τι θα φάμε σήμερα».',
@@ -1490,6 +1499,7 @@ const TR={
     wp_title:'📅 Weekly Plan',wp_rand:'🎲 Random',
     wp_sub:"Pick a meal for each day — we'll send you smart prep reminders!",
     set_t:'⚙️ Settings',set_srv:'Servings',set_srv_def:'Default servings',
+    prof_uid:'🆔 User code',prof_uid_copy:'Copy',prof_uid_hint:'Send this code to the app creator if you have been promised free Premium access.',
     set_reminders:'🔔 Reminders',set_enable:'Enable',set_time:'Time',set_save:'Save',
     ab_hdr:'ℹ️ About the app',
     ab_intro:'Over <b>{N} authentic Mediterranean & Greek recipes</b> with real photos — a new idea for your table every day, without wondering "what should we eat today".',
@@ -6916,8 +6926,38 @@ function renderDislikeGrid(){
 function openProfile(){
   closeOvInstant();
   renderDislikeGrid();
+  showUserId();
   document.getElementById('prof-sheet').classList.add('show');
   document.body.style.overflow='hidden';
+}
+// Κωδικός χρήστη RevenueCat — εμφανίζεται μόνο στη native έκδοση, ώστε ο
+// δημιουργός να μπορεί να χαρίσει Premium σε συγκεκριμένα άτομα.
+let _uidCache='';
+async function showUserId(){
+  const sect=document.getElementById('prof-uid-sect');
+  if(!sect)return;
+  if(!hasNativeBilling()){sect.style.display='none';return;}
+  sect.style.display='';
+  const el=document.getElementById('prof-uid');
+  if(_uidCache){if(el)el.textContent=_uidCache;return;}
+  try{
+    const P=await rcInit();
+    if(!P){sect.style.display='none';return;}
+    const r=await P.getAppUserID();
+    _uidCache=(r&&r.appUserID)||'';
+    if(el)el.textContent=_uidCache||'—';
+  }catch(e){if(el)el.textContent='—';}
+}
+async function copyUserId(){
+  const en=curLang==='en';
+  if(!_uidCache){showToast(en?'Code not available yet.':'Ο κωδικός δεν είναι διαθέσιμος ακόμα.');return;}
+  try{
+    await navigator.clipboard.writeText(_uidCache);
+    showToast(en?'📋 Code copied!':'📋 Ο κωδικός αντιγράφηκε!');
+  }catch(e){
+    const ok=await fdShare({title:'FoodDaily',text:_uidCache});
+    if(!ok)showToast(en?'⚠️ Could not copy. Select the code manually.':'⚠️ Δεν αντιγράφηκε. Επίλεξε τον κωδικό χειροκίνητα.');
+  }
 }
 function closeProfile(){
   document.getElementById('prof-sheet').classList.remove('show');
