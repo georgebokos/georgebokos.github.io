@@ -27,7 +27,7 @@ body{font-family:'Inter',-apple-system,sans-serif;background:var(--bg);color:var
 .hero-brand-l{display:flex;align-items:center;gap:9px;}
 .hero-logo{width:38px;height:38px;border-radius:11px;overflow:hidden;border:1.5px solid rgba(255,255,255,.26);box-shadow:0 2px 8px rgba(0,0,0,.25);flex-shrink:0;}
 .hero-logo img{width:100%;height:100%;display:block;}
-.hero-name{font-size:20px;font-weight:800;color:#fff;letter-spacing:-.3px;text-shadow:0 1px 8px rgba(0,0,0,.35);}
+.hero-name{font-size:20px;font-weight:800;color:#fff;letter-spacing:-.3px;text-shadow:0 1px 8px rgba(0,0,0,.35);user-select:none;-webkit-user-select:none;-webkit-touch-callout:none;}
 .hero-btns{display:flex;gap:7px;}
 .hero-btn{width:34px;height:34px;border-radius:50%;border:1.5px solid rgba(255,255,255,.22);background:rgba(255,255,255,.14);backdrop-filter:blur(8px);font-size:16px;cursor:pointer;display:flex;align-items:center;justify-content:center;color:#fff;transition:background .2s;}
 .hero-btn:hover{background:rgba(255,255,255,.28);}
@@ -7029,6 +7029,9 @@ async function askCustomUserId(){
       ['touchend','touchmove','touchcancel'].forEach(ev=>hn.addEventListener(ev,dCancel,{passive:true}));
       hn.addEventListener('mousedown',dStart);
       ['mouseup','mouseleave'].forEach(ev=>hn.addEventListener(ev,dCancel));
+      // Απόκρυψη του μενού επιλογής κειμένου του Android, που μπλόκαρε το διαγνωστικό
+      hn.addEventListener('contextmenu',e=>{e.preventDefault();dCancel();if(hasNativeBilling())rcDiagnostics();});
+      hn.addEventListener('selectstart',e=>e.preventDefault());
     }
     const el=document.getElementById('prof-uid');
     if(!el)return;
