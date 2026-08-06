@@ -696,7 +696,7 @@ body{font-family:'Inter',-apple-system,sans-serif;background:var(--bg);color:var
     <div class="hero-brand">
       <div class="hero-brand-l">
         <div class="hero-logo"><img src="/icon-192.png" alt="FoodDaily"></div>
-        <span class="hero-name">FoodDaily</span>
+        <span class="hero-name" id="hero-name" onclick="_brandTap()">FoodDaily</span>
       </div>
       <div class="hero-btns">
         <button id="dark-btn" class="hero-btn" onclick="toggleDark()" title="Dark mode">🌙</button>
@@ -5264,6 +5264,8 @@ async function initBackButton(){
   try{
     const App=window.Capacitor&&window.Capacitor.Plugins&&window.Capacitor.Plugins.App;
     if(!App||!App.addListener)return;
+    // Κάθε φορά που η εφαρμογή επανέρχεται στο προσκήνιο, ξαναέλεγξε τη συνδρομή
+    App.addListener('appStateChange',st=>{if(st&&st.isActive)try{rcSyncOnStart();}catch(e){}});
     let _lastBack=0;
     App.addListener('backButton',()=>{
       if(fdHandleBack())return;
@@ -6955,6 +6957,41 @@ async function copyUserId(){
     if(!ok)showToast(en?'⚠️ Could not copy. Select the code manually.':'⚠️ Δεν αντιγράφηκε. Επίλεξε τον κωδικό χειροκίνητα.');
   }
 }
+// ── ΣΤΑΘΕΡΗ ΤΑΥΤΟΤΗΤΑ ΧΡΗΣΤΗ ──────────────────────────────────
+// 5 γρήγορα πατήματα στο λογότυπο → ορισμός μόνιμου κωδικού, ώστε το
+// δωρεάν Premium να επιβιώνει σε επανεγκαταστάσεις και άλλες συσκευές.
+let _brandTaps=0,_brandTimer=null;
+function _brandTap(){
+  if(!hasNativeBilling())return;
+  _brandTaps++;
+  clearTimeout(_brandTimer);
+  _brandTimer=setTimeout(()=>{_brandTaps=0;},1200);
+  if(_brandTaps>=5){_brandTaps=0;clearTimeout(_brandTimer);askCustomUserId();}
+}
+async function askCustomUserId(){
+  const en=curLang==='en';
+  const cur=(_uidCache&&_uidCache.indexOf('$RCAnonymousID')===0)?'':_uidCache;
+  const val=prompt(en
+    ?'Permanent user code (leave empty to reset to anonymous):'
+    :'Μόνιμος κωδικός χρήστη (άφησέ το κενό για επαναφορά σε ανώνυμο):',cur||'');
+  if(val===null)return;
+  const P=await rcInit();
+  if(!P)return;
+  const id=val.trim();
+  try{
+    const r=id?await P.logIn({appUserID:id}):await P.logOut();
+    _uidCache='';
+    await showUserId();
+    const unlocked=applyEntitlement(r&&r.customerInfo);
+    showToast(id
+      ?(unlocked?(en?'✅ Signed in — Premium active':'✅ Σύνδεση — το Premium ενεργοποιήθηκε')
+                :(en?`Signed in as ${id}`:`Σύνδεση ως ${id}`))
+      :(en?'Reset to anonymous':'Επαναφορά σε ανώνυμο'));
+  }catch(e){
+    showToast(en?'⚠️ Could not change the code.':'⚠️ Δεν άλλαξε ο κωδικός.');
+  }
+}
+
 // Παρατεταμένο πάτημα στον κωδικό → αντιγραφή
 (function(){
   let _t=null;
