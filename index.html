@@ -6978,27 +6978,6 @@ function _brandTap(){
   _brandTimer=setTimeout(()=>{_brandTaps=0;},1200);
   if(_brandTaps>=5){_brandTaps=0;clearTimeout(_brandTimer);askCustomUserId();}
 }
-// Διαγνωστικό: τι ακριβώς επιστρέφει το RevenueCat (παρατεταμένο πάτημα στο λογότυπο)
-async function rcDiagnostics(){
-  const P=await rcInit();
-  if(!P){alert('RevenueCat: δεν είναι διαθέσιμο (δεν τρέχει native έκδοση).');return;}
-  let out='';
-  try{
-    const uid=await P.getAppUserID();
-    out+='App User ID:\n'+((uid&&uid.appUserID)||'—')+'\n\n';
-  }catch(e){out+='getAppUserID σφάλμα: '+e.message+'\n\n';}
-  try{
-    const {customerInfo}=await P.getCustomerInfo();
-    const act=(customerInfo&&customerInfo.entitlements&&customerInfo.entitlements.active)||{};
-    const all=(customerInfo&&customerInfo.entitlements&&customerInfo.entitlements.all)||{};
-    out+='ΕΝΕΡΓΑ entitlements ('+Object.keys(act).length+'):\n'+(Object.keys(act).map(k=>'  «'+k+'»').join('\n')||'  (κανένα)')+'\n\n';
-    out+='ΟΛΑ τα entitlements ('+Object.keys(all).length+'):\n'+(Object.keys(all).map(k=>'  «'+k+'» active='+(all[k]&&all[k].isActive)).join('\n')||'  (κανένα)')+'\n\n';
-    out+='Ψάχνουμε: «'+RC_ENTITLEMENT+'»\n';
-    out+='Ταιριάζει: '+(activeEntitlement(customerInfo)?'ΝΑΙ':'ΟΧΙ')+'\n';
-    out+='fd_premium: '+localStorage.getItem('fd_premium');
-  }catch(e){out+='getCustomerInfo σφάλμα: '+(e&&e.message);}
-  alert(out);
-}
 async function askCustomUserId(){
   const en=curLang==='en';
   const cur=(_uidCache&&_uidCache.indexOf('$RCAnonymousID')===0)?'':_uidCache;
@@ -7028,19 +7007,11 @@ async function askCustomUserId(){
   let _t=null;
   const start=()=>{clearTimeout(_t);_t=setTimeout(()=>{_t=null;copyUserId();},550);};
   const cancel=()=>{clearTimeout(_t);_t=null;};
-  // Παρατεταμένο πάτημα στο λογότυπο → διαγνωστικό
-  let _d=null;
-  const dStart=()=>{clearTimeout(_d);_d=setTimeout(()=>{_d=null;if(hasNativeBilling())rcDiagnostics();},900);};
-  const dCancel=()=>{clearTimeout(_d);_d=null;};
   document.addEventListener('DOMContentLoaded',()=>{
+    // Το λογότυπο δεν πρέπει να ανοίγει το μενού επιλογής κειμένου του Android
     const hn=document.getElementById('hero-name');
     if(hn){
-      hn.addEventListener('touchstart',dStart,{passive:true});
-      ['touchend','touchmove','touchcancel'].forEach(ev=>hn.addEventListener(ev,dCancel,{passive:true}));
-      hn.addEventListener('mousedown',dStart);
-      ['mouseup','mouseleave'].forEach(ev=>hn.addEventListener(ev,dCancel));
-      // Απόκρυψη του μενού επιλογής κειμένου του Android, που μπλόκαρε το διαγνωστικό
-      hn.addEventListener('contextmenu',e=>{e.preventDefault();dCancel();if(hasNativeBilling())rcDiagnostics();});
+      hn.addEventListener('contextmenu',e=>e.preventDefault());
       hn.addEventListener('selectstart',e=>e.preventDefault());
     }
     const el=document.getElementById('prof-uid');
