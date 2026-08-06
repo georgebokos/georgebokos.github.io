@@ -610,6 +610,10 @@ body{font-family:'Inter',-apple-system,sans-serif;background:var(--bg);color:var
 [data-theme="dark"] .dislike-chip.on{background:#2A0A0A;border-color:#EF4444;color:#FCA5A5;}
 .dislike-chip-ico{font-size:20px;}
 .prof-prem-note{font-size:12px;color:var(--t3);text-align:center;padding:8px 16px 16px;}
+.prof-sect-sub{font-size:12px;font-weight:600;color:var(--t3);letter-spacing:.05em;text-transform:uppercase;margin:14px 0 7px;}
+.tsnd-row{display:flex;flex-wrap:wrap;gap:7px;}
+.tsnd{border:1.5px solid var(--bd);background:var(--w);color:var(--tx);border-radius:20px;padding:8px 14px;font-size:13px;font-weight:600;cursor:pointer;-webkit-tap-highlight-color:transparent;transition:all .15s;}
+.tsnd.on{border-color:var(--pri);background:rgba(58,117,88,.10);color:var(--pri);font-weight:800;}
 /* #21 Vegan badge */
 .mc-vegan{position:absolute;top:7px;left:7px;background:rgba(27,94,32,.88);color:#fff;font-size:10px;font-weight:700;padding:2px 8px;border-radius:20px;pointer-events:none;}
 .ov-vegan{display:inline-flex;align-items:center;gap:4px;background:#E8F5E9;color:#1B5E20;font-size:11px;font-weight:700;padding:4px 12px;border-radius:20px;border:1px solid #A5D6A7;margin:.25rem 1.5rem .5rem;}
@@ -1084,6 +1088,12 @@ body{font-family:'Inter',-apple-system,sans-serif;background:var(--bg);color:var
       <div class="prof-sect-title" data-i18n="prof_dislikes">Δεν μου αρέσει / Αποφεύγω</div>
       <div class="dislike-grid" id="dislike-grid"></div>
     </div>
+    <div class="prof-section">
+      <div class="prof-sect-title" data-i18n="prof_timer">⏱️ Ήχος χρονομέτρου</div>
+      <div class="tsnd-row" id="tsnd-list"></div>
+      <div class="prof-sect-sub" data-i18n="prof_timer_dur">Διάρκεια ήχου</div>
+      <div class="tsnd-row" id="tdur-list"></div>
+    </div>
     <div class="prof-prem-note" id="prof-prem-note"></div>
   </div>
 </div>
@@ -1410,6 +1420,7 @@ const TR={
     wp_title:'📅 Εβδομαδιαίο Πρόγραμμα',wp_rand:'🎲 Τυχαία',
     wp_sub:'Επίλεξε φαγητό για κάθε μέρα — θα σου στέλνουμε έξυπνες υπενθυμίσεις για προετοιμασία!',
     set_t:'⚙️ Ρυθμίσεις',set_srv:'Μερίδες',set_srv_def:'Προεπιλογή μερίδων',
+    prof_timer:'⏱️ Ήχος χρονομέτρου',prof_timer_dur:'Διάρκεια ήχου',
     prof_uid:'🆔 Κωδικός χρήστη',
     set_reminders:'🔔 Υπενθυμίσεις',set_enable:'Ενεργοποίηση',set_time:'Ώρα',set_save:'Αποθήκευση',
     ab_hdr:'ℹ️ Σχετικά με την εφαρμογή',
@@ -1495,6 +1506,7 @@ const TR={
     wp_title:'📅 Weekly Plan',wp_rand:'🎲 Random',
     wp_sub:"Pick a meal for each day — we'll send you smart prep reminders!",
     set_t:'⚙️ Settings',set_srv:'Servings',set_srv_def:'Default servings',
+    prof_timer:'⏱️ Timer sound',prof_timer_dur:'Sound duration',
     prof_uid:'🆔 User code',
     set_reminders:'🔔 Reminders',set_enable:'Enable',set_time:'Time',set_save:'Save',
     ab_hdr:'ℹ️ About the app',
@@ -5592,25 +5604,72 @@ function resetStepTimer(ev){
   _syncResetBtn(wrap,btn);
   showToast(curLang==='en'?'↺ Restored to the recipe time':'↺ Επαναφορά στον χρόνο της συνταγής');
 }
+// ── ΗΧΟΣ ΧΡΟΝΟΜΕΤΡΟΥ ───────────────────────────────────────────
+// Αφορά ΜΟΝΟ το χρονόμετρο μαγειρικής — η καθημερινή ειδοποίηση δεν επηρεάζεται.
+const TIMER_SOUNDS={
+  // κάθε μοτίβο: επαναλαμβανόμενος κύκλος από νότες [συχνότητα, έναρξη, διάρκεια]
+  bell:  {cycle:1.6, type:'sine',     notes:[[1046,0,.9],[1568,.05,.8]]},
+  alarm: {cycle:1.0, type:'square',   notes:[[880,0,.18],[1175,.22,.18],[880,.44,.18],[1175,.66,.18]]},
+  chime: {cycle:2.2, type:'triangle', notes:[[784,0,.5],[988,.28,.5],[1319,.56,.9]]},
+  beep:  {cycle:1.2, type:'sine',     notes:[[1200,0,.12],[1200,.2,.12],[1200,.4,.12]]}
+};
+function timerSound(){const v=localStorage.getItem('fd_timer_sound');return TIMER_SOUNDS[v]?v:'bell';}
+function timerAlarmDur(){const n=parseInt(localStorage.getItem('fd_timer_dur'));return [5,10,20,30].includes(n)?n:10;}
+let _alarmStop=null;
+function stopTimerAlarm(){
+  if(_alarmStop){try{_alarmStop();}catch(e){}_alarmStop=null;}
+  if(navigator.vibrate)try{navigator.vibrate(0);}catch(e){}
+}
+function playTimerAlarm(kind,seconds){
+  stopTimerAlarm();
+  kind=kind||timerSound();
+  seconds=seconds||timerAlarmDur();
+  const spec=TIMER_SOUNDS[kind]||TIMER_SOUNDS.bell;
+  const nodes=[];
+  try{
+    if(!_audioCtx)_audioCtx=new(window.AudioContext||window.webkitAudioContext)();
+    if(_audioCtx.state==='suspended')_audioCtx.resume();
+    const ctx=_audioCtx, t0=ctx.currentTime;
+    const cycles=Math.max(1,Math.ceil(seconds/spec.cycle));
+    for(let c=0;c<cycles;c++){
+      const base=t0+c*spec.cycle;
+      if(base-t0>=seconds)break;
+      spec.notes.forEach(([freq,off,len])=>{
+        const start=base+off;
+        if(start-t0>=seconds)return;
+        const o=ctx.createOscillator(), g=ctx.createGain();
+        o.connect(g);g.connect(ctx.destination);
+        o.type=spec.type;
+        o.frequency.setValueAtTime(freq,start);
+        g.gain.setValueAtTime(0.0001,start);
+        g.gain.exponentialRampToValueAtTime(.5,start+.015);
+        g.gain.exponentialRampToValueAtTime(.0001,start+len);
+        o.start(start);o.stop(start+len+.05);
+        nodes.push(o);
+      });
+    }
+  }catch(e){}
+  // Δόνηση σε όλη τη διάρκεια
+  if(navigator.vibrate){
+    try{
+      const pat=[];
+      while(pat.length<Math.min(60,Math.ceil(seconds/0.8)*2))pat.push(350,450);
+      navigator.vibrate(pat);
+    }catch(e){}
+  }
+  const to=setTimeout(()=>{_alarmStop=null;},seconds*1000);
+  _alarmStop=()=>{clearTimeout(to);nodes.forEach(o=>{try{o.stop();}catch(e){}});};
+  return _alarmStop;
+}
+// Οποιοδήποτε άγγιγμα σταματά τον συναγερμό
+['pointerdown','keydown'].forEach(ev=>document.addEventListener(ev,()=>{if(_alarmStop)stopTimerAlarm();},{capture:true}));
+
 function _timerFireDone(btn){
   clearInterval(_timerInterval);_timerInterval=null;_timerEndTime=null;_timerBtn=null;
   _activeTimerMealId='';_timerStepIdx_page=-1;
   _stopTimerKeepalive();
   btn.classList.remove('running');btn.classList.add('done');btn.textContent=curLang==='en'?'✓ Done!':'✓ Έτοιμο!';
-  if(navigator.vibrate)navigator.vibrate([300,150,300,150,300]);
-  // AudioContext was unlocked at button-tap time, so it plays reliably here
-  try{
-    if(_audioCtx&&_audioCtx.state==='suspended')_audioCtx.resume();
-    const ctx=_audioCtx||new(window.AudioContext||window.webkitAudioContext)();
-    [0,.35,.7].forEach(t=>{
-      const o=ctx.createOscillator(),g=ctx.createGain();
-      o.connect(g);g.connect(ctx.destination);
-      o.type='sine';o.frequency.value=880;
-      g.gain.setValueAtTime(.4,ctx.currentTime+t);
-      g.gain.exponentialRampToValueAtTime(.001,ctx.currentTime+t+.28);
-      o.start(ctx.currentTime+t);o.stop(ctx.currentTime+t+.3);
-    });
-  }catch(e){}
+  playTimerAlarm();
   _swSend({type:'SHOW_NOTIFICATION',title:'⏱️ FoodDaily — Timer',body:curLang==='en'?'Time is up! Check the next step.':'Ο χρόνος τελείωσε! Δες το επόμενο βήμα.',tag:'fd-timer'});
 }
 function startStepTimer(btn){
@@ -6931,9 +6990,35 @@ function renderDislikeGrid(){
   const note=document.getElementById('prof-prem-note');
   if(note)note.textContent=isPremium()?(curLang==='en'?'Dislikes filter your daily suggestions.':'Οι αντιπάθειες φιλτράρουν τις καθημερινές προτάσεις.'):(curLang==='en'?'💎 Dislikes are Premium — Try 7 days free.':'💎 Οι αντιπάθειες είναι Premium — Δοκίμασε 7 ημέρες δωρεάν.');
 }
+// Επιλογή ήχου και διάρκειας χρονομέτρου
+function renderTimerSound(){
+  const en=curLang==='en';
+  const NAMES=en
+    ?{bell:'🔔 Bell',alarm:'⏰ Alarm',chime:'🎐 Chime',beep:'📟 Beep'}
+    :{bell:'🔔 Καμπανάκι',alarm:'⏰ Ξυπνητήρι',chime:'🎐 Απαλό',beep:'📟 Μπιπ'};
+  const sl=document.getElementById('tsnd-list');
+  if(sl)sl.innerHTML=Object.keys(TIMER_SOUNDS).map(k=>
+    `<button class="tsnd${k===timerSound()?' on':''}" onclick="pickTimerSound('${k}')">${NAMES[k]}</button>`).join('');
+  const dl=document.getElementById('tdur-list');
+  if(dl)dl.innerHTML=[5,10,20,30].map(n=>
+    `<button class="tsnd${n===timerAlarmDur()?' on':''}" onclick="pickTimerDur(${n})">${n}″</button>`).join('');
+}
+function pickTimerSound(k){
+  localStorage.setItem('fd_timer_sound',k);
+  renderTimerSound();
+  // Σύντομη προεπισκόπηση, ανεξάρτητη από την επιλεγμένη διάρκεια
+  setTimeout(()=>playTimerAlarm(k,3),60);
+}
+function pickTimerDur(n){
+  localStorage.setItem('fd_timer_dur',n);
+  renderTimerSound();
+  showToast(curLang==='en'?`Timer sound: ${n} seconds`:`Ήχος χρονομέτρου: ${n} δευτερόλεπτα`);
+}
+
 function openProfile(){
   closeOvInstant();
   renderDislikeGrid();
+  renderTimerSound();
   showUserId();
   document.getElementById('prof-sheet').classList.add('show');
   document.body.style.overflow='hidden';
