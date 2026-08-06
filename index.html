@@ -4953,8 +4953,7 @@ function startTrial(){/* δεν χρησιμοποιείται πλέον — η
 function isPremium(){return getPremiumState()==='premium';}
 // Καταγραφή της κατάστασης συνδρομής όπως την επιστρέφει το RevenueCat
 function applyEntitlement(customerInfo){
-  let ent=null;
-  try{ent=customerInfo&&customerInfo.entitlements&&customerInfo.entitlements.active&&customerInfo.entitlements.active[RC_ENTITLEMENT];}catch(e){}
+  const ent=activeEntitlement(customerInfo);
   if(ent){
     localStorage.setItem('fd_premium','true');
     localStorage.setItem('fd_premium_period',ent.periodType||'');
@@ -5106,10 +5105,21 @@ async function rcInit(){
   }
   return P;
 }
-function rcHasEntitlement(customerInfo){
-  try{return !!(customerInfo&&customerInfo.entitlements&&customerInfo.entitlements.active&&customerInfo.entitlements.active[RC_ENTITLEMENT]);}
-  catch(e){return false;}
+// Εντοπισμός ενεργού δικαιώματος — ανθεκτικός σε διαφορές κενών/πεζών-κεφαλαίων
+// στο αναγνωριστικό του entitlement.
+function activeEntitlement(customerInfo){
+  try{
+    const act=(customerInfo&&customerInfo.entitlements&&customerInfo.entitlements.active)||{};
+    const keys=Object.keys(act);
+    if(!keys.length)return null;
+    const norm=x=>String(x).toLowerCase().replace(/\s+/g,' ').trim();
+    const want=norm(RC_ENTITLEMENT);
+    const hit=keys.find(k=>norm(k)===want);
+    // Το project έχει ένα μόνο entitlement, οπότε οποιοδήποτε ενεργό σημαίνει Premium
+    return act[hit||keys[0]]||null;
+  }catch(e){return null;}
 }
+function rcHasEntitlement(customerInfo){return !!activeEntitlement(customerInfo);}
 function applyPremiumUnlocked(){
   localStorage.setItem('fd_premium','true');
   try{renderTrialBanner();updatePremiumCTA(getPremiumState());}catch(e){}
@@ -6984,7 +6994,7 @@ async function rcDiagnostics(){
     out+='ΕΝΕΡΓΑ entitlements ('+Object.keys(act).length+'):\n'+(Object.keys(act).map(k=>'  «'+k+'»').join('\n')||'  (κανένα)')+'\n\n';
     out+='ΟΛΑ τα entitlements ('+Object.keys(all).length+'):\n'+(Object.keys(all).map(k=>'  «'+k+'» active='+(all[k]&&all[k].isActive)).join('\n')||'  (κανένα)')+'\n\n';
     out+='Ψάχνουμε: «'+RC_ENTITLEMENT+'»\n';
-    out+='Ταιριάζει: '+(act[RC_ENTITLEMENT]?'ΝΑΙ':'ΟΧΙ')+'\n';
+    out+='Ταιριάζει: '+(activeEntitlement(customerInfo)?'ΝΑΙ':'ΟΧΙ')+'\n';
     out+='fd_premium: '+localStorage.getItem('fd_premium');
   }catch(e){out+='getCustomerInfo σφάλμα: '+(e&&e.message);}
   alert(out);
