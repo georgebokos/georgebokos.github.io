@@ -1120,7 +1120,6 @@ body{font-family:'Inter',-apple-system,sans-serif;background:var(--bg);color:var
     <button class="rmod-yes" onclick="doRate()" data-i18n="rate_yes">⭐ Αξιολόγηση</button>
     <div class="rmod-2">
       <button onclick="rateLater()" data-i18n="rate_later">Αργότερα</button>
-      <button onclick="rateNever()" data-i18n="rate_never">Όχι, ευχαριστώ</button>
     </div>
   </div>
 </div>
@@ -1443,7 +1442,7 @@ const TR={
     wp_title:'📅 Εβδομαδιαίο Πρόγραμμα',wp_rand:'🎲 Τυχαία',
     wp_sub:'Επίλεξε φαγητό για κάθε μέρα — θα σου στέλνουμε έξυπνες υπενθυμίσεις για προετοιμασία!',
     set_t:'⚙️ Ρυθμίσεις',set_srv:'Μερίδες',set_srv_def:'Προεπιλογή μερίδων',
-    rate_t:'Σου αρέσει το FoodDaily;',rate_s:'Μια αξιολόγηση στο Play Store βοηθάει πραγματικά να μας βρουν κι άλλοι που ψάχνουν τι να μαγειρέψουν.',rate_yes:'⭐ Αξιολόγηση',rate_later:'Αργότερα',rate_never:'Όχι, ευχαριστώ',
+    rate_t:'Σου αρέσει το FoodDaily;',rate_s:'Μια αξιολόγηση στο Play Store βοηθάει πραγματικά να μας βρουν κι άλλοι που ψάχνουν τι να μαγειρέψουν.',rate_yes:'⭐ Αξιολόγηση',rate_later:'Αργότερα',
     prof_timer:'⏱️ Ήχος χρονομέτρου',prof_timer_dur:'Διάρκεια ήχου',
     prof_uid:'🆔 Κωδικός χρήστη',
     set_reminders:'🔔 Υπενθυμίσεις',set_enable:'Ενεργοποίηση',set_time:'Ώρα',set_save:'Αποθήκευση',
@@ -1530,7 +1529,7 @@ const TR={
     wp_title:'📅 Weekly Plan',wp_rand:'🎲 Random',
     wp_sub:"Pick a meal for each day — we'll send you smart prep reminders!",
     set_t:'⚙️ Settings',set_srv:'Servings',set_srv_def:'Default servings',
-    rate_t:'Enjoying FoodDaily?',rate_s:'A review on the Play Store genuinely helps other people find us when they are wondering what to cook.',rate_yes:'⭐ Rate the app',rate_later:'Later',rate_never:'No thanks',
+    rate_t:'Enjoying FoodDaily?',rate_s:'A review on the Play Store genuinely helps other people find us when they are wondering what to cook.',rate_yes:'⭐ Rate the app',rate_later:'Later',
     prof_timer:'⏱️ Timer sound',prof_timer_dur:'Sound duration',
     prof_uid:'🆔 User code',
     set_reminders:'🔔 Reminders',set_enable:'Enable',set_time:'Time',set_save:'Save',
@@ -4828,25 +4827,26 @@ function ovTab(tab){
 }
 
 // ── ΠΡΟΤΡΟΠΗ ΑΞΙΟΛΟΓΗΣΗΣ ───────────────────────────────────────
-// Εμφανίζεται διακριτικά, ΠΟΤΕ σε όποιον έχει αξιολογήσει ή έχει αρνηθεί.
-const RATE_MIN_OPENS=5;      // πόσες συνταγές πρέπει να έχει ανοίξει
-const RATE_MAX_SHOWS=3;      // πόσες φορές μπορεί να εμφανιστεί συνολικά
-const RATE_SNOOZE_DAYS=10;   // αναμονή μετά από «Αργότερα»
+// Εμφανίζεται μόνο σε όποιον δεν έχει αξιολογήσει. Μετά από «Αργότερα»,
+// οι συνταγές που απαιτούνται για την επόμενη εμφάνιση διπλασιάζονται:
+// 5 → 10 → 20 → 40 → 80 … ώστε να γίνεται σταδιακά πιο σπάνια.
+const RATE_MIN_OPENS=5;   // κατώφλι πρώτης εμφάνισης
+const RATE_MIN_GAP_H=24;  // ελάχιστη απόσταση σε ώρες μεταξύ δύο εμφανίσεων
 function _rNum(k){return parseInt(localStorage.getItem(k)||'0')||0;}
 function bumpRecipeOpens(){
-  if(localStorage.getItem('fd_rated')==='true'||localStorage.getItem('fd_rate_never')==='true')return;
+  if(localStorage.getItem('fd_rated')==='true')return;
   try{localStorage.setItem('fd_rate_opens',String(_rNum('fd_rate_opens')+1));}catch(e){}
 }
+// Πόσες συνταγές συνολικά χρειάζονται για την επόμενη εμφάνιση
+function rateThreshold(shows){return RATE_MIN_OPENS*Math.pow(2,shows);}
 function maybeAskRating(){
-  // Έχει ήδη αξιολογήσει ή έχει πει «όχι» — δεν ξαναρωτάμε ποτέ
+  // Έχει ήδη αξιολογήσει — δεν ξαναρωτάμε ποτέ
   if(localStorage.getItem('fd_rated')==='true')return;
-  if(localStorage.getItem('fd_rate_never')==='true')return;
   const shows=_rNum('fd_rate_shows');
-  if(shows>=RATE_MAX_SHOWS)return;
-  // Κάθε επόμενη φορά απαιτεί περισσότερη χρήση
-  if(_rNum('fd_rate_opens')<RATE_MIN_OPENS+shows*12)return;
-  const until=_rNum('fd_rate_snooze');
-  if(until&&Date.now()<until)return;
+  if(_rNum('fd_rate_opens')<rateThreshold(shows))return;
+  // Ασφάλεια: όχι δύο εμφανίσεις μέσα στην ίδια μέρα
+  const last=_rNum('fd_rate_last');
+  if(last&&Date.now()-last<RATE_MIN_GAP_H*3600000)return;
   // Να μην εμφανιστεί πάνω από άλλο παράθυρο
   const busy=['overlay','pscreen','pgate','wplan-sheet','mpicker','prof-sheet','urform','cook-mode','cook-tonight-modal']
     .some(id=>{const el=document.getElementById(id);return el&&el.classList.contains('show');});
@@ -4854,7 +4854,7 @@ function maybeAskRating(){
   if(busy||(nm&&nm.style.display&&nm.style.display!=='none'))return;
   const m=document.getElementById('rate-mod');
   if(!m)return;
-  try{localStorage.setItem('fd_rate_shows',String(shows+1));}catch(e){}
+  try{localStorage.setItem('fd_rate_shows',String(shows+1));localStorage.setItem('fd_rate_last',String(Date.now()));}catch(e){}
   m.classList.add('show');
 }
 function _closeRate(){const m=document.getElementById('rate-mod');if(m)m.classList.remove('show');}
@@ -4866,11 +4866,7 @@ function doRate(){
   showToast(curLang==='en'?'🙏 Thank you!':'🙏 Σε ευχαριστούμε!');
 }
 function rateLater(){
-  try{localStorage.setItem('fd_rate_snooze',String(Date.now()+RATE_SNOOZE_DAYS*86400000));}catch(e){}
-  _closeRate();
-}
-function rateNever(){
-  try{localStorage.setItem('fd_rate_never','true');}catch(e){}
+  // Δεν κρατάμε ημερολογιακή αναβολή — το επόμενο κατώφλι συνταγών έχει ήδη διπλασιαστεί
   _closeRate();
 }
 
