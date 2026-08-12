@@ -1124,6 +1124,19 @@ body{font-family:'Inter',-apple-system,sans-serif;background:var(--bg);color:var
   </div>
 </div>
 
+<!-- ΔΙΑΚΡΙΤΙΚΗ ΠΡΟΤΡΟΠΗ PREMIUM -->
+<div class="rmod" id="offer-mod" onclick="if(event.target===this)offerLater()">
+  <div class="rmod-in">
+    <div class="rmod-st" id="offer-ico">✨</div>
+    <div class="rmod-t" id="offer-t"></div>
+    <div class="rmod-s" id="offer-s"></div>
+    <button class="rmod-yes" id="offer-yes" onclick="offerAccept()"></button>
+    <div class="rmod-2">
+      <button onclick="offerLater()" id="offer-later"></button>
+    </div>
+  </div>
+</div>
+
 <div class="nmod" id="nmod" style="display:none">
   <div class="nmod-inner">
     <div class="nmod-t" data-i18n="set_t">⚙️ Ρυθμίσεις</div>
@@ -4870,12 +4883,93 @@ function rateLater(){
   _closeRate();
 }
 
+// ── ΔΙΑΚΡΙΤΙΚΗ ΠΡΟΤΡΟΠΗ PREMIUM ────────────────────────────────
+// Εμφανίζεται μόνο σε χρήστη που έχει ήδη δει τι κάνει η εφαρμογή
+// (τελείωσε συνταγή, αντέγραψε λίστα, καταχώρησε 3η φορά «το έφτιαξα»),
+// ποτέ πιεστικά: μέχρι 4 φορές συνολικά, με 4 μέρες απόσταση, και
+// ποτέ την ίδια μέρα με την προτροπή αξιολόγησης.
+const OFFER_MAX_TOTAL=4;      // πόσες φορές συνολικά, ποτέ παραπάνω
+const OFFER_GAP_DAYS=4;       // ελάχιστη απόσταση μεταξύ δύο εμφανίσεων
+const OFFER_MIN_AGE_MIN=5;    // όχι στα πρώτα λεπτά μετά την εγκατάσταση
+const OFFER_COOKED_AT=3;      // στην 3η καταχώρηση «το έφτιαξα»
+const OFFER_TXT={
+  cook:{
+    ico:'👏',
+    el:{t:'Τελείωσες τη συνταγή!',s:'Με το Premium έχεις εβδομαδιαίο πλάνο, όλες τις συνταγές και τη λίστα αγορών χωρίς περιορισμό.',y:'Δες το Premium'},
+    en:{t:'Recipe complete!',s:'Premium gives you the weekly plan, every recipe and the shopping list with no limits.',y:'See Premium'}
+  },
+  list:{
+    ico:'🛒',
+    el:{t:'Πάς για ψώνια;',s:'Το Premium φτιάχνει τη λίστα για όλη την εβδομάδα μαζεμένη, από το πλάνο σου.',y:'Δες το Premium'},
+    en:{t:'Heading to the shops?',s:'Premium builds one combined list for your whole week, straight from your plan.',y:'See Premium'}
+  },
+  cooked:{
+    ico:'🔥',
+    el:{t:'Μαγειρεύεις σταθερά!',s:'Με το Premium οργανώνεις όλη την εβδομάδα από πριν και δεν ξανασκέφτεσαι «τι να φάω».',y:'Δες το Premium'},
+    en:{t:"You're on a roll!",s:'With Premium you plan the whole week ahead and never wonder what to cook.',y:'See Premium'}
+  }
+};
+let _offerTrigger=null;
+// Αφορμή σε αναμονή: κρατιέται όσο είναι ανοιχτή η συνταγή και εμφανίζεται μόλις κλείσει
+let _offerPending=null;
+function flushPendingOffer(){
+  const p=_offerPending;_offerPending=null;
+  if(p)maybeOfferPremium(p);
+}
+function _oNum(k){return parseInt(localStorage.getItem(k)||'0')||0;}
+function maybeOfferPremium(trigger){
+  try{
+    if(!OFFER_TXT[trigger])return;
+    // Μόνο στη native έκδοση με πληρωμές — στην TWA το Premium είναι ξεκλείδωτο
+    if(typeof hasNativeBilling!=='function'||!hasNativeBilling())return;
+    if(getPremiumState()!=='free')return;
+    if(_oNum('fd_offer_shows')>=OFFER_MAX_TOTAL)return;
+    const last=_oNum('fd_offer_last');
+    if(last&&Date.now()-last<OFFER_GAP_DAYS*86400000)return;
+    // Ποτέ την ίδια μέρα με την προτροπή αξιολόγησης
+    const rl=_rNum('fd_rate_last');
+    if(rl&&Date.now()-rl<86400000)return;
+    // Όχι αμέσως μετά την εγκατάσταση
+    const inst=_oNum('fd_preview_start');
+    if(inst&&Date.now()-inst<OFFER_MIN_AGE_MIN*60000)return;
+    // Ποτέ πάνω από άλλο ανοιχτό παράθυρο
+    const busy=['overlay','pscreen','pgate','wplan-sheet','mpicker','prof-sheet','urform','cook-mode','cook-tonight-modal','rate-mod']
+      .some(id=>{const el=document.getElementById(id);return el&&el.classList.contains('show');});
+    const nm=document.getElementById('nmod');
+    if(busy||(nm&&nm.style.display&&nm.style.display!=='none'))return;
+    const m=document.getElementById('offer-mod');
+    if(!m)return;
+    const cfg=OFFER_TXT[trigger], tx=cfg[curLang==='en'?'en':'el'];
+    document.getElementById('offer-ico').textContent=cfg.ico;
+    document.getElementById('offer-t').textContent=tx.t;
+    document.getElementById('offer-s').textContent=tx.s;
+    document.getElementById('offer-yes').textContent='✨ '+tx.y;
+    document.getElementById('offer-later').textContent=curLang==='en'?'Later':'Αργότερα';
+    _offerTrigger=trigger;
+    try{localStorage.setItem('fd_offer_shows',String(_oNum('fd_offer_shows')+1));localStorage.setItem('fd_offer_last',String(Date.now()));}catch(e){}
+    m.classList.add('show');
+  }catch(e){}
+}
+function _closeOffer(){const m=document.getElementById('offer-mod');if(m)m.classList.remove('show');}
+function offerAccept(){
+  const trig=_offerTrigger;
+  _closeOffer();
+  // Καταγραφή στο RevenueCat: ποια αφορμή φέρνει τελικά συνδρομητές
+  try{
+    const p=rcPlugin();
+    if(p&&p.setAttributes&&trig)p.setAttributes({attributes:{paywall_trigger:trig}});
+  }catch(e){}
+  openPremiumScreen();
+}
+function offerLater(){_closeOffer();}
+
 function closeOv(){
   document.getElementById('overlay').classList.remove('show');
   document.body.style.overflow='';
   _guestScale=1;_curSrv=0;
   stopTTS();
   setTimeout(maybeAskRating,900);
+  setTimeout(flushPendingOffer,1400);
   // Keep _timerInterval alive if timer is running — so countdown stays synced on reopen
   if(_timerInterval && !_timerEndTime){clearInterval(_timerInterval);_timerInterval=null;}
   const nutrEl=document.getElementById('ov-nutr');if(nutrEl)nutrEl.innerHTML='';
@@ -5013,12 +5107,27 @@ function hasNativeBilling(){
   try{return !!(window.Capacitor&&window.Capacitor.Plugins&&window.Capacitor.Plugins.Purchases);}
   catch(e){return false;}
 }
-// Καταστάσεις: 'premium' (ενεργή συνδρομή ή δοκιμή) · 'free' (χωρίς πρόσβαση)
+// Δωρεάν πρόσβαση γνωριμίας: 3 ημέρες από την εγκατάσταση, ΧΩΡΙΣ κάρτα.
+// Είναι διαφορετικό από τη δοκιμή 7 ημερών του Google Play, που απαιτεί
+// τρόπο πληρωμής και ξεκινά μόνο όταν ο χρήστης πατήσει εγγραφή.
+const PREVIEW_DAYS=3;
+function previewStart(){
+  let t=parseInt(localStorage.getItem('fd_preview_start')||'0')||0;
+  if(!t){t=Date.now();try{localStorage.setItem('fd_preview_start',String(t));}catch(e){}}
+  return t;
+}
+function previewDaysLeft(){
+  const t=parseInt(localStorage.getItem('fd_preview_start')||'0')||0;
+  if(!t)return 0;
+  return Math.max(0,PREVIEW_DAYS-Math.floor((Date.now()-t)/86400000));
+}
+// Καταστάσεις: 'premium' (συνδρομή/δοκιμή Play) · 'preview' (δωρεάν γνωριμία) · 'free'
 function getPremiumState(){
   if(localStorage.getItem('fd_premium')==='true')return 'premium';
   // TWA / browser: δεν υπάρχει αξιόπιστη ροή αγοράς (εξαρτάται από τον browser),
   // οπότε δεν εμφανίζουμε paywall — όλα παραμένουν ξεκλείδωτα.
   if(!hasNativeBilling())return 'premium';
+  if(previewDaysLeft()>0)return 'preview';
   return 'free';
 }
 // Είναι σε δωρεάν δοκιμή του Google Play;
@@ -5032,7 +5141,7 @@ function trialDaysLeft(){
   return Math.max(1,Math.ceil(ms/(1000*60*60*24)));
 }
 function startTrial(){/* δεν χρησιμοποιείται πλέον — η δοκιμή ξεκινά από το Google Play */}
-function isPremium(){return getPremiumState()==='premium';}
+function isPremium(){const st=getPremiumState();return st==='premium'||st==='preview';}
 // Καταγραφή της κατάστασης συνδρομής όπως την επιστρέφει το RevenueCat
 function applyEntitlement(customerInfo){
   const ent=activeEntitlement(customerInfo);
@@ -5055,6 +5164,14 @@ function renderTrialBanner(){
   const en=curLang==='en';
   // TWA/browser: καμία προτροπή συνδρομής, αφού δεν μπορεί να ολοκληρωθεί αγορά
   if(!hasNativeBilling()&&localStorage.getItem('fd_premium')!=='true'){el.innerHTML='';return;}
+  if(getPremiumState()==='preview'){
+    const d=previewDaysLeft();
+    const txt=en
+      ?(d===1?'Last day of <span>full free access</span>':`<span>${d} days</span> of full free access left`)
+      :(d===1?'Τελευταία ημέρα <span>δωρεάν πρόσβασης</span>':`Απομένουν <span>${d} ημέρες</span> δωρεάν πρόσβασης`);
+    el.innerHTML=`<div class="trial-banner" onclick="openPremiumScreen()"><div class="trial-banner-l"><span class="trial-banner-icon">🎁</span><span class="trial-banner-txt">${txt}</span></div><span class="trial-banner-cta">Premium →</span></div>`;
+    return;
+  }
   if(getPremiumState()==='premium'){
     // Σε δωρεάν δοκιμή του Play: δείξε πόσες ημέρες απομένουν
     if(isPlayTrial()){
@@ -5075,7 +5192,7 @@ function renderTrialBanner(){
 let _curPlan='monthly';
 function openPremiumScreen(){
   closeOvInstant();
-  _curPlan='monthly';
+  _curPlan='annual';  // το ετήσιο προεπιλεγμένο — διπλασιάζει τη διάρκεια ζωής συνδρομητή
   const state=getPremiumState();
   // Update header badge
   const badge=document.getElementById('pscreen-trial-badge');
@@ -5086,8 +5203,7 @@ function openPremiumScreen(){
     else if(state==='premium'){badge.textContent=en?"✅ You're Premium!":'✅ Είσαι Premium!';}
     else{badge.textContent=en?'🎁 7 days free':'🎁 7 ημέρες δωρεάν';}
   }
-  updatePremiumCTA(state);
-  fetchRealPlanPrice('monthly');
+  setPlan('annual');
   document.getElementById('pscreen').classList.add('show');
   document.body.style.overflow='hidden';
 }
@@ -5102,12 +5218,16 @@ function setPlan(plan){
   const priceEl=document.getElementById('pscreen-price');
   const en=curLang==='en';
   if(plan==='monthly'){
-    priceEl.innerHTML=`<div class="pscreen-price-main">1,99€<span style="font-size:18px;font-weight:400">${en?'/month + VAT':'/μήνα + ΦΠΑ'}</span></div><div class="pscreen-price-sub">${en?'Cancel anytime · Final price shown at checkout':'Ακύρωση οποιαδήποτε στιγμή · Η τελική τιμή εμφανίζεται στην ολοκλήρωση αγοράς'}</div>`;
+    priceEl.innerHTML=`<div class="pscreen-price-main">1,99€<span style="font-size:18px;font-weight:400">${en?'/month':'/μήνα'}</span></div>`
+      +`<div class="pscreen-price-sub">${en?'Cancel anytime · + VAT, final price at checkout':'Ακύρωση οποιαδήποτε στιγμή · + ΦΠΑ, τελική τιμή στην αγορά'}</div>`;
   }else{
-    priceEl.innerHTML=`<div class="pscreen-price-main">14,99€<span style="font-size:18px;font-weight:400">${en?'/year + VAT':'/χρόνο + ΦΠΑ'}</span></div><div class="pscreen-price-sub">${en?'Save ~€9 · Final price shown at checkout':'Εξοικονόμηση ~9€ · Η τελική τιμή εμφανίζεται στην ολοκλήρωση αγοράς'}</div>`;
+    // Το ετήσιο παρουσιάζεται ως μηνιαίο κόστος — ίδιο ποσό, τελείως άλλη αντίληψη
+    priceEl.innerHTML=`<div class="pscreen-price-main">1,25€<span style="font-size:18px;font-weight:400">${en?'/month':'/μήνα'}</span></div>`
+      +`<div class="pscreen-price-sub"><b>14,99€ ${en?'billed yearly':'ετησίως'}</b> · ${en?'save 37% vs monthly':'κερδίζεις 37% έναντι μηνιαίου'}<br>${en?'Cancel anytime · + VAT, final price at checkout':'Ακύρωση οποιαδήποτε στιγμή · + ΦΠΑ, τελική τιμή στην αγορά'}</div>`;
   }
   updatePremiumCTA(getPremiumState());
   fetchRealPlanPrice(plan);
+  refreshTrialFlags();
 }
 async function fetchRealPlanPrice(plan){
   const service=await getDigitalGoodsService();
@@ -5118,11 +5238,28 @@ async function fetchRealPlanPrice(plan){
     if(!details.length||_curPlan!==plan)return; // user switched plan while we were fetching
     const d=details[0];
     const en=curLang==='en';
-    const formatted=new Intl.NumberFormat(en?'en-US':'el-GR',{style:'currency',currency:d.price.currency}).format(parseFloat(d.price.value));
-    const suffix=plan==='monthly'?(en?'/month':'/μήνα'):(en?'/year':'/χρόνο');
-    const sub=plan==='monthly'?(en?'Cancel anytime · VAT included':'Ακύρωση οποιαδήποτε στιγμή · Με ΦΠΑ'):(en?'Save vs. monthly · VAT included':'Έκπτωση έναντι μηνιαίου · Με ΦΠΑ');
+    const cur=d.price.currency, val=parseFloat(d.price.value);
+    const fmt=x=>new Intl.NumberFormat(en?'en-US':'el-GR',{style:'currency',currency:cur}).format(x);
     const priceEl=document.getElementById('pscreen-price');
-    if(priceEl)priceEl.innerHTML=`<div class="pscreen-price-main">${formatted}<span style="font-size:18px;font-weight:400">${suffix}</span></div><div class="pscreen-price-sub">${sub}</div>`;
+    if(!priceEl)return;
+    if(plan==='monthly'){
+      priceEl.innerHTML=`<div class="pscreen-price-main">${fmt(val)}<span style="font-size:18px;font-weight:400">${en?'/month':'/μήνα'}</span></div>`
+        +`<div class="pscreen-price-sub">${en?'Cancel anytime · VAT included':'Ακύρωση οποιαδήποτε στιγμή · Με ΦΠΑ'}</div>`;
+    }else{
+      // Ίδια λογική με τη στατική ένδειξη: το ετήσιο παρουσιάζεται ως μηνιαίο κόστος
+      const perMonth=val/12;
+      let savings='';
+      try{
+        const mo=await service.getDetails([PREMIUM_SKUS.monthly]);
+        if(mo.length&&mo[0].price&&mo[0].price.currency===cur){
+          const m=parseFloat(mo[0].price.value);
+          if(m>0){const pct=Math.round((1-perMonth/m)*100);
+            if(pct>0)savings=' · '+(en?`save ${pct}% vs monthly`:`κερδίζεις ${pct}% έναντι μηνιαίου`);}
+        }
+      }catch(e){}
+      priceEl.innerHTML=`<div class="pscreen-price-main">${fmt(perMonth)}<span style="font-size:18px;font-weight:400">${en?'/month':'/μήνα'}</span></div>`
+        +`<div class="pscreen-price-sub"><b>${fmt(val)} ${en?'billed yearly':'ετησίως'}</b>${savings}<br>${en?'Cancel anytime · VAT included':'Ακύρωση οποιαδήποτε στιγμή · Με ΦΠΑ'}</div>`;
+    }
   }catch(e){/* keep the fallback price shown */}
 }
 function updatePremiumCTA(state){
@@ -5144,9 +5281,54 @@ function updatePremiumCTA(state){
       if(note)note.textContent=en?'Your subscription is active.':'Η συνδρομή σου είναι ενεργή.';
     }
   }else{
-    btn.textContent=en?'🎁 Start 7 days free':'🎁 Ξεκίνα 7 ημέρες δωρεάν';btn.disabled=false;btn.style.opacity='1';
-    if(note)note.textContent=en?'Free for 7 days · Cancel anytime before it renews':'Δωρεάν για 7 ημέρες · Ακύρωση οποιαδήποτε στιγμή πριν την ανανέωση';
+    btn.disabled=false;btn.style.opacity='1';
+    const hasTrial=_planTrial[_curPlan]!==false; // αν δεν ξέρουμε ακόμα, υποθέτουμε ναι
+    btn.textContent=hasTrial
+      ?(en?'🎁 Start 7 days free':'🎁 Ξεκίνα 7 ημέρες δωρεάν')
+      :(en?'💎 Get Premium':'💎 Απόκτησε Premium');
+    if(note){
+      if(state==='preview'){
+        const d=previewDaysLeft();
+        note.textContent=en
+          ?(hasTrial?`Your free access ends in ${d} ${d===1?'day':'days'} · then 7 more days free with a trial`
+                    :`Your free access ends in ${d} ${d===1?'day':'days'}`)
+          :(hasTrial?`Η δωρεάν πρόσβαση λήγει σε ${d} ${d===1?'ημέρα':'ημέρες'} · μετά 7 ημέρες δοκιμή`
+                    :`Η δωρεάν πρόσβαση λήγει σε ${d} ${d===1?'ημέρα':'ημέρες'}`);
+      }else{
+        note.textContent=hasTrial
+          ?(en?'Free for 7 days · Cancel anytime before it renews':'Δωρεάν για 7 ημέρες · Ακύρωση οποιαδήποτε στιγμή πριν την ανανέωση')
+          :(en?'Cancel anytime':'Ακύρωση οποιαδήποτε στιγμή');
+      }
+    }
   }
+}
+// Ποια πλάνα έχουν όντως δωρεάν δοκιμή — για να μη λέει το κουμπί ψέματα
+const _planTrial={};
+function _pkgFreePhase(pk){
+  try{
+    const pr=(pk&&pk.product)||{};
+    if(pr.introPrice&&(pr.introPrice.price===0||/free|δωρε/i.test(pr.introPrice.priceString||'')))return true;
+    const opts=[pr.defaultOption].concat(pr.subscriptionOptions||[]).filter(Boolean);
+    for(const o of opts){
+      if(o.freePhase)return true;
+      const ph=o.pricingPhases||[];
+      if(ph.some(x=>x&&x.price&&(String(x.price.amountMicros)==='0'||x.price.amountMicros===0)))return true;
+    }
+  }catch(e){}
+  return false;
+}
+async function refreshTrialFlags(){
+  const P=await rcInit();
+  if(!P)return;
+  try{
+    const o=await P.getOfferings();
+    const list=(o&&o.current&&o.current.availablePackages)||[];
+    list.forEach(pk=>{
+      const key=pk.identifier===RC_PKG.monthly?'monthly':(pk.identifier===RC_PKG.annual?'annual':null);
+      if(key)_planTrial[key]=_pkgFreePhase(pk);
+    });
+    updatePremiumCTA(getPremiumState());
+  }catch(e){}
 }
 function handlePremiumCTA(){
   // Η δωρεάν δοκιμή ξεκινά μέσα από τη ροή αγοράς του Google Play
@@ -5324,6 +5506,8 @@ async function lnSchedulePrep(plan){
 // Κλείνει με τη σειρά ό,τι είναι ανοιχτό, αντί να βγαίνει από την εφαρμογή.
 // Η σειρά ακολουθεί το z-index: ό,τι είναι πιο «πάνω» κλείνει πρώτο.
 const FD_BACK_LAYERS=[
+  {id:'rate-mod',        close:()=>rateLater()},
+  {id:'offer-mod',       close:()=>offerLater()},
   {id:'cook-mode',       close:()=>exitCookMode()},
   {id:'pgate',           close:()=>closePremiumGate()},
   {id:'pscreen',         close:()=>closePremiumScreen()},
@@ -6921,6 +7105,12 @@ function markCooked(id,ev){
   const ca=document.getElementById('ca-'+id);
   if(ca)ca.innerHTML=`<span class="cooked-badge">✓ ${curLang==='en'?'Cooked today':'Μαγειρεύτηκε σήμερα'}</span>`;
   showToast(curLang==='en'?'✓ Logged!':'✓ Καταχωρήθηκε!');
+  // 3η καταχώρηση «το έφτιαξα» → ο χρήστης μαγειρεύει σταθερά
+  try{
+    const n=_oNum('fd_cooked_count')+1;
+    localStorage.setItem('fd_cooked_count',String(n));
+    if(n===OFFER_COOKED_AT)setTimeout(()=>maybeOfferPremium('cooked'),900);
+  }catch(e){}
 }
 function thumbUp(id,e){
   if(e){e.stopPropagation();e.preventDefault();}
@@ -7025,6 +7215,8 @@ function copyShoppingList(){
     try{document.execCommand('copy');showToast(en?'✅ List copied!':'✅ Λίστα αντιγράφηκε!');}catch(e){showToast(en?'⚠️ Error':'⚠️ Σφάλμα');}
     document.body.removeChild(ta);
   }
+  // Η συνταγή είναι ακόμα ανοιχτή — η προτροπή περιμένει να κλείσει
+  _offerPending='list';
 }
 
 // ── ONBOARDING ─────────────────────────────────────────────────
@@ -7210,13 +7402,15 @@ function _renderCookStep(){
   document.getElementById('cm-next').textContent=_cmIdx<total-1?(curLang==='en'?'Next →':'Επόμενο →'):(curLang==='en'?'✓ Done!':'✓ Τέλος!');
 }
 
-function cookNext(){if(_cmIdx<_cmSteps.length-1){_cmIdx++;_renderCookStep();}else exitCookMode();}
+function cookNext(){if(_cmIdx<_cmSteps.length-1){_cmIdx++;_renderCookStep();}else exitCookMode(true);}
 function cookPrev(){if(_cmIdx>0){_cmIdx--;_renderCookStep();}}
 
-async function exitCookMode(){
+async function exitCookMode(completed){
   document.getElementById('cook-mode').classList.remove('show');
   document.body.style.overflow='';
   if(_wakeLock){try{await _wakeLock.release();}catch(e){}_wakeLock=null;}
+  // Μόνο όταν ο χρήστης έφτασε στο τελευταίο βήμα — όχι σε απλό κλείσιμο
+  if(completed===true)setTimeout(()=>maybeOfferPremium('cook'),1100);
 }
 
 // Swipe gesture for Cook Mode
@@ -7315,7 +7509,8 @@ function dismissTonightBanner(){
   applyLangTexts(curLang);
   // Hero greeting + date
   updateHeroTexts();
-  // Premium: εμφάνιση banner (η δοκιμή ξεκινά από το Google Play)
+  // Premium: ξεκίνα την 3ήμερη δωρεάν γνωριμία (μόνο σε native) και δείξε banner
+  try{if(hasNativeBilling()&&localStorage.getItem('fd_premium')!=='true')previewStart();}catch(e){}
   renderTrialBanner();
   // Native (Capacitor): επανάκτησε την κατάσταση συνδρομής από το RevenueCat
   try{rcSyncOnStart();}catch(e){}
