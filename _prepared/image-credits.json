@@ -243,5 +243,37 @@
   "source": "https://commons.wikimedia.org/wiki/File:004_2015_06_07_Kurven_und_Spiralen.jpg",
   "kb": 59,
   "note": "thumbnail 500px"
+ },
+ {
+  "id": "spetzofai",
+  "file": "File:Spetsofai.jpg",
+  "license": "CC BY-SA 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Spetsofai.jpg",
+  "kb": 48,
+  "note": "thumbnail 500px"
+ },
+ {
+  "id": "bakaliaros_prasa",
+  "file": "File:Annual catalogue of Price and Reed, Geo H. Price, sucessor - importers, growers and dealers in fine flower, vegetable and field seeds also dealers in horticultural and agricultural implements (1899) (20527944546).jpg",
+  "license": "No restrictions",
+  "source": "https://commons.wikimedia.org/wiki/File:Annual_catalogue_of_Price_and_Reed,_Geo_H._Price,_sucessor_-_importers,_growers_and_dealers_in_fine_flower,_vegetable_and_field_seeds_also_dealers_in_horticultural_and_agricultural_implements_(1899)_(20527944546).jpg",
+  "kb": 37,
+  "note": "thumbnail 500px"
+ },
+ {
+  "id": "saligkaria_boubouristi",
+  "file": "File:Caragolada valenciana (Caragolà), plato típico de los agricultores de la comarcas valencianas.jpg",
+  "license": "CC BY 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Caragolada_valenciana_(Caragol%C3%A0),_plato_t%C3%ADpico_de_los_agricultores_de_la_comarcas_valencianas.jpg",
+  "kb": 90,
+  "note": "thumbnail 500px"
+ },
+ {
+  "id": "mosxari_gastra",
+  "file": "File:Pot-au-feu2.jpg",
+  "license": "CC BY-SA 3.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Pot-au-feu2.jpg",
+  "kb": 81,
+  "note": "thumbnail 500px"
  }
 ]
