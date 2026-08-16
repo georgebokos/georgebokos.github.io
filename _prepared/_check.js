@@ -21,7 +21,12 @@ for(const f of files){
     if(seen.has(k))bad('διπλό id, και στο '+seen.get(k));
     seen.set(k,path.basename(p));
     if(/[Α-Ωα-ωά-ώ]/.test(v.en)||v.steps_en.some(s=>/[Α-Ωα-ωά-ώ]/.test(s))||v.ing_en.some(s=>/[Α-Ωα-ωά-ώ]/.test(s)))bad('ελληνικά σε αγγλικό πεδίο');
-    if(!v.steps.some(s=>s.includes('ΣΗΜΑΝΤΙΚΟ')))bad('κανένα βήμα με ΣΗΜΑΝΤΙΚΟ');
+    // Στη μεταφορά παλιών συνταγών το ΣΗΜΑΝΤΙΚΟ είναι προειδοποίηση, όχι σφάλμα
+    if(!v.steps.some(s=>s.includes('ΣΗΜΑΝΤΙΚΟ'))){
+      const μεταφορά=/batch8/.test(path.basename(p));
+      if(μεταφορά)console.log('  ⚠',k,'— μόνο',v.steps.length,'βήματα, χωρίς ΣΗΜΑΝΤΙΚΟ (παλιό περιεχόμενο)');
+      else bad('κανένα βήμα με ΣΗΜΑΝΤΙΚΟ');
+    }
     console.log('  ✓',k.padEnd(26),'υλ.',String(v.ing.length).padStart(2),'| βήμ.',String(v.steps.length).padStart(2),'|',(v.time+"'").padStart(5),'|',v.srv,'μερ.');
   }
 }
