@@ -4,7 +4,7 @@ const dir=__dirname;
 const CATS=['meat','desserts','vegetables','seafood','pasta','soups','salads','pites','sauces','legumes','pizza'];
 const need=['n','en','e','cats','cal','time','srv','pop','cost','cps','ing','ing_en','steps','steps_en','wine','wine_en','plate','plate_en'];
 const html=fs.readFileSync('/home/user/georgebokos.github.io/index.html','utf8');
-const files=(process.argv.slice(2).length?process.argv.slice(2):fs.readdirSync(dir).filter(f=>/^batch([1-4]|8[abc]).*\.js$/.test(f)));
+const files=(process.argv.slice(2).length?process.argv.slice(2):fs.readdirSync(dir).filter(f=>/^batch([1-4]|[567]m|8[abc]).*\.js$/.test(f)));
 let ok=true;const seen=new Map();
 for(const f of files){
   const p=path.isAbsolute(f)?f:path.join(dir,path.basename(f));
@@ -30,4 +30,4 @@ for(const f of files){
     console.log('  ✓',k.padEnd(26),'υλ.',String(v.ing.length).padStart(2),'| βήμ.',String(v.steps.length).padStart(2),'|',(v.time+"'").padStart(5),'|',v.srv,'μερ.');
   }
 }
-console.log(ok?`\n✅ ΟΛΑ ΣΩΣΤΑ — ${seen.size} συνταγές έτοιμες / 56`:'\n❌ ΒΡΕΘΗΚΑΝ ΣΦΑΛΜΑΤΑ');
+console.log(ok?`\n✅ ΟΛΑ ΣΩΣΤΑ — ${seen.size} συνταγές έτοιμες (56 νέες + 26 μεταφερόμενες = 82)`:'\n❌ ΒΡΕΘΗΚΑΝ ΣΦΑΛΜΑΤΑ');
