@@ -1,9 +1,23 @@
 [
  {
-  "id": "mosxari_wellington",
-  "file": "File:Beef Wellington 2019.jpg",
+  "id": "osobuco",
+  "file": "File:Ossobuco con risotto alla milanese.jpg",
   "license": "CC BY-SA 4.0",
-  "source": "https://commons.wikimedia.org/wiki/File:Beef_Wellington_2019.jpg",
-  "kb": 206
+  "source": "https://commons.wikimedia.org/wiki/File:Ossobuco_con_risotto_alla_milanese.jpg",
+  "kb": 130
+ },
+ {
+  "id": "kare_arniou",
+  "file": "File:Crown roast (rack of lamb or mutton).jpg",
+  "license": "Public domain",
+  "source": "https://commons.wikimedia.org/wiki/File:Crown_roast_(rack_of_lamb_or_mutton).jpg",
+  "kb": 98
+ },
+ {
+  "id": "snitsel_xoirino",
+  "file": "File:The pork schnitzel at the Figlmuller restaurant in Vienna, Austria.jpg",
+  "license": "CC BY-SA 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:The_pork_schnitzel_at_the_Figlmuller_restaurant_in_Vienna,_Austria.jpg",
+  "kb": 161
  }
 ]
