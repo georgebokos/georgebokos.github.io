@@ -323,5 +323,21 @@
   "source": "https://commons.wikimedia.org/wiki/File:Bread_in_the_Hellenic_Republic.jpg",
   "kb": 48,
   "note": "thumbnail 500px"
+ },
+ {
+  "id": "pasta_flora",
+  "file": "File:Linzer Torte, 2023.jpg",
+  "license": "CC BY-SA 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Linzer_Torte,_2023.jpg",
+  "kb": 67,
+  "note": "thumbnail 500px"
+ },
+ {
+  "id": "troufakia",
+  "file": "File:Tartufo al cacao - Sagra del pistacchio di Bronte 2024.jpg",
+  "license": "CC BY-SA 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Tartufo_al_cacao_-_Sagra_del_pistacchio_di_Bronte_2024.jpg",
+  "kb": 66,
+  "note": "thumbnail 500px"
  }
 ]
