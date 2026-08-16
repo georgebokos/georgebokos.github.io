@@ -275,5 +275,45 @@
   "source": "https://commons.wikimedia.org/wiki/File:Pot-au-feu2.jpg",
   "kb": 81,
   "note": "thumbnail 500px"
+ },
+ {
+  "id": "salata_zymarikon",
+  "file": "File:Bowtie pasta salad bowl close-up.jpg",
+  "license": "CC BY 2.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Bowtie_pasta_salad_bowl_close-up.jpg",
+  "kb": 60,
+  "note": "thumbnail 500px"
+ },
+ {
+  "id": "kebab_spitiko",
+  "file": "File:Arabic MixedGrill.JPG",
+  "license": "CC BY-SA 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Arabic_MixedGrill.JPG",
+  "kb": 33,
+  "note": "thumbnail 500px"
+ },
+ {
+  "id": "katsikaki_giouvetsi",
+  "file": "File:Giouvetsi.JPG",
+  "license": "CC BY-SA 2.5",
+  "source": "https://commons.wikimedia.org/wiki/File:Giouvetsi.JPG",
+  "kb": 49,
+  "note": "thumbnail 500px"
+ },
+ {
+  "id": "boureki_xanion",
+  "file": "File:Batzina.jpg",
+  "license": "CC BY-SA 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Batzina.jpg",
+  "kb": 67,
+  "note": "thumbnail 500px"
+ },
+ {
+  "id": "halvas_tahini",
+  "file": "File:Iraqi Halva-Mosul 01.jpg",
+  "license": "CC BY-SA 4.0",
+  "source": "https://commons.wikimedia.org/wiki/File:Iraqi_Halva-Mosul_01.jpg",
+  "kb": 55,
+  "note": "thumbnail 500px"
  }
 ]
