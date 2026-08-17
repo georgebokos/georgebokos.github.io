@@ -8,9 +8,11 @@ D = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.dirname(D) + '/'
 HTML = ROOT + 'index.html'
 ALL = '--all' in sys.argv
+PHASE_B = '--phase-b' in sys.argv   # μόνο οι 26 μεταφερόμενες από το SWEETS
 
-# Φάση Α: μόνο οι 56 νέες. Τα batch8* θέλουν πρώτα αφαίρεση από το SWEETS.
-PAT = re.compile(r'^batch.*\.js$' if ALL else r'^batch([1-4]|[567]m).*\.js$')
+# Φάση Α: οι 56 νέες. Φάση Β: οι 26 μεταφερόμενες (batch8*).
+PAT = re.compile(r'^batch8.*\.js$' if PHASE_B else
+                 r'^batch.*\.js$' if ALL else r'^batch([1-4]|[567]m).*\.js$')
 files = sorted(f for f in os.listdir(D) if PAT.match(f))
 
 # ── συλλογή των μπλοκ κειμένου, αυτούσια ────────────────────────
@@ -31,7 +33,7 @@ for f in files:
     ids += found
     blocks.append(f'\n  // ── {f} ──\n' + body)
 print(f'Συλλέχθηκαν {len(ids)} συνταγές από {len(files)} αρχεία')
-EXPECTED = 82 if ALL else 56
+EXPECTED = 26 if PHASE_B else 82 if ALL else 56
 if len(ids) != EXPECTED:
     sys.exit(f'ΣΦΑΛΜΑ: βρέθηκαν {len(ids)} συνταγές, αναμένονταν {EXPECTED}')
 
@@ -70,7 +72,9 @@ print('1. Ένθεση στο MEALS: ok')
 # ── 2. ένθεση στο MEAL_IMAGES ───────────────────────────────────
 i_start = s.index('const MEAL_IMAGES={')
 i_end = s.index('\n};', i_start)
-s = s[:i_end] + '\n  // ── νέες συνταγές ──\n' + '\n'.join(img_lines).rstrip(',') + s[i_end:]
+# ΠΡΟΣΟΧΗ: κάθε γραμμή κρατά το κόμμα της. Χωρίς αυτό, μια δεύτερη ένθεση
+# κολλάει τις νέες γραμμές στην τελευταία και σπάει τη JavaScript.
+s = s[:i_end] + '\n  // ── νέες συνταγές ──\n' + '\n'.join(img_lines) + s[i_end:]
 print('2. Ένθεση στο MEAL_IMAGES: ok')
 
 # ── 3. στοιχειώδης έλεγχος ισορροπίας αγκυλών στο payload ───────
