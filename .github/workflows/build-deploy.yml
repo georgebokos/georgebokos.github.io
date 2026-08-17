@@ -32,10 +32,23 @@ jobs:
           echo "=== index.html size ==="
           wc -c dist/index.html
 
+      # Το deploy γίνεται με σκέτο git, χωρίς εξωτερικό action.
+      # Το peaceiris/actions-gh-pages κατεβαίνει από το codeload.github.com, που
+      # επέστρεφε επίμονα 429 (Too Many Requests) και κολλούσε το deploy στο
+      # «Set up job» — πριν τρέξει καθόλου το build.
       - name: Deploy to gh-pages
-        uses: peaceiris/actions-gh-pages@v4
-        with:
-          github_token: ${{ secrets.GITHUB_TOKEN }}
-          publish_dir: ./dist
-          force_orphan: true
-          enable_jekyll: false
+        run: |
+          touch dist/.nojekyll          # αντικαθιστά το enable_jekyll: false
+          cd dist
+          git init -q
+          git config user.name  "github-actions[bot]"
+          git config user.email "41898282+github-actions[bot]@users.noreply.github.com"
+          git checkout -q -b gh-pages
+          git add -A
+          git commit -q -m "Deploy ${GITHUB_SHA:0:7}"
+          # --force σε φρέσκο repo = force_orphan: true (μονή commit στο gh-pages)
+          git push -q --force \
+            "https://x-access-token:${GITHUB_TOKEN}@github.com/${GITHUB_REPOSITORY}.git" \
+            gh-pages
+        env:
+          GITHUB_TOKEN: ${{ secrets.GITHUB_TOKEN }}
