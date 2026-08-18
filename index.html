@@ -7549,7 +7549,9 @@ function selGuest(n,btn){
 
   // Priority buckets (most impressive first)
   const P4=['arni_souvia','kontosouvi','gourounopoulo','galopoula','arni_kleftiko','arni_fournou_patates',
-            'kotopoulo_vigeroua','rolo_kima_avga','astakomakaronada','kotopoulo_kiev'];
+            'kotopoulo_vigeroua','rolo_kima_avga','astakomakaronada','kotopoulo_kiev',
+            // Νέες εντυπωσιακές
+            'mosxari_wellington','katsikaki_fournou','osobuco'];
   const P3=['giouvetsi','arnaki_lemonato','moussaka','pastitsio','stifado',
             'kokkinisto','htapodi','garides','bakaliaro','anginaresPolita',
             'kreatopita','spanakopita','psarosoupa',
@@ -7563,7 +7565,11 @@ function selGuest(n,btn){
             'papoutsakia','kounoupidi_fournou',
             // Νέες εκλεκτές συνταγές
             'mosxari_fournou_patates','kotopoulo_gemisto','lavraki_sxaras','rizoto_thalassinon',
-            'kalamaria_sxaras','pasta_solomos_anithos','kakavia'];
+            'kalamaria_sxaras','pasta_solomos_anithos','kakavia',
+            // Νέα εκλεκτά κυρίως πιάτα
+            'kokoras_krasatos','beef_bourguignon','mosxari_gastra','kare_arniou',
+            'panseta_sigopsimeni','solomos_krousta','boureki_xanion',
+            'katsikaki_giouvetsi','katsikaki_ladorigani','katsikaki_lemonato'];
   const P2=['kotopoulo','souvlakia','biftekia','kalamaria',
             'dolmades','gemista','giouvarlaakia','psari_plaki','keftedes',
             'gigantes','fava','tyropita','hortopita','prasopita',
@@ -7571,13 +7577,19 @@ function selGuest(n,btn){
             'xoirina_paidakia','brizoles','imam_baialdi','manitaria_saganaki',
             'spaghetti_bolognese','pasta_manitaria','kritharaki_kotopoulo',
             'hylopites_kotopoulo','xoirino_prasa','kolokythopita',
-            'kotopoulo_paprika','sofrito'];
+            'kotopoulo_paprika','sofrito',
+            // Νέα οικογενειακά
+            'katsikaki_frikase','spetzofai','bakaliaros_prasa','kebab_spitiko','snitsel_xoirino'];
 
   const pick=ids=>ids.filter(id=>MEALS[id]&&!EXCL_GUEST.includes(id));
 
   // Shuffle within each tier for variety
   const shuffle=a=>[...a].sort(()=>Math.random()-.5);
-  const pool=[...shuffle(pick(P4)),...shuffle(pick(P3)),...shuffle(pick(P2))].slice(0,20);
+  const take=(arr,k)=>shuffle(pick(arr)).slice(0,k);
+  // Αναλογική επιλογή από κάθε επίπεδο. Με απλή σειρά P4→P3→P2 και όριο 20,
+  // τα 13 πιάτα του P4 και 7 του P3 γέμιζαν όλες τις θέσεις — ο P2 δεν
+  // εμφανιζόταν ΠΟΤΕ, και από τον P3 φαινόταν μόνο το ένα όγδοο.
+  const pool=[...take(P4,6),...take(P3,9),...take(P2,5)];
   // Αρνί στη σούβλα — ειδική περίσταση, εμφανίζεται πάντα τελευταίο
   const suvIdx=pool.indexOf('arni_souvia');
   if(suvIdx>-1){pool.splice(suvIdx,1);pool.push('arni_souvia');}
