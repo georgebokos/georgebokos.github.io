@@ -1,6 +1,6 @@
 // FoodDaily Service Worker v3.5
-const VERSION = '2026-08-18-105';
-const CACHE = `fooddaily-2026-08-18-105`;
+const VERSION = '2026-08-18-106';
+const CACHE = `fooddaily-2026-08-18-106`;
 const ASSETS = [
   '/',
   '/index.html',
@@ -146,6 +146,35 @@ self.addEventListener('fetch', e => {
   const url = new URL(e.request.url);
   if (url.origin !== location.origin) return;
 
+  // ── Οι σελίδες: ΔΙΚΤΥΟ ΠΡΩΤΑ ───────────────────────────────────────────────
+  // Το index.html αλλάζει σε κάθε ενημέρωση συνταγών. Με cache-first ο χρήστης
+  // έβλεπε πάντα την προηγούμενη έκδοση — οι νέες συνταγές εμφανίζονταν μόλις
+  // στο επόμενο άνοιγμα. Τώρα ζητάμε πρώτα το δίκτυο και κρατάμε το cache μόνο
+  // ως εφεδρεία, ώστε η εφαρμογή να δουλεύει και χωρίς σύνδεση.
+  const isPage = e.request.mode === 'navigate'
+              || url.pathname === '/'
+              || url.pathname.endsWith('.html');
+
+  if (isPage) {
+    e.respondWith(
+      fetch(e.request).then(resp => {
+        if (resp && resp.status === 200) {
+          const copy = resp.clone();
+          caches.open(CACHE).then(cache => cache.put(e.request, copy));
+        }
+        return resp;
+      }).catch(() =>
+        caches.match(e.request).then(cached =>
+          cached || (STANDALONE_PAGES.has(url.pathname) ? null : caches.match('/index.html'))
+        )
+      )
+    );
+    return;
+  }
+
+  // ── Εικόνες και στατικά: CACHE ΠΡΩΤΑ ──────────────────────────────────────
+  // Δεν αλλάζουν ποτέ (νέα φωτογραφία = νέο όνομα αρχείου) και είναι εκατοντάδες,
+  // οπότε το cache τις κρατά γρήγορες και εκτός δικτύου.
   e.respondWith(
     caches.open(CACHE).then(cache =>
       cache.match(e.request).then(cached => {
@@ -156,8 +185,7 @@ self.addEventListener('fetch', e => {
           return resp;
         }).catch(() => null);
 
-        const fallback = STANDALONE_PAGES.has(url.pathname) ? null : caches.match('/index.html');
-        return cached || fetchPromise.then(r => r || fallback);
+        return cached || fetchPromise;
       })
     )
   );
