@@ -5142,6 +5142,16 @@ function renderMeals(cat){
   if(cat==='all'&&show.length){saveDailyShown(show.map(m=>m.id));}
   _featPool=show;
   // Restore today's featured meal so it doesn't change on refresh
+  // Είναι ΦΑΓΗΤΟ, ώστε να μπορεί να γίνει πρόταση ημέρας;
+  // Αποκλείονται γλυκά, σάλτσες και βάσεις (κρέμα ζαχαροπλαστικής, μαρμελάδα).
+  // Το noDaily ΔΕΝ μετράει εδώ: σημαίνει «δεν προτείνεται τυχαία», όχι «δεν είναι
+  // γεύμα» — ο μουσακάς το έχει. Αν ο χρήστης το διάλεξε ο ίδιος στο εβδομαδιαίο
+  // πρόγραμμα, πρέπει να τιμηθεί.
+  const _isMeal=id=>{
+    const m=MEALS[id];
+    return !!m && !m.cats.includes('desserts') && !m.cats.includes('sauces')
+        && !NOT_A_MEAL.has(id);
+  };
   if(cat==='all'&&show.length){
     const today=new Date().toDateString();
     let stored={};try{stored=JSON.parse(localStorage.getItem('fd_feat')||'{}');}catch(e){}
@@ -5150,16 +5160,19 @@ function renderMeals(cat){
     // (ώστε το 👎 «άλλη πρόταση» να συνεχίζει να δουλεύει κανονικά μετά την πρώτη εμφάνιση).
     if(stored.date!==today){
       const wpMealId=getWeekPlan()[dateKey(new Date())];
-      if(wpMealId&&MEALS[wpMealId]){
+      // Μόνο κύριο πιάτο: αν έχει προγραμματιστεί γλυκό ή βάση, δεν γίνεται πρόταση ημέρας
+      if(wpMealId&&_isMeal(wpMealId)){
         stored={id:wpMealId,date:today};
         localStorage.setItem('fd_feat',JSON.stringify(stored));
       }
     }
-    if(stored.date===today&&stored.id){
+    // ΠΡΟΣΟΧΗ: το αποθηκευμένο πιάτο ημέρας επικυρώνεται. Παλιότερα αρκούσε να
+    // υπάρχει, οπότε ένα γλυκό ή μια βάση που είχε αποθηκευτεί (ή προγραμματιστεί)
+    // εμφανιζόταν ως πρόταση ημέρας παρακάμπτοντας τα φίλτρα — και μάλιστα πρώτη.
+    if(stored.date===today&&stored.id&&_isMeal(stored.id)){
       let si=show.findIndex(m=>m.id===stored.id);
-      // Αν το αποθηκευμένο πιάτο ημέρας δεν είναι στο σημερινό set (π.χ. μετά από «Νέες»),
-      // κράτησέ το: βάλ' το μπροστά αντί να το χάσεις
-      if(si<0&&MEALS[stored.id]){show.unshift({...MEALS[stored.id],id:stored.id});_featPool=show;si=0;}
+      // Αν δεν είναι στο σημερινό set (π.χ. μετά από «Νέες»), βάλ' το μπροστά
+      if(si<0){show.unshift({...MEALS[stored.id],id:stored.id});_featPool=show;si=0;}
       featIdx=si>=0?si:0;
       if(si<0){localStorage.setItem('fd_feat',JSON.stringify({id:show[0].id,date:today}));storeFeaturedMealForSW(show[0]);}
       else storeFeaturedMealForSW(show[featIdx]);
