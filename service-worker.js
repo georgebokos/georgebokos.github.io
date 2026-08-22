@@ -13,6 +13,9 @@ const ASSETS = [
 // Pages that must NOT fall back to /index.html
 const STANDALONE_PAGES = new Set(['/dances.html']);
 
+// Πακέτα μετάφρασης: lang/<κωδικός>.json
+const isLangPack = url => url.pathname.startsWith('/lang/') && url.pathname.endsWith('.json');
+
 // Install: cache core files immediately, don't wait for old SW to go away
 self.addEventListener('install', e => {
   e.waitUntil(
@@ -151,10 +154,15 @@ self.addEventListener('fetch', e => {
   // έβλεπε πάντα την προηγούμενη έκδοση — οι νέες συνταγές εμφανίζονταν μόλις
   // στο επόμενο άνοιγμα. Τώρα ζητάμε πρώτα το δίκτυο και κρατάμε το cache μόνο
   // ως εφεδρεία, ώστε η εφαρμογή να δουλεύει και χωρίς σύνδεση.
+  // Τα πακέτα γλώσσας είναι περιεχόμενο, όχι στατικό: μια διόρθωση μετάφρασης
+  // πρέπει να φτάνει αμέσως, γι' αυτό μπαίνουν στην ίδια λογική «δίκτυο πρώτα».
   const isPage = e.request.mode === 'navigate'
               || url.pathname === '/'
-              || url.pathname.endsWith('.html');
+              || url.pathname.endsWith('.html')
+              || isLangPack(url);
 
+  // Χωρίς δίκτυο και χωρίς cache, ένα πακέτο γλώσσας ΔΕΝ πρέπει να πέσει πίσω
+  // στο index.html — θα επέστρεφε HTML σε αίτημα JSON και θα έσκαγε το JSON.parse.
   if (isPage) {
     e.respondWith(
       fetch(e.request).then(resp => {
@@ -165,7 +173,7 @@ self.addEventListener('fetch', e => {
         return resp;
       }).catch(() =>
         caches.match(e.request).then(cached =>
-          cached || (STANDALONE_PAGES.has(url.pathname) ? null : caches.match('/index.html'))
+          cached || (STANDALONE_PAGES.has(url.pathname) || isLangPack(url) ? null : caches.match('/index.html'))
         )
       )
     );

@@ -47,7 +47,7 @@ def main():
     # --- 1. Copy static assets as-is ---
     print('\n[1/3] Copying assets...')
     # Folders to copy entirely
-    COPY_DIRS = ['images', '.well-known']
+    COPY_DIRS = ['images', '.well-known', 'lang']
     for d in COPY_DIRS:
         src_d = os.path.join(SRC, d)
         if os.path.isdir(src_d):

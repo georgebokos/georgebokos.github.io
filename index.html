@@ -719,8 +719,7 @@ body{font-family:'Inter',-apple-system,sans-serif;background:var(--bg);color:var
       </div>
     </div>
     <div class="hero-btns hero-lang-row">
-      <button id="lb-el" class="hero-btn hero-btn-lang" onclick="setLang('el')" title="Ελληνικά">ΕΛ</button>
-      <button id="lb-en" class="hero-btn hero-btn-lang" onclick="setLang('en')" title="English">EN</button>
+      <!-- τα κουμπιά παράγονται από το μητρώο LANGS, βλ. buildLangButtons() -->
     </div>
     <div class="hero-spacer"></div>
     <div class="hero-greeting" id="hero-greeting"></div>
@@ -1403,7 +1402,7 @@ function applyTheme(c){
 }
 
 const TR={
-  el:{sub:'Μεσογειακές Συνταγές',
+  el:{sub:'Μεσογειακές Συνταγές',lang_fail:'⚠️ Η γλώσσα δεν φορτώθηκε. Έλεγξε τη σύνδεσή σου.',
     n0:'☀️ Σήμερα',n1:'⭐ Εορτές',n2:'🍯 Γλυκά',n3:'🧊 Ψυγείο',n4:'👥 Καλεσμένοι',n5:'🌿 Εποχιακά',
     c0:'🌿 Όλα',c1:'🍝 Ζυμαρικά',c2:'🐟 Θαλασσινά',c3:'🥩 Κρεατικά',
     c4:'🫘 Όσπρια',c5:'🥦 Λαχανικά',c6:'🥗 Σαλάτες',c7:'🍲 Σούπες',
@@ -1490,7 +1489,7 @@ const TR={
     prof_title:'👤 Προφίλ & Προτιμήσεις',prof_dislikes:'Δεν μου αρέσει / Αποφεύγω',
     sweets_lbl:'Γλυκό',
   },
-  en:{sub:'Mediterranean Recipes',
+  en:{sub:'Mediterranean Recipes',lang_fail:'⚠️ Language pack failed to load. Check your connection.',
     n0:'☀️ Today',n1:'⭐ Feasts',n2:'🍯 Sweets',n3:'🧊 Fridge',n4:'👥 Guests',n5:'🌿 Seasonal',
     c0:'🌿 All',c1:'🍝 Pasta',c2:'🐟 Seafood',c3:'🥩 Meat',
     c4:'🫘 Legumes',c5:'🥦 Vegetables',c6:'🥗 Salads',c7:'🍲 Soups',
@@ -1578,28 +1577,82 @@ const TR={
     sweets_lbl:'Sweet',
   }
 };
-function t(k){return TR[curLang]?.[k]||TR.el[k]||k;}
+// ── Μητρώο γλωσσών ───────────────────────────────────────────────
+// pack:false → τα κείμενα βρίσκονται μέσα στο index.html (ελληνικά + _en πεδία)
+// pack:true  → κατεβαίνει το lang/<κωδικός>.json την πρώτη φορά που θα επιλεγεί
+const LANGS={
+  el:{lbl:'ΕΛ',name:'Ελληνικά',pack:false},
+  en:{lbl:'EN',name:'English',pack:false},
+};
+let LP=null;        // ενεργό πακέτο μετάφρασης (null για el/en)
+let _idsStamped=false;
+// Κάθε συνταγή χρειάζεται σταθερό κλειδί για να τη βρει το πακέτο.
+function _stampIds(){
+  if(_idsStamped)return; _idsStamped=true;
+  try{
+    for(const k in MEALS){MEALS[k]._id=k;MEALS[k]._ns='meals';}
+    for(const k in MEAL_PREP){MEAL_PREP[k]._id=k;MEAL_PREP[k]._ns='prep';}
+    for(const c in SWEETS)SWEETS[c].forEach((o,i)=>{o._id=c+':'+i;o._ns='sweets';});
+    FESTIVE.forEach((f,i)=>{f._id='f'+i;f._ns='fest';});
+  }catch(e){}
+}
+// Φορτώνει το πακέτο μιας γλώσσας. Επιστρέφει false αν αποτύχει, ώστε ο
+// καλών να μείνει στην προηγούμενη γλώσσα αντί να δείξει μισοάδεια οθόνη.
+async function loadLangPack(code){
+  const cfg=LANGS[code];
+  if(!cfg)return false;
+  if(!cfg.pack){LP=null;return true;}
+  if(LP&&LP.lang===code)return true;
+  _stampIds();
+  try{
+    const r=await fetch('lang/'+code+'.json');
+    if(!r.ok)throw new Error(r.status);
+    const p=await r.json();
+    if(!p||p.lang!==code)throw new Error('λάθος πακέτο');
+    LP=p;
+    if(p.ui)TR[code]=Object.assign({},TR[code]||{},p.ui);
+    return true;
+  }catch(e){return false;}
+}
+// Σειρά υποχώρησης: ενεργή γλώσσα → αγγλικά → ελληνικά → το ίδιο το κλειδί.
+// Έτσι μια ημιτελής μετάφραση δείχνει αγγλικά, ποτέ ελληνικά σε ξένο χρήστη.
+function t(k){
+  const a=TR[curLang]; if(a&&a[k]!==undefined&&a[k]!=='')return a[k];
+  if(curLang!=='el'&&TR.en&&TR.en[k]!==undefined&&TR.en[k]!=='')return TR.en[k];
+  return TR.el[k]||k;
+}
+// Πεδίο συνταγής από το ενεργό πακέτο, αλλιώς undefined.
+function _pk(o,f){
+  if(!LP||curLang==='el'||!o||!o._id)return undefined;
+  const src=LP[o._ns||'meals'];
+  const g=src&&src[o._id];
+  const v=g&&g[f];
+  return (v===undefined||v==='')?undefined:v;
+}
+// Πίνακας από το πακέτο, μόνο αν έχει ακριβώς το ίδιο πλήθος με το ελληνικό.
+function _pkArr(o,f,base){const v=_pk(o,f);return (Array.isArray(v)&&v.length===base.length)?v:undefined;}
 // Μεταφρασμένη επικεφαλίδα κατηγορίας (Αγαπημένα/Κατάλογος)
 const _CAT_I18N={pasta:'cPasta',seafood:'cSeafood',meat:'cMeat',legumes:'cLegumes',vegetables:'cVeg',salads:'cSalads',soups:'cSoups',sauces:'cSauces',pites:'cPites',pizza:'cPizza',desserts:'cDesserts'};
 function catHdr(c){const k=_CAT_I18N[c];return k?t(k):catLabel(c);}
-function mealName(m){return curLang==='en'&&(m.en||m.n_en)?(m.en||m.n_en):m.n;}
-function mIng(m){return curLang==='en'&&m.ing_en&&m.ing_en.length===m.ing.length?m.ing_en:m.ing;}
-function mSteps(m){return curLang==='en'&&m.steps_en&&m.steps_en.length===m.steps.length?m.steps_en:m.steps;}
-function mWine(m){return curLang==='en'&&m.wine_en!==undefined?m.wine_en:m.wine;}
-function mPlate(m){return curLang==='en'&&m.plate_en!==undefined?m.plate_en:m.plate;}
-function mPrepMsg(prep){return curLang==='en'&&prep.msg_en?prep.msg_en:prep.msg;}
-function sweetName(s){return curLang==='en'&&s.n_en?s.n_en:s.n;}
-function sweetIng(s){return curLang==='en'&&s.ing_en&&s.ing_en.length===s.ing.length?s.ing_en:s.ing;}
-function sweetSteps(s){return curLang==='en'&&s.steps_en&&s.steps_en.length===s.steps.length?s.steps_en:s.steps;}
-function fN(f){return curLang==='en'&&f.n_en?f.n_en:f.n;}
-function fD(f){return curLang==='en'&&f.d_en?f.d_en:f.d;}
-function fTl(f){return curLang==='en'&&f.tl_en?f.tl_en:f.tl;}
-function fSub(f){return curLang==='en'&&f.sub_en?f.sub_en:f.sub;}
-function fFn(f){return curLang==='en'&&f.fn_en!==undefined?f.fn_en:f.fn;}
-function fMenu(f){return curLang==='en'&&f.menu_en&&f.menu_en.length===f.menu.length?f.menu_en:f.menu;}
-function fWine(f){return curLang==='en'&&f.wine_en?f.wine_en:f.wine;}
-function fWt(f){return curLang==='en'&&f.wt_en?f.wt_en:f.wt;}
-function fTl2(f){return curLang==='en'&&f.tl2_en&&f.tl2_en.length===f.tl2.length?f.tl2_en:f.tl2;}
+const _xl=()=>curLang!=='el';
+function mealName(m){return _pk(m,'n')||(_xl()&&(m.en||m.n_en)?(m.en||m.n_en):m.n);}
+function mIng(m){return _pkArr(m,'ing',m.ing)||(_xl()&&m.ing_en&&m.ing_en.length===m.ing.length?m.ing_en:m.ing);}
+function mSteps(m){return _pkArr(m,'steps',m.steps)||(_xl()&&m.steps_en&&m.steps_en.length===m.steps.length?m.steps_en:m.steps);}
+function mWine(m){const p=_pk(m,'wine');return p!==undefined?p:(_xl()&&m.wine_en!==undefined?m.wine_en:m.wine);}
+function mPlate(m){const p=_pk(m,'plate');return p!==undefined?p:(_xl()&&m.plate_en!==undefined?m.plate_en:m.plate);}
+function mPrepMsg(prep){return _pk(prep,'msg')||(_xl()&&prep.msg_en?prep.msg_en:prep.msg);}
+function sweetName(s){return _pk(s,'n')||(_xl()&&s.n_en?s.n_en:s.n);}
+function sweetIng(s){return _pkArr(s,'ing',s.ing)||(_xl()&&s.ing_en&&s.ing_en.length===s.ing.length?s.ing_en:s.ing);}
+function sweetSteps(s){return _pkArr(s,'steps',s.steps)||(_xl()&&s.steps_en&&s.steps_en.length===s.steps.length?s.steps_en:s.steps);}
+function fN(f){return _pk(f,'n')||(_xl()&&f.n_en?f.n_en:f.n);}
+function fD(f){return _pk(f,'d')||(_xl()&&f.d_en?f.d_en:f.d);}
+function fTl(f){return _pk(f,'tl')||(_xl()&&f.tl_en?f.tl_en:f.tl);}
+function fSub(f){return _pk(f,'sub')||(_xl()&&f.sub_en?f.sub_en:f.sub);}
+function fFn(f){const p=_pk(f,'fn');return p!==undefined?p:(_xl()&&f.fn_en!==undefined?f.fn_en:f.fn);}
+function fMenu(f){return _pkArr(f,'menu',f.menu)||(_xl()&&f.menu_en&&f.menu_en.length===f.menu.length?f.menu_en:f.menu);}
+function fWine(f){return _pk(f,'wine')||(_xl()&&f.wine_en?f.wine_en:f.wine);}
+function fWt(f){return _pk(f,'wt')||(_xl()&&f.wt_en?f.wt_en:f.wt);}
+function fTl2(f){return _pkArr(f,'tl2',f.tl2)||(_xl()&&f.tl2_en&&f.tl2_en.length===f.tl2.length?f.tl2_en:f.tl2);}
 function catLabel(cat){return t('cl_'+cat)||cat;}
 
 
@@ -7083,14 +7136,23 @@ function updateHeroTexts(){
   const dailyCount=Math.min(dailyPool.length,12);
   if(sl)sl.textContent=curLang==='en'?`🍽️ ${dailyCount} suggestions today · ${mealCount}+ recipes`:`🍽️ ${dailyCount} προτάσεις σήμερα · ${mealCount}+ συνταγές`;
 }
+function buildLangButtons(){
+  const row=document.querySelector('.hero-lang-row');
+  if(!row)return;
+  row.innerHTML=Object.keys(LANGS).map(c=>
+    `<button id="lb-${c}" class="hero-btn hero-btn-lang" onclick="setLang('${c}')" title="${LANGS[c].name}">${LANGS[c].lbl}</button>`
+  ).join('');
+}
 function applyLangTexts(lang){
+  buildLangButtons();
+  try{document.documentElement.setAttribute('lang',lang);}catch(e){}
   document.querySelectorAll('.hero-btn-lang').forEach(b=>b.classList.remove('on'));
   const lb=document.getElementById('lb-'+lang);if(lb)lb.classList.add('on');
   // Nav
-  document.querySelectorAll('.ntab').forEach((b,i)=>{const k='n'+i;if(TR[lang][k])b.textContent=TR[lang][k];});
+  document.querySelectorAll('.ntab').forEach((b,i)=>{const v=t('n'+i);if(v)b.textContent=v;});
   // Cats: όλα τα pills του νέου μενού μεταφράζονται μέσω [data-i18n] παρακάτω
   // Sweets cats
-  const swc=TR[lang].sw||TR.el.sw;
+  const swc=t('sw')||TR.el.sw;
   document.querySelectorAll('#sw-cats .cpill').forEach((b,i)=>{if(swc[i])b.textContent=swc[i];});
   // Fest filter
   const ffl=[t('ff_all'),t('ff_fasting'),t('ff_fish'),t('ff_major'),t('ff_national'),t('ff_folk')];
@@ -7108,7 +7170,10 @@ function applyLangTexts(lang){
   document.querySelectorAll('[data-i18n-title]').forEach(el=>{const k=el.getAttribute('data-i18n-title');const v=t(k);if(v&&v!==k)el.title=v;});
   document.querySelectorAll('[data-i18n-alt]').forEach(el=>{const k=el.getAttribute('data-i18n-alt');const v=t(k);if(v&&v!==k)el.alt=v;});
 }
-function setLang(lang){
+async function setLang(lang){
+  if(!LANGS[lang])return;
+  const ok=await loadLangPack(lang);
+  if(!ok){try{showToast(t('lang_fail'));}catch(e){}return;}
   curLang=lang;localStorage.setItem('fd_lang',lang);
   applyLangTexts(lang);
   updateHeroTexts();
@@ -8112,8 +8177,8 @@ function dismissTonightBanner(){
     const db=document.getElementById('dark-btn');if(db)db.textContent='☀️';
   }
   // Restore language preference
-  const _sl=localStorage.getItem('fd_lang');if(_sl==='en'||_sl==='el')curLang=_sl;
-  applyLangTexts(curLang);
+  const _sl=localStorage.getItem('fd_lang');
+  if(_sl&&LANGS[_sl]&&_sl!==curLang){setLang(_sl);}else{applyLangTexts(curLang);}
   // Hero greeting + date
   updateHeroTexts();
   // Premium: ξεκίνα την 3ήμερη δωρεάν γνωριμία (μόνο σε native) και δείξε banner
