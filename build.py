@@ -53,10 +53,15 @@ def main():
         if os.path.isdir(src_d):
             shutil.copytree(src_d, os.path.join(DIST, d))
             print(f'  ✓ {d}/ ({len(os.listdir(src_d))} files)')
-    # Root files to copy (everything except source files we handle separately)
-    SKIP = {'index.html', 'service-worker.js', 'build.py', 'dist', '.github', '.git', '.gitignore', 'LICENSE'}
-    for f in os.listdir(SRC):
-        if f in SKIP or f.startswith('.') or os.path.isdir(os.path.join(SRC, f)):
+    # Root files to copy.
+    # ΡΗΤΗ ΛΙΣΤΑ, όχι λίστα εξαιρέσεων. Με τη λίστα εξαιρέσεων δημοσιευόταν στο
+    # ζωντανό site ό,τι έμπαινε στη ρίζα — ανάμεσά τους το CLAUDE.md με εσωτερικές
+    # σημειώσεις και τα logo_proposals.html. Ό,τι δεν είναι εδώ, δεν ανεβαίνει.
+    PUBLISH = {'manifest.json', 'privacy.html', 'dances.html', 'icon.svg'}
+    for f in sorted(os.listdir(SRC)):
+        if os.path.isdir(os.path.join(SRC, f)):
+            continue
+        if f not in PUBLISH and not (f.startswith('icon-') and f.endswith('.png')):
             continue
         shutil.copy2(os.path.join(SRC, f), os.path.join(DIST, f))
         print(f'  ✓ {f}')
