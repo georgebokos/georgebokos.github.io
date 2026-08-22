@@ -101,12 +101,13 @@ def build(lang, ratio):
             # Το στιγμιότυπο δεν περικόπτεται — μπαίνει ολόκληρο πάνω σε θολό φόντο.
             if kind == 'shot':
                 bgm = cover(raw, W, H).filter(__import__('PIL.ImageFilter', fromlist=['x']).GaussianBlur(28))
-                sc = min(W * .74 / raw.width, H * .62 / raw.height)
+                sc = (min(W * .40 / raw.width, H * .72 / raw.height) if ratio == 'landscape'
+                      else min(W * .74 / raw.width, H * .62 / raw.height))
                 fg = raw.resize((round(raw.width * sc), round(raw.height * sc)), Image.LANCZOS)
                 # Το σκίαστρο μπαίνει ΜΟΝΟ στο θολό φόντο. Αν έπεφτε και πάνω στο
                 # στιγμιότυπο, η ίδια η εφαρμογή γινόταν δυσανάγνωστη στη διαφήμιση.
                 base = Image.composite(dark, bgm, mask)
-                base.paste(fg, ((W - fg.width) // 2, round(H * .10)))
+                base.paste(fg, ((W - fg.width) // 2, round(H * (.05 if ratio == 'landscape' else .10))))
             else:
                 base = cover(raw, round(W * 1.14), round(H * 1.14))
         for i in range(n):
@@ -132,19 +133,30 @@ def build(lang, ratio):
 
             d = ImageDraw.Draw(fr)
             if kind == 'cta':
-                D = round(W * .22)
+                # ΠΡΟΣΟΧΗ: με σταθερά ποσοστά ύψους, στο οριζόντιο πλαίσιο το όνομα
+                # έπεφτε πάνω στο κουμπί. Το μπλοκ υπολογίζεται και κεντράρεται.
+                S = min(W, H)
+                D  = round(S * .22)
+                nm = 'FoodDaily'
+                bh = round(S * .105)
+                bw = round(d.textlength(title, font=f_cta)) + round(S * .10)
+                g1, g2, g3 = round(S * .045), round(S * .055), round(S * .032)
+                block = D + g1 + f_big.size + g2 + bh + g3 + f_sub.size
+                y0 = (H - block) // 2
+
                 ic = Image.open(os.path.join(ROOT, 'icon-512.png')).convert('RGB').crop((118, 88, 394, 364)).resize((D, D), Image.LANCZOS)
                 m2 = Image.new('L', (D * 4, D * 4), 0); ImageDraw.Draw(m2).ellipse([0, 0, D * 4, D * 4], fill=255)
                 ic.putalpha(m2.resize((D, D), Image.LANCZOS))
-                fr.paste(ic, ((W - D) // 2, round(H * .26)), ic)
-                nm = 'FoodDaily'
-                d.text(((W - d.textlength(nm, font=f_big)) / 2, H * .26 + D + round(H * .035)), nm, font=f_big, fill=(255, 253, 248))
-                bw = round(d.textlength(title, font=f_cta)) + round(W * .10)
-                bh = round(W * (.075 if ratio == 'landscape' else .105))
-                bx, by = (W - bw) // 2, round(H * .62)
-                d.rounded_rectangle([bx, by, bx + bw, by + bh], radius=bh // 2, fill=(200, 80, 26))
-                d.text((bx + (bw - d.textlength(title, font=f_cta)) / 2, by + (bh - f_cta.size) / 2 - round(W * .004)), title, font=f_cta, fill=(255, 255, 255))
-                d.text(((W - d.textlength(sub, font=f_sub)) / 2, by + bh + round(H * .028)), sub, font=f_sub, fill=(236, 208, 158))
+                fr.paste(ic, ((W - D) // 2, y0), ic)
+
+                y = y0 + D + g1
+                d.text(((W - d.textlength(nm, font=f_big)) / 2, y), nm, font=f_big, fill=(255, 253, 248))
+                y += f_big.size + g2
+                bx = (W - bw) // 2
+                d.rounded_rectangle([bx, y, bx + bw, y + bh], radius=bh // 2, fill=(200, 80, 26))
+                d.text((bx + (bw - d.textlength(title, font=f_cta)) / 2, y + (bh - f_cta.size) / 2 - round(S * .004)), title, font=f_cta, fill=(255, 255, 255))
+                y += bh + g3
+                d.text(((W - d.textlength(sub, font=f_sub)) / 2, y), sub, font=f_sub, fill=(236, 208, 158))
             else:
                 fr.paste(logo, (pad, pad), logo)
                 d.text((pad + LD + round(W * .022), pad + (LD - f_logo.size) // 2 - round(W * .005)), 'FoodDaily', font=f_logo, fill=(255, 252, 246))
