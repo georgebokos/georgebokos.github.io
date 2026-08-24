@@ -57,3 +57,19 @@ python3 store/feature_graphic.py       # feature graphic και στις δύο 
 `╬θ╬Φ╬Ω╬Υ╬θ╬μ_PLAYSTORE.md`). Περιγράφουν τη διαδικασία PWABuilder με **λάθος
 package ID** (`gr.fooddaily.app` αντί για `com.fooddaily.app`) και είναι πλέον
 παραπλανητικοί. Δεν τους έσβησα χωρίς έγκριση.
+
+## Εικόνες κοινοποίησης
+
+Για μέρη όπου ο σύνδεσμος **δεν πατιέται** — Instagram, αφίσες, εκτυπώσεις.
+
+| Αρχείο | Πού |
+|---|---|
+| `share-tetragono-*.png` | 1080×1080 — Instagram, Facebook, Viber |
+| `share-story-*.png` | 1080×1920 — Stories, WhatsApp status |
+
+Παράγονται με `python3 store/share_card.py`. Το QR οδηγεί στο
+`https://georgebokos.github.io/install.html` και **επαληθεύεται με αποκωδικοποίηση**
+μετά την παραγωγή — δεν αρκεί να «φαίνεται» σωστό.
+
+Δεν υπάρχει ζωγραφισμένο κουμπί πάνω στην εικόνα: σε εικόνα δεν πατιέται τίποτα,
+οπότε η προτροπή είναι το QR και η διεύθυνση από κάτω.
