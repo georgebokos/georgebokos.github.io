@@ -1,8 +1,8 @@
-ΤΙΤΛΟΣ (24/30)
-FoodDaily: Greek Recipes
+ΤΙΤΛΟΣ (25/30)
+Food Daily: Greek Recipes
 
-ΣΥΝΤΟΜΗ ΠΕΡΙΓΡΑΦΗ (77/80)
-376 Greek recipes, a meal idea every day, shopping list and cost per serving.
+ΣΥΝΤΟΜΗ ΠΕΡΙΓΡΑΦΗ (80/80)
+FoodDaily — 376 Greek recipes, a meal idea every day, list and cost per serving.
 
 ΠΛΗΡΗΣ ΠΕΡΙΓΡΑΦΗ (1955/4000)
 What are we cooking today?
