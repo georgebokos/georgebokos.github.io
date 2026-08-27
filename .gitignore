@@ -6,3 +6,6 @@ category_mockups3.html
 category_mockups4.html
 dist/
 node_modules/
+
+# Τα Reels παράγονται με το ads/reel.py — δεν χρειάζεται να βαραίνουν το repo
+ads/reels/*.mp4
