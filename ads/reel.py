@@ -59,6 +59,10 @@ def build(rid, lang='el'):
          'serv':'μερίδες' if el else 'servings',
          'cta':'376 ελληνικές συνταγές' if el else '376 Greek recipes',
          'app':'στην εφαρμογή FoodDaily' if el else 'in the FoodDaily app',
+         'q':'Τι μαγειρεύουμε σήμερα;' if el else 'What are we cooking today?',
+         'b1':'Πρόταση φαγητού κάθε μέρα' if el else 'A meal suggestion every day',
+         'b2':'Υπενθύμιση τι να ετοιμάσεις' if el else 'Reminders of what to prep',
+         'b3':'376 ελληνικές συνταγές' if el else '376 Greek recipes',
          'get':'Σύνδεσμος στο προφίλ' if el else 'Link in bio',
          'url':'georgebokos.github.io/app',
          'free':'Δωρεάν στο Google Play' if el else 'Free on Google Play'}
@@ -166,24 +170,44 @@ def build(rid, lang='el'):
                 for ln in wrap(d, body, f_step, W-2*pad)[:7]:
                     d.text((pad,y), ln, font=f_step, fill=(248,241,229)); y += 62
             else:
-                fr.paste(logo, ((W-D)//2, round(H*.30)), logo)
                 ctr = lambda t,f,yy,c: d.text(((W-d.textlength(t,font=f))/2, yy), t, font=f, fill=c)
-                ctr('FoodDaily', f_cta, H*.30+D+40, (255,253,248))
-                ctr(L['cta'], f_sub, H*.30+D+130, (240,214,166))
-                ctr(L['app'], f_sub, H*.30+D+184, (240,214,166))
-                # Δείκτης προς τα πάνω: εκεί βρίσκεται το προφίλ σε κάθε πλατφόρμα.
-                bh = 118
-                bw = round(d.textlength(L['get'], font=f_sub)) + 170
-                bx, by = (W-bw)//2, round(H*.60)
-                d.rounded_rectangle([bx,by,bx+bw,by+bh], radius=bh//2, fill=(200,80,26))
+                f_q    = ImageFont.truetype(FB, 58)
+                f_bul  = ImageFont.truetype(FR, 40)
+                f_url  = ImageFont.truetype(FB, 40)
+                bul    = [L['b1'], L['b2'], L['b3']]
+                bh, bw = 118, round(d.textlength(L['get'], font=f_sub)) + 170
+
+                # Ολόκληρο το μπλοκ υπολογίζεται και κεντράρεται, ώστε να μη
+                # βγαίνει έξω από το κάδρο όταν αλλάξουν τα κείμενα.
+                block = (D + 30 + f_cta.size + 34 + f_q.size + 40
+                         + len(bul)*56 + 44 + bh + 30 + f_sub.size + 18 + f_url.size)
+                y = (H - block) // 2
+
+                fr.paste(logo, ((W-D)//2, y), logo); y += D + 30
+                ctr('FoodDaily', f_cta, y, (255,253,248)); y += f_cta.size + 34
+                # Η κύρια ιδέα της εφαρμογής, με τα λόγια του χρήστη
+                ctr(L['q'], f_q, y, (255,250,240)); y += f_q.size + 40
+                # Κοινό αριστερό περιθώριο για όλες τις γραμμές: αν κεντραριστεί
+                # η καθεμία χωριστά, οι κουκκίδες βγαίνουν σε ζιγκ-ζαγκ.
+                wmax = max(d.textlength(t_, font=f_bul) for t_ in bul)
+                bx0 = round((W - wmax) / 2)
+                for t_ in bul:
+                    d.ellipse([bx0-36, y+16, bx0-20, y+32], fill=(233,178,74))
+                    d.text((bx0, y), t_, font=f_bul, fill=(243,225,192))
+                    y += 56
+                y += 44
+
+                bx = (W-bw)//2
+                d.rounded_rectangle([bx,y,bx+bw,y+bh], radius=bh//2, fill=(200,80,26))
                 # Το ☝ δεν υπάρχει στη γραμματοσειρά — το βέλος σχεδιάζεται.
-                ax, ay = bx+62, by+bh//2
+                ax, ay = bx+62, y+bh//2
                 d.polygon([(ax, ay-26), (ax-20, ay-2), (ax-8, ay-2), (ax-8, ay+26),
                            (ax+8, ay+26), (ax+8, ay-2), (ax+20, ay-2)], fill=(255,255,255))
-                d.text((bx+108, by+(bh-38)//2-4), L['get'], font=f_sub, fill=(255,255,255))
-                ctr(L['free'], f_sub, by+bh+34, (232,204,162))
+                d.text((bx+108, y+(bh-38)//2-4), L['get'], font=f_sub, fill=(255,255,255))
+                y += bh + 30
+                ctr(L['free'], f_sub, y, (232,204,162)); y += f_sub.size + 18
                 # Και γραπτά, για όποιον δει το βίντεο εκτός πλατφόρμας.
-                ctr(L['url'], ImageFont.truetype(FB, 40), by+bh+96, (233,178,74))
+                ctr(L['url'], f_url, y, (233,178,74))
 
             fade = min(1., (total+1)/FADE, (n_all-total)/FADE)
             if fade < 1.:
