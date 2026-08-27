@@ -95,16 +95,18 @@ def build(rid, lang='el'):
         body = body.strip()
         cut = body.find('. ')
         if cut > 30: body = body[:cut+1]
-        if len(body) > 105: body = body[:102].rsplit(' ', 1)[0] + '…'
+        if len(body) > 90: body = body[:87].rsplit(' ', 1)[0] + '…'
         return head.strip(), body
 
     # Στα Reels ελάχιστοι φτάνουν στο τέλος: το σύνολο κόβεται στα ~14 δευτ.,
     # αλλά η τελευταία ενότητα — αυτή που λέει πώς κατεβαίνει η εφαρμογή —
     # κρατά περισσότερο, γιατί εκεί γίνεται η μετατροπή.
     scenes = []
-    scenes.append(('hook', 2.4, None))
-    scenes.append(('ing',  max(2.6, min(3.6, .8+len(ings)*.22)), None))
-    for i, st in enumerate(steps[:2]):
+    scenes.append(('hook', 1.8, None))
+    scenes.append(('ing',  max(2.2, min(2.8, .6+len(ings)*.18)), None))
+    # Ένα μόνο βήμα: δείγμα της μεθόδου, όχι ολόκληρη η συνταγή. Τη συνέχεια
+    # τη βρίσκει ο θεατής στην εφαρμογή — αυτός είναι και ο σκοπός.
+    for i, st in enumerate(steps[:1]):
         scenes.append(('step', 2.4, (i, shorten(st))))
     scenes.append(('cta', 5.0, None))
 
