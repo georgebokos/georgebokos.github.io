@@ -67,6 +67,14 @@ def main():
         shutil.copy2(os.path.join(SRC, f), os.path.join(DIST, f))
         print(f'  ✓ {f}')
 
+    # Σύντομη διεύθυνση: /app → η ίδια σελίδα εγκατάστασης.
+    # Το install.html είναι πολύ μεγάλο για να το πληκτρολογήσει κανείς όταν το
+    # βλέπει ως κείμενο (π.χ. σε βιογραφικό TikTok, ή σε βίντεο).
+    app_dir = os.path.join(DIST, 'app')
+    os.makedirs(app_dir, exist_ok=True)
+    shutil.copy2(os.path.join(SRC, 'install.html'), os.path.join(app_dir, 'index.html'))
+    print('  ✓ app/index.html (σύντομη διεύθυνση /app)')
+
     # --- 2. Obfuscate index.html inline JS ---
     print('\n[2/3] Obfuscating index.html...')
     with open(os.path.join(SRC, 'index.html'), 'r', encoding='utf-8') as f:

@@ -60,6 +60,7 @@ def build(rid, lang='el'):
          'cta':'376 ελληνικές συνταγές' if el else '376 Greek recipes',
          'app':'στην εφαρμογή FoodDaily' if el else 'in the FoodDaily app',
          'get':'Σύνδεσμος στο προφίλ' if el else 'Link in bio',
+         'url':'georgebokos.github.io/app',
          'free':'Δωρεάν στο Google Play' if el else 'Free on Google Play'}
 
     photo = Image.open(os.path.join(ROOT, imgp)).convert('RGB')
@@ -176,6 +177,8 @@ def build(rid, lang='el'):
                            (ax+8, ay+26), (ax+8, ay-2), (ax+20, ay-2)], fill=(255,255,255))
                 d.text((bx+108, by+(bh-38)//2-4), L['get'], font=f_sub, fill=(255,255,255))
                 ctr(L['free'], f_sub, by+bh+34, (232,204,162))
+                # Και γραπτά, για όποιον δει το βίντεο εκτός πλατφόρμας.
+                ctr(L['url'], ImageFont.truetype(FB, 40), by+bh+96, (233,178,74))
 
             fade = min(1., (total+1)/FADE, (n_all-total)/FADE)
             if fade < 1.:
