@@ -59,7 +59,8 @@ def build(rid, lang='el'):
          'serv':'μερίδες' if el else 'servings',
          'cta':'376 ελληνικές συνταγές' if el else '376 Greek recipes',
          'app':'στην εφαρμογή FoodDaily' if el else 'in the FoodDaily app',
-         'get':'Δωρεάν στο Google Play' if el else 'Free on Google Play'}
+         'get':'Σύνδεσμος στο προφίλ' if el else 'Link in bio',
+         'free':'Δωρεάν στο Google Play' if el else 'Free on Google Play'}
 
     photo = Image.open(os.path.join(ROOT, imgp)).convert('RGB')
     bg = cover(photo, W, H)
@@ -164,10 +165,17 @@ def build(rid, lang='el'):
                 ctr('FoodDaily', f_cta, H*.30+D+40, (255,253,248))
                 ctr(L['cta'], f_sub, H*.30+D+130, (240,214,166))
                 ctr(L['app'], f_sub, H*.30+D+184, (240,214,166))
-                bh, bw = 118, 560
-                bx, by = (W-bw)//2, round(H*.62)
+                # Δείκτης προς τα πάνω: εκεί βρίσκεται το προφίλ σε κάθε πλατφόρμα.
+                bh = 118
+                bw = round(d.textlength(L['get'], font=f_sub)) + 170
+                bx, by = (W-bw)//2, round(H*.60)
                 d.rounded_rectangle([bx,by,bx+bw,by+bh], radius=bh//2, fill=(200,80,26))
-                ctr(L['get'], f_sub, by+(bh-38)//2-4, (255,255,255))
+                # Το ☝ δεν υπάρχει στη γραμματοσειρά — το βέλος σχεδιάζεται.
+                ax, ay = bx+62, by+bh//2
+                d.polygon([(ax, ay-26), (ax-20, ay-2), (ax-8, ay-2), (ax-8, ay+26),
+                           (ax+8, ay+26), (ax+8, ay-2), (ax+20, ay-2)], fill=(255,255,255))
+                d.text((bx+108, by+(bh-38)//2-4), L['get'], font=f_sub, fill=(255,255,255))
+                ctr(L['free'], f_sub, by+bh+34, (232,204,162))
 
             fade = min(1., (total+1)/FADE, (n_all-total)/FADE)
             if fade < 1.:
