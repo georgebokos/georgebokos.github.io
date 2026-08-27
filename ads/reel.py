@@ -63,6 +63,8 @@ def build(rid, lang='el'):
          'b1':'Πρόταση φαγητού κάθε μέρα' if el else 'A meal suggestion every day',
          'b2':'Υπενθύμιση τι να ετοιμάσεις' if el else 'Reminders of what to prep',
          'b3':'376 ελληνικές συνταγές' if el else '376 Greek recipes',
+         'more':'Δείτε τα αναλυτικά στην εφαρμογή FoodDaily' if el
+                else 'See the full method in the FoodDaily app',
          'get':'Σύνδεσμος στο προφίλ' if el else 'Link in bio',
          'url':'georgebokos.github.io/app',
          'free':'Δωρεάν στο Google Play' if el else 'Free on Google Play'}
@@ -122,7 +124,7 @@ def build(rid, lang='el'):
     # Όλη η εκτέλεση σε ΜΙΑ οθόνη: ο θεατής βλέπει ολοκληρωμένη τη διαδικασία
     # με μια ματιά, αντί να περιμένει βήμα-βήμα. Κερδίζεται χρόνος και δίνεται
     # πλήρης εικόνα. Τα αναλυτικά κείμενα είναι μέσα στην εφαρμογή.
-    scenes.append(('steps', 6.5, [st.split(':', 1)[0].strip() for st in steps[:8]]))
+    scenes.append(('steps', 7.0, [st.split(':', 1)[0].strip() for st in steps[:8]]))
 
     out = os.path.join(OUT, f'reel-{rid}-{lang}.mp4')
     proc = subprocess.Popen([FFMPEG,'-y','-f','rawvideo','-pix_fmt','rgb24','-s',f'{W}x{H}','-r',str(FPS),
@@ -173,20 +175,41 @@ def build(rid, lang='el'):
                 fr.paste(logo,(pad,pad),logo)
                 d.text((pad, pad+D+34), L['how'], font=f_hdr, fill=(233,178,74))
                 # Το ύψος γραμμής προσαρμόζεται στο πλήθος, ώστε να χωρούν και τα 8
-                lh = 96 if len(titles) <= 5 else (84 if len(titles) <= 6 else 76)
-                fs = 50 if len(titles) <= 5 else (46 if len(titles) <= 6 else 42)
+                lh = 92 if len(titles) <= 5 else (80 if len(titles) <= 6 else 72)
+                fs = 48 if len(titles) <= 5 else (44 if len(titles) <= 6 else 40)
                 f_t = ImageFont.truetype(FR, fs)
                 f_n = ImageFont.truetype(FB, fs + 6)
-                y = pad + D + 130
+                y = pad + D + 124
                 for k, ttl in enumerate(titles):
-                    vis = min(1.0, max(0.0, p * len(titles) * 1.45 - k))
+                    vis = min(1.0, max(0.0, p * len(titles) * 1.9 - k))
                     if vis <= 0: continue
-                    num = str(k+1)
-                    d.text((pad, y), num, font=f_n,
+                    d.text((pad, y), str(k+1), font=f_n,
                            fill=(round(60+(200-60)*vis), round(24+(80-24)*vis), round(8+(26-8)*vis)))
                     c = round(20+(250-20)*vis)
                     d.text((pad+72, y+3), ttl, font=f_t, fill=(c, c, c))
                     y += lh
+
+                # Δεύτερη υπενθύμιση, σε άλλη οθόνη: εδώ κοιτά ήδη τη διαδικασία
+                # και συνειδητοποιεί ότι τα αναλυτικά λείπουν.
+                f_more = ImageFont.truetype(FB, 56)
+                f_url2 = ImageFont.truetype(FB, 40)
+                bh2 = 118
+                bw2 = round(d.textlength(L['get'], font=f_sub)) + 170
+                mlines = wrap(d, L['more'], f_more, W - 2*pad)[:2]
+                blk = len(mlines)*68 + 40 + bh2 + 26 + f_url2.size
+                by = H - pad - blk
+                for ln in mlines:
+                    d.text(((W - d.textlength(ln, font=f_more))/2, by), ln, font=f_more, fill=(255,252,246))
+                    by += 68
+                by += 40
+                bx2 = (W - bw2)//2
+                d.rounded_rectangle([bx2,by,bx2+bw2,by+bh2], radius=bh2//2, fill=(200,80,26))
+                ax2, ay2 = bx2+62, by+bh2//2
+                d.polygon([(ax2, ay2-26), (ax2-20, ay2-2), (ax2-8, ay2-2), (ax2-8, ay2+26),
+                           (ax2+8, ay2+26), (ax2+8, ay2-2), (ax2+20, ay2-2)], fill=(255,255,255))
+                d.text((bx2+108, by+(bh2-38)//2-4), L['get'], font=f_sub, fill=(255,255,255))
+                by += bh2 + 26
+                d.text(((W - d.textlength(L['url'], font=f_url2))/2, by), L['url'], font=f_url2, fill=(233,178,74))
             elif kind == 'step':
                 idx, (head, body) = extra
                 fr.paste(logo,(pad,pad),logo)
