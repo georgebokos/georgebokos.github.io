@@ -119,8 +119,10 @@ def build(rid, lang='el'):
     scenes.append(('hook', 2.0, None))
     scenes.append(('cta',  5.0, None))
     scenes.append(('ing',  2.5, None))
-    for i, st in enumerate(steps[:2]):
-        scenes.append(('step', 2.75, (i, shorten(st))))
+    # Όλη η εκτέλεση σε ΜΙΑ οθόνη: ο θεατής βλέπει ολοκληρωμένη τη διαδικασία
+    # με μια ματιά, αντί να περιμένει βήμα-βήμα. Κερδίζεται χρόνος και δίνεται
+    # πλήρης εικόνα. Τα αναλυτικά κείμενα είναι μέσα στην εφαρμογή.
+    scenes.append(('steps', 6.5, [st.split(':', 1)[0].strip() for st in steps[:8]]))
 
     out = os.path.join(OUT, f'reel-{rid}-{lang}.mp4')
     proc = subprocess.Popen([FFMPEG,'-y','-f','rawvideo','-pix_fmt','rgb24','-s',f'{W}x{H}','-r',str(FPS),
@@ -166,6 +168,25 @@ def build(rid, lang='el'):
                     if vis <= 0: continue
                     c = tuple(round(20+(252-20)*vis) for _ in range(3))
                     d.text((pad, y), '· '+it, font=f_item, fill=c); y += 62
+            elif kind == 'steps':
+                titles = extra
+                fr.paste(logo,(pad,pad),logo)
+                d.text((pad, pad+D+34), L['how'], font=f_hdr, fill=(233,178,74))
+                # Το ύψος γραμμής προσαρμόζεται στο πλήθος, ώστε να χωρούν και τα 8
+                lh = 96 if len(titles) <= 5 else (84 if len(titles) <= 6 else 76)
+                fs = 50 if len(titles) <= 5 else (46 if len(titles) <= 6 else 42)
+                f_t = ImageFont.truetype(FR, fs)
+                f_n = ImageFont.truetype(FB, fs + 6)
+                y = pad + D + 130
+                for k, ttl in enumerate(titles):
+                    vis = min(1.0, max(0.0, p * len(titles) * 1.45 - k))
+                    if vis <= 0: continue
+                    num = str(k+1)
+                    d.text((pad, y), num, font=f_n,
+                           fill=(round(60+(200-60)*vis), round(24+(80-24)*vis), round(8+(26-8)*vis)))
+                    c = round(20+(250-20)*vis)
+                    d.text((pad+72, y+3), ttl, font=f_t, fill=(c, c, c))
+                    y += lh
             elif kind == 'step':
                 idx, (head, body) = extra
                 fr.paste(logo,(pad,pad),logo)
