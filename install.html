@@ -102,6 +102,8 @@ var T={
      f3:'<b>Κόστος ανά μερίδα</b> — ξέρεις τι ξοδεύεις πριν τα ψώνια',
      f4:'<b>376 ελληνικές συνταγές</b> — βήμα βήμα, και χωρίς ίντερνετ',
      qrt:'Σκάναρέ το με το κινητό σου',
+     ios:'Προς το παρόν μόνο για Android',
+     iosSub:'Η έκδοση για iPhone δεν είναι ακόμα διαθέσιμη. Στείλε τον σύνδεσμο σε φίλο με Android.',
      copied:'📋 Ο σύνδεσμος αντιγράφηκε!',
      shareTxt:'376 ελληνικές συνταγές και μία πρόταση φαγητού κάθε μέρα:'},
  en:{tag:'What are we cooking today?',cta:'Install now',
@@ -111,6 +113,8 @@ var T={
      f3:'<b>Cost per serving</b> — know what you spend before you shop',
      f4:'<b>376 Greek recipes</b> — step by step, and offline',
      qrt:'Scan it with your phone',
+     ios:'Android only for now',
+     iosSub:'An iPhone version is not available yet. Send the link to a friend with Android.',
      copied:'📋 Link copied!',
      shareTxt:'376 Greek recipes and a meal idea every day:'}
 };
@@ -124,14 +128,31 @@ function setLang(l){
   });
   document.getElementById('l-el').className = l==='el'?'on':'';
   document.getElementById('l-en').className = l==='en'?'on':'';
+  try{applyIOS();}catch(e){}
   try{localStorage.setItem('fd_install_lang',l);}catch(e){}
 }
 // Το QR δεν έχει νόημα στο ίδιο το κινητό — μόνο σε υπολογιστή.
+var isIOS=/iPhone|iPad|iPod/i.test(navigator.userAgent);
 if(!/Android|iPhone|iPad|iPod|Mobile/i.test(navigator.userAgent)){
   document.getElementById('qr').style.display='block';
 }
+// Σε iPhone το Google Play είναι αδιέξοδο: το κουμπί θα οδηγούσε σε «μη
+// διαθέσιμο». Λέμε την αλήθεια και δίνουμε κάτι χρήσιμο — να το προωθήσει.
+function applyIOS(){
+  if(!isIOS)return;
+  var cta=document.getElementById('cta'), sub=document.querySelector('.sub'), d=T[cur];
+  cta.removeAttribute('href');
+  cta.style.background='transparent';
+  cta.style.color='var(--pri)';
+  cta.style.border='1.5px solid var(--bd)';
+  cta.style.boxShadow='none';
+  cta.style.cursor='default';
+  cta.innerHTML='<span data-t="ios">'+d.ios+'</span>';
+  if(sub)sub.textContent=d.iosSub;
+}
 // Σε Android προσπαθούμε να ανοίξει κατευθείαν η εφαρμογή Play, όχι ο browser.
 document.getElementById('cta').addEventListener('click',function(ev){
+  if(isIOS){ev.preventDefault();return;}
   if(!/Android/i.test(navigator.userAgent))return;
   ev.preventDefault();
   var t=Date.now();
