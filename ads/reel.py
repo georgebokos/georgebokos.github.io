@@ -95,15 +95,18 @@ def build(rid, lang='el'):
         body = body.strip()
         cut = body.find('. ')
         if cut > 30: body = body[:cut+1]
-        if len(body) > 150: body = body[:147].rsplit(' ', 1)[0] + '…'
+        if len(body) > 105: body = body[:102].rsplit(' ', 1)[0] + '…'
         return head.strip(), body
 
+    # Στα Reels ελάχιστοι φτάνουν στο τέλος: το σύνολο κόβεται στα ~14 δευτ.,
+    # αλλά η τελευταία ενότητα — αυτή που λέει πώς κατεβαίνει η εφαρμογή —
+    # κρατά περισσότερο, γιατί εκεί γίνεται η μετατροπή.
     scenes = []
-    scenes.append(('hook', 2.8, None))
-    scenes.append(('ing',  max(3.6, min(5.6, 1.0+len(ings)*.34)), None))
-    for i, st in enumerate(steps[:3]):
-        scenes.append(('step', 3.8, (i, shorten(st))))
-    scenes.append(('cta', 3.0, None))
+    scenes.append(('hook', 2.4, None))
+    scenes.append(('ing',  max(2.6, min(3.6, .8+len(ings)*.22)), None))
+    for i, st in enumerate(steps[:2]):
+        scenes.append(('step', 2.4, (i, shorten(st))))
+    scenes.append(('cta', 5.0, None))
 
     out = os.path.join(OUT, f'reel-{rid}-{lang}.mp4')
     proc = subprocess.Popen([FFMPEG,'-y','-f','rawvideo','-pix_fmt','rgb24','-s',f'{W}x{H}','-r',str(FPS),
