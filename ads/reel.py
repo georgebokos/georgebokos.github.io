@@ -67,6 +67,14 @@ def build(rid, lang='el'):
          'url':'georgebokos.github.io/app',
          'free':'Δωρεάν στο Google Play' if el else 'Free on Google Play'}
 
+    # Μικρές παραλλαγές, ώστε 30 βίντεο στη σειρά να μη μοιάζουν πανομοιότυπα.
+    # Παράγονται από το id, άρα κάθε συνταγή βγάζει πάντα το ίδιο αποτέλεσμα.
+    var = sum(ord(c) for c in rid)
+    QS = ([L['q'], 'Τι θα φάμε σήμερα;', 'Τέλος το «τι μαγειρεύουμε;»'] if el
+          else [L['q'], 'What are we eating today?', 'No more "what shall we cook?"'])
+    L['q'] = QS[var % 3]
+    zoom_in = (var // 3) % 2 == 0
+
     photo = Image.open(os.path.join(ROOT, imgp)).convert('RGB')
     bg = cover(photo, W, H)
     blur = bg.filter(ImageFilter.GaussianBlur(20))
@@ -105,12 +113,11 @@ def build(rid, lang='el'):
     # Στα Reels ελάχιστοι φτάνουν στο τέλος: το σύνολο κόβεται στα ~14 δευτ.,
     # αλλά η τελευταία ενότητα — αυτή που λέει πώς κατεβαίνει η εφαρμογή —
     # κρατά περισσότερο, γιατί εκεί γίνεται η μετατροπή.
-    # ΣΕΙΡΑ: πρώτα η εφαρμογή, μετά η συνταγή.
-    # Ο θεατής παίρνει αμέσως την πληροφορία — τι είναι και πώς κατεβαίνει —
-    # χωρίς να χρειάζεται να φτάσει στο τέλος, όπου ελάχιστοι φτάνουν.
+    # ΣΕΙΡΑ: το πιάτο σταματά τον θεατή, η εφαρμογή του λέει αμέσως τι είναι
+    # και πώς κατεβαίνει, και μετά ακολουθεί η συνταγή.
     scenes = []
-    scenes.append(('cta',  5.0, None))
     scenes.append(('hook', 2.0, None))
+    scenes.append(('cta',  5.0, None))
     scenes.append(('ing',  2.5, None))
     for i, st in enumerate(steps[:2]):
         scenes.append(('step', 2.75, (i, shorten(st))))
@@ -128,7 +135,8 @@ def build(rid, lang='el'):
         for i in range(n):
             p = i/max(1,n-1)
             if kind == 'hook':
-                z = 1.0+.07*p
+                # Άλλοτε ζουμ προς τα μέσα, άλλοτε προς τα έξω
+                z = (1.0+.07*p) if zoom_in else (1.07-.07*p)
                 cw, ch = round(W/z), round(H/z)
                 fr = bg.crop(((W-cw)//2,(H-ch)//2,(W-cw)//2+cw,(H-ch)//2+ch)).resize((W,H), Image.LANCZOS)
                 fr = scrim(fr, int(H*.42))
@@ -178,6 +186,7 @@ def build(rid, lang='el'):
                 f_bul  = ImageFont.truetype(FR, 40)
                 f_url  = ImageFont.truetype(FB, 40)
                 bul    = [L['b1'], L['b2'], L['b3']]
+                bul    = bul[var % 3:] + bul[:var % 3]   # εναλλαγή σειράς
                 bh, bw = 118, round(d.textlength(L['get'], font=f_sub)) + 170
 
                 # Ολόκληρο το μπλοκ υπολογίζεται και κεντράρεται, ώστε να μη
