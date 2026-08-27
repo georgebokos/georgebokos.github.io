@@ -105,14 +105,15 @@ def build(rid, lang='el'):
     # Στα Reels ελάχιστοι φτάνουν στο τέλος: το σύνολο κόβεται στα ~14 δευτ.,
     # αλλά η τελευταία ενότητα — αυτή που λέει πώς κατεβαίνει η εφαρμογή —
     # κρατά περισσότερο, γιατί εκεί γίνεται η μετατροπή.
+    # ΣΕΙΡΑ: πρώτα η εφαρμογή, μετά η συνταγή.
+    # Ο θεατής παίρνει αμέσως την πληροφορία — τι είναι και πώς κατεβαίνει —
+    # χωρίς να χρειάζεται να φτάσει στο τέλος, όπου ελάχιστοι φτάνουν.
     scenes = []
-    scenes.append(('hook', 1.8, None))
-    scenes.append(('ing',  max(2.2, min(2.8, .6+len(ings)*.18)), None))
-    # Ένα μόνο βήμα: δείγμα της μεθόδου, όχι ολόκληρη η συνταγή. Τη συνέχεια
-    # τη βρίσκει ο θεατής στην εφαρμογή — αυτός είναι και ο σκοπός.
-    for i, st in enumerate(steps[:1]):
-        scenes.append(('step', 2.4, (i, shorten(st))))
-    scenes.append(('cta', 5.0, None))
+    scenes.append(('cta',  5.0, None))
+    scenes.append(('hook', 2.0, None))
+    scenes.append(('ing',  2.5, None))
+    for i, st in enumerate(steps[:2]):
+        scenes.append(('step', 2.75, (i, shorten(st))))
 
     out = os.path.join(OUT, f'reel-{rid}-{lang}.mp4')
     proc = subprocess.Popen([FFMPEG,'-y','-f','rawvideo','-pix_fmt','rgb24','-s',f'{W}x{H}','-r',str(FPS),
@@ -132,7 +133,9 @@ def build(rid, lang='el'):
                 fr = bg.crop(((W-cw)//2,(H-ch)//2,(W-cw)//2+cw,(H-ch)//2+ch)).resize((W,H), Image.LANCZOS)
                 fr = scrim(fr, int(H*.42))
             elif kind == 'cta':
-                fr = scrim(blur, 0, .78, .90)
+                # Ελαφρύτερο σκίαστρο: η σκηνή ανοίγει το βίντεο, οπότε το πιάτο
+                # πρέπει να φαίνεται πίσω από το κείμενο.
+                fr = scrim(blur, 0, .62, .78)
             else:
                 fr = scrim(blur, 0, .62, .80)
             d = ImageDraw.Draw(fr)
