@@ -5495,8 +5495,8 @@ function _oNum(k){return parseInt(localStorage.getItem(k)||'0')||0;}
 function maybeOfferPremium(trigger){
   try{
     if(!OFFER_TXT[trigger])return;
-    // Μόνο στη native έκδοση με πληρωμές — στην TWA το Premium είναι ξεκλείδωτο
-    if(typeof hasNativeBilling!=='function'||!hasNativeBilling())return;
+    // Όχι στην TWA, όπου το Premium είναι ήδη ξεκλείδωτο
+    if(typeof isTwa!=='function'||isTwa())return;
     if(getPremiumState()!=='free')return;
     if(_oNum('fd_offer_shows')>=OFFER_MAX_TOTAL)return;
     const last=_oNum('fd_offer_last');
@@ -5682,6 +5682,24 @@ function hasNativeBilling(){
   try{return !!(window.Capacitor&&window.Capacitor.Plugins&&window.Capacitor.Plugins.Purchases);}
   catch(e){return false;}
 }
+// Είναι η παλιά TWA εφαρμογή Android;
+// Η TWA ανοίγει τη σελίδα με referrer «android-app://<package>». Ο referrer
+// χάνεται στις επόμενες πλοηγήσεις, γι' αυτό αποθηκεύεται μία φορά.
+// ΠΡΟΣΟΧΗ: χωρίς αυτόν τον διαχωρισμό, TWA και σκέτος browser φαίνονται ίδιοι
+// (καμία δεν έχει Capacitor) — και ο κανόνας της μιας ίσχυε άθελά μας στην άλλη.
+function isTwa(){
+  try{
+    if(localStorage.getItem('fd_twa')==='1')return true;
+    const r=document.referrer||'';
+    if(r.indexOf('android-app://com.fooddaily.app')===0){
+      localStorage.setItem('fd_twa','1');
+      return true;
+    }
+  }catch(e){}
+  return false;
+}
+// Σκέτος browser ή PWA: ούτε Capacitor ούτε TWA.
+function isWebOnly(){return !hasNativeBilling()&&!isTwa();}
 // Δωρεάν πρόσβαση γνωριμίας: 3 ημέρες από την εγκατάσταση, ΧΩΡΙΣ κάρτα.
 // Είναι διαφορετικό από τη δοκιμή 7 ημερών του Google Play, που απαιτεί
 // τρόπο πληρωμής και ξεκινά μόνο όταν ο χρήστης πατήσει εγγραφή.
@@ -5699,9 +5717,11 @@ function previewDaysLeft(){
 // Καταστάσεις: 'premium' (συνδρομή/δοκιμή Play) · 'preview' (δωρεάν γνωριμία) · 'free'
 function getPremiumState(){
   if(localStorage.getItem('fd_premium')==='true')return 'premium';
-  // TWA / browser: δεν υπάρχει αξιόπιστη ροή αγοράς (εξαρτάται από τον browser),
-  // οπότε δεν εμφανίζουμε paywall — όλα παραμένουν ξεκλείδωτα.
-  if(!hasNativeBilling())return 'premium';
+  // ΜΟΝΟ η TWA παραμένει ξεκλείδωτη: εκεί η αγορά εξαρτάται από τον browser και
+  // συχνά αποτυγχάνει, οπότε το paywall θα ήταν αδιέξοδο.
+  // Ο σκέτος browser ΔΕΝ εξαιρείται πλέον — αλλιώς η εφαρμογή δινόταν ολόκληρη
+  // δωρεάν σε όποιον άνοιγε απλώς το site.
+  if(isTwa())return 'premium';
   if(previewDaysLeft()>0)return 'preview';
   return 'free';
 }
@@ -5737,8 +5757,8 @@ function applyEntitlement(customerInfo){
 function renderTrialBanner(){
   const el=document.getElementById('trial-banner');if(!el)return;
   const en=curLang==='en';
-  // TWA/browser: καμία προτροπή συνδρομής, αφού δεν μπορεί να ολοκληρωθεί αγορά
-  if(!hasNativeBilling()&&localStorage.getItem('fd_premium')!=='true'){el.innerHTML='';return;}
+  // Μόνο στην TWA δεν εμφανίζεται προτροπή — εκεί δεν ολοκληρώνεται αγορά.
+  if(isTwa()&&localStorage.getItem('fd_premium')!=='true'){el.innerHTML='';return;}
   if(getPremiumState()==='preview'){
     const d=previewDaysLeft();
     const txt=en
@@ -5855,6 +5875,13 @@ function updatePremiumCTA(state){
       btn.textContent=en?"✅ You're already Premium!":'✅ Είσαι ήδη Premium!';
       if(note)note.textContent=en?'Your subscription is active.':'Η συνδρομή σου είναι ενεργή.';
     }
+  }else if(isWebOnly()){
+    // Σκέτος browser: η συνδρομή δεν αγοράζεται εδώ. Το κουμπί κατεβάζει την
+    // εφαρμογή, που είναι ο μόνος τρόπος να αποκτηθεί Premium.
+    btn.disabled=false;btn.style.opacity='1';
+    btn.textContent=en?'📲 Get the app':'📲 Κατέβασε την εφαρμογή';
+    if(note)note.textContent=en?'Premium is available only in the Android app.'
+                               :'Το Premium είναι διαθέσιμο μόνο στην εφαρμογή Android.';
   }else{
     btn.disabled=false;btn.style.opacity='1';
     const hasTrial=_planTrial[_curPlan]!==false; // αν δεν ξέρουμε ακόμα, υποθέτουμε ναι
@@ -5906,11 +5933,20 @@ async function refreshTrialFlags(){
   }catch(e){}
 }
 function handlePremiumCTA(){
+  if(isWebOnly()){
+    // ΠΡΟΣΟΧΗ: με μπλοκαρισμένα αναδυόμενα, το window.open επιστρέφει null ΧΩΡΙΣ
+    // να πετάξει σφάλμα — οπότε το try/catch δεν αρκεί και το κουμπί έμενε νεκρό.
+    let w=null;
+    try{w=window.open(PLAY_URL,'_blank','noopener');}catch(e){}
+    if(!w)location.href=PLAY_URL;
+    return;
+  }
   // Η δωρεάν δοκιμή ξεκινά μέσα από τη ροή αγοράς του Google Play
   purchasePremium(_curPlan);
 }
 
 // ── GOOGLE PLAY BILLING (Payment Request API) ──────────────────
+const PLAY_URL='https://play.google.com/store/apps/details?id=com.fooddaily.app';
 const PLAY_BILLING_METHOD='https://play.google.com/billing';
 const PREMIUM_SKUS={monthly:'premium_monthly',annual:'premium_yearly'};
 let _dgsLastError=null;
@@ -8129,7 +8165,7 @@ function dismissTonightBanner(){
   // Hero greeting + date
   updateHeroTexts();
   // Premium: ξεκίνα την 3ήμερη δωρεάν γνωριμία (μόνο σε native) και δείξε banner
-  try{if(hasNativeBilling()&&localStorage.getItem('fd_premium')!=='true')previewStart();}catch(e){}
+  try{if(!isTwa()&&localStorage.getItem('fd_premium')!=='true')previewStart();}catch(e){}
   renderTrialBanner();
   // Native (Capacitor): επανάκτησε την κατάσταση συνδρομής από το RevenueCat
   try{rcSyncOnStart();}catch(e){}
