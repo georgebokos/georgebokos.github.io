@@ -5,14 +5,13 @@ const ASSETS = [
   '/',
   '/index.html',
   '/dances.html',
-  '/diy.html',
   '/manifest.json',
   '/icon-192.png',
   '/icon-512.png'
 ];
 
 // Pages that must NOT fall back to /index.html
-const STANDALONE_PAGES = new Set(['/dances.html', '/diy.html', '/install.html']);
+const STANDALONE_PAGES = new Set(['/dances.html', '/install.html']);
 
 // Install: cache core files immediately, don't wait for old SW to go away
 self.addEventListener('install', e => {
@@ -146,6 +145,11 @@ self.addEventListener('fetch', e => {
   if (e.request.method !== 'GET') return;
   const url = new URL(e.request.url);
   if (url.origin !== location.origin) return;
+
+  // Το /diy/ είναι ΞΕΧΩΡΙΣΤΗ εφαρμογή με δικό της service worker και δικό της
+  // cache. Δεν έχει καμία σχέση με το FoodDaily — ούτε το πιάνουμε εδώ, ούτε
+  // του σερβίρουμε ποτέ το index.html μας ως εφεδρεία εκτός σύνδεσης.
+  if (url.pathname.startsWith('/diy/')) return;
 
   // ── Οι σελίδες: ΔΙΚΤΥΟ ΠΡΩΤΑ ───────────────────────────────────────────────
   // Το index.html αλλάζει σε κάθε ενημέρωση συνταγών. Με cache-first ο χρήστης

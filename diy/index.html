@@ -6,7 +6,18 @@
 <meta name="theme-color" content="#0F5C8C">
 <meta name="description" content="Αναλυτικοί οδηγοί DIY στα ελληνικά και αγγλικά: γυψοσανίδα, βάψιμο, πρίζες, υδραυλικά, ποδήλατο, αυτοκίνητο, format υπολογιστή. Βήμα-βήμα, με εργαλεία, υλικά και σχεδιαγράμματα.">
 <title>Φτιάξ' το μόνος σου — Οδηγοί DIY</title>
-<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🛠️</text></svg>">
+<link rel="icon" href="icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="icon-192.png">
+<link rel="manifest" href="manifest.json">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Φτιάξ' το">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Φτιάξ' το μόνος σου — Οδηγοί DIY">
+<meta property="og:description" content="43 αναλυτικοί οδηγοί με βήματα, εργαλεία, υλικά και σχεδιαγράμματα — στα ελληνικά και στα αγγλικά.">
+<meta property="og:image" content="icon-512.png">
+<meta property="og:locale" content="el_GR">
+<meta property="og:locale:alternate" content="en_GB">
 <style>
 :root{
   --bg:#F1F3F6;--bg2:#E7EAEF;--card:#FFFFFF;
@@ -55,9 +66,8 @@ button,input{font-family:inherit}
 /* ---------- HEADER ---------- */
 .hdr{background:var(--hdr);color:#fff;padding:calc(14px + env(safe-area-inset-top)) 18px 18px}
 .hdr-top{display:flex;align-items:center;gap:10px;margin-bottom:14px}
-.back{width:34px;height:34px;border-radius:50%;background:rgba(255,255,255,.14);color:#fff;display:flex;align-items:center;justify-content:center;text-decoration:none;font-size:17px;flex-shrink:0;border:none;cursor:pointer}
-.back:hover{background:rgba(255,255,255,.24)}
-.brand{display:flex;align-items:center;gap:8px;font-weight:800;font-size:15px;letter-spacing:.01em;flex:1;min-width:0}
+.brand{display:flex;align-items:center;gap:9px;font-weight:800;font-size:16px;letter-spacing:.01em;flex:1;min-width:0}
+.brand span:first-child{font-size:19px}
 .brand span:last-child{overflow:hidden;text-overflow:ellipsis;white-space:nowrap}
 .icobtn{width:34px;height:34px;border-radius:50%;background:rgba(255,255,255,.14);color:#fff;border:none;cursor:pointer;font-size:14px;font-weight:700;display:flex;align-items:center;justify-content:center;flex-shrink:0}
 .icobtn:hover{background:rgba(255,255,255,.24)}
@@ -229,9 +239,8 @@ button,input{font-family:inherit}
 <div class="wrap">
   <header class="hdr">
     <div class="hdr-top">
-      <a class="back" href="index.html" title="Αρχική">←</a>
       <div class="brand"><span>🛠️</span><span id="brandName">Φτιάξ' το μόνος σου</span></div>
-      <button class="icobtn" id="themeBtn" title="Θέμα">◐</button>
+      <button class="icobtn" id="themeBtn" title="Θέμα"><svg width="17" height="17" viewBox="0 0 24 24" aria-hidden="true" focusable="false"><circle cx="12" cy="12" r="9" fill="none" stroke="currentColor" stroke-width="2"/><path d="M12 3a9 9 0 0 0 0 18z" fill="currentColor"/></svg></button>
       <button class="icobtn" id="langBtn">EN</button>
     </div>
     <h1 class="h-title" id="hTitle"></h1>
@@ -3574,7 +3583,10 @@ function renderChrome(){
   $('#q').placeholder = t('search');
   $('#footTxt').innerHTML = t('disclaimer');
   $('#emptyTxt').textContent = t('noRes');
-  $('.back').setAttribute('title', curLang==='en' ? 'Home' : 'Αρχική');
+  const tb = $('#themeBtn');
+  tb.title = curLang==='en' ? 'Theme' : 'Θέμα';
+  tb.setAttribute('aria-label', tb.title);
+  $('#langBtn').setAttribute('aria-label', curLang==='en' ? 'Αλλαγή στα ελληνικά' : 'Switch to English');
 }
 
 function catCount(id){
@@ -3878,8 +3890,13 @@ window.addEventListener('hashchange', () => {
   else if (!id && S.open) closeTask();
 });
 
-if ('serviceWorker' in navigator) {
-  navigator.serviceWorker.getRegistration().catch(() => {});
+/* Δικός μας service worker, με εμβέλεια ΜΟΝΟ τον φάκελο της εφαρμογής.
+   Η πιο συγκεκριμένη εμβέλεια υπερισχύει έναντι service worker στη ρίζα
+   του domain, οπότε τη σελίδα την ελέγχει αποκλειστικά αυτός. */
+if ('serviceWorker' in navigator && location.protocol.startsWith('http')) {
+  window.addEventListener('load', () => {
+    navigator.serviceWorker.register('sw.js', { scope: './' }).catch(() => {});
+  });
 }
 </script>
 <style>
