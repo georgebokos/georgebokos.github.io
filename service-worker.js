@@ -1,17 +1,20 @@
 // FoodDaily Service Worker v3.5
-const VERSION = '2026-08-29-117';
-const CACHE = `fooddaily-2026-08-29-117`;
+const VERSION = '2026-08-29-118';
+const CACHE = `fooddaily-2026-08-29-118`;
 const ASSETS = [
   '/',
   '/index.html',
-  '/dances.html',
   '/manifest.json',
   '/icon-192.png',
   '/icon-512.png'
 ];
 
 // Pages that must NOT fall back to /index.html
-const STANDALONE_PAGES = new Set(['/dances.html', '/install.html']);
+const STANDALONE_PAGES = new Set(['/install.html']);
+
+// Ξεχωριστές εφαρμογές που απλώς μοιράζονται το domain. Το FoodDaily δεν τις
+// αγγίζει καθόλου — έχουν δικό τους service worker με πιο συγκεκριμένη εμβέλεια.
+const OTHER_APPS = ['/diy/', '/dances/'];
 
 // Install: cache core files immediately, don't wait for old SW to go away
 self.addEventListener('install', e => {
@@ -146,10 +149,12 @@ self.addEventListener('fetch', e => {
   const url = new URL(e.request.url);
   if (url.origin !== location.origin) return;
 
-  // Το /diy/ είναι ΞΕΧΩΡΙΣΤΗ εφαρμογή με δικό της service worker και δικό της
-  // cache. Δεν έχει καμία σχέση με το FoodDaily — ούτε το πιάνουμε εδώ, ούτε
-  // του σερβίρουμε ποτέ το index.html μας ως εφεδρεία εκτός σύνδεσης.
-  if (url.pathname.startsWith('/diy/')) return;
+  // Στο ίδιο domain φιλοξενούνται και ΞΕΧΩΡΙΣΤΕΣ εφαρμογές, καθεμιά με δικό
+  // της service worker και δικό της cache. Δεν έχουν καμία σχέση με το
+  // FoodDaily: ούτε τις πιάνουμε εδώ, ούτε τους σερβίρουμε ποτέ το δικό μας
+  // index.html ως εφεδρεία εκτός σύνδεσης.
+  // ΜΗΝ αφαιρέσεις αυτόν τον έλεγχο όταν προστίθεται νέα εφαρμογή — πρόσθεσέ τη.
+  if (OTHER_APPS.some(prefix => url.pathname.startsWith(prefix))) return;
 
   // ── Οι σελίδες: ΔΙΚΤΥΟ ΠΡΩΤΑ ───────────────────────────────────────────────
   // Το index.html αλλάζει σε κάθε ενημέρωση συνταγών. Με cache-first ο χρήστης

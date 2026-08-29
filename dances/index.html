@@ -4,7 +4,19 @@
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width,initial-scale=1.0">
 <meta name="theme-color" content="#8B1515">
+<meta name="description" content="Μάθε να χορεύεις ελληνικούς παραδοσιακούς χορούς: αναλυτικά βήματα, ρυθμός με ήχο και εξάσκηση βήμα-βήμα.">
 <title>Ελληνικοί Παραδοσιακοί Χοροί</title>
+<link rel="icon" href="icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="icon-192.png">
+<link rel="manifest" href="manifest.json">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-status-bar-style" content="black-translucent">
+<meta name="apple-mobile-web-app-title" content="Χοροί">
+<meta property="og:type" content="website">
+<meta property="og:title" content="Ελληνικοί Παραδοσιακοί Χοροί">
+<meta property="og:description" content="Αναλυτικά βήματα, ρυθμός με ήχο και εξάσκηση βήμα-βήμα.">
+<meta property="og:image" content="icon-512.png">
+<meta property="og:locale" content="el_GR">
 <style>
 :root{
   --bg:#F4EDE4;--card:#FFFAF5;--pri:#8B1515;--pri2:#6B1010;
@@ -21,9 +33,7 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
 ::-webkit-scrollbar{width:3px}::-webkit-scrollbar-thumb{background:var(--brd2);border-radius:3px}
 
 .site-header{padding:22px 20px 10px;display:flex;flex-direction:column;gap:4px}
-.back-link{font-size:13px;color:var(--pri);text-decoration:none;opacity:.8}
-.back-link:hover{opacity:1}
-.header-eyebrow{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--acc2);font-weight:600;margin-top:8px}
+.header-eyebrow{font-size:11px;letter-spacing:.12em;text-transform:uppercase;color:var(--acc2);font-weight:600}
 .header-title{font-size:clamp(26px,6vw,34px);font-weight:800;color:var(--tx);font-family:Georgia,serif;line-height:1.1;margin-top:4px}
 .header-sub{font-size:14px;color:var(--tx2);margin-top:6px}
 .header-divider{height:1px;background:var(--brd);margin:14px 20px 0}
@@ -160,7 +170,6 @@ body{font-family:-apple-system,BlinkMacSystemFont,'Segoe UI',sans-serif;backgrou
 <body>
 <div id="app">
   <header class="site-header">
-    <a href="index.html" class="back-link">← Αρχική</a>
     <div class="header-eyebrow">Παραδοσιακοί Χοροί</div>
     <h1 class="header-title">Μάθε να χορεύεις</h1>
     <p class="header-sub">Αναλυτικά βήματα · Ρυθμός με ήχο · Εξάσκηση βήμα-βήμα</p>
@@ -714,6 +723,15 @@ let ty=0;
 $('sheet').addEventListener('touchstart',e=>{ty=e.touches[0].clientY;},{passive:true});
 $('sheet').addEventListener('touchend',e=>{if(e.changedTouches[0].clientY-ty>80&&$('sheet-body').scrollTop<10)closeDetail();},{passive:true});
 renderCards();
+
+/* Δικός μας service worker, με εμβέλεια ΜΟΝΟ τον φάκελο της εφαρμογής.
+   Η πιο συγκεκριμένη εμβέλεια υπερισχύει έναντι service worker στη ρίζα
+   του domain, οπότε τη σελίδα την ελέγχει αποκλειστικά αυτός. */
+if('serviceWorker' in navigator && location.protocol.startsWith('http')){
+  window.addEventListener('load',()=>{
+    navigator.serviceWorker.register('sw.js',{scope:'./'}).catch(()=>{});
+  });
+}
 </script>
 </body>
 </html>

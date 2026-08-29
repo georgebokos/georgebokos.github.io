@@ -47,10 +47,11 @@ def main():
     # --- 1. Copy static assets as-is ---
     print('\n[1/3] Copying assets...')
     # Folders to copy entirely
-    # Το diy/ είναι ξεχωριστή, αυτόνομη εφαρμογή που απλώς φιλοξενείται στο ίδιο
-    # domain: δικό της manifest, δικό της service worker, δικά της εικονίδια.
-    # Αντιγράφεται αυτούσιο και ΔΕΝ περνά από obfuscation.
-    COPY_DIRS = ['images', '.well-known', 'lang', 'diy']
+    # Τα diy/ και dances/ είναι ξεχωριστές, αυτόνομες εφαρμογές που απλώς
+    # φιλοξενούνται στο ίδιο domain: δική τους ταυτότητα, δικό τους manifest,
+    # δικός τους service worker, δικά τους εικονίδια.
+    # Αντιγράφονται αυτούσιες και ΔΕΝ περνούν από obfuscation.
+    COPY_DIRS = ['images', '.well-known', 'lang', 'diy', 'dances']
     for d in COPY_DIRS:
         src_d = os.path.join(SRC, d)
         if os.path.isdir(src_d):
@@ -64,7 +65,7 @@ def main():
     # ΡΗΤΗ ΛΙΣΤΑ, όχι λίστα εξαιρέσεων. Με τη λίστα εξαιρέσεων δημοσιευόταν στο
     # ζωντανό site ό,τι έμπαινε στη ρίζα — ανάμεσά τους το CLAUDE.md με εσωτερικές
     # σημειώσεις και τα logo_proposals.html. Ό,τι δεν είναι εδώ, δεν ανεβαίνει.
-    PUBLISH = {'manifest.json', 'privacy.html', 'dances.html', 'icon.svg', 'install.html',
+    PUBLISH = {'manifest.json', 'privacy.html', 'icon.svg', 'install.html',
                'og-preview-el.jpg', 'og-preview-en.jpg'}
     for f in sorted(os.listdir(SRC)):
         if os.path.isdir(os.path.join(SRC, f)):
