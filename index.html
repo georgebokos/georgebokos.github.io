@@ -5352,7 +5352,10 @@ function renderMeals(cat){
   } else if(cat==='gf'){
     pool=pool.filter(m=>DIET_GF.has(m.id)&&!m.quickOnly);
   } else if(cat==='all'||cat==='favs'){
-    pool=pool.filter(m=>!m.quickOnly&&!m.noDaily&&!m.cats.includes('salads')&&!m.cats.includes('desserts'));
+    // Οι καθημερινές προτάσεις είναι ΜΟΝΟ κυρίως πιάτα.
+    // Οι σάλτσες/συνοδευτικά αποκλείονταν ως τώρα μόνο μέσω της σήμανσης noDaily
+    // κάθε συνταγής — που κρατά, αλλά σπάει με την πρώτη νέα σάλτσα που θα την ξεχάσει.
+    pool=pool.filter(m=>!m.quickOnly&&!m.noDaily&&!m.cats.includes('salads')&&!m.cats.includes('desserts')&&!m.cats.includes('sauces'));
     // Καλοκαίρι (Ιούν–Αύγ): αφαιρούνται σούπες από τις καθημερινές προτάσεις
     const _mo=new Date().getMonth();
     if(_mo>=5&&_mo<=7) pool=pool.filter(m=>!m.cats.includes('soups'));
