@@ -1,17 +1,18 @@
 // FoodDaily Service Worker v3.5
-const VERSION = '2026-08-18-116';
-const CACHE = `fooddaily-2026-08-18-116`;
+const VERSION = '2026-08-29-117';
+const CACHE = `fooddaily-2026-08-29-117`;
 const ASSETS = [
   '/',
   '/index.html',
   '/dances.html',
+  '/diy.html',
   '/manifest.json',
   '/icon-192.png',
   '/icon-512.png'
 ];
 
 // Pages that must NOT fall back to /index.html
-const STANDALONE_PAGES = new Set(['/dances.html', '/install.html']);
+const STANDALONE_PAGES = new Set(['/dances.html', '/diy.html', '/install.html']);
 
 // Install: cache core files immediately, don't wait for old SW to go away
 self.addEventListener('install', e => {
