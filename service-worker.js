@@ -1,6 +1,6 @@
 // FoodDaily Service Worker v3.5
-const VERSION = '2026-08-29-118';
-const CACHE = `fooddaily-2026-08-29-118`;
+const VERSION = '2026-08-30-119';
+const CACHE = `fooddaily-2026-08-30-119`;
 const ASSETS = [
   '/',
   '/index.html',
@@ -14,7 +14,7 @@ const STANDALONE_PAGES = new Set(['/install.html']);
 
 // Ξεχωριστές εφαρμογές που απλώς μοιράζονται το domain. Το FoodDaily δεν τις
 // αγγίζει καθόλου — έχουν δικό τους service worker με πιο συγκεκριμένη εμβέλεια.
-const OTHER_APPS = ['/diy/', '/dances/'];
+const OTHER_APPS = ['/diy/', '/dances/', '/espa/'];
 
 // Install: cache core files immediately, don't wait for old SW to go away
 self.addEventListener('install', e => {
