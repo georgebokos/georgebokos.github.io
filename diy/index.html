@@ -360,6 +360,37 @@ const TR = {
   errBusy:    ['Πολλές αιτήσεις αυτή τη στιγμή. Περίμενε ένα λεπτό.', 'Too many requests right now. Wait a minute.'],
   errGen:     ['Κάτι πήγε στραβά στην ανάλυση. Δοκίμασε ξανά σε λίγο.', 'Something went wrong with the analysis. Try again shortly.'],
   errNoImg:   ['Διάλεξε πρώτα μια φωτογραφία.', 'Choose a photo first.'],
+  premT:      ['Βοήθεια με φωτογραφία', 'Photo help'],
+  premBadge:  ['Premium', 'Premium'],
+  premLead:   ['Οι οδηγοί είναι και θα μένουν δωρεάν. Η ανάλυση φωτογραφίας είναι η μόνη λειτουργία Premium, γιατί κάθε φωτογραφία έχει πραγματικό κόστος ανάλυσης.',
+               'The guides are free and always will be. Photo analysis is the only Premium feature, because every photo has a real analysis cost.'],
+  premB1:     ['Τραβάς φωτογραφία σε όποιο βήμα κόλλησες', 'Photograph whatever step you are stuck on'],
+  premB2:     ['Παίρνεις οδηγία για ό,τι πραγματικά φαίνεται', 'Get guidance based on what is actually visible'],
+  premB3:     ['Σε κάθε εργασία και σε κάθε βήμα', 'On every job and every step'],
+  premB4:     ['Οι οδηγοί μένουν δωρεάν χωρίς συνδρομή', 'The guides stay free with no subscription'],
+  buyLoad:    ['Φόρτωση επιλογών…', 'Loading options…'],
+  buySub:     ['Συνδρομή', 'Subscription'],
+  buyPack:    ['Πακέτο φωτογραφιών', 'Photo pack'],
+  perMonth:   ['/μήνα', '/month'],
+  restore:    ['Επαναφορά αγορών', 'Restore purchases'],
+  restoreOk:  ['Οι αγορές σου επανήλθαν', 'Your purchases were restored'],
+  restoreNo:  ['Δεν βρέθηκε ενεργή αγορά', 'No active purchase found'],
+  buying:     ['Ολοκλήρωσε την αγορά…', 'Complete the purchase…'],
+  buyOk:      ['Ευχαριστούμε! Το Premium ενεργοποιήθηκε', 'Thank you! Premium is active'],
+  buyCancel:  ['Η αγορά ακυρώθηκε', 'The purchase was cancelled'],
+  buyErr:     ['Η αγορά δεν ολοκληρώθηκε. Δοκίμασε ξανά.', 'The purchase did not complete. Try again.'],
+  noStoreT:   ['Η αγορά γίνεται μέσα από την εφαρμογή', 'Purchases happen inside the app'],
+  noStoreMsg: ['Για λόγους ασφάλειας των πληρωμών, η συνδρομή αποκτάται μόνο μέσα από την εφαρμογή Android. Οι οδηγοί εδώ παραμένουν πλήρεις και δωρεάν.',
+               'For payment security reasons, the subscription is only available inside the Android app. The guides here remain complete and free.'],
+  getApp:     ['Κατέβασε την εφαρμογή', 'Get the app'],
+  soon:       ['Η εφαρμογή ετοιμάζεται. Σύντομα κοντά σου.', 'The app is on its way. Coming soon.'],
+  quotaLeft:  ['Απομένουν {N} φωτογραφίες αυτόν τον μήνα', '{N} photos left this month'],
+  creditsLeft:['Απομένουν {N} φωτογραφίες', '{N} photos left'],
+  quotaOutT:  ['Εξάντλησες τις φωτογραφίες σου', 'You have used all your photos'],
+  quotaOutMsg:['Το μηνιαίο όριο ανανεώνεται στην επόμενη περίοδο. Μπορείς επίσης να πάρεις πακέτο επιπλέον φωτογραφιών.',
+               'Your monthly allowance renews next period. You can also buy a pack of extra photos.'],
+  needPremT:  ['Χρειάζεται Premium', 'Premium required'],
+  errAuth:    ['Η συνδρομή σου δεν επιβεβαιώθηκε. Δοκίμασε «Επαναφορά αγορών».', 'Your subscription could not be verified. Try “Restore purchases”.'],
   aiNote:     ['Απάντηση από τεχνητή νοημοσύνη — μπορεί να κάνει λάθος. Αν αφορά ρεύμα, αέριο ή στατικά, επιβεβαίωσε με επαγγελματία πριν προχωρήσεις.',
                'This answer comes from AI and can be wrong. If it involves electricity, gas or structure, confirm with a professional before proceeding.'],
   addFav:     ['Αποθηκεύτηκε στα αγαπημένα', 'Saved'],
@@ -4976,12 +5007,153 @@ function wireBody(x){
 // Συμπλήρωσε εδώ τη διεύθυνση του worker μετά το deploy, π.χ.
 // const HELP_ENDPOINT = 'https://diy-help.<λογαριασμός>.workers.dev';
 const HELP_ENDPOINT = '';
+
+// Public SDK key του RevenueCat (Android). Σχεδιασμένο να ενσωματώνεται σε
+// πελάτη — ΔΕΝ είναι μυστικό. Το μυστικό κλειδί ζει μόνο στον worker.
+const RC_PUBLIC_KEY  = '';
+const ENTITLEMENT_ID = 'DIY Pro';
+// Διεύθυνση της εφαρμογής στο Google Play, για όσους ανοίγουν τη σελίδα σε
+// browser ή iPhone: εκεί δεν υπάρχει τρόπος αγοράς.
+const PLAY_URL = '';
+
 const MAX_IMG_DIM = 1024;      // μεγαλύτερη πλευρά — κρατά χαμηλά κόστος και χρόνο
 const MAX_IMG_BYTES = 3500000; // ασφαλιστική δικλείδα πριν το ανέβασμα
 
 function helpEndpoint(){
   try { return localStorage.getItem('diy_help_url') || HELP_ENDPOINT; }
   catch(e){ return HELP_ENDPOINT; }
+}
+/* Το public key μπορεί να δοθεί και από τη συσκευή (?rc=…), ώστε να δοκιμάζεται
+   η ροή αγοράς χωρίς νέο build της εφαρμογής. */
+function rcKey(){
+  try { return localStorage.getItem('diy_rc_key') || RC_PUBLIC_KEY; }
+  catch(e){ return RC_PUBLIC_KEY; }
+}
+
+/* =====================================================================
+   PREMIUM
+   Οι οδηγοί είναι δωρεάν. Μόνο η ανάλυση φωτογραφίας είναι Premium, γιατί
+   κάθε φωτογραφία έχει πραγματικό κόστος.
+
+   ΠΡΟΣΟΧΗ: ό,τι βλέπεις εδώ είναι ΜΟΝΟ για τη διεπαφή. Η πραγματική
+   επαλήθευση της συνδρομής γίνεται στον worker, που ρωτά το RevenueCat με
+   μυστικό κλειδί. Μια μεταβλητή στη σελίδα την αλλάζει οποιοσδήποτε από τα
+   εργαλεία του browser — γι' αυτό δεν την εμπιστευόμαστε ποτέ.
+   ===================================================================== */
+const P = { ready:false, native:false, store:false, active:false,
+            plan:null, quota:null, credits:0, userId:null, offers:null, busy:false };
+
+function cap(){ return window.Capacitor; }
+function isNativeApp(){
+  const c = cap();
+  try { return !!(c && typeof c.isNativePlatform === 'function' && c.isNativePlatform()); }
+  catch(e){ return false; }
+}
+function rcPlugin(){
+  const c = cap();
+  return (c && c.Plugins && c.Plugins.Purchases) || null;
+}
+/* Αγορά μόνο μέσα στην εφαρμογή Android. Σε browser και iPhone δεν υπάρχει
+   Google Play Billing, οπότε δείχνουμε ενημερωτικό μήνυμα αντί για paywall
+   που δεν ολοκληρώνεται ποτέ. */
+function hasStore(){ return isNativeApp() && !!rcPlugin(); }
+
+async function initPremium(){
+  P.native = isNativeApp();
+  P.store  = hasStore();
+  if (P.store && rcKey()){
+    try {
+      await rcPlugin().configure({ apiKey: rcKey() });
+      const r = await rcPlugin().getAppUserID();
+      P.userId = r && r.appUserID || null;
+      await readCustomerInfo();
+    } catch(e){}
+  }
+  await syncQuota();
+  P.ready = true;
+}
+
+async function readCustomerInfo(){
+  try {
+    const r = await rcPlugin().getCustomerInfo();
+    const ci = r && r.customerInfo;
+    const act = ci && ci.entitlements && ci.entitlements.active || {};
+    P.active = !!(act[ENTITLEMENT_ID] && act[ENTITLEMENT_ID].isActive);
+  } catch(e){ P.active = false; }
+}
+
+/* Ρωτά τον worker τι ισχύει πραγματικά για αυτόν τον χρήστη. Ο worker είναι
+   η μοναδική πηγή αλήθειας για συνδρομή και υπόλοιπο. */
+async function syncQuota(){
+  const url = helpEndpoint();
+  if (!url || !P.userId) return;
+  try {
+    const res = await fetch(url.replace(/\/$/, '') + '/status', {
+      headers: { 'X-App-User-Id': P.userId }
+    });
+    if (!res.ok) return;
+    const d = await res.json();
+    P.active  = !!d.active;
+    P.plan    = d.plan || null;
+    P.quota   = (typeof d.quotaLeft === 'number') ? d.quotaLeft : null;
+    P.credits = d.credits || 0;
+  } catch(e){}
+}
+
+function canAsk(){
+  if (P.credits > 0) return true;          // πακέτο φωτογραφιών
+  if (!P.active) return false;             // καμία συνδρομή
+  // Συνδρομητής: μόνο αν του απομένουν φωτογραφίες. Όταν το υπόλοιπο είναι
+  // ακόμη άγνωστο (null), αφήνουμε τον worker να αποφασίσει.
+  return P.quota === null || P.quota > 0;
+}
+function photosLeft(){
+  if (P.credits > 0 && !P.active) return P.credits;
+  if (P.active && typeof P.quota === 'number') return P.quota;
+  return null;
+}
+
+async function loadOffers(){
+  if (!P.store) return null;
+  try {
+    const o = await rcPlugin().getOfferings();
+    const cur = o && o.current;
+    if (!cur || !cur.availablePackages || !cur.availablePackages.length) return null;
+    P.offers = cur.availablePackages;
+    return P.offers;
+  } catch(e){ return null; }
+}
+
+async function buyPackage(pkg){
+  if (P.busy) return;
+  P.busy = true;
+  renderHelpBody();
+  try {
+    await rcPlugin().purchasePackage({ aPackage: pkg });
+    await readCustomerInfo();
+    await syncQuota();
+    toast(t('buyOk'));
+  } catch(e){
+    // Ο χρήστης που ακυρώνει δεν είναι σφάλμα — δεν του πετάμε μήνυμα λάθους.
+    const cancelled = e && (e.code === '1' || e.userCancelled ||
+                      /cancel/i.test(String(e && (e.message || e.code) || '')));
+    toast(cancelled ? t('buyCancel') : t('buyErr'));
+  }
+  P.busy = false;
+  renderHelpBody();
+}
+
+async function restorePurchases(){
+  if (P.busy || !P.store) return;
+  P.busy = true; renderHelpBody();
+  try {
+    await rcPlugin().restorePurchases();
+    await readCustomerInfo();
+    await syncQuota();
+    toast(canAsk() ? t('restoreOk') : t('restoreNo'));
+  } catch(e){ toast(t('restoreNo')); }
+  P.busy = false;
+  renderHelpBody();
 }
 
 const H = { task:null, step:0, img:null, busy:false };
@@ -4991,11 +5163,13 @@ function openHelp(taskId, stepIdx){
   if (!x) return;
   H.task = x; H.step = stepIdx; H.img = null; H.busy = false;
   const st = x.steps[stepIdx];
-  $('#hTitleT').textContent = t('stuckT');
   $('#hCtx').textContent = L(x,'n') + ' · ' + t('ctxStep', {N: stepIdx+1, T: L(st,'t')});
-  renderHelpForm();
+  renderHelpBody();
   $('#hBackdrop').classList.add('open');
   $('#hSheet').classList.add('open');
+  // Οι τιμές έρχονται από το κατάστημα, οπότε φορτώνονται ασύγχρονα.
+  if (!canAsk() && P.store && !P.offers) loadOffers().then(() => { if (H.task) renderHelpBody(); });
+  if (P.userId) syncQuota().then(() => { if (H.task) renderHelpBody(); });
 }
 
 function closeHelp(){
@@ -5004,16 +5178,74 @@ function closeHelp(){
   $('#hSheet').classList.remove('open');
 }
 $('#hX').addEventListener('click', closeHelp);
-$('#hBackdrop').addEventListener('click', () => { if (!H.busy) closeHelp(); });
-document.addEventListener('keydown', e => { if (e.key === 'Escape' && H.task && !H.busy) closeHelp(); });
+$('#hBackdrop').addEventListener('click', () => { if (!H.busy && !P.busy) closeHelp(); });
+document.addEventListener('keydown', e => { if (e.key === 'Escape' && H.task && !H.busy && !P.busy) closeHelp(); });
 
-function renderHelpForm(err){
+/* Τι βλέπει ο χρήστης όταν πατά «Κόλλησα»:
+   1. η υπηρεσία δεν έχει ρυθμιστεί  → ενημερωτικό μήνυμα
+   2. δεν έχει Premium               → paywall
+   3. έχει                           → η φόρμα φωτογραφίας */
+function renderHelpBody(err){
+  if (!H.task) return;
+  $('#hTitleT').textContent = canAsk() ? t('stuckT') : t('premT');
   if (!helpEndpoint()){
     $('#hBody').innerHTML = `<div class="h-off"><b>${esc(t('offT'))}</b><p>${esc(t('offMsg'))}</p></div>`;
     return;
   }
+  if (!canAsk()) return renderPaywall(err);
+  renderHelpForm(err);
+}
+
+function renderPaywall(err){
+  const out = P.active && P.quota === 0;   // συνδρομητής που εξάντλησε το όριο
+  let h = `<div class="pw-top">
+      <div class="pw-ico">📷</div>
+      <div class="pw-badge">${esc(t('premBadge'))}</div>
+      <h3>${esc(out ? t('quotaOutT') : t('needPremT'))}</h3>
+      <p>${esc(out ? t('quotaOutMsg') : t('premLead'))}</p>
+    </div>`;
+  if (err) h += `<div class="h-err">${esc(err)}</div>`;
+  if (!out) h += `<ul class="pw-list">
+      <li>${esc(t('premB1'))}</li><li>${esc(t('premB2'))}</li>
+      <li>${esc(t('premB3'))}</li><li>${esc(t('premB4'))}</li></ul>`;
+
+  if (!P.store){
+    // Browser ή iPhone: δεν υπάρχει Google Play Billing εδώ.
+    h += `<div class="h-off"><b>${esc(t('noStoreT'))}</b><p>${esc(t('noStoreMsg'))}</p></div>`;
+    h += PLAY_URL
+      ? `<a class="h-send" style="display:block;text-align:center;text-decoration:none" href="${PLAY_URL}" target="_blank" rel="noopener noreferrer">${esc(t('getApp'))}</a>`
+      : `<p class="pw-free">${esc(t('soon'))}</p>`;
+  } else if (P.busy){
+    h += `<div class="h-wait"><span class="spin"></span><span>${esc(t('buying'))}</span></div>`;
+  } else if (!P.offers){
+    h += `<div class="h-wait"><span class="spin"></span><span>${esc(t('buyLoad'))}</span></div>`;
+  } else {
+    h += P.offers.map((pk, i) => {
+      const pr = pk.product || {};
+      const sub = pk.packageType === 'MONTHLY' || pk.packageType === 'ANNUAL';
+      return `<button class="pw-opt${i===0?' best':''}" data-buy="${i}">
+        <div><div class="o-t">${esc(pr.title || (sub ? t('buySub') : t('buyPack')))}</div>
+             <div class="o-s">${esc(sub ? t('buySub') : t('buyPack'))}</div></div>
+        <div class="o-p"><b>${esc(pr.priceString || '')}</b>${sub ? `<span>${esc(t('perMonth'))}</span>` : ''}</div>
+      </button>`;
+    }).join('');
+    h += `<button class="pw-restore" id="pwRestore">${esc(t('restore'))}</button>`;
+  }
+  h += `<p class="pw-free">${esc(t('premB4'))}</p>`;
+  $('#hBody').innerHTML = h;
+
+  $('#hBody').querySelectorAll('[data-buy]').forEach(b =>
+    b.addEventListener('click', () => buyPackage(P.offers[+b.dataset.buy])));
+  const r = $('#pwRestore');
+  if (r) r.addEventListener('click', restorePurchases);
+}
+
+function renderHelpForm(err){
   const note = $('#hNote') ? $('#hNote').value : '';
+  const left = photosLeft();
   $('#hBody').innerHTML = `
+    ${left !== null ? `<div class="quota${left <= 5 ? ' low' : ''}">📷 ${esc(
+        P.active ? t('quotaLeft',{N:left}) : t('creditsLeft',{N:left}))}</div>` : ''}
     <p class="h-lead">${esc(t('stuckSub'))}</p>
     ${err ? `<div class="h-err">${esc(err)}</div>` : ''}
     ${H.img
@@ -5036,9 +5268,9 @@ function wireHelpForm(){
     if (!f) return;
     try {
       H.img = await shrinkImage(f, MAX_IMG_DIM, 0.82);
-      if (H.img.dataUrl.length > MAX_IMG_BYTES){ H.img = null; renderHelpForm(t('errBig')); return; }
-      renderHelpForm();
-    } catch(err){ renderHelpForm(t('errBig')); }
+      if (H.img.dataUrl.length > MAX_IMG_BYTES){ H.img = null; renderHelpBody(t('errBig')); return; }
+      renderHelpBody();
+    } catch(err){ renderHelpBody(t('errBig')); }
   });
   const send = $('#hSend'); if (send) send.addEventListener('click', submitHelp);
 }
@@ -5068,7 +5300,7 @@ function shrinkImage(fileObj, maxDim, quality){
 
 async function submitHelp(){
   if (H.busy) return;
-  if (!H.img){ renderHelpForm(t('errNoImg')); return; }
+  if (!H.img){ renderHelpBody(t('errNoImg')); return; }
   const note = ($('#hNote') && $('#hNote').value || '').slice(0, 500);
   const x = H.task, st = x.steps[H.step];
   H.busy = true;
@@ -5089,23 +5321,39 @@ async function submitHelp(){
   try {
     const ctl = new AbortController();
     const to = setTimeout(() => ctl.abort(), 90000);
-    res = await fetch(helpEndpoint(), {
+    res = await fetch(helpEndpoint().replace(/\/$/, '') + '/help', {
       method: 'POST',
-      headers: { 'Content-Type': 'application/json' },
+      headers: {
+        'Content-Type': 'application/json',
+        // Ο worker επαληθεύει ΑΥΤΟΝ τον χρήστη στο RevenueCat πριν απαντήσει.
+        'X-App-User-Id': P.userId || ''
+      },
       body: JSON.stringify(payload),
       signal: ctl.signal
     });
     clearTimeout(to);
     data = await res.json().catch(() => null);
   } catch(e){
-    H.busy = false; renderHelpForm(t('errNet')); return;
+    H.busy = false; renderHelpBody(t('errNet')); return;
   }
   H.busy = false;
 
-  if (!res.ok || !data || !data.answer){
-    renderHelpForm(res && res.status === 429 ? t('errBusy') : t('errGen'));
+  // 402: ο worker λέει ότι δεν υπάρχει δικαίωμα ή εξαντλήθηκαν οι φωτογραφίες.
+  if (res.status === 402){
+    P.active  = !!(data && data.active);
+    P.quota   = (data && typeof data.quotaLeft === 'number') ? data.quotaLeft : 0;
+    P.credits = (data && data.credits) || 0;
+    renderHelpBody();
     return;
   }
+  if (res.status === 401){ renderHelpBody(t('errAuth')); return; }
+  if (!res.ok || !data || !data.answer){
+    renderHelpBody(res && res.status === 429 ? t('errBusy') : t('errGen'));
+    return;
+  }
+  // Ο worker επιστρέφει το υπόλοιπο μετά τη χρέωση.
+  if (typeof data.quotaLeft === 'number') P.quota = data.quotaLeft;
+  if (typeof data.credits === 'number') P.credits = data.credits;
   renderAnswer(data);
 }
 
@@ -5119,7 +5367,7 @@ function renderAnswer(data){
                    : `<p class="h-priv">${esc(t('aiNote'))}</p>`}
     <button class="h-send" id="hAgain">${esc(t('again'))}</button>`;
   const a = $('#hAgain');
-  if (a) a.addEventListener('click', () => { H.img = null; renderHelpForm(); });
+  if (a) a.addEventListener('click', () => { H.img = null; renderHelpBody(); });
 }
 
 /* =====================================================================
@@ -5142,15 +5390,20 @@ $('#qClr').addEventListener('click', () => {
 function renderAll(){ renderChrome(); renderCats(); renderGrid(); }
 
 try {
-  const qp = new URLSearchParams(location.search).get('help');
-  if (qp !== null) {
-    if (qp) localStorage.setItem('diy_help_url', qp); else localStorage.removeItem('diy_help_url');
-    history.replaceState(null, '', location.pathname + location.hash);
+  const sp = new URLSearchParams(location.search);
+  let touched = false;
+  for (const [param, key] of [['help','diy_help_url'], ['rc','diy_rc_key']]) {
+    const v = sp.get(param);
+    if (v === null) continue;
+    if (v) localStorage.setItem(key, v); else localStorage.removeItem(key);
+    touched = true;
   }
+  if (touched) history.replaceState(null, '', location.pathname + location.hash);
 } catch(e){}
 
 applyTheme();
 renderAll();
+initPremium();
 
 if (location.hash){
   const id = location.hash.slice(1);
@@ -5227,6 +5480,33 @@ if ('serviceWorker' in navigator && location.protocol.startsWith('http')) {
 .h-off{background:var(--accS);border:1.5px solid var(--acc);border-radius:var(--r);padding:16px}
 .h-off b{display:block;color:var(--acc);font-size:14.5px;margin-bottom:7px}
 .h-off p{font-size:13.5px;color:var(--tx2);line-height:1.7}
+
+/* ---------- PREMIUM ---------- */
+.pw-top{text-align:center;padding:6px 4px 18px}
+.pw-ico{font-size:40px;line-height:1;margin-bottom:10px}
+.pw-badge{display:inline-block;padding:4px 12px;border-radius:100px;background:linear-gradient(135deg,var(--acc),#C77A00);
+  color:#fff;font-size:11px;font-weight:800;letter-spacing:.09em;text-transform:uppercase;margin-bottom:10px}
+.pw-top h3{font-size:20px;font-weight:800;color:var(--tx);line-height:1.25;margin-bottom:8px}
+.pw-top p{font-size:13.5px;color:var(--tx2);line-height:1.65}
+.pw-list{list-style:none;background:var(--card);border:1px solid var(--brd);border-radius:var(--r);padding:14px 16px;margin-bottom:14px}
+.pw-list li{display:flex;gap:10px;align-items:flex-start;font-size:13.5px;color:var(--tx2);line-height:1.55;padding:7px 0}
+.pw-list li::before{content:'✓';color:var(--ok);font-weight:800;flex-shrink:0}
+.pw-opt{width:100%;display:flex;align-items:center;gap:12px;text-align:left;background:var(--card);border:1.5px solid var(--brd2);
+  border-radius:var(--r);padding:14px 15px;margin-bottom:10px;cursor:pointer;transition:border-color .15s,transform .12s}
+.pw-opt:hover:not(:disabled){border-color:var(--pri);transform:translateY(-1px)}
+.pw-opt:disabled{opacity:.55;cursor:not-allowed}
+.pw-opt .o-t{font-size:14.5px;font-weight:750;color:var(--tx);line-height:1.3}
+.pw-opt .o-s{font-size:12px;color:var(--tx3);margin-top:3px;line-height:1.4}
+.pw-opt .o-p{margin-left:auto;text-align:right;flex-shrink:0}
+.pw-opt .o-p b{display:block;font-size:16px;font-weight:800;color:var(--pri)}
+.pw-opt .o-p span{font-size:11px;color:var(--tx3)}
+.pw-opt.best{border-color:var(--acc);background:var(--accS)}
+.pw-restore{width:100%;background:none;border:none;color:var(--pri);font-size:13px;font-weight:700;
+  cursor:pointer;padding:12px;text-decoration:underline}
+.pw-free{font-size:12px;color:var(--tx3);text-align:center;line-height:1.6;padding:6px 8px 0}
+.quota{display:flex;align-items:center;gap:8px;font-size:12.5px;font-weight:700;color:var(--tx2);
+  background:var(--okS);border:1px solid var(--ok);border-radius:100px;padding:7px 14px;margin-bottom:14px;width:fit-content}
+.quota.low{background:var(--accS);border-color:var(--acc);color:var(--acc)}
 </style>
 </body>
 </html>

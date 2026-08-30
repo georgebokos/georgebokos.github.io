@@ -4,21 +4,35 @@ compatibility_date = "2026-08-01"
 compatibility_flags = ["nodejs_compat"]
 
 [vars]
-# Ποια σελίδα επιτρέπεται να καλεί τον worker. Χωρίς αυτό, οποιοσδήποτε
-# ιστότοπος θα μπορούσε να στέλνει αιτήματα και να ξοδεύει το κλειδί σου.
+# Ποια σελίδα επιτρέπεται να καλεί τον worker.
 ALLOWED_ORIGIN = "https://georgebokos.github.io"
 
-# Όρια χρήσης ανά διεύθυνση IP (προστασία από κατάχρηση και από λογαριασμό
-# που εκτοξεύεται). Χρειάζονται το KV binding RL παρακάτω για να ισχύσουν.
-LIMIT_PER_HOUR = "12"
-LIMIT_PER_DAY  = "40"
+# Το entitlement όπως ακριβώς το ονόμασες στο RevenueCat.
+ENTITLEMENT_ID = "DIY Pro"
 
-# Το κλειδί ΔΕΝ μπαίνει εδώ. Μπαίνει ως secret, με:
-#   npx wrangler secret put ANTHROPIC_API_KEY
+# Πόσες φωτογραφίες περιλαμβάνει η μηνιαία συνδρομή.
+# ΣΗΜΑΝΤΙΚΟ: κράτα το κάτω από όσες καλύπτει η τιμή της συνδρομής, αλλιώς
+# πληρώνεις εσύ τη διαφορά. Οδηγός στο README, ενότητα «Πόσο να βάλω».
+SUB_MONTHLY_QUOTA = "60"
 
-# Προαιρετικό αλλά συνιστάται: μετρητής ορίων.
+# Πακέτα φωτογραφιών: product id του Google Play → πόσες φωτογραφίες δίνει.
+PACK_PRODUCTS = '{"diy_photos_20":20,"diy_photos_50":50}'
+
+# Δωρεάν φωτογραφίες ανά νέο χρήστη, για να δοκιμάσει πριν αγοράσει.
+# 0 = καμία. Κάθε δωρεάν φωτογραφία την πληρώνεις ΕΣΥ.
+FREE_TRIAL = "0"
+
+# Ποιότητα/κόστος ανάλυσης: low | medium | high
+EFFORT = "medium"
+
+# --- Μυστικά: ΔΕΝ μπαίνουν εδώ, μπαίνουν με wrangler secret put ---
+#   npx wrangler secret put ANTHROPIC_API_KEY   ← κλειδί Anthropic
+#   npx wrangler secret put RC_SECRET_KEY       ← ΜΥΣΤΙΚΟ κλειδί RevenueCat
+#   npx wrangler secret put RC_WEBHOOK_TOKEN    ← ό,τι βάλεις στο RevenueCat
+
+# Απαραίτητο: εδώ κρατιέται η κατάσταση κάθε χρήστη (συνδρομή, υπόλοιπο).
+# Χωρίς αυτό ΔΕΝ μετρώνται τα όρια.
 #   npx wrangler kv namespace create RL
-# και μετά αντιγράφεις εδώ το id που θα σου δώσει.
 # [[kv_namespaces]]
 # binding = "RL"
 # id = "<το id σου>"
