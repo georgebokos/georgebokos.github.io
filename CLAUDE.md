@@ -188,6 +188,36 @@ Premium δωρεάν και για πάντα.
 - Η Google απαιτεί **Play Billing Library 8** μέχρι 31/8/2026. Η TWA δεν μπορεί να συμμορφωθεί (η βιβλιοθήκη της έχει κολλήσει στην 7.1.1) — γι' αυτό η μετάβαση σε Capacitor είναι απαραίτητη.
 - Το WebView **δεν** υποστηρίζει ειδοποιήσεις service worker. Στην Capacitor έκδοση πρέπει να ξαναγραφτούν με `@capacitor/local-notifications`.
 
+## ⚠️ Ξεχωριστές εφαρμογές στο ίδιο domain
+
+Στο ίδιο repository φιλοξενούνται **ανεξάρτητες** εφαρμογές:
+
+| Διαδρομή | Εφαρμογή |
+|---|---|
+| `/` | **FoodDaily** — η μόνη που αφορά αυτό το αρχείο |
+| `/espa/` | ΕΣΠΑ Βοηθός |
+| `/diy/` | DIY |
+| `/dances/` | Χοροί |
+
+**Καμία δεν πρέπει να μπλέκεται με την άλλη.** Έχουν δικό τους `index.html`,
+`manifest.json` και **δικό τους service worker**.
+
+Ο service worker του FoodDaily έχει εμβέλεια ολόκληρο το domain, γι' αυτό
+περιέχει ρητό φρουρό:
+
+```js
+const OTHER_APPS = ['/diy/', '/dances/', '/espa/'];
+if (OTHER_APPS.some(prefix => url.pathname.startsWith(prefix))) return;
+```
+
+Χωρίς αυτόν, η εφεδρεία εκτός σύνδεσης θα σέρβιρε το `index.html` του FoodDaily
+μέσα στις άλλες εφαρμογές. **Κάθε νέα εφαρμογή πρέπει να προστίθεται στη λίστα**
+— και στο `COPY_DIRS` του `build.py` για να δημοσιεύεται.
+
+Όταν η συζήτηση αφορά το FoodDaily, οι αλλαγές περιορίζονται **αυστηρά** στο
+`index.html`, `service-worker.js`, `manifest.json` και τους φακέλους `images/`,
+`lang/`, `.well-known/`.
+
 ## Ασφάλεια
 Το `signing.keystore` και το JSON του service account είναι **μυστικά** — ποτέ σε commit, ποτέ σε δημόσιο αρχείο.
 
