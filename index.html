@@ -5850,8 +5850,22 @@ function _closeRate(){const m=document.getElementById('rate-mod');if(m)m.classLi
 function doRate(){
   try{localStorage.setItem('fd_rated','true');}catch(e){}
   _closeRate();
-  const url='https://play.google.com/store/apps/details?id=com.fooddaily.app';
-  try{window.open(url,'_blank');}catch(e){location.href=url;}
+  // ΠΡΟΣΟΧΗ: το https άνοιγμα κατέληγε στη ΣΕΛΙΔΑ του Play μέσα σε browser, όπου
+  // τα αστέρια συχνά δεν είναι διαθέσιμα. Το market:// ανοίγει την ΕΦΑΡΜΟΓΗ Play,
+  // όπου η αξιολόγηση γίνεται με ένα πάτημα.
+  const market='market://details?id=com.fooddaily.app';
+  const web=PLAY_URL;
+  const isAndroid=/Android/i.test(navigator.userAgent);
+  if(isAndroid){
+    const t0=Date.now();
+    // Αν δεν υπάρχει η εφαρμογή Play, επιστρέφουμε στη σελίδα.
+    setTimeout(()=>{if(Date.now()-t0<1600)location.href=web;},700);
+    location.href=market;
+  }else{
+    let w=null;
+    try{w=window.open(web,'_blank','noopener');}catch(e){}
+    if(!w)location.href=web;
+  }
   showToast(t('x25'));
 }
 function rateLater(){
