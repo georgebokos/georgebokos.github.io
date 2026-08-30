@@ -1,0 +1,12 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" role="img" aria-label="ΕΣΠΑ Βοηθός">
+  <rect width="512" height="512" fill="#0b3d68"/>
+  <rect x="168" y="130" width="176" height="212" rx="16" fill="#ffffff"/>
+  <g fill="#c9d6e4">
+    <rect x="194" y="166" width="124" height="14" rx="7"/>
+    <rect x="194" y="200" width="124" height="14" rx="7"/>
+    <rect x="194" y="234" width="84"  height="14" rx="7"/>
+  </g>
+  <circle cx="318" cy="318" r="58" fill="#ffcc00"/>
+  <path d="M294 318l18 19 36-40" fill="none" stroke="#0b3d68" stroke-width="19"
+        stroke-linecap="round" stroke-linejoin="round"/>
+</svg>
