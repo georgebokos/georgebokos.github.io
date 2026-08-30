@@ -1,0 +1,24 @@
+name = "diy-help"
+main = "src/index.js"
+compatibility_date = "2026-08-01"
+compatibility_flags = ["nodejs_compat"]
+
+[vars]
+# Ποια σελίδα επιτρέπεται να καλεί τον worker. Χωρίς αυτό, οποιοσδήποτε
+# ιστότοπος θα μπορούσε να στέλνει αιτήματα και να ξοδεύει το κλειδί σου.
+ALLOWED_ORIGIN = "https://georgebokos.github.io"
+
+# Όρια χρήσης ανά διεύθυνση IP (προστασία από κατάχρηση και από λογαριασμό
+# που εκτοξεύεται). Χρειάζονται το KV binding RL παρακάτω για να ισχύσουν.
+LIMIT_PER_HOUR = "12"
+LIMIT_PER_DAY  = "40"
+
+# Το κλειδί ΔΕΝ μπαίνει εδώ. Μπαίνει ως secret, με:
+#   npx wrangler secret put ANTHROPIC_API_KEY
+
+# Προαιρετικό αλλά συνιστάται: μετρητής ορίων.
+#   npx wrangler kv namespace create RL
+# και μετά αντιγράφεις εδώ το id που θα σου δώσει.
+# [[kv_namespaces]]
+# binding = "RL"
+# id = "<το id σου>"

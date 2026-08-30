@@ -274,6 +274,15 @@ button,input{font-family:inherit}
   <div class="tabs" id="tabs"></div>
   <div class="sh-body" id="shBody"></div>
 </section>
+<div class="backdrop" id="hBackdrop"></div>
+<section class="hsheet" id="hSheet" role="dialog" aria-modal="true" aria-labelledby="hTitleT">
+  <div class="sh-grab"></div>
+  <div class="h-head">
+    <div><h3 id="hTitleT"></h3><p id="hCtx"></p></div>
+    <button class="sh-x" id="hX">✕</button>
+  </div>
+  <div class="h-body" id="hBody"></div>
+</section>
 <div class="toast" id="toast"></div>
 
 <script>
@@ -329,6 +338,30 @@ const TR = {
   videoNote:  ['Τα βίντεο είναι αποτελέσματα αναζήτησης στο YouTube — δεν τα ελέγχουμε εμείς. Προτίμησε κανάλια με καθαρή εικόνα των βημάτων και σωστό εξοπλισμό ασφαλείας.',
                'Videos are YouTube search results — we do not control them. Prefer channels that show each step clearly and use proper safety gear.'],
   savedTip:   ['Η πρόοδος αποθηκεύεται στη συσκευή σου.', 'Your progress is saved on this device.'],
+  stuck:      ['Κόλλησα σε αυτό το βήμα', 'I am stuck on this step'],
+  stuckT:     ['Βοήθεια με φωτογραφία', 'Photo help'],
+  stuckSub:   ['Τράβα φωτογραφία αυτού που βλέπεις. Θα την εξετάσουμε μαζί με το βήμα όπου βρίσκεσαι και θα σου πούμε τι να κάνεις.',
+               'Take a photo of what you are looking at. We will examine it together with the step you are on and tell you what to do.'],
+  ctxStep:    ['Βήμα {N}: {T}', 'Step {N}: {T}'],
+  takePhoto:  ['📷 Τράβα ή διάλεξε φωτογραφία', '📷 Take or choose a photo'],
+  retake:     ['Άλλη φωτογραφία', 'Different photo'],
+  notePh:     ['Τι ακριβώς σε δυσκολεύει; (προαιρετικό)', 'What exactly is the problem? (optional)'],
+  sendPhoto:  ['Στείλε για ανάλυση', 'Send for analysis'],
+  analysing:  ['Εξετάζουμε τη φωτογραφία…', 'Examining the photo…'],
+  answerT:    ['Η απάντηση', 'The answer'],
+  again:      ['Ρώτα ξανά', 'Ask again'],
+  privacy:    ['Η φωτογραφία στέλνεται για ανάλυση και δεν αποθηκεύεται. Μη φωτογραφίζεις πρόσωπα, έγγραφα ή κάτι προσωπικό.',
+               'The photo is sent for analysis and is not stored. Do not photograph faces, documents or anything personal.'],
+  offT:       ['Η βοήθεια με φωτογραφία δεν είναι ενεργή', 'Photo help is not switched on'],
+  offMsg:     ['Η λειτουργία χρειάζεται σύνδεση με υπηρεσία ανάλυσης εικόνας, που δεν έχει ρυθμιστεί ακόμη σε αυτή την εγκατάσταση.',
+               'This feature needs a connection to an image analysis service, which has not been configured in this installation yet.'],
+  errNet:     ['Δεν έγινε η σύνδεση. Έλεγξε το ίντερνετ και δοκίμασε ξανά.', 'Connection failed. Check your internet and try again.'],
+  errBig:     ['Η φωτογραφία είναι πολύ μεγάλη. Δοκίμασε άλλη.', 'The photo is too large. Try another one.'],
+  errBusy:    ['Πολλές αιτήσεις αυτή τη στιγμή. Περίμενε ένα λεπτό.', 'Too many requests right now. Wait a minute.'],
+  errGen:     ['Κάτι πήγε στραβά στην ανάλυση. Δοκίμασε ξανά σε λίγο.', 'Something went wrong with the analysis. Try again shortly.'],
+  errNoImg:   ['Διάλεξε πρώτα μια φωτογραφία.', 'Choose a photo first.'],
+  aiNote:     ['Απάντηση από τεχνητή νοημοσύνη — μπορεί να κάνει λάθος. Αν αφορά ρεύμα, αέριο ή στατικά, επιβεβαίωσε με επαγγελματία πριν προχωρήσεις.',
+               'This answer comes from AI and can be wrong. If it involves electricity, gas or structure, confirm with a professional before proceeding.'],
   addFav:     ['Αποθηκεύτηκε στα αγαπημένα', 'Saved'],
   remFav:     ['Αφαιρέθηκε από τα αγαπημένα', 'Removed from saved'],
   resetOk:    ['Η πρόοδος μηδενίστηκε', 'Progress reset'],
@@ -3792,6 +3825,7 @@ function bodySteps(x){
       <div class="step-d">${esc(L(s,'d'))}</div>`;
     if (s.tip)  inner += `<div class="step-tip"><b>${esc(curLang==='en'?'Tip:':'Συμβουλή:')}</b> ${esc(L(s,'tip'))}</div>`;
     if (s.warn) inner += `<div class="step-w"><b>${esc(curLang==='en'?'Warning:':'Προσοχή:')}</b> ${esc(L(s,'warn'))}</div>`;
+    inner += `<button class="stuck-btn" data-stuck="${i}">📷 ${esc(t('stuck'))}</button>`;
     return `<div class="step${isDone?' done':''}" data-i="${i}">
       <button class="step-chk" data-chk="${i}" aria-label="done">✓</button>
       <div>${inner}</div></div>`;
@@ -3846,6 +3880,10 @@ function wireBody(x){
   if (rb) rb.addEventListener('click', () => {
     setProg(x.id, []); openTask(x.id, true); toast(t('resetOk'));
   });
+  $('#shBody').querySelectorAll('[data-stuck]').forEach(b => b.addEventListener('click', ev => {
+    ev.stopPropagation();
+    openHelp(x.id, +b.dataset.stuck);
+  }));
   $('#shBody').querySelectorAll('[data-chk]').forEach(b => b.addEventListener('click', () => {
     const i = +b.dataset.chk;
     const done = getProg(x.id);
@@ -3856,6 +3894,165 @@ function wireBody(x){
     openTask(x.id, true);
     if (wasAll && k === -1) toast(t('doneAll'));
   }));
+}
+
+/* =====================================================================
+   ΒΟΗΘΕΙΑ ΜΕ ΦΩΤΟΓΡΑΦΙΑ
+   Ο χρήστης κολλάει σε ένα βήμα, τραβά φωτογραφία, και η εικόνα μαζί με το
+   περιβάλλον του βήματος πηγαίνει σε υπηρεσία ανάλυσης που επιστρέφει οδηγία.
+
+   Το κλειδί του API ΔΕΝ βρίσκεται ποτέ εδώ — η σελίδα είναι δημόσια και θα το
+   διάβαζε ο καθένας. Μιλάμε με έναν δικό μας μικρό worker (δες worker/), που
+   κρατά το κλειδί, βάζει όρια χρήσης και προωθεί το αίτημα.
+   ===================================================================== */
+
+// Συμπλήρωσε εδώ τη διεύθυνση του worker μετά το deploy, π.χ.
+// const HELP_ENDPOINT = 'https://diy-help.<λογαριασμός>.workers.dev';
+const HELP_ENDPOINT = '';
+const MAX_IMG_DIM = 1024;      // μεγαλύτερη πλευρά — κρατά χαμηλά κόστος και χρόνο
+const MAX_IMG_BYTES = 3500000; // ασφαλιστική δικλείδα πριν το ανέβασμα
+
+function helpEndpoint(){
+  try { return localStorage.getItem('diy_help_url') || HELP_ENDPOINT; }
+  catch(e){ return HELP_ENDPOINT; }
+}
+
+const H = { task:null, step:0, img:null, busy:false };
+
+function openHelp(taskId, stepIdx){
+  const x = TASKS.find(y => y.id === taskId);
+  if (!x) return;
+  H.task = x; H.step = stepIdx; H.img = null; H.busy = false;
+  const st = x.steps[stepIdx];
+  $('#hTitleT').textContent = t('stuckT');
+  $('#hCtx').textContent = L(x,'n') + ' · ' + t('ctxStep', {N: stepIdx+1, T: L(st,'t')});
+  renderHelpForm();
+  $('#hBackdrop').classList.add('open');
+  $('#hSheet').classList.add('open');
+}
+
+function closeHelp(){
+  H.task = null; H.img = null; H.busy = false;
+  $('#hBackdrop').classList.remove('open');
+  $('#hSheet').classList.remove('open');
+}
+$('#hX').addEventListener('click', closeHelp);
+$('#hBackdrop').addEventListener('click', () => { if (!H.busy) closeHelp(); });
+document.addEventListener('keydown', e => { if (e.key === 'Escape' && H.task && !H.busy) closeHelp(); });
+
+function renderHelpForm(err){
+  if (!helpEndpoint()){
+    $('#hBody').innerHTML = `<div class="h-off"><b>${esc(t('offT'))}</b><p>${esc(t('offMsg'))}</p></div>`;
+    return;
+  }
+  const note = $('#hNote') ? $('#hNote').value : '';
+  $('#hBody').innerHTML = `
+    <p class="h-lead">${esc(t('stuckSub'))}</p>
+    ${err ? `<div class="h-err">${esc(err)}</div>` : ''}
+    ${H.img
+      ? `<div class="shot"><img src="${H.img.dataUrl}" alt=""><button id="hRetake">${esc(t('retake'))}</button></div>`
+      : `<button class="drop" id="hPick">${esc(t('takePhoto'))}</button>`}
+    <input type="file" id="hFile" accept="image/*" capture="environment" hidden>
+    <textarea class="h-note" id="hNote" placeholder="${esc(t('notePh'))}">${esc(note)}</textarea>
+    <button class="h-send" id="hSend"${H.img ? '' : ' disabled'}>${esc(t('sendPhoto'))}</button>
+    <p class="h-priv">${esc(t('privacy'))}</p>`;
+  wireHelpForm();
+}
+
+function wireHelpForm(){
+  const file = $('#hFile');
+  const pick = () => file && file.click();
+  const p = $('#hPick'); if (p) p.addEventListener('click', pick);
+  const r = $('#hRetake'); if (r) r.addEventListener('click', pick);
+  if (file) file.addEventListener('change', async e => {
+    const f = e.target.files && e.target.files[0];
+    if (!f) return;
+    try {
+      H.img = await shrinkImage(f, MAX_IMG_DIM, 0.82);
+      if (H.img.dataUrl.length > MAX_IMG_BYTES){ H.img = null; renderHelpForm(t('errBig')); return; }
+      renderHelpForm();
+    } catch(err){ renderHelpForm(t('errBig')); }
+  });
+  const send = $('#hSend'); if (send) send.addEventListener('click', submitHelp);
+}
+
+/* Σμίκρυνση στη συσκευή: λιγότερα δεδομένα στο δίκτυο, μικρότερο κόστος
+   ανάλυσης, και η φωτογραφία δεν φεύγει ποτέ σε πρωτότυπο μέγεθος. */
+function shrinkImage(fileObj, maxDim, quality){
+  return new Promise((resolve, reject) => {
+    const url = URL.createObjectURL(fileObj);
+    const img = new Image();
+    img.onload = () => {
+      URL.revokeObjectURL(url);
+      let w = img.naturalWidth, h = img.naturalHeight;
+      if (!w || !h) return reject(new Error('empty'));
+      const big = Math.max(w, h);
+      if (big > maxDim){ const k = maxDim / big; w = Math.round(w*k); h = Math.round(h*k); }
+      const c = document.createElement('canvas');
+      c.width = w; c.height = h;
+      const cx = c.getContext('2d');
+      cx.drawImage(img, 0, 0, w, h);
+      resolve({ dataUrl: c.toDataURL('image/jpeg', quality), w, h });
+    };
+    img.onerror = () => { URL.revokeObjectURL(url); reject(new Error('decode')); };
+    img.src = url;
+  });
+}
+
+async function submitHelp(){
+  if (H.busy) return;
+  if (!H.img){ renderHelpForm(t('errNoImg')); return; }
+  const note = ($('#hNote') && $('#hNote').value || '').slice(0, 500);
+  const x = H.task, st = x.steps[H.step];
+  H.busy = true;
+  $('#hBody').innerHTML = `<div class="h-wait"><span class="spin"></span><span>${esc(t('analysing'))}</span></div>`;
+
+  const payload = {
+    lang: curLang,
+    image: H.img.dataUrl.split(',')[1],
+    mime: 'image/jpeg',
+    note: note,
+    task: { id: x.id, name: L(x,'n'), summary: L(x,'d') },
+    step: { n: H.step + 1, total: x.steps.length, title: L(st,'t'), detail: L(st,'d') },
+    safety: (L(x,'safety') || []).slice(0, 4),
+    pro: L(x,'pro') || ''
+  };
+
+  let res, data;
+  try {
+    const ctl = new AbortController();
+    const to = setTimeout(() => ctl.abort(), 90000);
+    res = await fetch(helpEndpoint(), {
+      method: 'POST',
+      headers: { 'Content-Type': 'application/json' },
+      body: JSON.stringify(payload),
+      signal: ctl.signal
+    });
+    clearTimeout(to);
+    data = await res.json().catch(() => null);
+  } catch(e){
+    H.busy = false; renderHelpForm(t('errNet')); return;
+  }
+  H.busy = false;
+
+  if (!res.ok || !data || !data.answer){
+    renderHelpForm(res && res.status === 429 ? t('errBusy') : t('errGen'));
+    return;
+  }
+  renderAnswer(data);
+}
+
+function renderAnswer(data){
+  const paras = String(data.answer).split(/\n\s*\n/).filter(Boolean)
+    .map(par => `<p>${esc(par).replace(/\*\*([^*]+)\*\*/g, '<strong>$1</strong>').replace(/\n/g, '<br>')}</p>`)
+    .join('');
+  $('#hBody').innerHTML = `
+    <div class="ans"><h4>${esc(t('answerT'))}</h4>${paras}</div>
+    ${data.callPro ? `<div class="ans-pro"><b>${esc(t('proTitle'))}</b>${esc(t('aiNote'))}</div>`
+                   : `<p class="h-priv">${esc(t('aiNote'))}</p>`}
+    <button class="h-send" id="hAgain">${esc(t('again'))}</button>`;
+  const a = $('#hAgain');
+  if (a) a.addEventListener('click', () => { H.img = null; renderHelpForm(); });
 }
 
 /* =====================================================================
@@ -3876,6 +4073,14 @@ $('#qClr').addEventListener('click', () => {
    ΕΚΚΙΝΗΣΗ
    ===================================================================== */
 function renderAll(){ renderChrome(); renderCats(); renderGrid(); }
+
+try {
+  const qp = new URLSearchParams(location.search).get('help');
+  if (qp !== null) {
+    if (qp) localStorage.setItem('diy_help_url', qp); else localStorage.removeItem('diy_help_url');
+    history.replaceState(null, '', location.pathname + location.hash);
+  }
+} catch(e){}
 
 applyTheme();
 renderAll();
@@ -3908,6 +4113,53 @@ if ('serviceWorker' in navigator && location.protocol.startsWith('http')) {
 .fl-line{flex:1;width:2px;background:var(--brd);min-height:14px;margin:3px 0}
 .fl-txt{font-size:13.5px;color:var(--tx2);line-height:1.5;padding-bottom:14px;font-weight:600}
 .fl-row:last-child .fl-txt{padding-bottom:0}
+
+/* ---------- ΒΟΗΘΕΙΑ ΜΕ ΦΩΤΟΓΡΑΦΙΑ ---------- */
+.stuck-btn{margin-top:11px;display:inline-flex;align-items:center;gap:6px;padding:8px 13px;border-radius:var(--rx);
+  border:1.5px dashed var(--brd2);background:transparent;color:var(--tx2);font-size:12.5px;font-weight:700;cursor:pointer;
+  transition:border-color .15s,color .15s,background .15s}
+.stuck-btn:hover{border-color:var(--pri);color:var(--pri);background:var(--priS);border-style:solid}
+.hsheet{position:fixed;bottom:0;left:50%;transform:translateX(-50%) translateY(100%);width:100%;max-width:760px;
+  height:92dvh;background:var(--bg);border-radius:20px 20px 0 0;box-shadow:0 -8px 60px rgba(0,0,0,.34);z-index:120;
+  display:flex;flex-direction:column;transition:transform .3s cubic-bezier(.32,1.12,.6,1);overflow:hidden}
+.hsheet.open{transform:translateX(-50%) translateY(0)}
+.h-head{padding:10px 18px 14px;display:flex;gap:12px;align-items:flex-start;flex-shrink:0;border-bottom:1px solid var(--brd)}
+.h-head h3{font-size:17px;font-weight:800;color:var(--tx);line-height:1.25}
+.h-head p{font-size:12.5px;color:var(--tx3);margin-top:4px;line-height:1.45}
+.h-body{overflow-y:auto;-webkit-overflow-scrolling:touch;padding:16px 16px calc(40px + env(safe-area-inset-bottom));flex:1;overscroll-behavior:contain}
+.h-lead{font-size:13.5px;color:var(--tx2);line-height:1.65;margin-bottom:14px}
+.drop{width:100%;border:2px dashed var(--brd2);border-radius:var(--r);background:var(--card);padding:26px 18px;
+  text-align:center;cursor:pointer;color:var(--tx2);font-size:14px;font-weight:700;transition:border-color .15s,background .15s}
+.drop:hover{border-color:var(--pri);background:var(--priS);color:var(--pri)}
+.shot{position:relative;border-radius:var(--r);overflow:hidden;border:1px solid var(--brd);background:var(--bg2);margin-bottom:12px}
+.shot img{display:block;width:100%;height:auto;max-height:44dvh;object-fit:contain}
+.shot button{position:absolute;top:9px;right:9px;padding:6px 11px;border-radius:100px;border:none;cursor:pointer;
+  background:rgba(10,14,18,.72);color:#fff;font-size:11.5px;font-weight:700;backdrop-filter:blur(4px)}
+.h-note{width:100%;padding:11px 13px;border-radius:var(--rs);border:1.5px solid var(--brd2);background:var(--card);
+  color:var(--tx);font-size:14px;outline:none;resize:vertical;min-height:74px;margin-bottom:12px;line-height:1.5}
+.h-note:focus{border-color:var(--pri)}
+.h-send{width:100%;padding:14px;border-radius:var(--rs);border:none;background:var(--pri);color:#fff;font-size:15px;
+  font-weight:750;cursor:pointer;transition:background .2s}
+.h-send:hover:not(:disabled){background:var(--pri2)}
+.h-send:disabled{opacity:.5;cursor:not-allowed}
+.h-priv{font-size:11.5px;color:var(--tx3);line-height:1.6;margin-top:12px;padding:0 2px}
+.h-wait{display:flex;align-items:center;gap:12px;padding:22px 16px;color:var(--tx2);font-size:14px;font-weight:650}
+.spin{width:20px;height:20px;border-radius:50%;border:2.5px solid var(--brd);border-top-color:var(--pri);
+  animation:sp .8s linear infinite;flex-shrink:0}
+@keyframes sp{to{transform:rotate(360deg)}}
+.ans{background:var(--card);border:1px solid var(--brd);border-radius:var(--r);padding:16px;margin-bottom:12px}
+.ans h4{font-size:10.5px;letter-spacing:.11em;text-transform:uppercase;color:var(--tx3);font-weight:750;margin-bottom:10px}
+.ans p{font-size:14.5px;color:var(--tx2);line-height:1.75;margin-bottom:10px}
+.ans p:last-child{margin-bottom:0}
+.ans strong{color:var(--tx);font-weight:750}
+.ans-pro{background:var(--dgrS);border:1.5px solid var(--dgr);border-radius:var(--r);padding:14px 15px;margin-bottom:12px;
+  font-size:13.5px;color:var(--tx2);line-height:1.65}
+.ans-pro b{color:var(--dgr);display:block;margin-bottom:5px}
+.h-err{background:var(--dgrS);border:1px solid var(--dgr);border-radius:var(--r);padding:14px 15px;margin-bottom:12px;
+  font-size:14px;color:var(--tx2);line-height:1.6}
+.h-off{background:var(--accS);border:1.5px solid var(--acc);border-radius:var(--r);padding:16px}
+.h-off b{display:block;color:var(--acc);font-size:14.5px;margin-bottom:7px}
+.h-off p{font-size:13.5px;color:var(--tx2);line-height:1.7}
 </style>
 </body>
 </html>
