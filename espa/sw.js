@@ -2,7 +2,7 @@
 // Εμβέλεια: /espa/ — ΜΟΝΟ αυτή. Δεν αγγίζει τίποτε άλλο στο origin.
 // Το cache έχει δικό του πρόθεμα (espa-) ώστε να μη μπερδεύεται ποτέ με
 // άλλες εφαρμογές που φιλοξενούνται στο ίδιο domain.
-const VERSION = '2026-08-30-1';
+const VERSION = '2026-08-30-2';
 const CACHE   = `espa-${VERSION}`;
 const SCOPE   = new URL('./', self.location).pathname;   // → /espa/
 
