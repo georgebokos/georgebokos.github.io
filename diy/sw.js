@@ -2,7 +2,7 @@
 // Εμβέλεια: /diy/ — ΜΟΝΟ αυτή. Δεν αγγίζει τίποτε άλλο στο origin.
 // Το cache έχει δικό του πρόθεμα (diy-) ώστε να μη μπερδεύεται ποτέ με άλλες
 // εφαρμογές που φιλοξενούνται στο ίδιο domain.
-const VERSION = '2026-08-30-3';
+const VERSION = '2026-08-30-4';
 const CACHE   = `diy-${VERSION}`;
 const SCOPE   = new URL('./', self.location).pathname;   // → /diy/
 
