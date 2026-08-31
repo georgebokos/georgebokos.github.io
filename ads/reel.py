@@ -60,6 +60,9 @@ def build(rid, lang='el'):
          'cta':'376 ελληνικές συνταγές' if el else '376 Greek recipes',
          'app':'στην εφαρμογή FoodDaily' if el else 'in the FoodDaily app',
          'q':'Τι μαγειρεύουμε σήμερα;' if el else 'What are we cooking today?',
+         'open1':'Τι θα φάμε σήμερα;' if el else 'What shall we eat today?',
+         'open2':'Η λύση στον καθημερινό προβληματισμό'
+                 if el else 'The answer to the daily question',
          'b1':'Πρόταση φαγητού κάθε μέρα' if el else 'A meal suggestion every day',
          'b2':'Υπενθύμιση τι να ετοιμάσεις' if el else 'Reminders of what to prep',
          'b3':'376 ελληνικές συνταγές' if el else '376 Greek recipes',
@@ -72,8 +75,10 @@ def build(rid, lang='el'):
     # Μικρές παραλλαγές, ώστε 30 βίντεο στη σειρά να μη μοιάζουν πανομοιότυπα.
     # Παράγονται από το id, άρα κάθε συνταγή βγάζει πάντα το ίδιο αποτέλεσμα.
     var = sum(ord(c) for c in rid)
-    QS = ([L['q'], 'Τι θα φάμε σήμερα;', 'Τέλος το «τι μαγειρεύουμε;»'] if el
-          else [L['q'], 'What are we eating today?', 'No more "what shall we cook?"'])
+    # ΠΡΟΣΟΧΗ: καμία παραλλαγή δεν πρέπει να ταυτίζεται με τη φράση του ανοίγματος
+    # («Τι θα φάμε σήμερα;») — η επανάληψη μέσα στο ίδιο βίντεο φαίνεται αμέλεια.
+    QS = ([L['q'], 'Η απάντηση κάθε μεσημέρι', 'Τέλος το «τι μαγειρεύουμε;»'] if el
+          else [L['q'], 'The answer, every day', 'No more "what shall we cook?"'])
     L['q'] = QS[var % 3]
     zoom_in = (var // 3) % 2 == 0
 
@@ -118,13 +123,16 @@ def build(rid, lang='el'):
     # ΣΕΙΡΑ: το πιάτο σταματά τον θεατή, η εφαρμογή του λέει αμέσως τι είναι
     # και πώς κατεβαίνει, και μετά ακολουθεί η συνταγή.
     scenes = []
-    scenes.append(('hook', 2.0, None))
-    scenes.append(('cta',  5.0, None))
-    scenes.append(('ing',  2.5, None))
+    # Ξεκινά με την ερώτηση που κάνει καθένας κάθε μεσημέρι. Ο θεατής
+    # αναγνωρίζει το πρόβλημά του πριν καν δει φαγητό — γι' αυτό σταματά.
+    scenes.append(('open', 2.2, None))
+    scenes.append(('hook', 1.8, None))
+    scenes.append(('cta',  4.6, None))
+    scenes.append(('ing',  2.3, None))
     # Όλη η εκτέλεση σε ΜΙΑ οθόνη: ο θεατής βλέπει ολοκληρωμένη τη διαδικασία
     # με μια ματιά, αντί να περιμένει βήμα-βήμα. Κερδίζεται χρόνος και δίνεται
     # πλήρης εικόνα. Τα αναλυτικά κείμενα είναι μέσα στην εφαρμογή.
-    scenes.append(('steps', 7.0, [st.split(':', 1)[0].strip() for st in steps[:8]]))
+    scenes.append(('steps', 6.6, [st.split(':', 1)[0].strip() for st in steps[:8]]))
 
     out = os.path.join(OUT, f'reel-{rid}-{lang}.mp4')
     proc = subprocess.Popen([FFMPEG,'-y','-f','rawvideo','-pix_fmt','rgb24','-s',f'{W}x{H}','-r',str(FPS),
@@ -144,15 +152,30 @@ def build(rid, lang='el'):
                 cw, ch = round(W/z), round(H/z)
                 fr = bg.crop(((W-cw)//2,(H-ch)//2,(W-cw)//2+cw,(H-ch)//2+ch)).resize((W,H), Image.LANCZOS)
                 fr = scrim(fr, int(H*.42))
+            elif kind == 'open':
+                # Θολό πιάτο από πίσω: ζεστό κάδρο, αλλά κυριαρχεί η ερώτηση.
+                fr = scrim(blur, 0, .74, .86)
             elif kind == 'cta':
-                # Ελαφρύτερο σκίαστρο: η σκηνή ανοίγει το βίντεο, οπότε το πιάτο
-                # πρέπει να φαίνεται πίσω από το κείμενο.
                 fr = scrim(blur, 0, .62, .78)
             else:
                 fr = scrim(blur, 0, .62, .80)
             d = ImageDraw.Draw(fr)
 
-            if kind == 'hook':
+            if kind == 'open':
+                f_o1 = ImageFont.truetype(FB, 96)
+                f_o2 = ImageFont.truetype(FR, 46)
+                l1 = wrap(d, L['open1'], f_o1, W - 2*pad)
+                l2 = wrap(d, L['open2'], f_o2, W - 2*pad)
+                blk = len(l1)*112 + 46 + len(l2)*62
+                y = (H - blk) // 2
+                for ln in l1:
+                    d.text(((W - d.textlength(ln, font=f_o1))/2, y), ln, font=f_o1, fill=(255,253,248))
+                    y += 112
+                y += 46
+                for ln in l2:
+                    d.text(((W - d.textlength(ln, font=f_o2))/2, y), ln, font=f_o2, fill=(238,208,158))
+                    y += 62
+            elif kind == 'hook':
                 lines = wrap(d, name, f_big, W-2*pad)
                 y = H - pad - 150 - len(lines)*100
                 for ln in lines:
