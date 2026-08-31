@@ -63,6 +63,8 @@ def build(rid, lang='el'):
          'open1':'Τι θα φάμε σήμερα;' if el else 'What shall we eat today?',
          'open2':'Η λύση στον καθημερινό προβληματισμό'
                  if el else 'The answer to the daily question',
+         'open3':'Το FoodDaily σκέφτεται για σένα και σου λύνει τα χέρια'
+                 if el else 'FoodDaily thinks for you, so you don\'t have to',
          'b1':'Πρόταση φαγητού κάθε μέρα' if el else 'A meal suggestion every day',
          'b2':'Υπενθύμιση τι να ετοιμάσεις' if el else 'Reminders of what to prep',
          'b3':'376 ελληνικές συνταγές' if el else '376 Greek recipes',
@@ -125,14 +127,14 @@ def build(rid, lang='el'):
     scenes = []
     # Ξεκινά με την ερώτηση που κάνει καθένας κάθε μεσημέρι. Ο θεατής
     # αναγνωρίζει το πρόβλημά του πριν καν δει φαγητό — γι' αυτό σταματά.
-    scenes.append(('open', 2.2, None))
+    scenes.append(('open', 3.4, None))
     scenes.append(('hook', 1.8, None))
-    scenes.append(('cta',  4.6, None))
-    scenes.append(('ing',  2.3, None))
+    scenes.append(('cta',  4.4, None))
+    scenes.append(('ing',  2.2, None))
     # Όλη η εκτέλεση σε ΜΙΑ οθόνη: ο θεατής βλέπει ολοκληρωμένη τη διαδικασία
     # με μια ματιά, αντί να περιμένει βήμα-βήμα. Κερδίζεται χρόνος και δίνεται
     # πλήρης εικόνα. Τα αναλυτικά κείμενα είναι μέσα στην εφαρμογή.
-    scenes.append(('steps', 6.6, [st.split(':', 1)[0].strip() for st in steps[:8]]))
+    scenes.append(('steps', 6.2, [st.split(':', 1)[0].strip() for st in steps[:8]]))
 
     out = os.path.join(OUT, f'reel-{rid}-{lang}.mp4')
     proc = subprocess.Popen([FFMPEG,'-y','-f','rawvideo','-pix_fmt','rgb24','-s',f'{W}x{H}','-r',str(FPS),
@@ -162,19 +164,31 @@ def build(rid, lang='el'):
             d = ImageDraw.Draw(fr)
 
             if kind == 'open':
+                # Τρεις γραμμές που εμφανίζονται με τη σειρά: η ερώτηση, το
+                # πρόβλημα, και ποιος το λύνει. Ο θεατής προλαβαίνει να τις
+                # διαβάσει και μένει μέχρι να ολοκληρωθεί η σκέψη.
                 f_o1 = ImageFont.truetype(FB, 96)
                 f_o2 = ImageFont.truetype(FR, 46)
+                f_o3 = ImageFont.truetype(FB, 50)
                 l1 = wrap(d, L['open1'], f_o1, W - 2*pad)
                 l2 = wrap(d, L['open2'], f_o2, W - 2*pad)
-                blk = len(l1)*112 + 46 + len(l2)*62
+                l3 = wrap(d, L['open3'], f_o3, W - 2*pad)
+                blk = len(l1)*112 + 40 + len(l2)*62 + 56 + len(l3)*66
                 y = (H - blk) // 2
-                for ln in l1:
-                    d.text(((W - d.textlength(ln, font=f_o1))/2, y), ln, font=f_o1, fill=(255,253,248))
-                    y += 112
-                y += 46
-                for ln in l2:
-                    d.text(((W - d.textlength(ln, font=f_o2))/2, y), ln, font=f_o2, fill=(238,208,158))
-                    y += 62
+                def alpha(t0):    # 0 → αόρατο, 1 → πλήρες
+                    return max(0., min(1., (p - t0) / .12))
+                # ΠΡΟΣΟΧΗ: γραμμή που δεν έχει εμφανιστεί ΔΕΝ ζωγραφίζεται καθόλου.
+                # Με απλό σκούρο χρώμα έμοιαζε με σκιά — διαβαζόταν ως ελάττωμα.
+                mix = lambda a, col: tuple(round(18+(c-18)*a) for c in col)
+                def block(lines, font, col, a, step):
+                    nonlocal y
+                    for ln in lines:
+                        if a > .08:
+                            d.text(((W - d.textlength(ln, font=font))/2, y), ln, font=font, fill=mix(a, col))
+                        y += step
+                block(l1, f_o1, (255,253,248), alpha(0.00), 112); y += 40
+                block(l2, f_o2, (238,208,158), alpha(0.28), 62);  y += 56
+                block(l3, f_o3, (233,178,74),  alpha(0.56), 66)
             elif kind == 'hook':
                 lines = wrap(d, name, f_big, W-2*pad)
                 y = H - pad - 150 - len(lines)*100
