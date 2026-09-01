@@ -972,9 +972,44 @@ const RE_DATE  = /(\d{1,2})[\/\.\-](\d{1,2})[\/\.\-](\d{4})/g;
 const RE_DATEGR= /(\d{1,2})\s*(?:ης|ΗΣ)?\s+([Α-Ω]{4,12})\s+(\d{4})/g;
 const RE_KAD   = /(?:^|[^\d.,])(\d{2})\.(\d{2})(?:\.(\d{2})(?:\.(\d{2}))?)?(?![\d.,%])/g;
 
+/** Ανασύνθεση γραμμών κειμένου που προήλθε από PDF.
+    Τα PDF δεν έχουν έννοια «παραγράφου»: κάθε κελί πίνακα και κάθε οπτική
+    γραμμή βγαίνει χωριστά. Ένα κριτήριο σαν
+        1 | Ωριμότητα και πληρότητα του επενδυτικού σχεδίου | 30%
+    φτάνει ως τέσσερις ξεχωριστές γραμμές («1», «Ωριμότητα…», «σχεδίου», «30%»)
+    και καμία τους δεν είναι αναγνωρίσιμη μόνη της. Εδώ ξαναενώνονται. */
+function reflow(R){
+  const src = R.split('\n').map(l=>l.replace(/[ \t\u00a0]+/g,' ').trim());
+  const out = [];
+  for(let i=0;i<src.length;i++){
+    const l = src[i];
+    if(l===''){ if(out.length && out[out.length-1]!=='') out.push(''); continue; }
+    // (α) σκέτος αριθμός = στήλη «Α/Α» πίνακα ⇒ γίνεται αρίθμηση της επόμενης γραμμής
+    if(/^\d{1,2}$/.test(l) && i+1<src.length && /^[Α-ΩΆ-Ώ]/.test(src[i+1]) && src[i+1].length>=8){
+      src[i+1] = l+'. '+src[i+1];
+      continue;
+    }
+    const prev = out.length? out[out.length-1] : '';
+    // (β) σκέτο ποσοστό = κελί ορίου ή βαρύτητας ⇒ στο τέλος της γραμμής του
+    if(prev && /^(?:έως|ΕΩΣ|μέχρι|ΜΕΧΡΙ)?\s*\d{1,3}(?:,\d{1,2})?\s*%$/.test(l)){
+      out[out.length-1] = prev+' '+l; continue;
+    }
+    // (γ) συνέχεια σπασμένης φράσης: αρχίζει με πεζό και η προηγούμενη δεν έκλεισε
+    if(prev.length>25 && /^[α-ωά-ώ]/.test(l) && !/[.:;%!·]$/.test(prev)){
+      out[out.length-1] = prev+' '+l; continue;
+    }
+    // (δ) μονολεκτικό ακρωνύμιο που ξέμεινε στην επόμενη γραμμή («…Δηλώσεις ΕΦΚΑ»)
+    if(prev.length>25 && /^[Α-ΩΆ-Ώ]{2,10}$/.test(l) && !/[.:;%!·]$/.test(prev)){
+      out[out.length-1] = prev+' '+l; continue;
+    }
+    out.push(l);
+  }
+  return out.join('\n');
+}
+
 /** Ανάλυση: γεμίζει το S.call από το ακατέργαστο κείμενο. */
 function analyze(raw){
-  const R = raw.replace(/\r\n/g,'\n').replace(/ /g,' ');
+  const R = reflow(raw.replace(/\r\n/g,'\n'));
   const N = normKeep(R);
   S.raw = R;
   const c = S.call;
@@ -1280,7 +1315,7 @@ function extractCosts(R,N,secs){
     for(let i=0;i<lines.length;i++){
       const l = lines[i];
       if(l.length<6 || l.length>150) continue;
-      const num = /^(?:\d{1,2}[\.\)]|[Α-Ω]\d?[\.\)]|[•▪◦\-–●]\s?|\d{1,2}\.\d{1,2}\.?)\s*(.+)$/.exec(l);
+      const num = /^(?:\d{1,2}\.\d{1,2}\.?\s*|\d{1,2}[\.\)]\s*|\d{1,2}\s+|[Α-Ω]\d?[\.\)]\s*|[•▪◦\-–●]\s*)(.+)$/.exec(l);
       let title = num ? num[1] : null;
       if(!title){
         // γραμμή πίνακα: «Τίτλος .... έως 40%»
@@ -1323,7 +1358,7 @@ function extractCrits(R,N,secs){
       if(!looks) continue;
       if(!/[Α-Ωα-ωΆ-Ώά-ώ]{6}/.test(l)) continue;
       if(/^(ΠΙΝΑΚΑΣ|ΣΥΝΟΛΟ|ΑΡΘΡΟ|ΠΑΡΑΡΤΗΜΑ)/.test(nt)) continue;
-      let title = l.replace(/^(?:\d{1,2}[\.\)]|[Α-Ω]\d?[\.\)]|[•▪●\-–])\s*/,'')
+      let title = l.replace(/^(?:\d{1,2}[\.\)]\s*|\d{1,2}\s+|[Α-Ω]\d?[\.\)]\s*|[•▪●\-–]\s*)/,'')
                    .replace(/\s*\d{1,3}(?:,\d{1,2})?\s*%\s*$/,'')
                    .replace(/[\.\:\s]+$/,'').trim();
       if(title.length<8||title.length>130) continue;
