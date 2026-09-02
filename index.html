@@ -8088,10 +8088,88 @@ async function exitCookMode(completed){
 })();
 
 // ── SHARE RECIPE ───────────────────────────────────────────────
-function shareRecipe(id){
+// ── ΚΑΡΤΑ ΚΟΙΝΟΠΟΙΗΣΗΣ ─────────────────────────────────────────
+// Γυμνό κείμενο δεν το κοιτάει κανείς. Μια εικόνα με το πιάτο, το κόστος ανά
+// μερίδα και τη διεύθυνση δουλεύει σαν διαφήμιση σε κάθε συνομιλία.
+const SHARE_URL='georgebokos.github.io/app';
+function _wrapCanvas(ctx,text,maxW){
+  const out=[];let cur='';
+  for(const w of String(text).split(' ')){
+    const t=(cur+' '+w).trim();
+    if(ctx.measureText(t).width<=maxW||!cur)cur=t;else{out.push(cur);cur=w;}
+  }
+  if(cur)out.push(cur);
+  return out;
+}
+// Επιστρέφει Blob JPEG, ή null αν κάτι δεν πάει καλά (π.χ. δεν φορτώνει η εικόνα).
+function buildShareCard(m,id){
+  return new Promise(resolve=>{
+    const W=1080,H=1350;                 // 4:5 — το μέγεθος που δείχνουν καλύτερα οι εφαρμογές
+    const cv=document.createElement('canvas');cv.width=W;cv.height=H;
+    const c=cv.getContext('2d');
+    // JPEG, όχι PNG: το PNG έβγαινε 2 MB και οι εφαρμογές μηνυμάτων το συμπιέζουν
+    // ή το απορρίπτουν. Στο 0.88 η κάρτα μένει γύρω στα 150-250 KB.
+    const done=()=>{try{cv.toBlob(b=>resolve(b),'image/jpeg',0.88);}catch(e){resolve(null);}};
+    const draw=img=>{
+      if(img){
+        const r=Math.max(W/img.width,H/img.height);
+        const w=img.width*r,h=img.height*r;
+        c.drawImage(img,(W-w)/2,(H-h)/2,w,h);
+      }else{c.fillStyle='#8E5A04';c.fillRect(0,0,W,H);}
+      const g=c.createLinearGradient(0,H*0.30,0,H);
+      g.addColorStop(0,'rgba(20,11,2,0)');g.addColorStop(0.55,'rgba(20,11,2,.80)');g.addColorStop(1,'rgba(20,11,2,.96)');
+      c.fillStyle=g;c.fillRect(0,0,W,H);
+      const pad=72;
+      c.textBaseline='top';
+      const cps=(m.cps||m.cost||'').trim();
+      // Το ύψος υπολογίζεται από κάτω προς τα πάνω, ώστε καμία γραμμή να μην
+      // πέφτει πάνω σε άλλη όσο μεγάλο κι αν είναι το όνομα του πιάτου.
+      const H_FOOT=44, H_COST=cps?54:0, H_META=44, H_NAME=92;
+      c.font='700 78px Inter, sans-serif';
+      const lines=_wrapCanvas(c,mealName(m),W-2*pad).slice(0,2);
+      const footY=H-pad-H_FOOT;
+      const costY=footY-38-H_COST;
+      const metaY=costY-(cps?14:0)-H_META;
+      let y=metaY-26-lines.length*H_NAME;
+      c.fillStyle='#FFFDF8';
+      for(const ln of lines){c.fillText(ln,pad,y);y+=H_NAME;}
+      c.font='500 40px Inter, sans-serif';c.fillStyle='#F0D6A6';
+      c.fillText('⏱ '+m.time+"'   🔥 "+m.cal+'   👥 '+m.srv,pad,metaY);
+      if(cps){
+        c.font='700 46px Inter, sans-serif';c.fillStyle='#E9B24A';
+        c.fillText('💰 '+cps+' '+(curLang==='el'?'η μερίδα':'per serving'),pad,costY);
+      }
+      c.font='700 38px Inter, sans-serif';c.fillStyle='#FFFFFF';
+      c.fillText('FoodDaily',pad,footY);
+      c.font='500 34px Inter, sans-serif';c.fillStyle='#E9B24A';
+      const t2=SHARE_URL,wd=c.measureText(t2).width;
+      c.fillText(t2,W-pad-wd,footY+3);
+      done();
+    };
+    const src=MEAL_IMAGES[id];
+    if(!src){draw(null);return;}
+    const img=new Image();
+    img.onload=()=>draw(img);
+    img.onerror=()=>draw(null);
+    img.src=src;                        // ίδιο origin — ο canvas δεν μολύνεται
+  });
+}
+async function shareRecipe(id){
   const m=MEALS[id];if(!m)return;
   const url=location.origin+location.pathname+'?r='+id;
   const text=m.e+' '+mealName(m)+'  |  ⏱ '+m.time+"'  |  🔥 "+m.cal+' kcal';
+  // Πρώτα η εικόνα. Αν η συσκευή δεν μπορεί να μοιραστεί αρχεία, συνεχίζουμε
+  // με το παλιό κείμενο — καμία λειτουργία δεν χάνεται.
+  try{
+    const blob=await buildShareCard(m,id);
+    if(blob&&navigator.canShare){
+      const file=new File([blob],'fooddaily-'+id+'.jpg',{type:'image/jpeg'});
+      if(navigator.canShare({files:[file]})){
+        await navigator.share({files:[file],title:mealName(m),text:text+'\n📲 '+SHARE_URL});
+        return;
+      }
+    }
+  }catch(e){if(e&&e.name==='AbortError')return;}
   function _copyFallback(){
     const en=curLang==='en';
     if(navigator.clipboard){
