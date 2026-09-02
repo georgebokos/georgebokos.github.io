@@ -10,7 +10,7 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 OUT  = os.path.join(ROOT, 'store')
 FB = '/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf'
 FR = '/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf'
-URL = 'georgebokos.github.io/install.html'
+URL = 'fooddaily.github.io'
 
 T = {'el': {'tag': 'Τι μαγειρεύουμε σήμερα;',
             'sub': '376 ελληνικές συνταγές · μία πρόταση κάθε μέρα',

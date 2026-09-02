@@ -71,7 +71,7 @@ def build(rid, lang='el'):
          'more':'Δείτε τα αναλυτικά στην εφαρμογή FoodDaily' if el
                 else 'See the full method in the FoodDaily app',
          'get':'Σύνδεσμος στο προφίλ' if el else 'Link in bio',
-         'url':'georgebokos.github.io/app',
+         'url':'fooddaily.github.io',
          'free':'Δωρεάν στο Google Play' if el else 'Free on Google Play'}
 
     # Μικρές παραλλαγές, ώστε 30 βίντεο στη σειρά να μη μοιάζουν πανομοιότυπα.

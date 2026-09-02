@@ -68,7 +68,7 @@ package ID** (`gr.fooddaily.app` αντί για `com.fooddaily.app`) και ε�
 | `share-story-*.png` | 1080×1920 — Stories, WhatsApp status |
 
 Παράγονται με `python3 store/share_card.py`. Το QR οδηγεί στο
-`https://georgebokos.github.io/install.html` και **επαληθεύεται με αποκωδικοποίηση**
+`https://fooddaily.github.io` και **επαληθεύεται με αποκωδικοποίηση**
 μετά την παραγωγή — δεν αρκεί να «φαίνεται» σωστό.
 
 Δεν υπάρχει ζωγραφισμένο κουμπί πάνω στην εικόνα: σε εικόνα δεν πατιέται τίποτα,

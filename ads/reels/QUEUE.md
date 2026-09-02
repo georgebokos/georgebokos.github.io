@@ -41,7 +41,7 @@
 
 ## Πού μπαίνει ο σύνδεσμος
 
-`georgebokos.github.io/app`
+`fooddaily.github.io`
 
 | Πλατφόρμα | Σημείο που πατιέται |
 |---|---|

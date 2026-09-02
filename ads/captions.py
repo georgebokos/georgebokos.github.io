@@ -4,7 +4,7 @@
 import json, os, subprocess, sys
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-LINK = 'georgebokos.github.io/app'
+LINK = 'fooddaily.github.io'
 
 BASE = ['#συνταγες','#ελληνικηκουζινα','#μαγειρικη','#φαγητο','#greekfood',
         '#σπιτικοφαγητο','#τιμαγειρευουμεσημερα','#fooddaily']
