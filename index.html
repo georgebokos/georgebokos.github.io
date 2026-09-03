@@ -590,6 +590,22 @@ body{font-family:'Inter',-apple-system,sans-serif;background:var(--bg);color:var
 .mpicker-head{padding:14px 18px 10px;border-bottom:1px solid var(--bd);display:flex;align-items:center;gap:10px;flex-shrink:0;}
 .mpicker-title{font-size:15px;font-weight:700;color:var(--txt);flex:1;}
 .mpicker-close{background:var(--lt);border:none;border-radius:50%;width:30px;height:30px;font-size:15px;cursor:pointer;color:var(--t3);}
+/* ── Επιλογή γλώσσας ── ένα κουμπί, φύλλο από κάτω. Κλιμακώνεται σε
+   όσες γλώσσες κι αν προστεθούν, χωρίς να μεγαλώνει η κεφαλίδα. */
+.hero-btn-langsel{width:auto;min-width:auto;padding:0 12px;border-radius:17px;font-size:12px;font-weight:800;letter-spacing:.02em;display:inline-flex;align-items:center;gap:6px;}
+.lsheet{display:none;position:fixed;inset:0;z-index:2400;background:rgba(0,0,0,.55);align-items:flex-end;justify-content:center;}
+.lsheet.show{display:flex;}
+.lsheet-in{background:var(--bg);border-radius:24px 24px 0 0;width:100%;max-width:560px;max-height:80vh;overflow-y:auto;padding:8px 0 calc(14px + env(safe-area-inset-bottom));animation:lsUp .22s ease;}
+@keyframes lsUp{from{transform:translateY(30px);opacity:.4}to{transform:none;opacity:1}}
+.lsheet-grab{width:38px;height:4px;border-radius:2px;background:var(--bd);margin:8px auto 6px;}
+.lsheet-t{font-size:15px;font-weight:700;color:var(--tx);padding:6px 20px 10px;}
+.lrow{display:flex;align-items:center;gap:13px;width:100%;background:none;border:none;padding:14px 20px;font-size:16px;color:var(--tx);cursor:pointer;font-family:inherit;text-align:left;}
+.lrow:active{background:var(--lt);}
+.lrow-code{min-width:38px;height:30px;border-radius:9px;background:var(--lt);color:var(--t2);font-size:11px;font-weight:800;display:flex;align-items:center;justify-content:center;flex:none;}
+.lrow.on .lrow-code{background:var(--pri);color:#fff;}
+.lrow-n{flex:1;font-weight:600;}
+.lrow-s{font-size:12px;color:var(--t3);font-weight:500;}
+.lrow-ok{color:var(--pri);font-size:17px;font-weight:800;}
 .mpicker-search{margin:10px 18px 6px;padding:10px 14px;border:1.5px solid var(--bd);border-radius:12px;font-size:14px;color:var(--txt);background:var(--bg);flex-shrink:0;}
 .mpicker-search:focus{outline:none;border-color:var(--pri);}
 .mpicker-list{overflow-y:auto;flex:1;padding:4px 0 20px;}
@@ -1402,7 +1418,7 @@ function applyTheme(c){
 }
 
 const TR={
-  el:{sub:'Μεσογειακές Συνταγές',web_get_app:'📲 Κατέβασε την εφαρμογή',web_get_note:'Το Premium είναι διαθέσιμο μόνο στην εφαρμογή Android.',
+  el:{sub:'Μεσογειακές Συνταγές',lang_title:'Γλώσσα',lang_el:'Ελληνικά',lang_en:'Αγγλικά',web_get_app:'📲 Κατέβασε την εφαρμογή',web_get_note:'Το Premium είναι διαθέσιμο μόνο στην εφαρμογή Android.',
     y_nl_ok:'✅ Σε βάλαμε στη λίστα! Σύντομα θα λαμβάνεις νέα στο {0}',
     y_badge_quick:'⚡ Γρήγορη ιδέα',
     y_badge_day:'⭐ Πρόταση ημέρας',
@@ -1662,7 +1678,7 @@ lang_fail:'⚠️ Η γλώσσα δεν φορτώθηκε. Έλεγξε τη �
     prof_title:'👤 Προφίλ & Προτιμήσεις',prof_dislikes:'Δεν μου αρέσει / Αποφεύγω',
     sweets_lbl:'Γλυκό',
   },
-  en:{sub:'Mediterranean Recipes',web_get_app:'📲 Get the app',web_get_note:'Premium is available only in the Android app.',
+  en:{sub:'Mediterranean Recipes',lang_title:'Language',lang_el:'Greek',lang_en:'English',web_get_app:'📲 Get the app',web_get_note:'Premium is available only in the Android app.',
     y_nl_ok:'✅ You\'re on the list! You\'ll receive news at {0} soon',
     y_badge_quick:'⚡ Quick idea',
     y_badge_day:'⭐ Today\'s pick',
@@ -1926,9 +1942,11 @@ lang_fail:'⚠️ Language pack failed to load. Check your connection.',
 // ── Μητρώο γλωσσών ───────────────────────────────────────────────
 // pack:false → τα κείμενα βρίσκονται μέσα στο index.html (ελληνικά + _en πεδία)
 // pack:true  → κατεβαίνει το lang/<κωδικός>.json την πρώτη φορά που θα επιλεγεί
+// nat = το όνομα στη ΔΙΚΗ της γλώσσα (δεν μεταφράζεται ποτέ)
+// Το όνομα στη γλώσσα του χρήστη έρχεται από τον TR, με κλειδί «lang_<κωδικός>»
 const LANGS={
-  el:{lbl:'ΕΛ',name:'Ελληνικά',pack:false},
-  en:{lbl:'EN',name:'English',pack:false},
+  el:{lbl:'ΕΛ',nat:'Ελληνικά',name:'Ελληνικά',pack:false},
+  en:{lbl:'EN',nat:'English',name:'English',pack:false},
 };
 let LP=null;        // ενεργό πακέτο μετάφρασης (null για el/en)
 let _idsStamped=false;
@@ -6533,6 +6551,7 @@ async function lnSchedulePrep(plan){
 // Κλείνει με τη σειρά ό,τι είναι ανοιχτό, αντί να βγαίνει από την εφαρμογή.
 // Η σειρά ακολουθεί το z-index: ό,τι είναι πιο «πάνω» κλείνει πρώτο.
 const FD_BACK_LAYERS=[
+  {id:'lsheet',          close:()=>closeLangSheet()},
   {id:'rate-mod',        close:()=>rateLater()},
   {id:'offer-mod',       close:()=>offerLater()},
   {id:'cook-mode',       close:()=>exitCookMode()},
@@ -7544,9 +7563,40 @@ function updateHeroTexts(){
 function buildLangButtons(){
   const row=document.querySelector('.hero-lang-row');
   if(!row)return;
-  row.innerHTML=Object.keys(LANGS).map(c=>
-    `<button id="lb-${c}" class="hero-btn hero-btn-lang" onclick="setLang('${c}')" title="${LANGS[c].name}">${LANGS[c].lbl}</button>`
-  ).join('');
+  const cur=LANGS[curLang]||LANGS.el;
+  row.innerHTML=`<button class="hero-btn hero-btn-langsel" onclick="openLangSheet()" title="${t('lang_title')}">🌐 ${cur.lbl} ▾</button>`;
+}
+function openLangSheet(){
+  let sh=document.getElementById('lsheet');
+  if(!sh){
+    sh=document.createElement('div');
+    sh.id='lsheet'; sh.className='lsheet';
+    sh.addEventListener('click',e=>{if(e.target===sh)closeLangSheet();});
+    document.body.appendChild(sh);
+  }
+  const rows=Object.keys(LANGS).map(c=>{
+    const L=LANGS[c], on=c===curLang;
+    // Το όνομα στη γλώσσα του χρήστη· αν λείπει, δείχνουμε μόνο το μητρικό.
+    const sub=t('lang_'+c);
+    const subHtml=(sub&&sub!=='lang_'+c&&sub!==L.nat)?`<div class="lrow-s">${sub}</div>`:'';
+    return `<button class="lrow${on?' on':''}" onclick="pickLang('${c}')">
+      <span class="lrow-code">${L.lbl}</span>
+      <span class="lrow-n">${L.nat}${subHtml}</span>
+      ${on?'<span class="lrow-ok">✓</span>':''}
+    </button>`;
+  }).join('');
+  sh.innerHTML=`<div class="lsheet-in"><div class="lsheet-grab"></div>
+    <div class="lsheet-t">${t('lang_title')}</div>${rows}</div>`;
+  sh.classList.add('show');
+}
+function closeLangSheet(){
+  const sh=document.getElementById('lsheet');
+  if(sh)sh.classList.remove('show');
+}
+async function pickLang(c){
+  closeLangSheet();
+  if(c===curLang)return;
+  await setLang(c);
 }
 function applyLangTexts(lang){
   buildLangButtons();
