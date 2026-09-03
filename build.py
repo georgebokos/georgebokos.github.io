@@ -47,17 +47,25 @@ def main():
     # --- 1. Copy static assets as-is ---
     print('\n[1/3] Copying assets...')
     # Folders to copy entirely
-    COPY_DIRS = ['images', '.well-known', 'lang']
+    # Τα diy/ και dances/ είναι ξεχωριστές, αυτόνομες εφαρμογές που απλώς
+    # φιλοξενούνται στο ίδιο domain: δική τους ταυτότητα, δικό τους manifest,
+    # δικός τους service worker, δικά τους εικονίδια.
+    # Αντιγράφονται αυτούσιες και ΔΕΝ περνούν από obfuscation.
+    COPY_DIRS = ['images', '.well-known', 'lang', 'diy', 'dances', 'espa']
     for d in COPY_DIRS:
         src_d = os.path.join(SRC, d)
         if os.path.isdir(src_d):
-            shutil.copytree(src_d, os.path.join(DIST, d))
+            # Δεν ανεβαίνουν στο site: εσωτερικές σημειώσεις (*.md, π.χ.
+            # diy/CLAUDE.md) και ο φάκελος worker/, που είναι κώδικας
+            # υποδομής και τρέχει αλλού — όχι στη σελίδα.
+            shutil.copytree(src_d, os.path.join(DIST, d),
+                            ignore=shutil.ignore_patterns('*.md', 'worker', 'node_modules'))
             print(f'  ✓ {d}/ ({len(os.listdir(src_d))} files)')
     # Root files to copy.
     # ΡΗΤΗ ΛΙΣΤΑ, όχι λίστα εξαιρέσεων. Με τη λίστα εξαιρέσεων δημοσιευόταν στο
     # ζωντανό site ό,τι έμπαινε στη ρίζα — ανάμεσά τους το CLAUDE.md με εσωτερικές
     # σημειώσεις και τα logo_proposals.html. Ό,τι δεν είναι εδώ, δεν ανεβαίνει.
-    PUBLISH = {'manifest.json', 'privacy.html', 'dances.html', 'icon.svg', 'install.html',
+    PUBLISH = {'manifest.json', 'privacy.html', 'icon.svg', 'install.html',
                'og-preview-el.jpg', 'og-preview-en.jpg'}
     for f in sorted(os.listdir(SRC)):
         if os.path.isdir(os.path.join(SRC, f)):

@@ -1,17 +1,20 @@
 // FoodDaily Service Worker v3.5
-const VERSION = '2026-08-18-112';
-const CACHE = `fooddaily-2026-08-18-112`;
+const VERSION = '2026-08-30-123';
+const CACHE = `fooddaily-2026-08-30-123`;
 const ASSETS = [
   '/',
   '/index.html',
-  '/dances.html',
   '/manifest.json',
   '/icon-192.png',
   '/icon-512.png'
 ];
 
 // Pages that must NOT fall back to /index.html
-const STANDALONE_PAGES = new Set(['/dances.html', '/install.html']);
+const STANDALONE_PAGES = new Set(['/install.html']);
+
+// Ξεχωριστές εφαρμογές που απλώς μοιράζονται το domain. Το FoodDaily δεν τις
+// αγγίζει καθόλου — έχουν δικό τους service worker με πιο συγκεκριμένη εμβέλεια.
+const OTHER_APPS = ['/diy/', '/dances/', '/espa/'];
 
 // Πακέτα μετάφρασης: lang/<κωδικός>.json
 const isLangPack = url => url.pathname.startsWith('/lang/') && url.pathname.endsWith('.json');
@@ -149,20 +152,25 @@ self.addEventListener('fetch', e => {
   const url = new URL(e.request.url);
   if (url.origin !== location.origin) return;
 
+  // Στο ίδιο domain φιλοξενούνται και ΞΕΧΩΡΙΣΤΕΣ εφαρμογές, καθεμιά με δικό
+  // της service worker και δικό της cache. Δεν έχουν καμία σχέση με το
+  // FoodDaily: ούτε τις πιάνουμε εδώ, ούτε τους σερβίρουμε ποτέ το δικό μας
+  // index.html ως εφεδρεία εκτός σύνδεσης.
+  // ΜΗΝ αφαιρέσεις αυτόν τον έλεγχο όταν προστίθεται νέα εφαρμογή — πρόσθεσέ τη.
+  if (OTHER_APPS.some(prefix => url.pathname.startsWith(prefix))) return;
+
   // ── Οι σελίδες: ΔΙΚΤΥΟ ΠΡΩΤΑ ───────────────────────────────────────────────
   // Το index.html αλλάζει σε κάθε ενημέρωση συνταγών. Με cache-first ο χρήστης
   // έβλεπε πάντα την προηγούμενη έκδοση — οι νέες συνταγές εμφανίζονταν μόλις
   // στο επόμενο άνοιγμα. Τώρα ζητάμε πρώτα το δίκτυο και κρατάμε το cache μόνο
   // ως εφεδρεία, ώστε η εφαρμογή να δουλεύει και χωρίς σύνδεση.
   // Τα πακέτα γλώσσας είναι περιεχόμενο, όχι στατικό: μια διόρθωση μετάφρασης
-  // πρέπει να φτάνει αμέσως, γι' αυτό μπαίνουν στην ίδια λογική «δίκτυο πρώτα».
+  // πρέπει να φτάνει αμέσως, γι' αυτό μπαίνουν στη λογική «δίκτυο πρώτα».
   const isPage = e.request.mode === 'navigate'
               || url.pathname === '/'
               || url.pathname.endsWith('.html')
               || isLangPack(url);
 
-  // Χωρίς δίκτυο και χωρίς cache, ένα πακέτο γλώσσας ΔΕΝ πρέπει να πέσει πίσω
-  // στο index.html — θα επέστρεφε HTML σε αίτημα JSON και θα έσκαγε το JSON.parse.
   if (isPage) {
     e.respondWith(
       fetch(e.request).then(resp => {
