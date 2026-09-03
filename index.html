@@ -1418,7 +1418,7 @@ function applyTheme(c){
 }
 
 const TR={
-  el:{sub:'Μεσογειακές Συνταγές',lang_title:'Γλώσσα',lang_el:'Ελληνικά',lang_en:'Αγγλικά',web_get_app:'📲 Κατέβασε την εφαρμογή',web_get_note:'Το Premium είναι διαθέσιμο μόνο στην εφαρμογή Android.',
+  el:{sub:'Μεσογειακές Συνταγές',lang_title:'Γλώσσα',lang_el:'Ελληνικά',lang_en:'Αγγλικά',lang_de:'Γερμανικά',tb_last:'Τελευταία ημέρα <span>δωρεάν πρόσβασης</span>',tb_left:'Απομένουν <span>{0} ημέρες</span> δωρεάν πρόσβασης',tb_tlast:'Τελευταία ημέρα <span>δωρεάν δοκιμής</span>',tb_tleft:'Απομένουν <span>{0} ημέρες</span> δωρεάν δοκιμής',web_get_app:'📲 Κατέβασε την εφαρμογή',web_get_note:'Το Premium είναι διαθέσιμο μόνο στην εφαρμογή Android.',
     y_nl_ok:'✅ Σε βάλαμε στη λίστα! Σύντομα θα λαμβάνεις νέα στο {0}',
     y_badge_quick:'⚡ Γρήγορη ιδέα',
     y_badge_day:'⭐ Πρόταση ημέρας',
@@ -1678,7 +1678,7 @@ lang_fail:'⚠️ Η γλώσσα δεν φορτώθηκε. Έλεγξε τη �
     prof_title:'👤 Προφίλ & Προτιμήσεις',prof_dislikes:'Δεν μου αρέσει / Αποφεύγω',
     sweets_lbl:'Γλυκό',
   },
-  en:{sub:'Mediterranean Recipes',lang_title:'Language',lang_el:'Greek',lang_en:'English',web_get_app:'📲 Get the app',web_get_note:'Premium is available only in the Android app.',
+  en:{sub:'Mediterranean Recipes',lang_title:'Language',lang_el:'Greek',lang_en:'English',lang_de:'German',tb_last:'Last day of <span>full free access</span>',tb_left:'<span>{0} days</span> of full free access left',tb_tlast:'Last day of your <span>free trial</span>',tb_tleft:'<span>{0} days</span> left in your free trial',web_get_app:'📲 Get the app',web_get_note:'Premium is available only in the Android app.',
     y_nl_ok:'✅ You\'re on the list! You\'ll receive news at {0} soon',
     y_badge_quick:'⚡ Quick idea',
     y_badge_day:'⭐ Today\'s pick',
@@ -1947,6 +1947,7 @@ lang_fail:'⚠️ Language pack failed to load. Check your connection.',
 const LANGS={
   el:{lbl:'ΕΛ',nat:'Ελληνικά',name:'Ελληνικά',pack:false},
   en:{lbl:'EN',nat:'English',name:'English',pack:false},
+  de:{lbl:'DE',nat:'Deutsch',name:'Deutsch',pack:true},
 };
 let LP=null;        // ενεργό πακέτο μετάφρασης (null για el/en)
 let _idsStamped=false;
@@ -6195,9 +6196,7 @@ function renderTrialBanner(){
   if(isTwa()&&localStorage.getItem('fd_premium')!=='true'){el.innerHTML='';return;}
   if(getPremiumState()==='preview'){
     const d=previewDaysLeft();
-    const txt=en
-      ?(d===1?'Last day of <span>full free access</span>':`<span>${d} days</span> of full free access left`)
-      :(d===1?'Τελευταία ημέρα <span>δωρεάν πρόσβασης</span>':`Απομένουν <span>${d} ημέρες</span> δωρεάν πρόσβασης`);
+    const txt=d===1?t('tb_last'):tf('tb_left',d);
     el.innerHTML=`<div class="trial-banner" onclick="openPremiumScreen()"><div class="trial-banner-l"><span class="trial-banner-icon">🎁</span><span class="trial-banner-txt">${txt}</span></div><span class="trial-banner-cta">Premium →</span></div>`;
     return;
   }
@@ -6205,10 +6204,7 @@ function renderTrialBanner(){
     // Σε δωρεάν δοκιμή του Play: δείξε πόσες ημέρες απομένουν
     if(isPlayTrial()){
       const d=trialDaysLeft();
-      const txt=d>0
-        ?(en?(d===1?'Last day of your <span>free trial</span>':`<span>${d} days</span> left in your free trial`)
-             :(d===1?'Τελευταία ημέρα <span>δωρεάν δοκιμής</span>':`Απομένουν <span>${d} ημέρες</span> δωρεάν δοκιμής`))
-        :(t('x84'));
+      const txt=d>0?(d===1?t('tb_tlast'):tf('tb_tleft',d)):(t('x84'));
       el.innerHTML=`<div class="trial-banner" onclick="openPremiumScreen()"><div class="trial-banner-l"><span class="trial-banner-icon">🎁</span><span class="trial-banner-txt">${txt}</span></div><span class="trial-banner-cta">Premium →</span></div>`;
       return;
     }
@@ -7632,6 +7628,8 @@ async function setLang(lang){
   curLang=lang;localStorage.setItem('fd_lang',lang);
   applyLangTexts(lang);
   updateHeroTexts();
+  // ΠΡΟΣΟΧΗ: χωρίς αυτό το μπάνερ έμενε στην προηγούμενη γλώσσα.
+  try{renderTrialBanner();}catch(e){}
   // Re-render
   renderMeals(curCat);
   filtSw(curSwCat);
