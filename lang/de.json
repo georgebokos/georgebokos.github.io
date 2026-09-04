@@ -3364,6 +3364,602 @@
    ],
    "wine": "Vin Santo oder ein Orangenlikör.",
    "plate": "Mit frischen Orangenscheiben dazu und etwas Schale obenauf servieren."
+  },
+  "keik_sokolatas": {
+   "n": "Schokoladenkuchen",
+   "ing": [
+    "Mehl 250 g",
+    "Kakaopulver 60 g",
+    "Zucker 200 g",
+    "Eier 3",
+    "Butter 150 g",
+    "Milch 120 ml",
+    "Backpulver 2 TL",
+    "Vanilleextrakt 1 TL",
+    "Salz 1 Prise"
+   ],
+   "steps": [
+    "Zutaten vorbereiten: Butter, Eier und Milch 1 Stunde vorher aus dem Kühlschrank nehmen. Wichtig: Kalte Zutaten emulgieren nicht, der Teig gerinnt und backt schwer und kompakt.",
+    "Form vorbereiten: Die Form ausbuttern und mit Kakao statt Mehl ausstäuben, damit keine weißen Spuren auf dem dunklen Kuchen zu sehen sind.",
+    "Butter aufschlagen: Die Butter mit dem Zucker volle 5 Minuten hell und luftig aufschlagen. Hier bekommt der Kuchen den größten Teil seiner Lockerheit.",
+    "Eier zugeben: Die Eier einzeln zugeben und jeweils gut unterschlagen. Beginnt die Masse zu gerinnen, einen Löffel des Mehls zugeben, um sie zu retten.",
+    "Trockene Zutaten sieben: Mehl, Kakao, Backpulver und Salz zweimal zusammen sieben. Kakaoklümpchen lösen sich später nie auf und hinterlassen bittere Stellen.",
+    "Vereinen: Die trockenen Zutaten abwechselnd mit der Milch in drei Portionen unterheben, beginnend und endend mit Mehl.",
+    "Wichtig: Sobald kein trockenes Mehl mehr zu sehen ist, aufhören zu rühren. Geschlagenes Mehl entwickelt Gluten, und Gluten macht Kuchen gummiartig.",
+    "Backen: In die Form füllen, glatt streichen und bei 175 °C 45 Minuten backen.",
+    "Testen: Einen Spieß in die Mitte stecken — es sollten ein paar feuchte Krümel haften. Flüssiger Teig heißt 5-10 Minuten mehr.",
+    "Abkühlen: 10 Minuten in der Form abkühlen lassen, dann auf ein Gitter stürzen, damit der Boden nicht dämpft und weich wird."
+   ],
+   "wine": "Ein süßer roter Mavrodafni oder ein Espresso.",
+   "plate": "In Scheiben mit Puderzucker bestäubt servieren, mit einer Kugel Vanilleeis dazu."
+  },
+  "kima": {
+   "n": "Nudeln mit Hackfleischsauce",
+   "ing": [
+    "Nudeln (Makkaroni) 400 g",
+    "Rinderhackfleisch 500 g",
+    "Geriebene Tomate 400 g",
+    "Zwiebel 1",
+    "Knoblauch 2 Zehen",
+    "Rotwein 100 ml",
+    "Zimt, Piment",
+    "Kefalotyri-Käse"
+   ],
+   "steps": [
+    "Zutaten vorbereiten: 1 Zwiebel und 2 Knoblauchzehen fein hacken, 400 g Tomate reiben und die 100 ml Rotwein bereitstellen. Alles vorher zu organisieren (Mise en place) verhindert, dass etwas anbrennt, während man Zutaten sucht.",
+    "Zwiebel anbraten: In einem weiten Topf mit etwas Olivenöl die Zwiebel bei mittlerer Hitze 3-4 Minuten glasig und weich dünsten, dann den Knoblauch 30 Sekunden zugeben. WICHTIG: Den Knoblauch nicht bräunen lassen, sonst wird er bitter.",
+    "Fleisch anbraten: Die Hitze erhöhen und die 500 g Rinderhack zugeben. Mit dem Löffel zerteilen und 6-8 Minuten kräftig bräunen, ohne ständig zu rühren, damit es karamellisiert und Tiefe entwickelt, statt im eigenen Saft zu schmoren.",
+    "Mit Wein ablöschen: Die 100 ml Rotwein zugeben und den Alkohol 1-2 Minuten verdampfen lassen, dabei den Topfboden abkratzen, um den geschmackstragenden Bratensatz zu lösen.",
+    "Sauce köcheln: Die geriebene Tomate, etwas Zimt, Piment und Salz zugeben. Bei niedriger Hitze 25-30 Minuten köcheln, bis die Sauce andickt und der Geschmack süßer und runder wird.",
+    "Nudeln kochen: Die 400 g Nudeln in reichlich Salzwasser 8-10 Minuten kochen, sodass sie leicht bissfest (al dente) bleiben. WICHTIG: Eine Tasse Kochwasser aufbewahren, um die Sauce bei Bedarf zu lockern.",
+    "Servieren: Die Nudeln abgießen, auf Teller verteilen, die Hackfleischsauce darüber geben und mit reichlich geriebenem Kefalotyri bestreuen, der von der Hitze leicht schmilzt."
+   ],
+   "wine": "Trockener Rotwein.",
+   "plate": "Tiefer Teller, kräftige Sauce, geriebener Käse."
+  },
+  "kimadopita": {
+   "n": "Hackfleischpita",
+   "ing": [
+    "Filo- oder Blätterteig 500 g",
+    "Rinderhackfleisch 500 g",
+    "Zwiebel 1",
+    "Knoblauch 2 Zehen",
+    "Geriebene Tomate 200 g",
+    "Eier 2",
+    "Kefalotyri oder Feta 100 g",
+    "Zimt ¼ TL",
+    "Salz, Pfeffer",
+    "Olivenöl",
+    "Öl für die Teigblätter"
+   ],
+   "steps": [
+    "Hackfleischfüllung: Die Zwiebel 3 Minuten anbraten, dann den Knoblauch 1 Minute. Das Hackfleisch zugeben und bei starker Hitze 8-10 Minuten unter Rühren braun braten. Tomate, Zimt, Salz und Pfeffer zugeben und 10 Minuten köcheln. Vom Herd nehmen.",
+    "Eier & Käse: Die Hackmasse etwas abkühlen lassen. Die verquirlten Eier und den geriebenen Käse zugeben und gut vermengen.",
+    "Schichten: Eine Form von 30x35 cm einölen. Die Hälfte der Teigblätter einlegen und dazwischen mit Öl bestreichen. Die Füllung gleichmäßig verteilen. Mit den restlichen Blättern abdecken, mit Öl bestreichen und die Oberfläche in Portionen vorschneiden.",
+    "Backen: Bei 180 °C 40-45 Minuten backen, bis alles kräftig gebräunt ist. Wichtig: Vor dem Schneiden 10 Minuten abkühlen lassen, damit die Pita nicht zerfällt."
+   ],
+   "wine": "Leichter Rotwein oder Rosé.",
+   "plate": "In Dreiecke oder Quadrate geschnitten, heiß serviert."
+  },
+  "kokkinisto": {
+   "n": "Lamm in Rotweinsauce",
+   "ing": [
+    "Lamm 1 kg, in Stücke geschnitten",
+    "Zwiebeln 2",
+    "Knoblauch 4 Zehen",
+    "Geriebene Tomate 400 g",
+    "Rotwein 150 ml",
+    "Zimt & Piment",
+    "Olivenöl"
+   ],
+   "steps": [
+    "Fleisch anbraten: Olivenöl im Topf erhitzen und die Lammstücke (1 kg) bei starker Hitze rundum anbraten. Wichtig: Gutes Anbraten karamellisiert die Oberfläche und gibt der Sauce Tiefe.",
+    "Aromaten anbraten: Die 2 gehackten Zwiebeln und 4 Knoblauchzehen zugeben und weich dünsten.",
+    "Mit Wein ablöschen: Die 150 ml Rotwein angießen und den Alkohol 2-3 Minuten verdampfen lassen, dabei den Topfboden abkratzen, um den Bratensatz einzubinden.",
+    "Tomate zugeben: Die 400 g geriebene Tomate, Zimt, Piment und Salz zugeben und umrühren.",
+    "Schmoren: Zugedeckt 70-80 Minuten schmoren, bis das Fleisch zart ist und zerfällt. Bei Bedarf etwas heißes Wasser zugeben, damit nichts austrocknet.",
+    "Servieren: Heiß mit Kartoffeln, Reis oder Hilopites servieren und die Sauce vorher leicht andicken lassen."
+   ],
+   "wine": "Trockener Rotwein.",
+   "plate": "Tiefer Teller, kräftige Sauce, Brot."
+  },
+  "kokoras_krasatos": {
+   "n": "Coq au Vin",
+   "ing": [
+    "Hahn oder Freilandhuhn 1,8 kg",
+    "Trockener Rotwein 750 ml",
+    "Geräucherter Bacon 150 g",
+    "Kleine Zwiebeln 300 g",
+    "Champignons 300 g",
+    "Karotten 2",
+    "Knoblauch 4 Zehen",
+    "Tomatenmark 1 EL",
+    "Mehl 2 EL",
+    "Butter 40 g",
+    "Olivenöl 3 EL",
+    "Lorbeerblätter 2, Thymian, Salz, Pfeffer"
+   ],
+   "steps": [
+    "Marinieren: Den Hahn in Portionsstücke schneiden und über Nacht im Rotwein mit Lorbeer, Thymian und Knoblauch marinieren. Wichtig: Diese lange Marinade ist nicht optional — Hahnenfleisch ist zäh und der Wein beginnt, es aufzuschließen.",
+    "Abtropfen: Die Stücke aus der Marinade nehmen und mit Küchenpapier sehr gut trocknen. Den Wein aufbewahren — er wird zur Sauce.",
+    "Bacon auslassen: Den gewürfelten Bacon in einem schweren Topf braten, bis das Fett ausgetreten und er knusprig ist, dann mit einer Schaumkelle herausnehmen.",
+    "Fleisch anbraten: Die Hahnenstücke portionsweise im Baconfett mit dem Öl rundum kräftig anbraten.",
+    "Gemüse anbraten: Die Zwiebeln und die geschnittenen Karotten zugeben und 5 Minuten anbraten, dann das Tomatenmark einrühren und 1 Minute mitrösten.",
+    "Mehl zugeben: Das Mehl darüber stäuben und 2 Minuten rühren, damit es leicht anröstet — das bindet später die Sauce.",
+    "Ablöschen: Die aufbewahrte Marinade angießen, den Topfboden gründlich abkratzen und aufkochen lassen.",
+    "Langsam garen: Fleisch und Bacon zurückgeben, zudecken und bei sehr niedriger Hitze 2 Stunden schmoren, bis sich das Fleisch vom Knochen löst.",
+    "Champignons anbraten: Inzwischen die Champignons separat in der Butter goldbraun braten und in den letzten 15 Minuten zugeben, damit sie ihre Textur behalten.",
+    "Sauce abschließen: Ist die Sauce zu dünn, das Fleisch herausnehmen und die Sauce 10 Minuten bei starker Hitze einkochen, bis sie den Löffelrücken überzieht.",
+    "Ruhen lassen: Vom Herd genommen 15 Minuten ruhen lassen — wie alle Weinschmorgerichte schmeckt es besser, wenn es sich gesetzt hat."
+   ],
+   "wine": "Derselbe Rotwein, mit dem gekocht wurde — ein Burgunder Pinot Noir oder ein Xinomavro aus Naoussa.",
+   "plate": "In einer tiefen Schüssel mit reichlich Sauce servieren, dazu Kartoffelpüree oder breite Bandnudeln."
+  },
+  "kokoretsi": {
+   "n": "Kokoretsi",
+   "ing": [
+    "Lammdärme (dünn) 1 kg",
+    "Lamminnereien (Leber, Herz, Lunge, Milz) 1,5 kg",
+    "Netzfett 300 g",
+    "Olivenöl 100 ml",
+    "Saft von 2 Zitronen",
+    "Oregano 2 EL",
+    "Salz und Pfeffer nach Geschmack",
+    "Spieß, aus Holz oder Metall, 1"
+   ],
+   "steps": [
+    "Därme reinigen: Die dünnen Därme mit Hilfe einer Nadel oder eines Stäbchens umstülpen und unter reichlich fließendem Wasser gründlich waschen. 1-2 Stunden in Wasser mit Zitrone und Salz einlegen, um den Geruch zu entfernen.",
+    "Innereien vorbereiten: Leber, Herz, Lunge und Milz gut waschen. In große Stücke (3-4 cm) schneiden und mit Salz und Pfeffer würzen. Die Stücke abwechselnd auf den Spieß stecken und dicht aneinanderdrücken, sodass ein fester, kompakter Kern entsteht.",
+    "Mit den Därmen umwickeln: Die gereinigten Därme spiralförmig von einem Ende zum anderen straff um die Innereien wickeln und den ganzen Kern fest umschließen. Zum Schluss etwas Netzfett zugeben, das alles zusammenhält.",
+    "Würzen: Das Olivenöl mit Zitronensaft, Oregano, Salz und Pfeffer mischen. Das ganze Kokoretsi vor dem Grillen großzügig damit bestreichen.",
+    "Wichtig: Kokoretsi wird immer bei niedriger, gleichmäßiger Hitze über Glut gegrillt (nicht über offener Flamme). Es braucht 2-3 Stunden langsames Garen bei ständigem Drehen des Spießes, damit es innen gleichmäßig durchgart, ohne außen zu verbrennen.",
+    "Grillen: Den Spieß zunächst mit Abstand zur Glut drehen. Während des Garens alle 20-30 Minuten mit der restlichen Öl-Zitronen-Mischung bestreichen, damit es saftig bleibt und eine Kruste bildet.",
+    "Abschluss: Das Kokoretsi ist fertig, wenn die Därme außen knusprig und goldrot sind und das Innere durchgegart ist. Von der Hitze nehmen und 5-10 Minuten ruhen lassen.",
+    "Servieren: Mit einem scharfen Messer in Scheiben schneiden, mit etwas zusätzlichem Oregano bestreuen und heiß mit Zitrone servieren."
+   ],
+   "wine": "Trockener Rotwein oder Tsipouro.",
+   "plate": "Heiß in Scheiben servieren, mit frischer Zitrone, Oregano und Pommes."
+  },
+  "kolios": {
+   "n": "Gegrillte Makrele",
+   "ing": [
+    "Makrelen 2 (400 g)",
+    "Zitrone 1",
+    "Olivenöl 3 EL",
+    "Oregano",
+    "Knoblauch 2 Zehen",
+    "Salz & Pfeffer",
+    "Petersilie"
+   ],
+   "steps": [
+    "Fisch vorbereiten: Die 2 Makrelen putzen und auf jeder Seite an 2-3 Stellen schräg einschneiden. Die Schnitte helfen, dass der Fisch gleichmäßig gart und die Aromen ins Fleisch ziehen.",
+    "Salzen und Würzen: Innen und außen mit Salz, Pfeffer und Oregano würzen und fein gehackten Knoblauch in die Schnitte stecken. So erreicht das Aroma das gesamte Fleisch, nicht nur die Oberfläche.",
+    "Ölen: Die Makrelen mit Olivenöl beträufeln, damit sie nicht am Rost kleben und eine schöne knusprige Haut bekommen.",
+    "Grillen: Auf einem gut vorgeheizten Grill 6-8 Minuten pro Seite grillen. Wichtig: Den Fisch nur einmal wenden und erst dann, wenn er sich von selbst leicht löst, sonst reißt die Haut und das Fleisch zerfällt.",
+    "Abschluss: Nach dem Garen mit frischem Zitronensaft beträufeln und mit gehackter Petersilie bestreuen. Die Zitrone gleicht den kräftigen Geschmack der Makrele aus.",
+    "Servieren: Die Makrelen sofort heiß und saftig servieren, idealerweise mit Bauernsalat oder gekochtem Blattgemüse."
+   ],
+   "wine": "Trockener Weißwein.",
+   "plate": "Mit Salzkartoffeln oder Skordalia (Knoblauchcreme)."
+  },
+  "kolokithopita_glykia": {
+   "n": "Süße Kürbispita",
+   "ing": [
+    "Filoteig 8 Blätter",
+    "Kürbis 1,5 kg",
+    "Zucker 200 g",
+    "Reis 3 EL oder Grieß",
+    "Walnüsse 150 g",
+    "Rosinen 80 g",
+    "Zimt 2 TL",
+    "Nelken 1/2 TL",
+    "Olivenöl 150 ml",
+    "Puderzucker zum Bestäuben"
+   ],
+   "steps": [
+    "Kürbis reiben: Den Kürbis schälen, die Kerne entfernen und grob reiben.",
+    "Wichtig: Den geriebenen Kürbis leicht salzen, 1 Stunde in einem Sieb abtropfen lassen und dann kräftig ausdrücken. Kürbis besteht fast nur aus Wasser, und nur das rettet den Teig davor, matschig zu werden.",
+    "Füllung zubereiten: Den abgetropften Kürbis mit Zucker, Reis, gehackten Walnüssen, Rosinen, Zimt und Nelken mischen.",
+    "Warum der Reis: Der Reis nimmt die beim Backen austretende Flüssigkeit auf und verhindert, dass die Füllung ausläuft.",
+    "Form vorbereiten: Eine große Form einölen und 4 Filoblätter einlegen, jedes mit Öl bestreichen.",
+    "Füllen: Die Füllung gleichmäßig verteilen und an den Rändern einen kleinen Rand frei lassen.",
+    "Abdecken: Die restlichen 4 Blätter darüber legen, jedes mit Öl bestreichen, und die Ränder sauber einschlagen.",
+    "Wichtig: Die Pita vor dem Backen in Portionen vorschneiden und dabei nur die oberen Schichten durchtrennen. Nachträgliches Schneiden zersplittert den knusprigen Teig.",
+    "Backen: Etwas Wasser über die Oberfläche sprenkeln — das lässt den Teig Blasen werfen und knusprig werden — und bei 180 °C 50-60 Minuten backen.",
+    "Ruhen lassen: 20 Minuten ruhen lassen, dann mit Puderzucker und Zimt bestäuben und entlang der Schnitte teilen."
+   ],
+   "wine": "Ein süßer Wein oder Zimttee.",
+   "plate": "Warm in Stücken servieren, mit Puderzucker und Zimt bestäubt."
+  },
+  "kolokythakia_giaxni": {
+   "n": "Zucchini-Eintopf",
+   "ing": [
+    "Zucchini 1,5 kg",
+    "Reife Tomaten, gerieben, 3 große (oder 1 Dose)",
+    "1 große Zwiebel",
+    "Knoblauch, 2 Zehen",
+    "Olivenöl 1 Tasse",
+    "Zucker 1 TL (optional)",
+    "Frischer Dill oder Petersilie, 1 kleines Bund",
+    "Salz, Pfeffer nach Geschmack"
+   ],
+   "steps": [
+    "Zucchini vorbereiten: Die Zucchini waschen, die Enden abschneiden und je nach Größe in dicke Scheiben oder längs in vier Teile schneiden.",
+    "Zwiebel anbraten: In einem weiten Topf das Olivenöl erhitzen und die fein gehackte Zwiebel bei mittlerer Hitze weich und glasig dünsten, ohne Farbe zu nehmen.",
+    "Knoblauch und Tomate zugeben: Den Knoblauch eine Minute mitdünsten, dann die geriebenen Tomaten zugeben. Kurz köcheln lassen, damit die Säure milder wird.",
+    "Wichtig: Zu Beginn kein Wasser zugeben; die Zucchini geben beim zugedeckten Garen bei niedriger Hitze ihre eigene Flüssigkeit ab — deshalb bleibt der Eintopf sämig und aromatisch, statt wässrig zu werden.",
+    "Zucchini zugeben: Die Zucchini in den Topf geben, mit Salz und Pfeffer würzen, vorsichtig umrühren, damit sie mit Sauce überzogen sind, und zudecken.",
+    "Langsam garen: Bei niedriger Hitze 30-40 Minuten garen, ohne oft zu rühren, damit die Zucchini ganz bleiben und nicht zerfallen.",
+    "Abschluss: Gegen Ende bei Bedarf den Zucker zum Ausgleich und den gehackten Dill oder die Petersilie zugeben. Die Sauce bei halb geöffnetem Deckel noch etwas eindicken lassen.",
+    "Servieren: Das Gericht vor dem Servieren 10 Minuten ruhen lassen, damit sich die Aromen besser verbinden."
+   ],
+   "wine": "Ein leichter Weißwein wie Assyrtiko oder Moschofilero, gut gekühlt.",
+   "plate": "Heiß mit Feta und frischem Brot zum Auftunken der Sauce servieren."
+  },
+  "kolokythakia_tiganita": {
+   "n": "Frittierte Zucchini",
+   "ing": [
+    "Zucchini 4",
+    "Mehl 100 g",
+    "Salz & Pfeffer",
+    "Olivenöl zum Frittieren"
+   ],
+   "steps": [
+    "Schneiden: Die 4 Zucchini waschen und in etwa 0,5 cm dicke Scheiben schneiden. Gleichmäßige Dicke sorgt für gleichmäßiges Frittieren und Knusprigkeit.",
+    "Salzen und trocknen: Die Scheiben salzen und 10 Minuten stehen lassen, damit sie Flüssigkeit abgeben, dann mit Küchenpapier sehr gut trocken tupfen. Wichtig: Ohne Trocknen spritzt das Öl und die Zucchini werden weich statt knusprig.",
+    "Mehlieren: Die Scheiben in mit Salz und Pfeffer gewürztem Mehl wenden und überschüssiges Mehl abklopfen. Zu viel Mehl schmeckt schwer und mehlig und trübt das Öl.",
+    "Öltemperatur: Reichlich Olivenöl bei starker Hitze erhitzen. Das Öl ist bereit, wenn eine hineingegebene Scheibe sofort Blasen zieht. Wichtig: Ist das Öl nicht heiß genug, saugen sich die Zucchini voll und werden nicht knusprig.",
+    "Frittieren: Portionsweise 2-3 Minuten pro Seite goldbraun frittieren, ohne die Pfanne zu überfüllen, damit die Temperatur nicht sinkt.",
+    "Abtropfen und servieren: Auf Küchenpapier abtropfen lassen und sofort servieren, idealerweise mit Tzatziki oder etwas Feta."
+   ],
+   "wine": "-",
+   "plate": "Heiß, mit Tzatziki oder Mayonnaise."
+  },
+  "kolokythoanthoi": {
+   "n": "Gefüllte Zucchiniblüten",
+   "ing": [
+    "Zucchiniblüten 16-20",
+    "Reis 150 g",
+    "Feta 150 g",
+    "1 kleine Zwiebel",
+    "Dill",
+    "Minze",
+    "Olivenöl",
+    "Salz, Pfeffer"
+   ],
+   "steps": [
+    "Die Zucchiniblüten vorsichtig waschen und den Stempel im Inneren entfernen.",
+    "Den Reis kurz vorkochen (5 Minuten) — er gart in den Blüten weiter.",
+    "Den Reis mit zerbröseltem Feta, fein gehackter Zwiebel, Dill und Minze mischen.",
+    "Jede Blüte vorsichtig füllen, ohne sie zu zerreißen, und die Spitzen zum Verschließen eindrehen.",
+    "In einem Topf mit Öl, etwas Wasser und Salz anordnen. Zugedeckt 25-30 Minuten köcheln."
+   ]
+  },
+  "kolokythokeftedes": {
+   "n": "Zucchinipuffer",
+   "ing": [
+    "Zucchini 600 g",
+    "Feta 150 g",
+    "Ei 1",
+    "Mehl 3-4 EL",
+    "Frische Minze, fein gehackt",
+    "Petersilie, fein gehackt",
+    "Olivenöl zum Braten",
+    "Salz & Pfeffer"
+   ],
+   "steps": [
+    "Zucchini ausdrücken: Die Zucchini grob reiben, großzügig salzen und 15 Minuten stehen lassen. Dann mit der Hand oder in einem Tuch kräftig ausdrücken. Wichtig: Bleibt Feuchtigkeit zurück, zerfallen die Puffer.",
+    "Mischen: Zucchini, geriebenen Feta, Ei, Minze, Petersilie und Pfeffer vermengen. Nach und nach Mehl zugeben, bis die Masse zusammenhält.",
+    "Formen: Kleine runde oder ovale Taler formen.",
+    "Braten: In mittelheißem Öl 3-4 Minuten pro Seite goldbraun braten.",
+    "Servieren: Auf Küchenpapier abtropfen lassen. Mit Joghurt oder Tzatziki servieren."
+   ],
+   "wine": "Trockener Weißwein.",
+   "plate": "Mit Joghurt und frischen Kräutern."
+  },
+  "kolokythopita": {
+   "n": "Zucchinipita",
+   "ing": [
+    "Filoteig 500 g",
+    "Zucchini 1 kg",
+    "Feta 300 g",
+    "Eier 3",
+    "Zwiebel 1",
+    "Dill & Minze",
+    "Olivenöl 4 EL",
+    "Butter 80 g"
+   ],
+   "steps": [
+    "Zucchini entwässern: Die 1 kg Zucchini grob reiben, salzen und 15 Minuten stehen lassen. Dann mit den Händen oder in einem sauberen Tuch sehr gut ausdrücken. Wichtig: Das Entfernen der Flüssigkeit ist der Schlüssel zu einer knusprigen Pita, denn Feuchtigkeit weicht den Teig auf und lässt die Füllung roh bleiben.",
+    "Zwiebel anbraten: In etwas Olivenöl 1 gehackte Zwiebel weich und süß dünsten und vor dem Zugeben zur Füllung abkühlen lassen, damit sie die Eier nicht stocken lässt.",
+    "Füllung: In einer Schüssel die ausgedrückten Zucchini, 300 g zerbröselten Feta, 3 Eier, die Zwiebel und reichlich gehackten Dill und Minze mischen. Salz vorsichtig abschmecken, denn Feta ist bereits salzig.",
+    "Untere Blätter schichten: 80 g Butter schmelzen und mit etwas Olivenöl mischen. Die Form ausbuttern und die Hälfte der Filoblätter einlegen, jedes einzeln mit der Buttermischung bestreichen. Wichtig: Jedes Blatt einzeln zu buttern ergibt viele knusprige, luftige Schichten.",
+    "Füllen und schließen: Die Füllung gleichmäßig verteilen und mit den restlichen Blättern abdecken, erneut mit Butter bestreichen. Die Ränder nach innen einschlagen, um die Pita zu verschließen.",
+    "Vorschneiden: Die Oberfläche mit einem scharfen Messer in Stücke vorschneiden und mit etwas Wasser besprenkeln, damit der Teig nicht zu stark aufgeht. Das Vorschneiden lässt den Dampf entweichen und erleichtert das spätere Teilen.",
+    "Backen: Bei 180 °C 50-55 Minuten backen, bis der Teig bräunt und knusprig wird. Vor dem Schneiden 10 Minuten setzen lassen."
+   ],
+   "wine": "Trockener Weißwein.",
+   "plate": "Warm oder kalt, gleichermaßen köstlich!"
+  },
+  "kontosouvi": {
+   "n": "Kontosouvli vom Spieß",
+   "ing": [
+    "Schweineschulter 1 kg",
+    "Schweinerippchen 1 kg",
+    "Hähnchenschenkel 4",
+    "Bauernwürste 4",
+    "Olivenöl 100 ml",
+    "Oregano & Gewürze",
+    "Salz & Pfeffer"
+   ],
+   "steps": [
+    "Fleisch schneiden: Die 1 kg Schweineschulter und 1 kg Rippchen in gleichmäßige Stücke von etwa 4-5 cm schneiden, die 4 Hähnchenschenkel in Stücke teilen und die 4 Bauernwürste ganz lassen. Gleiche Größe sorgt dafür, dass alles gleich schnell gart.",
+    "Marinade: Die Fleischsorten mit 100 ml Olivenöl, reichlich Oregano, Gewürzen, Salz und Pfeffer vermengen. Mindestens 2 Stunden kalt stellen (idealerweise über Nacht). Wichtig: Das Öl trägt die Aromen ins Fleisch und hält es während der langen Garzeit saftig.",
+    "Aufspießen: Schwein, Hähnchen und Wurst abwechselnd auf den großen Spieß stecken und die Stücke fest aneinanderdrücken. Wichtig: Der Wechsel von fetten und mageren Stücken hält alles saftig, und dichtes Aufstecken verhindert, dass sich Stücke auf dem Spieß mitdrehen.",
+    "Feuer vorbereiten: Die Kohle anzünden und warten, bis sie mit Asche überzogen ist (mäßige Hitze, keine Flammen). Starke Hitze würde außen verkohlen und innen roh lassen.",
+    "Garen: 2 bis 2,5 Stunden bei mäßiger Hitze garen, den Spieß häufig drehen für gleichmäßiges Garen und eine knusprige Kruste. Zwischendurch immer wieder salzen.",
+    "Garprobe: Sicherstellen, dass Schwein und Hähnchen in der Mitte durchgegart sind (klarer Saft, kein Rosa), da es sich um Schweine- und Geflügelfleisch handelt.",
+    "Servieren: In mundgerechte Stücke schneiden und sofort mit warmem Pitabrot, Tzatziki und frisch gehackter Zwiebel servieren."
+   ],
+   "wine": "Trockener Rotwein.",
+   "plate": "Platte mit Pitabrot, Tzatziki, Tomate. Ein Fest!"
+  },
+  "kopenxagi": {
+   "n": "Kopenhagi-Mandeltorte",
+   "ing": [
+    "Mandelblättchen 200 g",
+    "Puderzucker 150 g",
+    "Eiweiß 5",
+    "Weizenmehl 50 g",
+    "Zartbitter-Kuvertüre 200 g",
+    "Butter 100 g",
+    "Sahne 35 % 200 g",
+    "Kristallzucker 80 g",
+    "Ganze geröstete Mandeln 100 g",
+    "Vanille 1 Päckchen"
+   ],
+   "steps": [
+    "Ofen vorbereiten: Den Ofen auf 170 °C vorheizen und zwei Bleche mit Backpapier auslegen, darauf Kreise von 22 cm aufzeichnen.",
+    "Mandelbaiser: Das Eiweiß zu festem Schnee schlagen und dabei den Zucker nach und nach zugeben, bis die Masse glänzend und steif ist.",
+    "Trockene Zutaten unterheben: Mandelblättchen und Mehl vorsichtig mit Bewegungen von unten nach oben unter das Baiser heben, damit kein Volumen verloren geht.",
+    "Böden backen: Die Masse innerhalb der aufgezeichneten Kreise verstreichen und 20-25 Minuten backen, bis sie leicht goldbraun sind.",
+    "Wichtig: Die Böden müssen vollständig auskühlen, bevor sie vom Backpapier gelöst werden, sonst brechen sie wegen ihrer dünnen, empfindlichen Struktur.",
+    "Schokoladenganache: Die Sahne erhitzen und über die in Stücke gebrochene Schokolade gießen, rühren, bis alles gleichmäßig geschmolzen ist.",
+    "Zusammensetzen: Den ersten Boden auflegen, Ganache verstreichen, den zweiten Boden auflegen und die ganze Torte mit der restlichen Ganache überziehen.",
+    "Dekorieren: Die gerösteten Mandeln an den Seiten der Torte andrücken und vor dem Servieren 3-4 Stunden kalt stellen."
+   ],
+   "wine": "Süßer Samos-Wein",
+   "plate": "In Stücken mit etwas Kakaopulver und einer Tasse Espresso servieren."
+  },
+  "kormos_xristougennon": {
+   "n": "Weihnachtliche Baumstammtorte",
+   "ing": [
+    "Eier 4",
+    "Zucker 150 g",
+    "Weizenmehl 100 g",
+    "Kakaopulver 20 g",
+    "Backpulver 1 TL",
+    "Kuvertüre 200 g",
+    "Butter 250 g",
+    "Puderzucker 150 g",
+    "Sahne 200 ml",
+    "Vanille 1 TL",
+    "Puderzucker zum Bestäuben"
+   ],
+   "steps": [
+    "Vorheizen: Den Ofen auf 180 °C vorheizen und ein flaches Backblech mit Backpapier auslegen.",
+    "Eier aufschlagen: Die Eier mit dem Zucker in der Küchenmaschine 8-10 Minuten aufschlagen, bis sich das Volumen verdreifacht hat und die Masse hell und luftig ist.",
+    "Trockene Zutaten mischen: Mehl, Kakao und Backpulver sieben und mit einem Teigschaber in Bewegungen von unten nach oben vorsichtig unter die Eimasse heben, damit keine Luft verloren geht.",
+    "Backen: Den Teig dünn und gleichmäßig auf dem Blech verstreichen und 10-12 Minuten backen, bis er leicht goldbraun ist.",
+    "Wichtig: Sofort nach dem Ofen den warmen Biskuit zusammen mit dem Backpapier zu einer Rolle aufrollen und so aufgerollt abkühlen lassen; so nimmt er die Form an und reißt nicht, wenn er zum Füllen wieder aufgerollt wird.",
+    "Füllung zubereiten: Die zimmerwarme Butter mit dem Puderzucker luftig aufschlagen, die geschmolzene Kuvertüre und die Vanille zugeben und glatt rühren.",
+    "Füllen und rollen: Den Biskuit vorsichtig aufrollen, die Hälfte der Füllung gleichmäßig verstreichen und ohne Backpapier fest zu einem Stamm aufrollen.",
+    "Überziehen: Den ganzen Stamm mit der restlichen Schokoladenfüllung überziehen und mit einer Gabel Rillen wie Baumrinde ziehen.",
+    "Kühlen: Den Stamm mindestens 2 Stunden in den Kühlschrank stellen, damit die Füllung fest wird und die Form hält.",
+    "Servieren: Kurz vor dem Servieren mit Puderzucker bestäuben, für den verschneiten Look, und mit einem in heißes Wasser getauchten Messer in Scheiben schneiden."
+   ],
+   "wine": "Süßer Samos-Wein",
+   "plate": "In Scheiben auf einem weißen Teller servieren, mit Puderzucker bestäubt und ein paar Himbeeren dazu"
+  },
+  "kotopita": {
+   "n": "Hähnchenpita",
+   "ing": [
+    "Filoteig 500 g",
+    "Gekochtes Hähnchen 600 g",
+    "Zwiebel 1",
+    "Béchamelsauce 400 ml",
+    "Gruyère 150 g",
+    "Eier 2",
+    "Petersilie",
+    "Salz, Pfeffer",
+    "Olivenöl"
+   ],
+   "steps": [
+    "Das Hähnchen zerpflücken und in Stücke schneiden.",
+    "Die Zwiebel anbraten, dann Hähnchen, Béchamel, Käse, Eier und Petersilie zugeben.",
+    "Mit Öl bestrichene Filoblätter in die Form schichten, dann die Füllung darauf verteilen.",
+    "Mit Filoblättern abdecken, die Oberfläche vorschneiden und mit Öl bestreichen.",
+    "Bei 180 °C 45-50 Minuten backen."
+   ]
+  },
+  "kotopoulo": {
+   "n": "Zitronenhähnchen aus dem Ofen",
+   "ing": [
+    "Hähnchen 1,5 kg, in Stücke geschnitten",
+    "Zitronen 2",
+    "Knoblauch 4 Zehen",
+    "Olivenöl 4 EL",
+    "Oregano & Thymian",
+    "Kartoffeln 600 g",
+    "Salz & Pfeffer"
+   ],
+   "steps": [
+    "Marinade vorbereiten: In einer Schüssel den Saft der 2 Zitronen, ihre Schale, 4 EL Olivenöl, 4 zerdrückte Knoblauchzehen, Oregano und Thymian mischen. Die Schale gibt kräftiges Zitronenaroma, ohne das Gericht zu sauer zu machen.",
+    "Hähnchen marinieren: Die 1,5 kg Hähnchenstücke in die Marinade geben und mindestens 1 Stunde im Kühlschrank ziehen lassen. WICHTIG: Die Säure der Zitrone lockert die Fleischfasern und bringt Geschmack hinein — je länger es mariniert (idealerweise 2-3 Stunden), desto saftiger wird es.",
+    "Kartoffeln vorbereiten: Die 600 g Kartoffeln in gleich große Spalten schneiden, damit sie gleichmäßig garen. Neben dem Hähnchen in der Form verteilen.",
+    "In der Form anordnen: Hähnchen und Kartoffeln in einer Lage verteilen und die gesamte Marinade darüber gießen. Großzügig mit Salz und Pfeffer würzen. Nicht zu dicht legen, damit alles bräunt statt im eigenen Saft zu schmoren.",
+    "Braten: Im vorgeheizten Ofen bei 200 °C 55-60 Minuten braten. In den ersten 40 Minuten bei Bedarf mit Folie abdecken, damit nichts austrocknet.",
+    "Wenden und bräunen: Nach 40 Minuten die Stücke wenden, für gleichmäßiges Garen und Farbe von allen Seiten. WICHTIG: Ist die Form gegen Ende trocken, etwas heißes Wasser zugeben, damit die Kartoffeln nicht verbrennen.",
+    "Ruhen und servieren: Das Hähnchen nach dem Ofen 5-10 Minuten ruhen lassen, damit sich die Säfte verteilen und es saftig bleibt."
+   ],
+   "wine": "Trockener Rotwein.",
+   "plate": "Stücke mit Kartoffeln, Zitronenschale, Oregano."
+  },
+  "kotopoulo_fournou": {
+   "n": "Ofenhähnchen mit Kartoffeln",
+   "ing": [
+    "1,5 kg Hähnchenteile",
+    "800 g Kartoffeln",
+    "2 Zitronen",
+    "5 Knoblauchzehen",
+    "5 EL Olivenöl",
+    "Oregano & Thymian",
+    "Salz & Pfeffer",
+    "100 ml Hühnerbrühe"
+   ],
+   "steps": [
+    "Kartoffeln vorbereiten: Die 800 g Kartoffeln in dicke Spalten schneiden und auf dem Boden der Bratenform verteilen. Die Kartoffeln darunter saugen den Hähnchensaft auf und werden dadurch schmackhafter.",
+    "Hähnchen und Marinade: Die 1,5 kg Hähnchenteile auf die Kartoffeln legen. Den Saft von 2 Zitronen, 5 EL Olivenöl, 5 Knoblauchzehen, Oregano, Thymian, Salz und Pfeffer mischen und alles darüber gießen. Wichtig: Gut unter die Haut einmassieren, damit die Aromen ins Fleisch gelangen und nicht nur auf der Oberfläche bleiben.",
+    "Brühe zugeben: Die 100 ml Hühnerbrühe auf den Boden der Form gießen. Die Brühe hält Feuchtigkeit, verhindert, dass die Kartoffeln austrocknen, und gibt zusätzlichen Geschmack.",
+    "Zugedeckt garen: Die Form mit Alufolie abdecken und bei 180 °C 50 Minuten garen. Das Abdecken hält den Dampf, sodass das Hähnchen durchgart und saftig bleibt.",
+    "Bräunen: Die Folie entfernen, auf 200 °C erhöhen und weitere 25-30 Minuten braten, bis die Haut schön bräunt und die Kartoffeln knusprig werden. Wichtig: Das Abdecken am Ende zu entfernen sorgt für die knusprige, goldene Kruste.",
+    "Servieren: Das Hähnchen vor dem Servieren 10 Minuten ruhen lassen, damit sich die Säfte im Fleisch verteilen, statt auf den Teller zu laufen."
+   ],
+   "wine": "Trockener Rotwein.",
+   "plate": "Hähnchen und Zitronenkartoffeln, mit dem Bratensaft übergossen."
+  },
+  "kotopoulo_gemisto": {
+   "n": "Gefülltes ganzes Hähnchen",
+   "ing": [
+    "Ganzes Hähnchen 1 (etwa 1,8 kg)",
+    "Carolina-Reis 200 g",
+    "Rinderhackfleisch 200 g",
+    "Fein gehackte Zwiebeln 2",
+    "Gekochte und geschälte Esskastanien 150 g",
+    "Sultaninen 50 g",
+    "Pinienkerne 50 g",
+    "Saft von 2 Zitronen",
+    "Olivenöl 1 Tasse",
+    "Zimt, Piment, Salz, Pfeffer"
+   ],
+   "steps": [
+    "Füllung vorbereiten: Die Zwiebel in etwas Olivenöl weich dünsten, das Rinderhack zugeben und braun braten.",
+    "Reis zugeben: Reis, Kastanien, Sultaninen und Pinienkerne zugeben, gut vermengen und mit etwas heißem Wasser oder Brühe ablöschen, 5 Minuten garen, bis die Flüssigkeit aufgenommen ist.",
+    "Füllung würzen: Zimt, Piment, Salz und Pfeffer zugeben und die Füllung vollständig abkühlen lassen, bevor das Hähnchen gefüllt wird.",
+    "Wichtig: Die Füllung muss völlig kalt und der Reis nur halb gar sein, da er im Hähnchen fertig gart und dabei den Fleischsaft aufnimmt; füllt man heiß, riskiert man Bakterienwachstum, und zu viel Reis quillt auf und sprengt die Bauchhöhle.",
+    "Hähnchen füllen: Das Hähnchen gut waschen, trocken tupfen und die Bauchhöhle zu etwa 3/4 mit der Füllung befüllen, dann die Öffnung mit Küchengarn zunähen oder mit Zahnstochern verschließen.",
+    "Begießen und braten: Das Hähnchen außen mit Salz und Pfeffer würzen, mit Olivenöl und Zitronensaft beträufeln und im vorgeheizten Ofen bei 180 °C etwa 2 Stunden braten, dabei regelmäßig wenden und mit dem eigenen Saft übergießen.",
+    "Garprobe: Das Hähnchen ist fertig, wenn beim Einstechen in die Keule klarer Saft ohne Blutspuren austritt und die Haut goldbraun und knusprig ist.",
+    "Servieren: Das Hähnchen vor dem Tranchieren 10 Minuten ruhen lassen, damit sich die Säfte verteilen, und zusammen mit der Füllung servieren."
+   ],
+   "wine": "Trockener weißer Assyrtiko aus Santorini, frisch und mit lebendiger Säure, die die Fülle des Fleisches ausgleicht.",
+   "plate": "In Portionen tranchiert auf einer Platte servieren, mit der Füllung daneben, dazu ein grüner Salat und etwas Zitrone."
+  },
+  "kotopoulo_glykoksino": {
+   "n": "Süß-saures Hähnchen",
+   "ing": [
+    "Hähnchenfilet 600 g",
+    "Ananasstücke (aus der Dose) 250 g",
+    "1 große rote Paprika",
+    "1 große grüne Paprika",
+    "1 große Zwiebel",
+    "Sojasauce 3 EL",
+    "Reisessig 4 EL",
+    "Brauner Zucker 3 EL",
+    "Ketchup 3 EL",
+    "Speisestärke 4 EL",
+    "1 Ei",
+    "Öl zum Frittieren"
+   ],
+   "steps": [
+    "Hähnchen vorbereiten: Das Filet in 2-3 cm große Stücke schneiden und mit Salz und Pfeffer würzen.",
+    "Panieren: Das Ei verquirlen, die Hähnchenstücke hineintauchen und dann in Speisestärke wenden, bis sie gut überzogen sind.",
+    "Wichtig: In heißem Öl (180 °C) in zwei Portionen frittieren, damit die Öltemperatur nicht abfällt; so bleibt das Hähnchen außen knusprig und innen saftig, ohne zu viel Öl aufzusaugen.",
+    "Gemüse: In einem Wok oder einer großen Pfanne die geschnittene Zwiebel und die Paprika bei starker Hitze 3-4 Minuten anbraten, damit sie knackig bleiben.",
+    "Sauce: In einer Schüssel Sojasauce, Essig, Zucker, Ketchup und etwas Ananassaft gut verrühren.",
+    "Vereinen: Die Sauce in die Pfanne zum Gemüse gießen, die Ananas zugeben und 2-3 Minuten köcheln, bis die Sauce leicht andickt.",
+    "Abschließend mischen: Das frittierte Hähnchen in die Sauce geben und 1-2 Minuten vorsichtig schwenken, damit es gleichmäßig überzogen wird, ohne dass die Panade weich wird.",
+    "Servieren: Sofort heiß über weißem Reis servieren."
+   ],
+   "wine": "Weißer Moschofilero, kühl und aromatisch",
+   "plate": "In einem tiefen Teller über gedämpftem weißem Reis serviert, mit etwas frisch gehackter Frühlingszwiebel obenauf"
+  },
+  "kotopoulo_kari": {
+   "n": "Hähnchencurry mit Reis",
+   "ing": [
+    "Hähnchenbrust, gewürfelt 700 g",
+    "Basmatireis 300 g",
+    "Fein gehackte Zwiebeln 2 Stück",
+    "Knoblauch 3 Zehen",
+    "Frisch geriebener Ingwer 1 EL",
+    "Currypulver 2 EL",
+    "Kokosmilch 400 ml",
+    "Tomatenmark 2 EL",
+    "Olivenöl 4 EL",
+    "Salz, Pfeffer, frischer Koriander zum Garnieren"
+   ],
+   "steps": [
+    "Hähnchen vorbereiten: Die Hähnchenbrust in mittelgroße Würfel schneiden und leicht mit Salz und Pfeffer würzen.",
+    "Basis anbraten: In einem tiefen Topf das Olivenöl erhitzen und die Zwiebel bei mittlerer Hitze etwa 6-7 Minuten weich und glasig dünsten.",
+    "Aromaten: Knoblauch und Ingwer zugeben und 1 Minute mitdünsten, bis sie duften, ohne zu verbrennen.",
+    "Wichtig: Das Currypulver 1-2 Minuten im Öl mitrösten, bevor Flüssigkeit dazukommt, damit die ätherischen Öle der Gewürze geweckt werden und das Gericht am Ende nicht nach rohem Pulver schmeckt.",
+    "Hähnchen garen: Das Hähnchen in den Topf geben und anbraten, bis die Oberfläche leicht weiß wird, dann das Tomatenmark zugeben und umrühren.",
+    "Köcheln: Die Kokosmilch angießen, die Hitze reduzieren und offen 15-18 Minuten köcheln, bis die Sauce andickt und das Hähnchen durchgegart ist.",
+    "Reis kochen: Inzwischen den Basmatireis nach Packungsanweisung in Salzwasser kochen, abgießen und einige Minuten zugedeckt stehen lassen, damit er locker wird.",
+    "Servieren: Mit Salz und Pfeffer abschmecken, das Curry über den Reis geben und mit frischem Koriander garnieren."
+   ],
+   "wine": "Ein frischer, halbtrockener weißer Moschofilero oder ein Lagerbier passt hervorragend zu den Currygewürzen.",
+   "plate": "In einem tiefen Teller mit dem Reis als Basis servieren, das Curry darüber und etwas frischer Koriander oder Petersilie für die Farbe."
+  },
+  "kotopoulo_kiev": {
+   "n": "Chicken Kiev",
+   "ing": [
+    "Hähnchenbrustfilets 4 Stück (etwa 700 g)",
+    "Ungesalzene Butter 120 g, zimmerwarm",
+    "Knoblauch 2 Zehen, fein gehackt",
+    "Frische Petersilie, fein gehackt, 3 EL",
+    "Weizenmehl 100 g",
+    "Eier 2, verquirlt",
+    "Semmelbrösel 200 g",
+    "Salz und frisch gemahlener Pfeffer",
+    "Sonnenblumenöl zum Frittieren 500 ml"
+   ],
+   "steps": [
+    "Butter vorbereiten: Die weiche Butter mit dem gehackten Knoblauch, der Petersilie, Salz und Pfeffer gut vermengen. Die Masse in Backpapier zu einer Rolle formen und 30-40 Minuten einfrieren, bis sie fest ist.",
+    "Filets aufschneiden: Jede Hähnchenbrust waagerecht fast durchschneiden, wie ein Buch aufklappen und zwischen zwei Lagen Frischhaltefolie vorsichtig auf eine gleichmäßige Dicke von etwa 0,5 cm klopfen.",
+    "Füllen: Die kalte Butter in 4 zylindrische Stücke schneiden. Je ein Stück in die Mitte eines Filets legen und das Fleisch fest darum rollen, dabei alle Ränder gut verschließen, damit die Butter nicht auslaufen kann.",
+    "Wichtig: Das dichte Verschließen des Hähnchens um die Butter ist der entscheidende Schritt — bleibt auch nur eine kleine Lücke, läuft die geschmolzene Butter beim Frittieren aus. Zur Sicherheit die Rollen vor dem Panieren 20-30 Minuten einfrieren.",
+    "Panieren: Jede Rolle zuerst in Mehl, dann in das verquirlte Ei und zuletzt in die Semmelbrösel geben, dabei leicht andrücken, damit alles gut haftet. Ei und Brösel für eine doppelte Panade und besseren Verschluss wiederholen.",
+    "Vor dem Frittieren kühlen: Die panierten Rollen mindestens 30 Minuten in den Kühlschrank legen, damit die Panade fest wird und die Butter gefroren bleibt.",
+    "Frittieren: Reichlich Sonnenblumenöl in einer tiefen Pfanne auf 170 °C erhitzen. Die Rollen 5-6 Minuten unter Wenden gleichmäßig goldbraun frittieren, dann im vorgeheizten Ofen bei 180 °C 12-15 Minuten fertig garen, damit das Hähnchen durchgart, ohne dass die Panade verbrennt.",
+    "Servieren: Das Chicken Kiev vor dem Anschneiden 2-3 Minuten ruhen lassen, damit die Butter nicht auf einmal ausläuft, und sofort heiß servieren."
+   ],
+   "wine": "Passt gut zu einem frischen weißen Assyrtiko oder einem leichten trockenen Rosé.",
+   "plate": "Mit Kartoffelpüree oder Bratkartoffeln und einem frischen Saisonsalat servieren."
+  },
+  "kotopoulo_kokkinisto": {
+   "n": "Hähnchen in Tomatensauce",
+   "ing": [
+    "1,5 kg Hähnchenteile",
+    "400 g geriebene Tomate",
+    "1 Zwiebel",
+    "2 Knoblauchzehen",
+    "100 ml Rotwein",
+    "Zimt",
+    "Piment",
+    "Olivenöl",
+    "Salz & Pfeffer"
+   ],
+   "steps": [
+    "Hähnchen anbraten: Olivenöl bei starker Hitze erhitzen und die 1,5 kg Hähnchenteile rundum anbraten. Wichtig: Gründliches Anbraten erzeugt eine karamellisierte Kruste, die dem Gericht Tiefe gibt.",
+    "Aromaten anbraten: Das Hähnchen herausnehmen und die 1 gehackte Zwiebel und die 2 Knoblauchzehen im Bratfett weich und süß dünsten.",
+    "Ablöschen: Mit 100 ml Rotwein ablöschen und den Topfboden abkratzen, um den Bratensatz zu lösen. Den Alkohol 1-2 Minuten verdampfen lassen.",
+    "Sauce: Die 400 g geriebene Tomate, Zimt, Piment, Salz und Pfeffer zugeben. Die warmen Gewürze geben dem Gericht seinen traditionellen Charakter.",
+    "Hähnchen zurückgeben: Das Hähnchen zurück in den Topf geben und umrühren, damit es rundum mit Sauce überzogen ist.",
+    "Schmoren: Zugedeckt 35-40 Minuten schmoren, bis das Fleisch zart ist und die Sauce angedickt hat. Bei Bedarf etwas heißes Wasser zugeben. Mit Reis oder Kartoffeln servieren."
+   ],
+   "wine": "Trockener Rotwein.",
+   "plate": "Mit Hilopites (griechische Eiernudeln) oder Reis, Kefalotyri-Käse."
   }
  }
 }

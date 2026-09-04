@@ -1,0 +1,598 @@
+{
+ "keik_sokolatas": {
+  "n": "Chocolate Cake",
+  "ing": [
+   "Flour 250 g",
+   "Cocoa powder 60 g",
+   "Sugar 200 g",
+   "Eggs 3",
+   "Butter 150 g",
+   "Milk 120 ml",
+   "Baking powder 2 tsp",
+   "Vanilla extract 1 tsp",
+   "Salt 1 pinch"
+  ],
+  "steps": [
+   "Preparing the ingredients: Take the butter, eggs and milk out of the fridge 1 hour ahead. Important: cold ingredients do not emulsify and the batter splits, baking heavy and dense.",
+   "Preparing the tin: Butter the tin and dust it with cocoa rather than flour, so no white marks show on the dark cake.",
+   "Beating the butter: Beat the butter with the sugar for 5 full minutes, until pale and fluffy. This is where the cake gets most of its lightness.",
+   "Adding the eggs: Add the eggs one at a time, beating well after each. If the mixture starts to curdle, add a spoonful of the flour to bring it back.",
+   "Sifting the dry ingredients: Sift the flour, cocoa, baking powder and salt together twice. Cocoa lumps never dissolve later and leave bitter pockets.",
+   "Combining: Fold the dry ingredients in alternately with the milk, in three additions, starting and finishing with flour.",
+   "Important: Stop mixing the moment no dry flour is visible. Beating flour develops gluten, and gluten turns cake rubbery.",
+   "Baking: Pour into the tin, level the surface and bake at 175°C for 45 minutes.",
+   "Testing: Insert a skewer in the centre — it should come out with a few moist crumbs. Wet batter means it needs 5-10 minutes more.",
+   "Cooling: Cool in the tin for 10 minutes, then turn out onto a rack so the base does not steam and go soggy."
+  ],
+  "wine": "A sweet red Mavrodaphne or an espresso.",
+  "plate": "Serve in slices dusted with icing sugar and a scoop of vanilla ice cream alongside."
+ },
+ "kima": {
+  "n": "Pasta with Meat Sauce",
+  "ing": [
+   "Pasta (macaroni) 400g",
+   "Ground beef 500g",
+   "Grated tomato 400g",
+   "Onion 1",
+   "Garlic 2 cloves",
+   "Red wine 100ml",
+   "Cinnamon, allspice",
+   "Kefalotyri cheese"
+  ],
+  "steps": [
+   "Preparing the ingredients: Finely chop 1 onion and 2 garlic cloves, grate 400g tomato, and have the 100ml red wine ready. Organizing everything beforehand (mise en place) keeps you from burning something while hunting for ingredients.",
+   "Sautéing the onion: In a wide pot with a little olive oil, sauté the onion over medium heat for 3-4 minutes until glossy and softened, then add the garlic for 30 seconds. IMPORTANT: don't let the garlic brown, as it turns bitter.",
+   "Browning the meat: Raise the heat and add the 500g ground beef. Break it up with a spoon and let it brown well for 6-8 minutes without stirring constantly, so it caramelizes and develops depth of flavor instead of stewing in its own liquid.",
+   "Deglazing with wine: Add the 100ml red wine and let the alcohol evaporate for 1-2 minutes, scraping the bottom of the pot to release the caramelized bits that carry flavor.",
+   "Simmering the sauce: Add the grated tomato, a little cinnamon, allspice, and salt. Simmer over low heat for 25-30 minutes until the sauce thickens and the flavor becomes sweeter and rounder.",
+   "Boiling the pasta: Boil the 400g pasta in plenty of salted water for 8-10 minutes, so it stays slightly firm (al dente) with some bite. IMPORTANT: keep a cup of the cooking water to loosen the sauce if needed.",
+   "Serving: Drain the pasta, divide it among the plates, spoon the meat sauce over it, and sprinkle with plenty of grated kefalotyri, which melts slightly from the heat."
+  ],
+  "wine": "Dry red wine.",
+  "plate": "Deep plate, rich sauce, grated cheese."
+ },
+ "kimadopita": {
+  "n": "Minced Meat Pie",
+  "ing": [
+   "Phyllo or puff pastry sheets 500g",
+   "Ground beef 500g",
+   "Onion 1",
+   "Garlic 2 cloves",
+   "Grated tomato 200g",
+   "Eggs 2",
+   "Kefalotyri cheese or feta 100g",
+   "Cinnamon ¼ tsp",
+   "Salt, pepper",
+   "Olive oil",
+   "Oil for the phyllo sheets"
+  ],
+  "steps": [
+   "Meat filling: Sauté the onion for 3 minutes, then the garlic for 1 minute. Add the ground beef and cook over high heat for 8-10 minutes, stirring, until browned. Add the tomato, cinnamon, salt and pepper, and simmer for 10 minutes. Remove from the heat.",
+   "Eggs & cheese: Let the meat mixture cool slightly. Add the beaten eggs and grated cheese, and mix well.",
+   "Layering: Oil a 30x35 cm baking pan. Layer half the phyllo sheets, brushing with oil between layers. Spread the filling evenly. Cover with the remaining phyllo sheets, brushing with oil and scoring into portions on top.",
+   "Baking: Bake at 180°C for 40-45 minutes until well browned. Important: let it cool for 10 minutes before cutting so it doesn't fall apart."
+  ],
+  "wine": "Light red or rosé.",
+  "plate": "Cut into triangles or squares, served hot."
+ },
+ "kokkinisto": {
+  "n": "Red Wine Lamb",
+  "ing": [
+   "Lamb 1kg, cut into pieces",
+   "Onion 2",
+   "Garlic 4 cloves",
+   "Grated tomato 400g",
+   "Red wine 150ml",
+   "Cinnamon & allspice",
+   "Olive oil"
+  ],
+  "steps": [
+   "Browning the meat: Heat olive oil in a pot and brown the lamb pieces (1kg) on all sides over high heat. Important: good browning caramelizes the surface of the meat and gives depth of flavor to the sauce.",
+   "Sautéing the aromatics: Add the 2 chopped onions and 4 garlic cloves and sauté until softened.",
+   "Deglazing with wine: Pour in the 150ml red wine and let the alcohol evaporate for 2-3 minutes, scraping the bottom of the pot to incorporate the caramelized bits.",
+   "Adding the tomato: Add the 400g grated tomato, the cinnamon, the allspice and salt, and stir.",
+   "Simmering: Cover and simmer for 70-80 minutes until the meat is tender and falling apart. Add a little hot water if needed so it doesn't dry out.",
+   "Serving: Serve hot with potatoes, rice or hilopites pasta, letting the sauce thicken slightly before serving."
+  ],
+  "wine": "Dry red wine.",
+  "plate": "Deep plate, rich sauce, bread."
+ },
+ "kokoras_krasatos": {
+  "n": "Coq au Vin",
+  "ing": [
+   "Rooster or free-range chicken 1.8 kg",
+   "Dry red wine 750 ml",
+   "Smoked bacon 150 g",
+   "Small onions 300 g",
+   "Mushrooms 300 g",
+   "Carrots 2",
+   "Garlic 4 cloves",
+   "Tomato paste 1 tbsp",
+   "Flour 2 tbsp",
+   "Butter 40 g",
+   "Olive oil 3 tbsp",
+   "Bay leaves 2, thyme, salt, pepper"
+  ],
+  "steps": [
+   "Marinating: Cut the rooster into serving pieces and marinate it overnight in the red wine with the bay leaves, thyme and garlic. Important: this long marinade is not optional — rooster is tough meat and the wine begins breaking it down.",
+   "Draining: Remove the pieces from the marinade and dry them very well with paper towels. Keep the wine — it becomes the sauce.",
+   "Rendering the bacon: Cook the diced bacon in a heavy pot until its fat renders out and it turns crisp, then remove it with a slotted spoon.",
+   "Searing the meat: Sear the rooster pieces in the bacon fat with the oil, in batches, until deeply browned on all sides.",
+   "Sautéing the vegetables: Add the onions and sliced carrots and sauté for 5 minutes, then stir in the tomato paste and cook it for 1 minute.",
+   "Adding flour: Sprinkle over the flour and stir for 2 minutes so it toasts lightly — this is what will thicken the sauce later.",
+   "Deglazing: Pour in the reserved marinade, scraping the bottom of the pot thoroughly, and bring it to a boil.",
+   "Slow cooking: Return the meat and bacon, cover and simmer over very low heat for 2 hours, until the meat is falling off the bone.",
+   "Sautéing the mushrooms: Meanwhile sauté the mushrooms separately in the butter until golden, and add them in the last 15 minutes so they keep their texture.",
+   "Finishing the sauce: If the sauce is thin, remove the meat and reduce it over high heat for 10 minutes until it coats the back of a spoon.",
+   "Resting: Let it rest off the heat for 15 minutes — like all wine stews, it tastes better after it settles."
+  ],
+  "wine": "The same red you cooked with — a Burgundy Pinot Noir or a Naoussa Xinomavro.",
+  "plate": "Serve in a deep dish with plenty of sauce, alongside mashed potato or wide noodles."
+ },
+ "kokoretsi": {
+  "n": "Kokoretsi",
+  "ing": [
+   "Lamb intestines (thin) 1 kg",
+   "Lamb offal (liver, heart, lungs, spleen) 1.5 kg",
+   "Caul fat (lining membrane) 300g",
+   "Olive oil 100 ml",
+   "Lemons juice of 2",
+   "Oregano 2 tbsp",
+   "Salt and pepper, to taste",
+   "Skewer, wooden or metal, 1"
+  ],
+  "steps": [
+   "Cleaning the intestines: Turn the thin intestines inside out with the help of a needle or a stick and wash them thoroughly under plenty of running water. Let them soak in water with lemon and salt for 1-2 hours to remove the odor.",
+   "Preparing the offal: Wash the liver, heart, lungs, and spleen well. Cut them into large pieces (3-4cm chunks) and season with salt and pepper. Thread the pieces alternately onto the skewer, packing them tightly side by side to form a solid, compact core.",
+   "Wrapping with the intestines: Wrap the cleaned intestines tightly around the offal, spiraling from one end to the other, binding the whole core securely. Finish by adding a little caul fat to hold it all together.",
+   "Seasoning: Mix the olive oil with the lemon juice, oregano, salt, and pepper. Brush the whole kokoretsi generously with the mixture before grilling.",
+   "Important: Kokoretsi is always grilled over low, steady heat with charcoal that has turned to embers (not open flame). It needs slow cooking for 2-3 hours, turning the skewer continuously, so it cooks through evenly inside without burning on the outside.",
+   "Grilling: Start turning the skewer at a distance from the embers. As it cooks, baste every 20-30 minutes with the remaining oil-and-lemon mixture to keep it juicy and let it form a crust.",
+   "Finishing: The kokoretsi is ready when the intestines on the outside turn crisp and golden-red and the interior is fully cooked. Remove from the heat and let it rest for 5-10 minutes.",
+   "Serving: Slice with a sharp knife, sprinkle with a little extra oregano, and serve hot with lemon."
+  ],
+  "wine": "Dry red or tsipouro.",
+  "plate": "Serve hot, sliced, with fresh lemon, oregano, and french fries."
+ },
+ "kolios": {
+  "n": "Grilled Mackerel",
+  "ing": [
+   "Mackerel 2 (400g)",
+   "Lemon 1",
+   "Olive oil 3 tbsp",
+   "Oregano",
+   "Garlic 2 cloves",
+   "Salt & pepper",
+   "Parsley"
+  ],
+  "steps": [
+   "Preparing the fish: Clean the 2 mackerel and score them diagonally in 2-3 places on each side. The scoring helps the fish cook evenly and lets the aromatics penetrate the flesh.",
+   "Salting and aromatics: Sprinkle salt, pepper and oregano inside and out, and tuck finely chopped garlic into the slits. This way the aroma reaches the whole flesh, not just the surface.",
+   "Oiling: Drizzle the mackerel with olive oil so they don't stick to the grill and develop a nice crispy skin.",
+   "Grilling: Grill on a well-heated grill or barbecue for 6-8 minutes per side. Important: turn the fish only once, and only when it releases easily on its own, otherwise the skin will tear and the flesh will fall apart.",
+   "Finishing: Once cooked, drizzle with fresh lemon juice and sprinkle with chopped parsley. The lemon balances the mackerel's richness.",
+   "Serving: Serve the mackerel immediately while hot and juicy, ideally with a village salad or boiled greens."
+  ],
+  "wine": "Dry white.",
+  "plate": "With boiled potatoes or skordalia (garlic dip)."
+ },
+ "kolokithopita_glykia": {
+  "n": "Sweet Pumpkin Pie",
+  "ing": [
+   "Phyllo pastry 8 sheets",
+   "Pumpkin 1.5 kg",
+   "Sugar 200 g",
+   "Rice 3 tbsp or semolina",
+   "Walnuts 150 g",
+   "Raisins 80 g",
+   "Cinnamon 2 tsp",
+   "Cloves 1/2 tsp",
+   "Olive oil 150 ml",
+   "Icing sugar for dusting"
+  ],
+  "steps": [
+   "Grating the pumpkin: Peel the pumpkin, remove the seeds and grate it coarsely.",
+   "Important: Salt the grated pumpkin lightly and leave it in a colander for 1 hour, then squeeze it hard. Pumpkin is almost entirely water, and this is the only thing that saves the phyllo from going soggy.",
+   "Making the filling: Mix the drained pumpkin with the sugar, the rice, the chopped walnuts, the raisins, the cinnamon and the cloves.",
+   "Why the rice: The rice absorbs any liquid released during baking and keeps the filling from running.",
+   "Preparing the tin: Oil a large tin and lay in 4 phyllo sheets, brushing each one with oil.",
+   "Filling: Spread the filling evenly, leaving a small border at the edges.",
+   "Covering: Lay the remaining 4 sheets on top, brushing each with oil, and tuck the edges in neatly.",
+   "Important: Score the pie into portions before baking, cutting only the top layers. Scoring afterwards shatters the crisp phyllo.",
+   "Baking: Sprinkle a little water over the surface — this makes the phyllo blister and crisp — and bake at 180°C for 50-60 minutes.",
+   "Resting: Let it rest for 20 minutes, then dust with icing sugar and cinnamon and cut along the score lines."
+  ],
+  "wine": "A sweet wine or cinnamon tea.",
+  "plate": "Serve warm in pieces, dusted with icing sugar and cinnamon."
+ },
+ "kolokythakia_giaxni": {
+  "n": "Zucchini Stew",
+  "ing": [
+   "Zucchini 1.5 kg",
+   "Ripe tomatoes, grated, 3 large (or 1 can)",
+   "1 large onion",
+   "Garlic, 2 cloves",
+   "Olive oil 1 cup",
+   "Sugar 1 tsp (optional)",
+   "Fresh dill or parsley, 1 small bunch",
+   "Salt, pepper to taste"
+  ],
+  "steps": [
+   "Preparing the zucchini: Wash the zucchini, trim the ends and cut them into thick rounds or lengthwise into four pieces, depending on their size.",
+   "Sautéing the onion: In a wide pot, heat the olive oil and sauté the finely chopped onion over medium heat until softened and glossy, without coloring.",
+   "Adding garlic and tomato: Add the garlic for a minute, then the grated tomatoes. Let it simmer briefly to mellow the acidity.",
+   "Important: Do not add water at the start; the zucchini release their own liquid when cooked covered over low heat, which is why the stew stays thick and flavorful without becoming watery.",
+   "Adding the zucchini: Place the zucchini in the pot, season with salt and pepper, stir gently so they're coated with the sauce, and cover.",
+   "Slow cooking: Cook over low heat for 30-40 minutes without stirring often, so the zucchini stay whole and don't fall apart.",
+   "Final touches: Toward the end, add the sugar if needed for balance and the chopped dill or parsley. Let the sauce thicken a little more with the lid half-open.",
+   "Serving: Let the dish rest for 10 minutes before serving, so the flavors meld together better."
+  ],
+  "wine": "A light white wine, such as Assyrtiko or Moschofilero, well chilled.",
+  "plate": "Serve hot with feta and fresh bread to mop up the sauce."
+ },
+ "kolokythakia_tiganita": {
+  "n": "Fried Zucchini",
+  "ing": [
+   "Zucchini 4",
+   "Flour 100g",
+   "Salt & pepper",
+   "Olive oil for frying"
+  ],
+  "steps": [
+   "Cutting: Wash the 4 zucchini and slice into rounds about 0.5cm thick. Even thickness ensures even frying and crispiness.",
+   "Salting and drying: Salt the slices and let sit for 10 minutes to release their liquid, then pat them very dry with paper towels. Important: if they aren't dried, the water will make the oil spatter and the zucchini will turn out soft instead of crispy.",
+   "Flouring: Dredge the slices in flour mixed with salt and pepper and shake off the excess. Too much flour makes for a heavy, floury taste and clouds the oil.",
+   "Oil temperature: Heat plenty of olive oil over high heat. The oil is ready when a slice dropped in immediately releases bubbles. Important: if the oil isn't hot enough, the zucchini will soak up oil and won't turn crispy.",
+   "Frying: Fry in batches for 2-3 minutes per side, until golden, without overcrowding the pan so the temperature doesn't drop.",
+   "Draining and serving: Drain on paper towels to remove excess oil and serve immediately, ideally with tzatziki or a little feta."
+  ],
+  "wine": "-",
+  "plate": "Hot, with tzatziki or mayonnaise."
+ },
+ "kolokythoanthoi": {
+  "n": "Stuffed Zucchini Blossoms",
+  "ing": [
+   "Zucchini blossoms 16-20",
+   "Rice 150g",
+   "Feta 150g",
+   "1 small onion",
+   "Dill",
+   "Mint",
+   "Olive oil",
+   "Salt, pepper"
+  ],
+  "steps": [
+   "Wash the zucchini blossoms carefully and remove the pistil from inside.",
+   "Parboil the rice lightly (5 minutes) — it will continue cooking inside the blossoms.",
+   "Mix the rice with the crumbled feta, finely chopped onion, dill, and mint.",
+   "Carefully fill each blossom without tearing it, and twist the tips to seal.",
+   "Arrange in a pot with oil, a little water, and salt. Cover and simmer for 25-30 minutes."
+  ]
+ },
+ "kolokythokeftedes": {
+  "n": "Zucchini Fritters",
+  "ing": [
+   "Zucchini 600g",
+   "Feta 150g",
+   "Egg 1",
+   "Flour 3-4 tbsp",
+   "Fresh mint, finely chopped",
+   "Parsley, finely chopped",
+   "Olive oil for frying",
+   "Salt & pepper"
+  ],
+  "steps": [
+   "Squeezing the zucchini: Grate the zucchini on the coarse side, salt generously, and let sit for 15 minutes. Then squeeze firmly by hand or in a cloth. Important: if moisture remains, the fritters will fall apart.",
+   "Mixing: Combine the zucchini, grated feta, egg, mint, parsley, and pepper. Add flour gradually until the mixture holds together.",
+   "Shaping: Form small round or oval patties.",
+   "Frying: Fry in medium-hot oil for 3-4 minutes per side until golden.",
+   "Serving: Drain on paper towels. Serve with yogurt or tzatziki."
+  ],
+  "wine": "Dry white wine.",
+  "plate": "With yogurt and fresh herbs."
+ },
+ "kolokythopita": {
+  "n": "Zucchini Pie",
+  "ing": [
+   "Phyllo pastry 500g",
+   "Zucchini 1kg",
+   "Feta cheese 300g",
+   "Eggs 3",
+   "Onion 1",
+   "Dill & mint",
+   "Olive oil 4 tbsp",
+   "Butter 80g"
+  ],
+  "steps": [
+   "Draining the zucchini: Coarsely grate the 1kg zucchini, salt it and let it sit for 15 minutes. Then squeeze it very well with your hands or in a clean towel. Important: removing the liquid is the key to a crispy pie, since moisture would soak the phyllo and leave the filling underbaked.",
+   "Sautéing the onion: In a little of the olive oil, sauté 1 chopped onion until softened and sweet, and let it cool before adding to the filling so it doesn't cook the eggs.",
+   "Filling: In a bowl, mix the squeezed zucchini, 300g crumbled feta, 3 eggs, the onion and plenty of chopped dill and mint. Taste for salt, remembering that feta is already salty.",
+   "Layering the bottom sheets: Melt 80g butter and mix it with a little olive oil. Butter the baking pan and layer half the phyllo sheets, brushing each one individually with the butter mixture. Important: buttering each sheet separately gives many crispy, airy layers.",
+   "Filling and sealing: Spread the filling evenly and cover with the remaining sheets, brushing with butter again. Fold the edges inward to seal the pie.",
+   "Scoring: Score the surface into pieces with a sharp knife and sprinkle with a little water so the phyllo doesn't puff up too much. Scoring helps the steam escape and makes it easy to cut afterward.",
+   "Baking: Bake at 180°C for 50-55 minutes, until the phyllo browns and turns crispy. Let it set for 10 minutes before cutting."
+  ],
+  "wine": "Dry white wine.",
+  "plate": "Warm or cold, equally delicious!"
+ },
+ "kontosouvi": {
+  "n": "Kontosouvi Mixed Spit Meats",
+  "ing": [
+   "Pork shoulder 1kg",
+   "Pork ribs 1kg",
+   "Chicken thighs 4",
+   "Country-style sausages 4",
+   "Olive oil 100ml",
+   "Oregano & spices",
+   "Salt & pepper"
+  ],
+  "steps": [
+   "Cutting the meat: Cut the 1kg pork shoulder and 1kg ribs into even chunks about 4-5cm, cut the 4 chicken thighs into pieces, and keep the 4 country sausages whole. Uniform size ensures everything cooks at the same rate.",
+   "Marinade: Toss the meats with 100ml olive oil, plenty of oregano, spices, salt and pepper. Refrigerate for at least 2 hours (ideally overnight). Important: the oil carries the aromatics into the meat and keeps it juicy during the long roasting time.",
+   "Skewering: Thread the pork, chicken and sausage alternately onto the large spit, pressing the pieces together tightly. Important: alternating fatty and lean meats keeps the whole thing juicy, while tight packing keeps the pieces from spinning loose on the spit.",
+   "Setting up the fire: Light the charcoal and wait until it turns to ash (moderate heat, no flames). High heat would char the outside and leave the inside raw.",
+   "Roasting: Roast for 2 to 2.5 hours over moderate heat, turning the spit frequently for even cooking and a crispy crust. Salt periodically as it cooks.",
+   "Checking doneness: Make sure the pork and chicken are cooked through in the center (clear juices, no pink at all), since this involves pork and poultry.",
+   "Serving: Cut into bite-sized pieces and serve immediately with warm pita, tzatziki and freshly chopped onion."
+  ],
+  "wine": "Dry red wine.",
+  "plate": "Platter with pita, tzatziki, tomato. A feast!"
+ },
+ "kopenxagi": {
+  "n": "Kopenhagi Almond Pastry",
+  "ing": [
+   "Sliced almonds 200 g",
+   "Powdered sugar 150 g",
+   "Egg whites 5",
+   "All-purpose flour 50 g",
+   "Dark chocolate couverture 200 g",
+   "Butter 100 g",
+   "Heavy cream 35% 200 g",
+   "Granulated sugar 80 g",
+   "Whole toasted almonds 100 g",
+   "Vanilla 1 sachet"
+  ],
+  "steps": [
+   "Preparing the oven: Preheat the oven to 170°C and line two baking trays with parchment paper, drawing 22 cm circles on them.",
+   "Almond meringue: Whisk the egg whites into a firm meringue, gradually adding the sugar, until glossy and stiff.",
+   "Folding in the dry ingredients: Gently fold the sliced almonds and flour into the meringue, using bottom-to-top motions so as not to lose volume.",
+   "Baking the layers: Spread the mixture within the drawn circles and bake for 20-25 minutes until lightly golden.",
+   "Important: The layers must cool completely before peeling them off the parchment paper, otherwise they will break due to their thin, delicate texture.",
+   "Chocolate ganache: Heat the cream and pour it over the chocolate broken into pieces, stirring until evenly melted.",
+   "Assembly: Place the first layer, spread ganache, add the second layer, and cover the entire cake with the remaining ganache.",
+   "Decoration: Press the toasted almonds around the sides of the cake and refrigerate for 3-4 hours before serving."
+  ],
+  "wine": "Sweet Samos wine",
+  "plate": "Serve in slices with a little cocoa powder and a cup of espresso."
+ },
+ "kormos_xristougennon": {
+  "n": "Christmas Yule Log",
+  "ing": [
+   "Eggs 4",
+   "Sugar 150 g",
+   "All-purpose flour 100 g",
+   "Cocoa powder 20 g",
+   "Baking powder 1 tsp",
+   "Chocolate couverture 200 g",
+   "Butter 250 g",
+   "Powdered sugar 150 g",
+   "Heavy cream 200 ml",
+   "Vanilla 1 tsp",
+   "Powdered sugar for dusting"
+  ],
+  "steps": [
+   "Preheating: Preheat the oven to 180°C and line a shallow baking tray with parchment paper.",
+   "Whipping the eggs: Whisk the eggs with the sugar in a mixer for 8-10 minutes until tripled in volume, light and pale.",
+   "Mixing the dry ingredients: Sift the flour, cocoa and baking powder and gently fold them into the egg mixture with a rubber spatula, using bottom-to-top motions so as not to lose air.",
+   "Baking: Spread the batter evenly on the tray in a thin layer and bake for 10-12 minutes until lightly golden.",
+   "Important: As soon as it comes out of the oven, roll the warm sponge together with the parchment paper into a log and let it cool rolled up like this; this way it takes the shape of the log without cracking when unrolled again for filling.",
+   "Preparing the filling: Beat the room-temperature butter with the powdered sugar until fluffy, add melted couverture and vanilla, and beat until smooth.",
+   "Filling and rolling: Carefully unroll the sponge, spread half the filling evenly, and roll it up again tightly without the parchment paper into a log shape.",
+   "Coating: Cover the entire log with the remaining chocolate filling and use a fork to score lines resembling tree bark.",
+   "Chilling: Place the log in the refrigerator for at least 2 hours so the filling firms up and holds its shape.",
+   "Serving: Dust with powdered sugar just before serving for a snow-covered look, and cut into slices with a knife dipped in hot water."
+  ],
+  "wine": "Sweet Samos wine",
+  "plate": "Serve in slices on a white plate, dusted with powdered sugar and a few raspberries alongside"
+ },
+ "kotopita": {
+  "n": "Chicken Pie",
+  "ing": [
+   "Phyllo pastry 500g",
+   "Boiled chicken 600g",
+   "Onion 1",
+   "Béchamel sauce 400ml",
+   "Gruyère cheese 150g",
+   "Eggs 2",
+   "Parsley",
+   "Salt, pepper",
+   "Olive oil"
+  ],
+  "steps": [
+   "Shred the chicken and cut it into pieces.",
+   "Sauté the onion, then add the chicken, béchamel, cheese, eggs and parsley.",
+   "Layer sheets of phyllo brushed with oil in the baking pan, then spread the filling over them.",
+   "Cover with phyllo sheets on top, score the surface and brush with oil.",
+   "Bake at 180°C for 45-50 minutes."
+  ]
+ },
+ "kotopoulo": {
+  "n": "Lemon Roast Chicken",
+  "ing": [
+   "Chicken 1.5kg, cut into pieces",
+   "Lemons 2",
+   "Garlic 4 cloves",
+   "Olive oil 4 tbsp",
+   "Oregano & thyme",
+   "Potatoes 600g",
+   "Salt & pepper"
+  ],
+  "steps": [
+   "Preparing the marinade: In a bowl, mix the juice of the 2 lemons, their zest, 4 tbsp olive oil, 4 mashed garlic cloves, oregano, and thyme. The zest gives a strong lemon aroma without making the dish overly sour.",
+   "Marinating the chicken: Put the 1.5kg chicken pieces into the marinade and leave them in the fridge for at least 1 hour. IMPORTANT: the lemon's acidity tenderizes the meat fibers and infuses flavor, so the longer it marinates (ideally 2-3 hours), the juicier it turns out.",
+   "Preparing the potatoes: Cut the 600g potatoes into evenly sized wedges so they all roast together. Arrange them in the roasting pan alongside the chicken.",
+   "Arranging in the pan: Spread the chicken and potatoes in a single layer and pour over all the marinade. Season generously with salt and pepper. Not crowding the pieces helps them brown instead of stewing in their own juices.",
+   "Roasting: Roast in a preheated oven at 200°C for 55-60 minutes. For the first 40 minutes you can cover with foil if needed to prevent drying out.",
+   "Turning and browning: At 40 minutes, turn the pieces for even cooking and a golden color on all sides. IMPORTANT: if the pan has dried out by the end, add a little hot water so the potatoes don't burn.",
+   "Resting and serving: Let the chicken rest 5-10 minutes out of the oven before serving, so the juices redistribute and it stays succulent."
+  ],
+  "wine": "Dry red wine.",
+  "plate": "Pieces with potatoes, lemon zest, oregano."
+ },
+ "kotopoulo_fournou": {
+  "n": "Roast Chicken with Potatoes",
+  "ing": [
+   "1.5kg chicken pieces",
+   "800g potatoes",
+   "2 lemons",
+   "5 cloves garlic",
+   "5 tbsp olive oil",
+   "Oregano & thyme",
+   "Salt & pepper",
+   "100ml chicken stock"
+  ],
+  "steps": [
+   "Prepping the potatoes: Cut the 800g potatoes into thick wedges and spread them over the bottom of the roasting pan. The potatoes underneath soak up the chicken's juices and roast up tastier.",
+   "Placing the chicken and marinade: Place the 1.5kg chicken pieces over the potatoes. Mix the juice of 2 lemons, 5 tbsp olive oil, 5 cloves of garlic, oregano, thyme, salt, and pepper, and pour it over everything. Important: rub it well underneath the chicken skin, so the aromatics reach the meat and not just the surface.",
+   "Adding the stock: Pour the 100ml chicken stock into the bottom of the pan. The stock keeps moisture in, prevents the potatoes from drying out, and adds extra flavor to the dish.",
+   "Covered roasting: Cover the pan with foil and roast at 180°C for 50 minutes. Covering traps the steam so the chicken cooks through and stays juicy without drying out.",
+   "Browning: Remove the foil, raise the temperature to 200°C, and roast for another 25-30 minutes until the skin browns nicely and the potatoes turn crispy. Important: uncovering it at the end is what gives the crispy, golden crust.",
+   "Serving: Let the chicken rest for 10 minutes before serving, so the juices redistribute through the meat instead of spilling onto the plate."
+  ],
+  "wine": "Dry red.",
+  "plate": "Chicken and lemony potatoes, pan juices spooned over the top."
+ },
+ "kotopoulo_gemisto": {
+  "n": "Stuffed Whole Chicken",
+  "ing": [
+   "Whole chicken 1 (about 1.8 kg)",
+   "Carolina rice 200 g",
+   "Ground beef 200 g",
+   "Finely chopped onion 2",
+   "Boiled and peeled chestnuts 150 g",
+   "Golden raisins 50 g",
+   "Pine nuts 50 g",
+   "Lemon juice 2 lemons",
+   "Olive oil 1 cup",
+   "Cinnamon, allspice, salt, pepper"
+  ],
+  "steps": [
+   "Preparing the stuffing: Sauté the onion in a little olive oil until softened, add the ground beef and sauté until browned.",
+   "Adding the rice: Add the rice, chestnuts, raisins and pine nuts, mix well and deglaze with a little hot water or stock, cooking for 5 minutes until the liquid is absorbed.",
+   "Seasoning the stuffing: Add cinnamon, allspice, salt and pepper and let the stuffing cool completely before stuffing the chicken.",
+   "Important: The stuffing must be completely cold and the rice only half-cooked, since it will finish cooking inside the chicken, absorbing the meat's juices; if you stuff the chicken with hot filling you risk bacterial growth, while too much rice will swell and split the cavity.",
+   "Stuffing the chicken: Wash the chicken well, pat it dry and fill the cavity with the stuffing up to about 3/4 full, then sew the opening closed with kitchen string or seal it with toothpicks.",
+   "Basting and roasting: Season the chicken with salt and pepper on the outside, drizzle with olive oil and lemon juice, and roast in a preheated oven at 180°C for about 2 hours, turning and basting it regularly with its own juices.",
+   "Checking doneness: The chicken is ready when you pierce the thigh and the juices run clear with no trace of blood, and the skin has turned golden and crisp.",
+   "Serving: Let the chicken rest for 10 minutes before carving, so the juices redistribute, and serve it together with the stuffing."
+  ],
+  "wine": "Dry white Assyrtiko from Santorini, crisp and with lively acidity that balances the richness of the meat.",
+  "plate": "Serve carved into portions on a platter, with the stuffing alongside, accompanied by a green salad and a little lemon."
+ },
+ "kotopoulo_glykoksino": {
+  "n": "Sweet & Sour Chicken",
+  "ing": [
+   "Chicken fillet 600 g",
+   "Pineapple chunks (canned) 250 g",
+   "1 large red pepper",
+   "1 large green pepper",
+   "1 large onion",
+   "Soy sauce 3 tbsp",
+   "Rice vinegar 4 tbsp",
+   "Brown sugar 3 tbsp",
+   "Ketchup 3 tbsp",
+   "Cornstarch 4 tbsp",
+   "1 egg",
+   "Oil, for frying"
+  ],
+  "steps": [
+   "Preparing the chicken: Cut the fillet into 2-3 cm pieces and season with salt and pepper.",
+   "Coating: Beat the egg and dip the chicken pieces in it, then roll them in cornstarch so they're well coated.",
+   "Important: Fry in hot oil (180°C) in two batches so you don't drop the oil temperature; this keeps the chicken crispy outside and juicy inside, without absorbing excess oil.",
+   "Vegetables: In a wok or large pan, sauté the sliced onion and peppers for 3-4 minutes over high heat, so they stay crunchy.",
+   "Sauce: In a bowl, mix the soy sauce, vinegar, sugar, ketchup and a little pineapple juice until well combined.",
+   "Combining: Pour the sauce into the pan with the vegetables, add the pineapple and simmer for 2-3 minutes until it thickens slightly.",
+   "Final mixing: Add the fried chicken to the sauce and stir gently for 1-2 minutes so it's evenly coated without the coating going soft.",
+   "Serving: Serve immediately, hot, over white rice."
+  ],
+  "wine": "White Moschofilero wine, cool and aromatic",
+  "plate": "Served in a deep plate over steamed white rice, with a little fresh chopped spring onion on top"
+ },
+ "kotopoulo_kari": {
+  "n": "Chicken Curry with Rice",
+  "ing": [
+   "Chicken breast, cubed 700 g",
+   "Basmati rice 300 g",
+   "Finely chopped onion 2 pieces",
+   "Garlic 3 cloves",
+   "Grated fresh ginger 1 tbsp",
+   "Curry powder 2 tbsp",
+   "Coconut milk 400 ml",
+   "Tomato paste 2 tbsp",
+   "Olive oil 4 tbsp",
+   "Salt, pepper, fresh coriander for garnish"
+  ],
+  "steps": [
+   "Preparing the chicken: Cut the chicken breast into medium cubes and season lightly with salt and pepper.",
+   "Sautéing the base: In a deep pot, heat the olive oil and sauté the onion over medium heat until softened and translucent, about 6-7 minutes.",
+   "Aromatics: Add the garlic and ginger and sauté for 1 minute until fragrant, without letting them burn.",
+   "Important: Cook the curry powder in the oil for 1-2 minutes before adding any liquids, so the essential oils in the spices wake up and the final dish doesn't taste of raw powder.",
+   "Cooking the chicken: Add the chicken to the pot and sauté until the surface turns lightly white, then add the tomato paste and stir.",
+   "Simmering: Pour in the coconut milk, lower the heat and simmer uncovered for 15-18 minutes until the sauce thickens and the chicken is fully cooked.",
+   "Cooking the rice: Meanwhile, boil the basmati rice in salted water according to the package instructions, drain it and let it sit covered for a few minutes to fluff up.",
+   "Serving: Taste and adjust the salt and pepper, serve the curry over the rice and garnish with fresh coriander."
+  ],
+  "wine": "A crisp off-dry white Moschofilero or a lager-style beer pairs beautifully with the curry spices.",
+  "plate": "Serve in a deep plate with the rice as a base, the curry on top, and a little fresh coriander or parsley for color."
+ },
+ "kotopoulo_kiev": {
+  "n": "Chicken Kiev",
+  "ing": [
+   "Chicken breast (fillets) 4 pieces (about 700 g)",
+   "Unsalted butter 120 g, at room temperature",
+   "Garlic 2 cloves, finely chopped",
+   "Fresh parsley, finely chopped, 3 tbsp",
+   "All-purpose flour 100 g",
+   "Eggs 2, beaten",
+   "Breadcrumbs 200 g",
+   "Salt and freshly ground pepper",
+   "Sunflower oil for frying 500 ml"
+  ],
+  "steps": [
+   "Preparing the butter: Mix the softened butter with the chopped garlic, parsley, salt and pepper until well combined. Wrap the mixture in parchment paper into a cylinder shape and freeze for 30-40 minutes until firm.",
+   "Opening the fillets: Cut each chicken breast horizontally almost all the way through, open it like a book, and gently pound it between two sheets of plastic wrap until it has an even thickness of about 0.5 cm.",
+   "Filling: Cut the cold butter into 4 cylinder-shaped pieces. Place one piece in the center of each fillet and roll the meat tightly around it, sealing all the edges well so the butter cannot leak out.",
+   "Important: Sealing the chicken tightly around the butter is the most critical step - if even a small gap remains, the melted butter will leak out during frying. For extra security, freeze the wrapped rolls for 20-30 minutes before breading.",
+   "Breading: Dip each roll first in flour, then in the beaten egg, and finally in the breadcrumbs, pressing gently so they adhere well. Repeat the egg-and-breadcrumb step for a double coating and a better seal.",
+   "Chilling before frying: Place the breaded rolls in the refrigerator for at least 30 minutes so the coating sets and the butter stays frozen.",
+   "Frying: Heat plenty of sunflower oil to 170°C in a deep pan. Fry the rolls for 5-6 minutes, turning them, until evenly golden, then finish them in a preheated oven at 180°C for 12-15 minutes, so the chicken cooks through without burning the coating.",
+   "Serving: Let the Chicken Kiev rest for 2-3 minutes before cutting so the butter doesn't spill out all at once, and serve immediately while hot."
+  ],
+  "wine": "Pairs well with a crisp white Assyrtiko or a light dry rosé.",
+  "plate": "Serve with mashed or fried potatoes and a fresh seasonal salad."
+ },
+ "kotopoulo_kokkinisto": {
+  "n": "Chicken in Tomato Sauce",
+  "ing": [
+   "1.5kg chicken pieces",
+   "400g grated tomato",
+   "1 onion",
+   "2 cloves garlic",
+   "100ml red wine",
+   "Cinnamon",
+   "Allspice",
+   "Olive oil",
+   "Salt & pepper"
+  ],
+  "steps": [
+   "Browning the chicken: Heat olive oil over high heat and brown the 1.5kg chicken pieces on all sides. Important: thorough browning creates a caramelized crust that gives the dish depth of flavor.",
+   "Sautéing the aromatics: Remove the chicken and sauté the 1 chopped onion and the 2 cloves of garlic in the drippings, until softened and sweet.",
+   "Deglazing: Deglaze with 100ml red wine and scrape the bottom of the pot to release the caramelized bits. Let the alcohol evaporate for 1-2 minutes.",
+   "Sauce: Add the 400g grated tomato, cinnamon, allspice, salt, and pepper. The warm spices give the dish its traditional character.",
+   "Returning the chicken: Return the chicken to the pot and stir to coat it in the sauce on all sides.",
+   "Simmering: Cover and simmer for 35-40 minutes until the meat is tender and the sauce has thickened. Add a little hot water if needed. Serve with rice or potatoes."
+  ],
+  "wine": "Dry red.",
+  "plate": "With hilopites (Greek egg noodles) or rice, kefalotyri cheese."
+ }
+}
