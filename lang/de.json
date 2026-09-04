@@ -5138,6 +5138,615 @@
    ],
    "wine": "Trockener Weißwein oder Ouzo.",
    "plate": "Auf Papier mit Zitronenspalten."
+  },
+  "mavromatika": {
+   "n": "Schwarzaugenbohnen",
+   "ing": [
+    "Schwarzaugenbohnen 500 g",
+    "Zwiebel 1",
+    "Tomaten 2",
+    "Sellerieblätter",
+    "Olivenöl 3 EL",
+    "Zitrone",
+    "Salz & Pfeffer"
+   ],
+   "steps": [
+    "Bohnen garen: Die 500 g Schwarzaugenbohnen 20-25 Minuten weich kochen. Sie müssen nicht wie andere Hülsenfrüchte über Nacht eingeweicht werden — deshalb ist dies ein schnelles Gericht.",
+    "Abgießen: Die Bohnen gut abgießen und etwas Kochwasser aufbewahren, falls die Sauce später verdünnt werden muss.",
+    "Zwiebel anbraten: In einem Topf etwas Olivenöl erhitzen und die fein gehackte Zwiebel glasig und weich dünsten. Das Anbraten bringt Süße und Tiefe.",
+    "Tomate zugeben: Die 2 fein gehackten Tomaten, die Sellerieblätter und die abgetropften Bohnen zugeben. Mit Salz und Pfeffer würzen. Der Sellerie gibt dem Gericht sein typisches frisches Aroma.",
+    "Köcheln: Etwa 10 Minuten köcheln, damit sich die Aromen verbinden und die Flüssigkeit leicht reduziert. Wichtig: Den Hauptteil des Salzes gegen Ende zugeben, da früheres Salzen die Bohnenschalen hart machen kann.",
+    "Abschluss: Vom Herd genommen den Zitronensaft und das restliche rohe Olivenöl zugeben. Rohes Öl und Zitrone am Ende bewahren ein frisches Aroma, das beim Kochen verloren ginge. Warm servieren."
+   ],
+   "wine": "Weiß- oder Roséwein.",
+   "plate": "Mit Olivenöl, Zitrone und frischer Frühlingszwiebel. Ein Fastengericht."
+  },
+  "mayoneza": {
+   "n": "Hausgemachte Mayonnaise",
+   "ing": [
+    "1 Ei (zimmerwarm)",
+    "200 ml Sonnenblumenöl",
+    "50 ml natives Olivenöl extra",
+    "1 EL Zitronensaft",
+    "1 TL Dijonsenf",
+    "Salz & weißer Pfeffer"
+   ],
+   "steps": [
+    "Zutaten vorbereiten: Darauf achten, dass das Ei zimmerwarm ist. Wichtig: Ein zimmerwarmes Ei ist das Erfolgsgeheimnis, denn es verbindet sich leichter mit dem Öl zu einer stabilen Emulsion.",
+    "Basis im Becher: Das Ei in den hohen Becher des Stabmixers schlagen und den 1 EL Zitronensaft, den 1 TL Dijonsenf, Salz und weißen Pfeffer zugeben.",
+    "Öl zugeben: Das gesamte Öl darauf gießen — die 200 ml Sonnenblumenöl und die 50 ml Olivenöl — ohne zu rühren. Das Öl steigt auf und setzt sich über dem Ei ab.",
+    "Erstes Mixen: Den Stabmixer ganz unten im Becher direkt über dem Ei ansetzen und etwa 10 Sekunden auf höchster Stufe mixen, ohne den Schaft zu bewegen. So beginnt die Emulsion von unten nach oben fest zu werden.",
+    "Mixer anheben: Den Schaft ganz langsam anheben und dabei nach und nach das Öl einarbeiten. Man sieht, wie die Mayonnaise andickt und zu einer weißen Creme wird.",
+    "Abschmecken und aufbewahren: Abschmecken und Salz und Zitrone anpassen. In einem verschlossenen Behälter bis zu 5 Tage im Kühlschrank aufbewahren, da rohes Ei enthalten ist."
+   ],
+   "plate": "In einer Schale, mit einem dünnen Faden Olivenöl obenauf zur Präsentation."
+  },
+  "melitzanosalata": {
+   "n": "Auberginencreme",
+   "ing": [
+    "3 große Auberginen",
+    "2 Knoblauchzehen",
+    "3 EL Olivenöl",
+    "1 EL Zitronensaft",
+    "Petersilie",
+    "Salz & Pfeffer"
+   ],
+   "steps": [
+    "Auberginen vorbereiten: Die 3 großen Auberginen an mehreren Stellen mit einer Gabel einstechen, damit der Dampf entweichen kann und sie beim Rösten nicht platzen.",
+    "Rösten: Die Auberginen direkt über offener Flamme oder unter dem Ofengrill 15-20 Minuten unter Wenden rösten, bis die Haut rundum verkohlt und das Fleisch innen ganz weich ist. Das Rösten über Feuer gibt dem Salat sein typisches Raucharoma.",
+    "Häuten: Die Auberginen etwas abkühlen lassen, dann sorgfältig schälen und die gesamte verkohlte Haut entfernen, damit keine Bitterkeit bleibt.",
+    "Flüssigkeit abtropfen: Das Fruchtfleisch gut ausdrücken oder in einem Sieb abtropfen lassen, um überschüssige Flüssigkeit zu entfernen. Wichtig: Das ist das Geheimnis, damit die Auberginencreme nicht wässrig wird, sondern dick und cremig.",
+    "Mischen: Das Fleisch fein hacken oder mit der Gabel zerdrücken und mit 2 zerdrückten Knoblauchzehen, 1 EL Zitronensaft, den 3 EL Olivenöl und Salz mischen. Das Olivenöl nach und nach unter Rühren zugeben, damit es emulgiert und die Creme leicht und luftig wird.",
+    "Servieren: Mit gehackter Petersilie bestreuen und mit frischem Brot oder Pita servieren. Abschmecken und Salz oder Zitrone nach Geschmack anpassen."
+   ],
+   "wine": "Ouzo oder ein trockener Weißwein.",
+   "plate": "In einer Schale, mit Olivenöl beträufelt, mit Petersilie garniert, mit Brot serviert."
+  },
+  "melomakarona": {
+   "n": "Melomakarona",
+   "ing": [
+    "Mehl 500 g",
+    "Olivenöl 150 ml",
+    "Orangensaft 120 ml",
+    "Zucker 100 g",
+    "Zimt 1 TL",
+    "Nelken 1/4 TL",
+    "Natron 1 TL",
+    "Honig 200 g",
+    "Wasser 200 ml",
+    "Gemahlene Walnüsse"
+   ],
+   "steps": [
+    "Flüssiges aufschlagen: Die 150 ml Olivenöl mit den 100 g Zucker gut verrühren. Die 120 ml Orangensaft, den Zimt und die Nelken zugeben, die das festliche Aroma geben.",
+    "Mehl zugeben: Die 500 g Mehl mit 1 TL Natron sieben und nach und nach mit der Flüssigkeit verbinden. WICHTIG: Nur so viel kneten, bis der Teig zusammenkommt, denn zu langes Kneten macht die Melomakarona hart.",
+    "Formen: Gleich große ovale Plätzchen formen und mit Abstand auf ein mit Backpapier belegtes Blech setzen, da sie leicht aufgehen.",
+    "Einstechen: Jedes Plätzchen leicht mit einer Gabel einstechen, damit es gleichmäßig durchbackt und später den Sirup besser aufnimmt.",
+    "Backen: Bei 180 °C 20-25 Minuten goldbraun und fest backen. Sie müssen gut durchgebacken sein, damit sie im Sirup nicht matschig werden.",
+    "Sirup zubereiten: Die 200 g Honig mit den 200 ml Wasser (Verhältnis 1:1) einige Minuten zu einem dünnen Honigsirup kochen.",
+    "Sirup aufnehmen: WICHTIG: Die warmen Melomakarona 1-2 Mal in den Sirup tauchen (oder heißen Sirup über kalte Plätzchen gießen). Der Temperaturunterschied hilft, dass sie den Sirup aufnehmen, ohne zu zerfallen.",
+    "Abschluss: Abtropfen lassen und mit gemahlenen Walnüssen und Zimt bestreuen. Einige Stunden stehen lassen, damit sie den Sirup vollständig aufsaugen."
+   ],
+   "wine": "-",
+   "plate": "Auf einer Platte, mit Walnüssen und Zimt bestreut."
+  },
+  "melopita_sifnou": {
+   "n": "Melopita aus Sifnos",
+   "ing": [
+    "Frische Mizithra 800 g",
+    "Honig 250 g",
+    "Eier 4",
+    "Mehl 2 EL",
+    "Zimt 1 TL",
+    "Filo- oder Mürbeteigboden 1",
+    "Butter 30 g"
+   ],
+   "steps": [
+    "Die Mizithra 2 Stunden in einem Tuch abtropfen lassen, falls sie feucht ist.",
+    "Wichtig: Feuchte Mizithra wird nie fest und die Melopita kommt als weiche Pfütze aus dem Ofen.",
+    "Den Teigboden in eine runde Form drücken und rundum mit einer Gabel einstechen, damit er nicht aufgeht.",
+    "Die Mizithra durch ein Sieb streichen oder glatt rühren, bis keine Klümpchen mehr da sind.",
+    "Den Honig leicht erwärmen, damit er fließt, und unter den Käse rühren.",
+    "Die Eier einzeln zugeben und jeweils gut unterrühren, zuletzt das Mehl.",
+    "Wichtig: Nicht zu lange schlagen. Zu viel Luft lässt die Füllung stark aufgehen und beim Abkühlen zusammenfallen und reißen.",
+    "Die Füllung auf den Boden gießen und die Oberfläche glatt streichen.",
+    "Bei 170 °C 50-60 Minuten backen, bis sie am Rand fest ist und die Mitte noch leicht wackelt.",
+    "Vollständig in der Form auskühlen lassen, großzügig mit Zimt bestäuben und bei Zimmertemperatur servieren."
+   ],
+   "wine": "Ein süßer Wein von den Kykladen.",
+   "plate": "In Stücken bei Zimmertemperatur servieren, mit reichlich Zimt obenauf."
+  },
+  "milfey": {
+   "n": "Griechische Cremeschnitte",
+   "ing": [
+    "Fertiger Blätterteig 500 g",
+    "Frische Milch 750 ml",
+    "Zucker 180 g",
+    "Sahne 200 ml",
+    "Speisestärke 60 g",
+    "Eigelb 5",
+    "Vanille 1 Schote/Päckchen",
+    "Butter 30 g",
+    "Puderzucker zum Bestäuben 50 g",
+    "Zartbitter-Kuvertüre 100 g"
+   ],
+   "steps": [
+    "Blätterteig: Den Blätterteig auf Backpapier ausrollen und gut mit einer Gabel einstechen, damit er nicht ungleichmäßig aufgeht.",
+    "Backen: Bei 200 °C 15-18 Minuten goldbraun backen, dabei ein zweites Blatt Backpapier und ein Blech darauf legen, damit der Teig flach bleibt.",
+    "Wichtig: Der Teig muss vollständig durchgebacken und ausgekühlt sein, bevor er geschnitten wird, sonst zersplittert er und ergibt keine sauberen Schichten.",
+    "Konditorcreme: Das Eigelb mit Zucker und Speisestärke hell aufschlagen.",
+    "Creme kochen: Die Milch mit der Vanille erhitzen und nach und nach unter ständigem Rühren bei niedriger Hitze zur Masse geben, bis sie andickt.",
+    "Creme abschließen: Vom Herd nehmen, die Butter zugeben, unterrühren und mit direkt aufgelegter Frischhaltefolie abdecken, damit sich keine Haut bildet.",
+    "Sahne schlagen: Die Sahne halbsteif schlagen und behutsam unter die abgekühlte Creme heben.",
+    "Zusammensetzen: Den Teig in drei gleiche Stücke schneiden und abwechselnd schichten: Teig-Creme-Teig-Creme-Teig.",
+    "Abschluss: Die Oberfläche mit Puderzucker bestäuben oder mit geschmolzener Schokolade in Streifen dekorieren.",
+    "Kühlen: Die Cremeschnitte vor dem Schneiden mindestens 2 Stunden kalt stellen, damit sie richtig fest wird."
+   ],
+   "wine": "Süßer Samos-Wein",
+   "plate": "Kalt auf einer Platte servieren, in quadratische Stücke geschnitten, mit Puderzucker bestäubt"
+  },
+  "millefeuille_franc": {
+   "n": "Französisches Millefeuille Napoléon",
+   "ing": [
+    "Blätterteig 2 Platten (etwa 500 g)",
+    "Frische Milch 500 ml",
+    "Sahne 200 ml",
+    "Zucker 150 g",
+    "Eigelb 5",
+    "Speisestärke 50 g",
+    "Vanilleextrakt 1 TL",
+    "Puderzucker für die Glasur 150 g",
+    "Zartbitter-Kuvertüre 50 g (zum Dekorieren)",
+    "Butter 20 g",
+    "Zitronensaft einige Tropfen"
+   ],
+   "steps": [
+    "Teig vorbereiten: Die Blätterteigplatten ausrollen und auf mit Backpapier belegte Bleche legen, gut mit einer Gabel einstechen, damit sie nicht zu stark aufgehen.",
+    "Backen: Die Platten im vorgeheizten Ofen bei 200 °C 15-18 Minuten backen, bis sie goldbraun und knusprig sind. Auf einem Gitter vollständig auskühlen lassen.",
+    "Wichtig: Damit der Teig flach und knusprig bleibt, beim Backen ein zweites Blech darauf legen, sodass er leicht beschwert wird und nicht ungleichmäßig aufgeht.",
+    "Konditorcreme: Die Milch in einem Topf erhitzen. In einer Schüssel das Eigelb mit Zucker und Speisestärke aufschlagen, bis die Masse hell wird.",
+    "Creme kochen: Die heiße Milch langsam unter ständigem Rühren in die Eimasse gießen, zurück auf die Hitze stellen und rühren, bis die Creme andickt. Die Vanille zugeben und mit direkt aufgelegter Frischhaltefolie abgedeckt abkühlen lassen.",
+    "Sahne schlagen: Die Sahne steif schlagen und behutsam unter die kalte Konditorcreme heben, damit sie leichter wird.",
+    "Zusammensetzen: Die Teigplatten in gleich große Rechtecke schneiden. Eine Platte auflegen, großzügig Creme aufstreichen, eine zweite Platte darauf, wieder Creme, und mit einer dritten Platte abschließen.",
+    "Glasur und Dekor: Eine Glasur aus Puderzucker mit einigen Tropfen Zitronensaft und Wasser anrühren, bis sie leicht dickflüssig ist. Auf der Oberfläche verstreichen und Streifen aus geschmolzener Schokolade aufspritzen, dann mit einem Zahnstocher das klassische Muster ziehen.",
+    "Kühlen: Das Dessert vor dem Schneiden mindestens 1 Stunde in den Kühlschrank stellen, damit die Creme fest wird und sich sauber schneiden lässt."
+   ],
+   "wine": "Süßer Samos-Wein",
+   "plate": "Kalt auf einem Teller mit etwas Puderzucker und frischen Waldbeeren dazu servieren"
+  },
+  "milopita": {
+   "n": "Apfelkuchen",
+   "ing": [
+    "Äpfel (am besten säuerliche) 1 kg",
+    "Weizenmehl 350 g",
+    "Zucker 200 g (150 g für die Füllung, 50 g für den Teig)",
+    "Kalte Butter 180 g",
+    "Eier 2",
+    "Zimt 1 TL + etwas geriebene Muskatnuss",
+    "Saft und Schale von 1 Zitrone",
+    "Backpulver 1 TL",
+    "Grob gehackte Walnüsse 60 g (optional)",
+    "Puderzucker zum Bestäuben"
+   ],
+   "steps": [
+    "Teig: In einer Schüssel das Mehl mit dem Backpulver und den 50 g Zucker mischen. Die kalte, gewürfelte Butter zugeben und mit den Fingerspitzen einarbeiten, bis die Masse groben Bröseln gleicht. 1 Ei zugeben und den Teig zusammenfügen, ohne ihn zu überarbeiten.",
+    "Wichtig: Den Teig in Frischhaltefolie wickeln und mindestens 30 Minuten kalt stellen. Die kalte Butter und die Ruhezeit machen den Teig knusprig und mürbe statt zäh.",
+    "Füllung: Die Äpfel schälen, in dünne Scheiben oder Würfel schneiden und sofort mit Zitronensaft beträufeln, damit sie nicht braun werden. Schale, die 150 g Zucker, Zimt und etwas Muskat zugeben.",
+    "Anbraten: Die Äpfel mit dem Zucker in einer Pfanne 8-10 Minuten anbraten, bis sie weich sind, leicht karamellisieren und ihre Flüssigkeit verdampft ist. Abkühlen lassen und die Walnüsse zugeben.",
+    "Ausrollen: Den Teig in zwei Portionen teilen (2/3 und 1/3). Das größere Stück ausrollen und eine gebutterte Form damit auskleiden, auch die Ränder.",
+    "Füllen: Die Apfelfüllung einfüllen und glatt streichen. Das restliche Teigstück ausrollen und den Kuchen damit abdecken, die Ränder gut verschließen. 2-3 Schlitze oben einschneiden, damit der Dampf entweichen kann, und mit verquirltem Ei bestreichen.",
+    "Backen: Im vorgeheizten Umluftofen bei 180 °C 40-45 Minuten backen, bis die Oberfläche goldbraun ist.",
+    "Servieren: Den Apfelkuchen etwas abkühlen lassen, damit die Füllung fest wird, mit Puderzucker bestäuben und in Stücke schneiden."
+   ],
+   "wine": "Süßer Samos-Wein oder ein heißer Zimttee.",
+   "plate": "Warm mit einer Kugel Vanilleeis servieren, mit Zimt bestäubt."
+  },
+  "milopita_rolo": {
+   "n": "Apfelstrudel",
+   "ing": [
+    "Filoteig 6 Blätter",
+    "Äpfel 6",
+    "Zucker 120 g",
+    "Zimt 2 TL",
+    "Rosinen 80 g",
+    "Walnüsse 100 g",
+    "Semmelbrösel 4 EL",
+    "Butter 120 g",
+    "Puderzucker zum Bestäuben",
+    "Saft von 1 Zitrone"
+   ],
+   "steps": [
+    "Die Äpfel schälen, in kleine Würfel schneiden und sofort mit dem Zitronensaft vermengen, damit sie nicht braun werden.",
+    "Zucker, Zimt, Rosinen und gehackte Walnüsse untermischen.",
+    "Wichtig: Die Füllung 20 Minuten in einem Sieb stehen lassen und den austretenden Saft weggießen. Genau diese Flüssigkeit macht den Teig matschig.",
+    "Die Semmelbrösel in etwas Butter goldbraun rösten — sie kommen unter die Füllung und saugen die restliche Feuchtigkeit auf.",
+    "Ein Filoblatt auslegen, mit geschmolzener Butter bestreichen und so alle sechs Blätter stapeln.",
+    "Die gerösteten Brösel entlang einer Längsseite streuen und die Füllung darauf häufen, ringsum einen Rand frei lassen.",
+    "Zuerst die beiden kurzen Seiten einschlagen, dann fest wie eine Biskuitrolle aufrollen, ohne Hohlräume.",
+    "Mit der Naht nach unten auf ein ausgelegtes Blech legen, die Oberfläche großzügig mit Butter bestreichen und in Portionen vorschneiden.",
+    "Bei 180 °C 40-45 Minuten backen, bis alles tief goldbraun und knusprig ist.",
+    "15 Minuten ruhen lassen, dann mit Puderzucker bestäuben und entlang der Schnitte teilen."
+   ],
+   "wine": "Glühwein oder Zimttee.",
+   "plate": "In warmen Scheiben servieren, mit Puderzucker bestäubt und einer Kugel Vanilleeis."
+  },
+  "minestrone": {
+   "n": "Minestrone",
+   "ing": [
+    "Zucchini 2",
+    "Karotten 2",
+    "Sellerie 2 Stangen",
+    "Zwiebel 1",
+    "Tomaten aus der Dose 400 g",
+    "Bohnen aus der Dose 240 g",
+    "Kleine Nudeln 80 g",
+    "Gemüsebrühe 1 l",
+    "Knoblauch 2 Zehen",
+    "Olivenöl 4 EL",
+    "Parmesan",
+    "Salz, Pfeffer",
+    "Basilikum"
+   ],
+   "steps": [
+    "Zwiebel, Knoblauch, Karotten und Sellerie 5 Minuten anbraten.",
+    "Tomaten, Brühe, Salz und Pfeffer zugeben. 15 Minuten köcheln.",
+    "Zucchini und Bohnen zugeben. 10 Minuten garen.",
+    "Die Nudeln zugeben und weitere 10 Minuten köcheln.",
+    "Mit Parmesan und Basilikum servieren."
+   ]
+  },
+  "mosaiko": {
+   "n": "Kalte Schokoladenwurst",
+   "ing": [
+    "Butterkekse (Petit Beurre) 250 g",
+    "Zartbitterschokolade 200 g",
+    "Butter 150 g",
+    "Zucker 100 g",
+    "Ungesüßter Kakao 3 EL",
+    "Ei 1",
+    "Kondensmilch 4 EL",
+    "Cognac oder Weinbrand 2 EL",
+    "Grob gehackte Walnüsse oder Mandeln 60 g (optional)"
+   ],
+   "steps": [
+    "Kekse brechen: Die Kekse mit der Hand in kleine, unregelmäßige Stücke in eine große Schüssel brechen. Wichtig: Sie nicht im Mixer zu Pulver verarbeiten. Die unregelmäßigen Stücke geben dem Anschnitt das mosaikartige (Salami-)Aussehen, das für dieses Dessert typisch ist. Nach Belieben auch die Walnüsse zugeben.",
+    "Schokolade schmelzen: Die Schokolade mit der Butter im Wasserbad schmelzen (eine Schüssel über einem Topf mit leicht siedendem Wasser, ohne dass der Boden das Wasser berührt) und glatt rühren. Vom Herd nehmen und etwas abkühlen lassen.",
+    "Kakaocreme: In einer zweiten Schüssel das Ei mit dem Zucker luftig aufschlagen. Kakao und Kondensmilch einrühren und gut vermengen, damit keine Klümpchen bleiben.",
+    "Massen vereinen: Die geschmolzene Schokolade unter ständigem Rühren in die Eimasse gießen und zuletzt den Cognac zugeben. Die Masse soll glatt und glänzend sein.",
+    "Mit den Keksen mischen: Die Schokoladencreme über die gebrochenen Kekse gießen und mit dem Teigschaber vorsichtig unterheben, bis alle Stücke überzogen sind und dabei ganz bleiben.",
+    "Zur Rolle formen: Die Masse auf Frischhaltefolie oder Backpapier geben und durch Zusammenziehen der Ränder zu einer kompakten Rolle (Salamiform) formen. Fest einrollen und die Enden wie ein Bonbonpapier eindrehen, damit sie die Form hält.",
+    "Kühlen: Die Rolle mindestens 4-5 Stunden (idealerweise über Nacht) in den Kühlschrank legen, damit sie ganz fest wird und sich sauber schneiden lässt.",
+    "Servieren: Auswickeln, für den Salami-Look nach Belieben mit etwas Puderzucker bestäuben und mit einem scharfen Messer in etwa 1 cm dicke Scheiben schneiden."
+   ],
+   "wine": "Süßer Mavrodafni oder ein Espresso.",
+   "plate": "In Scheiben auf einem kleinen Teller, mit Puderzucker bestäubt."
+  },
+  "mosxari_bamies": {
+   "n": "Rindfleisch mit Okra",
+   "ing": [
+    "Rindfleisch 600 g (gewürfelt)",
+    "Okra 500 g",
+    "Geriebene Tomate 400 g",
+    "Zwiebel 1",
+    "Knoblauch 2 Zehen",
+    "Essig 2 EL",
+    "Olivenöl",
+    "Salz & Pfeffer"
+   ],
+   "steps": [
+    "Okra vorbereiten: Die Stielansätze der 500 g Okra vorsichtig abschneiden, ohne die Schoten anzustechen, mit 2 EL Essig beträufeln und 30 Minuten stehen lassen. Wichtig: Der Essig nimmt der Okra die Schleimigkeit, sodass die Schoten ganz bleiben und das Gericht nicht matschig wird.",
+    "Rindfleisch anbraten: In einem Topf mit etwas Olivenöl die 600 g gewürfeltes Rindfleisch bei starker Hitze rundum anbraten. Das Karamellisieren schließt die Säfte ein und gibt Tiefe.",
+    "Aromaten anbraten: 1 fein gehackte Zwiebel und 2 Knoblauchzehen zugeben und weich dünsten, dabei den Bratensatz vom Boden lösen.",
+    "Fleisch schmoren: Die 400 g geriebene Tomate, etwas heißes Wasser, Salz und Pfeffer zugeben. Zugedeckt 40 Minuten schmoren, bis das Rindfleisch weich zu werden beginnt. Das Fleisch braucht länger als die Okra.",
+    "Okra zugeben: Den Essig von der Okra abspülen und die Schoten auf das Fleisch legen. Wichtig: Ab jetzt nicht mehr mit dem Löffel rühren — nur den Topf sanft schwenken, denn Rühren zerdrückt die Okra.",
+    "Abschluss: Weitere 25 Minuten bei niedriger Hitze (oder im Ofen) garen, bis die Okra zart ist und die Sauce angedickt hat.",
+    "Servieren: Das Gericht kurz ruhen lassen und lauwarm servieren, denn Bamies und andere Ladera-Gerichte schmecken nicht kochend heiß am besten, mit frischem Brot und Feta."
+   ],
+   "wine": "Trockener Rotwein.",
+   "plate": "Im tiefen Teller, Okra obenauf, mit Brot."
+  },
+  "mosxari_fournou_patates": {
+   "n": "Rinderbraten mit Kartoffeln",
+   "ing": [
+    "Rindfleisch (Nacken oder Keule) 1,5 kg",
+    "Kartoffeln 1,5 kg",
+    "Olivenöl 1/2 Tasse",
+    "Saft von 2 Zitronen",
+    "Knoblauch 4-5 Zehen",
+    "Senf 1 EL",
+    "Oregano 2 EL",
+    "Lorbeerblätter 2",
+    "Wasser oder Rinderbrühe 2 Tassen",
+    "Salz, Pfeffer"
+   ],
+   "steps": [
+    "Fleisch vorbereiten: Das Rindfleisch mit Küchenpapier gut trocken tupfen und an mehreren Stellen mit einem scharfen Messer einstechen, um Knoblauch hineinzustecken.",
+    "Marinieren: Eine Mischung aus Olivenöl, Zitronensaft, Senf, Oregano, Salz und Pfeffer anrühren und das Fleisch rundum gut damit einreiben.",
+    "Fleisch anbraten: Wichtig: Das Rindfleisch zuerst in einem Topf mit etwas Öl bei starker Hitze rundum kräftig anbraten, damit sich die Poren schließen und das Fleisch beim Garen seine Säfte behält.",
+    "In die Form legen: Das Fleisch in eine Bratenform geben, die Lorbeerblätter und Wasser oder Brühe zugeben, fest mit Alufolie verschließen und im vorgeheizten Ofen bei 180 °C etwa 1,5-2 Stunden garen.",
+    "Kartoffeln zugeben: Die Kartoffeln schälen, in Scheiben oder Stücke schneiden, mit Salz, Pfeffer, Oregano und Öl würzen und nach der halben Garzeit rings um das Fleisch verteilen.",
+    "Letztes Garen: In den letzten 30 Minuten die Folie entfernen und die Temperatur auf 200 °C erhöhen, um Fleisch und Kartoffeln zu bräunen, dabei regelmäßig mit dem Bratensaft übergießen.",
+    "Fleisch ruhen lassen: Wichtig: Nach dem Ofen das Rindfleisch zugedeckt 10-15 Minuten ruhen lassen, bevor es tranchiert wird, damit sich die Säfte verteilen und es saftig bleibt.",
+    "Servieren: Das Fleisch quer zur Faser schneiden und mit den Kartoffeln und der Sauce übergossen servieren."
+   ],
+   "wine": "Xinomavro aus Naoussa oder ein anderer kräftiger trockener Rotwein.",
+   "plate": "Auf einer Platte servieren, mit den Kartoffeln rings um das Fleisch und reichlich Sauce obenauf, dazu griechischer Bauernsalat."
+  },
+  "mosxari_gastra": {
+   "n": "Rindfleisch aus der Gastra",
+   "ing": [
+    "Rindfleisch (Nacken oder Schulter) 1,5 kg",
+    "Kartoffeln 1 kg",
+    "Karotten 3",
+    "Kleine Zwiebeln 300 g",
+    "Knoblauch 5 Zehen",
+    "Geriebene Tomate 300 g",
+    "Rotwein 150 ml",
+    "Olivenöl 1/2 Tasse",
+    "Rosmarin 2 Zweige",
+    "Lorbeerblätter 2",
+    "Salz, Pfeffer"
+   ],
+   "steps": [
+    "Fleisch vorbereiten: Das Rindfleisch am Stück lassen, gründlich trocknen und rundum kräftig mit Salz und Pfeffer würzen.",
+    "Anbraten: Im Topf mit Öl bei starker Hitze rundum dunkelbraun anbraten, etwa 3 Minuten pro Seite.",
+    "Aromaten anbraten: Die ganzen Zwiebeln, den Knoblauch und die in dicke Stücke geschnittenen Karotten zugeben und 5 Minuten mitbraten.",
+    "Ablöschen: Den Wein angießen und verdampfen lassen, dann die geriebene Tomate, den Rosmarin und die Lorbeerblätter zugeben.",
+    "Topf verschließen: Wichtig: Die Gastra funktioniert, weil sie völlig dicht ist — schließt der Deckel nicht fest, ein Blatt Alufolie darunter legen, damit kein Dampf entweicht.",
+    "Langsam garen: Bei sehr niedriger Hitze oder im Ofen bei 160 °C 2 Stunden garen, ohne den Topf zu öffnen. Jedes Anheben des Deckels kostet den Dampf, der die Arbeit macht.",
+    "Kartoffeln zugeben: Die in große Stücke geschnittenen Kartoffeln zugeben, würzen, wieder dicht verschließen und weitere 45 Minuten garen.",
+    "Prüfen: Das Fleisch ist fertig, wenn eine Gabel widerstandslos hineingleitet und die Kartoffeln die Sauce aufgenommen haben.",
+    "Ruhen und tranchieren: 15 Minuten ruhen lassen, dann das Fleisch quer zur Faser in dicke Scheiben schneiden."
+   ],
+   "wine": "Ein rustikaler Rotwein — Agiorgitiko, trockener Mavrodafni oder ein Xinomavro aus Naoussa.",
+   "plate": "Familiengerecht direkt aus dem Topf servieren, mit dem aufgeschnittenen Fleisch in der Mitte und dem Gemüse ringsum."
+  },
+  "mosxari_kokkinisto": {
+   "n": "Geschmortes Rindfleisch in Tomatensauce",
+   "ing": [
+    "800 g Rindfleisch (Oberschale oder Schulter)",
+    "400 g geriebene Tomate",
+    "2 Zwiebeln",
+    "3 Knoblauchzehen",
+    "150 ml Rotwein",
+    "1 Zimtstange",
+    "3 Nelken",
+    "2 Lorbeerblätter",
+    "Olivenöl"
+   ],
+   "steps": [
+    "Fleisch anbraten: Olivenöl erhitzen und die 800 g Rindfleisch bei starker Hitze rundum anbraten, dann aus dem Topf nehmen. Wichtig: Das Anbraten schließt die Säfte ein und gibt der Sauce vollen Geschmack.",
+    "Aromaten anbraten: Im selben Öl die 2 gehackten Zwiebeln und die 3 Knoblauchzehen 3 Minuten weich dünsten.",
+    "Mit Wein ablöschen: Die 150 ml Rotwein zugeben und den Alkohol verdampfen lassen, dabei den Boden abkratzen, um den Bratensatz zu lösen.",
+    "Restliche Zutaten: Die 400 g geriebene Tomate, die Zimtstange, die 3 Nelken, die 2 Lorbeerblätter und etwas Wasser zugeben, dann das Fleisch zurück in den Topf geben.",
+    "Schmoren: Zugedeckt 75-80 Minuten schmoren, bis das Fleisch gabelzart ist, bei Bedarf heißes Wasser zugeben, damit nichts austrocknet.",
+    "Abschluss: Zum Schluss mit Salz und Pfeffer würzen, Lorbeerblätter und Zimtstange entfernen und mit Kartoffeln oder Nudeln servieren."
+   ],
+   "wine": "Trockener Rotwein.",
+   "plate": "Mit Nudeln oder Reis, reichlich Sauce."
+  },
+  "mosxari_stifado": {
+   "n": "Rinder-Stifado",
+   "ing": [
+    "Rindfleisch 800 g (Oberschale)",
+    "Perlzwiebeln 500 g",
+    "Geriebene Tomate 400 g",
+    "Rotwein 200 ml",
+    "Essig 2 EL",
+    "Knoblauch 3 Zehen",
+    "Zimt 1 Stange",
+    "Nelken 4",
+    "Lorbeerblätter 2",
+    "Olivenöl"
+   ],
+   "steps": [
+    "Rindfleisch anbraten: Die 800 g Rindfleisch trocken tupfen, in Stücke schneiden und in Olivenöl bei starker Hitze rundum anbraten. Beiseitestellen. Wichtig: Gutes Anbraten erzeugt eine karamellisierte Kruste, die dem fertigen Gericht tiefen, vollen Geschmack gibt.",
+    "Zwiebeln anbraten: Im selben Topf die 500 g ganzen Perlzwiebeln goldbraun braten. Leichtes Karamellisieren macht sie süßer und gleicht die Säure der Sauce aus.",
+    "Ablöschen und Gewürze: Mit den 200 ml Rotwein und den 2 EL Essig ablöschen und den Bratensatz vom Boden lösen. Die 400 g geriebene Tomate, die 3 Knoblauchzehen, die Zimtstange, die 4 Nelken und die 2 Lorbeerblätter zugeben. Den Alkohol verdampfen lassen, damit der Wein seine Bitterkeit verliert.",
+    "Langsam garen: Das Fleisch zurück in die Sauce geben, zudecken und bei niedriger Hitze 70-80 Minuten sanft schmoren. Langes Garen baut das Bindegewebe ab und macht das Fleisch butterzart.",
+    "Sauce einkochen: Gegen Ende mit Salz und Pfeffer würzen. Wichtig: Ist die Sauce zu dünn, in den letzten 15 Minuten den Deckel abnehmen, damit die Flüssigkeit verdampft und die Sauce glänzend am Fleisch haftet.",
+    "Servieren: Das Stifado heiß mit den ganzen Zwiebeln servieren, dazu Hilopites oder Kartoffelpüree, die die Sauce wunderbar aufnehmen."
+   ],
+   "wine": "Trockener Rotwein.",
+   "plate": "Mit Reis oder Brot, reichlich Sauce."
+  },
+  "mosxari_wellington": {
+   "n": "Beef Wellington",
+   "ing": [
+    "Rinderfilet (Mittelstück) 1 kg",
+    "Blätterteig 1 Platte",
+    "Champignons 500 g",
+    "Prosciutto oder Parmaschinken 8 Scheiben",
+    "Schalotten 2",
+    "Dijonsenf 2 EL",
+    "Frischer Thymian 4 Zweige",
+    "Butter 30 g",
+    "Olivenöl 2 EL",
+    "Eigelb 1 (zum Bestreichen)",
+    "Weinbrand 2 EL",
+    "Salz, Pfeffer"
+   ],
+   "steps": [
+    "Filet vorbereiten: Das Filet alle 3-4 cm mit Küchengarn binden, damit es eine gleichmäßige zylindrische Form behält, und großzügig mit Salz und Pfeffer würzen.",
+    "Anbraten: Das Filet in einer sehr heißen Pfanne mit Öl 1-2 Minuten pro Seite anbraten, bis sich rundum eine dunkle Kruste bildet. Wichtig: Die Pfanne muss rauchend heiß sein — diese Kruste ist purer Geschmack und versiegelt zugleich die Oberfläche.",
+    "Mit Senf bestreichen: Das noch warme Filet rundum mit dem Dijonsenf bestreichen und vollständig abkühlen lassen. Ein warmes Filet würde später den Teig zum Schmelzen bringen.",
+    "Duxelles zubereiten: Champignons und Schalotten in der Küchenmaschine fein hacken und in der Butter bei mittlerer Hitze etwa 15 Minuten garen.",
+    "Duxelles trocknen: Wichtig: So lange weitergaren, bis jeder Tropfen Feuchtigkeit verdampft ist und sich die Masse von der Pfanne löst. Restliches Wasser macht den Teig matschig.",
+    "Würzen: Den Weinbrand und die Thymianblätter zugeben, 2 Minuten weitergaren, um den Alkohol zu verkochen, würzen und vollständig abkühlen lassen.",
+    "Schichten aufbauen: Frischhaltefolie auslegen, die Prosciuttoscheiben überlappend zu einem Rechteck anordnen, die Duxelles gleichmäßig darauf verteilen und das Filet an eine Kante legen.",
+    "Rollen: Mit Hilfe der Folie fest zu einem kompakten Zylinder rollen, die Enden wie ein Bonbonpapier eindrehen und 30 Minuten kalt stellen, damit die Form hält.",
+    "In Teig hüllen: Den Zylinder aus der Folie auf die Blätterteigplatte legen, einrollen, die Ränder gut verschließen und mit der Naht nach unten auf ein ausgelegtes Blech setzen.",
+    "Kühlen: Das Paket weitere 20 Minuten kalt stellen. Kalter Teig geht im Ofen höher auf und wird knuspriger.",
+    "Backen: Mit dem Eigelb bestreichen, die Oberfläche leicht mit dem Messer einritzen und bei 200 °C 35-40 Minuten für medium backen.",
+    "Ruhen lassen: Wichtig: Vor dem Anschneiden 10 Minuten ruhen lassen. Sofortiges Schneiden lässt alle Säfte auf das Brett laufen."
+   ],
+   "wine": "Ein großer Rotwein — gereifter Bordeaux, Nemea Grande Reserve oder ein kräftiger Xinomavro.",
+   "plate": "Mit einem Sägemesser in dicke Scheiben schneiden und auf warmen Tellern mit einer Rotweinsauce und glasiertem Gemüse servieren."
+  },
+  "mous_lemoniou": {
+   "n": "Zitronenmousse",
+   "ing": [
+    "Sahne 500 ml",
+    "Gezuckerte Kondensmilch 400 g",
+    "Zitronensaft 150 ml",
+    "Schale von 2 Zitronen",
+    "Gelatine 4 Blätter (optional)"
+   ],
+   "steps": [
+    "Sahne, Schüssel und Schneebesen 10 Minuten ins Gefrierfach stellen — kaltes Werkzeug ist die Voraussetzung, dass Sahne richtig steif wird.",
+    "Die Sahne halbsteif schlagen und aufhören, bevor sie körnig wird.",
+    "In einer separaten Schüssel die Kondensmilch mit der Zitronenschale verrühren.",
+    "Wichtig: Den Zitronensaft langsam unter Rühren zugeben. Die Säure dickt die Kondensmilch sofort an, und alles auf einmal zugegeben entstehen Klümpchen, die sich nie wieder glätten.",
+    "Die Zitronenmasse mit dem Teigschaber in sanften Aufwärtsbewegungen unter die Schlagsahne heben, damit die Luft erhalten bleibt.",
+    "In Gläser füllen und mindestens 4 Stunden kalt stellen, bis alles fest ist.",
+    "Gekühlt servieren, mit etwas zusätzlicher Zitronenschale obenauf."
+   ],
+   "wine": "Ein Muskateller von Limnos oder ein süßer Schaumwein.",
+   "plate": "In klaren Gläsern mit Zitronenschale und einem Minzblatt servieren."
+  },
+  "moussaka": {
+   "n": "Moussaka",
+   "ing": [
+    "Auberginen 3",
+    "Rinderhackfleisch 500 g",
+    "Kartoffeln 3",
+    "Geriebene Tomate 300 g",
+    "Zwiebel 1",
+    "Milch 800 ml",
+    "Mehl 4 EL",
+    "Butter 80 g",
+    "Kefalotyri-Käse",
+    "Zimt"
+   ],
+   "steps": [
+    "Auberginen vorbereiten: Die Auberginen in etwa 1 cm dicke Scheiben schneiden. Großzügig salzen und 30 Minuten in einem Sieb stehen lassen — das Salz zieht Bitterkeit und überschüssige Feuchtigkeit heraus, sodass sie kein Öl aufsaugen und die Moussaka nicht wässrig wird. Abspülen und mit Küchenpapier sehr gut trocken tupfen.",
+    "Gemüse rösten: Auberginen und Kartoffeln (in 0,5 cm dicke Scheiben geschnitten) mit etwas Olivenöl bestreichen und bei 200 °C 20-25 Minuten rösten, bis sie weich und leicht gebräunt sind. Rösten statt Frittieren macht das Gericht leichter. Beiseitestellen.",
+    "Zwiebel anbraten: In einem weiten Topf 2-3 EL Olivenöl bei mittlerer Hitze erhitzen und die fein gehackte Zwiebel 5-6 Minuten glasig und weich dünsten — nicht verbrennen lassen, wir wollen Süße, keine Bitterkeit.",
+    "Fleisch anbraten: Die Hitze erhöhen, das Rinderhack zugeben und mit dem Löffel zerteilen. 8-10 Minuten braten, bis die Flüssigkeit verdampft ist und es bräunt — in dieser Phase entsteht Tiefe, weil die Zucker des Fleisches karamellisieren.",
+    "Hackfleischsauce: Mit einem halben Glas Wein ablöschen (optional) und 1-2 Minuten verdampfen lassen. Die geriebene Tomate, eine Zimtstange (oder 1/2 TL gemahlen), Salz, Pfeffer und etwas Zucker gegen die Säure zugeben. Offen 20-25 Minuten köcheln, bis die Sauce andickt und keine Flüssigkeit mehr abgibt.",
+    "Béchamel: 80 g Butter in einem Topf schmelzen, das Mehl zugeben und 1-2 Minuten rühren, um es abzurösten (eine Mehlschwitze — sie darf nicht bräunen). Nach und nach die heiße Milch unter ständigem Rühren zugeben, damit keine Klümpchen entstehen. Kochen, bis eine puddingartige Konsistenz erreicht ist. Vom Herd nehmen, etwas Muskat zugeben und nach leichtem Abkühlen 2 Eier und eine Handvoll geriebenen Kefalotyri unterrühren.",
+    "Zusammensetzen: In einer Form zuerst die Kartoffeln schichten (die Basis, die den Saft hält), dann die Hälfte der Auberginen, die gesamte Hackfleischsauce, die restlichen Auberginen und zum Schluss die gesamte Béchamel gleichmäßig verstreichen. Mit Käse bestreuen.",
+    "Backen & Ruhen: Bei 180 °C 50-60 Minuten backen, bis die Béchamel goldbraun ist und eine Kruste bildet. WICHTIG: Die Moussaka vor dem Schneiden mindestens 20-30 Minuten abkühlen lassen — sonst zerfällt sie. In Quadrate schneiden und servieren."
+   ],
+   "wine": "Trockener Rotwein.",
+   "plate": "Quadratische Stücke, nach dem Abkühlen."
+  },
+  "mousse_sokolatas": {
+   "n": "Schokoladenmousse",
+   "ing": [
+    "Zartbitterschokolade 200 g (70 %)",
+    "Sahne 300 ml",
+    "Eier 4",
+    "Zucker 50 g",
+    "Butter 30 g"
+   ],
+   "steps": [
+    "Die Schokolade mit der Butter im Wasserbad oder in der Mikrowelle schmelzen. Etwas abkühlen lassen.",
+    "Das Eigelb mit dem Zucker hell aufschlagen. Unter die Schokolade rühren.",
+    "Die Sahne steif schlagen. Das Eiweiß zu steifem Schnee schlagen.",
+    "Zuerst die Schlagsahne mit sanften Bewegungen unter die Schokolade heben, dann den Eischnee. Wichtig: Nicht kräftig rühren — die Luft gibt dem Mousse seine leichte, luftige Textur.",
+    "In Gläser oder Schalen füllen und 3-4 Stunden kalt stellen.",
+    "Mit geraspelter Schokolade oder Schlagsahne servieren."
+   ]
+  },
+  "mpourger_spitiko": {
+   "n": "Hausgemachter Burger",
+   "ing": [
+    "Rinderhackfleisch 600 g",
+    "Burgerbrötchen (Brioche) 4 Stück",
+    "Cheddar oder Gouda, 4 Scheiben",
+    "Tomaten 2 Stück",
+    "Eisbergsalat 4 Blätter",
+    "Rote Zwiebel 1 Stück",
+    "Essiggurken 2 Stück",
+    "Senf 2 EL",
+    "Ketchup 3 EL",
+    "Salz, Pfeffer 1 TL",
+    "Olivenöl 2 EL"
+   ],
+   "steps": [
+    "Fleisch vorbereiten: Das Rinderhack mit Salz und frisch gemahlenem Pfeffer in eine Schüssel geben und nur leicht durchkneten, ohne es zu überarbeiten, damit es zart bleibt.",
+    "Patties formen: Das Fleisch in 4 gleiche Kugeln teilen und zu etwa 2 cm dicken Patties flach drücken, etwas breiter als die Brötchen, da sie beim Braten schrumpfen.",
+    "Wichtig: Mit dem Daumen eine kleine Mulde in die Mitte jedes Patties drücken, damit es beim Braten nicht aufwölbt und flach bleibt.",
+    "Pfanne erhitzen: Pfanne oder Grill mit etwas Olivenöl bei starker Hitze gut vorheizen, bevor die Patties daraufkommen, damit sie sofort karamellisieren.",
+    "Braten: Die Patties für medium 3-4 Minuten pro Seite braten und nur einmal wenden, damit sie ihren Saft behalten.",
+    "Käse: Eine Minute vor Ende eine Käsescheibe auflegen und die Pfanne zudecken, damit er sanft schmilzt.",
+    "Brötchen: Die Brötchen halbieren und mit der Schnittfläche nach unten kurz auf dem Grill leicht anrösten.",
+    "Zusammensetzen: Senf und Ketchup auf die untere Brötchenhälfte streichen, Salat, das Patty mit Käse, Tomatenscheiben, Zwiebel und Gurken auflegen und mit der oberen Hälfte schließen."
+   ],
+   "wine": "Eiskaltes Lagerbier oder ein leichter trockener Rotwein",
+   "plate": "Mit Pommes und Barbecue-Sauce dazu servieren."
+  },
+  "mydia_axnista": {
+   "n": "Gedämpfte Miesmuscheln",
+   "ing": [
+    "Frische Miesmuscheln in der Schale 1 kg",
+    "Zwiebel 1 mittelgroße",
+    "Knoblauch 3 Zehen",
+    "Olivenöl 4 EL",
+    "Trockener Weißwein 1 Glas",
+    "Reife Tomate, gerieben, 1 (optional)",
+    "Frische Petersilie 1 Bund",
+    "Saft von 1 Zitrone",
+    "Frisch gemahlener Pfeffer und Salz, sparsam verwendet"
+   ],
+   "steps": [
+    "Putzen: Die Muscheln unter kaltem fließendem Wasser gut waschen, die Schalen abbürsten und die Bärte herausziehen. Muscheln, die zerbrochen oder offen sind und sich beim Antippen nicht schließen, wegwerfen.",
+    "Wichtig: Nur lebende Muscheln verwenden. Vor dem Garen muss sich jede offene Schale bei leichtem Klopfen schließen, sonst ist die Muschel tot und muss weggeworfen werden, da sie eine Lebensmittelvergiftung verursachen kann.",
+    "Anbraten: In einem weiten Topf das Olivenöl bei mittlerer Hitze erhitzen und die gehackte Zwiebel weich dünsten. Den gehackten Knoblauch zugeben und eine Minute rühren, bis er duftet, ohne zu verbrennen.",
+    "Mit Wein ablöschen: Den Weißwein angießen und 1-2 Minuten aufkochen lassen, damit der Alkohol verdampft. Nach Belieben die geriebene Tomate zugeben und 3-4 Minuten kochen, bis die Sauce leicht andickt.",
+    "Dämpfen: Die Hitze erhöhen, die Muscheln in den Topf geben und sofort den Deckel auflegen. Den Topf mit festgehaltenem Deckel schwenken, damit der Sud zirkuliert und die Muscheln gleichmäßig garen.",
+    "Garzeit: Die Muscheln 4-6 Minuten zugedeckt lassen, bis sich alle Schalen geöffnet haben. Nicht übergaren, sonst wird das Fleisch zäh und gummiartig.",
+    "Prüfen: Muscheln, die nach dem Garen geschlossen bleiben, wegwerfen, da sie nicht sicher zu essen sind. Den Sud abschmecken und sparsam mit Salz und frisch gemahlenem Pfeffer würzen, da Muscheln von Natur aus salzig sind.",
+    "Abschluss: Die Hitze abschalten, den Zitronensaft zugeben und mit reichlich gehackter Petersilie bestreuen. Vorsichtig umrühren und sofort dampfend heiß servieren."
+   ],
+   "wine": "Trockener, frischer Weißwein wie Assyrtiko oder Moschofilero.",
+   "plate": "In einer tiefen Schale mit ihrem Sud und reichlich frischem Brot zum Auftunken servieren. Dazu eine Zitronenspalte."
+  },
+  "mydia_saganaki": {
+   "n": "Miesmuscheln Saganaki",
+   "ing": [
+    "Miesmuscheln 1 kg",
+    "Geriebene Tomate 200 g",
+    "Feta 80 g",
+    "Ouzo 3 EL",
+    "Knoblauch 2 Zehen",
+    "Olivenöl",
+    "Petersilie",
+    "Scharfe Peperoni"
+   ],
+   "steps": [
+    "Muscheln putzen: Die 1 kg Muscheln gründlich putzen, die Schalen abbürsten und die Bärte entfernen. Wichtig: Muscheln, die offen sind und sich beim Antippen nicht schließen, wegwerfen, da sie nicht frisch sind.",
+    "Muscheln öffnen: In einem zugedeckten Topf mit etwas Wasser die Muscheln bei starker Hitze 3-4 Minuten garen, bis sie sich öffnen. Nicht geöffnete wegwerfen, da sie nicht sicher zu essen sind.",
+    "Sauce zubereiten: In einer Pfanne mit Olivenöl 2 Knoblauchzehen anbraten, dann die 200 g geriebene Tomate und etwas fein gehackte Peperoni zugeben.",
+    "Mit Ouzo ablöschen: Die 3 EL Ouzo zugeben und den Alkohol verdampfen lassen, sodass nur das Anisaroma bleibt, das so gut zu Meeresfrüchten passt.",
+    "Sauce köcheln: Die Sauce 5 Minuten köcheln, bis sie leicht andickt und sich die Aromen verbinden.",
+    "Vereinen: Die Muscheln in die Sauce geben und vorsichtig umrühren, dabei etwas von ihrem Sud für zusätzlichen Geschmack zugeben.",
+    "Abschluss und Servieren: Die 80 g Feta darüber reiben und mit Petersilie bestreuen. Sofort kochend heiß servieren, damit die Muscheln saftig bleiben."
+   ],
+   "wine": "Trockener Weißwein.",
+   "plate": "Tiefer Teller oder Saganaki-Pfanne, mit frischem Brot."
+  },
+  "omeleta_laxanikon": {
+   "n": "Gemüseomelett",
+   "ing": [
+    "4 Eier",
+    "1 Paprika",
+    "1 Tomate",
+    "½ Zwiebel",
+    "2 EL Olivenöl",
+    "30 g geriebener Käse",
+    "Salz & Pfeffer"
+   ],
+   "steps": [
+    "Gemüse schneiden: Die halbe Zwiebel, 1 Paprika und 1 Tomate fein hacken. Gleichmäßiges, feines Schneiden lässt sie schnell und gemeinsam garen.",
+    "Anbraten: Das Gemüse in 2 EL Olivenöl 3-4 Minuten weich dünsten. Wichtig: Die Tomate ihre Flüssigkeit abgeben lassen, damit das Omelett beim Garen nicht wässrig wird.",
+    "Eier verquirlen: Die 4 Eier mit Salz, Pfeffer und den 30 g geriebenem Käse verquirlen. Etwas Schlagen bringt Luft ein und macht das Omelett fluffiger.",
+    "Eimasse zugeben: Die verquirlten Eier bei mittlerer bis niedriger Hitze über das Gemüse in die Pfanne gießen. Starke Hitze verbrennt den Boden, bevor die Oberfläche gart.",
+    "Garen: Die Pfanne 3-4 Minuten zudecken, bis die Oberfläche gestockt ist. Der Deckel hält den Dampf und gart das Omelett auch von oben.",
+    "Wenden und Servieren: Nach Belieben das Omelett für ein paar Sekunden auf die andere Seite wenden und sofort heiß servieren."
+   ],
+   "wine": "Ein leichter Weißwein.",
+   "plate": "Heiß, mit Toast oder Paximadi."
   }
  }
 }
