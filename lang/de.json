@@ -3960,6 +3960,610 @@
    ],
    "wine": "Trockener Rotwein.",
    "plate": "Mit Hilopites (griechische Eiernudeln) oder Reis, Kefalotyri-Käse."
+  },
+  "kotopoulo_manitaria": {
+   "n": "Hähnchen mit Champignons",
+   "ing": [
+    "Hähnchenbrust 600 g",
+    "Gemischte Pilze 400 g",
+    "Sahne 200 ml",
+    "Zwiebel 1",
+    "Knoblauch 2 Zehen",
+    "Weißwein 100 ml",
+    "Butter 30 g",
+    "Thymian",
+    "Salz & Pfeffer"
+   ],
+   "steps": [
+    "Hähnchen vorbereiten: Die 600 g Hähnchenbrust in Streifen schneiden und mit Salz und Pfeffer würzen. Gleichmäßige Streifen garen schnell und gleichmäßig.",
+    "Hähnchen anbraten: Das Hähnchen in einem Teil der 30 g Butter 4-5 Minuten pro Seite anbraten, dann herausnehmen. Wichtig: Die Pfanne nicht überfüllen, sonst dämpft das Hähnchen statt zu bräunen — bei Bedarf portionsweise braten.",
+    "Pilze anbraten: In derselben Pfanne die 400 g Pilze bei starker Hitze braten, bis sie gebräunt sind und ihre Flüssigkeit verdampft ist. Das entwickelt Geschmack und verhindert eine wässrige Sauce.",
+    "Aromaten: 1 fein gehackte Zwiebel, 2 Knoblauchzehen und Thymian zugeben und weich dünsten.",
+    "Mit Wein ablöschen: Mit den 100 ml Weißwein ablöschen und den Alkohol verdampfen lassen, dabei den Pfannenboden abkratzen. Der Bratensatz gibt der Sauce Tiefe.",
+    "Sauce abschließen: Die 200 ml Sahne angießen, das Hähnchen zurückgeben und 10 Minuten köcheln, bis die Sauce andickt. Wichtig: Nach der Sahne die Hitze niedrig halten, denn starkes Kochen kann sie ausflocken lassen.",
+    "Servieren: Abschmecken, Salz und Pfeffer anpassen und heiß servieren."
+   ],
+   "wine": "Trockener Weißwein.",
+   "plate": "Mit Reis oder Kartoffelpüree, Pilze obenauf."
+  },
+  "kotopoulo_pane": {
+   "n": "Hähnchenschnitzel",
+   "ing": [
+    "Hähnchenbrustfilets 4 (etwa 600 g)",
+    "Weizenmehl 1 Tasse",
+    "Eier 2",
+    "Semmelbrösel 1½ Tassen",
+    "Geriebener Parmesan 3 EL (optional)",
+    "Knoblauchpulver 1 TL",
+    "Salz und Pfeffer",
+    "Sonnenblumenöl zum Braten 1 Tasse",
+    "Zitrone 1 (zum Servieren)"
+   ],
+   "steps": [
+    "Fleisch vorbereiten: Jedes Hähnchenfilet waagerecht durchschneiden, damit es dünner wird. Die Stücke zwischen zwei Bögen Backpapier legen und mit dem Fleischklopfer auf etwa 1 cm klopfen. Wichtig: Eine gleichmäßige, dünne Stärke ist das Geheimnis eines Schnitzels, das schnell gart und saftig bleibt, ohne dass die Panade verbrennt.",
+    "Würzen: Die Schnitzel beidseitig gut mit Salz und Pfeffer würzen. 10 Minuten Zimmertemperatur annehmen lassen.",
+    "Panierstraße aufbauen: Drei Teller bereitstellen. In den ersten das Mehl, in den zweiten die verquirlten Eier mit etwas Salz, in den dritten die Semmelbrösel gemischt mit Parmesan und Knoblauchpulver.",
+    "Panieren: Jedes Filet zuerst in Mehl wenden (überschüssiges abklopfen), dann in Ei und zuletzt in die Brösel, dabei gut andrücken, damit die Panade überall haftet. Wichtig: Die Brösel mit der Hand fest andrücken, für eine gleichmäßige, knusprige Kruste.",
+    "Öl erhitzen: Das Sonnenblumenöl in einer weiten Pfanne bei mittlerer bis starker Hitze erhitzen. Es ist bereit, wenn eine Prise Brösel sofort zischt (etwa 170-180 °C).",
+    "Braten: Die Schnitzel 3-4 Minuten pro Seite goldbraun und knusprig braten. Die Pfanne nicht überfüllen, sonst sinkt die Temperatur.",
+    "Abtropfen: Auf einen mit Küchenpapier belegten Teller legen, damit überschüssiges Öl abtropft.",
+    "Servieren: Heiß mit Zitronenspalten zum Beträufeln servieren."
+   ],
+   "wine": "Ein frischer trockener Weißwein oder eiskaltes Bier.",
+   "plate": "Mit Pommes und einem erfrischenden grünen Salat servieren."
+  },
+  "kotopoulo_paprika": {
+   "n": "Paprikahähnchen",
+   "ing": [
+    "Hähnchenschenkel 4 (800 g)",
+    "Zwiebel 1 große",
+    "Knoblauch 3 Zehen",
+    "Edelsüßes Paprikapulver 3 EL",
+    "Geräuchertes Paprikapulver 1 EL",
+    "Geriebene Tomate 200 g",
+    "Sahne oder eingekochte Milch 150 ml",
+    "Olivenöl 3 EL",
+    "Salz, Pfeffer, Thymian"
+   ],
+   "steps": [
+    "Hähnchen anbraten: Die Schenkel mit Salz und Pfeffer würzen und in Olivenöl 4-5 Minuten rundum anbraten. Herausnehmen und beiseitestellen. Das schließt die Säfte ein.",
+    "Basis: In derselben Pfanne die Zwiebel 3 Minuten anbraten. Knoblauch und beide Paprikapulver zugeben. 1 Minute bei niedriger Hitze rühren. Wichtig: Paprikapulver verbrennt bei starker Hitze leicht und wird bitter.",
+    "Schmoren: Tomate, Thymian und ½ Tasse Wasser zugeben. Das Hähnchen zurückgeben. Zugedeckt 25 Minuten schmoren.",
+    "Abschluss: Das Hähnchen herausnehmen. Die Sahne in die Sauce rühren und 2 Minuten andicken lassen. Das Hähnchen mit der Sauce übergossen servieren, dazu Reis oder Kartoffelpüree."
+   ],
+   "wine": "Rotwein oder Rosé.",
+   "plate": "Mit kräftiger Paprikasauce und Reis."
+  },
+  "kotopoulo_rizi": {
+   "n": "Hähnchen mit Reis",
+   "ing": [
+    "Hähnchenteile 800 g",
+    "Reis 1,5 Tassen",
+    "Zwiebel 1",
+    "Knoblauch 2 Zehen",
+    "Geriebene Tomate 200 g",
+    "Zimt 1/2 TL",
+    "Piment 2 Körner",
+    "Hühnerbrühe 800 ml",
+    "Olivenöl",
+    "Salz & Pfeffer"
+   ],
+   "steps": [
+    "Hähnchen anbraten: Die Hähnchenteile mit Salz und Pfeffer würzen und in heißem Öl rundum 3-4 Minuten pro Seite anbraten. Das Anbraten schließt die Säfte ein und gibt Tiefe.",
+    "Anbraten: Das Hähnchen herausnehmen, Zwiebel und Knoblauch im selben Öl 5 Minuten dünsten.",
+    "Sauce: Tomate, Zimt, Piment und Salz zugeben. Das Hähnchen zurück in den Topf geben. Zugedeckt 20 Minuten schmoren, bis es gar ist.",
+    "Reis zugeben: Das Hähnchen herausnehmen, die Flüssigkeit im Topf messen und mit Brühe auf insgesamt 3 Tassen auffüllen. Den Reis zugeben und umrühren.",
+    "Reis garen: Zugedeckt bei niedriger Hitze 18 Minuten köcheln. WICHTIG: Während des Garens nicht umrühren.",
+    "Servieren: Das Hähnchen auf den Reis legen, zudecken und 5 Minuten stehen lassen."
+   ],
+   "wine": "Trockener Weißwein.",
+   "plate": "Reis als Basis mit Hähnchen obenauf."
+  },
+  "kotopoulo_souvlaki": {
+   "n": "Hähnchen-Souvlaki",
+   "ing": [
+    "Hähnchenbrust 600 g",
+    "Olivenöl 3 EL",
+    "Saft von 1 Zitrone",
+    "Knoblauch 2 Zehen",
+    "Oregano 1 TL",
+    "Edelsüßes Paprikapulver 1/2 TL",
+    "Joghurt 2 EL",
+    "Salz & Pfeffer"
+   ],
+   "steps": [
+    "Schneiden: Die Brust in 2,5 cm große Würfel schneiden. Gleiche Größe bedeutet gleichmäßiges Garen.",
+    "Marinade: Olivenöl, Zitrone, Knoblauch, Oregano, Paprika und Joghurt mischen. Der Joghurt macht das Fleisch zart und hält es saftig.",
+    "Marinieren: Die Würfel mindestens 30 Minuten in der Marinade ziehen lassen (2-3 Stunden sind besser). WICHTIG: Nur leicht und erst kurz vor dem Grillen salzen.",
+    "Aufspießen: 5-6 Würfel auf jeden Spieß stecken, ohne sie zu fest zusammenzudrücken.",
+    "Grillen: Auf sehr heißem Grill 8-10 Minuten grillen und alle 2-3 Minuten wenden, für gleichmäßige Bräunung. Hähnchenbrust gart schnell — nicht übergaren.",
+    "Servieren: Im Pitabrot oder auf dem Teller mit Tzatziki, Tomate und Zwiebel servieren."
+   ],
+   "wine": "Rosé.",
+   "plate": "Pitabrot mit Tzatziki und Gemüse."
+  },
+  "kotopoulo_sxara": {
+   "n": "Gegrilltes Hähnchen",
+   "ing": [
+    "Hähnchenschenkel 800 g",
+    "Olivenöl 4 EL",
+    "Saft von 1 Zitrone",
+    "Knoblauch 3 Zehen",
+    "Oregano 1 TL",
+    "Thymian 1/2 TL",
+    "Edelsüßes Paprikapulver 1 TL",
+    "Salz & Pfeffer"
+   ],
+   "steps": [
+    "Marinade: Olivenöl, Zitrone, geriebenen Knoblauch, Oregano, Thymian und Paprika mischen. Die Schenkel mit dem Messer einschneiden, damit die Marinade tief eindringt.",
+    "Marinieren: Die Schenkel mit der Marinade einreiben und mindestens 1 Stunde im Kühlschrank ziehen lassen — idealerweise über Nacht. WICHTIG: Erst 30 Minuten vor dem Grillen salzen, damit das Fleisch nicht austrocknet.",
+    "Vorheizen: Grill oder Grillpfanne stark vorheizen. Reinigen und mit Öl bestreichen, damit das Hähnchen nicht klebt.",
+    "Grillen: Die Schenkel bei mittlerer bis starker Hitze 12-15 Minuten pro Seite grillen. Mit der Hautseite nach unten beginnen (flach ausgebreitet), für knusprige Haut.",
+    "Garprobe: Ein Fleischthermometer verwenden — 75 °C Kerntemperatur, oder der Saft muss klar austreten. WICHTIG: Nicht zum Prüfen einschneiden, sonst geht der Saft verloren.",
+    "Ruhen lassen: Vor dem Servieren 5 Minuten mit Folie abgedeckt ruhen lassen, damit sich die Säfte verteilen."
+   ],
+   "wine": "Trockener Rosé.",
+   "plate": "Mit Zitrone, Oregano und Zitronenkartoffeln."
+  },
+  "kotopoulo_tigania": {
+   "n": "Hähnchenpfanne auf kretische Art",
+   "ing": [
+    "Hähnchenschenkelfilet 700 g, in mundgerechte Stücke geschnitten",
+    "Olivenöl 4 EL",
+    "Rote und grüne Paprika, 3, in Streifen geschnitten",
+    "1 große Zwiebel, in Scheiben",
+    "Knoblauch, 2 Zehen, fein gehackt",
+    "Geriebene Tomate oder Tomatensaft 3 EL",
+    "Trockener Weißwein 1/2 Glas",
+    "Oregano 1 TL",
+    "Salz und frisch gemahlener Pfeffer nach Geschmack",
+    "Zitrone, 1 Stück, zum Servieren"
+   ],
+   "steps": [
+    "Hähnchen vorbereiten: Das Schenkelfilet in 3-4 cm große Stücke schneiden und mit Küchenpapier gut trocken tupfen, damit es richtig bräunt.",
+    "Hähnchen anbraten: Das Olivenöl in einer weiten Pfanne oder im Wok bei starker Hitze erhitzen und die Hähnchenstücke zugeben. Wichtig: Die Pfanne nicht überfüllen — bei Bedarf portionsweise braten, damit das Fleisch anbrät und bräunt, statt im eigenen Saft zu schmoren.",
+    "Bräunen: Das Hähnchen etwa 7-8 Minuten unter gelegentlichem Rühren rundum kräftig bräunen lassen.",
+    "Gemüse zugeben: Zwiebel und Paprika in die Pfanne geben und 4-5 Minuten anbraten, bis sie leicht weich sind, aber noch Biss haben.",
+    "Knoblauch und mit Wein ablöschen: Den Knoblauch zugeben, 30 Sekunden rühren und mit dem Weißwein ablöschen, den Alkohol verdampfen lassen.",
+    "Tomate und Garen: Die geriebene Tomate, Oregano, Salz und Pfeffer zugeben. Die Hitze reduzieren und offen 10-12 Minuten köcheln, bis die Sauce leicht andickt.",
+    "Letzte Prüfung: Abschmecken und salzen, dabei sicherstellen, dass das Hähnchen durchgegart, aber nicht trocken ist.",
+    "Servieren: Kochend heiß mit einem Spritzer frischer Zitrone servieren, dazu Bratkartoffeln oder Pilafreis."
+   ],
+   "wine": "Trockener Weißwein aus Kreta, etwa Vidiano, kühl und aromatisch",
+   "plate": "Auf einem Teller mit Bratkartoffeln oder Pilafreis serviert, dazu ein griechischer Bauernsalat"
+  },
+  "kotopoulo_vigeroua": {
+   "n": "Hähnchen Villeroy",
+   "ing": [
+    "Hähnchenbrustfilet 600 g",
+    "Butter 60 g",
+    "Weizenmehl 60 g",
+    "Frische Milch 500 ml",
+    "Gruyère oder Emmentaler, gerieben, 100 g",
+    "Schinken, in Scheiben, 100 g",
+    "Eier, 2",
+    "Semmelbrösel 150 g",
+    "Geriebene Muskatnuss, etwas",
+    "Salz, frisch gemahlener Pfeffer",
+    "Pflanzenöl zum Frittieren"
+   ],
+   "steps": [
+    "Hähnchen garen: Die Hähnchenfilets in leicht gesalzenem Wasser 15-18 Minuten weich kochen, abgießen und abkühlen lassen.",
+    "Béchamel zubereiten: Die Butter in einem Topf schmelzen, das Mehl zugeben und bei niedriger Hitze 2 Minuten ständig rühren, damit der Mehlgeschmack verkocht. Nach und nach die heiße Milch unter Rühren angießen.",
+    "Wichtig: Die Béchamel muss sehr dick, fast pastenartig sein, damit sie kalt ihre Form hält und beim Frittieren nicht schmilzt. Bei niedriger Hitze unter ständigem Rühren etwa 10 Minuten gut eindicken lassen.",
+    "Sauce verfeinern: Vom Herd nehmen, den geriebenen Käse, Muskat, Salz und Pfeffer zugeben, unterrühren und die Béchamel vollständig abkühlen lassen, am besten 1-2 Stunden im Kühlschrank.",
+    "Zusammensetzen: Das Hähnchen in Scheiben schneiden, eine Scheibe Schinken zwischen zwei Hähnchenscheiben legen und die kalte, dicke Béchamel großzügig als Hülle über die gesamte Oberfläche streichen.",
+    "Panieren: Jedes Stück zuerst in das verquirlte Ei und dann in die Semmelbrösel tauchen, gut andrücken, damit alles haftet. Ei und Brösel für eine doppelte Panade wiederholen, damit die Kruste beim Frittieren nicht aufbricht.",
+    "Frittieren: Reichlich Öl bei mittlerer bis starker Hitze erhitzen und die Stücke rundum etwa 3-4 Minuten pro Seite gleichmäßig bräunen, damit die Béchamel innen warm wird, ohne zu schmelzen und auszulaufen.",
+    "Servieren: Auf Küchenpapier abtropfen lassen und sofort heiß servieren, solange die Kruste knusprig ist."
+   ],
+   "wine": "Trockener Weißwein, Assyrtiko aus Santorini oder ein leichter Roditis",
+   "plate": "Mit Kartoffelpüree oder Kraut-Karotten-Salat und etwas Zitronenmayonnaise dazu servieren"
+  },
+  "kotosopa": {
+   "n": "Hühnersuppe Avgolemono",
+   "ing": [
+    "Ganzes Hähnchen 1",
+    "Reis 100 g",
+    "Eier 2",
+    "Zitrone 1",
+    "Karotten 2",
+    "Sellerie"
+   ],
+   "steps": [
+    "Brühe kochen: Das ganze Hähnchen mit kaltem Wasser, den 2 Karotten und dem Sellerie in einen Topf geben und 45 Minuten kochen. Wichtig: Den anfangs aufsteigenden Schaum mit einer Schaumkelle abschöpfen, damit die Brühe klar und rein im Geschmack bleibt.",
+    "Entbeinen: Das Hähnchen herausnehmen, etwas abkühlen lassen und in mundgerechte Stücke zerlegen. Die Brühe abseihen, um kleine Knochen zu entfernen.",
+    "Reis garen: Die Brühe wieder aufkochen und die 100 g Reis zugeben. 15 Minuten weich kochen. Abschmecken und salzen.",
+    "Avgolemono aufschlagen: Die 2 Eier mit dem Saft von 1 Zitrone schaumig schlagen. Gutes Aufschlagen macht das Avgolemono leicht und verhindert Gerinnen.",
+    "Temperieren: Nach und nach kellenweise heiße Brühe unter ständigem Schlagen zur Ei-Zitronen-Mischung geben. Wichtig: Dieser Schritt ist entscheidend, um die Temperatur langsam anzuheben, denn direkt in die heiße Brühe gegeben würden die Eier gerinnen und Klumpen bilden.",
+    "Vom Herd vereinen: Den Topf vom Herd nehmen und das Avgolemono unter Rühren zugießen. Nicht wieder stark aufkochen, sonst gerinnt es.",
+    "Servieren: Das entbeinte Hähnchen zugeben, mit frischem Dill bestreuen und heiß servieren."
+   ],
+   "wine": "Trockener Weißwein.",
+   "plate": "In einer tiefen Schale, mit Hähnchen und Dill."
+  },
+  "kotosoupa": {
+   "n": "Hühnersuppe",
+   "ing": [
+    "Hähnchen 1 ganzes",
+    "Karotten 2",
+    "Sellerie 2 Stangen",
+    "Zwiebel 1",
+    "Reis 1/2 Tasse",
+    "Eier 2 (für Avgolemono — optional)",
+    "Saft von 1 Zitrone (für Avgolemono — optional)",
+    "Salz & Pfeffer"
+   ],
+   "steps": [
+    "Kochen: Das Hähnchen in kaltes Wasser (2,5 Liter) mit Karotten, Sellerie, Zwiebel und Salz geben. Bei niedriger Hitze 45-50 Minuten köcheln und in den ersten Minuten den Schaum abschöpfen.",
+    "Suppenbasis: Das Hähnchen herausnehmen und die Brühe abseihen. Das Fleisch in Stücke schneiden.",
+    "Reis: Die Brühe zurück in den Topf geben, aufkochen und den Reis zugeben. 15-18 Minuten garen.",
+    "Fleisch zugeben: Die Hähnchenstücke zurück in den Topf geben. Abschmecken und mit Salz und Pfeffer anpassen.",
+    "Servieren ohne Avgolemono: Sofort in tiefen Schalen servieren.",
+    "Avgolemono (optional): Für das Avgolemono 2 Eier mit dem Saft von 1 Zitrone schaumig schlagen. Nach und nach 2-3 Kellen heiße Suppe unter ständigem Schlagen zugeben (temperieren). Zurück in den Topf gießen und kreisend einrühren. Wichtig: Danach NICHT mehr aufkochen lassen, sonst gerinnt das Ei."
+   ],
+   "wine": "-",
+   "plate": "In einer tiefen Schale, heiß serviert."
+  },
+  "koulourakia_amygdalou": {
+   "n": "Mandel-Koulourakia",
+   "ing": [
+    "Mehl 400 g",
+    "Gemahlene Mandeln 100 g",
+    "Zucker 130 g",
+    "Butter 160 g",
+    "Ei 1",
+    "Bittermandelaroma 1 TL",
+    "Backpulver 1 TL",
+    "Ganze Mandeln 40 (zum Verzieren)",
+    "Eiweiß 1 (zum Bestreichen)"
+   ],
+   "steps": [
+    "Mandeln rösten: Die gemahlenen Mandeln in einer trockenen Pfanne 3 Minuten rösten, bis sie duften, dann vollständig abkühlen lassen. Wichtig: Rohe gemahlene Mandeln schmecken fad, erst das Rösten weckt das Aroma.",
+    "Butter aufschlagen: Die Butter mit dem Zucker 5 Minuten aufschlagen.",
+    "Ei zugeben: Das Ei und das Mandelaroma zugeben und glatt rühren.",
+    "Vereinen: Mehl, die abgekühlten gemahlenen Mandeln und das Backpulver zu einem weichen Teig verarbeiten.",
+    "Wichtig: Gemahlene Mandeln bringen Fett, aber kein Gluten mit, daher ist dieser Teig empfindlicher als üblich. Behutsam behandeln und nicht kneten.",
+    "Kühlen: Den Teig 30 Minuten kalt stellen, damit die Butter fest wird und er die Form hält.",
+    "Formen: Zu Kugeln rollen und leicht flach drücken oder die traditionelle Halbmondform bilden.",
+    "Verzieren: In die Mitte jedes Gebäcks eine ganze Mandel drücken und mit leicht verquirltem Eiweiß bestreichen.",
+    "Backen: Bei 170 °C 20-22 Minuten backen. Wichtig: Die Temperatur niedrig halten — gemahlene Mandeln verbrennen viel schneller als Mehl und werden bitter.",
+    "Abkühlen: 5 Minuten auf dem Blech lassen, bevor sie bewegt werden, denn heiß sind sie sehr zerbrechlich."
+   ],
+   "wine": "Amaretto oder ein süßer Weißwein.",
+   "plate": "Auf einer Platte servieren, mit ganzen Mandeln dazwischen."
+  },
+  "koulourakia_kakao": {
+   "n": "Kakao-Koulourakia",
+   "ing": [
+    "Mehl 460 g",
+    "Kakaopulver 40 g",
+    "Zucker 150 g",
+    "Butter 180 g",
+    "Eier 2",
+    "Milch 3 EL",
+    "Backpulver 2 TL",
+    "Vanilleextrakt 1 TL",
+    "Puderzucker zum Bestäuben"
+   ],
+   "steps": [
+    "Kakao sieben: Den Kakao zweimal zusammen mit dem Mehl sieben. Wichtig: Kakao klumpt hartnäckig, und ungesiebte Klümpchen hinterlassen trockene, bittere Stellen im Teig.",
+    "Butter aufschlagen: Die Butter mit dem Zucker 5 Minuten hell aufschlagen.",
+    "Eier zugeben: Die Eier einzeln zugeben, dann die Vanille.",
+    "Teig herstellen: Die gesiebten trockenen Zutaten nach und nach mit der Milch zugeben und zu einem weichen Teig verarbeiten.",
+    "Wichtig: Kakao nimmt mehr Flüssigkeit auf als Mehl. Wirkt der Teig trocken und reißt, löffelweise Milch zugeben — niemals alles auf einmal.",
+    "Ruhen lassen: Den Teig 30 Minuten ruhen lassen, damit er vollständig durchzieht.",
+    "Formen: Zu Strängen rollen und gleich große Zöpfe oder Ringe formen.",
+    "Wichtig: Diese nicht mit Ei bestreichen. Auf dunklem Teig ist die Glasur unsichtbar, und der Zucker im Eigelb verbrennt, bevor das Gebäck fertig ist.",
+    "Backen: Bei 175 °C 18-20 Minuten backen — etwas niedriger als üblich, denn die dunkle Farbe verbirgt das Verbrennen, bis es zu spät ist.",
+    "Testen: Sie sind fertig, wenn der Boden fest ist und sie sich sauber vom Blech lösen. Nach dem Auskühlen mit Puderzucker bestäuben."
+   ],
+   "wine": "Heiße Schokolade oder Kaffee.",
+   "plate": "Auf einer Platte mit Puderzucker bestäubt servieren, für den Kontrast zur dunklen Farbe."
+  },
+  "koulourakia_meliou": {
+   "n": "Honig-Koulourakia",
+   "ing": [
+    "Mehl 450 g",
+    "Honig 100 ml",
+    "Zucker 80 g",
+    "Olivenöl 120 ml",
+    "Zimt 1 TL",
+    "Gemahlene Nelken 1/4 TL",
+    "Orangensaft 60 ml",
+    "Backpulver 2 TL",
+    "Sesam",
+    "Zusätzlicher Honig zum Beträufeln"
+   ],
+   "steps": [
+    "Honig erwärmen: Den Honig sanft erwärmen, bis er flüssig läuft. Wichtig: Niemals aufkochen lassen — große Hitze zerstört sein Aroma und lässt nur Süße zurück.",
+    "Flüssigkeiten mischen: Den warmen Honig mit Olivenöl, Orangensaft und Zucker glatt verrühren.",
+    "Gewürze zugeben: Zimt und Nelken einrühren, die die Flüssigkeit brauchen, um sich gleichmäßig zu verteilen.",
+    "Teig herstellen: Das gesiebte Mehl mit dem Backpulver nach und nach zugeben und zu einem weichen, leicht klebrigen Teig verarbeiten.",
+    "Wichtig: Honigteig ist immer klebriger als Butterteig. Nicht mit zusätzlichem Mehl korrigieren — stattdessen die Hände einölen.",
+    "Ruhen lassen: Den Teig 20 Minuten ruhen lassen.",
+    "Formen: Mit geölten Händen kleine Stränge oder Ovale formen und Sesam auf die Oberfläche drücken.",
+    "Backen: Bei 180 °C 20 Minuten backen.",
+    "Wichtig: Ab Minute 15 genau beobachten. Honig karamellisiert und verbrennt viel schneller als Zucker, und der Weg von goldbraun zu schwarz ist kurz.",
+    "Abschluss: Noch heiß mit etwas zusätzlichem warmem Honig beträufeln, damit er einzieht, statt obenauf zu bleiben."
+   ],
+   "wine": "Bergtee oder griechischer Kaffee.",
+   "plate": "Mit etwas Honig beträufelt und mit Sesam bestreut servieren."
+  },
+  "koulourakia_portokaliou": {
+   "n": "Orangen-Koulourakia",
+   "ing": [
+    "Mehl 500 g",
+    "Zucker 150 g",
+    "Butter 150 g",
+    "Eier 2",
+    "Orangensaft 80 ml",
+    "Schale von 2 Orangen",
+    "Backpulver 2 TL",
+    "Vanilleextrakt 1 TL",
+    "Eigelb 1 (zum Bestreichen)",
+    "Sesam"
+   ],
+   "steps": [
+    "Orangen vorbereiten: Die Orangen vor dem Auspressen abreiben und nur die farbige Schicht nehmen.",
+    "Butter aufschlagen: Die weiche Butter mit dem Zucker 5 Minuten hell und cremig aufschlagen.",
+    "Eier zugeben: Die Eier einzeln zugeben, dann Orangensaft, Schale und Vanille.",
+    "Wichtig: Die Masse sieht an dieser Stelle geronnen aus. Das ist normal — das Mehl bringt sie wieder zusammen.",
+    "Mehl zugeben: Das Mehl mit dem Backpulver sieben und nach und nach zugeben, bis ein weicher Teig entsteht.",
+    "Wichtig: Sobald der Teig zusammenkommt, aufhören zu kneten. Zu lange gekneteter Teig ergibt harte statt mürbe Koulourakia.",
+    "Ruhen lassen: Den Teig abdecken und 30 Minuten bei Zimmertemperatur ruhen lassen — nicht im Kühlschrank, sonst wird er zu fest zum Formen.",
+    "Formen: Stücke zu Strängen rollen und Zöpfe, Flechten oder Ringe formen, alle gleich dick, damit sie gleichmäßig backen.",
+    "Bestreichen: Mit verquirltem Eigelb bestreichen und mit Sesam bestreuen.",
+    "Backen: Bei 180 °C 20-25 Minuten goldbraun backen. Wichtig: Sie werden beim Abkühlen fester, also herausnehmen, solange sie noch leicht weich sind, sonst werden sie steinhart."
+   ],
+   "wine": "Griechischer Kaffee.",
+   "plate": "Auf einer Platte oder im Glasgefäß servieren, mit Kaffee dazu."
+  },
+  "koulourakia_vanilias": {
+   "n": "Vanille-Koulourakia",
+   "ing": [
+    "Mehl 480 g",
+    "Zucker 130 g",
+    "Butter 180 g",
+    "Eier 2",
+    "Vanilleschoten 2 oder Extrakt 2 TL",
+    "Backpulver 2 TL",
+    "Milch 2 EL",
+    "Puderzucker 100 g",
+    "Salz 1 Prise"
+   ],
+   "steps": [
+    "Vanille vorbereiten: Die Schoten längs aufschlitzen und das Mark mit einer Messerspitze herauskratzen. Wichtig: Echte Schoten geben eine Tiefe und die typischen Pünktchen, die kein Extrakt erreicht.",
+    "Zucker aromatisieren: Das Vanillemark mit den Fingerspitzen in den Zucker einreiben, damit sich das Aroma in jedem Korn verteilt.",
+    "Aufschlagen: Die Butter mit dem Vanillezucker 6 Minuten weiß und luftig aufschlagen.",
+    "Eier zugeben: Die Eier einzeln zugeben, dann die Milch.",
+    "Teig herstellen: Mehl mit Backpulver und Salz darüber sieben und zu einem weichen Teig verarbeiten.",
+    "Ruhen lassen: 30 Minuten ruhen lassen.",
+    "Formen: Zu Strängen rollen und kleine Ringe oder S-Formen bilden, klein halten — sie sollen zierlich sein.",
+    "Backen: Bei 175 °C 18 Minuten backen. Wichtig: Sie müssen hell bleiben. Bräunung überdeckt die Vanille, um die es bei diesem Gebäck geht.",
+    "Warm bestäuben: Noch warm in Puderzucker wälzen, damit die erste Schicht haftet und in die Oberfläche einzieht.",
+    "Zweite Schicht: Nach dem Auskühlen ein zweites Mal wälzen, damit sie am Ende richtig weiß sind."
+   ],
+   "wine": "Milch oder Vanilletee.",
+   "plate": "Auf einer Platte mit reichlich Puderzucker obenauf servieren."
+  },
+  "koulourakia_voutyrou": {
+   "n": "Butter-Koulourakia",
+   "ing": [
+    "Mehl 500 g",
+    "Zucker 150 g",
+    "Butter 200 g",
+    "Eier 2",
+    "Milch 2 EL",
+    "Vanilleextrakt 2 TL",
+    "Backpulver 2 TL",
+    "Eigelb 1 (zum Bestreichen)",
+    "Salz 1 Prise"
+   ],
+   "steps": [
+    "Butter wählen: Echte Butter verwenden, keine Margarine. Wichtig: In einem so schlichten Rezept ist die Butter der ganze Geschmack — es gibt nichts, hinter dem man sich verstecken könnte.",
+    "Weich werden lassen: Die Butter so lange stehen lassen, bis sie auf Fingerdruck nachgibt, aber nicht geschmolzen oder ölig ist.",
+    "Aufschlagen: Mit dem Zucker 6 Minuten aufschlagen, bis sie richtig weiß ist und ihr Volumen verdoppelt hat.",
+    "Eier zugeben: Die Eier einzeln zugeben, dann Vanille, Milch und Salz.",
+    "Mehl zugeben: Mehl mit Backpulver darüber sieben und zu einem weichen, nicht klebrigen Teig verarbeiten.",
+    "Ruhen lassen: Den Teig 20 Minuten ruhen lassen, damit das Mehl quillt und er sich leichter formen lässt.",
+    "Formen: Zu etwa 1,5 cm dicken Strängen rollen und S-Formen, Ringe oder Zöpfe formen.",
+    "Wichtig: Nicht zu dick machen. Butter-Koulourakia laufen beim Backen breit, und dicke bleiben in der Mitte roh.",
+    "Bestreichen: Mit Eigelb bestreichen, das mit etwas Milch verdünnt wurde, für einen gleichmäßigen goldenen Glanz.",
+    "Backen: Bei 180 °C 20 Minuten backen und auf einem Gitter abkühlen lassen, damit die Böden nicht durch eingeschlossenen Dampf weich werden."
+   ],
+   "wine": "Milch oder Tee.",
+   "plate": "Gefächert auf einer Platte anrichten, mit Puderzucker bestäubt."
+  },
+  "kounoupidi_fournou": {
+   "n": "Überbackener Blumenkohl mit Käse",
+   "ing": [
+    "1 großer Blumenkohl",
+    "Béchamelsauce 400 ml",
+    "Gouda oder Graviera 150 g",
+    "Olivenöl 3 EL",
+    "Salz, Pfeffer",
+    "Muskatnuss",
+    "Semmelbrösel"
+   ],
+   "steps": [
+    "Den Blumenkohl in Röschen teilen und 8 Minuten kochen. Abgießen.",
+    "In einer Form verteilen, mit Öl beträufeln und mit Salz und Pfeffer würzen.",
+    "Bei 200 °C 15 Minuten backen, bis er leicht goldbraun ist.",
+    "Die Béchamel darüber gießen und mit Käse bestreuen.",
+    "Weitere 15 Minuten backen, bis alles goldbraun überbacken ist."
+   ]
+  },
+  "kourabiedes": {
+   "n": "Kourabiedes",
+   "ing": [
+    "Mehl 500 g",
+    "Butterschmalz 250 g",
+    "Puderzucker 100 g",
+    "Eigelb 1",
+    "Mandeln 100 g, geröstet",
+    "Vanille",
+    "Puderzucker zum Bestäuben 200 g"
+   ],
+   "steps": [
+    "Butter aufschlagen: Das 250 g Butterschmalz bei Zimmertemperatur etwa 15 Minuten in der Küchenmaschine aufschlagen, bis es hell und cremig wie eine Creme ist. Das lange Schlagen bringt Luft ein und gibt den Kourabiedes ihre lockere Textur.",
+    "Flüssiges zugeben: Das 1 Eigelb, die Vanille und die 100 g Puderzucker zugeben und weiterschlagen, bis alles verbunden ist.",
+    "Mandeln rösten: Falls noch nicht geröstet, die 100 g Mandeln leicht rösten und klein hacken. Das Rösten macht sie knusprig und aromatisch.",
+    "Kneten: Die 500 g Mehl sieben und nach und nach zusammen mit den Mandeln unterheben, dabei nur leicht kneten. WICHTIG: Nicht zu lange kneten und den Teig nicht durch die Hände erwärmen, denn das schmilzt die Butter und macht die Kourabiedes hart.",
+    "Formen: Halbmonde oder Sterne formen und auf ein mit Backpapier belegtes Blech setzen, mit Abstand, da sie leicht aufgehen.",
+    "Backen: Bei 170 °C 18-22 Minuten backen, bis sie fest sind, ohne viel Farbe zu nehmen — Kourabiedes sollen hell bleiben.",
+    "Abschluss: Noch warm großzügig mit den 200 g Puderzucker bestäuben. Die warme Oberfläche lässt den Zucker haften und die typische weiße Hülle entstehen."
+   ],
+   "wine": "-",
+   "plate": "Auf einer Platte, rundum wie Schnee mit Puderzucker bestäubt."
+  },
+  "kreatopita": {
+   "n": "Griechische Fleischpita",
+   "ing": [
+    "Filoteig 500 g",
+    "Rinderhackfleisch 600 g",
+    "Zwiebeln 2",
+    "Geriebene Tomate 200 g",
+    "Kefalotyri-Käse 150 g",
+    "Eier 2",
+    "Zimt & Piment",
+    "Butter 80 g"
+   ],
+   "steps": [
+    "Anbraten: In einem Topf 2 gehackte Zwiebeln weich dünsten, dann die 600 g Rinderhack zugeben und unter Zerteilen kräftig bräunen, damit es karamellisiert statt im eigenen Saft zu schmoren.",
+    "Hackfleischsauce: Die 200 g geriebene Tomate, Zimt, Piment und Salz zugeben. 20 Minuten köcheln, bis fast keine Flüssigkeit mehr da ist. Wichtig: Die Füllung muss trocken sein, sonst weicht sie den Teig auf.",
+    "Abkühlen: Das Fleisch etwas abkühlen lassen, damit die Eier beim Zugeben nicht sofort stocken.",
+    "Füllung abschließen: Das Fleisch mit 150 g geriebenem Kefalotyri und 2 Eiern mischen. Die Eier binden die Füllung, damit sie beim Schneiden nicht auseinanderfällt.",
+    "Blätter schichten: Die Form ausbuttern und die Hälfte der Filoblätter einlegen, jedes mit geschmolzener Butter (von den 80 g) bestreichen, damit sie knusprig und luftig werden.",
+    "Füllen und schließen: Die Füllung verteilen, mit den restlichen gebutterten Blättern abdecken und die Ränder nach innen einschlagen. Die Oberfläche in Stücke vorschneiden, damit sie nach dem Backen leicht zu teilen ist.",
+    "Backen: Bei 180 °C 55-60 Minuten backen, bis alles goldbraun und knusprig ist. Vor dem Schneiden 10 Minuten ruhen lassen."
+   ],
+   "wine": "Trockener Rotwein.",
+   "plate": "Warme Stücke, Bauernsalat."
+  },
+  "kreatosopa": {
+   "n": "Fleischsuppe",
+   "ing": [
+    "Rindfleisch mit Knochen 800 g",
+    "Kartoffeln 3, geschnitten",
+    "Karotten 3",
+    "Sellerie 2 Stangen",
+    "Zwiebel 1",
+    "Geriebene Tomate 200 g",
+    "Reis 1/2 Tasse",
+    "Saft von 1 Zitrone",
+    "Salz & Pfeffer"
+   ],
+   "steps": [
+    "Fleisch kochen: Das Fleisch in kaltes Wasser (3 Liter) geben. Aufkochen und in den ersten 10 Minuten den Schaum abschöpfen — er enthält Trübstoffe und macht die Brühe unklar.",
+    "Gemüse: Karotten, Sellerie, Zwiebel, Tomate und Salz zugeben. Zugedeckt 60-70 Minuten köcheln, bis das Fleisch sehr zart ist.",
+    "Kartoffeln: Die Kartoffeln zugeben und weitere 20 Minuten garen.",
+    "Reis: Den Reis zugeben und 15-18 Minuten garen.",
+    "Abschluss: Zitronensaft für Frische zugeben. Abschmecken und salzen. Wichtig: Diese Suppe schmeckt am nächsten Tag noch besser."
+   ],
+   "wine": "-",
+   "plate": "In einer tiefen Schale mit einem Spritzer Zitronensaft."
+  },
+  "krema_brokolou": {
+   "n": "Brokkoli-Cremesuppe",
+   "ing": [
+    "Frischer Brokkoli 700 g",
+    "Kartoffel 1 mittelgroße",
+    "Zwiebel 1 Stück",
+    "Knoblauch 1 Zehe",
+    "Gemüsebrühe 1 Liter",
+    "Sahne 100 ml",
+    "Butter 2 EL",
+    "Olivenöl 2 EL",
+    "Brotcroutons 1 Tasse",
+    "Salz, Pfeffer 1 TL"
+   ],
+   "steps": [
+    "Vorbereitung: Den Brokkoli in Röschen teilen, die Kartoffel in kleine Würfel schneiden und Zwiebel und Knoblauch fein hacken.",
+    "Basis anbraten: In einem Topf die Butter mit dem Olivenöl schmelzen und Zwiebel und Knoblauch glasig dünsten, ohne sie zu bräunen.",
+    "Gemüse zugeben: Kartoffel und Brokkoli zugeben und 2-3 Minuten rühren, damit sie die Aromen aufnehmen.",
+    "Kochen: Die Gemüsebrühe, Salz und Pfeffer zugeben, zudecken und 18-20 Minuten köcheln, bis das Gemüse ganz weich ist.",
+    "Wichtig: Nicht länger als nötig kochen, denn langes Kochen macht den Brokkoli dunkel und er verliert sein leuchtendes Grün.",
+    "Pürieren: Vom Herd nehmen und mit dem Stabmixer glatt und samtig pürieren, ohne Stückchen.",
+    "Sahne: Zurück auf niedrige Hitze stellen, die Sahne zugeben und 2 Minuten unterrühren, ohne aufkochen zu lassen.",
+    "Abschmecken: Probieren und mit Salz und Pfeffer anpassen; ist die Suppe zu dick, etwas heiße Brühe zugeben.",
+    "Servieren: Heiß in Schalen servieren, mit einer Spirale Sahne obenauf und ein paar Croutons."
+   ],
+   "wine": "Trockener weißer Assyrtiko oder Tsipouro",
+   "plate": "In einer tiefen Schale mit einer Spirale Sahne und Croutons in der Mitte servieren."
+  },
+  "krema_karamel": {
+   "n": "Crème Caramel",
+   "ing": [
+    "Milch 600 ml",
+    "Eier 4",
+    "Zucker für die Creme 120 g",
+    "Vanille",
+    "Zucker für das Karamell 150 g",
+    "Wasser 2 EL"
+   ],
+   "steps": [
+    "Karamell: Die 150 g Zucker mit den 2 EL Wasser in einen Topf geben und ohne Rühren erhitzen, bis alles rotbraun wird. WICHTIG: Das Karamell nicht mit einem Löffel rühren, sonst kristallisiert es — nur den Topf sanft schwenken.",
+    "Förmchen auskleiden: Sobald das Karamell fertig ist, es zügig auf die Förmchen verteilen, bevor es fest wird, und den Boden jeweils bedecken.",
+    "Cremeansatz: Die 4 Eier mit den 120 g Zucker verquirlen und die warme Milch (600 ml) unter Rühren langsam zugießen, damit die Eier nicht stocken. Vanille zugeben.",
+    "Passieren: Die Masse durch ein Sieb gießen und auf die karamellisierten Förmchen verteilen, damit die Creme perfekt glatt und ohne Eiklümpchen wird.",
+    "Im Wasserbad backen: Die Förmchen in eine Form mit heißem Wasser (Wasserbad) stellen und bei 160 °C 45-50 Minuten backen. Das Wasserbad sorgt für sanftes, gleichmäßiges Garen, ohne dass die Creme gerinnt.",
+    "Kühlen und stürzen: 4 Stunden oder länger kalt stellen, damit sie fest wird, dann auf einen Teller stürzen, sodass das Karamell darüber läuft."
+   ],
+   "wine": "-",
+   "plate": "Gestürzt, mit herablaufendem Karamell."
+  },
+  "krema_karotou": {
+   "n": "Karotten-Cremesuppe",
+   "ing": [
+    "Karotten 1 kg, in Scheiben",
+    "1 große Zwiebel, fein gehackt",
+    "1 Lauchstange, nur das Weiße",
+    "1 mittelgroße Kartoffel, zum Binden",
+    "Gemüse- oder Hühnerbrühe 1 Liter",
+    "Olivenöl 4 EL",
+    "Sahne 100 ml (oder Mandelmilch für die vegane Variante)",
+    "Frischer Ingwer, 1 TL gerieben (optional)",
+    "Salz, frisch gemahlener Pfeffer",
+    "Semmelbrösel oder getrockneter Dill zum Garnieren"
+   ],
+   "steps": [
+    "Gemüse vorbereiten: Die Karotten schälen und in Scheiben schneiden, Zwiebel und Lauch fein hacken und die Kartoffel würfeln.",
+    "Anbraten: In einem Topf das Olivenöl bei mittlerer Hitze erhitzen und Zwiebel und Lauch 4-5 Minuten weich dünsten, ohne Farbe zu nehmen.",
+    "Karotten zugeben: Karotten und Kartoffel in den Topf geben und 2-3 Minuten rühren, damit sie Geschmack aus dem Öl aufnehmen.",
+    "Kochen: Die Brühe angießen, bis das Gemüse bedeckt ist, mit Salz und Pfeffer würzen und bei niedriger Hitze 25-30 Minuten köcheln, bis die Karotten sehr weich sind.",
+    "Wichtig: Das lange, sanfte Köcheln ist entscheidend, damit die Karotten beim Pürieren leicht zerfallen und die Suppe samtig ohne Stückchen wird; vorher mit der Gabel prüfen.",
+    "Pürieren: Vom Herd nehmen und mit dem Stabmixer glatt und cremig pürieren, bei zu dicker Konsistenz etwas Brühe zugeben.",
+    "Mit Sahne verfeinern: Den Topf zurück auf niedrige Hitze stellen, Sahne und Ingwer zugeben, gut umrühren und 5 Minuten ziehen lassen, ohne aufzukochen.",
+    "Servieren: Heiß in tiefen Tellern servieren, garniert mit einem Schuss Olivenöl und gerösteten Semmelbröseln oder Dill."
+   ],
+   "wine": "Ein frischer weißer Assyrtiko oder ein leichter Moschofilero passt ideal zur Süße der Karotte.",
+   "plate": "In tiefen Tellern servieren, mit einer Spirale Olivenöl und etwas frischem Bauernbrot dazu."
+  },
+  "krema_zaxaroplastikis": {
+   "n": "Konditorcreme",
+   "ing": [
+    "Milch 500 ml",
+    "Eigelb 4",
+    "Zucker 120 g",
+    "Speisestärke 40 g",
+    "Butter 30 g",
+    "Vanilleschote 1 oder Extrakt 1 TL"
+   ],
+   "steps": [
+    "Die Milch mit der Vanille bis kurz unter den Siedepunkt erhitzen, dann vom Herd nehmen und 10 Minuten ziehen lassen.",
+    "Das Eigelb mit Zucker und Speisestärke hell und völlig glatt aufschlagen.",
+    "Wichtig: Die heiße Milch langsam in dünnem Strahl unter ständigem Rühren über das Eigelb gießen. Dieses Temperieren ist das Einzige, was zwischen dir und Rührei steht.",
+    "Die Masse zurück in den Topf geben und bei mittlerer Hitze unter ständigem Rühren garen, dabei auch die Ecken des Topfes erfassen.",
+    "Wichtig: Besonders dort weiterrühren, wo der Boden auf die Wand trifft — genau dort setzt die Creme immer zuerst an und brennt.",
+    "Sobald sie andickt, genau 1 Minute weiterblubbern lassen. Das kocht den rohen Stärkegeschmack aus, der sonst bleibt.",
+    "Vom Herd nehmen und die Butter einrühren, die Glanz und eine seidigere Textur gibt.",
+    "Bei Klümpchen durch ein Sieb passieren — das rettet fast jede Creme.",
+    "Die Oberfläche direkt mit Frischhaltefolie abdecken, damit sich keine Haut bildet, und mindestens 3 Stunden kalt stellen.",
+    "Vor der Verwendung kurz mit dem Schneebesen aufschlagen, damit sie wieder glatt und cremig wird."
+   ],
+   "wine": "Nicht zutreffend — eine Basis für andere Desserts.",
+   "plate": "Als Füllung verwenden oder in kleinen Gläsern mit Obst und einem Keks servieren."
   }
  }
 }
