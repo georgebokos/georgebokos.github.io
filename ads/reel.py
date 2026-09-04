@@ -48,6 +48,14 @@ def wrap(d, txt, f, maxw):
     if cur: out.append(cur)
     return out
 
+# --- Ασφαλής περιοχή TikTok/Reels -------------------------------------------
+# Το κάτω μέρος το σκεπάζει η λεζάντα και το όνομα χρήστη, τα δεξιά τα κουμπιά.
+# Ό,τι πρέπει να διαβαστεί μένει μέσα σε αυτά τα όρια.
+SAFE_B = 380     # κάτω
+SAFE_R = 170     # δεξιά
+TOP    = 200     # κάτω από τη μόνιμη υπογραφή
+AREA   = H - SAFE_B - TOP   # ελεύθερο ύψος για κάθετο κεντράρισμα
+
 def build(rid, lang='el'):
     data = load(rid); m = data['m']; imgp = data['img']
     el = lang == 'el'
@@ -57,32 +65,45 @@ def build(rid, lang='el'):
     L = {'ing':'ΥΛΙΚΑ' if el else 'INGREDIENTS',
          'how':'ΕΚΤΕΛΕΣΗ' if el else 'METHOD',
          'serv':'μερίδες' if el else 'servings',
-         'cta':'376 ελληνικές συνταγές' if el else '376 Greek recipes',
-         'app':'στην εφαρμογή FoodDaily' if el else 'in the FoodDaily app',
          'q':'Τι μαγειρεύουμε σήμερα;' if el else 'What are we cooking today?',
-         'open1':'Τι θα φάμε σήμερα;' if el else 'What shall we eat today?',
-         'open2':'Η λύση στον καθημερινό προβληματισμό'
-                 if el else 'The answer to the daily question',
-         'open3':'Το FoodDaily σκέφτεται για σένα και σου λύνει τα χέρια'
-                 if el else 'FoodDaily thinks for you, so you don\'t have to',
          'b1':'Πρόταση φαγητού κάθε μέρα' if el else 'A meal suggestion every day',
          'b2':'Υπενθύμιση τι να ετοιμάσεις' if el else 'Reminders of what to prep',
          'b3':'376 ελληνικές συνταγές' if el else '376 Greek recipes',
-         'more':'Δείτε τα αναλυτικά στην εφαρμογή FoodDaily' if el
-                else 'See the full method in the FoodDaily app',
+         'more':'Όλη η συνταγή στην εφαρμογή' if el else 'Full recipe in the app',
          'get':'Σύνδεσμος στο προφίλ' if el else 'Link in bio',
          'url':'fooddaily.github.io',
-         'free':'Δωρεάν στο Google Play' if el else 'Free on Google Play'}
+         'free':'Δωρεάν στο Google Play' if el else 'Free on Google Play',
+         # hooks του πρώτου δευτερολέπτου
+         'h_cost':'η μερίδα' if el else 'per serving',
+         'h_time':'και έτοιμο' if el else 'and it\'s ready',
+         'h_ing':'υλικά. Τίποτα άλλο.' if el else 'ingredients. That\'s all.'}
 
-    # Μικρές παραλλαγές, ώστε 30 βίντεο στη σειρά να μη μοιάζουν πανομοιότυπα.
-    # Παράγονται από το id, άρα κάθε συνταγή βγάζει πάντα το ίδιο αποτέλεσμα.
     var = sum(ord(c) for c in rid)
-    # ΠΡΟΣΟΧΗ: καμία παραλλαγή δεν πρέπει να ταυτίζεται με τη φράση του ανοίγματος
-    # («Τι θα φάμε σήμερα;») — η επανάληψη μέσα στο ίδιο βίντεο φαίνεται αμέλεια.
-    QS = ([L['q'], 'Η απάντηση κάθε μεσημέρι', 'Τέλος το «τι μαγειρεύουμε;»'] if el
-          else [L['q'], 'The answer, every day', 'No more "what shall we cook?"'])
-    L['q'] = QS[var % 3]
     zoom_in = (var // 3) % 2 == 0
+
+    # --- Το hook του πρώτου δευτερολέπτου -----------------------------------
+    # Τρεις τύποι σε εναλλαγή, ώστε τα 30 βίντεο να μη μοιάζουν μεταξύ τους και
+    # να φανεί στα στατιστικά ποιος κρατά τον θεατή. Δύο γραμμές μόνο: ένα
+    # μεγάλο νούμερο και μια λέξη — διαβάζονται με μια ματιά, χωρίς ανάγνωση.
+    def pick_hook():
+        kind = var % 3
+        # Λίγα υλικά = υπόσχεση απλότητας, και είναι νούμερο: διαβάζεται
+        # ακαριαία. Ο τίτλος βήματος δοκιμάστηκε και δεν λειτουργεί ως hook —
+        # «Γέμισμα λαχανικών» δεν σταματά κανέναν.
+        if kind == 2 and len(ings) <= 7:
+            return str(len(ings)), L['h_ing']
+        if kind == 2:
+            kind = 1                        # πολλά υλικά → πέφτει στον χρόνο
+        # Ο χρόνος πουλά μόνο όταν είναι μικρός: «100′ και έτοιμο» διώχνει τον
+        # θεατή αντί να τον κρατήσει. Πάνω από 40′ το hook γίνεται το κόστος.
+        if kind == 1 and m.get('time') and m['time'] <= 40:
+            return f"{m['time']}′", L['h_time']
+        cps = re.sub(r'[~\s]', '', str(m.get('cps') or m.get('cost') or '')).strip()
+        if cps:
+            return cps, L['h_cost']         # κόστος ανά μερίδα
+        return f"{m.get('time','30')}′", L['h_time']
+
+    hook_big, hook_small = pick_hook()
 
     photo = Image.open(os.path.join(ROOT, imgp)).convert('RGB')
     bg = cover(photo, W, H)
@@ -95,11 +116,9 @@ def build(rid, lang='el'):
             px[0,y] = round(255*(base+(peak-base)*min(1.,f)**1.5))
         return Image.composite(Image.new('RGB',(W,H),(20,11,2)), src, g.resize((W,H)))
 
-    f_big  = ImageFont.truetype(FB, 86)
     f_meta = ImageFont.truetype(FB, 40)
     f_hdr  = ImageFont.truetype(FB, 52)
     f_item = ImageFont.truetype(FR, 42)
-    f_step = ImageFont.truetype(FR, 44)
     f_num  = ImageFont.truetype(FB, 60)
     f_cta  = ImageFont.truetype(FB, 62)
     f_sub  = ImageFont.truetype(FR, 38)
@@ -109,9 +128,25 @@ def build(rid, lang='el'):
     mk = Image.new('L',(D*4,D*4),0); ImageDraw.Draw(mk).ellipse([0,0,D*4,D*4],fill=255)
     logo.putalpha(mk.resize((D,D), Image.LANCZOS))
 
+    # Μικρό λογότυπο για τη μόνιμη υπογραφή
+    DS = 62
+    logo_s = logo.resize((DS,DS), Image.LANCZOS)
+    f_wm  = ImageFont.truetype(FB, 34)
+    f_wm2 = ImageFont.truetype(FR, 26)
+
+    def stamp(fr, d):
+        """Μόνιμη υπογραφή σε ΚΑΘΕ καρέ, πάνω αριστερά.
+
+        Ο μέσος θεατής φεύγει πριν φτάσει σε οποιαδήποτε σκηνή CTA. Αν η
+        επωνυμία υπάρχει μόνο στο τέλος, δεν τη βλέπει κανείς — γι' αυτό
+        μπαίνει από το πρώτο καρέ και δεν φεύγει ποτέ."""
+        x, y = 40, 40
+        d.rounded_rectangle([x-14, y-12, x+DS+272, y+DS+12], radius=42, fill=(24,14,4))
+        fr.paste(logo_s, (x, y), logo_s)
+        d.text((x+DS+18, y+4),  'FoodDaily', font=f_wm,  fill=(255,253,248))
+        d.text((x+DS+18, y+40), L['url'],    font=f_wm2, fill=(233,178,74))
+
     def shorten(st):
-        """Κρατά τον τίτλο του βήματος και την πρώτη πρόταση. Στο Reel κανείς
-        δεν διαβάζει παράγραφο — και το πλήρες κείμενο είναι μέσα στην εφαρμογή."""
         head, body = (st.split(':', 1) + [''])[:2] if ':' in st[:60] else ('', st)
         body = body.strip()
         cut = body.find('. ')
@@ -119,22 +154,16 @@ def build(rid, lang='el'):
         if len(body) > 90: body = body[:87].rsplit(' ', 1)[0] + '…'
         return head.strip(), body
 
-    # Στα Reels ελάχιστοι φτάνουν στο τέλος: το σύνολο κόβεται στα ~14 δευτ.,
-    # αλλά η τελευταία ενότητα — αυτή που λέει πώς κατεβαίνει η εφαρμογή —
-    # κρατά περισσότερο, γιατί εκεί γίνεται η μετατροπή.
-    # ΣΕΙΡΑ: το πιάτο σταματά τον θεατή, η εφαρμογή του λέει αμέσως τι είναι
-    # και πώς κατεβαίνει, και μετά ακολουθεί η συνταγή.
-    scenes = []
-    # Ξεκινά με την ερώτηση που κάνει καθένας κάθε μεσημέρι. Ο θεατής
-    # αναγνωρίζει το πρόβλημά του πριν καν δει φαγητό — γι' αυτό σταματά.
-    scenes.append(('open', 3.4, None))
-    scenes.append(('hook', 1.8, None))
-    scenes.append(('cta',  4.4, None))
-    scenes.append(('ing',  2.2, None))
-    # Όλη η εκτέλεση σε ΜΙΑ οθόνη: ο θεατής βλέπει ολοκληρωμένη τη διαδικασία
-    # με μια ματιά, αντί να περιμένει βήμα-βήμα. Κερδίζεται χρόνος και δίνεται
-    # πλήρης εικόνα. Τα αναλυτικά κείμενα είναι μέσα στην εφαρμογή.
-    scenes.append(('steps', 6.2, [st.split(':', 1)[0].strip() for st in steps[:8]]))
+    # --- Δομή -----------------------------------------------------------------
+    # Το φαγητό είναι καθαρό και κινείται από το καρέ 0: αυτό σταματά το scroll,
+    # όχι το κείμενο. Συνολική διάρκεια ~11 δευτ., ώστε το βίντεο να κάνει loop
+    # δύο φορές μέσα στον ίδιο χρόνο θέασης — το loop μετράει στο watch time.
+    scenes = [
+        ('hit',   2.8, None),
+        ('ing',   2.4, None),
+        ('steps', 4.2, [st.split(':', 1)[0].strip() for st in steps[:8]]),
+        ('cta',   1.8, None),
+    ]
 
     out = os.path.join(OUT, f'reel-{rid}-{lang}.mp4')
     proc = subprocess.Popen([FFMPEG,'-y','-f','rawvideo','-pix_fmt','rgb24','-s',f'{W}x{H}','-r',str(FPS),
@@ -143,172 +172,121 @@ def build(rid, lang='el'):
 
     n_all = sum(round(s*FPS) for _,s,_ in scenes); FADE = round(FPS*.4); total = 0
     pad = 74
+    colw = W - pad - SAFE_R          # πλάτος κειμένου εκτός των κουμπιών
 
     for kind, secs, extra in scenes:
         n = round(secs*FPS)
         for i in range(n):
             p = i/max(1,n-1)
-            if kind == 'hook':
-                # Άλλοτε ζουμ προς τα μέσα, άλλοτε προς τα έξω
-                z = (1.0+.07*p) if zoom_in else (1.07-.07*p)
+            if kind == 'hit':
+                # ΚΑΘΑΡΟ πιάτο, ήδη σε κίνηση από το πρώτο καρέ. Καμία θόλωση,
+                # καμία ακινησία: το ακίνητο καρέ διαβάζεται ως «δεν συμβαίνει
+                # τίποτα» και φεύγει ο θεατής μέσα στο πρώτο δευτερόλεπτο.
+                z = (1.0+.08*p) if zoom_in else (1.08-.08*p)
                 cw, ch = round(W/z), round(H/z)
                 fr = bg.crop(((W-cw)//2,(H-ch)//2,(W-cw)//2+cw,(H-ch)//2+ch)).resize((W,H), Image.LANCZOS)
-                fr = scrim(fr, int(H*.42))
-            elif kind == 'open':
-                # Θολό πιάτο από πίσω: ζεστό κάδρο, αλλά κυριαρχεί η ερώτηση.
-                fr = scrim(blur, 0, .74, .86)
-            elif kind == 'cta':
-                fr = scrim(blur, 0, .62, .78)
+                fr = scrim(fr, int(H*.46), .10, .92)
             else:
                 fr = scrim(blur, 0, .62, .80)
             d = ImageDraw.Draw(fr)
 
-            if kind == 'open':
-                # Τρεις γραμμές που εμφανίζονται με τη σειρά: η ερώτηση, το
-                # πρόβλημα, και ποιος το λύνει. Ο θεατής προλαβαίνει να τις
-                # διαβάσει και μένει μέχρι να ολοκληρωθεί η σκέψη.
-                f_o1 = ImageFont.truetype(FB, 96)
-                f_o2 = ImageFont.truetype(FR, 46)
-                f_o3 = ImageFont.truetype(FB, 50)
-                l1 = wrap(d, L['open1'], f_o1, W - 2*pad)
-                l2 = wrap(d, L['open2'], f_o2, W - 2*pad)
-                l3 = wrap(d, L['open3'], f_o3, W - 2*pad)
-                blk = len(l1)*112 + 40 + len(l2)*62 + 56 + len(l3)*66
-                y = (H - blk) // 2
-                def alpha(t0):    # 0 → αόρατο, 1 → πλήρες
-                    return max(0., min(1., (p - t0) / .12))
-                # ΠΡΟΣΟΧΗ: γραμμή που δεν έχει εμφανιστεί ΔΕΝ ζωγραφίζεται καθόλου.
-                # Με απλό σκούρο χρώμα έμοιαζε με σκιά — διαβαζόταν ως ελάττωμα.
-                mix = lambda a, col: tuple(round(18+(c-18)*a) for c in col)
-                def block(lines, font, col, a, step):
-                    nonlocal y
-                    for ln in lines:
-                        if a > .08:
-                            d.text(((W - d.textlength(ln, font=font))/2, y), ln, font=font, fill=mix(a, col))
-                        y += step
-                block(l1, f_o1, (255,253,248), alpha(0.00), 112); y += 40
-                block(l2, f_o2, (238,208,158), alpha(0.28), 62);  y += 56
-                block(l3, f_o3, (233,178,74),  alpha(0.56), 66)
-            elif kind == 'hook':
-                lines = wrap(d, name, f_big, W-2*pad)
-                y = H - pad - 150 - len(lines)*100
-                for ln in lines:
-                    d.text((pad,y), ln, font=f_big, fill=(255,253,248)); y += 100
-                meta = f"⏱ {m['time']}′   🔥 {m['cal']}   💰 {m.get('cps',m.get('cost','')).strip()}"
-                d.text((pad, y+18), meta, font=f_meta, fill=(240,206,150))
+            if kind == 'hit':
+                # Ένα μεγάλο νούμερο και μία λέξη. Το μάτι το πιάνει χωρίς
+                # ανάγνωση — γι' αυτό δουλεύει μέσα στο πρώτο δευτερόλεπτο.
+                f_h1 = ImageFont.truetype(FB, 148 if len(hook_big) <= 6 else 96)
+                f_h2 = ImageFont.truetype(FR, 52)
+                f_nm = ImageFont.truetype(FB, 64)
+                nlines = wrap(d, name, f_nm, colw)[:2]
+                blk = f_h1.size + 16 + f_h2.size + 46 + len(nlines)*76 + 54
+                y = H - SAFE_B - blk
+                d.text((pad, y), hook_big, font=f_h1, fill=(255,214,120)); y += f_h1.size + 16
+                d.text((pad, y), hook_small, font=f_h2, fill=(255,250,240)); y += f_h2.size + 46
+                for ln in nlines:
+                    d.text((pad, y), ln, font=f_nm, fill=(255,253,248)); y += 76
+                y += 12
+                # Χωρίς emoji: η DejaVuSans δεν τα περιέχει και βγαίνουν κενά
+                # κουτάκια — φαίνεται σαν ελάττωμα, όχι σαν εικονίδιο.
+                meta = f"{m['time']}′  ·  {m['cal']} kcal  ·  {m.get('srv','')} {L['serv']}"
+                d.text((pad, y), meta, font=f_meta, fill=(240,206,150))
             elif kind == 'ing':
-                fr.paste(logo,(pad,pad),logo)
-                d.text((pad, pad+D+34), L['ing'], font=f_hdr, fill=(233,178,74))
-                y = pad+D+34+70
-                shown = ings[:11]
+                # Το μπλοκ κεντράρεται κάθετα στον ελεύθερο χώρο: αν ξεκινά
+                # ψηλά, τα δύο τρίτα της οθόνης μένουν άδεια και το βίντεο
+                # δείχνει φτωχό στο κινητό.
+                shown = ings[:9]
+                lh_i = 76 if len(shown) <= 7 else 66
+                fs_i = 52 if len(shown) <= 7 else 46
+                f_it = ImageFont.truetype(FR, fs_i)
+                blk  = 76 + len(shown)*lh_i
+                y = TOP + max(0, (AREA - blk)//2)
+                d.text((pad, y), L['ing'], font=f_hdr, fill=(233,178,74)); y += 76
                 for k, it in enumerate(shown):
-                    if y > H-pad-60: break
-                    vis = min(1.0, max(0.0, p*len(shown)*1.25 - k))
+                    vis = min(1.0, max(0.0, p*len(shown)*1.6 - k))
                     if vis <= 0: continue
                     c = tuple(round(20+(252-20)*vis) for _ in range(3))
-                    d.text((pad, y), '· '+it, font=f_item, fill=c); y += 62
+                    for ln in wrap(d, '· '+it, f_it, colw)[:1]:
+                        d.text((pad, y), ln, font=f_it, fill=c)
+                    y += lh_i
             elif kind == 'steps':
                 titles = extra
-                fr.paste(logo,(pad,pad),logo)
-                d.text((pad, pad+D+34), L['how'], font=f_hdr, fill=(233,178,74))
-                # Το ύψος γραμμής προσαρμόζεται στο πλήθος, ώστε να χωρούν και τα 8
-                lh = 92 if len(titles) <= 5 else (80 if len(titles) <= 6 else 72)
-                fs = 48 if len(titles) <= 5 else (44 if len(titles) <= 6 else 40)
+                lh = 104 if len(titles) <= 5 else (92 if len(titles) <= 6 else 80)
+                fs = 56 if len(titles) <= 5 else (50 if len(titles) <= 6 else 44)
                 f_t = ImageFont.truetype(FR, fs)
                 f_n = ImageFont.truetype(FB, fs + 6)
-                y = pad + D + 124
+                blk = 96 + len(titles)*lh
+                y = TOP + max(0, (AREA - blk)//2)
+                d.text((pad, y), L['how'], font=f_hdr, fill=(233,178,74)); y += 96
                 for k, ttl in enumerate(titles):
-                    vis = min(1.0, max(0.0, p * len(titles) * 1.9 - k))
+                    vis = min(1.0, max(0.0, p * len(titles) * 2.4 - k))
                     if vis <= 0: continue
                     d.text((pad, y), str(k+1), font=f_n,
                            fill=(round(60+(200-60)*vis), round(24+(80-24)*vis), round(8+(26-8)*vis)))
                     c = round(20+(250-20)*vis)
-                    d.text((pad+72, y+3), ttl, font=f_t, fill=(c, c, c))
+                    for ln in wrap(d, ttl, f_t, colw-72)[:1]:
+                        d.text((pad+72, y+3), ln, font=f_t, fill=(c, c, c))
                     y += lh
-
-                # Δεύτερη υπενθύμιση, σε άλλη οθόνη: εδώ κοιτά ήδη τη διαδικασία
-                # και συνειδητοποιεί ότι τα αναλυτικά λείπουν.
-                f_more = ImageFont.truetype(FB, 56)
-                f_url2 = ImageFont.truetype(FB, 40)
-                bh2 = 118
-                bw2 = round(d.textlength(L['get'], font=f_sub)) + 170
-                mlines = wrap(d, L['more'], f_more, W - 2*pad)[:2]
-                blk = len(mlines)*68 + 40 + bh2 + 26 + f_url2.size
-                by = H - pad - blk
-                for ln in mlines:
-                    d.text(((W - d.textlength(ln, font=f_more))/2, by), ln, font=f_more, fill=(255,252,246))
-                    by += 68
-                by += 40
-                bx2 = (W - bw2)//2
-                d.rounded_rectangle([bx2,by,bx2+bw2,by+bh2], radius=bh2//2, fill=(200,80,26))
-                ax2, ay2 = bx2+62, by+bh2//2
-                d.polygon([(ax2, ay2-26), (ax2-20, ay2-2), (ax2-8, ay2-2), (ax2-8, ay2+26),
-                           (ax2+8, ay2+26), (ax2+8, ay2-2), (ax2+20, ay2-2)], fill=(255,255,255))
-                d.text((bx2+108, by+(bh2-38)//2-4), L['get'], font=f_sub, fill=(255,255,255))
-                by += bh2 + 26
-                d.text(((W - d.textlength(L['url'], font=f_url2))/2, by), L['url'], font=f_url2, fill=(233,178,74))
-            elif kind == 'step':
-                idx, (head, body) = extra
-                fr.paste(logo,(pad,pad),logo)
-                d.text((pad, pad+D+34), L['how'], font=f_hdr, fill=(233,178,74))
-                y = pad+D+120
-                d.text((pad, y), str(idx+1), font=f_num, fill=(200,80,26))
-                if head:
-                    for ln in wrap(d, head, f_hdr, W-2*pad-110)[:2]:
-                        d.text((pad+104, y+4), ln, font=f_hdr, fill=(255,252,246)); y += 64
-                    y += 34
-                else:
-                    y += 84
-                for ln in wrap(d, body, f_step, W-2*pad)[:7]:
-                    d.text((pad,y), ln, font=f_step, fill=(248,241,229)); y += 62
-            else:
+                # Μία γραμμή μόνο: η υπογραφή είναι ήδη μόνιμα στην οθόνη.
+                f_more = ImageFont.truetype(FB, 46)
+                d.text((pad, H - SAFE_B + 24), '→ ' + L['more'], font=f_more, fill=(255,214,120))
+            else:  # cta
                 ctr = lambda t,f,yy,c: d.text(((W-d.textlength(t,font=f))/2, yy), t, font=f, fill=c)
-                f_q    = ImageFont.truetype(FB, 58)
-                f_bul  = ImageFont.truetype(FR, 40)
-                f_url  = ImageFont.truetype(FB, 40)
-                bul    = [L['b1'], L['b2'], L['b3']]
-                bul    = bul[var % 3:] + bul[:var % 3]   # εναλλαγή σειράς
+                f_q   = ImageFont.truetype(FB, 54)
+                f_bul = ImageFont.truetype(FR, 40)
+                f_url = ImageFont.truetype(FB, 40)
+                bul   = [L['b1'], L['b2'], L['b3']]
+                bul   = bul[var % 3:] + bul[:var % 3]
                 bh, bw = 118, round(d.textlength(L['get'], font=f_sub)) + 170
-
-                # Ολόκληρο το μπλοκ υπολογίζεται και κεντράρεται, ώστε να μη
-                # βγαίνει έξω από το κάδρο όταν αλλάξουν τα κείμενα.
-                block = (D + 30 + f_cta.size + 34 + f_q.size + 40
-                         + len(bul)*56 + 44 + bh + 30 + f_sub.size + 18 + f_url.size)
-                y = (H - block) // 2
-
-                fr.paste(logo, ((W-D)//2, y), logo); y += D + 30
-                ctr('FoodDaily', f_cta, y, (255,253,248)); y += f_cta.size + 34
-                # Η κύρια ιδέα της εφαρμογής, με τα λόγια του χρήστη
-                ctr(L['q'], f_q, y, (255,250,240)); y += f_q.size + 40
-                # Κοινό αριστερό περιθώριο για όλες τις γραμμές: αν κεντραριστεί
-                # η καθεμία χωριστά, οι κουκκίδες βγαίνουν σε ζιγκ-ζαγκ.
+                block = (f_cta.size + 30 + f_q.size + 36 + len(bul)*56 + 40
+                         + bh + 26 + f_sub.size + 16 + f_url.size)
+                y = (H - SAFE_B - block) // 2 + 120
+                ctr('FoodDaily', f_cta, y, (255,253,248)); y += f_cta.size + 30
+                ctr(L['q'], f_q, y, (255,250,240)); y += f_q.size + 36
                 wmax = max(d.textlength(t_, font=f_bul) for t_ in bul)
                 bx0 = round((W - wmax) / 2)
                 for t_ in bul:
                     d.ellipse([bx0-36, y+16, bx0-20, y+32], fill=(233,178,74))
                     d.text((bx0, y), t_, font=f_bul, fill=(243,225,192))
                     y += 56
-                y += 44
-
+                y += 40
                 bx = (W-bw)//2
                 d.rounded_rectangle([bx,y,bx+bw,y+bh], radius=bh//2, fill=(200,80,26))
-                # Το ☝ δεν υπάρχει στη γραμματοσειρά — το βέλος σχεδιάζεται.
                 ax, ay = bx+62, y+bh//2
                 d.polygon([(ax, ay-26), (ax-20, ay-2), (ax-8, ay-2), (ax-8, ay+26),
                            (ax+8, ay+26), (ax+8, ay-2), (ax+20, ay-2)], fill=(255,255,255))
                 d.text((bx+108, y+(bh-38)//2-4), L['get'], font=f_sub, fill=(255,255,255))
-                y += bh + 30
-                ctr(L['free'], f_sub, y, (232,204,162)); y += f_sub.size + 18
-                # Και γραπτά, για όποιον δει το βίντεο εκτός πλατφόρμας.
+                y += bh + 26
+                ctr(L['free'], f_sub, y, (232,204,162)); y += f_sub.size + 16
                 ctr(L['url'], f_url, y, (233,178,74))
 
-            fade = min(1., (total+1)/FADE, (n_all-total)/FADE)
-            if fade < 1.:
-                fr = Image.blend(Image.new('RGB',(W,H),(0,0,0)), fr, max(0.,fade))
+            stamp(fr, d)
+
+            # Κανένα fade — ούτε στην αρχή ούτε στο τέλος. Μαύρη έναρξη χαλάει
+            # το κρίσιμο πρώτο δευτερόλεπτο, και μαύρο τέλος σπάει το loop:
+            # το βίντεο πρέπει να ξαναρχίζει καθαρά, γιατί τα replays μετράνε
+            # στον χρόνο θέασης.
             proc.stdin.write(fr.tobytes()); total += 1
 
     proc.stdin.close(); proc.wait()
-    print(f'  ✓ {os.path.basename(out)}  {total/FPS:.1f}s  {os.path.getsize(out)//1024} KB')
+    print(f'  ✓ {os.path.basename(out)}  {total/FPS:.1f}s  {os.path.getsize(out)//1024} KB  hook={hook_big!r}')
     return out
 
 if __name__ == '__main__':
