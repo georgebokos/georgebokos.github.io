@@ -5747,6 +5747,599 @@
    ],
    "wine": "Ein leichter Weißwein.",
    "plate": "Heiß, mit Toast oder Paximadi."
+  },
+  "omeleta_zampon_tyri": {
+   "n": "Omelett mit Schinken & Käse",
+   "ing": [
+    "Eier, 8",
+    "Schinken 150 g, gewürfelt",
+    "Gruyère oder Emmentaler 120 g, gerieben",
+    "Frische Milch 4 EL",
+    "Butter 30 g",
+    "Olivenöl 2 EL",
+    "Salz, 1 Prise",
+    "Frisch gemahlener Pfeffer, 1 Prise",
+    "Frische Petersilie, gehackt, 1 EL"
+   ],
+   "steps": [
+    "Zutaten vorbereiten: Den Schinken in kleine Würfel schneiden und den Käse reiben, damit alles für das schnelle Garen bereit ist.",
+    "Eier verquirlen: Die Eier in eine Schüssel schlagen und mit Milch, Salz und Pfeffer gut verquirlen, bis alles verbunden und leicht schaumig ist.",
+    "Pfanne erhitzen: Butter und Olivenöl in einer beschichteten Pfanne bei mittlerer Hitze schmelzen, ohne dass die Butter verbrennt.",
+    "Wichtig: Die Eimasse in die Pfanne gießen und die Hitze sofort auf sehr niedrig stellen; das Omelett muss langsam garen, damit es fluffig und saftig bleibt und der Boden nicht verbrennt.",
+    "Füllung zugeben: Sobald die Oberfläche zu stocken beginnt, Schinken und Käse gleichmäßig auf einer Hälfte des Omeletts verteilen.",
+    "Falten: Mit einem Wender die andere Hälfte über die Füllung klappen, sodass ein Halbmond entsteht, und bei niedriger Hitze weitere 2-3 Minuten garen, damit der Käse schmilzt.",
+    "Abschluss: Die Pfanne kurz zudecken, damit der Käse in der Füllung vollständig schmilzt.",
+    "Servieren: Das Omelett auf einen Teller gleiten lassen, mit frischer Petersilie bestreuen und sofort heiß servieren."
+   ],
+   "wine": "Passt gut zu einem kühlen weißen Assyrtiko oder einem Glas frisch gepresstem Orangensaft.",
+   "plate": "Mit geröstetem Brot, Tomatenscheiben und einem saisonalen grünen Salat servieren."
+  },
+  "opera_cake": {
+   "n": "Opéra-Torte",
+   "ing": [
+    "Mandelmehl 125 g",
+    "Puderzucker 125 g",
+    "Eier 4",
+    "Eiweiß 3",
+    "Kristallzucker 30 g",
+    "Mehl 30 g",
+    "Geschmolzene Butter 25 g",
+    "Starker Espresso 150 ml",
+    "Zimmerwarme Butter 250 g",
+    "Zartbitter-Kuvertüre 250 g",
+    "Sahne 35 % 200 g"
+   ],
+   "steps": [
+    "Joconde-Biskuit: Die Eier mit Mandelmehl und Puderzucker luftig aufschlagen, Mehl und geschmolzene Butter zugeben.",
+    "Baiser: Das Eiweiß mit dem Kristallzucker zu steifem Schnee schlagen und behutsam unter die Mandelmasse heben.",
+    "Dünnen Biskuit backen: Dünn auf ein mit Backpapier belegtes Blech streichen und bei 220 °C 6-8 Minuten backen. In drei gleiche Rechtecke schneiden.",
+    "Kaffeesirup: Starken Espresso zubereiten und leicht süßen; damit den Biskuit tränken.",
+    "Kaffee-Buttercreme: Die Butter luftig aufschlagen und Espresso zugeben, bis sie Kaffeegeschmack und -farbe annimmt.",
+    "Schokoladenganache: Die Sahne erhitzen und über die Schokolade gießen, rühren, bis eine glatte Ganache entsteht.",
+    "Wichtig: Beim Zusammensetzen müssen die Schichten zwischendurch gekühlt werden, damit sie beim Anschneiden gerade und klar abgegrenzt bleiben.",
+    "Überziehen und Abschluss: Die Oberfläche mit einer dünnen Schicht Ganache überziehen, mit einer Palette glätten und den charakteristischen Schriftzug 'Opéra' mit Schokolade aufspritzen."
+   ],
+   "wine": "Süßer Mavrodafni oder Espresso",
+   "plate": "In kleine Rechtecke geschnitten und mit einem Hauch Blattgold serviert."
+  },
+  "osobuco": {
+   "n": "Ossobuco mit Risotto Milanese",
+   "ing": [
+    "Kalbshaxenscheiben (Ossobuco) 4 dicke Scheiben",
+    "Carolina- oder Arborio-Reis 400 g",
+    "Safran 1 Prise",
+    "Trockener Weißwein 200 ml",
+    "Rinderbrühe 1,2 Liter",
+    "Zwiebeln 2",
+    "Karotte 1",
+    "Sellerie 1 Stange",
+    "Geriebene Tomate 300 g",
+    "Mehl zum Bestäuben",
+    "Butter 80 g",
+    "Olivenöl 4 EL",
+    "Geriebener Parmesan 80 g",
+    "Zitronenschale, Petersilie, Knoblauch (Gremolata)",
+    "Salz, Pfeffer"
+   ],
+   "steps": [
+    "Haxenscheiben vorbereiten: Die äußere Haut jeder Scheibe an 3-4 Stellen mit dem Messer einschneiden. Wichtig: Ohne das zieht sich die Haut in der Hitze zusammen und wölbt das Fleisch aus der Form.",
+    "Mehlieren: Die Scheiben würzen und leicht mit Mehl bestäuben, überschüssiges abklopfen — eine dünne Schicht bräunt schön, eine dicke wird pappig.",
+    "Anbraten: In einem weiten Topf mit Öl und einem Stück Butter 4 Minuten pro Seite kräftig anbraten, dann herausnehmen.",
+    "Soffritto: Fein gewürfelte Zwiebel, Karotte und Sellerie im selben Topf 8 Minuten bei mittlerer Hitze weich und süß dünsten.",
+    "Ablöschen: Den Weißwein angießen und fast vollständig verdampfen lassen, dabei den Topfboden abkratzen.",
+    "Schmoren: Die Haxenscheiben zurückgeben, die geriebene Tomate und so viel Brühe zugeben, dass das Fleisch zu zwei Dritteln bedeckt ist, zudecken und bei niedriger Hitze 2 Stunden schmoren.",
+    "Risotto beginnen: Den Reis in einer separaten Pfanne 2 Minuten in Butter rösten, bis die Körner am Rand glasig werden.",
+    "Risotto garen: Die heiße Brühe kellenweise zugeben, dabei ständig rühren und jede Zugabe aufsaugen lassen, bevor die nächste folgt. Wichtig: Niemals kalte Brühe zugeben — das unterbricht das Garen und der Reis wird kreidig.",
+    "Safran zugeben: Den Safran in etwas heißer Brühe auflösen und nach der Hälfte einrühren, für Farbe und Aroma des Risotto Milanese.",
+    "Risotto abschließen: Nach etwa 18 Minuten vom Herd nehmen und die restliche Butter und den Parmesan cremig und glänzend unterschlagen.",
+    "Gremolata: Fein gehackte Zitronenschale, Petersilie und Knoblauch mischen — dieses frische Topping durchbricht die Fülle des Gerichts.",
+    "Servieren: Das Risotto anrichten, eine Haxenscheibe darauf setzen, ihre Sauce darüber löffeln und mit der Gremolata abschließen."
+   ],
+   "wine": "Ein Barolo oder Barbaresco oder ein gut gereifter griechischer Xinomavro.",
+   "plate": "Auf einem weiten flachen Teller servieren: Risotto darunter, die Haxenscheibe darauf mit sichtbarem Markknochen, Gremolata darüber gestreut."
+  },
+  "pagoto_spitiko": {
+   "n": "Eis aus zwei Zutaten",
+   "ing": [
+    "Sahne 500 ml (sehr kalt)",
+    "Gezuckerte Kondensmilch 400 g",
+    "Vanilleextrakt 1 TL (optional)"
+   ],
+   "steps": [
+    "Wichtig: Die Sahne muss eiskalt sein, direkt aus dem Kühlschrank. Warme Sahne hält keine Luft, und ohne Luft entsteht ein Eisblock statt Eiscreme.",
+    "Die Sahne auf höchster Stufe steif schlagen, bis der Schneebesen deutliche Spuren hinterlässt.",
+    "Die Kondensmilch in drei Portionen mit dem Teigschaber in sanften Aufwärtsbewegungen unterheben.",
+    "Aufhören, sobald die Masse gleichmäßig ist. Zu langes Rühren treibt die gerade eingeschlagene Luft wieder heraus.",
+    "In einen Behälter füllen, glatt streichen und die Oberfläche direkt mit Frischhaltefolie abdecken, damit sich keine Eiskristalle bilden.",
+    "Mindestens 6 Stunden einfrieren. Rühren oder Eismaschine sind nicht nötig — der Zucker der Kondensmilch hält das Eis portionierbar.",
+    "5 Minuten vor dem Servieren herausnehmen, damit es sich gerade weich genug zum Portionieren anfühlt."
+   ],
+   "wine": "Ein Likör oder Espresso für ein Affogato.",
+   "plate": "In Kugeln in einer gekühlten Schale servieren, mit Schokolade oder Obst obenauf."
+  },
+  "paidakia": {
+   "n": "Gegrillte Lammkoteletts",
+   "ing": [
+    "600 g Lammkoteletts",
+    "1 Zitrone",
+    "3 EL Olivenöl",
+    "Oregano",
+    "2 Knoblauchzehen",
+    "Salz & Pfeffer",
+    "Thymian"
+   ],
+   "steps": [
+    "Auf Zimmertemperatur bringen: Die 600 g Lammkoteletts 20 Minuten vorher aus dem Kühlschrank nehmen, damit sie gleichmäßig garen und in der Mitte nicht kalt bleiben.",
+    "Marinieren: Die 3 EL Olivenöl, den Saft von 1 Zitrone, Oregano, die 2 Knoblauchzehen, Thymian, Salz und Pfeffer mischen und die Koteletts damit einreiben. 15 Minuten marinieren, damit das Fleisch die Aromen aufnimmt. Wichtig: Nicht zu lange mit Zitrone marinieren, denn die Säure macht das Fleisch zäh.",
+    "Heißer Grill: Grill oder Pfanne bei starker Hitze sehr gut vorheizen. Die hohe Temperatur karamellisiert die Oberfläche und schließt die Säfte ein.",
+    "Garen: 3-4 Minuten pro Seite garen, damit sie innen rosa und saftig bleiben. Lammkoteletts trocknen bei zu langem Garen leicht aus.",
+    "Ruhen lassen: Die Koteletts vor dem Servieren 5 Minuten ruhen lassen, damit sich die Säfte verteilen und sie zart bleiben.",
+    "Servieren: Mit frischem Oregano bestreuen und kurz vor dem Servieren etwas Zitrone darüber pressen, was den Geschmack aufhellt."
+   ],
+   "wine": "Kräftiger Rotwein.",
+   "plate": "Vom Grill, mit Ofenkartoffeln."
+  },
+  "panakota": {
+   "n": "Panna Cotta",
+   "ing": [
+    "Sahne 500 ml",
+    "Milch 200 ml",
+    "Zucker 80 g",
+    "Vanille 1 Schote",
+    "Gelatine 10 g (Blätter oder Pulver)",
+    "Zum Servieren: Erdbeer- oder Heidelbeercoulis"
+   ],
+   "steps": [
+    "Die Gelatine 5 Minuten in kaltem Wasser einweichen.",
+    "Sahne, Milch, Zucker und Vanille erhitzen, ohne aufzukochen (80 °C).",
+    "Die Gelatine ausdrücken und unter Rühren in der warmen Masse auflösen.",
+    "Auf Förmchen oder Gläser verteilen. 4+ Stunden oder über Nacht kalt stellen.",
+    "Zum Stürzen: Das Förmchen 5 Sekunden in heißes Wasser tauchen und stürzen.",
+    "Mit Fruchtcoulis servieren."
+   ]
+  },
+  "pancakes_banana": {
+   "n": "Bananen-Pancakes",
+   "ing": [
+    "Mehl 200 g",
+    "Sehr reife Bananen 2",
+    "Milch 250 ml",
+    "Eier 2",
+    "Zucker 1 EL",
+    "Geschmolzene Butter 40 g",
+    "Backpulver 2 TL",
+    "Zimt 1/2 TL",
+    "Salz 1 Prise"
+   ],
+   "steps": [
+    "Bananen wählen: Bananen mit braun gefleckter Schale verwenden — sie sind süßer und lassen sich zu einem glatten Mus zerdrücken.",
+    "Zerdrücken: Mit der Gabel gründlich zerdrücken, bis fast keine Stückchen mehr da sind, damit sie sich im Teig verteilen statt Nester zu bilden.",
+    "Flüssige Zutaten mischen: Das Bananenmus mit den Eiern, der Milch und der geschmolzenen Butter verquirlen.",
+    "Trockene Zutaten mischen: Mehl, Zucker, Backpulver, Zimt und Salz separat vermengen.",
+    "Vereinen: Die flüssigen in die trockenen Zutaten gießen und nur so lange rühren, bis alles verbunden ist, Klümpchen bleiben.",
+    "Wichtig: Dieser Teig ist wegen der Banane dicker als normaler Pancake-Teig. Nicht mit Milch verdünnen — die Dicke macht sie fluffig.",
+    "Ruhen lassen: 10 Minuten ruhen lassen.",
+    "Backen: Bei mittlerer bis niedriger Hitze backen. Wichtig: Der Zucker der Banane karamellisiert und verbrennt schneller, daher ist eine niedrigere Hitze als üblich wichtig.",
+    "Zeit: Etwas länger warten als bei normalen Pancakes, etwa 3 Minuten pro Seite, da der dickere Teig Zeit zum Durchgaren braucht.",
+    "Servieren: Warm mit Bananenscheiben und Honig servieren."
+   ],
+   "wine": "Milch oder Kaffee.",
+   "plate": "Mit Bananenscheiben und Honig oder Erdnussbutter obenauf servieren."
+  },
+  "pancakes_myrtila": {
+   "n": "Heidelbeer-Pancakes",
+   "ing": [
+    "Mehl 250 g",
+    "Milch 300 ml",
+    "Eier 2",
+    "Heidelbeeren 200 g",
+    "Zucker 3 EL",
+    "Geschmolzene Butter 50 g",
+    "Backpulver 3 TL",
+    "Schale von 1 Zitrone",
+    "Salz 1/2 TL"
+   ],
+   "steps": [
+    "Heidelbeeren vorbereiten: Die Heidelbeeren waschen und auf Küchenpapier sehr gut trocknen.",
+    "Wichtig: Nasse Heidelbeeren platzen und bluten violett in den Teig, wodurch die Pancakes grau werden.",
+    "Mehlieren: In einem Esslöffel des abgewogenen Mehls wenden, damit sie im Teig schweben statt abzusinken.",
+    "Teig anrühren: Die trockenen Zutaten in einer Schüssel und die flüssigen in einer zweiten mischen, dann mit nur 10 Rührbewegungen vereinen.",
+    "Ruhen lassen: Den Teig 15 Minuten ruhen lassen.",
+    "Wichtig: Die Heidelbeeren nicht in den Teig rühren. Stattdessen erst auf jeden Pancake in der Pfanne streuen — so bleiben sie ganz und verteilen sich gleichmäßig.",
+    "Backen: Eine Kelle Teig bei mittlerer Hitze in die Pfanne geben und 6-8 Heidelbeeren darauf verteilen.",
+    "Warten: Backen, bis die Oberfläche mit Blasen bedeckt und die Ränder fest sind, etwa 2 Minuten.",
+    "Wenden: Vorsichtig wenden — die Früchte machen sie schwerer und empfindlicher als schlichte Pancakes.",
+    "Abschluss: Noch 1 Minute backen und sofort servieren, solange die Heidelbeeren heiß und aufgeplatzt sind."
+   ],
+   "wine": "Kaffee oder ein Smoothie.",
+   "plate": "Gestapelt servieren, mit frischen Heidelbeeren und Ahornsirup darüber."
+  },
+  "panseta_sigopsimeni": {
+   "n": "Langsam gegarter Schweinebauch",
+   "ing": [
+    "Schweinebauch mit Schwarte 1,5 kg",
+    "Grobes Salz 3 EL",
+    "Fenchelsamen 1 EL",
+    "Knoblauch 5 Zehen",
+    "Rosmarin 3 Zweige",
+    "Weißwein 200 ml",
+    "Honig 1 EL",
+    "Olivenöl 2 EL",
+    "Pfeffer"
+   ],
+   "steps": [
+    "Schwarte einschneiden: Die Schwarte mit einem sehr scharfen Messer eng rautenförmig einschneiden, dabei nur die Schwarte durchtrennen, nicht das Fleisch. Wichtig: So kann das Fett austreten und die Kruste entstehen.",
+    "Schwarte trocknen: Die Schwarte knochentrocken tupfen und den Bauch über Nacht unbedeckt im Kühlschrank lassen. Trockene Schwarte wird knusprig, feuchte wird ledrig.",
+    "Salzen: Das grobe Salz kräftig in die eingeschnittene Schwarte reiben und kurz vor dem Braten den Überschuss abbürsten.",
+    "Fleisch würzen: Umdrehen und die Fleischseite mit Knoblauch, Rosmarin, Fenchelsamen, Pfeffer und Öl einreiben.",
+    "Langsam garen: Mit der Schwarte nach oben in eine Form legen, den Wein auf den Boden der Form gießen, ohne die Schwarte zu benetzen, und bei 150 °C 2 Stunden 30 Minuten garen.",
+    "Wein kontrollieren: Etwas Wasser nachgießen, falls die Form trocken läuft — das Fleisch soll von unten sanft im Dampf schmoren, während die Schwarte oben trocknet.",
+    "Kruste: In den letzten 20-25 Minuten die Hitze auf 230 °C erhöhen und ständig beobachten, bis die Schwarte aufblüht und zur Kruste wird.",
+    "Glasieren: Den Honig in den letzten 5 Minuten auf die Schwarte streichen, für Farbe und Glanz — früher würde er verbrennen.",
+    "Ruhen lassen: 15 Minuten ruhen lassen, dann mit einem Sägemesser schneiden, damit die Kruste sauber bricht statt zu splittern."
+   ],
+   "wine": "Ein trockener Assyrtiko oder ein leicht im Holz gereifter Weißwein mit Säure gegen die Fülle.",
+   "plate": "In dicke Streifen schneiden und aufrecht mit der Kruste nach oben anrichten, neben Apfelmus oder geschmortem Blattgemüse."
+  },
+  "papoutsakia": {
+   "n": "Papoutsakia (gefüllte Auberginen)",
+   "ing": [
+    "Auberginen 4 mittelgroße",
+    "Rinderhackfleisch 400 g",
+    "Zwiebel 1 große",
+    "Knoblauch 2 Zehen",
+    "Geriebene Tomate 300 g",
+    "Zimt 1/2 TL",
+    "Muskatnuss",
+    "Milch 400 ml",
+    "Mehl 3 EL",
+    "Butter 50 g",
+    "Geriebener Kefalotyri 80 g",
+    "Olivenöl",
+    "Salz & Pfeffer"
+   ],
+   "steps": [
+    "Auberginen vorbereiten: Die Auberginen längs halbieren und salzen. 20 Minuten 'schwitzen' lassen — das Salz zieht die Bitterkeit heraus. Abspülen, trocknen und bei 200 °C 20 Minuten backen, bis sie weich sind.",
+    "Aushöhlen: Nach leichtem Abkühlen das Fruchtfleisch auslöffeln und ringsum einen 1 cm breiten Rand lassen. Das ausgelöste Fleisch kommt für den Geschmack in die Hackmasse.",
+    "Hackfleischsauce: Zwiebel und Knoblauch 5 Minuten in Öl anbraten. Die Hitze erhöhen, das Rinderhack zugeben und 8 Minuten bräunen. Das fein gehackte Auberginenfleisch, Tomate, Zimt, Salz und Pfeffer zugeben. Offen 15 Minuten köcheln, bis die Sauce andickt.",
+    "Béchamel: Die Butter schmelzen, das Mehl zugeben und 2 Minuten rühren. Nach und nach die Milch unter Rühren zugeben. Kochen, bis sie andickt. Vom Herd nehmen, Muskat und 2/3 des Käses zugeben.",
+    "Füllen: Die ausgehöhlten Auberginen mit der Hackmasse füllen. Jede Aubergine mit Béchamel bedecken und mit dem restlichen Käse bestreuen.",
+    "Backen: Bei 180 °C 25-30 Minuten backen, bis die Béchamel goldbraun ist. WICHTIG: Vor dem Servieren 5 Minuten setzen lassen."
+   ],
+   "wine": "Trockener Rotwein.",
+   "plate": "Ein bis zwei Auberginenhälften pro Teller."
+  },
+  "pasta_flora": {
+   "n": "Pasta Flora (Marmeladen-Gitterkuchen)",
+   "ing": [
+    "Mehl 500 g",
+    "Butter 250 g",
+    "Zucker 150 g",
+    "Eier 2",
+    "Backpulver 1 TL",
+    "Schale von 1 Zitrone",
+    "Marmelade (Aprikose oder Erdbeere) 400 g",
+    "Vanilleextrakt 1 TL"
+   ],
+   "steps": [
+    "Kalte Butter direkt aus dem Kühlschrank verwenden und in Würfel schneiden.",
+    "Die Butter mit den Fingerspitzen ins Mehl einarbeiten, bis die Masse groben Bröseln gleicht, dabei zügig arbeiten, damit sie nicht warm wird.",
+    "Wichtig: Die Butter muss kalt bleiben. Geschmolzene Butter macht den Teig hart und fettig statt mürbe.",
+    "Zucker, Eier, Backpulver, Vanille und Zitronenschale zugeben und zu einem Teig zusammenfügen, ohne zu kneten.",
+    "In Frischhaltefolie wickeln und 1 Stunde kalt stellen. Kalter Teig lässt sich leicht ausrollen und hält im Ofen seine Form.",
+    "Zwei Drittel des Teigs mit den Fingern in eine Tarteform drücken, Boden und Rand.",
+    "Die Marmelade gleichmäßig verteilen und am Rand einen Streifen frei lassen, damit sie nicht überkocht und verbrennt.",
+    "Den restlichen Teig zu Streifen rollen und als Gitter über die Marmelade legen.",
+    "Bei 180 °C 40 Minuten backen, bis das Gitter goldbraun ist und die Marmelade sanft blubbert.",
+    "Wichtig: Vor dem Schneiden vollständig auskühlen lassen. Heiße Marmelade läuft überall hin und die Stücke verlieren ihre Form."
+   ],
+   "wine": "Ein süßer Wein oder griechischer Kaffee.",
+   "plate": "In Rauten schneiden, sodass das Gitter zu sehen ist, und bei Zimmertemperatur servieren."
+  },
+  "pasta_fournou": {
+   "n": "Überbackene Nudeln",
+   "ing": [
+    "Penne oder Rigatoni 400 g",
+    "Hackfleisch 300 g",
+    "Tomaten aus der Dose 400 g",
+    "1 Zwiebel",
+    "Knoblauch 2 Zehen",
+    "Kefalotyri oder Graviera 150 g",
+    "Mozzarella 200 g",
+    "Olivenöl",
+    "Basilikum",
+    "Salz, Pfeffer"
+   ],
+   "steps": [
+    "Die Nudeln al dente kochen (2 Minuten kürzer als auf der Packung angegeben).",
+    "Zwiebel und Knoblauch anbraten. Das Hackfleisch zugeben und bräunen.",
+    "Tomaten, Salz, Pfeffer und Basilikum zugeben. 15 Minuten köcheln.",
+    "Die Nudeln mit der Sauce und der Hälfte des Käses mischen.",
+    "In einer Form verteilen. Mit Mozzarella und dem restlichen Käse bedecken.",
+    "Bei 200 °C 20-25 Minuten backen, bis die Oberfläche goldbraun ist."
+   ]
+  },
+  "pasta_garides_feta": {
+   "n": "Pasta mit Garnelen & Feta",
+   "ing": [
+    "Spaghetti 400 g",
+    "Garnelen, geschält, 400 g",
+    "Feta 150 g",
+    "Tomaten aus der Dose 400 g",
+    "Knoblauch 3 Zehen",
+    "Chiliflocken 1/4 TL",
+    "Olivenöl 4 EL",
+    "Frische Petersilie"
+   ],
+   "steps": [
+    "Nudeln: In Salzwasser al dente kochen. 1 Tasse Nudelwasser aufbewahren.",
+    "Knoblauch & Garnelen: Den Knoblauch 1 Minute in Olivenöl anbraten. Die Garnelen zugeben und 2 Minuten pro Seite braten. Die Garnelen herausnehmen.",
+    "Sauce: In derselben Pfanne die Dosentomaten und die Chiliflocken zugeben. 8-10 Minuten köcheln. Wichtig: Die Sauce soll ausreichend andicken.",
+    "Vereinen: Die Nudeln in die Sauce geben und bei Bedarf mit etwas Nudelwasser schwenken. Die Garnelen zurückgeben und den zerbröselten Feta sowie die Petersilie zugeben.",
+    "Servieren: Sofort servieren — der Feta wird weich, schmilzt aber nicht vollständig."
+   ],
+   "wine": "Trockener weißer Assyrtiko.",
+   "plate": "Tiefer Teller mit zusätzlichem Feta obenauf."
+  },
+  "pasta_manitaria": {
+   "n": "Pasta mit Pilz-Sahne-Sauce",
+   "ing": [
+    "Tagliatelle 200 g",
+    "Gemischte Pilze 300 g",
+    "Sahne 200 ml",
+    "Knoblauch 2 Zehen",
+    "Thymian",
+    "Butter 20 g",
+    "Weißwein 60 ml",
+    "Parmesan 50 g"
+   ],
+   "steps": [
+    "Pilze vorbereiten: Die 300 g Pilze mit einem feuchten Tuch statt mit Wasser putzen und in Scheiben schneiden. WICHTIG: Nicht waschen, denn sie saugen Wasser auf und kochen dann, statt zu bräunen.",
+    "Pilze bräunen: Bei starker Hitze mit etwas Olivenöl die Pilze in einer Lage zugeben und ohne häufiges Rühren 5-6 Minuten goldbraun braten, damit sie karamellisieren, statt ihre ganze Flüssigkeit abzugeben.",
+    "Mit Wein ablöschen: Die 60 ml Weißwein zugeben und den Alkohol 1 Minute verdampfen lassen, dabei den Pfannenboden abkratzen, um die Aromen zu lösen.",
+    "Sahnesauce: Die 2 fein gehackten Knoblauchzehen und den Thymian zugeben, 30 Sekunden mitbraten, dann die 200 ml Sahne angießen. Bei niedriger Hitze 5 Minuten köcheln, bis die Sauce leicht andickt.",
+    "Nudeln kochen: Die 200 g Tagliatelle in Salzwasser bissfest kochen. Vor dem Abgießen etwas Kochwasser aufbewahren.",
+    "Zusammenführen: Die Tagliatelle mit etwas Kochwasser in die Sauce geben und schwenken. Das stärkehaltige Wasser hilft, dass die Sauce an den Nudeln haftet.",
+    "Abschluss: Vom Herd genommen die 20 g Butter und die 50 g Parmesan zugeben und unterrühren. WICHTIG: Vom Herd, damit der Parmesan cremig schmilzt und die Sauce nicht ausflockt."
+   ],
+   "wine": "Trockener Weißwein.",
+   "plate": "Ein Nest aus Tagliatelle, Pilze obenauf, Thymian."
+  },
+  "pasta_pesto": {
+   "n": "Pasta mit Pesto",
+   "ing": [
+    "Nudeln (Spaghetti oder Penne) 200 g",
+    "Frisches Basilikum 50 g",
+    "Olivenöl 60 ml",
+    "Knoblauch 1 Zehe",
+    "Pecorino oder Parmesan 40 g",
+    "Pinienkerne 2 EL",
+    "Salz & Pfeffer",
+    "Olivenöl zum Servieren"
+   ],
+   "steps": [
+    "Nudeln kochen: Salzwasser aufkochen und die Nudeln nach Packungsangabe al dente garen. Vor dem Abgießen ½ Tasse Nudelwasser aufbewahren — es hilft, die Sauce zu binden.",
+    "Pesto: Basilikum, Knoblauch, Pinienkerne und Käse in die Küchenmaschine geben. Unter langsamem Zugießen des Olivenöls zu einer glatten Sauce mixen. Wichtig: Nicht zu lange mixen — das Pesto soll etwas Textur behalten.",
+    "Vereinen: Die abgetropften Nudeln in eine Schüssel geben. Das Pesto und 2-3 EL Nudelwasser zugeben. Zügig durchschwenken, bis alles überzogen ist. Das Wasser macht die Sauce cremig.",
+    "Servieren: Auf Teller verteilen, mit etwas nativem Olivenöl extra beträufeln und mit geriebenem Käse und frischem Basilikum bestreuen. Sofort servieren — Pesto dunkelt beim Stehen nach."
+   ],
+   "wine": "Trockener Weißwein (Assyrtiko oder Sauvignon Blanc).",
+   "plate": "Mit geriebenem Pecorino und frischem Basilikum."
+  },
+  "pasta_solomos_anithos": {
+   "n": "Pasta mit Lachs & Dill",
+   "ing": [
+    "Nudeln (Penne oder Tagliatelle) 400 g",
+    "Frisches Lachsfilet 400 g",
+    "Sahne 200 ml",
+    "Frischer Dill, fein gehackt, 1 kleines Bund",
+    "1 mittelgroße Zwiebel",
+    "Knoblauch, 2 Zehen",
+    "Trockener Weißwein 100 ml",
+    "Butter 30 g",
+    "Olivenöl 2 EL",
+    "Geriebener Parmesan 50 g"
+   ],
+   "steps": [
+    "Lachs vorbereiten: Das Lachsfilet in mittelgroße Würfel schneiden, dabei Gräten und Haut entfernen, und leicht mit Salz und Pfeffer würzen.",
+    "Basis anbraten: In einer weiten Pfanne das Olivenöl mit der Butter erhitzen und die fein gehackte Zwiebel und den Knoblauch bei niedriger Hitze weich dünsten, ohne Farbe nehmen zu lassen.",
+    "Lachs garen: Die Lachswürfel in die Pfanne geben und 2-3 Minuten anbraten, bis sie außen die Farbe wechseln, dabei vorsichtig wenden, damit sie nicht zerfallen.",
+    "Wichtig: Mit dem Weißwein ablöschen und den Alkohol 1-2 Minuten bei starker Hitze vollständig verdampfen lassen; verdampft der Wein nicht richtig, behält die Sauce einen bitteren, scharfen Beigeschmack.",
+    "Sauce zubereiten: Die Hitze reduzieren, die Sahne zugeben und vorsichtig rühren, 4-5 Minuten köcheln lassen, bis sie leicht andickt, ohne stark zu kochen, damit sie nicht ausflockt.",
+    "Nudeln kochen: Inzwischen die Nudeln nach Packungsangabe in reichlich Salzwasser al dente kochen und etwas Kochwasser aufbewahren.",
+    "Vereinen und Servieren: Die Nudeln abgießen und in die Pfanne zur Sauce geben, den frischen Dill und bei Bedarf etwas Kochwasser zum Lockern zugeben. Vorsichtig umrühren, mit Parmesan bestreuen und sofort servieren."
+   ],
+   "wine": "Ein kühler, frischer trockener weißer Assyrtiko aus Santorini, dessen lebendige Säure die sahnige Sauce ausbalanciert",
+   "plate": "In einem tiefen Teller servieren, mit etwas frischem Dill garniert und einer Zitronenspalte dazu"
+  },
+  "pasta_thalassina": {
+   "n": "Meeresfrüchte-Pasta",
+   "ing": [
+    "Linguine 200 g",
+    "Garnelen 200 g",
+    "Miesmuscheln 200 g",
+    "Baby-Kalmare 150 g",
+    "Knoblauch 3 Zehen",
+    "Weißwein 100 ml",
+    "Geriebene Tomate 200 g",
+    "Petersilie",
+    "Natives Olivenöl extra"
+   ],
+   "steps": [
+    "Meeresfrüchte vorbereiten: Die 200 g Garnelen putzen, die 150 g Baby-Kalmare (in Ringe geschnitten) und die 200 g Muscheln gründlich waschen, bereits geöffnete wegwerfen. WICHTIG: Garnelen und Kalmare mit Küchenpapier trocken tupfen — Feuchtigkeit verhindert das Bräunen und lässt sie Wasser ziehen.",
+    "Kurz anbraten: In heißem Olivenöl bei starker Hitze die Garnelen nur 1 Minute und die Kalmare 1 Minute anbraten. Sofort herausnehmen. Meeresfrüchte brauchen minimale Garzeit — länger werden sie gummiartig.",
+    "Saucenbasis: In derselben Pfanne die 3 fein gehackten Knoblauchzehen kurz anbraten, bis sie duften. Mit den 100 ml Weißwein ablöschen und den Alkohol verdampfen lassen — so bleiben Aroma und Säure ohne Schärfe.",
+    "Muscheln und Tomate: Die Muscheln in die Sauce geben und 3-4 Minuten zudecken, bis sie sich öffnen. WICHTIG: Muscheln, die nach dem Garen geschlossen bleiben, wegwerfen — sie sind nicht sicher zu essen. Die 200 g geriebene Tomate und Salz zugeben und 5 Minuten einkochen.",
+    "Nudeln kochen: Die 200 g Linguine in Salzwasser al dente, leicht bissfest kochen. Vor dem Abgießen eine Tasse Kochwasser aufbewahren — das stärkehaltige Wasser hilft, dass die Sauce an den Nudeln haftet.",
+    "Vereinen und Servieren: Die Linguine mit allen Meeresfrüchten in die Sauce geben und 1 Minute bei starker Hitze mit etwas Kochwasser schwenken. Fein gehackte Petersilie und rohes Olivenöl zugeben. Sofort heiß und duftend servieren."
+   ],
+   "wine": "Trockener Weißwein.",
+   "plate": "Tiefer Teller, Meeresfrüchte obenauf, Petersilie."
+  },
+  "pasta_voutirou": {
+   "n": "Nudeln mit Butter & Käse",
+   "ing": [
+    "200 g Nudeln oder Penne",
+    "30 g Butter",
+    "50 g geriebener Kefalotyri oder Parmesan",
+    "Salz",
+    "Frisch gemahlener Pfeffer"
+   ],
+   "steps": [
+    "Nudeln kochen: Die 200 g Nudeln oder Penne in reichlich Salzwasser nach Packungszeit kochen, am besten al dente. Gut gesalzenes Wasser würzt die Nudeln selbst.",
+    "Wasser aufbewahren: Vor dem Abgießen etwa ½ Tasse Kochwasser aufbewahren. Wichtig: Das stärkehaltige Kochwasser ist das Geheimnis, um die Sauce zu binden und cremig zu machen, ganz ohne Sahne.",
+    "Abgießen: Die Nudeln abgießen, aber nicht abspülen, damit die Stärke erhalten bleibt, an der Butter und Käse haften.",
+    "Mit Butter mischen: Die Nudeln zurück in den Topf geben, die 30 g Butter und etwas Kochwasser zugeben und kräftig rühren, bis die Butter schmilzt und glänzt.",
+    "Käse zugeben: Nach und nach die 50 g geriebenen Kefalotyri oder Parmesan unter ständigem Rühren zugeben, damit er gleichmäßig zu einer glatten Creme schmilzt statt zu klumpen.",
+    "Servieren: Sofort mit reichlich frisch gemahlenem Pfeffer und etwas zusätzlichem Käse servieren. Das Gericht schmeckt heiß am besten, solange die Sauce cremig ist."
+   ],
+   "wine": "Ein leichter Weißwein.",
+   "plate": "Sofort, heiß, mit zusätzlichem Käse."
+  },
+  "pasteli": {
+   "n": "Pasteli (Sesam-Honig-Riegel)",
+   "ing": [
+    "Sesam 500 g",
+    "Honig 300 g",
+    "Zucker 100 g",
+    "Wasser 2 EL",
+    "Zitronensaft 1 EL",
+    "Orangenschale 1 TL",
+    "Zimt 1/2 TL",
+    "Öl für Hände und Backpapier"
+   ],
+   "steps": [
+    "Sesam rösten: Den Sesam in einer beschichteten Pfanne verteilen und bei mittlerer Hitze 5-7 Minuten unter ständigem Rühren goldbraun und duftend rösten.",
+    "Fläche vorbereiten: Ein Blech oder eine Marmorplatte mit Backpapier auslegen und leicht mit Öl bestreichen.",
+    "Honigsirup: In einem Topf Honig, Zucker und Wasser vereinen und bei mittlerer Hitze ohne Rühren kochen.",
+    "Wichtig: Der Sirup muss etwa 150 °C erreichen (Hartkugelprobe) — gibt man etwas davon in Eiswasser und es bildet sich eine harte Kugel, ist er fertig. Kürzer gekocht bleibt das Pasteli weich, länger gekocht wird es hart und bitter.",
+    "Mischen: Vom Herd nehmen, sofort Zitronensaft, Schale und Zimt zugeben und zügig verrühren.",
+    "Sesam zugeben: Den gerösteten Sesam in den heißen Sirup gießen und mit einem Holzlöffel zügig verrühren, bis die Masse gleichmäßig ist.",
+    "Ausrollen: Die Masse auf die geölte Fläche gießen und mit einem geölten Nudelholz oder den geölten Handflächen zu einer etwa 1 cm dicken Schicht ausbreiten, bevor sie abkühlt und fest wird.",
+    "Schneiden: Noch warm mit einem Messer in Rechtecke oder Rauten schneiden; wird es zu schnell hart, das Messer leicht erwärmen.",
+    "Abkühlen und aufbewahren: Vor dem Ablösen vollständig bei Zimmertemperatur auskühlen lassen und in einem luftdichten Behälter aufbewahren."
+   ],
+   "wine": "Süßer Samos-Wein",
+   "plate": "In kleine Stücke geschnitten auf einer Platte servieren, dazu griechischer Kaffee"
+  },
+  "pastitsada": {
+   "n": "Pastitsada",
+   "ing": [
+    "Hähnchenteile 1 kg",
+    "Muschelnudeln 500 g",
+    "Zwiebeln 2",
+    "Geriebene Tomate 400 g",
+    "Rotwein 200 ml",
+    "Knoblauch 3 Zehen",
+    "Zimt, Nelken, Piment",
+    "Olivenöl",
+    "Salz & Pfeffer"
+   ],
+   "steps": [
+    "Hähnchen anbraten: In einem Topf mit Olivenöl die 1 kg Hähnchenteile bei starker Hitze rundum anbraten. Das Anbraten schließt die Säfte ein und gibt der Sauce Tiefe.",
+    "Aromaten: Die 2 fein gehackten Zwiebeln und die 3 Knoblauchzehen zugeben und weich dünsten. Mit den 200 ml Rotwein ablöschen und den Alkohol verdampfen lassen, wobei ein volles Aroma zurückbleibt.",
+    "Gewürze und Tomate: Die 400 g geriebene Tomate, Zimt, Nelken, Piment, Salz und Pfeffer zugeben. Wichtig: Die süßen Gewürze (Zimt, Nelken, Piment) sind die Signatur der korfiotischen Pastitsada — nicht weglassen.",
+    "Langsam garen: Zugedeckt bei niedriger Hitze 60-70 Minuten sanft schmoren, bis das Hähnchen sehr zart ist und die Sauce zu einer dicken, kräftig roten Sauce einkocht.",
+    "Nudeln kochen: Die 500 g Muschelnudeln in Salzwasser al dente kochen, damit sie leicht bissfest bleiben und mit der Sauce nicht matschig werden.",
+    "Servieren: Die Nudeln mit der kräftigen Sauce und den Hähnchenteilen servieren, großzügig mit geriebenem Kefalograviera bestreut."
+   ],
+   "wine": "Trockener Rotwein.",
+   "plate": "Klassisch korfiotisch. Mit Kefalograviera oder Parmesan."
+  },
+  "pastitsio": {
+   "n": "Pastitsio",
+   "ing": [
+    "Dicke Nudeln (Bucatini/Penne rigate) 500 g",
+    "Rinderhackfleisch 500 g",
+    "Geriebene Tomate 300 g",
+    "Zwiebel 1",
+    "Milch 1 Liter",
+    "Mehl 4 EL",
+    "Butter 80 g",
+    "Kefalotyri-Käse 150 g",
+    "Zimt"
+   ],
+   "steps": [
+    "Hackfleischsauce: Die fein gehackte Zwiebel in etwas Öl weich dünsten, die 500 g Rinderhack zugeben und braun braten. Die 300 g geriebene Tomate und etwas Zimt zugeben und 20 Minuten köcheln, bis die Sauce andickt. Der Zimt gibt dem Pastitsio sein typisches Aroma.",
+    "Nudeln kochen: Inzwischen die 500 g dicken Nudeln in Salzwasser 9-10 Minuten leicht bissfest (al dente) kochen. WICHTIG: Nicht zu weich kochen, denn sie garen im Ofen weiter und werden sonst matschig.",
+    "Béchamel zubereiten: Die 80 g Butter schmelzen, die 4 EL Mehl zugeben und 1-2 Minuten rühren, um das Mehl abzurösten. Nach und nach den 1 Liter Milch unter ständigem Rühren zugeben, damit keine Klümpchen entstehen, bis eine puddingartige Masse entsteht.",
+    "Béchamel abschließen: Vom Herd nehmen und Eier sowie einen Teil des Kefalotyri zügig unterrühren. WICHTIG: Die Eier erst zugeben, wenn die Béchamel etwas abgekühlt ist, sonst gerinnen sie und stocken.",
+    "Schichten: In einer gefetteten Form die Hälfte der Nudeln einschichten, mit Käse bestreuen, die gesamte Hackfleischsauce darauf verteilen, dann die restlichen Nudeln und zuletzt die Béchamel. Mit dem restlichen Kefalotyri bestreuen, für eine goldene Kruste.",
+    "Backen: Im vorgeheizten Ofen bei 180 °C 45-50 Minuten backen, bis die Oberfläche kräftig gebräunt ist. Das Pastitsio vor dem Schneiden 15-20 Minuten abkühlen lassen, damit es fest wird und die Stücke zusammenhalten."
+   ],
+   "wine": "Trockener Rotwein.",
+   "plate": "Quadratische Stücke, nach 15 Minuten Abkühlen."
+  },
+  "patates_avga": {
+   "n": "Kartoffeln mit Ei",
+   "ing": [
+    "3 mittelgroße Kartoffeln",
+    "3 Eier",
+    "3 EL Olivenöl",
+    "1 Zwiebel (optional)",
+    "Salz & Pfeffer",
+    "Oregano"
+   ],
+   "steps": [
+    "Kartoffeln schneiden: 3 mittelgroße Kartoffeln schälen und in etwa 1 cm große Würfel schneiden. Gleich große Stücke garen gleich schnell. Nach Belieben abspülen und gut trocknen, um überschüssige Stärke zu entfernen und sie knuspriger zu machen.",
+    "Kartoffeln braten: 3 EL Olivenöl in einer Pfanne erhitzen und die Kartoffeln bei starker Hitze 10-12 Minuten unter gelegentlichem Rühren braten, bis sie goldbraun und innen weich sind. Wichtig: Nicht ständig rühren, damit sie Zeit haben, an den Kontaktflächen eine goldene Kruste zu bilden.",
+    "Zwiebel (optional): Nach Belieben 1 gehackte Zwiebel zugeben und 2 Minuten mit den Kartoffeln weich und süß dünsten, für zusätzlichen Geschmack.",
+    "Eier zugeben: 3 Eier mit etwas Salz leicht verquirlen und über die Kartoffeln gießen, dabei die Hitze auf mittlere Stufe reduzieren.",
+    "Stocken: Vorsichtig rühren, bis die Eier stocken, aber noch saftig sind, ohne auszutrocknen. Wichtig: Kurz vor dem völligen Durchgaren vom Herd nehmen, da sie durch die Restwärme der Pfanne weitergaren.",
+    "Servieren: Mit Oregano, Salz und Pfeffer bestreuen und sofort heiß mit frischem Brot servieren."
+   ],
+   "wine": "Ein leichter Weißwein.",
+   "plate": "Direkt aus der Pfanne, mit Brot."
+  },
+  "patates_giaxni": {
+   "n": "Kartoffeln Giachni",
+   "ing": [
+    "Kartoffeln 1,2 kg",
+    "Zwiebeln 2",
+    "Geriebene Tomate 500 g",
+    "Tomatenmark 1 EL",
+    "Knoblauch 2 Zehen",
+    "Olivenöl 1/2 Tasse",
+    "Frische Petersilie 1/2 Bund",
+    "Lorbeerblatt 1",
+    "Zucker 1 TL",
+    "Salz, Pfeffer"
+   ],
+   "steps": [
+    "Kartoffeln schneiden: Die Kartoffeln schälen und in große Stücke schneiden. Zu klein geschnitten zerfallen sie in der Sauce.",
+    "Zwiebel anbraten: Die geschnittene Zwiebel im Öl bei mittlerer Hitze 6-8 Minuten weich und goldbraun und wirklich süß dünsten.",
+    "Tomatenmark zugeben: Knoblauch und Tomatenmark zugeben und 1 Minute mitrösten, damit das Mark seinen metallisch-rohen Geschmack verliert.",
+    "Kartoffeln anbraten: Die Kartoffeln zugeben und 3-4 Minuten im Öl wenden, damit ihre Oberfläche versiegelt und sie die Form behalten.",
+    "Tomate zugeben: Die geriebene Tomate, das Lorbeerblatt und den Zucker zugeben und gerade so viel heißes Wasser, dass die Kartoffeln knapp bedeckt sind.",
+    "Schmoren: Wichtig: Bei niedriger Hitze ohne Rühren köcheln — stattdessen den Topf an den Griffen schwenken. Ein Löffel zerbricht die Kartoffeln.",
+    "Garen: Etwa 35 Minuten garen, bis die Kartoffeln weich sind und die Sauce angedickt und glänzend ist.",
+    "Würzen: Gegen Ende mit Salz und Pfeffer würzen, wenn die Sauce reduziert und ihr Salzgehalt konzentriert ist.",
+    "Ruhen lassen: Die gehackte Petersilie darüber streuen und vom Herd genommen 10 Minuten stehen lassen — wie alle Giachni-Gerichte gewinnt es im Ruhen."
+   ],
+   "wine": "Ein leichter Rosé oder ein frischer weißer Roditis.",
+   "plate": "In einer tiefen Schüssel mit reichlich Sauce servieren, Feta daneben und Brot zum Auftunken."
+  },
+  "patates_lemonates": {
+   "n": "Zitronenkartoffeln",
+   "ing": [
+    "Kartoffeln 1 kg",
+    "Olivenöl 5 EL",
+    "Zitronen 2",
+    "Knoblauch 4 Zehen",
+    "Oregano",
+    "Salz & Pfeffer",
+    "Gemüsebrühe oder Wasser 150 ml"
+   ],
+   "steps": [
+    "Kartoffeln schneiden: Die 1 kg Kartoffeln schälen und in gleich große dicke Spalten schneiden, damit sie gleichmäßig garen. In einer Lage in einer Form anordnen.",
+    "Marinade vorbereiten: In einer Schüssel die 5 EL Olivenöl, den Saft von 2 Zitronen, die 4 Knoblauchzehen, Oregano, Salz, Pfeffer und die 150 ml Brühe oder Wasser mischen.",
+    "Übergießen: Die Marinade über die Kartoffeln gießen und sie rundum darin wenden. Wichtig: Die Flüssigkeit soll etwa bis zur halben Höhe der Kartoffeln reichen, damit sie garen, ohne auszutrocknen.",
+    "Backen: Bei 180 °C 60-65 Minuten backen. Die Zitrone gibt dem Gericht seinen typisch frischen Geschmack und der Knoblauch das Aroma.",
+    "Wenden: Nach der halben Backzeit die Kartoffeln einmal wenden, damit sie von beiden Seiten bräunen.",
+    "Abschluss: So lange backen, bis sie außen goldbraun und innen weich sind und fast die gesamte Flüssigkeit aufgenommen haben, sodass unten eine dicke Zitronensauce bleibt."
+   ],
+   "wine": "Trockener Weißwein.",
+   "plate": "Die Form direkt auf den Tisch, mit Feta und Oliven."
   }
  }
 }
