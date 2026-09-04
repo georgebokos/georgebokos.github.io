@@ -1,0 +1,594 @@
+{
+ "biftekia": {
+  "n": "Gegrillte Frikadellen",
+  "ing": [
+   "Rinderhack 600 g",
+   "Geriebene Zwiebel 1",
+   "Knoblauch 1 Zehe",
+   "Senf 1 TL",
+   "Oregano",
+   "Salz & Pfeffer"
+  ],
+  "steps": [
+   "Masse kneten: In einer Schüssel die 600 g Rinderhack, die 1 geriebene Zwiebel, die 1 geriebene Knoblauchzehe, 1 TL Senf, Oregano, Salz und Pfeffer vermengen. Mit den Händen gut durchkneten, bis eine gleichmäßige Masse entsteht.",
+   "Im Kühlschrank ruhen: Die Masse abdecken und 20 Minuten kalt stellen. Wichtig: Das Ruhen bindet das Fleisch und festigt die Masse, damit die Frikadellen beim Braten nicht zerfallen.",
+   "Formen: Zu runden oder ovalen Buletten von etwa 2 cm Dicke formen. Mit feuchten Händen gelingt das Formen leichter und die Oberfläche wird glatt.",
+   "Grill vorheizen: Grill oder Pfanne sehr gut erhitzen. Die heiße Fläche karamellisiert das Fleisch sofort und schließt den Saft ein, sodass die Frikadellen saftig bleiben.",
+   "Braten: 4-5 Minuten pro Seite grillen, ohne die Frikadellen mit dem Wender zu drücken, denn das presst den Saft heraus und trocknet sie aus.",
+   "Ruhen und servieren: Die Frikadellen vor dem Servieren 3-4 Minuten ruhen lassen, damit sich der Saft verteilt. Mit Kartoffeln oder Salat servieren."
+  ],
+  "wine": "Trockener Rotwein.",
+  "plate": "Ofenkartoffeln, Tzatziki, Salat."
+ },
+ "biskota_sokolatas": {
+  "n": "Schoko-Cookies",
+  "ing": [
+   "Mehl 200 g",
+   "Schokoladenstücke 200 g",
+   "Butter 150 g",
+   "Brauner Zucker 100 g",
+   "Weißer Zucker 50 g",
+   "Ei 1",
+   "Vanilleextrakt 1 TL",
+   "Natron 1/2 TL",
+   "Salz 1/2 TL"
+  ],
+  "steps": [
+   "Schokolade hacken: Eine Tafel Schokolade von Hand in unregelmäßige Stücke hacken statt Chips zu verwenden. Wichtig: Handgehackte Stücke schmelzen zu Seen, während Chips so gemacht sind, dass sie ihre Form behalten und fest bleiben.",
+   "Butter bräunen: Die Butter bei mittlerer Hitze schmelzen, bis sie schäumt und sich am Boden kleine braune Flöckchen bilden, die nach Haselnuss duften. Allein dieser Schritt verdoppelt die Geschmackstiefe.",
+   "Abkühlen: Die gebräunte Butter 10 Minuten abkühlen lassen. Wichtig: Heiße Butter gart das Ei beim Kontakt und macht den Teig fettig.",
+   "Zucker mischen: Die Butter mit beiden Zuckersorten 2 Minuten aufschlagen. Der braune Zucker gibt Zähigkeit, der weiße knusprige Ränder.",
+   "Ei zugeben: Das Ei und die Vanille unterschlagen, bis die Masse glänzt.",
+   "Vereinen: Mehl, Natron und Salz mit einem Teigschaber unterheben, dann die Schokolade, dabei so wenig wie möglich rühren.",
+   "Wichtig: Den Teig mindestens 1 Stunde kalt stellen. Ungekühlter Teig zerläuft im Ofen zu dünnen flachen Scheiben.",
+   "Formen: Zu Kugeln rollen und mit viel Abstand auf das Blech setzen — sie laufen fast auf die doppelte Breite auseinander.",
+   "Backen: Bei 180 °C nur 10-12 Minuten backen. Die Mitte soll beim Herausnehmen noch nicht ganz durch aussehen.",
+   "Wichtig: Sie garen auf dem heißen Blech fertig. Backt man sie, bis sie im Ofen fertig aussehen, werden sie hart und trocken."
+  ],
+  "wine": "Kalte Milch.",
+  "plate": "Warm servieren, solange die Schokoladenstücke noch weich sind."
+ },
+ "bizelia_kokkinista": {
+  "n": "Erbsen in Tomatensauce",
+  "ing": [
+   "Tiefkühlerbsen 500 g",
+   "Zwiebel 1",
+   "Geriebene Tomate 400 g",
+   "Olivenöl 4 EL",
+   "Frischer Dill",
+   "Salz, Pfeffer",
+   "Zucker 1 TL"
+  ],
+  "steps": [
+   "Die fein gehackte Zwiebel im Öl weich dünsten.",
+   "Tomate, Salz, Pfeffer und Zucker zugeben. 10 Minuten köcheln lassen.",
+   "Die Erbsen zugeben und 20 Minuten garen.",
+   "Zum Schluss den Dill unterrühren. Heiß mit Brot servieren."
+  ]
+ },
+ "black_forest": {
+  "n": "Schwarzwälder Kirschtorte",
+  "ing": [
+   "Weizenmehl 200 g",
+   "Kakaopulver, ungesüßt 60 g",
+   "Zucker 220 g",
+   "Eier 6",
+   "Backpulver 1 TL",
+   "Sauerkirschen (aus dem Glas) 400 g",
+   "Kirschwasser 80 ml",
+   "Schlagsahne 35 % 600 ml",
+   "Puderzucker 60 g",
+   "Gelatineblätter 2",
+   "Zartbitterkuvertüre für Späne 100 g"
+  ],
+  "steps": [
+   "Ofen vorbereiten: Auf 180 °C vorheizen und zwei Springformen von 22 cm einfetten.",
+   "Eier aufschlagen: Die Eier mit dem Zucker über einem lauwarmen Wasserbad aufschlagen, bis sich das Volumen verdreifacht hat und die Masse hell ist.",
+   "Trockene Zutaten mischen: Mehl, Kakao und Backpulver sieben und mit einem Teigschaber vorsichtig von unten nach oben unter die Eimasse heben, damit sie nicht zusammenfällt.",
+   "Backen: Den Teig auf die Formen verteilen und 25-30 Minuten backen. Wichtig: Den Ofen die ersten 20 Minuten nicht öffnen, denn ein plötzlicher Luftzug lässt den Biskuit zusammenfallen und er bleibt kompakt.",
+   "Auskühlen und teilen: Die Böden vollständig auskühlen lassen und jeden waagerecht in 2-3 Schichten teilen.",
+   "Tränken: Jede Schicht mit dem Kirschsaft, gemischt mit dem Kirschwasser, bestreichen, damit die Torte saftig und aromatisch wird.",
+   "Schlagsahne: Die gut gekühlte Sahne mit dem Puderzucker steif schlagen. Wichtig: Schüssel und Schneebesen müssen sehr kalt sein, sonst gerinnt die Sahne und bekommt kein Volumen.",
+   "Schichten: Auf jede Schicht Sahne streichen, Kirschen darauf verteilen und wiederholen, bis die Torte aufgebaut ist, zum Schluss Oberfläche und Rand ganz einstreichen.",
+   "Dekorieren: Mit Schokoladenspänen, ganzen Kirschen und etwas Sahne obenauf bedecken und vor dem Servieren mindestens 3 Stunden kalt stellen."
+  ],
+  "wine": "Süßer Mavrodafni-Wein",
+  "plate": "Gekühlt in Stücken servieren, mit einem Löffel Kirschsauce daneben und geriebener Schokolade"
+ },
+ "bougatsa": {
+  "n": "Bougatsa mit Grießcreme",
+  "ing": [
+   "Filoteig (handgezogen oder blättrig) 450 g",
+   "Frische Milch 1 Liter",
+   "Feiner Grieß 120 g",
+   "Zucker 150 g",
+   "Eier 3",
+   "Geschmolzene Butter 150 g",
+   "Vanille 1 Päckchen (oder 1 TL Extrakt)",
+   "Puderzucker zum Bestäuben",
+   "Zimt zum Bestäuben"
+  ],
+  "steps": [
+   "Creme: In einem Topf die Milch mit der Hälfte des Zuckers erwärmen, bis sie zu dampfen beginnt, ohne zu kochen. Den Grieß in dünnem Strahl einrieseln lassen und dabei ständig rühren, damit er nicht klumpt.",
+   "Andicken: Die Hitze reduzieren und 4-5 Minuten rühren, bis die Creme eindickt und samtig wird. Vom Herd nehmen.",
+   "Eier: Die Eier mit dem restlichen Zucker und der Vanille verschlagen. Wichtig: Etwas heiße Creme unter die Eier rühren (temperieren), damit sie nicht stocken, dann die Mischung zurück in die Creme geben. So gerinnen die Eier nicht.",
+   "Filo schichten: Eine Backform einfetten und die Hälfte der Filoblätter einzeln einlegen, jedes mit geschmolzener Butter bestreichen und die Ränder über den Rand hängen lassen.",
+   "Füllen: Die Creme gleichmäßig auf dem Filo verteilen. Mit den restlichen gebutterten Blättern bedecken und die überhängenden Ränder nach innen einschlagen, sodass die Füllung eingeschlossen ist.",
+   "Einschneiden: Die Oberfläche mit der restlichen Butter bestreichen und die Portionen mit einem Messer leicht vorschneiden, damit sie sich nach dem Backen gut teilen lassen.",
+   "Backen: Im vorgeheizten Ofen bei 180 °C 40-45 Minuten backen, bis der Filoteig goldgelb und knusprig ist.",
+   "Servieren: 10 Minuten ruhen lassen, in Stücke schneiden und großzügig mit Puderzucker und Zimt bestäuben. Warm servieren."
+  ],
+  "wine": "Süßer Samos-Wein oder ein heißer griechischer Kaffee.",
+  "plate": "Warm servieren, in Quadrate geschnitten, mit reichlich Puderzucker und Zimt obenauf."
+ },
+ "bourdeto": {
+  "n": "Scharfer Fisch nach Korfu-Art",
+  "ing": [
+   "Schmorfisch, etwa Drachenkopf oder Zackenbarsch, 1 kg (geputzt, in Scheiben)",
+   "Zwiebeln 3 große (fein gehackt)",
+   "Knoblauch 3 Zehen (fein gehackt)",
+   "Scharfe Paprikaflocken (Boukovo) 1-2 EL",
+   "Edelsüßer Paprika 1 EL",
+   "Olivenöl 1 Tasse",
+   "Tomatenmark 1 EL (optional)",
+   "Saft von 1 Zitrone",
+   "Salz und Pfeffer nach Bedarf",
+   "Heißes Wasser 1-1½ Tassen"
+  ],
+  "steps": [
+   "Fisch vorbereiten: Den Fisch gut putzen, in dicke Scheiben schneiden, mit Salz und Pfeffer würzen und beiseitestellen. Bourdeto verlangt festfleischigen Fisch, der beim Garen nicht zerfällt.",
+   "Zwiebeln anbraten: In einem weiten, flachen Topf das Olivenöl erhitzen und die Zwiebeln bei schwacher Hitze weich und süß dünsten, ohne sie zu bräunen. Den Knoblauch eine Minute mitdünsten.",
+   "Paprika zugeben: Die Hitze reduzieren und Boukovo und Paprika zugeben, dabei zügig rühren. Wichtig: Den Paprika nicht zu heiß werden lassen, er verbrennt leicht und wird bitter — das Geheimnis ist, Aroma und Farbe ins Öl zu bringen, ohne ihn anbrennen zu lassen.",
+   "Sauce aufbauen: Das Tomatenmark in etwas heißem Wasser auflösen und mit dem restlichen heißen Wasser in den Topf geben. Bourdeto ist scharf und rötlich, keine Tomatensauce, deshalb wird Tomate sparsam oder gar nicht verwendet.",
+   "Sauce köcheln: Die Sauce aufkochen und bei mittlerer Hitze 10-15 Minuten leicht eindicken lassen, damit sich die Aromen verbinden und sie ölig und reichhaltig wird.",
+   "Fisch garen: Die Fischscheiben vorsichtig in einer Lage in die Sauce legen. Den Topf schwenken statt mit dem Löffel zu rühren, damit der Fisch nicht zerfällt. 15-20 Minuten köcheln, bis er gar ist.",
+   "Vollenden: Gegen Ende den Zitronensaft zugeben, abschmecken und Salz und Schärfe anpassen. Vom Herd nehmen und vor dem Servieren 10 Minuten stehen lassen, damit die Sauce sich setzt."
+  ],
+  "wine": "Trockener Weißwein von Korfu, etwa Kakotrygis.",
+  "plate": "Heiß servieren mit reichlich roter Sauce, frischem Brot zum Tunken und Salzkartoffeln."
+ },
+ "boureki_xanion": {
+  "n": "Boureki aus Chania",
+  "ing": [
+   "Zucchini 1,5 kg",
+   "Kartoffeln 700 g",
+   "Mizithra (frisch) 500 g",
+   "Graviera, gerieben 150 g",
+   "Frische Minze 1 Bund",
+   "Filoteig 4 Blätter (optional)",
+   "Olivenöl 1/2 Tasse",
+   "Mehl 2 EL",
+   "Sesam",
+   "Salz, Pfeffer"
+  ],
+  "steps": [
+   "Gemüse schneiden: Zucchini und Kartoffeln in dünne Scheiben von etwa 3 mm schneiden, idealerweise mit dem Hobel, damit alle gleich sind.",
+   "Zucchini salzen: Wichtig: Die Zucchinischeiben in einem Sieb mit Salz schichten, 30 Minuten stehen lassen und dann trocken tupfen. Zucchini bestehen fast nur aus Wasser, und nur so verhindert man, dass das Boureki zur Suppe wird.",
+   "Form vorbereiten: Eine große runde Form gut einölen und, falls verwendet, zwei Filoblätter auf den Boden legen.",
+   "Erste Schicht: Eine Lage Kartoffelscheiben auslegen, würzen und leicht mit Mehl bestäuben — das Mehl bindet die Flüssigkeit, die beim Backen austritt.",
+   "Käseschicht: Etwas Mizithra darüberbröseln, Graviera darüberstreuen und gehackte Minze verteilen.",
+   "Aufbauen: Abwechselnd Zucchini, Kartoffeln und Käse schichten und mit einer Lage Gemüse und Käse abschließen.",
+   "Oberfläche vollenden: Großzügig mit Olivenöl beträufeln und Sesam über die Oberfläche streuen.",
+   "Backen: Bei 180 °C 1 Stunde 15 Minuten backen, bis alles tief goldbraun ist und die Flüssigkeit vollständig verdampft ist.",
+   "Prüfen: Wichtig: Blubbert am Rand noch Flüssigkeit, weiterbacken. Zu früh angeschnittenes Boureki fällt auf dem Teller zusammen.",
+   "Ruhen: Vor dem Schneiden mindestens 30 Minuten ruhen lassen. Traditionell wird es warm gegessen, nicht heiß."
+  ],
+  "wine": "Ein frischer kretischer Weißer — Vidiano oder Vilana.",
+  "plate": "In große Quadrate schneiden und warm auf einem flachen Teller servieren, die Sesamkruste nach oben."
+ },
+ "briami": {
+  "n": "Griechisches Ofengemüse",
+  "ing": [
+   "Zucchini 3",
+   "Auberginen 2",
+   "Kartoffeln 3",
+   "Paprika 2",
+   "Tomaten 3",
+   "Zwiebel 1",
+   "Knoblauch 4 Zehen",
+   "Olivenöl 6 EL"
+  ],
+  "steps": [
+   "Gemüse schneiden: Die 3 Zucchini, 2 Auberginen, 3 Kartoffeln, 2 Paprika und 3 Tomaten in gleich dicke Scheiben schneiden, 1 Zwiebel und 4 Knoblauchzehen fein hacken. Wichtig: Gleiche Dicke sorgt für gleichmäßiges Garen.",
+   "In der Form anordnen: Das gesamte Gemüse in einer großen Backform verteilen, miteinander vermischt, damit sich die Aromen verbinden. Einige Tomatenscheiben für obenauf zurückbehalten.",
+   "Würzen: Mit den 6 EL Olivenöl beträufeln und mit Salz, Pfeffer und Kräutern (Oregano oder Thymian) bestreuen. Mit den Händen gut mischen, damit jedes Stück von Öl überzogen ist, was das Austrocknen verhindert.",
+   "Etwas Wasser: Ein halbes Glas Wasser auf den Boden der Form gießen, damit das Gemüse zu Beginn nicht austrocknet und seinen eigenen Saft abgeben kann.",
+   "Backen: Bei 190 °C 60-70 Minuten backen. Nach der Hälfte vorsichtig umrühren, damit alles gleichmäßig gart und nicht am Rand anhaftet.",
+   "Vollenden: Das Briam ist fertig, wenn die Kartoffeln weich sind und das Gemüse an den Rändern karamellisiert ist. Warm mit Feta obenauf servieren, der die Süße des Gemüses ausgleicht."
+  ],
+  "wine": "Leichter Roséwein.",
+  "plate": "Auf einer Platte mit Basilikum und Feta."
+ },
+ "brizoles": {
+  "n": "Schweinekoteletts",
+  "ing": [
+   "2 Schweinekoteletts (400 g)",
+   "1 Zitrone",
+   "2 EL Olivenöl",
+   "Oregano",
+   "Thymian",
+   "Salz & Pfeffer"
+  ],
+  "steps": [
+   "Zimmertemperatur: Die 2 Koteletts (400 g) 15 Minuten vorher aus dem Kühlschrank nehmen. Wichtig: Fleisch mit Zimmertemperatur gart gleichmäßiger und bleibt innen nicht kalt, während es außen verbrennt.",
+   "Würzen: Die Koteletts gut trocken tupfen und beidseitig mit Salz, Pfeffer, Oregano, Thymian und Olivenöl einreiben. Trockenes Fleisch bräunt besser und bildet eine Kruste.",
+   "Pfanne erhitzen: Pfanne oder Grill bei starker Hitze sehr gut erhitzen, bevor das Fleisch hineinkommt. Die hohe Temperatur gibt eine goldene Kruste und schließt den Saft ein.",
+   "Braten: 3-4 Minuten pro Seite braten. Wichtig: Die Koteletts NICHT ständig bewegen oder wenden — erst eine Kruste bilden lassen, sonst bräunen sie nicht und kleben fest.",
+   "Ruhen: Die Koteletts herausnehmen und vor dem Schneiden 3-5 Minuten ruhen lassen. So verteilt sich der Saft und das Fleisch bleibt saftig.",
+   "Servieren: Mit frischem Zitronensaft beträufeln und sofort servieren."
+  ],
+  "wine": "Trockener Roter.",
+  "plate": "Mit Pommes und Zitrone."
+ },
+ "brizoles_mosxari": {
+  "n": "Rindersteaks",
+  "ing": [
+   "Rindersteaks 2x250 g",
+   "Butter 30 g",
+   "Knoblauch 2 Zehen",
+   "Frischer Thymian 2 Zweige",
+   "Rosmarin 1 Zweig",
+   "Grobes Salz",
+   "Frisch gemahlener Pfeffer"
+  ],
+  "steps": [
+   "Vorbereitung: Die Steaks 30 Minuten vor dem Braten aus dem Kühlschrank nehmen, damit sie Zimmertemperatur annehmen — sonst ist die Außenseite fertig, bevor es innen durch ist.",
+   "Trocknen und salzen: Sehr gut mit Küchenpapier trocken tupfen. Erst unmittelbar vor dem Braten salzen und pfeffern.",
+   "Heiße Pfanne: Eine gusseiserne oder schwere Pfanne bei starker Hitze erhitzen, bis sie gerade zu rauchen beginnt. Etwas Öl zugeben.",
+   "Anbraten: Die Steaks 2-3 Minuten pro Seite für medium rare braten (54-57 °C Kerntemperatur). WICHTIG: nicht ständig bewegen — eine Kruste entstehen lassen.",
+   "Arrosieren: Butter, Knoblauch und Kräuter in die Pfanne geben. Die Pfanne neigen und die schäumende Butter 1 Minute lang ununterbrochen über die Steaks löffeln.",
+   "Ruhen: WICHTIG: Die Steaks auf einem Brett 5-8 Minuten mit Folie abgedeckt ruhen lassen. Der Saft verteilt sich und das Steak bleibt saftig."
+  ],
+  "wine": "Kräftiger Roter.",
+  "plate": "Schräg gegen die Faser aufgeschnitten."
+ },
+ "brownies": {
+  "n": "Schoko-Brownies",
+  "ing": [
+   "Zartbitterschokolade 200 g",
+   "Butter 150 g",
+   "Eier 3",
+   "Zucker 200 g",
+   "Mehl 100 g",
+   "Kakao 2 EL",
+   "Salz 1 Prise",
+   "Walnüsse 80 g (optional)"
+  ],
+  "steps": [
+   "Die Schokolade mit der Butter über dem Wasserbad schmelzen. Leicht abkühlen lassen.",
+   "Die Eier mit dem Zucker 3-4 Minuten hell aufschlagen.",
+   "Die Schokolade unter die Eier rühren.",
+   "Mehl und Kakao sieben und mit sanften Bewegungen unterheben. Wichtig: nicht zu lange rühren — ein paar kleine Klümpchen sind in Ordnung. Zu langes Rühren macht die Brownies zäh.",
+   "In eine gefettete Form von 20x20 cm gießen. Die Walnüsse darüberstreuen.",
+   "Bei 170 °C 22-25 Minuten backen. Die Mitte soll noch leicht wackeln — das hält die Brownies saftig und schokoladig."
+  ]
+ },
+ "cacio_e_pepe": {
+  "n": "Cacio e Pepe",
+  "ing": [
+   "Spaghetti 200 g",
+   "Pecorino oder Parmesan 80 g (fein gerieben)",
+   "Grob gemahlener schwarzer Pfeffer 2 TL",
+   "Salz"
+  ],
+  "steps": [
+   "Die Spaghetti in Salzwasser al dente kochen. 150 ml Nudelwasser aufheben.",
+   "Reichlich schwarzen Pfeffer in einer trockenen Pfanne 1-2 Minuten rösten, bis er duftet.",
+   "50 ml Nudelwasser in die Pfanne geben und umrühren.",
+   "Die Nudeln in die Pfanne geben. Wichtig: vor dem Käse vom Herd nehmen — die Hitze lässt den Käse gerinnen und verklumpen.",
+   "Den Käse nach und nach zugeben, dabei rühren und bei Bedarf mehr Nudelwasser angießen, bis die Sauce cremig wird.",
+   "Sofort mit zusätzlichem Käse und Pfeffer servieren."
+  ]
+ },
+ "calzone": {
+  "n": "Calzone",
+  "ing": [
+   "Pizzateig 350 g",
+   "Ricotta 200 g",
+   "Mozzarella 150 g",
+   "Schinken 100 g",
+   "Geriebener Parmesan 40 g",
+   "Tomatensauce 100 g",
+   "Ei 1 (zum Bestreichen)",
+   "Olivenöl 1 EL",
+   "Oregano 1 TL",
+   "Salz, Pfeffer"
+  ],
+  "steps": [
+   "Teig: Den Teig in 2 Kugeln teilen und jede zu einer Scheibe von etwa 25 cm Durchmesser ausrollen.",
+   "Füllung: In einer Schüssel Ricotta, den gewürfelten Mozzarella, den Schinken und den Parmesan mischen.",
+   "Teig füllen: Die Füllung auf eine Hälfte jeder Teigscheibe geben und am Rand 2 cm frei lassen.",
+   "Wichtig: Die Ränder gut verschließen, indem man den Teig zum Halbmond klappt und mit einer Gabel andrückt, damit die Füllung beim Backen nicht ausläuft.",
+   "Bestreichen: Die Oberfläche mit verquirltem Ei bestreichen, damit sie gleichmäßig bräunt.",
+   "Backen: Im vorgeheizten Ofen bei 220 °C 20-25 Minuten backen, bis der Teig gut gebräunt ist.",
+   "Sauce: Die Tomatensauce mit etwas Olivenöl und Oregano erwärmen und dazu servieren.",
+   "Servieren: Vor dem Anschneiden 5 Minuten abkühlen lassen, damit die Füllung nicht ausläuft."
+  ],
+  "wine": "Roter Barbera",
+  "plate": "Ganz servieren, die warme Tomatensauce in einem Schälchen daneben."
+ },
+ "cannoli": {
+  "n": "Cannoli",
+  "ing": [
+   "Weizenmehl 300 g",
+   "Puderzucker 30 g",
+   "Kalte Butter 30 g",
+   "Trockener Rotwein 100 ml",
+   "Weißweinessig 1 TL",
+   "Ei 1 (zum Verschließen)",
+   "Ricotta, abgetropft, 500 g",
+   "Puderzucker 150 g",
+   "Schokoladenstückchen 100 g",
+   "Pistazien, gehackt, 50 g",
+   "Olivenöl zum Frittieren, reichlich"
+  ],
+  "steps": [
+   "Teig: Das Mehl mit dem Zucker mischen, die Butter zugeben und mit den Fingern einarbeiten, bis eine krümelige Masse entsteht.",
+   "Teig formen: Nach und nach Wein und Essig zugeben und zu einem glatten, elastischen Teig kneten. In Folie wickeln und 1 Stunde ruhen lassen.",
+   "Ausrollen und schneiden: Den Teig sehr dünn ausrollen und Kreise von 10 cm ausstechen, um Cannoli-Röhrchen wickeln und mit Ei verschließen.",
+   "Wichtig: Das Öl muss genau 175 °C haben — ist es kühler, saugen sich die Hüllen mit Öl voll und werden fettig; ist es heißer, verbrennen sie außen und bleiben innen roh.",
+   "Frittieren: Die Hüllen gleichmäßig goldbraun frittieren, auf Küchenpapier abtropfen lassen und nach leichtem Abkühlen vorsichtig von den Röhrchen ziehen.",
+   "Ricottacreme: Den Ricotta mit dem Puderzucker glatt und luftig aufschlagen, die Schokoladenstückchen unterheben.",
+   "Füllen: Die Hüllen erst beim Servieren mit einem Spritzbeutel von einem Ende her mit der Creme füllen.",
+   "Dekorieren: Die Enden in gehackte Pistazien tauchen und vor dem Servieren mit Puderzucker bestäuben."
+  ],
+  "wine": "Süßer Marsala",
+  "plate": "Sofort nach dem Füllen auf einer Platte servieren, damit die Hülle knusprig bleibt."
+ },
+ "cheesecake": {
+  "n": "Cheesecake",
+  "ing": [
+   "Frischkäse 500 g",
+   "Zucker 150 g",
+   "Eier 3",
+   "Schlagsahne 200 ml",
+   "Vanille",
+   "Zitronensaft 2 EL",
+   "Butterkekse 200 g",
+   "Butter 80 g"
+  ],
+  "steps": [
+   "Die Kekse zu Bröseln zerkleinern und mit der geschmolzenen Butter mischen. In den Boden einer Springform von 24 cm drücken.",
+   "Den Frischkäse mit dem Zucker glatt rühren.",
+   "Die Eier einzeln zugeben, dann Sahne, Vanille und Zitronensaft.",
+   "Auf den Keksboden gießen.",
+   "Im Wasserbad bei 160 °C 50-55 Minuten backen. Wichtig: Die Mitte soll beim Herausnehmen noch leicht wackeln — sie wird beim Abkühlen fest.",
+   "Auskühlen lassen, dann mindestens 4 Stunden oder über Nacht kalt stellen."
+  ]
+ },
+ "chimichurri": {
+  "n": "Chimichurri",
+  "ing": [
+   "Frische Petersilie 1 Bund",
+   "Knoblauch 4 Zehen",
+   "Getrockneter Oregano 1 EL",
+   "Rotweinessig 4 EL",
+   "Olivenöl 150 ml",
+   "Chiliflocken 1 TL",
+   "Salz 1 TL",
+   "Gemahlener Pfeffer 1/2 TL"
+  ],
+  "steps": [
+   "Fein hacken: Petersilie und Knoblauch mit dem Messer sehr fein hacken, nicht in der Küchenmaschine.",
+   "Wichtig: Von Hand gehackt behalten die Zutaten Struktur — eine Küchenmaschine macht aus der Sauce ein Püree und nimmt ihr den Charakter.",
+   "Trockene Zutaten mischen: In einer Schüssel Petersilie, Knoblauch, Oregano und Chiliflocken vermengen.",
+   "Flüssigkeiten: Den Weinessig zugeben und zuerst allein unterrühren, damit der Knoblauch in der Säure leicht durchzieht.",
+   "Öl: Das Olivenöl nach und nach eingießen und rühren, bis eine leicht flüssige Sauce entsteht.",
+   "Würzen: Salz und Pfeffer zugeben und noch einmal umrühren.",
+   "Ruhen: Die Sauce vor dem Verwenden mindestens 1 Stunde bei Zimmertemperatur ziehen lassen, damit sich die Aromen entfalten.",
+   "Servieren: Bei Zimmertemperatur über gegrilltes Fleisch servieren."
+  ],
+  "plate": "In einem Schälchen neben gegrilltem Fleisch servieren."
+ },
+ "coleslaw": {
+  "n": "Coleslaw",
+  "ing": [
+   "Weißkohl 1/2",
+   "Karotten 2",
+   "Frühlingszwiebeln 3",
+   "Mayonnaise 4 EL",
+   "Joghurt 2 EL",
+   "Apfelessig 1 EL",
+   "Zucker 1 TL",
+   "Salz, Pfeffer"
+  ],
+  "steps": [
+   "Kohl und Karotten reiben oder sehr fein schneiden.",
+   "Die Frühlingszwiebeln fein hacken.",
+   "Mayonnaise, Joghurt, Essig, Zucker, Salz und Pfeffer verrühren.",
+   "Das Gemüse mit dem Dressing vermengen.",
+   "Vor dem Servieren 1 Stunde kalt stellen."
+  ]
+ },
+ "creme_brulee": {
+  "n": "Crème brûlée",
+  "ing": [
+   "Schlagsahne (35 % Fett) 500 ml",
+   "Eigelb 6",
+   "Weißer Zucker 100 g",
+   "Brauner Zucker (zum Karamellisieren) 4 EL",
+   "Vanille (eine Schote oder Extrakt) 1",
+   "Salz eine Prise",
+   "Wasser (für das Wasserbad) etwa 1 Liter"
+  ],
+  "steps": [
+   "Vorheizen: Den Ofen auf 150 °C Ober-/Unterhitze stellen, ohne Umluft.",
+   "Sahne: Die Sahne mit der Vanille (Mark und Schote) in einen Topf geben und bei schwacher Hitze erwärmen, bis sie dampft, ohne zu kochen.",
+   "Eigelb: In einer Schüssel das Eigelb mit dem weißen Zucker und dem Salz aufschlagen, bis die Masse leicht heller wird.",
+   "Wichtig: Die heiße Sahne langsam unter ständigem Rühren zum Eigelb gießen, damit die Eier nicht durch die plötzliche Hitze gerinnen (Temperieren).",
+   "Passieren: Die Masse durch ein Sieb gießen, um Eistückchen oder Vanilleschotenreste zu entfernen und die Creme glatt zu halten.",
+   "Einfüllen: Die Masse auf Förmchen verteilen und diese in eine tiefe Auflaufform stellen.",
+   "Wasserbad: Die Form bis zur halben Höhe der Förmchen mit heißem Wasser füllen und 35-40 Minuten backen, bis die Creme am Rand fest ist, in der Mitte aber noch leicht wackelt.",
+   "Kühlen: Auf Zimmertemperatur abkühlen lassen, dann mindestens 4 Stunden oder über Nacht kalt stellen.",
+   "Karamellisieren: Kurz vor dem Servieren braunen Zucker gleichmäßig auf der Oberfläche verteilen und mit dem Bunsenbrenner abflämmen, bis eine knusprige goldene Kruste entsteht."
+  ],
+  "wine": "Süßer Samos-Wein",
+  "plate": "Im Förmchen servieren, mit ein paar frischen Beeren (Heidelbeeren oder Erdbeeren) und einem Minzblatt"
+ },
+ "cupcakes_voutyrokrema": {
+  "n": "Cupcakes mit Buttercreme",
+  "ing": [
+   "Mehl 220 g",
+   "Zucker 200 g",
+   "Eier 3",
+   "Butter 150 g",
+   "Milch 120 ml",
+   "Backpulver 2 TL",
+   "Vanilleextrakt 1 TL",
+   "Butter 250 g (für die Creme)",
+   "Puderzucker 400 g",
+   "Milch 3 EL",
+   "Lebensmittelfarbe (optional)"
+  ],
+  "steps": [
+   "Butter, Eier und Milch müssen Zimmertemperatur haben — kalte Zutaten emulgieren nicht und der Teig gerinnt.",
+   "Die Butter mit dem Zucker volle 5 Minuten aufschlagen, bis sie wirklich weiß und luftig ist. Dieses lange Schlagen macht Cupcakes leicht.",
+   "Die Eier einzeln zugeben und nach jedem gut aufschlagen, damit die Masse glatt bleibt.",
+   "Das gesiebte Mehl mit dem Backpulver abwechselnd mit der Milch unterheben, mit Mehl abschließen.",
+   "Die Förmchen zu zwei Dritteln füllen — Cupcakes sollen oben flach bleiben für die Creme, nicht gewölbt wie Muffins.",
+   "Bei 175 °C 20-22 Minuten backen und auf einem Gitter vollständig auskühlen lassen.",
+   "Wichtig: Die Küchlein müssen eiskalt sein, bevor dekoriert wird. Auf auch nur leicht warmen Cupcakes schmilzt die Buttercreme und rutscht sofort herunter.",
+   "Für die Creme die Butter 5 Minuten allein aufschlagen, dann den gesiebten Puderzucker in drei Portionen zugeben.",
+   "Wichtig: Den Puderzucker ausnahmslos sieben. Ungesiebte Klümpchen verstopfen die Tülle im ungünstigsten Moment.",
+   "Die Milch löffelweise zugeben, bis die Creme spritzfähig ist, dann auf die kalten Cupcakes aufspritzen."
+  ],
+  "wine": "Schaumwein oder Tee.",
+  "plate": "Auf einer Etagere servieren, mit hoch aufgespritzter Buttercreme und Streuseln obenauf."
+ },
+ "dakos": {
+  "n": "Kretischer Dakos",
+  "ing": [
+   "Dakos (Gerstenzwieback) 4 große oder 8 kleine",
+   "Reife Tomaten 3-4 (etwa 500 g)",
+   "Xinomyzithra oder Feta 200 g",
+   "Natives Olivenöl extra 6-8 EL",
+   "Kalamata-Oliven 12-15",
+   "Getrockneter Oregano 1 TL",
+   "Salz 1 Prise",
+   "Kapern (optional) 1 EL"
+  ],
+  "steps": [
+   "Tomate vorbereiten: Die reifen Tomaten waschen und auf der groben Seite der Reibe reiben, die Haut wegwerfen. Das Fruchtfleisch leicht in einem Sieb abtropfen lassen, damit der Zwieback nicht zu weich wird.",
+   "Zwieback leicht befeuchten: Den Gerstenzwieback nur wenige Sekunden mit etwas Wasser (oder Tomatenwasser) beträufeln, gerade so viel, dass die Oberfläche weich wird.",
+   "Wichtig: Den Zwieback nicht in Wasser tauchen. Der Gerstenzwieback soll innen knusprig bleiben und nur außen weich werden. Ein paar Tropfen Wasser und danach das Olivenöl machen den Unterschied für einen echten Dakos, der nicht matschig wird.",
+   "Erster Ölguss: Den befeuchteten Zwieback mit 1-2 EL Olivenöl beträufeln, damit es einzieht und Geschmack gibt.",
+   "Tomate auflegen: Die geriebene Tomate großzügig über den Zwieback verteilen und die ganze Fläche bedecken. Leicht salzen.",
+   "Käse zugeben: Die Xinomyzithra (oder Feta) in groben Stücken darüberbröseln und die Tomate bedecken.",
+   "Garnieren: Reichlich Oregano darüberstreuen, die Kalamata-Oliven und Kapern zugeben und mit dem restlichen Olivenöl beträufeln.",
+   "Servieren: Den Dakos 5-10 Minuten ziehen lassen, damit sich die Aromen verbinden, und sofort servieren, solange der Zwieback noch knusprig ist."
+  ],
+  "wine": "Trockener Weißer aus Kreta, idealerweise Vilana.",
+  "plate": "Auf einem flachen Teller servieren, mit einem letzten Guss Olivenöl und frischem Oregano, als Meze oder leichte Mahlzeit."
+ },
+ "diples": {
+  "n": "Diples",
+  "ing": [
+   "Mehl 500 g",
+   "Eier 4",
+   "Orangensaft 100 ml",
+   "Olivenöl 3 EL",
+   "Weinbrand 2 EL",
+   "Sonnenblumenöl zum Frittieren",
+   "Honig 400 g",
+   "Wasser 100 ml",
+   "Walnüsse 150 g",
+   "Zimt"
+  ],
+  "steps": [
+   "Die Eier gut verschlagen, dann Orangensaft, Olivenöl und Weinbrand zugeben.",
+   "Das Mehl nach und nach zugeben und 10 Minuten zu einem weichen, elastischen Teig kneten, der nicht mehr klebt.",
+   "Abdecken und 1 Stunde ruhen lassen. Wichtig: Ohne dieses Ruhen zieht sich der Teig zusammen und lässt sich nie dünn genug ausrollen.",
+   "Hauchdünn ausrollen, so dünn, dass man fast die Hand hindurchsieht. Das ist das ganze Geheimnis der Diples.",
+   "In lange Streifen von etwa 8 cm Breite schneiden.",
+   "Reichlich Öl in einem tiefen Topf auf 180 °C erhitzen — Diples müssen frei schwimmen und dürfen den Boden nicht berühren.",
+   "Wichtig: Ein Streifenende ins Öl tauchen und, sobald es Blasen wirft, mit zwei Gabeln aufrollen. Man hat etwa 3 Sekunden, bevor er steif wird.",
+   "30-40 Sekunden hellgolden frittieren, nicht dunkler — sie färben nach dem Herausnehmen nach.",
+   "Gut auf einem Gitter abtropfen lassen und vollständig auskühlen lassen.",
+   "Den Honig mit dem Wasser 3 Minuten kochen, die kalten Diples kurz eintauchen und sofort herausheben.",
+   "Wichtig: Kalte Diples in heißen Sirup. Sind beide heiß, werden sie matschig und verlieren ihre Knusprigkeit.",
+   "Mit gehackten Walnüssen und Zimt bestreuen und servieren."
+  ],
+  "wine": "Mavrodafni oder Tsipouro.",
+  "plate": "Auf einer Platte stapeln, jede Lage mit Honig, Walnüssen und Zimt."
+ },
+ "dolmades": {
+  "n": "Gefüllte Weinblätter",
+  "ing": [
+   "Weinblätter 40-50",
+   "Reis 250 g",
+   "Zwiebeln 2",
+   "Petersilie & Minze",
+   "Olivenöl 5 EL",
+   "Zitronen 2"
+  ],
+  "steps": [
+   "Weinblätter vorbereiten: Die 40-50 Weinblätter 1-2 Minuten in kochendem Wasser blanchieren, bis sie weich werden und die Farbe wechseln, damit sie sich leicht rollen lassen, ohne zu reißen. Abtropfen lassen und die Stiele entfernen.",
+   "Füllung zubereiten: In einer Schüssel 250 g Reis, 2 fein gehackte Zwiebeln, gehackte Petersilie und Minze, den Saft von 1 Zitrone und die 5 EL Olivenöl mischen. Der Reis bleibt roh, denn er gart im Blatt.",
+   "Rollen: Etwas Füllung an den Blattansatz geben (glänzende Seite nach unten), die Ränder einschlagen und zu einer festen Rolle formen. Wichtig: Nicht zu voll füllen, denn der Reis quillt auf und die Dolmades könnten platzen.",
+   "Im Topf anordnen: Den Topfboden mit einigen Blättern auslegen und die Dolmades dicht nebeneinandersetzen, damit sie sich beim Garen nicht aufrollen.",
+   "Garen: Wasser angießen, bis sie fast bedeckt sind, dazu den Saft von 1 Zitrone und etwas Olivenöl. Einen umgedrehten Teller auflegen, damit sie sich nicht bewegen.",
+   "Köcheln: Bei schwacher Hitze 40-45 Minuten köcheln, bis der Reis aufgequollen und die Flüssigkeit aufgesogen ist. Einen probieren, um zu prüfen, ob der Reis weich ist.",
+   "Ruhen und servieren: Die Dolmades 15-20 Minuten im Topf abkühlen lassen, damit sie fest werden, und warm oder kalt mit Zitrone servieren."
+  ],
+  "wine": "Trockener Weißwein.",
+  "plate": "Kalt oder warm mit Joghurt serviert."
+ },
+ "eclair": {
+  "n": "Éclair",
+  "ing": [
+   "Wasser 250 ml",
+   "Butter 100 g",
+   "Mehl 150 g",
+   "Eier 4",
+   "Salz 1 Prise",
+   "Zucker 1 TL",
+   "Milch 500 ml",
+   "Eigelb 4",
+   "Zucker 100 g",
+   "Speisestärke 40 g",
+   "Vollmilchkuvertüre 150 g",
+   "Schlagsahne 100 ml"
+  ],
+  "steps": [
+   "Brandteig: Das Wasser mit Butter, Salz und Zucker aufkochen, das Mehl auf einmal zugeben und kräftig rühren.",
+   "Wichtig: Den Teig 2-3 Minuten unter ständigem Rühren auf dem Herd abbrennen, sonst gehen die Éclairs nicht richtig auf.",
+   "Eier: Vom Herd nehmen, leicht abkühlen lassen und die Eier einzeln zugeben, dabei jedes Mal gut unterschlagen.",
+   "Aufspritzen: Mit dem Spritzbeutel 10-12 cm lange Streifen auf ein mit Backpapier belegtes Blech spritzen.",
+   "Backen: Bei 190 °C 25-30 Minuten backen, ohne die Ofentür zu öffnen.",
+   "Konditorcreme: Die Milch erhitzen, das Eigelb mit Zucker und Stärke verschlagen, vereinen und unter Rühren aufkochen, bis es eindickt.",
+   "Creme abkühlen: Mit Frischhaltefolie direkt auf der Oberfläche abdecken und im Kühlschrank kalt stellen.",
+   "Füllen: Die ausgekühlten Éclairs aufschneiden und mit dem Spritzbeutel füllen.",
+   "Glasur: Die Kuvertüre mit der Sahne schmelzen und die Oberseite jedes Éclairs eintauchen.",
+   "Servieren: Die Glasur 15 Minuten im Kühlschrank fest werden lassen."
+  ],
+  "wine": "Espresso",
+  "plate": "Auf einem länglichen Teller nebeneinander, mit etwas Creme daneben"
+ },
+ "ekmek": {
+  "n": "Ekmek Kataifi",
+  "ing": [
+   "Kataifi-Teig 400 g",
+   "Geschmolzene Butter 150 g",
+   "Zucker 400 g (für den Sirup)",
+   "Wasser 400 ml (für den Sirup)",
+   "Zitronensaft 1 EL",
+   "Frische Milch 1 Liter (für die Creme)",
+   "Zucker 150 g (für die Creme)",
+   "Speisestärke 80 g",
+   "Eigelb 3",
+   "Schlagsahne 500 ml (für die Haube) und Vanille"
+  ],
+  "steps": [
+   "Kataifi vorbereiten: Den Kataifi-Teig in einer Schüssel mit den Händen auflockern, damit sich die Fäden trennen, dann die geschmolzene Butter darübergießen und gut mischen, sodass alles durchtränkt ist.",
+   "Backen: Den Kataifi in einer gebutterten Form verteilen und leicht zu einer gleichmäßigen Schicht andrücken. Bei 180 °C 30-40 Minuten backen, bis er gut gebräunt, knusprig und goldgelb ist.",
+   "Sirup: Den Zucker mit dem Wasser 8-10 Minuten kochen, den Zitronensaft zugeben und noch ein bis zwei Minuten kochen lassen. Wichtig: Sirup und Kataifi sollen beide heiß sein, oder umgekehrt kalter Sirup auf heißes Gebäck, damit alles gut einzieht und knusprig bleibt.",
+   "Tränken: Den Sirup langsam über den heißen gebackenen Kataifi gießen, damit er überall einzieht. Vollständig auskühlen lassen.",
+   "Creme: Speisestärke und Zucker in etwas kalter Milch auflösen, das Eigelb zugeben und verrühren. Die restliche Milch erwärmen und, sobald sie warm ist, die Mischung einrühren und unter ständigem Rühren zu einer dicken Creme kochen. Mit Folie auf der Oberfläche abkühlen lassen.",
+   "Creme aufschichten: Die ausgekühlte Creme gleichmäßig auf dem getränkten Kataifi verteilen und die Oberfläche mit einem Spatel glattstreichen.",
+   "Schlagsahne: Die kalte Sahne mit etwas Zucker und Vanille steif schlagen und großzügig als letzte Schicht auf der Creme verteilen.",
+   "Kühlen und servieren: Das Ekmek mindestens 3-4 Stunden kalt stellen, damit es fest wird und die Schichten sich setzen, bevor es in Stücke geschnitten wird."
+  ],
+  "wine": "Süßer Samos-Wein oder Sauerkirschsirup.",
+  "plate": "Gekühlt servieren, garniert mit gehackten Ägina-Pistazien und Zimt."
+ }
+}

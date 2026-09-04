@@ -1,0 +1,578 @@
+{
+ "eliestoursi": {
+  "n": "Olives & Pickles",
+  "ing": [
+   "Kalamata olives 200g",
+   "Mixed pickled vegetables 200g",
+   "Olive oil 2 tbsp",
+   "Oregano",
+   "Vinegar 1 tsp",
+   "Garlic 1 clove"
+  ],
+  "steps": [
+   "Draining: Drain the 200g Kalamata olives and the 200g mixed pickled vegetables well from their brine. Thorough draining keeps the oil from being diluted and the mixture from turning watery.",
+   "Preparing the aromatics: Finely chop or crush 1 clove of garlic. The garlic adds a strong aroma that pairs well with the olives and pickled vegetables.",
+   "Mixing: In a bowl, toss the olives and pickled vegetables with the 2 tbsp olive oil, a little oregano, the garlic and 1 tsp vinegar. The vinegar lifts the freshness and balances the saltiness.",
+   "Resting for flavor: Let the mixture sit for about 30 minutes so the flavors meld. Important: if the olives are already very salty, avoid adding extra salt and be careful with the vinegar so the mixture doesn't become too sour.",
+   "Serving: Serve on small plates as a meze, ideally with ouzo and lagana bread. It's a simple, traditional meze that comes together in minutes."
+  ],
+  "wine": "Ouzo or tsipouro.",
+  "plate": "Small platter, olive oil, oregano."
+ },
+ "fakes": {
+  "n": "Greek Lentil Soup",
+  "ing": [
+   "Lentils 400g",
+   "Onion 1",
+   "Carrots 2",
+   "Garlic 2 cloves",
+   "Grated tomato 150g",
+   "Olive oil 3 tbsp",
+   "Bay leaf",
+   "Vinegar 1 tbsp"
+  ],
+  "steps": [
+   "Preparing the vegetables: Finely chop 1 onion, grate or slice the 2 carrots into rounds, and mash the 2 garlic cloves. This way the aromatics release their flavor evenly as they sauté.",
+   "Sautéing the base: In a pot, heat 3 tbsp olive oil over medium heat and sauté the onion, carrots, and garlic for 5 minutes, until softened and glossy. Sautéing sweetens the onion and adds depth of flavor to the soup.",
+   "Adding the tomato: Add the 150g grated tomato and the bay leaf and let it cook for 2-3 minutes to lose its sharpness. IMPORTANT: don't add salt yet, as salt in an acidic environment toughens the lentils and slows their cooking.",
+   "Rinsing the lentils: Rinse the 400g lentils in a colander under running water to remove dust and any small stones. Small lentils don't need soaking.",
+   "Boiling: Add the lentils and water until covered by 2-3 finger-widths. Boil over low-to-medium heat for 30-35 minutes, until softened but still holding their shape. Top up with hot water if needed.",
+   "Finishing: Once softened, add the 1 tbsp vinegar, salt, and pepper. Vinegar at the end is the classic Greek secret that balances the flavor and brightens the soup. Remove the bay leaf before serving."
+  ],
+  "wine": "Dry rosé wine.",
+  "plate": "Deep bowl, raw olive oil, vinegar, olives."
+ },
+ "fakes_salata": {
+  "n": "Lentil Salad",
+  "ing": [
+   "Green lentils 300g",
+   "Red onion 1",
+   "Cherry tomatoes 200g",
+   "Cucumber 1",
+   "Parsley",
+   "Olive oil 4 tbsp",
+   "Vinegar 2 tbsp",
+   "Mustard 1 tsp",
+   "Salt, pepper"
+  ],
+  "steps": [
+   "Boil the lentils for 20-25 minutes until tender. Drain and let cool.",
+   "Cut the onion, cherry tomatoes and cucumber into small pieces.",
+   "Make a dressing with olive oil, vinegar, mustard, salt and pepper.",
+   "Toss the lentils, vegetables and dressing together.",
+   "Sprinkle with parsley and serve."
+  ]
+ },
+ "fakoryzo": {
+  "n": "Lentils with Rice",
+  "ing": [
+   "Lentils (small, brown) 2 cups",
+   "Glasse or Carolina rice 1 cup",
+   "Onions, 3 large",
+   "Garlic, 2 cloves",
+   "Olive oil 1/2 cup",
+   "Grated tomato, 2 tbsp (tomato paste) or 1 fresh tomato",
+   "Bay leaves, 2",
+   "Vinegar 2 tbsp",
+   "Salt, pepper to taste",
+   "Water, about 1 liter"
+  ],
+  "steps": [
+   "Pre-cooking the lentils: Wash the lentils well and boil them in plenty of water with the bay leaves for 12-15 minutes, until softened but not completely falling apart.",
+   "Sautéing the onion: In a pot, heat the olive oil and sauté the sliced onions until well golden, together with the garlic.",
+   "Combining the ingredients: Add the tomato paste to the onions, stir for a minute and add the half-cooked lentils along with a little of their cooking broth.",
+   "Important: The ratio of liquid is the secret of fakorizo - the rice must cook in lentil broth rather than plain water, since that's how it takes on all the flavor and color of the pulses. You need roughly double the amount of liquid to rice.",
+   "Adding the rice: Add the rice to the pot, season with salt and pepper, and top up with hot water or broth so the mixture is well covered.",
+   "Slow simmering: Lower the heat, cover the pot and let it simmer gently for 15-18 minutes, until the rice has absorbed all the liquid.",
+   "Resting: Remove from the heat and let the dish rest covered for 5-10 minutes before serving, so the cooking finishes with the residual steam.",
+   "Serving: Serve hot, drizzling with a little vinegar or lemon juice on the plate according to each person's preference."
+  ],
+  "wine": "A dry white wine, such as Assyrtiko, or plain tsipouro pairs perfectly with the flavor of fakorizo.",
+  "plate": "Serve in a deep plate with finely chopped onion, Kalamata olives and feta on the side, accompanied by vinegar."
+ },
+ "falafel": {
+  "n": "Falafel",
+  "ing": [
+   "Dried chickpeas 500 g",
+   "Onion 1",
+   "Garlic 4 cloves",
+   "Fresh parsley 1 bunch",
+   "Fresh coriander 1/2 bunch",
+   "Ground cumin 2 tsp",
+   "Ground coriander 1 tsp",
+   "Baking soda 1 tsp",
+   "Flour 2 tbsp",
+   "Sunflower oil for frying",
+   "Salt, pepper"
+  ],
+  "steps": [
+   "Soaking the chickpeas: Important: Soak the dried chickpeas in plenty of water for 18-24 hours. Never use canned or cooked chickpeas — they hold too much water and the falafel disintegrate in the oil.",
+   "Draining: Drain them thoroughly and spread them on a towel to dry the surface completely.",
+   "Grinding: Blitz the raw chickpeas in a food processor with the onion, garlic and herbs until the texture of coarse sand — not a smooth purée.",
+   "Resting the mixture: Chill the mixture for 1 hour. This lets it firm up and hold together when shaped.",
+   "Seasoning: Mix in the cumin, ground coriander, salt, pepper and flour, working it in evenly.",
+   "Adding the soda: Important: Stir in the baking soda only right before frying. Added early it loses its power and the falafel come out dense instead of light.",
+   "Shaping: Form small balls or patties with wet hands, pressing firmly so they hold.",
+   "Heating the oil: Heat the oil to 170°C. Test with one falafel first — if it breaks apart, work another spoonful of flour into the mixture.",
+   "Frying: Fry for 3-4 minutes until deep brown and crisp, a few at a time so the oil temperature stays up.",
+   "Draining: Drain on a rack and serve hot, while the outside is still crisp and the inside steaming."
+  ],
+  "wine": "A cold beer or a fresh dry white with acidity.",
+  "plate": "Serve in a pita with tahini sauce, tomato and onion, or on a platter with tahini and lemon on the side."
+ },
+ "farfale_tonos": {
+  "n": "Farfalle with Tuna",
+  "ing": [
+   "Farfalle 200g",
+   "Canned tuna 160g",
+   "Grated tomato 200g",
+   "Garlic 2 cloves",
+   "Capers 1 tbsp (optional)",
+   "Kalamata olives",
+   "Extra virgin olive oil",
+   "Basil",
+   "Salt & pepper"
+  ],
+  "steps": [
+   "Sautéing the garlic: In a pan with extra virgin olive oil, sauté 2 finely chopped garlic cloves for 1 minute. IMPORTANT: don't let it brown, as it turns bitter and spoils the sauce.",
+   "Tomato sauce: Add 200g grated tomato, salt and pepper and simmer for 10 minutes until it thickens slightly and sweetens.",
+   "Adding the tuna: Add the 160g well-drained tuna, the Kalamata olives and 1 tbsp capers. Stir gently so the tuna doesn't break down into flakes.",
+   "Cooking the pasta: Boil the 200g farfalle in salted water until slightly firm (al dente), reserving a little of the cooking water.",
+   "Bringing the dish together: Transfer the farfalle to the sauce with a little pasta water and stir, so the starchy water helps the sauce cling to the pasta.",
+   "Finishing and serving: Off the heat, add fresh basil and a little raw olive oil for freshness and aroma, and serve immediately."
+  ],
+  "wine": "Dry white.",
+  "plate": "Deep plate, basil and olive oil."
+ },
+ "fasolada": {
+  "n": "Greek Bean Soup",
+  "ing": [
+   "White beans 500g",
+   "Carrots 2",
+   "Celery 2 stalks",
+   "Onion 1",
+   "Grated tomato 200g",
+   "Olive oil 4 tbsp",
+   "Salt, pepper",
+   "Bay leaves 2"
+  ],
+  "steps": [
+   "Soaking the beans: Put the 500g white beans in a bowl with plenty of cold water and leave them overnight (8-10 hours). Soaking hydrates the beans, drastically cuts the cooking time, and helps them soften evenly without splitting their skins.",
+   "First boil and skimming: Drain the beans, put them in a pot with fresh cold water, and boil for 10 minutes. IMPORTANT: skim off the white foam that rises to the surface carefully — it contains the compounds that cause bloating and cloud the broth. Discard this first water for a cleaner, more digestible bean soup.",
+   "Adding the vegetables: Cut the 2 carrots into rounds, and finely chop the 2 celery stalks and the 1 onion. Add them to the pot with the beans, the 2 bay leaves, and enough fresh hot water to cover by 2-3 finger-widths. Simmer over low heat for 30 minutes so the vegetables gradually release their sweet aroma into the broth.",
+   "Tomato and oil: Add the 200g grated tomato and the 4 tbsp olive oil. IMPORTANT: don't salt too early — salt toughens the skins and the beans stay undercooked. Salt only now, once they have already begun to soften.",
+   "Finishing the cooking: Continue simmering gently for another 20 minutes until the beans are completely tender and the soup thickens slightly. For a thicker result, mash a ladleful of beans with a fork and stir them back in — this gives natural body without flour.",
+   "Serving: Serve the fasolada hot and drizzle with a little raw olive oil right at serving time — raw oil keeps its full aroma and adds freshness. Accompany with Kalamata olives and country-style bread."
+  ],
+  "wine": "Dry white wine.",
+  "plate": "Deep bowl, raw olive oil, 2-3 olives."
+ },
+ "fasolakia": {
+  "n": "Fresh Green Beans Stew",
+  "ing": [
+   "Fresh green beans 700g",
+   "Grated tomato 300g",
+   "Onion 1",
+   "Garlic 2 cloves",
+   "Olive oil 4 tbsp",
+   "Potatoes 2 (optional)",
+   "Salt & pepper",
+   "Parsley"
+  ],
+  "steps": [
+   "Cleaning: Trim the ends and any strings from the 700g fresh green beans and wash them well.",
+   "Sautéing: Heat the 4 tbsp olive oil and sauté the finely chopped onion and the 2 garlic cloves for 3 minutes until softened and sweetened.",
+   "Adding the rest: Add the 300g grated tomato, the 2 potatoes cut into cubes, salt, pepper, parsley and a little water, then add the green beans.",
+   "Simmering: Cover and cook over medium heat for 35-40 minutes until the green beans become tender. Important: don't stir constantly so they don't fall apart — gently shake the pot if needed.",
+   "Finishing: Drizzle in a little extra olive oil at the end of cooking for a richer flavor typical of ladera (olive-oil-based) dishes.",
+   "Serving: Let it rest briefly before serving, as ladera dishes taste best lukewarm. Best served with feta and bread."
+  ],
+  "wine": "Dry white.",
+  "plate": "Deep plate, raw olive oil drizzled on top, feta on the side."
+ },
+ "fasolakia_plaki": {
+  "n": "White Bean Plaki",
+  "ing": [
+   "White beans 500g (dried or canned)",
+   "Tomatoes 400g (canned)",
+   "1 large onion",
+   "Garlic 4 cloves",
+   "Carrots 2",
+   "Celery 2 sprigs",
+   "Olive oil 5 tbsp",
+   "Parsley",
+   "Salt, pepper"
+  ],
+  "steps": [
+   "If using dried beans, soak them overnight and boil for 45 minutes.",
+   "Sauté the onion, garlic, carrot, and celery in oil for 8-10 minutes.",
+   "Add the tomatoes, salt, pepper, and a little water.",
+   "Add the cooked beans and stir to combine.",
+   "Bake at 180°C for 40-45 minutes, until the liquid has been absorbed.",
+   "Serve with parsley and bread."
+  ]
+ },
+ "fava": {
+  "n": "Santorini Split Pea Dip",
+  "ing": [
+   "Santorini fava (split peas) 300g",
+   "Onion 1",
+   "Garlic 2 cloves",
+   "Olive oil 5 tbsp",
+   "Lemon 1",
+   "Spring onion",
+   "Capers"
+  ],
+  "steps": [
+   "Rinsing: Rinse the 300g Santorini fava under water until it runs clear. This removes the dust and the foam it would otherwise produce during cooking.",
+   "Boiling: Place the fava in a pot with plenty of cold water along with 1 chopped onion and 2 garlic cloves. Boil for 30-35 minutes until completely broken down. Important: skim off the foam at the start and add salt toward the end, since early salting toughens the legume.",
+   "Checking the liquid: While it boils, top up with hot water if needed so it doesn't dry out or stick to the bottom of the pot.",
+   "Puréeing: Transfer the fava to a blender with 5 tbsp olive oil, the juice of 1 lemon, and salt. Blend until it becomes a velvety cream. The olive oil emulsifies and gives it a smooth, soft texture.",
+   "Adjusting the texture: If it's too thick, add a little of the cooking water. Important: fava thickens as it cools, so leave it a bit thinner than you want the final result to be.",
+   "Serving: Spread onto a plate, drizzle with raw olive oil, and garnish with capers and freshly chopped spring onion for an authentic Santorini flavor."
+  ],
+  "wine": "Dry white wine.",
+  "plate": "In a bowl, with a spiral of olive oil and capers."
+ },
+ "ferrero_torta": {
+  "n": "Hazelnut Praline Cake",
+  "ing": [
+   "Digestive-style biscuits 250 g",
+   "Melted butter 100 g",
+   "Chocolate hazelnut spread 400 g",
+   "Heavy cream (35% fat) 500 ml",
+   "Cream cheese 250 g",
+   "Powdered sugar 80 g",
+   "Hazelnuts, toasted and finely chopped, 150 g",
+   "Hazelnut praline chocolates 12 pieces",
+   "Milk chocolate couverture 200 g",
+   "Gelatin sheets 3"
+  ],
+  "steps": [
+   "Base: Crush the biscuits in a food processor into crumbs and mix with the melted butter.",
+   "Layering: Spread the mixture into a springform pan, pressing down firmly with the back of a spoon, and refrigerate for 30 minutes to set.",
+   "Hydrating the gelatin: Soak the gelatin sheets in cold water for 5-10 minutes until softened.",
+   "Hazelnut cream: Beat the cream cheese with the powdered sugar until fluffy, add the spread and mix well.",
+   "Important: Whip the heavy cream to soft peaks at a low speed in a chilled bowl, so it gains volume without curdling; fold it into the hazelnut mixture with gentle bottom-to-top motions to avoid losing air.",
+   "Gelatin: Melt the drained gelatin in a little warm cream and quickly stir it into the rest of the mixture so the cake sets evenly.",
+   "Filling: Spread the cream over the base, scattering chopped hazelnuts and pieces of praline chocolate in between for texture in every bite.",
+   "Chilling: Cover and refrigerate for at least 6 hours or overnight, so it sets well before unmolding.",
+   "Topping: Melt the milk chocolate over a bain-marie and pour it over the surface, decorating with whole praline chocolates and hazelnuts."
+  ],
+  "wine": "Sweet Samos wine",
+  "plate": "Serve on a plate with a little chocolate sauce and a whole praline chocolate alongside each slice."
+ },
+ "filero_galopoulas_fournou": {
+  "n": "Roast Turkey Breast Fillet",
+  "ing": [
+   "Turkey breast fillet 800 g",
+   "Olive oil 4 tbsp",
+   "Dijon mustard 2 tbsp",
+   "Honey 1 tbsp",
+   "Garlic, 3 cloves",
+   "Lemon juice 2 tbsp",
+   "Dried thyme 1 tsp",
+   "Sweet paprika 1 tsp",
+   "Salt, pepper",
+   "Dry white wine 100 ml"
+  ],
+  "steps": [
+   "Preparing the marinade: In a bowl, mix the olive oil, mustard, honey, lemon, thyme, paprika, grated garlic, salt and pepper.",
+   "Marinating: Rub the turkey fillet well with the marinade on all sides and let it sit in the fridge for at least 2 hours, ideally overnight, so it soaks up the flavors.",
+   "Preheating: Preheat the oven to 200°C, fan setting.",
+   "Placing in the pan: Put the fillet in a pan lined with parchment paper, pour over the wine and cover loosely with foil.",
+   "Baking: Bake for 25 minutes covered, then remove the foil and continue for another 20-25 minutes until the surface browns.",
+   "Important: Check the internal temperature with a meat thermometer - it must reach 74°C at the thickest point, so the meat is fully cooked without drying out.",
+   "Resting: Remove the fillet from the oven and let it rest covered for 10 minutes before slicing, so it retains its juices.",
+   "Serving: Slice and serve with the pan juices drizzled on top."
+  ],
+  "wine": "Dry white Assyrtiko or a light red Xinomavro",
+  "plate": "Served with mashed potatoes or roasted vegetables and a seasonal salad"
+ },
+ "french_toast": {
+  "n": "French Toast",
+  "ing": [
+   "Brioche or stale bread 8 slices",
+   "Eggs 4",
+   "Milk 250 ml",
+   "Sugar 3 tbsp",
+   "Cinnamon 1 tsp",
+   "Vanilla extract 1 tsp",
+   "Butter for the pan",
+   "Maple syrup for serving",
+   "Salt 1 pinch"
+  ],
+  "steps": [
+   "Choosing the bread: Use thick slices of brioche or bread that is a day or two old. Important: fresh soft bread disintegrates in the custard and cannot be turned in the pan.",
+   "Making the custard: Beat the eggs with the milk, sugar, cinnamon, vanilla and salt until completely smooth.",
+   "Straining: Pass it through a sieve to catch the stringy bits of egg white, which would otherwise cook into rubbery threads on the surface.",
+   "Soaking: Dip each slice for 20 seconds per side. Important: no longer — over-soaked bread falls apart and stays wet in the middle.",
+   "Draining: Lift each slice and let the excess drip off before it goes into the pan.",
+   "Heating the pan: Heat a pan over medium-low heat with a knob of butter.",
+   "Important: Low heat and patience. On high heat the outside browns in seconds while the custard inside stays raw and eggy.",
+   "Cooking: Cook for 3 minutes per side, until deep golden and set right through.",
+   "Managing the butter: Wipe the pan and add fresh butter between batches — burnt butter turns the next slices bitter.",
+   "Serving: Serve immediately with maple syrup, fresh fruit and a dusting of cinnamon."
+  ],
+  "wine": "Coffee or juice.",
+  "plate": "Serve in slices with maple syrup, fresh fruit and a pinch of cinnamon."
+ },
+ "fteruges_kotopoulo": {
+  "n": "Oven Chicken Wings",
+  "ing": [
+   "Chicken wings 1kg",
+   "Olive oil 3 tbsp",
+   "Garlic powder 1 tsp",
+   "Smoked paprika 1 tsp",
+   "Oregano 1 tsp",
+   "Salt & pepper",
+   "Lemon juice 1 lemon",
+   "Honey 1 tbsp (optional)"
+  ],
+  "steps": [
+   "Marinade: In a bowl, mix the olive oil, lemon juice, garlic powder, paprika, oregano, salt and pepper. Add the wings and coat them thoroughly with the marinade. Let rest for 30 minutes (or overnight in the fridge for best results).",
+   "Baking: Spread the wings in a single layer on a baking sheet lined with parchment paper. Important: they shouldn't touch each other, so they crisp up rather than steam.",
+   "Temperature: Bake at 220°C for 35-40 minutes, flipping them halfway through, at the 20-minute mark. For a glaze, brush with honey during the last 5 minutes.",
+   "Serving: Serve with tzatziki or a yogurt sauce, and lemon on the side."
+  ],
+  "wine": "Light red or rosé.",
+  "plate": "With tzatziki and lemon wedges."
+ },
+ "galaktoboureko": {
+  "n": "Galaktoboureko",
+  "ing": [
+   "Phyllo pastry 450g",
+   "Milk 1 liter",
+   "Fine semolina 150g",
+   "Sugar 200g",
+   "Eggs 4",
+   "Butter 200g",
+   "Vanilla",
+   "Syrup: sugar 300g, water 200ml, lemon"
+  ],
+  "steps": [
+   "Heating the milk: Warm the 1 liter of milk in a pot without letting it boil. Warm milk helps the semolina incorporate without forming lumps.",
+   "Semolina custard: Gradually add the 150g semolina together with the 200g sugar, stirring constantly for 10 minutes until the custard thickens. IMPORTANT: whisk continuously so it doesn't form lumps or stick to the bottom.",
+   "Adding the eggs: Remove from the heat, let it cool slightly, then add the 4 eggs beaten with the vanilla, stirring quickly. IMPORTANT: the custard must not be scalding hot when you add the eggs, or they will cook and curdle it.",
+   "Layering the bottom sheets: Butter the baking dish and layer half the phyllo sheets, brushing each sheet with melted butter (from the 200g). The butter on each sheet makes the pastry crisp.",
+   "Filling and closing: Spread the custard evenly, cover with the remaining buttered sheets and score the surface into portions.",
+   "Baking: Bake at 175°C for 50 minutes until golden and crisp.",
+   "Syruping: Prepare the syrup by boiling 300g sugar with 200ml water and lemon, then let it cool. IMPORTANT: always pour cold syrup over a hot dessert (or the reverse) — the temperature difference makes the galaktoboureko absorb the syrup while staying crisp instead of soggy."
+  ],
+  "wine": "-",
+  "plate": "At room temperature, well soaked with syrup."
+ },
+ "galatopita": {
+  "n": "Milk Pie",
+  "ing": [
+   "Fresh milk 1 liter",
+   "Fine semolina 150 g",
+   "Sugar 200 g",
+   "Eggs 4",
+   "Butter 100 g",
+   "Vanilla 1 sachet",
+   "Lemon zest 1 tsp",
+   "Filo pastry 6 sheets",
+   "Powdered sugar for serving"
+  ],
+  "steps": [
+   "Preheating: Preheat the oven to 180°C fan and butter a medium baking pan well, so the pie won't stick.",
+   "Warming the milk: Put the milk in a saucepan with the lemon zest and warm over medium heat until steaming, without letting it come to a boil.",
+   "Semolina custard: Slowly pour the semolina into the hot milk, whisking constantly, and add half the sugar. Important: Stir continuously over low heat until the custard thickens slightly, so the semolina doesn't clump, then remove from heat.",
+   "Eggs: Beat the eggs with the remaining sugar and vanilla until fluffy and lightly pale.",
+   "Combining: Let the custard cool slightly, then gradually fold in the beaten eggs, stirring quickly so the eggs don't cook and curdle the mixture.",
+   "Layering the filo: Lay 3 sheets of filo in the pan, brushing each with melted butter, letting the edges overhang.",
+   "Filling: Pour in the custard mixture, fold the overhanging edges inward and cover with the remaining buttered sheets, lightly scoring the surface into portions.",
+   "Baking: Bake for 40-45 minutes until golden and the custard has set. Let cool, dust with powdered sugar and serve."
+  ],
+  "wine": "Sweet Samos wine or sour cherry cordial.",
+  "plate": "Serve lukewarm or cold in pieces, dusted with powdered sugar and a little cinnamon."
+ },
+ "galopoula": {
+  "n": "Stuffed Turkey",
+  "ing": [
+   "Turkey 4-5kg",
+   "Ground beef 400g",
+   "Chestnuts 300g",
+   "Rice 200g",
+   "Raisins 100g",
+   "Butter 100g",
+   "Onion 1",
+   "Wine 100ml"
+  ],
+  "steps": [
+   "Preparing the stuffing: In a pan, sauté 1 chopped onion with a little of the 100g butter and add the 400g ground beef, browning it well for 6-8 minutes so it caramelizes and adds depth of flavor to the stuffing.",
+   "Finishing the stuffing: Add the 200g rice, the 300g chopped chestnuts, the 100g raisins and the 100ml wine. Cook for 15 minutes until the liquids are absorbed. Important: let the stuffing cool before putting it inside the turkey, for food safety.",
+   "Stuffing the turkey: Fill the cavity of the 4-5kg turkey without overpacking it, and close the opening by sewing it shut or tying the legs, so the stuffing doesn't spill out during roasting.",
+   "Buttering: Rub the remaining butter all over the surface and season generously with salt and pepper. The butter helps the skin turn golden and crispy.",
+   "Roasting: Roast at 160°C for 3.5-4 hours, covered initially with foil. The low temperature and long cooking time keep the meat juicy and tender.",
+   "Basting: Every 45 minutes, baste the turkey with the pan juices so the breast doesn't dry out. For the last 30-40 minutes, remove the foil so it browns.",
+   "Checking and resting: It's ready when the juices run clear and the internal temperature reaches 75°C. Important: let it rest for 20-30 minutes before carving, so it stays juicy."
+  ],
+  "wine": "Rich white wine.",
+  "plate": "Stuffing on the side, sauce from the pan juices."
+ },
+ "garides": {
+  "n": "Shrimp Saganaki",
+  "ing": [
+   "Raw shrimp 500g",
+   "Grated tomato 200g",
+   "Feta 100g",
+   "Ouzo 2 tbsp",
+   "Garlic 2 cloves",
+   "Olive oil",
+   "Parsley",
+   "Oregano"
+  ],
+  "steps": [
+   "Preparing the shrimp: Clean the 500g raw shrimp, removing the shell and the dark vein along the back, but leave the tail on for presentation. Pat them very dry with paper towels. IMPORTANT: dry shrimp brown rather than boiling in their own liquid.",
+   "Sautéing the shrimp: Heat olive oil over high heat and sauté the shrimp for 1-2 minutes per side, until they turn golden and pink. Remove them immediately so they don't toughen from overcooking.",
+   "Sauce base: In the same pan, sauté the 2 garlic cloves for 30 seconds until fragrant without browning, as burnt garlic turns bitter. Add the 200g grated tomato and oregano.",
+   "Simmering the sauce: Simmer the sauce for 5 minutes until it loses its excess liquid and thickens, concentrating the tomato flavor.",
+   "Flaming with ouzo: Deglaze with the 2 tbsp ouzo and let the alcohol evaporate for 1 minute. Ouzo gives a characteristic anise aroma that pairs beautifully with seafood.",
+   "Finishing: Return the shrimp to the sauce and scatter the 100g feta over the top in chunks.",
+   "Gratinating: Place the pan (or transfer to an ovenproof dish) under the grill for 3-4 minutes until the feta softens. Sprinkle with fresh parsley and serve immediately, hot."
+  ],
+  "wine": "Dry white wine.",
+  "plate": "Served straight from the pan, parsley, bread."
+ },
+ "garides_saganaki_ouzo": {
+  "n": "Shrimp Saganaki with Ouzo",
+  "ing": [
+   "Large fresh shrimp 800 g",
+   "Ouzo 100 ml",
+   "Ripe tomatoes, grated, 500 g",
+   "Feta 200 g",
+   "Onion 1 piece",
+   "Garlic 2 cloves",
+   "Olive oil 5 tbsp",
+   "Fresh dill 1 bunch",
+   "Hot pepper (optional) 1 piece",
+   "Salt, pepper 1 tsp"
+  ],
+  "steps": [
+   "Cleaning the shrimp: Peel the shrimp, leaving the tails on, and devein them with a small knife.",
+   "Sautéing: In a wide skillet, heat the olive oil and sauté the finely chopped onion and garlic until softened.",
+   "Shrimp in the pan: Add the shrimp and sauté for 1-2 minutes over high heat until they change color on the outside.",
+   "Important — flambéing with ouzo: Remove the pan from the heat, warm the ouzo separately in a small saucepan, pour it over the shrimp, and carefully ignite it with a long match, keeping your face at a distance; wait for the flame to burn out on its own before continuing. Never pour ouzo directly from the bottle onto an open flame.",
+   "Tomato sauce: Add the grated tomatoes, salt, pepper, and the hot pepper, lower the heat, and simmer for 10-12 minutes until the sauce thickens.",
+   "Feta: Crumble the feta into large pieces and scatter it over the top, then cover for 2-3 minutes until it softens slightly without melting completely.",
+   "Dill: Sprinkle with finely chopped fresh dill just before serving for freshness.",
+   "Serving: Serve immediately, hot, in the same skillet, with fresh bread to mop up the sauce."
+  ],
+  "wine": "Ice-cold ouzo or a dry white Assyrtiko wine",
+  "plate": "Serve in the skillet with freshly cut village bread."
+ },
+ "garides_sxara": {
+  "n": "Grilled Shrimp",
+  "ing": [
+   "Large shrimp 500g (shell-on)",
+   "Olive oil 3 tbsp",
+   "Garlic 3 cloves",
+   "Juice of 1 lemon",
+   "Fresh parsley",
+   "Red pepper flakes 1/4 tsp",
+   "Salt"
+  ],
+  "steps": [
+   "Prep: Rinse the shrimp and pat them dry. Remove the vein if you like (the dark line along the back) — it doesn't affect flavor, only appearance.",
+   "Marinade: Mix olive oil, finely chopped garlic, lemon, and red pepper flakes. Marinate for 15-30 minutes in the refrigerator.",
+   "Grilling: Grill the shrimp over very high heat for 2-3 minutes per side until they turn pink and get grill marks. Important: don't overcook them — they become rubbery.",
+   "Serving: Serve immediately with fresh parsley and lemon. You can leave the shells on for a juicier result."
+  ],
+  "wine": "White Assyrtiko.",
+  "plate": "On a warm plate with lemon."
+ },
+ "gavros_marinatos": {
+  "n": "Marinated Anchovies",
+  "ing": [
+   "Fresh anchovies 1 kg",
+   "White vinegar 250 ml",
+   "Extra virgin olive oil 150 ml",
+   "Garlic 3-4 cloves",
+   "Parsley, finely chopped, 1/2 bunch",
+   "Coarse salt 2 tbsp",
+   "Lemon juice of 1",
+   "Freshly ground pepper (optional)"
+  ],
+  "steps": [
+   "Cleaning: Clean the anchovies, removing the heads and innards. Split them open along the belly and carefully remove the backbone, leaving two fillets either joined or separate. Rinse thoroughly with cold water.",
+   "Draining: Lay the fillets out on a kitchen towel to drain completely. Important: the fish must be dry before marinating, since excess water dilutes the vinegar and prevents the flesh from properly 'cooking.'",
+   "Salting: Arrange the fillets flesh-side up in a wide dish and sprinkle with the coarse salt. Let them sit for 20-30 minutes to release their liquid and firm up.",
+   "Marinating: Rinse off the salt quickly, drain, and place the fillets in a clean glass dish. Pour over the vinegar and lemon juice so they're fully submerged.",
+   "Curing: Cover and refrigerate for 3-6 hours. The anchovies are ready when the flesh turns completely white and opaque all the way through.",
+   "Draining the vinegar: Remove the fillets from the vinegar and drain them well. Discard the marinating vinegar.",
+   "Dressing: Arrange the fillets on a platter, sprinkle with the chopped garlic and parsley, and drizzle generously with the olive oil. Add a little pepper if desired.",
+   "Resting: Let the dressed fillets rest in the fridge for at least 1 hour before serving, so the flavors of the garlic and olive oil meld in."
+  ],
+  "wine": "Dry white or ouzo/tsipouro.",
+  "plate": "Serve cold as a meze, with fresh olive oil and slices of fresh bread."
+ },
+ "gazpacho": {
+  "n": "Gazpacho",
+  "ing": [
+   "Ripe tomatoes 1kg",
+   "1 cucumber",
+   "1 red bell pepper",
+   "Onion 1/2",
+   "Garlic 1 clove",
+   "Olive oil 4 tbsp",
+   "Red wine vinegar 2 tbsp",
+   "Salt, pepper",
+   "Stale bread 1 slice"
+  ],
+  "steps": [
+   "Chop the tomatoes, cucumber, bell pepper, onion, and garlic into pieces.",
+   "Soak the bread in water for 2 minutes, then squeeze it out.",
+   "Combine everything in a blender with the oil and vinegar. Blend until smooth and creamy.",
+   "Pass through a sieve for a smoother texture (optional).",
+   "Season with salt and pepper and chill in the refrigerator for at least 1 hour.",
+   "Serve ice-cold with a drizzle of oil on top."
+  ]
+ },
+ "gemista": {
+  "n": "Stuffed Tomatoes & Peppers",
+  "ing": [
+   "Tomatoes 6",
+   "Bell peppers 4",
+   "Rice 300g",
+   "Onion 2",
+   "Parsley & mint",
+   "Olive oil 5 tbsp",
+   "Sugar 1 tsp"
+  ],
+  "steps": [
+   "Preparing the vegetables: Cut the tops off the 6 tomatoes and the 4 peppers without detaching them completely, so they can be put back on as lids. Carefully scoop out the tomato flesh with a spoon, and IMPORTANT: keep all the juices and pulp — this will be the liquid that cooks the rice from within and gives deep flavor. Stand the vegetables upright in a roasting pan.",
+   "Sautéing the onion: Finely chop the 2 onions and sauté them in a little of the olive oil until glossy and softened. Sautéing sweetens the onion and removes its raw sharpness from the filling.",
+   "The filling: In a bowl, combine the 300g rice (uncooked), the sautéed onion, finely chopped parsley and mint, the reserved pulp and juices, the 1 tsp sugar, and the 5 tbsp olive oil. The sugar balances the tomato's acidity. Season with salt and pepper.",
+   "Filling the vegetables: Fill the tomatoes and peppers only three-quarters full. IMPORTANT: don't overfill — the rice expands during baking, and if filled to the top it will overflow and split the vegetables. Cover with their lids.",
+   "Baking: Pour a little water into the bottom of the pan (about one glass) so nothing sticks and steam can form. Bake at 180°C for 60-70 minutes, until the rice has swelled and the vegetables have caramelized at the edges.",
+   "Resting and serving: Remove from the oven and let stand for at least 15-20 minutes before serving. Resting allows the rice to absorb the last of the liquid and the stuffed vegetables to firm up so they don't fall apart on the plate."
+  ],
+  "wine": "Dry red or rosé wine.",
+  "plate": "With lids on, basil, olive oil."
+ },
+ "gigantes": {
+  "n": "Giant Beans in Tomato",
+  "ing": [
+   "Gigantes (giant beans) 400g",
+   "Grated tomato 400g",
+   "Onion 2",
+   "Garlic 3 cloves",
+   "Carrot 1",
+   "Honey 1 tsp",
+   "Olive oil 4 tbsp"
+  ],
+  "steps": [
+   "Soaking: The night before, soak 400g gigantes beans in plenty of cold water for at least 8 hours. Important: soaking hydrates the beans, drastically reduces cooking time, and aids digestion.",
+   "Par-boiling: Drain and boil the beans in fresh water for 30-40 minutes, until tender but not falling apart. Don't salt the cooking water, as salt toughens the skins. Drain.",
+   "Sautéing: In a pan with part of the 4 tbsp olive oil, sauté 2 finely chopped onions, 3 garlic cloves, and 1 grated carrot until softened and sweet.",
+   "Sauce: Add 400g grated tomato, 1 tsp honey, salt, pepper, and spices. Simmer for 5 minutes. Important: the honey balances the tomato's acidity and rounds out the sauce's flavor.",
+   "Assembling in the pan: In a baking dish, combine the drained beans with the sauce and the remaining olive oil. Add a little hot water so they stay juicy and don't dry out in the oven.",
+   "Baking: Bake at 180°C for 40-45 minutes, until a crust forms on top and the sauce thickens. If they dry out early, add a little hot water.",
+   "Serving: Let cool slightly before serving, as gigantes plaki are best enjoyed warm or at room temperature, with fresh olive oil and bread."
+  ],
+  "wine": "Dry white wine.",
+  "plate": "With crusty bread and olives."
+ }
+}

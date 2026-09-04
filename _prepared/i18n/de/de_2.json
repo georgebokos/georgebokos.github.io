@@ -1,0 +1,578 @@
+{
+ "eliestoursi": {
+  "n": "Oliven & eingelegtes Gemüse",
+  "ing": [
+   "Kalamata-Oliven 200 g",
+   "Gemischtes eingelegtes Gemüse 200 g",
+   "Olivenöl 2 EL",
+   "Oregano",
+   "Essig 1 TL",
+   "Knoblauch 1 Zehe"
+  ],
+  "steps": [
+   "Abtropfen: Die 200 g Kalamata-Oliven und die 200 g eingelegtes Gemüse gut von der Lake abtropfen lassen. Gründliches Abtropfen verhindert, dass das Öl verwässert und die Mischung wässrig wird.",
+   "Aromaten vorbereiten: 1 Knoblauchzehe fein hacken oder zerdrücken. Der Knoblauch gibt ein kräftiges Aroma, das gut zu Oliven und eingelegtem Gemüse passt.",
+   "Mischen: Oliven und eingelegtes Gemüse in einer Schüssel mit den 2 EL Olivenöl, etwas Oregano, dem Knoblauch und 1 TL Essig vermengen. Der Essig bringt Frische und gleicht den Salzgehalt aus.",
+   "Durchziehen lassen: Die Mischung etwa 30 Minuten ruhen lassen, damit sich die Aromen verbinden. Wichtig: Sind die Oliven bereits sehr salzig, kein zusätzliches Salz zugeben und mit dem Essig sparsam sein, damit es nicht zu sauer wird.",
+   "Servieren: Auf kleinen Tellern als Meze servieren, idealerweise mit Ouzo und Lagana-Brot. Ein einfaches, traditionelles Meze, das in Minuten fertig ist."
+  ],
+  "wine": "Ouzo oder Tsipouro.",
+  "plate": "Kleine Platte, Olivenöl, Oregano."
+ },
+ "fakes": {
+  "n": "Griechische Linsensuppe",
+  "ing": [
+   "Linsen 400 g",
+   "Zwiebel 1",
+   "Karotten 2",
+   "Knoblauch 2 Zehen",
+   "Geriebene Tomate 150 g",
+   "Olivenöl 3 EL",
+   "Lorbeerblatt",
+   "Essig 1 EL"
+  ],
+  "steps": [
+   "Gemüse vorbereiten: 1 Zwiebel fein hacken, die 2 Karotten reiben oder in Scheiben schneiden und die 2 Knoblauchzehen zerdrücken. So geben die Aromaten beim Anbraten ihren Geschmack gleichmäßig ab.",
+   "Basis anbraten: In einem Topf 3 EL Olivenöl bei mittlerer Hitze erhitzen und Zwiebel, Karotten und Knoblauch 5 Minuten anbraten, bis sie weich und glänzend sind. Das Anbraten macht die Zwiebel süßer und gibt der Suppe Tiefe.",
+   "Tomate zugeben: Die 150 g geriebene Tomate und das Lorbeerblatt zugeben und 2-3 Minuten kochen lassen, damit die Säure verfliegt. WICHTIG: Noch kein Salz zugeben — Salz macht die Linsen im sauren Milieu hart und verlangsamt das Garen.",
+   "Linsen spülen: Die 400 g Linsen in einem Sieb unter fließendem Wasser abspülen, um Staub und kleine Steinchen zu entfernen. Kleine Linsen müssen nicht eingeweicht werden.",
+   "Kochen: Die Linsen zugeben und mit Wasser 2-3 Fingerbreit bedecken. Bei niedriger bis mittlerer Hitze 30-35 Minuten kochen, bis sie weich sind, aber noch Form haben. Bei Bedarf heißes Wasser nachgießen.",
+   "Abschluss: Sind die Linsen weich, 1 EL Essig, Salz und Pfeffer zugeben. Essig zum Schluss ist der klassische griechische Trick, der den Geschmack ausbalanciert und die Suppe frischer macht. Das Lorbeerblatt vor dem Servieren entfernen."
+  ],
+  "wine": "Trockener Roséwein.",
+  "plate": "Tiefe Schale, rohes Olivenöl, Essig, Oliven."
+ },
+ "fakes_salata": {
+  "n": "Linsensalat",
+  "ing": [
+   "Grüne Linsen 300 g",
+   "Rote Zwiebel 1",
+   "Kirschtomaten 200 g",
+   "Gurke 1",
+   "Petersilie",
+   "Olivenöl 4 EL",
+   "Essig 2 EL",
+   "Senf 1 TL",
+   "Salz, Pfeffer"
+  ],
+  "steps": [
+   "Die Linsen 20-25 Minuten weich kochen. Abgießen und abkühlen lassen.",
+   "Zwiebel, Kirschtomaten und Gurke in kleine Stücke schneiden.",
+   "Ein Dressing aus Olivenöl, Essig, Senf, Salz und Pfeffer anrühren.",
+   "Linsen, Gemüse und Dressing vermengen.",
+   "Mit Petersilie bestreuen und servieren."
+  ]
+ },
+ "fakoryzo": {
+  "n": "Linsen mit Reis",
+  "ing": [
+   "Linsen (klein, braun) 2 Tassen",
+   "Glasse- oder Carolina-Reis 1 Tasse",
+   "Zwiebeln, 3 große",
+   "Knoblauch, 2 Zehen",
+   "Olivenöl 1/2 Tasse",
+   "Geriebene Tomate, 2 EL (Tomatenmark) oder 1 frische Tomate",
+   "Lorbeerblätter, 2",
+   "Essig 2 EL",
+   "Salz, Pfeffer nach Geschmack",
+   "Wasser, etwa 1 Liter"
+  ],
+  "steps": [
+   "Linsen vorkochen: Die Linsen gut waschen und in reichlich Wasser mit den Lorbeerblättern 12-15 Minuten kochen, bis sie weich sind, aber nicht völlig zerfallen.",
+   "Zwiebeln anbraten: Im Topf das Olivenöl erhitzen und die in Scheiben geschnittenen Zwiebeln zusammen mit dem Knoblauch goldbraun anbraten.",
+   "Zutaten vereinen: Das Tomatenmark zu den Zwiebeln geben, eine Minute rühren und die halbgaren Linsen samt etwas Kochsud zugeben.",
+   "Wichtig: Das Flüssigkeitsverhältnis ist das Geheimnis von Fakorizo — der Reis muss im Linsensud garen, nicht in reinem Wasser, denn nur so nimmt er Geschmack und Farbe der Hülsenfrüchte auf. Man braucht etwa die doppelte Menge Flüssigkeit im Verhältnis zum Reis.",
+   "Reis zugeben: Den Reis in den Topf geben, mit Salz und Pfeffer würzen und mit heißem Wasser oder Brühe auffüllen, sodass alles gut bedeckt ist.",
+   "Sanft köcheln: Die Hitze reduzieren, den Topf zudecken und 15-18 Minuten sanft köcheln lassen, bis der Reis die gesamte Flüssigkeit aufgenommen hat.",
+   "Ruhen lassen: Vom Herd nehmen und das Gericht zugedeckt 5-10 Minuten ruhen lassen, damit es im Restdampf fertig gart.",
+   "Servieren: Heiß servieren und nach Belieben mit etwas Essig oder Zitronensaft beträufeln."
+  ],
+  "wine": "Ein trockener Weißwein wie Assyrtiko oder schlichter Tsipouro passt perfekt zum Fakorizo.",
+  "plate": "In einem tiefen Teller servieren, dazu fein gehackte Zwiebel, Kalamata-Oliven und Feta, begleitet von Essig."
+ },
+ "falafel": {
+  "n": "Falafel",
+  "ing": [
+   "Getrocknete Kichererbsen 500 g",
+   "Zwiebel 1",
+   "Knoblauch 4 Zehen",
+   "Frische Petersilie 1 Bund",
+   "Frischer Koriander 1/2 Bund",
+   "Gemahlener Kreuzkümmel 2 TL",
+   "Gemahlener Koriander 1 TL",
+   "Natron 1 TL",
+   "Mehl 2 EL",
+   "Sonnenblumenöl zum Frittieren",
+   "Salz, Pfeffer"
+  ],
+  "steps": [
+   "Kichererbsen einweichen: Wichtig: Die getrockneten Kichererbsen 18-24 Stunden in reichlich Wasser einweichen. Niemals Kichererbsen aus der Dose oder gekochte verwenden — sie enthalten zu viel Wasser und die Falafel zerfallen im Öl.",
+   "Abtropfen: Gründlich abtropfen lassen und auf einem Tuch ausbreiten, damit die Oberfläche völlig trocken wird.",
+   "Zerkleinern: Die rohen Kichererbsen mit Zwiebel, Knoblauch und Kräutern in der Küchenmaschine zerkleinern, bis die Masse die Textur von grobem Sand hat — kein glattes Püree.",
+   "Masse ruhen lassen: Die Masse 1 Stunde kühl stellen. So festigt sie sich und lässt sich später gut formen.",
+   "Würzen: Kreuzkümmel, gemahlenen Koriander, Salz, Pfeffer und Mehl gleichmäßig untermischen.",
+   "Natron zugeben: Wichtig: Das Natron erst unmittelbar vor dem Frittieren einrühren. Zu früh zugegeben verliert es seine Wirkung und die Falafel werden kompakt statt luftig.",
+   "Formen: Mit feuchten Händen kleine Bällchen oder Taler formen und fest zusammendrücken, damit sie halten.",
+   "Öl erhitzen: Das Öl auf 170 °C erhitzen. Zuerst mit einem Falafel testen — zerfällt er, noch einen Löffel Mehl unter die Masse arbeiten.",
+   "Frittieren: 3-4 Minuten frittieren, bis sie tiefbraun und knusprig sind, immer nur wenige auf einmal, damit die Öltemperatur hoch bleibt.",
+   "Abtropfen: Auf einem Gitter abtropfen lassen und heiß servieren, solange die Kruste knusprig und das Innere dampfend ist."
+  ],
+  "wine": "Ein kaltes Bier oder ein frischer trockener Weißwein mit Säure.",
+  "plate": "Im Pitabrot mit Tahini-Sauce, Tomate und Zwiebel servieren oder auf einer Platte mit Tahini und Zitrone."
+ },
+ "farfale_tonos": {
+  "n": "Farfalle mit Thunfisch",
+  "ing": [
+   "Farfalle 200 g",
+   "Thunfisch aus der Dose 160 g",
+   "Geriebene Tomate 200 g",
+   "Knoblauch 2 Zehen",
+   "Kapern 1 EL (optional)",
+   "Kalamata-Oliven",
+   "Natives Olivenöl extra",
+   "Basilikum",
+   "Salz & Pfeffer"
+  ],
+  "steps": [
+   "Knoblauch anbraten: In einer Pfanne mit nativem Olivenöl extra 2 fein gehackte Knoblauchzehen 1 Minute anbraten. WICHTIG: Er darf nicht bräunen, sonst wird er bitter und verdirbt die Sauce.",
+   "Tomatensauce: Die 200 g geriebene Tomate, Salz und Pfeffer zugeben und 10 Minuten einkochen, bis die Sauce leicht andickt und süßer wird.",
+   "Thunfisch zugeben: Die 160 g gut abgetropften Thunfisch, die Kalamata-Oliven und 1 EL Kapern zugeben. Vorsichtig rühren, damit der Thunfisch nicht zerfällt.",
+   "Nudeln kochen: Die 200 g Farfalle in Salzwasser bissfest (al dente) kochen und etwas Kochwasser aufbewahren.",
+   "Zusammenführen: Die Farfalle mit etwas Nudelwasser in die Sauce geben und rühren — das stärkehaltige Wasser hilft, dass die Sauce an den Nudeln haftet.",
+   "Abschluss und Servieren: Vom Herd genommen frisches Basilikum und etwas rohes Olivenöl für Frische und Aroma zugeben und sofort servieren."
+  ],
+  "wine": "Trockener Weißwein.",
+  "plate": "Tiefer Teller, Basilikum und Olivenöl."
+ },
+ "fasolada": {
+  "n": "Griechische Bohnensuppe",
+  "ing": [
+   "Weiße Bohnen 500 g",
+   "Karotten 2",
+   "Sellerie 2 Stangen",
+   "Zwiebel 1",
+   "Geriebene Tomate 200 g",
+   "Olivenöl 4 EL",
+   "Salz, Pfeffer",
+   "Lorbeerblätter 2"
+  ],
+  "steps": [
+   "Bohnen einweichen: Die 500 g weiße Bohnen in einer Schüssel mit reichlich kaltem Wasser über Nacht (8-10 Stunden) einweichen. Das Einweichen wässert die Bohnen, verkürzt die Garzeit drastisch und lässt sie gleichmäßig weich werden, ohne dass die Haut aufplatzt.",
+   "Erstes Kochen und Abschäumen: Die Bohnen abgießen, mit frischem kaltem Wasser in einen Topf geben und 10 Minuten kochen. WICHTIG: Den weißen Schaum an der Oberfläche sorgfältig abschöpfen — er enthält die blähenden Stoffe und trübt die Brühe. Dieses erste Wasser weggießen, für eine klarere, bekömmlichere Bohnensuppe.",
+   "Gemüse zugeben: Die 2 Karotten in Scheiben schneiden, die 2 Selleriestangen und die Zwiebel fein hacken. Alles mit den 2 Lorbeerblättern in den Topf geben und mit frischem heißem Wasser 2-3 Fingerbreit bedecken. 30 Minuten bei niedriger Hitze köcheln, damit das Gemüse sein süßes Aroma nach und nach an die Brühe abgibt.",
+   "Tomate und Öl: Die 200 g geriebene Tomate und die 4 EL Olivenöl zugeben. WICHTIG: Nicht zu früh salzen — Salz macht die Schalen hart und die Bohnen bleiben roh. Erst jetzt salzen, wenn sie bereits weich zu werden beginnen.",
+   "Garen beenden: Weitere 20 Minuten sanft köcheln lassen, bis die Bohnen ganz weich sind und die Suppe leicht andickt. Für ein sämigeres Ergebnis eine Kelle Bohnen mit der Gabel zerdrücken und wieder unterrühren — das gibt Bindung ganz ohne Mehl.",
+   "Servieren: Die Fasolada heiß servieren und erst beim Anrichten mit etwas rohem Olivenöl beträufeln — rohes Öl behält sein volles Aroma und bringt Frische. Dazu Kalamata-Oliven und Bauernbrot."
+  ],
+  "wine": "Trockener Weißwein.",
+  "plate": "Tiefe Schale, rohes Olivenöl, 2-3 Oliven."
+ },
+ "fasolakia": {
+  "n": "Grüne Bohnen in Tomatensauce",
+  "ing": [
+   "Frische grüne Bohnen 700 g",
+   "Geriebene Tomate 300 g",
+   "Zwiebel 1",
+   "Knoblauch 2 Zehen",
+   "Olivenöl 4 EL",
+   "Kartoffeln 2 (optional)",
+   "Salz & Pfeffer",
+   "Petersilie"
+  ],
+  "steps": [
+   "Putzen: Von den 700 g frischen grünen Bohnen die Enden und Fäden entfernen und gut waschen.",
+   "Anbraten: Die 4 EL Olivenöl erhitzen und die fein gehackte Zwiebel mit den 2 Knoblauchzehen 3 Minuten anbraten, bis sie weich und süß sind.",
+   "Restliche Zutaten: Die 300 g geriebene Tomate, die 2 gewürfelten Kartoffeln, Salz, Pfeffer, Petersilie und etwas Wasser zugeben, dann die grünen Bohnen einlegen.",
+   "Schmoren: Zugedeckt bei mittlerer Hitze 35-40 Minuten garen, bis die Bohnen weich sind. Wichtig: Nicht ständig rühren, damit sie nicht zerfallen — bei Bedarf den Topf sanft schwenken.",
+   "Abschluss: Gegen Ende der Garzeit etwas zusätzliches Olivenöl zugeben, für den vollen Geschmack typischer Ladera-Gerichte.",
+   "Servieren: Vor dem Servieren kurz ruhen lassen, denn Ladera-Gerichte schmecken lauwarm am besten. Am besten mit Feta und Brot."
+  ],
+  "wine": "Trockener Weißwein.",
+  "plate": "Tiefer Teller, rohes Olivenöl darüber, Feta dazu."
+ },
+ "fasolakia_plaki": {
+  "n": "Weiße Bohnen Plaki",
+  "ing": [
+   "Weiße Bohnen 500 g (getrocknet oder aus der Dose)",
+   "Tomaten 400 g (aus der Dose)",
+   "1 große Zwiebel",
+   "Knoblauch 4 Zehen",
+   "Karotten 2",
+   "Sellerie 2 Zweige",
+   "Olivenöl 5 EL",
+   "Petersilie",
+   "Salz, Pfeffer"
+  ],
+  "steps": [
+   "Bei getrockneten Bohnen: über Nacht einweichen und 45 Minuten kochen.",
+   "Zwiebel, Knoblauch, Karotte und Sellerie 8-10 Minuten im Öl anbraten.",
+   "Die Tomaten, Salz, Pfeffer und etwas Wasser zugeben.",
+   "Die gegarten Bohnen zugeben und unterrühren.",
+   "Bei 180 °C 40-45 Minuten backen, bis die Flüssigkeit aufgenommen ist.",
+   "Mit Petersilie und Brot servieren."
+  ]
+ },
+ "fava": {
+  "n": "Santorini-Fava (Schälerbsenpüree)",
+  "ing": [
+   "Santorini-Fava (Schälerbsen) 300 g",
+   "Zwiebel 1",
+   "Knoblauch 2 Zehen",
+   "Olivenöl 5 EL",
+   "Zitrone 1",
+   "Frühlingszwiebel",
+   "Kapern"
+  ],
+  "steps": [
+   "Spülen: Die 300 g Santorini-Fava so lange unter Wasser abspülen, bis es klar bleibt. So werden Staub und der Schaum entfernt, der sonst beim Kochen entsteht.",
+   "Kochen: Die Fava mit reichlich kaltem Wasser, 1 gehackten Zwiebel und 2 Knoblauchzehen in einen Topf geben. 30-35 Minuten kochen, bis sie völlig zerfallen ist. Wichtig: Zu Beginn den Schaum abschöpfen und erst gegen Ende salzen, da frühes Salzen die Hülsenfrucht hart macht.",
+   "Flüssigkeit kontrollieren: Während des Kochens bei Bedarf heißes Wasser nachgießen, damit nichts austrocknet oder am Topfboden ansetzt.",
+   "Pürieren: Die Fava mit 5 EL Olivenöl, dem Saft von 1 Zitrone und Salz in den Mixer geben und zu einer samtigen Creme pürieren. Das Olivenöl emulgiert und gibt eine glatte, weiche Textur.",
+   "Konsistenz anpassen: Ist sie zu dick, etwas Kochwasser zugeben. Wichtig: Fava wird beim Abkühlen fester — daher etwas dünner lassen, als das Endergebnis sein soll.",
+   "Servieren: Auf einem Teller ausstreichen, mit rohem Olivenöl beträufeln und mit Kapern und frisch gehackter Frühlingszwiebel garnieren, für den authentischen Santorini-Geschmack."
+  ],
+  "wine": "Trockener Weißwein.",
+  "plate": "In einer Schale, mit einer Spirale aus Olivenöl und Kapern."
+ },
+ "ferrero_torta": {
+  "n": "Haselnuss-Praliné-Torte",
+  "ing": [
+   "Butterkekse 250 g",
+   "Geschmolzene Butter 100 g",
+   "Nuss-Nougat-Creme 400 g",
+   "Sahne (35 % Fett) 500 ml",
+   "Frischkäse 250 g",
+   "Puderzucker 80 g",
+   "Haselnüsse, geröstet und fein gehackt, 150 g",
+   "Haselnuss-Pralinen 12 Stück",
+   "Vollmilch-Kuvertüre 200 g",
+   "Gelatineblätter 3"
+  ],
+  "steps": [
+   "Boden: Die Kekse in der Küchenmaschine zu Bröseln zerkleinern und mit der geschmolzenen Butter mischen.",
+   "Schichten: Die Masse in eine Springform geben, mit dem Löffelrücken fest andrücken und 30 Minuten kalt stellen, damit sie fest wird.",
+   "Gelatine einweichen: Die Gelatineblätter 5-10 Minuten in kaltem Wasser einweichen, bis sie weich sind.",
+   "Haselnusscreme: Den Frischkäse mit dem Puderzucker luftig aufschlagen, die Nuss-Nougat-Creme zugeben und gut verrühren.",
+   "Wichtig: Die Sahne bei niedriger Geschwindigkeit in einer gekühlten Schüssel halbsteif schlagen, damit sie Volumen bekommt, ohne zu gerinnen; sie mit vorsichtigen Bewegungen von unten nach oben unter die Haselnussmasse heben, damit keine Luft verloren geht.",
+   "Gelatine: Die ausgedrückte Gelatine in etwas warmer Sahne auflösen und zügig unter die restliche Masse rühren, damit die Torte gleichmäßig fest wird.",
+   "Füllung: Die Creme auf dem Boden verteilen und dazwischen gehackte Haselnüsse und Pralinenstücke streuen, für Textur in jedem Bissen.",
+   "Kühlen: Zugedeckt mindestens 6 Stunden oder über Nacht kalt stellen, damit die Torte vor dem Lösen gut fest wird.",
+   "Guss: Die Vollmilchschokolade im Wasserbad schmelzen, über die Oberfläche gießen und mit ganzen Pralinen und Haselnüssen dekorieren."
+  ],
+  "wine": "Süßer Samos-Wein",
+  "plate": "Auf einem Teller mit etwas Schokoladensauce und einer ganzen Praline neben jedem Stück servieren."
+ },
+ "filero_galopoulas_fournou": {
+  "n": "Putenbrustfilet aus dem Ofen",
+  "ing": [
+   "Putenbrustfilet 800 g",
+   "Olivenöl 4 EL",
+   "Dijonsenf 2 EL",
+   "Honig 1 EL",
+   "Knoblauch, 3 Zehen",
+   "Zitronensaft 2 EL",
+   "Getrockneter Thymian 1 TL",
+   "Edelsüßes Paprikapulver 1 TL",
+   "Salz, Pfeffer",
+   "Trockener Weißwein 100 ml"
+  ],
+  "steps": [
+   "Marinade zubereiten: In einer Schüssel Olivenöl, Senf, Honig, Zitrone, Thymian, Paprika, geriebenen Knoblauch, Salz und Pfeffer verrühren.",
+   "Marinieren: Das Putenfilet rundum gut mit der Marinade einreiben und mindestens 2 Stunden, idealerweise über Nacht, im Kühlschrank ziehen lassen, damit es die Aromen aufnimmt.",
+   "Vorheizen: Den Ofen auf 200 °C Umluft vorheizen.",
+   "In die Form legen: Das Filet in eine mit Backpapier ausgelegte Form legen, den Wein angießen und locker mit Alufolie abdecken.",
+   "Backen: 25 Minuten zugedeckt backen, dann die Folie entfernen und weitere 20-25 Minuten backen, bis die Oberfläche bräunt.",
+   "Wichtig: Die Kerntemperatur mit einem Fleischthermometer prüfen — sie muss an der dicksten Stelle 74 °C erreichen, damit das Fleisch durchgegart ist, ohne auszutrocknen.",
+   "Ruhen lassen: Das Filet aus dem Ofen nehmen und zugedeckt 10 Minuten ruhen lassen, bevor es aufgeschnitten wird, damit es saftig bleibt.",
+   "Servieren: In Scheiben schneiden und mit dem Bratensaft übergossen servieren."
+  ],
+  "wine": "Trockener weißer Assyrtiko oder ein leichter roter Xinomavro",
+  "plate": "Mit Kartoffelpüree oder Ofengemüse und einem saisonalen Salat serviert"
+ },
+ "french_toast": {
+  "n": "French Toast",
+  "ing": [
+   "Brioche oder altbackenes Brot 8 Scheiben",
+   "Eier 4",
+   "Milch 250 ml",
+   "Zucker 3 EL",
+   "Zimt 1 TL",
+   "Vanilleextrakt 1 TL",
+   "Butter für die Pfanne",
+   "Ahornsirup zum Servieren",
+   "Salz 1 Prise"
+  ],
+  "steps": [
+   "Brot wählen: Dicke Scheiben Brioche oder ein bis zwei Tage altes Brot verwenden. Wichtig: Frisches weiches Brot zerfällt in der Eimilch und lässt sich in der Pfanne nicht wenden.",
+   "Eimilch anrühren: Die Eier mit Milch, Zucker, Zimt, Vanille und Salz völlig glatt verquirlen.",
+   "Passieren: Durch ein Sieb gießen, um die Eiweißstränge aufzufangen, die sonst als gummiartige Fäden an der Oberfläche garen.",
+   "Einweichen: Jede Scheibe 20 Sekunden pro Seite eintauchen. Wichtig: Nicht länger — zu lange eingeweichtes Brot zerfällt und bleibt innen nass.",
+   "Abtropfen: Jede Scheibe anheben und überschüssige Flüssigkeit abtropfen lassen, bevor sie in die Pfanne kommt.",
+   "Pfanne erhitzen: Eine Pfanne bei mittlerer bis niedriger Hitze mit einem Stück Butter erhitzen.",
+   "Wichtig: Niedrige Hitze und Geduld. Bei großer Hitze bräunt die Außenseite in Sekunden, während die Eimilch innen roh und eierig bleibt.",
+   "Braten: 3 Minuten pro Seite braten, bis sie tief goldbraun und durchgestockt sind.",
+   "Butter im Blick: Die Pfanne zwischen den Portionen auswischen und frische Butter zugeben — verbrannte Butter macht die nächsten Scheiben bitter.",
+   "Servieren: Sofort mit Ahornsirup, frischem Obst und etwas Zimt servieren."
+  ],
+  "wine": "Kaffee oder Saft.",
+  "plate": "In Scheiben mit Ahornsirup, frischem Obst und einer Prise Zimt servieren."
+ },
+ "fteruges_kotopoulo": {
+  "n": "Chicken Wings aus dem Ofen",
+  "ing": [
+   "Hähnchenflügel 1 kg",
+   "Olivenöl 3 EL",
+   "Knoblauchpulver 1 TL",
+   "Geräuchertes Paprikapulver 1 TL",
+   "Oregano 1 TL",
+   "Salz & Pfeffer",
+   "Saft von 1 Zitrone",
+   "Honig 1 EL (optional)"
+  ],
+  "steps": [
+   "Marinade: In einer Schüssel Olivenöl, Zitronensaft, Knoblauchpulver, Paprika, Oregano, Salz und Pfeffer verrühren. Die Flügel zugeben und rundum damit einreiben. 30 Minuten ziehen lassen (für das beste Ergebnis über Nacht im Kühlschrank).",
+   "Backen: Die Flügel in einer Lage auf ein mit Backpapier belegtes Blech legen. Wichtig: Sie dürfen sich nicht berühren, damit sie knusprig werden und nicht dämpfen.",
+   "Temperatur: Bei 220 °C 35-40 Minuten backen und nach 20 Minuten wenden. Für eine Glasur in den letzten 5 Minuten mit Honig bestreichen.",
+   "Servieren: Mit Tzatziki oder einer Joghurtsauce und Zitrone servieren."
+  ],
+  "wine": "Leichter Rotwein oder Rosé.",
+  "plate": "Mit Tzatziki und Zitronenspalten."
+ },
+ "galaktoboureko": {
+  "n": "Galaktoboureko",
+  "ing": [
+   "Filoteig 450 g",
+   "Milch 1 Liter",
+   "Feiner Grieß 150 g",
+   "Zucker 200 g",
+   "Eier 4",
+   "Butter 200 g",
+   "Vanille",
+   "Sirup: Zucker 300 g, Wasser 200 ml, Zitrone"
+  ],
+  "steps": [
+   "Milch erwärmen: Den 1 Liter Milch im Topf erwärmen, ohne ihn kochen zu lassen. Warme Milch hilft, dass sich der Grieß klümpchenfrei einarbeiten lässt.",
+   "Grießcreme: Nach und nach die 150 g Grieß zusammen mit den 200 g Zucker einrühren und 10 Minuten ständig rühren, bis die Creme andickt. WICHTIG: Ununterbrochen rühren, damit sich keine Klümpchen bilden und nichts ansetzt.",
+   "Eier zugeben: Vom Herd nehmen, etwas abkühlen lassen und die 4 mit der Vanille verquirlten Eier zügig unterrühren. WICHTIG: Die Creme darf beim Zugeben der Eier nicht kochend heiß sein, sonst stocken sie und die Creme gerinnt.",
+   "Untere Teigblätter legen: Die Form ausbuttern und die Hälfte der Filoblätter einlegen, jedes Blatt mit geschmolzener Butter (von den 200 g) bestreichen. Die Butter auf jedem Blatt macht den Teig knusprig.",
+   "Füllen und schließen: Die Creme gleichmäßig verteilen, mit den restlichen gebutterten Blättern abdecken und die Oberfläche in Portionen vorschneiden.",
+   "Backen: Bei 175 °C 50 Minuten backen, bis alles goldbraun und knusprig ist.",
+   "Sirup: Den Sirup aus 300 g Zucker, 200 ml Wasser und Zitrone aufkochen und abkühlen lassen. WICHTIG: Immer kalten Sirup über das heiße Gebäck gießen (oder umgekehrt) — der Temperaturunterschied sorgt dafür, dass das Galaktoboureko den Sirup aufnimmt und dabei knusprig bleibt."
+  ],
+  "wine": "-",
+  "plate": "Bei Zimmertemperatur, gut mit Sirup getränkt."
+ },
+ "galatopita": {
+  "n": "Milchpita",
+  "ing": [
+   "Frische Milch 1 Liter",
+   "Feiner Grieß 150 g",
+   "Zucker 200 g",
+   "Eier 4",
+   "Butter 100 g",
+   "Vanille 1 Päckchen",
+   "Zitronenschale 1 TL",
+   "Filoteig 6 Blätter",
+   "Puderzucker zum Servieren"
+  ],
+  "steps": [
+   "Vorheizen: Den Ofen auf 180 °C Umluft vorheizen und eine mittelgroße Form gut ausbuttern, damit die Pita nicht anhaftet.",
+   "Milch erwärmen: Die Milch mit der Zitronenschale in einen Topf geben und bei mittlerer Hitze erwärmen, bis sie dampft, ohne zu kochen.",
+   "Grießcreme: Den Grieß langsam unter ständigem Rühren in die heiße Milch einrieseln lassen und die Hälfte des Zuckers zugeben. Wichtig: Bei niedriger Hitze ununterbrochen rühren, bis die Creme leicht andickt, damit der Grieß nicht klumpt, dann vom Herd nehmen.",
+   "Eier: Die Eier mit dem restlichen Zucker und der Vanille luftig und hell aufschlagen.",
+   "Verbinden: Die Creme etwas abkühlen lassen und die geschlagenen Eier nach und nach zügig unterrühren, damit sie nicht stocken und die Masse gerinnt.",
+   "Filo schichten: 3 Filoblätter in die Form legen, jedes mit geschmolzener Butter bestreichen und die Ränder überhängen lassen.",
+   "Füllen: Die Creme eingießen, die überhängenden Ränder einschlagen und mit den restlichen gebutterten Blättern abdecken, die Oberfläche leicht in Portionen einschneiden.",
+   "Backen: 40-45 Minuten backen, bis alles goldbraun und die Creme gestockt ist. Abkühlen lassen, mit Puderzucker bestäuben und servieren."
+  ],
+  "wine": "Süßer Samos-Wein oder Sauerkirschsirup.",
+  "plate": "Lauwarm oder kalt in Stücken servieren, mit Puderzucker und etwas Zimt bestäubt."
+ },
+ "galopoula": {
+  "n": "Gefüllter Truthahn",
+  "ing": [
+   "Truthahn 4-5 kg",
+   "Rinderhackfleisch 400 g",
+   "Esskastanien 300 g",
+   "Reis 200 g",
+   "Rosinen 100 g",
+   "Butter 100 g",
+   "Zwiebel 1",
+   "Wein 100 ml"
+  ],
+  "steps": [
+   "Füllung vorbereiten: In einer Pfanne 1 gehackte Zwiebel in etwas von den 100 g Butter anbraten, das 400 g Rinderhack zugeben und 6-8 Minuten kräftig anbraten, damit es karamellisiert und der Füllung Tiefe gibt.",
+   "Füllung fertigstellen: Die 200 g Reis, die 300 g gehackten Kastanien, die 100 g Rosinen und die 100 ml Wein zugeben. 15 Minuten garen, bis die Flüssigkeit aufgenommen ist. Wichtig: Die Füllung aus Gründen der Lebensmittelsicherheit abkühlen lassen, bevor sie in den Truthahn kommt.",
+   "Truthahn füllen: Den 4-5 kg schweren Truthahn füllen, ohne ihn zu fest zu stopfen, und die Öffnung zunähen oder die Keulen zusammenbinden, damit die Füllung beim Braten nicht austritt.",
+   "Buttern: Die restliche Butter über die gesamte Oberfläche reiben und großzügig mit Salz und Pfeffer würzen. Die Butter macht die Haut goldbraun und knusprig.",
+   "Braten: Bei 160 °C 3,5-4 Stunden braten, anfangs mit Alufolie bedeckt. Niedrige Temperatur und lange Garzeit halten das Fleisch saftig und zart.",
+   "Übergießen: Alle 45 Minuten mit dem Bratensaft übergießen, damit die Brust nicht austrocknet. In den letzten 30-40 Minuten die Folie entfernen, damit alles bräunt.",
+   "Prüfen und ruhen lassen: Er ist fertig, wenn der austretende Saft klar ist und die Kerntemperatur 75 °C erreicht. Wichtig: Vor dem Tranchieren 20-30 Minuten ruhen lassen, damit er saftig bleibt."
+  ],
+  "wine": "Kräftiger Weißwein.",
+  "plate": "Füllung daneben, Sauce aus dem Bratensaft."
+ },
+ "garides": {
+  "n": "Garnelen Saganaki",
+  "ing": [
+   "Rohe Garnelen 500 g",
+   "Geriebene Tomate 200 g",
+   "Feta 100 g",
+   "Ouzo 2 EL",
+   "Knoblauch 2 Zehen",
+   "Olivenöl",
+   "Petersilie",
+   "Oregano"
+  ],
+  "steps": [
+   "Garnelen vorbereiten: Die 500 g rohen Garnelen putzen, Schale und den dunklen Darm am Rücken entfernen, den Schwanz aber für die Optik dranlassen. Mit Küchenpapier sehr gut trocken tupfen. WICHTIG: Trockene Garnelen bräunen, statt in ihrem eigenen Saft zu kochen.",
+   "Garnelen anbraten: Olivenöl bei starker Hitze erhitzen und die Garnelen 1-2 Minuten pro Seite anbraten, bis sie goldig und rosa sind. Sofort herausnehmen, damit sie nicht zäh werden.",
+   "Saucenbasis: In derselben Pfanne die 2 Knoblauchzehen 30 Sekunden anbraten, bis sie duften, ohne zu bräunen — verbrannter Knoblauch wird bitter. Die 200 g geriebene Tomate und den Oregano zugeben.",
+   "Sauce einkochen: Die Sauce 5 Minuten einkochen, bis die überschüssige Flüssigkeit verdampft ist und sie andickt, wodurch sich der Tomatengeschmack konzentriert.",
+   "Mit Ouzo flambieren: Mit den 2 EL Ouzo ablöschen und den Alkohol 1 Minute verdampfen lassen. Ouzo gibt ein typisches Anisaroma, das wunderbar zu Meeresfrüchten passt.",
+   "Abschluss: Die Garnelen zurück in die Sauce geben und die 100 g Feta in Stücken darüber verteilen.",
+   "Überbacken: Die Pfanne (oder eine ofenfeste Form) 3-4 Minuten unter den Grill schieben, bis der Feta weich wird. Mit frischer Petersilie bestreuen und sofort heiß servieren."
+  ],
+  "wine": "Trockener Weißwein.",
+  "plate": "Direkt aus der Pfanne serviert, Petersilie, Brot."
+ },
+ "garides_saganaki_ouzo": {
+  "n": "Garnelen Saganaki mit Ouzo",
+  "ing": [
+   "Große frische Garnelen 800 g",
+   "Ouzo 100 ml",
+   "Reife Tomaten, gerieben, 500 g",
+   "Feta 200 g",
+   "Zwiebel 1 Stück",
+   "Knoblauch 2 Zehen",
+   "Olivenöl 5 EL",
+   "Frischer Dill 1 Bund",
+   "Scharfe Peperoni (optional) 1 Stück",
+   "Salz, Pfeffer 1 TL"
+  ],
+  "steps": [
+   "Garnelen putzen: Die Garnelen schälen, die Schwänze dranlassen und mit einem kleinen Messer den Darm entfernen.",
+   "Anbraten: In einer weiten Pfanne das Olivenöl erhitzen und die fein gehackte Zwiebel mit dem Knoblauch weich dünsten.",
+   "Garnelen in die Pfanne: Die Garnelen zugeben und 1-2 Minuten bei starker Hitze anbraten, bis sie außen die Farbe wechseln.",
+   "Wichtig — Flambieren mit Ouzo: Die Pfanne vom Herd nehmen, den Ouzo separat in einem kleinen Topf erwärmen, über die Garnelen gießen und vorsichtig mit einem langen Streichholz entzünden, dabei das Gesicht fernhalten; warten, bis die Flamme von selbst erlischt, bevor es weitergeht. Niemals Ouzo direkt aus der Flasche in eine offene Flamme gießen.",
+   "Tomatensauce: Die geriebenen Tomaten, Salz, Pfeffer und die Peperoni zugeben, die Hitze reduzieren und 10-12 Minuten köcheln, bis die Sauce andickt.",
+   "Feta: Den Feta in großen Stücken darüber bröseln, dann 2-3 Minuten zudecken, bis er leicht weich wird, ohne ganz zu schmelzen.",
+   "Dill: Kurz vor dem Servieren mit fein gehacktem frischem Dill bestreuen, für Frische.",
+   "Servieren: Sofort heiß in derselben Pfanne servieren, mit frischem Brot zum Stippen der Sauce."
+  ],
+  "wine": "Eiskalter Ouzo oder ein trockener weißer Assyrtiko",
+  "plate": "In der Pfanne servieren, mit frisch geschnittenem Bauernbrot."
+ },
+ "garides_sxara": {
+  "n": "Gegrillte Garnelen",
+  "ing": [
+   "Große Garnelen 500 g (mit Schale)",
+   "Olivenöl 3 EL",
+   "Knoblauch 3 Zehen",
+   "Saft von 1 Zitrone",
+   "Frische Petersilie",
+   "Chiliflocken 1/4 TL",
+   "Salz"
+  ],
+  "steps": [
+   "Vorbereitung: Die Garnelen abspülen und trocken tupfen. Den Darm (die dunkle Linie am Rücken) nach Belieben entfernen — er beeinflusst nur die Optik, nicht den Geschmack.",
+   "Marinade: Olivenöl, fein gehackten Knoblauch, Zitrone und Chiliflocken mischen. 15-30 Minuten im Kühlschrank marinieren.",
+   "Grillen: Die Garnelen bei sehr starker Hitze 2-3 Minuten pro Seite grillen, bis sie rosa sind und Grillstreifen bekommen. Wichtig: Nicht zu lange garen — sie werden gummiartig.",
+   "Servieren: Sofort mit frischer Petersilie und Zitrone servieren. Die Schalen können dranbleiben, für ein saftigeres Ergebnis."
+  ],
+  "wine": "Weißer Assyrtiko.",
+  "plate": "Auf einem warmen Teller mit Zitrone."
+ },
+ "gavros_marinatos": {
+  "n": "Marinierte Sardellen",
+  "ing": [
+   "Frische Sardellen 1 kg",
+   "Weißweinessig 250 ml",
+   "Natives Olivenöl extra 150 ml",
+   "Knoblauch 3-4 Zehen",
+   "Petersilie, fein gehackt, 1/2 Bund",
+   "Grobes Salz 2 EL",
+   "Saft von 1 Zitrone",
+   "Frisch gemahlener Pfeffer (optional)"
+  ],
+  "steps": [
+   "Putzen: Die Sardellen putzen, Köpfe und Innereien entfernen. Am Bauch aufschneiden und die Mittelgräte vorsichtig herausziehen, sodass zwei verbundene oder getrennte Filets bleiben. Gründlich mit kaltem Wasser abspülen.",
+   "Abtropfen: Die Filets auf einem Küchentuch ausbreiten und vollständig abtropfen lassen. Wichtig: Der Fisch muss vor dem Marinieren trocken sein, denn überschüssiges Wasser verdünnt den Essig und verhindert, dass das Fleisch richtig 'gart'.",
+   "Salzen: Die Filets mit der Fleischseite nach oben in eine weite Form legen und mit dem groben Salz bestreuen. 20-30 Minuten stehen lassen, damit sie Flüssigkeit abgeben und fester werden.",
+   "Marinieren: Das Salz kurz abspülen, abtropfen lassen und die Filets in eine saubere Glasform legen. Essig und Zitronensaft angießen, bis sie vollständig bedeckt sind.",
+   "Ziehen lassen: Zugedeckt 3-6 Stunden kalt stellen. Die Sardellen sind fertig, wenn das Fleisch durch und durch völlig weiß und undurchsichtig ist.",
+   "Essig abgießen: Die Filets aus dem Essig nehmen und gut abtropfen lassen. Den Marinieressig weggießen.",
+   "Anmachen: Die Filets auf einer Platte anrichten, mit gehacktem Knoblauch und Petersilie bestreuen und großzügig mit Olivenöl beträufeln. Nach Belieben etwas Pfeffer zugeben.",
+   "Ruhen lassen: Die angemachten Filets vor dem Servieren mindestens 1 Stunde im Kühlschrank ruhen lassen, damit die Aromen von Knoblauch und Olivenöl einziehen."
+  ],
+  "wine": "Trockener Weißwein oder Ouzo/Tsipouro.",
+  "plate": "Kalt als Meze servieren, mit frischem Olivenöl und Scheiben frischen Brotes."
+ },
+ "gazpacho": {
+  "n": "Gazpacho",
+  "ing": [
+   "Reife Tomaten 1 kg",
+   "1 Gurke",
+   "1 rote Paprika",
+   "Zwiebel 1/2",
+   "Knoblauch 1 Zehe",
+   "Olivenöl 4 EL",
+   "Rotweinessig 2 EL",
+   "Salz, Pfeffer",
+   "Altbackenes Brot 1 Scheibe"
+  ],
+  "steps": [
+   "Tomaten, Gurke, Paprika, Zwiebel und Knoblauch in Stücke schneiden.",
+   "Das Brot 2 Minuten in Wasser einweichen und dann ausdrücken.",
+   "Alles mit Öl und Essig im Mixer glatt und cremig pürieren.",
+   "Für eine feinere Textur durch ein Sieb passieren (optional).",
+   "Mit Salz und Pfeffer abschmecken und mindestens 1 Stunde kalt stellen.",
+   "Eiskalt mit einem Spritzer Öl obenauf servieren."
+  ]
+ },
+ "gemista": {
+  "n": "Gefüllte Tomaten & Paprika",
+  "ing": [
+   "Tomaten 6",
+   "Paprika 4",
+   "Reis 300 g",
+   "Zwiebeln 2",
+   "Petersilie & Minze",
+   "Olivenöl 5 EL",
+   "Zucker 1 TL"
+  ],
+  "steps": [
+   "Gemüse vorbereiten: Von den 6 Tomaten und den 4 Paprika die Deckel abschneiden, ohne sie ganz abzutrennen, damit sie später wieder aufgesetzt werden können. Das Tomatenfruchtfleisch vorsichtig mit einem Löffel aushöhlen und WICHTIG: Saft und Fruchtfleisch vollständig aufbewahren — das ist die Flüssigkeit, in der der Reis von innen gart und die tiefen Geschmack gibt. Das Gemüse aufrecht in eine Form stellen.",
+   "Zwiebeln anbraten: Die 2 Zwiebeln fein hacken und in etwas Olivenöl glasig und weich dünsten. Das Anbraten macht die Zwiebel süßer und nimmt der Füllung die rohe Schärfe.",
+   "Die Füllung: In einer Schüssel die 300 g Reis (ungekocht), die gedünstete Zwiebel, fein gehackte Petersilie und Minze, das aufbewahrte Fruchtfleisch samt Saft, den 1 TL Zucker und die 5 EL Olivenöl vermengen. Der Zucker gleicht die Säure der Tomate aus. Mit Salz und Pfeffer würzen.",
+   "Gemüse füllen: Tomaten und Paprika nur zu drei Vierteln füllen. WICHTIG: Nicht überfüllen — der Reis quillt beim Backen auf und läuft sonst über und sprengt das Gemüse. Mit den Deckeln verschließen.",
+   "Backen: Etwas Wasser (etwa ein Glas) in die Form gießen, damit nichts ansetzt und sich Dampf bildet. Bei 180 °C 60-70 Minuten backen, bis der Reis aufgequollen ist und das Gemüse an den Rändern karamellisiert.",
+   "Ruhen und Servieren: Aus dem Ofen nehmen und vor dem Servieren mindestens 15-20 Minuten stehen lassen. Beim Ruhen nimmt der Reis die letzte Flüssigkeit auf und die gefüllten Gemüse werden fest, sodass sie auf dem Teller nicht zerfallen."
+  ],
+  "wine": "Trockener Rot- oder Roséwein.",
+  "plate": "Mit aufgesetzten Deckeln, Basilikum, Olivenöl."
+ },
+ "gigantes": {
+  "n": "Riesenbohnen in Tomatensauce",
+  "ing": [
+   "Gigantes (Riesenbohnen) 400 g",
+   "Geriebene Tomate 400 g",
+   "Zwiebeln 2",
+   "Knoblauch 3 Zehen",
+   "Karotte 1",
+   "Honig 1 TL",
+   "Olivenöl 4 EL"
+  ],
+  "steps": [
+   "Einweichen: Am Vorabend die 400 g Riesenbohnen mindestens 8 Stunden in reichlich kaltem Wasser einweichen. Wichtig: Das Einweichen wässert die Bohnen, verkürzt die Garzeit deutlich und macht sie bekömmlicher.",
+   "Vorkochen: Abgießen und die Bohnen in frischem Wasser 30-40 Minuten kochen, bis sie weich sind, aber nicht zerfallen. Das Kochwasser nicht salzen, da Salz die Schalen hart macht. Abgießen.",
+   "Anbraten: In einer Pfanne mit einem Teil der 4 EL Olivenöl 2 fein gehackte Zwiebeln, 3 Knoblauchzehen und 1 geriebene Karotte weich und süß dünsten.",
+   "Sauce: Die 400 g geriebene Tomate, 1 TL Honig, Salz, Pfeffer und Gewürze zugeben. 5 Minuten köcheln. Wichtig: Der Honig gleicht die Säure der Tomate aus und rundet die Sauce ab.",
+   "In der Form vereinen: In einer Auflaufform die abgetropften Bohnen mit der Sauce und dem restlichen Olivenöl mischen. Etwas heißes Wasser zugeben, damit sie saftig bleiben und im Ofen nicht austrocknen.",
+   "Backen: Bei 180 °C 40-45 Minuten backen, bis sich oben eine Kruste bildet und die Sauce andickt. Trocknen sie zu früh aus, etwas heißes Wasser nachgießen.",
+   "Servieren: Vor dem Servieren leicht abkühlen lassen, denn Gigantes Plaki schmecken warm oder bei Zimmertemperatur am besten, mit frischem Olivenöl und Brot."
+  ],
+  "wine": "Trockener Weißwein.",
+  "plate": "Mit knusprigem Brot und Oliven."
+ }
+}

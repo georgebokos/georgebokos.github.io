@@ -1,0 +1,550 @@
+{
+ "giouvarlaakia": {
+  "n": "Meatball Avgolemono",
+  "ing": [
+   "Ground beef 400g",
+   "Rice 100g",
+   "Grated onion 1",
+   "Eggs 3",
+   "Lemons 2",
+   "Chicken broth 1.5L"
+  ],
+  "steps": [
+   "Meat mixture: In a bowl, mix the 400g ground beef, the 100g rice, the 1 grated onion, 1 egg, and salt. Knead well with your hands until combined and the mixture binds together.",
+   "Shaping: Shape into walnut-sized balls. Important: don't pack them too tightly, as the rice expands during cooking and the giouvarlakia could split.",
+   "Boiling: Bring the 1.5L chicken broth to a boil and carefully drop in the meatballs one by one, so they don't stick together.",
+   "Simmering: Simmer covered for 25-30 minutes until the rice inside the giouvarlakia is cooked and they've softened. Gently shake the pot occasionally instead of stirring, so they don't break apart.",
+   "Preparing the avgolemono: Whisk the 2 eggs in a bowl with the juice of 2 lemons until frothy.",
+   "Thickening the avgolemono: Gradually add ladlefuls of hot broth to the mixture while whisking constantly. Important: this tempering step gradually warms the eggs so they don't curdle.",
+   "Finishing: Pour the avgolemono back into the pot off the heat, swirling gently to distribute it. Do not boil again, or the avgolemono will curdle. Serve immediately."
+  ],
+  "wine": "Dry white wine.",
+  "plate": "In a deep bowl with parsley and lemon."
+ },
+ "giouvetsi": {
+  "n": "Lamb with Orzo",
+  "ing": [
+   "Lamb 1kg, cut into pieces",
+   "Orzo 300g",
+   "Grated tomato 400g",
+   "Onion 1",
+   "Garlic 2 cloves",
+   "Cinnamon",
+   "Kefalotyri cheese"
+  ],
+  "steps": [
+   "Browning the lamb: In a pot or clay dish, heat a little oil and brown the 1kg lamb pieces on all sides over high heat. IMPORTANT: good browning (caramelization) seals in the juices and gives the final dish deep color and flavor.",
+   "Sautéing the aromatics: In the same pot, sauté 1 finely chopped onion and 2 garlic cloves until softened, scraping up the caramelized bits from the bottom, which hold concentrated flavor.",
+   "Sauce and cooking the meat: Add the 400g grated tomato, a cinnamon stick or a pinch of ground cinnamon, salt, pepper, and enough hot water to cover. Bake covered at 180°C for 50 minutes, until the lamb begins to soften.",
+   "Adding the orzo: Add the 300g orzo and stir it into the liquid. IMPORTANT: there must be plenty of hot liquid (about double the volume of the orzo), as the pasta absorbs a lot and would otherwise stay raw or stick.",
+   "Second bake: Continue baking at 180°C for another 30 minutes, stirring once halfway through so the orzo cooks evenly and doesn't stick at the edges.",
+   "Resting: Remove from the oven and let rest for 5 minutes. The orzo finishes swelling and the sauce settles.",
+   "Serving: Serve immediately, hot and saucy, with plenty of grated kefalotyri on top, which melts and adds a salty punch."
+  ],
+  "wine": "Dry red wine.",
+  "plate": "In the baking dish, plenty of cheese."
+ },
+ "glyko_karydaki": {
+  "n": "Green Walnut Spoon Sweet",
+  "ing": [
+   "Green walnuts 40",
+   "Sugar 1.2 kg",
+   "Water 1 litre",
+   "Lemon juice 3 tbsp",
+   "Cloves 10",
+   "Cinnamon stick 1",
+   "Slaked lime 2 tbsp (optional)"
+  ],
+  "steps": [
+   "Pick the walnuts while still green and soft enough for a needle to pass right through.",
+   "Important: Wear gloves throughout. Green walnuts stain hands deep brown for days.",
+   "Peel the outer skin and pierce each walnut in several places with a needle.",
+   "Soak them in fresh water for 6-7 days, changing the water twice a day, until the bitterness is gone.",
+   "Important: Do not shorten this soaking. Insufficiently soaked walnuts stay bitter and no amount of syrup will cover it.",
+   "Boil them for 15 minutes in clean water, then drain them well.",
+   "Boil the sugar with the water, the cloves and the cinnamon into a syrup.",
+   "Add the walnuts and simmer over low heat for about 1 hour, until they are dark, glossy and tender.",
+   "Add the lemon juice at the end to prevent crystallisation.",
+   "Let the sweet stand for 24 hours before jarring, so the walnuts absorb the syrup fully."
+  ],
+  "wine": "Ice-cold water or Greek coffee.",
+  "plate": "Serve one walnut on a saucer with a little syrup and cold water alongside."
+ },
+ "glyko_psygeiou": {
+  "n": "Biscuit Fridge Cake",
+  "ing": [
+   "Digestive biscuits 500 g",
+   "Butter 200 g",
+   "Icing sugar 150 g",
+   "Cocoa powder 60 g",
+   "Milk 100 ml",
+   "Brandy 2 tbsp",
+   "Walnuts 100 g"
+  ],
+  "steps": [
+   "Break the biscuits by hand into uneven pieces. Important: do not crush them to crumbs — the visible chunks are what give this dessert its character.",
+   "Beat the soft butter with the icing sugar and cocoa until light and smooth.",
+   "Add the milk and brandy gradually, beating until you have a glossy cream.",
+   "Fold in the biscuits and chopped walnuts by hand, coating every piece without breaking them further.",
+   "Tip the mixture onto cling film and roll it into a tight log, twisting the ends closed.",
+   "Important: Refrigerate for at least 4 hours, ideally overnight. Cut too early it collapses, because the butter has not set.",
+   "Slice into thick rounds with a knife dipped in hot water for clean edges."
+  ],
+  "wine": "A sweet wine or a double espresso.",
+  "plate": "Serve in thick rounds on a white plate, with the biscuit pieces visible in the cut."
+ },
+ "glyko_vyssino": {
+  "n": "Sour Cherry Spoon Sweet",
+  "ing": [
+   "Sour cherries 1 kg",
+   "Sugar 900 g",
+   "Water 200 ml",
+   "Lemon juice 2 tbsp"
+  ],
+  "steps": [
+   "Wash the sour cherries and remove the stones with a pitter, keeping the fruit as whole as possible.",
+   "Layer the cherries with the sugar in a bowl and leave them overnight in the fridge.",
+   "Important: This overnight rest draws the juice out slowly, so the fruit stays whole instead of collapsing during boiling.",
+   "Next day, tip everything into a wide pot with the water and bring it to the boil.",
+   "Skim the foam off carefully — leaving it in makes the syrup cloudy and shortens how long it keeps.",
+   "Boil over medium heat for about 25 minutes, shaking the pot rather than stirring, so the cherries stay intact.",
+   "Important: Test the syrup on a cold plate. A drop should hold its shape without spreading, but stop before it feels sticky — overcooked syrup crystallises in the jar.",
+   "Add the lemon juice in the last 2 minutes. Its acid prevents crystallisation and brightens the colour.",
+   "Let it cool completely and store in sterilised jars.",
+   "Serve chilled, by the spoonful, with a glass of cold water alongside."
+  ],
+  "wine": "Ice-cold water — the traditional accompaniment.",
+  "plate": "Serve a spoonful on a small saucer with a glass of cold water alongside."
+ },
+ "glykopatates": {
+  "n": "Roasted Sweet Potatoes",
+  "ing": [
+   "Sweet potatoes 800g",
+   "Olive oil 4 tbsp",
+   "Honey 2 tbsp",
+   "Cumin 1 tsp",
+   "Smoked paprika 1 tsp",
+   "Cinnamon 1/4 tsp",
+   "Salt, pepper",
+   "Thyme"
+  ],
+  "steps": [
+   "Peel the sweet potatoes and cut into rounds or wedges.",
+   "Mix the oil, honey, cumin, paprika, cinnamon, salt, and pepper.",
+   "Toss the sweet potatoes in the mixture to coat.",
+   "Spread on a baking pan. Bake at 200°C for 35-40 minutes.",
+   "Serve garnished with thyme."
+  ]
+ },
+ "gnocchi_tomata": {
+  "n": "Gnocchi with Tomato & Basil",
+  "ing": [
+   "Fresh or dried potato gnocchi 500 g",
+   "Ripe or canned chopped tomatoes 800 g",
+   "Garlic 2 cloves",
+   "Small onion 1",
+   "Fresh basil 1 small bunch",
+   "Olive oil 5 tbsp",
+   "Sugar 1 pinch",
+   "Grated Parmesan or kefalotyri cheese 60 g",
+   "Salt, pepper to taste"
+  ],
+  "steps": [
+   "Preparing the sauce: Finely chop the onion and garlic. In a saucepan, heat the olive oil over medium heat and sauté the onion until softened, about 4-5 minutes.",
+   "Adding the garlic: Add the garlic and sauté for just 1 minute, so it doesn't turn bitter.",
+   "Tomato: Add the chopped tomatoes, a pinch of sugar to balance the acidity, salt and pepper. Simmer over low heat for 20-25 minutes until the sauce thickens slightly.",
+   "Important: The gnocchi must be boiled in plenty of salted water that's already at a rolling boil. Drop them in and remove them IMMEDIATELY as soon as they float to the surface (30-90 seconds), because if they stay longer they fall apart and lose their texture.",
+   "Draining: Drain the gnocchi with a slotted spoon, keeping a little of the cooking water to thin the sauce if needed.",
+   "Combining: Add the gnocchi to the tomato sauce and stir gently over low heat for 1-2 minutes so they take on flavor without falling apart.",
+   "Basil: Turn off the heat and add the fresh basil torn by hand, so it keeps its aroma.",
+   "Serving: Serve immediately, hot, sprinkled with grated Parmesan or kefalotyri and a drizzle of olive oil."
+  ],
+  "wine": "Dry white Assyrtiko wine or a light rosé.",
+  "plate": "Serve in a deep plate with fresh basil on top and grated cheese on the side, accompanied by freshly baked bread."
+ },
+ "gourounopoulo": {
+  "n": "Christmas Roast Pork",
+  "ing": [
+   "Suckling pig 3-4kg",
+   "Olive oil 100ml",
+   "Lemons 3",
+   "Garlic 8 cloves",
+   "Oregano & thyme",
+   "Coarse salt",
+   "Potatoes 1kg"
+  ],
+  "steps": [
+   "Marinating the night before: The night before, mix the 100ml olive oil, the juice of 3 lemons, the 8 crushed garlic cloves, oregano, thyme and coarse salt, and rub it all over the 3-4kg suckling pig. Important: marinating overnight in the fridge soaks the meat and makes it aromatic and juicy.",
+   "Bringing to room temperature: Take the meat out of the fridge about 1 hour before roasting, so it cooks evenly and isn't cold in the center.",
+   "Starting to roast: Place the suckling pig in a roasting pan and roast at 180°C. Cover loosely with foil at first so the surface doesn't dry out.",
+   "Potatoes and basting: Cut the 1kg potatoes and arrange them around the meat after the first hour. Total roasting time is 2.5-3 hours, basting with the pan juices every 45 minutes, which keeps the meat juicy and flavors the potatoes as they roast.",
+   "Crispy skin: For the last 30 minutes, raise the temperature to 220°C and remove the foil, so the skin turns crispy and golden.",
+   "Resting: Remove the meat and let it rest for 15 minutes before carving. This lets the juices redistribute so the meat stays tender. Serve with the potatoes."
+  ],
+  "wine": "Dry red wine.",
+  "plate": "Crispy skin, potatoes, salad."
+ },
+ "halvas": {
+  "n": "Semolina Halvas",
+  "ing": [
+   "Coarse semolina 1 cup",
+   "Olive oil 1/2 cup",
+   "Sugar 2 cups",
+   "Water 3 cups",
+   "Cinnamon, raisins, pine nuts"
+  ],
+  "steps": [
+   "Preparing the syrup: In a pot, combine 3 cups water, 2 cups sugar, and cinnamon, and bring to a boil, keeping in mind the classic 1-2-3-4 ratio (oil-semolina-sugar-water). Once it boils and the sugar dissolves, lower the heat and keep it warm.",
+   "Toasting the semolina: In another pot, heat the 1/2 cup olive oil and add the 1 cup coarse semolina. Stir constantly over medium heat until golden, about 8-10 minutes. Important: stir continuously, as semolina burns very easily and turns bitter.",
+   "Adding the dried fruit: If desired, add the raisins and pine nuts along with the semolina during the last few minutes of toasting, so they become fragrant without burning.",
+   "Combining with the syrup: Remove the semolina from the heat and carefully pour in the hot syrup. Important: be careful, as it will hiss and sputter, so pour it slowly and away from your face.",
+   "Setting the halva: Return to low heat and stir for 5 minutes until the semolina absorbs all the syrup and the mixture pulls away from the sides of the pot.",
+   "Molding and resting: Pour into a mold, press down lightly, and let rest for 15 minutes to firm up. This helps the halva hold its shape when sliced.",
+   "Serving: Invert the mold onto a serving platter and dust with cinnamon. Serve warm or cold."
+  ],
+  "wine": "Ouzo or a sweet wine.",
+  "plate": "Unmolded onto a platter, dusted with cinnamon and raisins."
+ },
+ "halvas_tahini": {
+  "n": "Tahini Halva",
+  "ing": [
+   "Tahini 500 g",
+   "Honey 250 g",
+   "Sugar 150 g",
+   "Water 60 ml",
+   "Almonds or pistachios 150 g",
+   "Vanilla extract 1 tsp",
+   "Cinnamon 1/2 tsp"
+  ],
+  "steps": [
+   "Stir the tahini thoroughly in its jar first — the oil always separates and sits on top.",
+   "Boil the sugar with the water and the honey to 118°C, the soft-ball stage.",
+   "Important: Use a thermometer. Below 115°C the halva never sets; above 125°C it turns hard and brittle.",
+   "Warm the tahini gently to about 40°C, so the two mixtures combine without shocking each other.",
+   "Pour the hot syrup into the tahini in a thin stream while stirring steadily.",
+   "Important: Stir only until just combined. Over-stirring makes the tahini release its oil and the halva turns greasy.",
+   "Fold in the toasted nuts, the vanilla and the cinnamon with a few turns.",
+   "Pour into a tin lined with cling film and press the surface flat.",
+   "Refrigerate for at least 4 hours until fully set.",
+   "Cut into cubes and keep in the fridge, where it holds for two weeks."
+  ],
+  "wine": "Greek coffee or tea.",
+  "plate": "Cut into cubes and serve on a wooden board with nuts scattered around."
+ },
+ "harissa": {
+  "n": "Harissa",
+  "ing": [
+   "Dried red chili peppers 8-10",
+   "Garlic 4 cloves",
+   "Ground cumin 1 tsp",
+   "Ground coriander 1 tsp",
+   "Cumin seeds 1/2 tsp",
+   "Olive oil 4 tbsp",
+   "Lemon juice 1 tbsp",
+   "Salt 1 tsp",
+   "Tomato paste 1 tbsp (optional)"
+  ],
+  "steps": [
+   "Soaking the peppers: Soak the dried peppers in hot water for 20-30 minutes until softened, removing the stems and seeds.",
+   "Important: Remove most of the seeds if you want a milder heat, keeping a few for extra intensity.",
+   "Draining: Drain the peppers well, pressing them to remove excess water.",
+   "Toasting the spices: Toast the cumin seeds in a dry pan for 1 minute until fragrant.",
+   "Blending: Blend the peppers with the garlic, spices, salt, and lemon juice in a food processor until you get a smooth paste.",
+   "Binding with oil: Gradually add the olive oil, blending continuously until the paste becomes velvety.",
+   "Checking the flavor: Taste and add tomato paste if you want a deeper red color and a touch of sweetness.",
+   "Storing: Transfer the harissa to a glass jar and cover the surface with a little extra oil to preserve it."
+  ],
+  "plate": "Serve in a jar or small bowl as a condiment."
+ },
+ "horiatiki": {
+  "n": "Greek Salad",
+  "ing": [
+   "Tomatoes 3 large",
+   "Cucumber 1",
+   "Onion 1",
+   "Green pepper 1",
+   "Feta 150g",
+   "Kalamata olives 80g",
+   "Olive oil 3 tbsp",
+   "Oregano & salt"
+  ],
+  "steps": [
+   "Preparing the tomatoes: Wash 3 large ripe tomatoes and cut them into thick slices or large chunks (about 3-4 cm). Thick pieces hold their juices and won't fall apart, while ripe tomatoes give the natural sweetness that defines a horiatiki salad.",
+   "Cutting the cucumber: Wash the cucumber and cut it into thick rounds about 1 cm. If the skin is tough or waxed, partially peel it in strips. IMPORTANT: don't cut the cucumber too far ahead, as it releases water and dilutes the oil and juices of the salad.",
+   "Onion and pepper: Cut 1 onion into very thin slices (half-moons) so it doesn't overpower the flavor, and 1 green pepper into rings. If the onion is very sharp, rinse it briefly under cold water to remove the harsh bite.",
+   "Arranging on the platter: Layer the tomatoes on the bottom first, then the cucumber, onion, and pepper on top. This order lets the tomato juices collect at the bottom and become a natural dressing together with the olive oil.",
+   "The feta: Place 150g feta as a WHOLE slab in the middle of the salad. IMPORTANT: never crumble the feta in a horiatiki salad — kept whole, it retains its texture and moisture and doesn't dry out or dissolve into the juices.",
+   "Olives and seasoning: Scatter 80g Kalamata olives around the edges, drizzle with 3 tbsp good olive oil, and sprinkle salt and plenty of oregano over the feta. Oregano on the oil releases its aroma.",
+   "Serving: Do NOT toss the salad before it's served at the table. Tossing early draws out liquid and softens the vegetables. Serve immediately with fresh bread to dip into the juices (the classic \"paparo\")."
+  ],
+  "wine": "Dry white wine.",
+  "plate": "Feta left whole, like an island."
+ },
+ "hortopita": {
+  "n": "Wild Greens Pie",
+  "ing": [
+   "Phyllo pastry 500g",
+   "Wild greens 1kg (chard, spinach, fennel greens)",
+   "Feta cheese 300g",
+   "Spring onions 4",
+   "Eggs 2",
+   "Olive oil 5 tbsp",
+   "Dill & parsley"
+  ],
+  "steps": [
+   "Washing and boiling the greens: Wash the 1kg greens (chard, spinach, fennel greens) very well and boil for 5 minutes in a little water until wilted. The brief boiling softens the greens and removes some of their bitterness.",
+   "Draining: Drain the greens and, importantly, squeeze them extremely well with your hands or in a towel to remove all the water — this is the secret to a crispy pie, since moisture soaks the phyllo and makes the filling watery.",
+   "Filling: Finely chop the greens and mix them with the 4 chopped spring onions, the 300g crumbled feta, the 2 eggs, chopped dill and parsley, and the 5 tbsp olive oil. The eggs bind the filling and the feta adds saltiness — so be careful with extra salt.",
+   "Layering the sheets: Oil the baking pan and layer half the phyllo sheets, brushing with olive oil between each one. The oil between the sheets creates layers and crispness when baked.",
+   "Sealing the pie: Spread the filling evenly and cover with the remaining sheets, oiling again between each one. Important: score the pie into pieces before baking, so the crispy phyllo doesn't break when you portion it afterward.",
+   "Baking: Bake at 180°C for 45-50 minutes until the phyllo turns golden and crispy. Let it rest for 10 minutes before cutting, so the filling firms up."
+  ],
+  "wine": "Dry white wine.",
+  "plate": "With yogurt or feta on the side."
+ },
+ "houmos": {
+  "n": "Hummus",
+  "ing": [
+   "Canned chickpeas 400g",
+   "Tahini 3 tbsp",
+   "Lemon 1 (juice)",
+   "Garlic 1 clove",
+   "Olive oil 3 tbsp",
+   "Cumin ½ tsp",
+   "Salt",
+   "Paprika for garnish"
+  ],
+  "steps": [
+   "Drain the chickpeas, reserving a little of their liquid.",
+   "Add the chickpeas, tahini, lemon juice, garlic, cumin and salt to a blender.",
+   "Blend until smooth and creamy. If needed, add a little of the reserved chickpea liquid.",
+   "Taste and adjust the salt and lemon.",
+   "Serve in a bowl, drizzled with olive oil and paprika on top."
+  ]
+ },
+ "htapodi": {
+  "n": "Wine-Braised Octopus",
+  "ing": [
+   "Octopus 1kg",
+   "Onion 2",
+   "Garlic 3 cloves",
+   "Red wine 200ml",
+   "Grated tomato 200g",
+   "Olive oil",
+   "Bay leaf"
+  ],
+  "steps": [
+   "Cooking the octopus: Place the 1kg octopus in a pot with no water over low heat. It will release its own liquid. Simmer gently for 30 minutes. Important: cooking it in its own juices keeps it tender and concentrates its flavor.",
+   "Cutting: Once tender, remove the octopus and cut it into bite-sized pieces, reserving the cooking liquid to add to the sauce later.",
+   "Sautéing the onion: Sauté the 2 finely chopped onions and 3 garlic cloves in olive oil until softened and sweet.",
+   "Deglazing with wine: Deglaze with 200ml red wine and let the alcohol evaporate for 2-3 minutes, so only the rich flavor remains without the sharp acidity.",
+   "Building the sauce: Add 200g grated tomato, the bay leaf, and the octopus with a little of its cooking liquid. Stir to combine everything.",
+   "Simmering: Simmer for 20-25 minutes until the sauce thickens and turns velvety. Serve hot, ideally with hilopites pasta or fresh bread."
+  ],
+  "wine": "Rosé or light red wine.",
+  "plate": "On a platter with parsley, lemon, and rusk (paximadi)."
+ },
+ "htapodi_krasato": {
+  "n": "Spiced Octopus in Red Sauce",
+  "ing": [
+   "Octopus 1kg",
+   "Red wine 200ml",
+   "Vinegar 2 tbsp",
+   "Grated tomato 400g",
+   "Onion 1",
+   "Olive oil 3 tbsp",
+   "Cinnamon, allspice, bay leaf",
+   "Salt & pepper"
+  ],
+  "steps": [
+   "Cutting the octopus: Cut the 1kg octopus into bite-sized pieces. No water is needed for cooking, as the octopus will release its own liquid.",
+   "Sautéing: Sauté the octopus with 1 onion in 3 tbsp olive oil for about 5 minutes until it releases its liquid and browns lightly. Important: let the octopus cook in its own juices before adding other ingredients, as this tenderizes it naturally.",
+   "Deglazing: Deglaze with the 200ml red wine and the 2 tbsp vinegar and let the alcohol evaporate. The vinegar tenderizes the octopus and balances the flavor.",
+   "Adding tomato and spices: Add the 400g grated tomato, cinnamon, allspice and bay leaf. The warm spices give the dish its characteristic 'krasato' (wine-braised) character. Be careful with the salt, as the octopus is already salty.",
+   "Slow cooking: Cover and simmer gently over low heat for 60-70 minutes until the octopus becomes tender and the sauce thickens. Important: if it dries out too soon, add a little hot water — octopus needs time to become tender.",
+   "Serving: Remove the bay leaf, let it rest briefly and serve with bread or hilopites."
+  ],
+  "wine": "Rosé or light red.",
+  "plate": "With hilopites or bread to soak up the sauce."
+ },
+ "htapodi_sxara": {
+  "n": "Grilled Octopus",
+  "ing": [
+   "Octopus 1kg",
+   "Olive oil 4 tbsp",
+   "Vinegar 2 tbsp",
+   "Oregano 1 tsp",
+   "Juice of 1 lemon",
+   "Salt & pepper"
+  ],
+  "steps": [
+   "Boiling: Put the octopus in a pot without water and simmer it in its own juices, covered, over low heat for 40-50 minutes. It becomes perfectly tender without turning tough.",
+   "Cooling: Let it cool in its own juices — if you remove it right away and grill it, it will contract and toughen.",
+   "Marinade: Mix olive oil, vinegar, and oregano. Coat the octopus and let it sit for 15 minutes.",
+   "Grilling: Grill over very high heat for 3-4 minutes per side until it develops distinctive charred lines and color.",
+   "Serving: Cut into pieces and drizzle with lemon, olive oil, and oregano. Important: serve immediately."
+  ],
+  "wine": "Dry white wine or ouzo.",
+  "plate": "On a cutting board with lemon and oregano."
+ },
+ "htipiti": {
+  "n": "Spicy Feta Spread",
+  "ing": [
+   "300g feta",
+   "100g strained yogurt",
+   "1 red Florina pepper",
+   "2 tbsp olive oil",
+   "Hot pepper (optional)",
+   "Oregano"
+  ],
+  "steps": [
+   "Roasting the pepper: Roast the red Florina pepper under the grill or directly over the flame, turning it until the skin is charred all over, so the flesh cooks through and the skin loosens.",
+   "Peeling: Place the charred pepper in a bag or a covered bowl for 10 minutes. Important: the trapped steam loosens the skin so it peels off easily by hand.",
+   "Blending the feta: Put the 300g feta, the 100g strained yogurt, and the 2 tbsp olive oil in a blender and blend until it forms a light, creamy paste.",
+   "Adding the pepper: Cut the peeled pepper into small pieces and stir it into the mixture. Optionally add a little finely chopped hot pepper for a spicy kick.",
+   "Serving: Serve in a small dish, sprinkle with oregano, and drizzle with a little olive oil. Pairs ideally with warm bread or rusks."
+  ],
+  "wine": "Ouzo or a dry rosé.",
+  "plate": "In a bowl, drizzled with olive oil, garnished with pepper, served with whole-grain bread."
+ },
+ "hylopites_htapodi": {
+  "n": "Pasta with Octopus",
+  "ing": [
+   "Hylopites (Greek egg noodles) 300g",
+   "Octopus 600g",
+   "Onion 1",
+   "Garlic 3 cloves",
+   "Grated tomato 400g",
+   "Red wine 100ml",
+   "Olive oil 4 tbsp",
+   "Bay leaves 2",
+   "Allspice berries 3",
+   "Salt & pepper",
+   "Parsley for garnish"
+  ],
+  "steps": [
+   "Cleaning the octopus: Wash the octopus thoroughly. Beat it against a hard surface 3-4 times to tenderize it. Cut into 3 cm pieces.",
+   "Cooking the octopus: In a pot without water, add the octopus with the bay leaves and allspice. Simmer covered over low heat for 30-35 minutes until tender. Important: the octopus releases its own liquid — no water is needed. Drain and keep the juices.",
+   "Sauce: Sauté the onion for 3 minutes, then the garlic for 1 minute. Add the wine and let it evaporate. Add the grated tomato and 100ml of the reserved octopus juices. Simmer for 10 minutes.",
+   "Finishing: Add the octopus to the sauce and simmer for another 5 minutes. Boil the hylopites until al dente and toss them into the sauce. Serve with parsley."
+  ],
+  "wine": "Dry white or rosé.",
+  "plate": "With fresh parsley and a drizzle of olive oil."
+ },
+ "hylopites_kotopoulo": {
+  "n": "Egg Noodles with Chicken",
+  "ing": [
+   "Hilopites (Greek egg noodles) 300g",
+   "Chicken thighs 4",
+   "Grated tomato 300g",
+   "Onion 1",
+   "Cinnamon 1 stick",
+   "Cloves 3",
+   "Olive oil 3 tbsp",
+   "Kefalotyri cheese"
+  ],
+  "steps": [
+   "Browning the chicken: Heat 3 tbsp olive oil and brown the 4 chicken thighs on all sides over high heat. IMPORTANT: good browning seals in the juices and adds depth of flavor to the dish.",
+   "Sautéing the onion: Remove the chicken and sauté the 1 finely chopped onion in the same oil until glossy and softened, absorbing the chicken's juices.",
+   "Sauce with spices: Add the 300g grated tomato, the cinnamon stick, and the 3 cloves. These spices give the classic aromatic note of a red (kokkinisto) sauce.",
+   "Simmering the chicken: Return the chicken to the pot, add water to almost cover it, and simmer covered for 30 minutes until the meat softens and the sauce thickens.",
+   "Adding the hilopites: Remove the chicken and keep it warm. Add the 300g hilopites into the sauce and stir well so they're coated all over. Add hot broth if there isn't enough liquid.",
+   "Cooking the hilopites: Cook the hilopites for 12-15 minutes, stirring regularly, until they absorb the sauce and turn al dente. IMPORTANT: stir often so they don't stick to the bottom.",
+   "Serving: Place the thighs on top of the hilopites and sprinkle with plenty of grated kefalotyri, which melts from the heat and ties the dish together."
+  ],
+  "wine": "Dry red wine.",
+  "plate": "Deep plate, chicken on top, kefalotyri cheese."
+ },
+ "imam_baialdi": {
+  "n": "Imam Baialdi",
+  "ing": [
+   "Eggplants 4 long ones",
+   "Onions 3",
+   "Garlic 4 cloves",
+   "Tomatoes 4",
+   "Parsley",
+   "Plenty of olive oil",
+   "Salt & pepper",
+   "Sugar 1 tsp"
+  ],
+  "steps": [
+   "Preparing the eggplants: Slice the 4 long eggplants lengthwise without cutting all the way through, to create a pocket for the filling. Fry lightly in olive oil until softened and arrange them open in a baking pan.",
+   "Draining the oil: Important: after frying, lay the eggplants on paper towels to drain off the excess oil. Eggplants soak up a lot of oil, and if not drained, the dish turns out heavy and greasy.",
+   "Filling: In a pan, sauté the 3 finely chopped onions and the 4 garlic cloves until softened, then add the 4 grated tomatoes, chopped parsley, salt, pepper and olive oil. Simmer for 10 minutes until the filling thickens.",
+   "Sweetening the tomato: Add the 1 tsp sugar to the sauce. The sugar balances the tomato's acidity and brings out the natural sweetness of the onions, which is characteristic of imam baildi.",
+   "Filling and baking: Fill the eggplants with the mixture and spoon a little extra tomato on top. Bake at 180°C for 40 minutes until completely soft and the juices caramelize.",
+   "Serving: Let the imam baildi rest and serve cold or lukewarm — this dish improves in flavor as it rests, as the aromas of the olive oil and onions meld together."
+  ],
+  "wine": "Dry red.",
+  "plate": "Cold or warm, with bread on the side."
+ },
+ "kakavia": {
+  "n": "Greek Fisherman Soup",
+  "ing": [
+   "Soup fish (scorpionfish, dentex, grouper) 1.5 kg",
+   "Potatoes, 4 large",
+   "Onions, 2",
+   "Carrots, 2",
+   "Celery, 3-4 stalks with leaves",
+   "Extra virgin olive oil 1 cup",
+   "Lemon juice, 2-3 lemons",
+   "Eggs, 2",
+   "Orzo rice (nychaki) 1/2 cup (optional)",
+   "Salt, pepper"
+  ],
+  "steps": [
+   "Cleaning the fish: Clean the fish, rinse well and cut into portions, keeping the heads and bones for a richer broth.",
+   "Preparing the vegetables: Peel and cut the potatoes into thick slices, the carrots into rounds, the onions into slices, and finely chop the celery.",
+   "Boiling the broth: Place the vegetables, olive oil, salt and pepper in a large pot, cover with water and boil over medium heat for 20 minutes until softened.",
+   "Adding the fish: Gently add the fish pieces into the pot and continue boiling for another 15-20 minutes, without stirring vigorously so the fish doesn't break apart.",
+   "Important: The secret to kakavia is slow simmering over low heat without stirring with a spoon; just shake the pot by its handles so the fish doesn't fall apart and the broth stays clear.",
+   "Removing the fish and vegetables: Carefully remove the fish and vegetables onto a platter and keep them warm, keeping the broth in the pot.",
+   "Egg-lemon sauce (avgolemono): Beat the eggs with the lemon juice and gradually add a little hot broth while whisking constantly, so it doesn't curdle; then pour it back into the pot, stirring gently over very low heat until it thickens slightly.",
+   "Serving: Serve the broth with the avgolemono first in deep plates, followed by the fish and vegetables on a separate platter or together, with plenty of olive oil and lemon on top."
+  ],
+  "wine": "Dry white Assyrtiko from Santorini, cool and mineral, an ideal match for seafood.",
+  "plate": "Serve in a deep stoneware or white plate, with the egg-lemon broth first and the fish and vegetables alongside, accompanied by fresh village bread and olives."
+ },
+ "kalamarakia_gemista": {
+  "n": "Stuffed Calamari",
+  "ing": [
+   "Medium squid 800g",
+   "Carolina rice 1/2 cup",
+   "Onion 1",
+   "Grated tomato 200g",
+   "Fresh parsley",
+   "White wine 1/2 cup",
+   "Olive oil 4 tbsp",
+   "Salt & pepper"
+  ],
+  "steps": [
+   "Cleaning: Separate the body from the tentacles. Remove the transparent quill and rinse well. Finely chop the tentacles for the filling.",
+   "Filling: Sauté the onion for 5 minutes, add the tentacles and brown for 3 minutes. Add the rice (raw), tomato, parsley, wine, and salt. Cook for 5 minutes until the liquid is absorbed.",
+   "Stuffing the squid: Fill each body about two-thirds full — the rice will expand. Seal with a toothpick.",
+   "Cooking: Heat oil in a wide pan and brown the stuffed squid for 2 minutes. Add tomato and a little water. Simmer covered for 35-40 minutes. Important: keep the heat low, as squid becomes tough over high heat.",
+   "Serving: Remove the toothpicks and serve with the sauce."
+  ],
+  "wine": "Dry white wine.",
+  "plate": "Whole, with tomato sauce."
+ },
+ "kalamaria": {
+  "n": "Fried Calamari",
+  "ing": [
+   "Squid 500g",
+   "Flour 1 cup",
+   "Salt & pepper",
+   "Olive oil, for frying",
+   "Lemon"
+  ],
+  "steps": [
+   "Cleaning and cutting: Clean the 500g of squid and cut into rings about 1 cm thick. Even cutting means even frying.",
+   "Drying: Pat the rings very dry with paper towels. Important: this is a crucial step for a crisp result, since moisture causes hot oil to spatter and makes the flour coating clump and turn soggy.",
+   "Flouring: Mix 1 cup of flour with salt and pepper. Dredge the rings in the flour and shake off the excess, so a thin, crisp crust forms without any clumps of flour.",
+   "Heating the oil: Heat plenty of olive oil in a deep pan until very hot (about 175-180°C). The hot oil instantly seals the crust so the squid doesn't soak up oil and stays crisp.",
+   "Frying: Fry the squid in small batches for 2-3 minutes until golden. Don't overcrowd the pan, as this drops the temperature and results in rubbery rather than tender squid.",
+   "Draining and serving: Transfer to paper towels to drain, season lightly with salt, and serve immediately with fresh lemon while still hot and crisp."
+  ],
+  "wine": "Dry white wine.",
+  "plate": "On frying paper, with lemon."
+ }
+}

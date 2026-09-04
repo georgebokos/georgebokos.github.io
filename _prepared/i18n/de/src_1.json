@@ -1,0 +1,594 @@
+{
+ "biftekia": {
+  "n": "Grilled Burgers",
+  "ing": [
+   "Ground beef 600g",
+   "Grated onion 1",
+   "Garlic 1 clove",
+   "Mustard 1 tsp",
+   "Oregano",
+   "Salt & pepper"
+  ],
+  "steps": [
+   "Kneading the mixture: In a bowl, combine the 600g ground beef, the 1 grated onion, the 1 grated garlic clove, 1 tsp mustard, oregano, salt, and pepper. Knead well with your hands to combine the ingredients into a uniform mixture.",
+   "Resting in the fridge: Cover the mixture and refrigerate for 20 minutes. Important: resting binds the meat and firms up the mixture, so the patties don't fall apart while cooking.",
+   "Shaping: Shape into round or oval patties about 2 cm thick. With wet hands, shaping becomes easier and the surface comes out smooth.",
+   "Preheating the grill: Heat the grill or pan very well. The hot surface immediately caramelizes the meat and seals in the juices, so the patties stay juicy.",
+   "Cooking: Grill for 4-5 minutes per side, without pressing the patties with the spatula, as this releases the juices and dries them out.",
+   "Resting and serving: Let the patties rest for 3-4 minutes before serving, so the juices redistribute. Serve with potatoes or salad."
+  ],
+  "wine": "Dry red wine.",
+  "plate": "Oven-roasted potatoes, tzatziki, salad."
+ },
+ "biskota_sokolatas": {
+  "n": "Chocolate Chip Cookies",
+  "ing": [
+   "Flour 200 g",
+   "Chocolate chunks 200 g",
+   "Butter 150 g",
+   "Brown sugar 100 g",
+   "White sugar 50 g",
+   "Egg 1",
+   "Vanilla extract 1 tsp",
+   "Baking soda 1/2 tsp",
+   "Salt 1/2 tsp"
+  ],
+  "steps": [
+   "Chopping the chocolate: Chop a bar of chocolate by hand into uneven chunks instead of using chips. Important: hand-cut pieces melt into pools, while chips are designed to hold their shape and stay solid.",
+   "Browning the butter: Melt the butter over medium heat until it foams and small brown flecks appear at the bottom, smelling of hazelnuts. This step alone doubles the depth of flavour.",
+   "Cooling: Let the browned butter cool for 10 minutes. Important: hot butter cooks the egg on contact and turns the dough greasy.",
+   "Mixing the sugars: Beat the butter with both sugars for 2 minutes. The brown sugar gives chewiness, the white gives crisp edges.",
+   "Adding the egg: Beat in the egg and the vanilla until the mixture turns glossy.",
+   "Combining: Fold in the flour, soda and salt with a spatula, then the chocolate, mixing as little as possible.",
+   "Important: Chill the dough for at least 1 hour. Unchilled dough spreads into thin flat discs in the oven.",
+   "Shaping: Roll into balls and place them well apart on the tray — they spread to nearly double their width.",
+   "Baking: Bake at 180°C for 10-12 minutes only. The centres should still look underdone when you take them out.",
+   "Important: They finish cooking on the hot tray. Baking until they look done in the oven gives hard, dry biscuits."
+  ],
+  "wine": "Cold milk.",
+  "plate": "Serve warm, while the chocolate chips are still soft."
+ },
+ "bizelia_kokkinista": {
+  "n": "Peas in Tomato Sauce",
+  "ing": [
+   "Frozen peas 500g",
+   "Onion 1",
+   "Grated tomato 400g",
+   "Olive oil 4 tbsp",
+   "Fresh dill",
+   "Salt, pepper",
+   "Sugar 1 tsp"
+  ],
+  "steps": [
+   "Sauté the finely chopped onion in the oil until softened.",
+   "Add the tomato, salt, pepper and sugar. Simmer for 10 minutes.",
+   "Add the peas and cook for 20 minutes.",
+   "Stir in the dill at the end. Serve hot with bread."
+  ]
+ },
+ "black_forest": {
+  "n": "Black Forest Cake",
+  "ing": [
+   "All-purpose flour 200 g",
+   "Unsweetened cocoa powder 60 g",
+   "Sugar 220 g",
+   "Eggs 6",
+   "Baking powder 1 tsp",
+   "Sour cherries (canned or preserve) 400 g",
+   "Kirsch (cherry liqueur) 80 ml",
+   "Heavy cream 35% 600 ml",
+   "Powdered sugar 60 g",
+   "Gelatin sheets 2",
+   "Dark chocolate couverture for shavings 100 g"
+  ],
+  "steps": [
+   "Preparing the oven: Preheat to 180°C and butter two 22 cm cake pans.",
+   "Whipping the eggs: Whisk the eggs with the sugar over a slightly warmed bain-marie until tripled in volume and pale.",
+   "Mixing the dry ingredients: Sift the flour, cocoa and baking powder and gently fold them into the egg mixture with a spatula, using bottom-to-top motions to avoid deflating the batter.",
+   "Baking: Divide the batter between the pans and bake for 25-30 minutes. Important: Do not open the oven for the first 20 minutes, as a sudden draft will cause the sponge to sink and stay dense.",
+   "Cooling and slicing: Let the sponge cakes cool completely and slice each horizontally into 2-3 layers.",
+   "Soaking: Brush each layer with the cherry syrup mixed with the kirsch, so the cake becomes moist and aromatic.",
+   "Whipped cream: Whip the chilled heavy cream with the powdered sugar until firm. Important: The bowl and whisk must be very cold, otherwise the cream will curdle and fail to gain volume.",
+   "Layering: Spread whipped cream on each layer, scatter cherries over it, and repeat until the cake is assembled, finally covering the whole surface and sides.",
+   "Decoration: Cover with chocolate shavings, whole cherries and a little whipped cream on top, and chill in the refrigerator for at least 3 hours before serving."
+  ],
+  "wine": "Sweet Mavrodafni wine",
+  "plate": "Serve chilled in slices, with a spoonful of cherry sauce alongside and grated chocolate"
+ },
+ "bougatsa": {
+  "n": "Bougatsa Custard Pie",
+  "ing": [
+   "Filo pastry (hand-stretched or puff-style) 450 g",
+   "Fresh milk 1 liter",
+   "Fine semolina 120 g",
+   "Sugar 150 g",
+   "Eggs 3",
+   "Melted butter 150 g",
+   "Vanilla 1 sachet (or 1 tsp extract)",
+   "Powdered sugar for dusting",
+   "Cinnamon for dusting"
+  ],
+  "steps": [
+   "Custard: In a saucepan, warm the milk with half the sugar until it just starts to steam, without letting it boil. Pour in the semolina in a steady stream, whisking constantly so it doesn't clump.",
+   "Thickening: Lower the heat and stir for 4-5 minutes until the custard thickens and turns velvety. Remove from the heat.",
+   "Eggs: Beat the eggs with the remaining sugar and the vanilla. Important: Stir a little of the hot custard into the eggs (tempering them) so they don't scramble, then fold the mixture back into the custard. This prevents the eggs from curdling.",
+   "Layering the filo: Butter a baking pan and lay half the filo sheets one by one, brushing each with melted butter and letting the edges hang over the sides of the pan.",
+   "Filling: Spread the custard evenly over the filo. Cover with the remaining buttered sheets and fold the overhanging edges inward, sealing in the filling.",
+   "Scoring: Brush the surface with the last of the butter and lightly score the portions with a knife, so it will be easy to cut after baking.",
+   "Baking: Bake in a preheated oven at 180°C for 40-45 minutes, until the filo turns golden and crisp.",
+   "Serving: Let it rest for 10 minutes, cut into pieces and dust generously with powdered sugar and cinnamon. Serve warm."
+  ],
+  "wine": "Sweet Samos wine or a hot Greek coffee.",
+  "plate": "Serve warm, cut into squares, with plenty of powdered sugar and cinnamon on top."
+ },
+ "bourdeto": {
+  "n": "Corfu Spicy Fish",
+  "ing": [
+   "Fish for stewing, such as scorpionfish or grouper, 1 kg (cleaned, sliced)",
+   "Dry onions 3 large (finely chopped)",
+   "Garlic 3 cloves (finely chopped)",
+   "Hot red pepper flakes (boukovo) 1-2 tbsp",
+   "Sweet paprika 1 tbsp",
+   "Olive oil 1 cup",
+   "Tomato paste 1 tbsp (optional)",
+   "Lemon juice of 1",
+   "Salt and pepper, as needed",
+   "Hot water 1-1½ cups"
+  ],
+  "steps": [
+   "Preparing the fish: Clean the fish well, cut it into thick slices, season with salt and pepper, and set aside. Bourdeto calls for firm-fleshed fish that won't fall apart during cooking.",
+   "Sautéing the onions: In a wide, shallow pot, heat the olive oil and sauté the onions over low heat until wilted and sweetened, without browning. Add the garlic for one more minute.",
+   "Adding the pepper: Lower the heat and add the boukovo and paprika, stirring quickly. Important: don't let the red pepper get too hot, as it burns easily and turns bitter — the secret is to release its aroma and color into the oil without scorching it.",
+   "Building the sauce: Dissolve the tomato paste in a little hot water and add it to the pot along with the remaining hot water. Bourdeto is spicy and reddish, not tomato-based, so tomato is used minimally or not at all.",
+   "Simmering the sauce: Let the sauce come to a boil and thicken slightly for 10-15 minutes over medium heat, so the flavors combine and it becomes rich with oil.",
+   "Cooking the fish: Carefully lower the fish slices into the sauce in a single layer. Shake the pot rather than stirring with a spoon, so the fish doesn't fall apart. Simmer for 15-20 minutes until cooked through.",
+   "Finishing: Toward the end, add the lemon juice, taste, and adjust the salt and heat. Remove from the heat and let it stand for 10 minutes before serving, so the sauce sets."
+  ],
+  "wine": "Dry white from Corfu, such as Kakotrygis.",
+  "plate": "Serve hot with plenty of the red sauce, fresh bread for dipping, and boiled potatoes."
+ },
+ "boureki_xanion": {
+  "n": "Boureki from Chania",
+  "ing": [
+   "Courgettes 1.5 kg",
+   "Potatoes 700 g",
+   "Mizithra (fresh) 500 g",
+   "Graviera grated 150 g",
+   "Fresh mint 1 bunch",
+   "Phyllo pastry 4 sheets (optional)",
+   "Olive oil 1/2 cup",
+   "Flour 2 tbsp",
+   "Sesame seeds",
+   "Salt, pepper"
+  ],
+  "steps": [
+   "Slicing the vegetables: Slice the courgettes and potatoes into thin rounds about 3 mm thick, ideally with a mandoline so they are all identical.",
+   "Salting the courgettes: Important: Layer the courgette slices in a colander with salt and leave them for 30 minutes, then pat them dry. Courgettes are mostly water, and this is the only way to stop the boureki turning to soup.",
+   "Preparing the pan: Oil a large round pan well and lay two phyllo sheets in the base if you are using them.",
+   "First layer: Arrange a layer of potato slices, season, and dust lightly with flour — the flour absorbs the juices released during baking.",
+   "Cheese layer: Crumble over some mizithra, sprinkle graviera and scatter chopped mint.",
+   "Building up: Continue alternating courgette, potato and cheese in layers, finishing with a layer of vegetables and cheese on top.",
+   "Finishing the top: Drizzle generously with olive oil and scatter sesame seeds over the surface.",
+   "Baking: Bake at 180°C for 1 hour and 15 minutes, until deep golden and the liquid has fully evaporated.",
+   "Checking: Important: If liquid is still bubbling around the edges, keep baking. Boureki cut too soon collapses on the plate.",
+   "Resting: Let it rest for at least 30 minutes before cutting. It is traditionally eaten warm, not hot."
+  ],
+  "wine": "A fresh Cretan white — Vidiano or Vilana.",
+  "plate": "Cut into large squares and serve warm on a flat plate, with the sesame crust facing up."
+ },
+ "briami": {
+  "n": "Greek Roasted Vegetables",
+  "ing": [
+   "Zucchini 3",
+   "Eggplants 2",
+   "Potatoes 3",
+   "Bell peppers 2",
+   "Tomatoes 3",
+   "Onion 1",
+   "Garlic 4 cloves",
+   "Olive oil 6 tbsp"
+  ],
+  "steps": [
+   "Cutting the vegetables: Slice the 3 zucchini, 2 eggplants, 3 potatoes, 2 bell peppers, and 3 tomatoes into rounds of equal thickness, and finely chop 1 onion and 4 garlic cloves. Important: equal thickness ensures even cooking.",
+   "Arranging in the pan: Spread all the vegetables in a large baking pan, mixed together so the flavors combine. Reserve a few tomato slices to layer on top.",
+   "Seasoning: Drizzle with the 6 tbsp olive oil and sprinkle with salt, pepper, and herbs (oregano or thyme). Toss well with your hands so every piece is coated in oil, which helps them cook without drying out.",
+   "A little water: Pour half a glass of water into the bottom of the pan so the vegetables don't dry out at the start of baking and can release their own juices.",
+   "Baking: Bake at 190°C for 60-70 minutes. Halfway through, stir gently so everything cooks evenly and doesn't stick to the edges.",
+   "Finishing: The briam is ready when the potatoes have softened and the vegetables have caramelized at the edges. Serve warm with feta on top, which balances the sweetness of the vegetables."
+  ],
+  "wine": "Light rosé wine.",
+  "plate": "On a platter with basil and feta."
+ },
+ "brizoles": {
+  "n": "Pork Chops",
+  "ing": [
+   "2 pork chops (400g)",
+   "1 lemon",
+   "2 tbsp olive oil",
+   "Oregano",
+   "Thyme",
+   "Salt & pepper"
+  ],
+  "steps": [
+   "Room temperature: Take the 2 chops (400g) out of the refrigerator 15 minutes beforehand. Important: meat at room temperature cooks more evenly and doesn't stay cold in the center while burning on the outside.",
+   "Seasoning: Pat the chops dry well and rub them with salt, pepper, oregano, thyme, and olive oil on both sides. Dry meat browns better and forms a crust.",
+   "Heating the pan: Heat a pan or grill very well over high heat before adding the meat. The high temperature gives a golden crust and seals the juices in.",
+   "Cooking: Cook for 3-4 minutes per side. Important: DO NOT move or flip the chops often — let them form a crust before turning, otherwise they won't brown and will stick.",
+   "Resting: Remove the chops and let them rest for 3-5 minutes before cutting. This lets the juices redistribute and keeps the meat juicy.",
+   "Serving: Drizzle with fresh lemon juice and serve immediately."
+  ],
+  "wine": "Dry red.",
+  "plate": "With fried potatoes, lemon."
+ },
+ "brizoles_mosxari": {
+  "n": "Beef Steaks",
+  "ing": [
+   "Beef steaks 2x250g",
+   "Butter 30g",
+   "Garlic 2 cloves",
+   "Fresh thyme 2 sprigs",
+   "Rosemary 1 sprig",
+   "Coarse salt",
+   "Freshly ground pepper"
+  ],
+  "steps": [
+   "Preparation: Take the steaks out of the refrigerator 30 minutes before cooking so they come to room temperature — otherwise the outside cooks before the inside is done.",
+   "Drying and salting: Pat them very dry with paper towels. Salt and pepper right before cooking.",
+   "Hot pan: Heat a cast iron or heavy pan over high heat until it just starts to smoke. Add a little oil.",
+   "Searing: Sear the steaks for 2-3 minutes per side for medium rare (54-57°C internal). IMPORTANT: don't keep moving them — let a crust form.",
+   "Basting: Add butter, garlic and herbs to the pan. Tilt the pan and continuously spoon the foaming butter over the steaks for 1 minute.",
+   "Resting: IMPORTANT: let the steaks rest on a board for 5-8 minutes, covered with foil. The juices redistribute and the steak stays succulent."
+  ],
+  "wine": "Full-bodied red.",
+  "plate": "Sliced on the bias against the grain."
+ },
+ "brownies": {
+  "n": "Chocolate Brownies",
+  "ing": [
+   "Dark chocolate 200g",
+   "Butter 150g",
+   "Eggs 3",
+   "Sugar 200g",
+   "Flour 100g",
+   "Cocoa 2 tbsp",
+   "Salt 1 pinch",
+   "Walnuts 80g (optional)"
+  ],
+  "steps": [
+   "Melt the chocolate with the butter over a bain-marie. Let it cool slightly.",
+   "Beat the eggs with the sugar for 3-4 minutes until pale.",
+   "Stir the chocolate into the eggs.",
+   "Sift the flour and cocoa and fold them into the mixture with gentle movements. Important: do not overmix — a few small lumps are fine. Overmixing will toughen the brownies.",
+   "Pour into a greased 20x20cm baking pan. Scatter the walnuts on top.",
+   "Bake at 170°C for 22-25 minutes. The center should still jiggle slightly — that's what keeps the brownies moist and fudgy."
+  ]
+ },
+ "cacio_e_pepe": {
+  "n": "Cacio e Pepe",
+  "ing": [
+   "Spaghetti 200g",
+   "Pecorino or Parmesan 80g (finely grated)",
+   "Coarsely ground black pepper 2 tsp",
+   "Salt"
+  ],
+  "steps": [
+   "Boil the spaghetti in salted water until al dente. Reserve 150ml of the pasta water.",
+   "Toast plenty of black pepper in a dry pan for 1-2 minutes, until fragrant.",
+   "Add 50ml of the pasta water to the pan and stir.",
+   "Add the pasta to the pan. Important: remove from the heat before adding the cheese — the heat will cause the cheese to seize and turn clumpy.",
+   "Add the cheese gradually, stirring and adding more pasta water as needed, until the sauce turns creamy.",
+   "Serve immediately with extra cheese and pepper."
+  ]
+ },
+ "calzone": {
+  "n": "Calzone",
+  "ing": [
+   "Pizza dough 350 g",
+   "Ricotta 200 g",
+   "Mozzarella 150 g",
+   "Ham 100 g",
+   "Grated Parmesan 40 g",
+   "Tomato sauce 100 g",
+   "Egg 1 (for egg wash)",
+   "Olive oil 1 tbsp",
+   "Oregano 1 tsp",
+   "Salt, pepper"
+  ],
+  "steps": [
+   "Dough: Divide the dough into 2 balls and roll out each one into a disc about 25 cm in diameter.",
+   "Filling: In a bowl, mix the ricotta, the mozzarella cut into cubes, the ham, and the Parmesan.",
+   "Filling the dough: Place the filling on one half of each dough disc, leaving a 2 cm border at the edge.",
+   "Important: Seal the edges well by folding the dough into a half-moon shape and pressing with a fork, so the filling doesn't leak out during baking.",
+   "Egg wash: Brush the surface with beaten egg so it browns evenly.",
+   "Baking: Bake in a preheated oven at 220°C for 20-25 minutes, until the dough is well browned.",
+   "Sauce: Warm the tomato sauce with a little olive oil and oregano to serve alongside.",
+   "Serving: Let cool for 5 minutes before cutting, so the filling doesn't spill out."
+  ],
+  "wine": "Red Barbera wine",
+  "plate": "Serve whole with the warm tomato sauce alongside in a bowl."
+ },
+ "cannoli": {
+  "n": "Cannoli",
+  "ing": [
+   "All-purpose flour 300 g",
+   "Powdered sugar 30 g",
+   "Cold butter 30 g",
+   "Dry red wine 100 ml",
+   "White vinegar 1 tsp",
+   "Egg 1 (for sealing)",
+   "Ricotta, drained, 500 g",
+   "Powdered sugar 150 g",
+   "Chocolate chips 100 g",
+   "Pistachios, chopped, 50 g",
+   "Olive oil for frying, plenty"
+  ],
+  "steps": [
+   "Dough: Mix the flour with the sugar, add the butter, and rub in with your fingers until it resembles breadcrumbs.",
+   "Shaping the dough: Gradually add the wine and vinegar and knead until you get a smooth, elastic dough. Wrap in plastic wrap and let rest for 1 hour.",
+   "Rolling and cutting: Roll the dough out very thin and cut into 10 cm circles, wrap them around metal cannoli tubes, sealing with egg.",
+   "Important: The oil must be at exactly 175°C - if it's cooler, the cannoli shells absorb oil and become greasy; if it's hotter, they burn on the outside while staying raw inside.",
+   "Frying: Fry the shells until evenly golden, remove onto paper towels, and carefully slide off the tubes once slightly cooled.",
+   "Ricotta cream: Beat the ricotta with the powdered sugar until smooth and fluffy, fold in the chocolate chips.",
+   "Filling: Fill the shells with the ricotta cream at the moment of serving using a piping bag, starting from one end.",
+   "Decoration: Dip the ends in chopped pistachios and dust with powdered sugar before serving."
+  ],
+  "wine": "Sweet Marsala wine",
+  "plate": "Serve immediately after filling on a platter, so the shell stays crisp."
+ },
+ "cheesecake": {
+  "n": "Cheesecake",
+  "ing": [
+   "Cream cheese 500g",
+   "Sugar 150g",
+   "Eggs 3",
+   "Heavy cream 200ml",
+   "Vanilla",
+   "Lemon juice 2 tbsp",
+   "Digestive biscuits 200g",
+   "Butter 80g"
+  ],
+  "steps": [
+   "Crush the biscuits into crumbs and mix with the melted butter. Press into the bottom of a 24cm springform pan.",
+   "Beat the cream cheese with the sugar until smooth.",
+   "Add the eggs one at a time, then the cream, vanilla, and lemon juice.",
+   "Pour over the biscuit base.",
+   "Bake in a bain-marie at 160°C for 50-55 minutes. Important: the center should still wobble slightly when it comes out — it will firm up as it cools.",
+   "Let cool, then refrigerate for at least 4 hours or overnight."
+  ]
+ },
+ "chimichurri": {
+  "n": "Chimichurri",
+  "ing": [
+   "Fresh parsley 1 bunch",
+   "Garlic 4 cloves",
+   "Dried oregano 1 tbsp",
+   "Red wine vinegar 4 tbsp",
+   "Olive oil 150 ml",
+   "Red pepper flakes 1 tsp",
+   "Salt 1 tsp",
+   "Ground pepper 1/2 tsp"
+  ],
+  "steps": [
+   "Fine chopping: Finely chop the parsley and garlic very well with a knife, not in a food processor.",
+   "Important: Chopping by hand keeps texture in the ingredients — a food processor turns the sauce into a puree and loses its character.",
+   "Mixing the dry ingredients: In a bowl, combine the parsley, garlic, oregano, and pepper flakes.",
+   "Liquids: Add the wine vinegar and stir it in on its own first, so the garlic 'cooks' slightly in the acidity.",
+   "Oil: Gradually pour in the olive oil, stirring until it comes together into a slightly loose sauce.",
+   "Seasoning: Add salt and pepper and stir again.",
+   "Resting: Let the sauce sit at room temperature for at least 1 hour before using, so the flavors develop.",
+   "Serving: Serve at room temperature over grilled meat."
+  ],
+  "plate": "Serve in a small bowl alongside grilled meat."
+ },
+ "coleslaw": {
+  "n": "Coleslaw",
+  "ing": [
+   "White cabbage 1/2",
+   "Carrots 2",
+   "Spring onions 3",
+   "Mayonnaise 4 tbsp",
+   "Yogurt 2 tbsp",
+   "Cider vinegar 1 tbsp",
+   "Sugar 1 tsp",
+   "Salt, pepper"
+  ],
+  "steps": [
+   "Grate the cabbage and carrots, or slice them very finely.",
+   "Finely chop the spring onions.",
+   "Mix the mayonnaise, yogurt, vinegar, sugar, salt and pepper.",
+   "Toss the vegetables with the dressing.",
+   "Chill in the fridge for 1 hour before serving."
+  ]
+ },
+ "creme_brulee": {
+  "n": "Crème Brûlée",
+  "ing": [
+   "Heavy cream (35% fat) 500 ml",
+   "Egg yolks 6",
+   "White sugar 100 g",
+   "Brown sugar (for caramelizing) 4 tbsp",
+   "Vanilla (one pod or extract) 1",
+   "Salt a pinch",
+   "Water (for the bain-marie) about 1 liter"
+  ],
+  "steps": [
+   "Preheating: Heat the oven to 150°C on conventional (top and bottom heat), without fan.",
+   "Cream: Place the cream in a saucepan with the vanilla (seeds and pod) and heat over low heat until steaming, without boiling.",
+   "Yolks: In a bowl, whisk the yolks with the white sugar and salt until the mixture turns slightly pale.",
+   "Important: Slowly pour the hot cream into the yolks, stirring constantly, so the eggs don't curdle from the sudden heat (tempering).",
+   "Straining: Pass the mixture through a sieve to remove any bits of egg or vanilla pod and leave the cream smooth.",
+   "Filling: Divide the mixture among ramekins and place them in a deep baking dish.",
+   "Bain-marie: Fill the dish with hot water halfway up the sides of the ramekins and bake for 35-40 minutes, until the custard is set at the edges but still slightly wobbly in the center.",
+   "Chilling: Let cool to room temperature, then refrigerate for at least 4 hours or overnight.",
+   "Caramelizing: Just before serving, sprinkle brown sugar evenly over the surface and torch it with a kitchen blowtorch until it forms a crisp, golden crust."
+  ],
+  "wine": "Sweet Samos wine",
+  "plate": "Serve in the ramekin, with a few fresh berries (blueberries or strawberries) and a mint leaf"
+ },
+ "cupcakes_voutyrokrema": {
+  "n": "Cupcakes with Buttercream",
+  "ing": [
+   "Flour 220 g",
+   "Sugar 200 g",
+   "Eggs 3",
+   "Butter 150 g",
+   "Milk 120 ml",
+   "Baking powder 2 tsp",
+   "Vanilla extract 1 tsp",
+   "Butter 250 g (for the cream)",
+   "Icing sugar 400 g",
+   "Milk 3 tbsp",
+   "Food colouring (optional)"
+  ],
+  "steps": [
+   "Have the butter, eggs and milk at room temperature — cold ingredients will not emulsify and the batter splits.",
+   "Beat the butter with the sugar for 5 full minutes, until genuinely white and fluffy. This long beating is what makes cupcakes light.",
+   "Add the eggs one at a time, beating well after each so the mixture stays smooth.",
+   "Fold in the sifted flour with the baking powder alternately with the milk, ending with flour.",
+   "Fill the cases two thirds full — cupcakes should stay flat on top for the cream, not domed like muffins.",
+   "Bake at 175°C for 20-22 minutes and cool them completely on a rack.",
+   "Important: The cakes must be stone cold before decorating. On even slightly warm cupcakes the buttercream melts and slides straight off.",
+   "For the cream, beat the butter alone for 5 minutes, then add the sifted icing sugar in three additions.",
+   "Important: Sift the icing sugar without exception. Unsifted lumps block the piping nozzle at the worst possible moment.",
+   "Add the milk a spoonful at a time until pipeable, then pipe swirls onto the cold cupcakes."
+  ],
+  "wine": "Sparkling wine or tea.",
+  "plate": "Serve on a cupcake stand with the buttercream piped high and sprinkles on top."
+ },
+ "dakos": {
+  "n": "Cretan Dakos",
+  "ing": [
+   "Dakos (barley rusk) 4 large or 8 small",
+   "Ripe tomatoes 3-4 (about 500g)",
+   "Xinomyzithra or feta cheese 200g",
+   "Extra virgin olive oil 6-8 tbsp",
+   "Kalamata olives 12-15",
+   "Dried oregano 1 tsp",
+   "Salt 1 pinch",
+   "Capers (optional) 1 tbsp"
+  ],
+  "steps": [
+   "Preparing the tomato: Wash the ripe tomatoes and grate them on the coarse side of a box grater, discarding the skin. Drain the pulp lightly in a strainer to remove excess liquid, so the rusk doesn't get overly soggy.",
+   "Lightly moistening the rusk: Sprinkle the barley rusk with a little water (or tomato water) for just a few seconds, just enough to soften the surface.",
+   "Important: do not dunk the rusk in water. The barley rusk should stay crisp inside and soften only on the outside. A few drops of water followed by the olive oil make the difference for an authentic dakos that doesn't turn mushy.",
+   "First drizzle of oil: Drizzle the moistened rusk with 1-2 tbsp of olive oil so it soaks in and takes on flavor.",
+   "Layering the tomato: Spread the grated tomato generously over the rusk, covering the whole surface. Season lightly with salt.",
+   "Adding the cheese: Crumble the xinomyzithra (or feta) over the top in coarse pieces, covering the tomato.",
+   "Garnishing: Sprinkle with plenty of oregano, add the Kalamata olives and capers, and drizzle with the remaining olive oil.",
+   "Serving: Let the dakos sit for 5-10 minutes for the flavors to come together and serve immediately, while the rusk is still crisp."
+  ],
+  "wine": "Dry white from Crete, ideally Vilana.",
+  "plate": "Serve on a shallow plate with a final drizzle of olive oil and fresh oregano, as a meze or a light meal."
+ },
+ "diples": {
+  "n": "Diples",
+  "ing": [
+   "Flour 500 g",
+   "Eggs 4",
+   "Orange juice 100 ml",
+   "Olive oil 3 tbsp",
+   "Brandy 2 tbsp",
+   "Sunflower oil for frying",
+   "Honey 400 g",
+   "Water 100 ml",
+   "Walnuts 150 g",
+   "Cinnamon"
+  ],
+  "steps": [
+   "Beat the eggs well, then add the orange juice, the olive oil and the brandy.",
+   "Add the flour gradually and knead for 10 minutes into a soft, elastic dough that no longer sticks.",
+   "Cover it and let it rest for 1 hour. Important: without this rest the dough springs back and can never be rolled thin enough.",
+   "Roll it out paper thin, so thin you can almost see your hand through it. This is the whole secret of diples.",
+   "Cut into long strips about 8 cm wide.",
+   "Heat plenty of oil to 180°C in a deep pan — diples must float freely, not touch the bottom.",
+   "Important: Dip one end of a strip into the oil, and as it starts to bubble roll it up with two forks. You have about 3 seconds before it stiffens.",
+   "Fry for 30-40 seconds until pale gold, no darker — they keep colouring after they come out.",
+   "Drain them well on a rack and let them cool completely.",
+   "Boil the honey with the water for 3 minutes, dip the cold diples in briefly and lift them straight out.",
+   "Important: Cold diples into hot syrup. If both are hot they go soggy and lose their crispness.",
+   "Scatter with chopped walnuts and cinnamon and serve."
+  ],
+  "wine": "Mavrodaphne or tsipouro.",
+  "plate": "Stack on a platter with honey, walnuts and cinnamon over each layer."
+ },
+ "dolmades": {
+  "n": "Stuffed Vine Leaves",
+  "ing": [
+   "Grape leaves 40-50",
+   "Rice 250g",
+   "Onion 2",
+   "Parsley & mint",
+   "Olive oil 5 tbsp",
+   "Lemon 2"
+  ],
+  "steps": [
+   "Preparing the grape leaves: Blanch the 40-50 grape leaves in boiling water for 1-2 minutes until softened and they change color, so they roll easily without tearing. Drain and trim the stems.",
+   "Preparing the filling: In a bowl, mix 250g rice, 2 finely chopped onions, chopped parsley and mint, the juice of 1 lemon, and the 5 tbsp olive oil. The rice stays raw, as it will cook inside the leaf.",
+   "Rolling: Place a little filling at the base of each leaf (shiny side down), fold in the edges, and roll into a tight cylinder. Important: don't overfill, as the rice expands and the dolmades could burst.",
+   "Arranging in the pot: Line the bottom of the pot with a few leaves and place the dolmades tightly side by side, so they don't unroll while cooking.",
+   "Cooking: Add water until it almost covers them, along with the juice of 1 lemon and a little olive oil. Place an inverted plate on top to keep them from moving around.",
+   "Simmering: Simmer over low heat for 40-45 minutes until the rice swells and the liquid is absorbed. Taste one to make sure the rice has softened.",
+   "Resting and serving: Let the dolmades cool in the pot for 15-20 minutes to firm up, and serve warm or cold with lemon."
+  ],
+  "wine": "Dry white wine.",
+  "plate": "Served cold or warm with yogurt."
+ },
+ "eclair": {
+  "n": "Éclair",
+  "ing": [
+   "Water 250 ml",
+   "Butter 100 g",
+   "Flour 150 g",
+   "Eggs 4",
+   "Salt 1 pinch",
+   "Sugar 1 tsp",
+   "Milk 500 ml",
+   "Egg yolks 4",
+   "Sugar 100 g",
+   "Cornstarch 40 g",
+   "Milk chocolate couverture 150 g",
+   "Heavy cream 100 ml"
+  ],
+  "steps": [
+   "Choux pastry: Bring the water to a boil with the butter, salt and sugar, add the flour all at once, and stir vigorously.",
+   "Important: Dry out the dough over the heat for 2-3 minutes, stirring constantly, otherwise the eclairs won't rise properly.",
+   "Eggs: Remove from the heat, let cool slightly, and add the eggs one at a time, beating well each time.",
+   "Piping: Pipe 10-12 cm strips onto a parchment-lined tray using a piping bag.",
+   "Baking: Bake at 190°C for 25-30 minutes without opening the oven door.",
+   "Pastry cream: Heat the milk, whisk the yolks with the sugar and cornstarch, combine, and cook over heat until thickened.",
+   "Cooling the cream: Cover with plastic wrap pressed directly onto the surface and chill in the refrigerator.",
+   "Filling: Split open the cooled eclairs and fill them using a piping bag.",
+   "Glaze: Melt the couverture with the cream and dip the top of each eclair.",
+   "Serving: Let the glaze set for 15 minutes in the refrigerator."
+  ],
+  "wine": "Espresso",
+  "plate": "On an elongated plate side by side, with a little cream alongside"
+ },
+ "ekmek": {
+  "n": "Ekmek Kataifi",
+  "ing": [
+   "Kataifi pastry 400 g",
+   "Melted butter 150 g",
+   "Sugar 400 g (for the syrup)",
+   "Water 400 ml (for the syrup)",
+   "Lemon juice 1 tbsp",
+   "Fresh milk 1 liter (for the custard)",
+   "Sugar 150 g (for the custard)",
+   "Cornstarch 80 g",
+   "Egg yolks 3",
+   "Heavy cream 500 ml (for the whipped topping) and vanilla"
+  ],
+  "steps": [
+   "Preparing the kataifi: Loosen the kataifi by hand in a bowl so the strands separate, then pour over the melted butter, mixing well so it's soaked everywhere.",
+   "Baking: Spread the kataifi in a buttered baking pan, pressing it lightly into an even layer. Bake at 180°C for 30-40 minutes, until well browned and crisp and golden.",
+   "Syrup: Boil the sugar with the water for 8-10 minutes, add the lemon juice and let it boil for another minute or two. Important: The syrup should be hot and the kataifi hot as well, or conversely cold syrup over a hot dessert, so it absorbs properly and stays crisp without turning soggy.",
+   "Syruping: Slowly pour the syrup over the hot baked kataifi so it's absorbed everywhere. Let it cool completely.",
+   "Custard: Dissolve the cornstarch and sugar in a little cold milk, add the egg yolks and stir. Heat the remaining milk and once warm, pour in the mixture, stirring constantly until it thickens into a thick custard. Let it cool with plastic wrap pressed onto the surface.",
+   "Layering the custard: Spread the cooled custard evenly over the syrup-soaked kataifi and smooth the surface with a spatula.",
+   "Whipped cream: Whip the cold heavy cream with a little sugar and vanilla into stiff peaks and spread it generously over the custard as the final layer.",
+   "Chilling and serving: Refrigerate the ekmek for at least 3-4 hours so it sets and the layers firm up before cutting into pieces."
+  ],
+  "wine": "Sweet Samos wine or sour cherry cordial.",
+  "plate": "Serve chilled, garnished with crushed Aegina pistachios and cinnamon."
+ }
+}
