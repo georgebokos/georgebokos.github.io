@@ -1,0 +1,571 @@
+{
+ "solomos_krousta": {
+  "n": "Salmon en Croûte",
+  "ing": [
+   "Salmon fillet 800 g (skinless, one piece)",
+   "Puff pastry 1 sheet",
+   "Baby spinach 300 g",
+   "Cream cheese 150 g",
+   "Leek 1",
+   "Fresh dill 1 bunch",
+   "Lemon zest 1 lemon",
+   "Egg yolk 1 (for brushing)",
+   "Butter 20 g",
+   "Salt, pepper"
+  ],
+  "steps": [
+   "Preparing the salmon: Check the fillet for pin bones with your fingers and pull out any you find with tweezers. Pat it completely dry and season it.",
+   "Wilting the spinach: Sauté the sliced leek in butter for 3 minutes, add the spinach and cook until it collapses.",
+   "Draining: Important: Tip the spinach into a sieve and press hard to squeeze out every bit of liquid, then let it cool. Wet filling is the single reason this dish fails — it steams the pastry from the inside.",
+   "Making the filling: Mix the drained spinach with the cream cheese, the chopped dill, the lemon zest, salt and pepper.",
+   "Assembling: Roll out the pastry, spread half the filling in the centre in the shape of the fillet, lay the salmon on top and cover it with the rest.",
+   "Wrapping: Fold the pastry over, sealing the edges well, and place it seam-side down on a lined tray. Trim any thick overlaps — doubled pastry stays raw.",
+   "Chilling: Chill for 20 minutes so the pastry firms up before it meets the heat.",
+   "Decorating: Brush with egg yolk and score a light pattern on the surface, cutting only the top layer.",
+   "Baking: Bake at 200°C for 25-30 minutes, until deep golden and crisp all over.",
+   "Resting: Let it stand for 5 minutes, then cut with a serrated knife into thick slices."
+  ],
+  "wine": "A Chardonnay with light oak, or a Greek Malagousia.",
+  "plate": "Serve in thick slices showing the green filling around the pink salmon, with a lemon-dill sauce on the side."
+ },
+ "soupa_fide": {
+  "n": "Vermicelli Soup",
+  "ing": [
+   "Vermicelli (fide) 200 g",
+   "Chicken or vegetable stock 1.5 litres",
+   "Carrot 1",
+   "Celery 1 stalk",
+   "Onion 1",
+   "Butter 30 g",
+   "Lemon juice 1/2 lemon",
+   "Fresh parsley, salt, pepper"
+  ],
+  "steps": [
+   "Preparing the vegetables: Finely dice the onion, carrot and celery so they melt into the soup rather than sitting in it as chunks.",
+   "Sautéing: Sauté them in the butter over medium heat for 6-7 minutes, until soft and fragrant. This base is what separates a real soup from hot water with pasta.",
+   "Adding the stock: Pour in the stock and bring it to a rolling boil.",
+   "Toasting the vermicelli: Important: Toast the vermicelli in a dry pan for 2 minutes until lightly golden before adding it. This keeps the strands separate and gives a nutty depth.",
+   "Adding the pasta: Add the toasted vermicelli to the boiling stock, stirring immediately so it does not settle into a lump at the bottom.",
+   "Cooking: Boil for 5-6 minutes only. Vermicelli is very thin — a minute too long and it disintegrates into the broth.",
+   "Seasoning: Season with salt and pepper and add the lemon juice off the heat, for brightness.",
+   "Serving: Serve straight away with chopped parsley. Important: on standing the vermicelli keeps absorbing liquid, so a soup left to sit turns into porridge."
+  ],
+  "wine": "Not applicable — a light soup, best with water or a mild white.",
+  "plate": "Serve in a deep bowl with parsley on top and a lemon wedge on the rim."
+ },
+ "soupa_kolokythas": {
+  "n": "Pumpkin Cream Soup",
+  "ing": [
+   "Pumpkin 1kg",
+   "Onion 1",
+   "Garlic 2 cloves",
+   "Vegetable stock 700ml",
+   "Heavy cream 100ml",
+   "Ginger 1 tsp",
+   "Cumin 1/2 tsp",
+   "Olive oil 3 tbsp",
+   "Salt, pepper"
+  ],
+  "steps": [
+   "Cut the pumpkin into cubes and sauté with the onion and garlic for 5 minutes.",
+   "Add the ginger, cumin, salt and pepper.",
+   "Cover with the stock and simmer for 25 minutes until tender.",
+   "Purée with a blender, then stir in the cream.",
+   "Serve hot with a drizzle of olive oil on top."
+  ]
+ },
+ "soupa_kremydion": {
+  "n": "French Onion Soup",
+  "ing": [
+   "Onions 6 large",
+   "Butter 3 tbsp",
+   "Olive oil 2 tbsp",
+   "White wine 100ml",
+   "Beef stock 1L",
+   "Stale bread 4 slices",
+   "Gruyère or graviera cheese 150g",
+   "Thyme",
+   "Salt, pepper"
+  ],
+  "steps": [
+   "Slice the onions thinly. Sauté in the butter and oil over low heat for 40 minutes until caramelized.",
+   "Deglaze with the wine and let it evaporate.",
+   "Add the stock, thyme, salt and pepper. Simmer for 15 minutes.",
+   "Ladle the soup into individual bowls, top with a slice of bread and the cheese.",
+   "Broil in the oven for 3-4 minutes until the cheese melts."
+  ]
+ },
+ "soupa_laxanikon": {
+  "n": "Vegetable Soup",
+  "ing": [
+   "Potatoes 2",
+   "Carrots 2",
+   "1 zucchini",
+   "Celery 2 sprigs",
+   "1 onion",
+   "Garlic 2 cloves",
+   "1 tomato",
+   "Vegetable stock 1.5L",
+   "Olive oil 3 tbsp",
+   "Parsley",
+   "Salt, pepper"
+  ],
+  "steps": [
+   "Sauté the onion and garlic in oil for 3 minutes.",
+   "Add the chopped carrots, potatoes, and celery. Sauté for 5 minutes.",
+   "Add the zucchini, tomato, stock, salt, and pepper.",
+   "Simmer for 25 minutes, until the vegetables are tender.",
+   "Serve with fresh parsley and bread."
+  ]
+ },
+ "soupa_manitarion": {
+  "n": "Cream of Mushroom Soup",
+  "ing": [
+   "Mushrooms 500g",
+   "Onion 1",
+   "Garlic 2 cloves",
+   "Butter 2 tbsp",
+   "Heavy cream 200ml",
+   "Vegetable broth 700ml",
+   "Thyme",
+   "Salt & pepper"
+  ],
+  "steps": [
+   "Preparation: Clean and slice the 500g mushrooms, finely chop the onion and the 2 garlic cloves, so they sauté evenly.",
+   "Sautéing the aromatics: Melt the 2 tbsp butter in a pot and sauté the onion and garlic until translucent, without browning, so they sweeten.",
+   "Cooking the mushrooms: Add the mushrooms and cook for 8 minutes until their liquid evaporates. Important: let them release and evaporate all their moisture, as this concentrates their flavor and keeps the soup from being watery.",
+   "Adding the broth: Pour in the 700ml vegetable broth and the thyme, and simmer for 15 minutes so the flavors meld.",
+   "Puréeing: Blend the soup with an immersion blender until velvety and smooth, with no lumps.",
+   "Finishing: Add the 200ml heavy cream, season with salt and pepper, and warm through a little longer without boiling, so the cream doesn't split. Serve hot."
+  ],
+  "wine": "White wine.",
+  "plate": "With whole sautéed mushrooms on top and fresh bread."
+ },
+ "soupa_tomatas": {
+  "n": "Creamy Tomato Soup",
+  "ing": [
+   "Tomatoes 800g (or canned)",
+   "Onion 1",
+   "Garlic 2 cloves",
+   "Vegetable stock 500ml",
+   "Heavy cream 100ml",
+   "Olive oil 3 tbsp",
+   "Fresh basil",
+   "Salt, pepper",
+   "Sugar 1 tsp"
+  ],
+  "steps": [
+   "Sauté the onion and garlic in the oil for 5 minutes.",
+   "Add the tomatoes, stock, sugar, salt and pepper. Simmer for 20 minutes.",
+   "Purée with a blender until smooth.",
+   "Stir in the cream and heat through.",
+   "Serve with fresh basil and bread."
+  ]
+ },
+ "soupies": {
+  "n": "Cuttlefish in Wine",
+  "ing": [
+   "Cuttlefish 800g",
+   "White wine 150ml",
+   "Onion 1",
+   "Garlic 2 cloves",
+   "Grated tomato 200g",
+   "Spinach 200g (optional)",
+   "Olive oil",
+   "Dill",
+   "Salt & pepper"
+  ],
+  "steps": [
+   "Cleaning the cuttlefish: Clean the 800g cuttlefish, removing the bone and innards, and cut into pieces. If you like, save the ink for a darker, more flavorful version. Pat dry thoroughly before frying.",
+   "Frying the cuttlefish: Fry the cuttlefish over high heat for 2-3 minutes. Important: they will initially release liquid — let it evaporate, otherwise the cuttlefish will boil instead of searing and turn out bland.",
+   "Aromatic base: Add the 1 finely chopped onion and the 2 garlic cloves and sauté for 3 minutes until softened. Deglaze with the 150ml white wine and let the alcohol evaporate.",
+   "Sauce and slow simmering: Add the 200g grated tomato, salt and pepper. Cover and simmer for 30-35 minutes until the cuttlefish becomes completely tender. Important: cuttlefish needs patience — either a very brief sear or a long slow simmer, because anything in between leaves it tough and rubbery.",
+   "Spinach and finishing: If using the 200g spinach, add it in the last 5 minutes so it wilts while keeping its color and nutrients. Finish with chopped dill for freshness and serve hot."
+  ],
+  "wine": "Dry white.",
+  "plate": "With rice or fresh bread, dill."
+ },
+ "soupies_melani": {
+  "n": "Cuttlefish in Ink Sauce",
+  "ing": [
+   "Fresh or frozen cuttlefish 1.2 kg (with their ink)",
+   "Onions, 3 large, finely chopped",
+   "Garlic, 2 cloves, finely chopped",
+   "Olive oil 1 cup",
+   "Dry white wine 1 glass",
+   "Tomato paste 2 tbsp",
+   "Cuttlefish ink, 2-3 sachets (10-15 g)",
+   "Bay leaves, 2",
+   "Salt, freshly ground pepper",
+   "Chopped parsley, for garnish"
+  ],
+  "steps": [
+   "Cleaning: Clean the cuttlefish, removing the cuttlebone, innards and eye, carefully setting aside the ink sacs in a bowl with a little water. Cut the cuttlefish into slices or pieces.",
+   "Sautéing the onion: In a wide pot, heat the olive oil and sauté the onions over low heat until softened and glossy, about 10-12 minutes, stirring often so they don't darken.",
+   "Adding the cuttlefish: Add the garlic and cuttlefish to the pot and sear over high heat for 5-6 minutes until they change color and release their liquid.",
+   "Deglazing with wine: Deglaze with the white wine and let the alcohol evaporate for 2-3 minutes, then add the tomato paste, bay leaves, salt and pepper.",
+   "Important: Cuttlefish need slow, gentle simmering to become tender without turning rubbery; depending on their size they need 45-60 minutes over low heat with the pot covered, adding a little hot water if the liquid runs low.",
+   "Adding the ink: Shortly before the cooking finishes, dissolve the cuttlefish ink in a little of the cooking liquid and add it to the pot, stirring well so the sauce takes on a deep black color.",
+   "Final simmer: Let it simmer uncovered for another 10-15 minutes until the sauce thickens and takes on a velvety texture, adjusting the salt and pepper.",
+   "Serving: Serve the cuttlefish hot, sprinkled with chopped parsley, accompanied by white rice or pasta that will soak up the ink sauce."
+  ],
+  "wine": "Dry white Assyrtiko from Santorini, cool and mineral.",
+  "plate": "Served on a shallow plate over white rice or small pasta, with fresh parsley and a lemon wedge on the side."
+ },
+ "soupies_spanaki": {
+  "n": "Cuttlefish with Spinach",
+  "ing": [
+   "Cuttlefish 600g, cleaned",
+   "Spinach 500g",
+   "Onion 1",
+   "Garlic 2 cloves",
+   "White wine 1/2 cup",
+   "Fresh dill",
+   "Olive oil 4 tbsp",
+   "Salt & pepper"
+  ],
+  "steps": [
+   "Cleaning the cuttlefish: Cut into strips. Wash well to remove the ink (if you don't want a dark sauce).",
+   "Sautéing: Sauté the onion and garlic in oil for 5 minutes. Add the cuttlefish and sauté over high heat for 5 minutes.",
+   "Deglazing: Deglaze with wine and let it evaporate for 2 minutes.",
+   "Simmering: Add a little water and season with salt and pepper. Simmer covered for 30-35 minutes until the cuttlefish is tender.",
+   "Spinach: Add the spinach (fresh or frozen) and dill. Cook for another 5-10 minutes until wilted. Important: don't overcook the spinach — it loses color and nutrients."
+  ],
+  "wine": "Dry white wine.",
+  "plate": "In a deep plate with bread."
+ },
+ "soutzoukakia": {
+  "n": "Smyrna Meatballs",
+  "ing": [
+   "500g ground beef",
+   "1 egg",
+   "2 slices stale bread",
+   "2 cloves garlic",
+   "1 tsp cumin",
+   "400g grated tomato",
+   "Cinnamon",
+   "Olive oil",
+   "Salt & pepper"
+  ],
+  "steps": [
+   "Soaking the bread: Soak 2 slices of stale bread in a little water and squeeze them out very well. Important: the bread needs to be well squeezed, since excess moisture softens the meat mixture and the soutzoukakia fall apart while frying.",
+   "Kneading: In a bowl, combine 500g ground beef, 1 egg, the squeezed bread, 2 cloves of grated garlic, 1 tsp cumin, a little cinnamon, salt, and pepper. Knead vigorously for 5 minutes. Thorough kneading binds the mixture together so it holds its shape.",
+   "Resting the mixture: Let the meat mixture rest in the refrigerator for 30 minutes so it firms up and the flavors meld, especially the cumin and cinnamon that define Smyrna-style soutzoukakia.",
+   "Shaping: Shape into oblong, sausage-like patties, with slightly wet hands so the mixture doesn't stick.",
+   "Browning: Fry the soutzoukakia in a little olive oil over medium-high heat until browned all over. They don't need to cook through completely at this stage, since they'll finish cooking in the sauce.",
+   "Sauce: In the same pan, add the 400g grated tomato, a little cinnamon, salt, pepper, and a little water. Simmer for 5 minutes to thicken slightly.",
+   "Simmering: Return the soutzoukakia to the sauce and simmer for 20 minutes over low heat. Important: slow simmering lets the soutzoukakia soak up the sauce and become soft and juicy. Serve with rice or potatoes."
+  ],
+  "wine": "Dry red.",
+  "plate": "With rice or mashed potatoes, tomato sauce spooned on top."
+ },
+ "souvlakia": {
+  "n": "Pork Souvlaki",
+  "ing": [
+   "Pork neck/collar 600g",
+   "Olive oil 3 tbsp",
+   "Oregano",
+   "Lemon juice",
+   "Garlic 2 cloves",
+   "Salt & pepper"
+  ],
+  "steps": [
+   "Cutting the meat: Cut the 600g pork neck into 2-3 cm cubes of even size. Uniform pieces cook at the same rate and don't dry out unevenly.",
+   "Marinade: Mix 3 tbsp olive oil, lemon juice, oregano, and 2 mashed garlic cloves. IMPORTANT: don't add salt to the marinade early on, as it draws out the liquid and dries out the meat — salt just before grilling instead.",
+   "Marinating: Let the meat sit in the marinade for at least 1 hour in the fridge. The lemon and olive oil tenderize and deeply flavor the pork.",
+   "Skewering: Thread the cubes onto skewers without packing them too tightly. Leaving small gaps between the pieces lets air circulate so they brown all over.",
+   "Grilling: Grill over a well-heated grill or barbecue for 10-12 minutes, turning regularly every 2-3 minutes for even browning. IMPORTANT: the grill must be very hot before you add the meat, so a crust forms and the skewers don't stick.",
+   "Resting: Let the skewers rest 2-3 minutes before serving so the juices settle.",
+   "Serving: Serve in warm pita bread with tzatziki, tomato, and onion."
+  ],
+  "wine": "Dry red wine.",
+  "plate": "In pita or on a plate with potatoes."
+ },
+ "spaghetti_bolognese": {
+  "n": "Spaghetti Bolognese",
+  "ing": [
+   "Spaghetti 320g",
+   "Ground beef 400g",
+   "Grated tomato 400g",
+   "Onion 1",
+   "Carrot 1",
+   "Celery 1 stalk",
+   "Garlic 2 cloves",
+   "Red wine 100ml",
+   "Milk 50ml",
+   "Olive oil",
+   "Parmesan"
+  ],
+  "steps": [
+   "Soffritto: Finely chop the onion, carrot and celery stalk and sauté in olive oil for 5 minutes until softened. IMPORTANT: this aromatic base (soffritto) is the foundation of the bolognese's flavor.",
+   "Adding garlic and meat: Add the 2 garlic cloves for 1 minute, then the 400g ground beef, stirring until browned and its liquid has evaporated.",
+   "Deglazing with wine: Deglaze with the 100ml red wine and let the alcohol evaporate, scraping the bottom of the pan to release the flavors.",
+   "Sauce: Add the 400g grated tomato, the 50ml milk, salt and pepper. The milk rounds out the tomato's acidity and makes the sauce more velvety.",
+   "Simmering: Cover and simmer for 35-40 minutes, stirring occasionally, so the sauce thickens and the flavors concentrate.",
+   "Cooking the pasta and serving: Boil the 320g spaghetti al dente, toss with the sauce and serve topped with grated parmesan."
+  ],
+  "wine": "Dry red.",
+  "plate": "Nest of spaghetti, sauce in the center, parmesan."
+ },
+ "spaghetti_poutanesca": {
+  "n": "Spaghetti Puttanesca",
+  "ing": [
+   "Spaghetti 200g",
+   "Grated tomato 400g",
+   "Kalamata olives 80g",
+   "Capers 2 tbsp",
+   "Anchovies 4 (optional)",
+   "Garlic 3 cloves",
+   "Hot chili pepper 1",
+   "Extra virgin olive oil",
+   "Basil or parsley"
+  ],
+  "steps": [
+   "Cooking the pasta: Bring salted water to a boil and start cooking the 200g spaghetti. IMPORTANT: reserve a cup of the pasta cooking water, as its starch will later help the sauce cling to the pasta.",
+   "Aromatic base: Sauté the 3 garlic cloves, the chili pepper and the 4 anchovies in olive oil for 2 minutes, stirring until the anchovies melt and release their umami note.",
+   "Adding the sauce: Add the 400g grated tomato, the 80g Kalamata olives and the 2 tbsp capers. These salty ingredients give puttanesca its bold character.",
+   "Simmering: Simmer the sauce for 12-15 minutes until it reduces and thickens. Taste before salting, as the anchovies, olives and capers are already salty.",
+   "Combining: Drain the spaghetti just shy of al dente and add it to the sauce along with a little pasta water. Toss over high heat for 1-2 minutes to coat.",
+   "Serving: Remove from the heat, add fresh basil or parsley and a raw tablespoon of olive oil for shine and aroma. Serve immediately."
+  ],
+  "wine": "Dry red.",
+  "plate": "Deep plate, olives and basil on top."
+ },
+ "spanaki_giaourti": {
+  "n": "Spinach with Yogurt",
+  "ing": [
+   "Fresh spinach 500g",
+   "Strained yogurt 300g",
+   "Garlic 2 cloves",
+   "Olive oil 3 tbsp",
+   "1/2 lemon",
+   "Salt",
+   "Red pepper flakes"
+  ],
+  "steps": [
+   "Wilt the spinach in a pan with a little oil for 3-4 minutes. Squeeze out the excess liquid.",
+   "Mix the yogurt with grated garlic, lemon, and salt.",
+   "Spread the yogurt over the base of the plate.",
+   "Top with the spinach.",
+   "Drizzle with oil and sprinkle with red pepper flakes."
+  ]
+ },
+ "spanakopita": {
+  "n": "Spinach & Feta Pie",
+  "ing": [
+   "Phyllo pastry 500g",
+   "Spinach 1kg",
+   "Grated feta cheese 400g",
+   "Fresh spring onions 6",
+   "Eggs 3",
+   "Fresh dill",
+   "Olive oil 4 tbsp",
+   "Melted butter 80g"
+  ],
+  "steps": [
+   "Preparing the spinach: Wash the 1kg spinach very well and chop it finely. Salt it lightly and knead it with your hands so it releases its liquid.",
+   "Squeezing: Squeeze the spinach very well to remove as much water as possible. Important: the drier the spinach, the crispier the pie — moisture softens the phyllo.",
+   "Filling: In a bowl, mix the spinach with the 400g grated feta, the 6 chopped spring onions, the dill, the 3 eggs and the 4 tbsp olive oil. Add pepper and taste before salting, as feta is already salty.",
+   "Layering the bottom sheets: Butter the baking pan and layer half the phyllo sheets, brushing each sheet with melted butter (from the 80g). The butter between the sheets gives crispness and color.",
+   "Filling and sealing: Spread the filling evenly and cover with the remaining sheets, buttering each one again. Fold the edges inward.",
+   "Scoring: Score the surface into pieces with a knife, without cutting through to the filling. This lets the pie be cut easily afterward and allows steam to escape while baking.",
+   "Baking: Bake at 180°C for 50-55 minutes, until the phyllo browns and turns crispy. Let it rest for 10 minutes before cutting."
+  ],
+  "wine": "Rosé or aromatic white wine.",
+  "plate": "Warm, with yogurt on the side."
+ },
+ "spanakoryzo": {
+  "n": "Spinach Rice",
+  "ing": [
+   "Spinach 600g",
+   "Rice 150g",
+   "Onion 1",
+   "Spring onions 4",
+   "Olive oil 4 tbsp",
+   "Dill",
+   "Lemon 1"
+  ],
+  "steps": [
+   "Preparing the spinach: Wash 600g spinach very well in plenty of water to remove dirt and grit, then chop it finely. IMPORTANT: drain it very well, as excess water dilutes the dish and throws off the liquid-to-rice ratio.",
+   "Sautéing the onions: In a pot, heat 4 tbsp olive oil and sauté 1 finely chopped onion along with 4 finely chopped spring onions over medium heat for 4-5 minutes, until softened and glossy without taking on color. This sweetens them and adds depth of flavor.",
+   "Wilting the spinach: Add the spinach and stir over high heat for 3-4 minutes until it wilts and reduces in volume. The spinach releases its own liquid, which will help cook the rice.",
+   "Adding the rice: Add the 150g rice and stir for 1 minute to coat the grains in oil (they'll turn glossy), so the rice stays separate and fluffy. Add 350ml hot water and salt.",
+   "Simmering: Lower the heat, cover with a lid, and simmer for 18-20 minutes, until the rice has absorbed the liquid and softened. Don't stir constantly, so it doesn't turn mushy.",
+   "Finishing: Remove from the heat and add the juice of 1 lemon and plenty of fresh chopped dill. IMPORTANT: the lemon and dill go in at the end, off the heat, to preserve the freshness and aroma that would otherwise be lost through cooking.",
+   "Serving: Let it rest covered for 5 minutes and serve with feta on the side, whose saltiness pairs with the lemon's acidity."
+  ],
+  "wine": "Aromatic white wine.",
+  "plate": "Deep plate, lemon, feta on the side."
+ },
+ "spanakotypopita": {
+  "n": "Spinach & Cheese Pie",
+  "ing": [
+   "Phyllo sheets 8",
+   "Fresh spinach 600g",
+   "Feta 300g",
+   "Graviera cheese 100g",
+   "Eggs 3",
+   "Spring onions 4",
+   "Dill",
+   "Olive oil",
+   "Salt, pepper"
+  ],
+  "steps": [
+   "Wash and finely chop the spinach. Salt it and squeeze it very well to remove the liquid.",
+   "Mix the spinach with the crumbled feta, grated graviera, eggs, spring onions, and dill. Taste for salt.",
+   "Grease a baking pan and layer 4 phyllo sheets, brushing each sheet with oil.",
+   "Spread the filling evenly.",
+   "Cover with the remaining 4 phyllo sheets, brushing each with oil. Score the top and sprinkle lightly with water.",
+   "Bake at 185°C for 45-50 minutes, until well golden."
+  ]
+ },
+ "spetzofai": {
+  "n": "Spetzofai from Pelion",
+  "ing": [
+   "Country sausages 700 g",
+   "Green peppers (florinis or long) 6",
+   "Grated tomato 500 g",
+   "Tomato paste 1 tbsp",
+   "Onion 1",
+   "Garlic 3 cloves",
+   "Olive oil 1/2 cup",
+   "Red wine 100 ml",
+   "Chilli flakes 1/2 tsp",
+   "Bay leaf 1",
+   "Salt, pepper"
+  ],
+  "steps": [
+   "Preparing the sausages: Cut the sausages into thick 3 cm rounds. Country sausage with fennel and leek is what makes this dish taste of Pelion.",
+   "Browning the sausages: Fry them in the oil over high heat until well browned on all sides, then lift them out. Important: their rendered fat stays in the pan and becomes the backbone of the sauce.",
+   "Frying the peppers: Cut the peppers into thick strips and fry them in the same fat for 4-5 minutes, until they blister and soften at the edges.",
+   "Removing the peppers: Take the peppers out too, so they do not overcook and dissolve while the sauce simmers.",
+   "Making the sauce: Sauté the chopped onion and garlic for 4 minutes, add the tomato paste and cook it for 1 minute.",
+   "Deglazing: Pour in the wine and let it evaporate, scraping up everything stuck to the bottom of the pan.",
+   "Simmering: Add the grated tomato, the bay leaf and the chilli, and simmer for 15 minutes until the sauce thickens.",
+   "Combining: Return the sausages and peppers and simmer together for another 10 minutes, so the flavours marry without the peppers falling apart.",
+   "Resting: Take it off the heat and let it stand for 10 minutes. Spetzofai is one of those dishes that tastes better warm than scalding hot."
+  ],
+  "wine": "A robust red — Xinomavro or a Tsantali Rapsani from the same region.",
+  "plate": "Serve straight from the pan or in a clay dish, with plenty of bread and feta on the side."
+ },
+ "spitiki_marmelada": {
+  "n": "Homemade Jam",
+  "ing": [
+   "Fruit (strawberries, apricots or figs) 1 kg",
+   "Sugar 700 g",
+   "Lemon juice 3 tbsp",
+   "Water 100 ml"
+  ],
+  "steps": [
+   "Choose ripe but firm fruit — overripe fruit has lost the pectin that makes jam set.",
+   "Wash, hull and cut the fruit into even pieces.",
+   "Layer it with the sugar in a bowl and leave it for 4 hours or overnight, until the juice runs freely.",
+   "Important: This maceration means less boiling later, so the fruit keeps its colour and fresh flavour instead of tasting cooked.",
+   "Transfer everything to a wide shallow pot. A wide pot evaporates faster and needs far less cooking time than a deep one.",
+   "Bring it to the boil and skim the foam carefully off the top.",
+   "Boil over medium-high heat for 20-30 minutes, stirring so it does not catch on the base.",
+   "Important: Test on a plate chilled in the freezer — a drop should wrinkle when you push it with a finger. If it runs, keep boiling.",
+   "Add the lemon juice in the last 3 minutes: its pectin and acid help it set and keep it from crystallising.",
+   "Jar it boiling hot in sterilised jars, seal at once and turn them upside down for 5 minutes to create the vacuum."
+  ],
+  "wine": "Not applicable — for breakfast.",
+  "plate": "Serve in a glass jar with a wooden spoon, next to fresh bread and butter."
+ },
+ "stifado": {
+  "n": "Rabbit Stifado",
+  "ing": [
+   "Rabbit 1kg, cut into pieces",
+   "Pearl onions 500g",
+   "Red wine 200ml",
+   "Grated tomato 200g",
+   "Garlic 5 cloves",
+   "Cinnamon, cloves, allspice",
+   "Vinegar 2 tbsp"
+  ],
+  "steps": [
+   "Drying and browning the meat: Pat the 1kg rabbit pieces thoroughly dry with paper towels and brown them in olive oil over high heat on all sides. Important: don't crowd the pieces in the pot — if packed too tightly they'll release liquid and steam instead of browning. Browning caramelizes the surface and gives depth of flavor.",
+   "Deglazing with wine and vinegar: Deglaze with the 200ml red wine and 2 tbsp vinegar, scraping the bottom of the pot to release the caramelized bits. Let the alcohol evaporate for 2-3 minutes so the flavor remains without the bitterness.",
+   "Tomato and spices: Add the 200g grated tomato, the 5 garlic cloves, cinnamon, cloves and allspice. Add a little hot water to just cover the meat and simmer, covered, for 45 minutes. The warm spices are the soul of stifado and need time to meld in.",
+   "Adding the onions: Add the 500g pearl onions whole into the sauce. Important: leave them whole and add them in the second half of cooking, so they soften without falling apart, staying sweet and intact.",
+   "Finishing: Continue simmering gently for another 30 minutes until the rabbit is meltingly tender and the onions have sweetened. The sauce should thicken and turn glossy — if it's too thin, remove the lid for the last few minutes to reduce it.",
+   "Serving: Serve the stifado hot, ideally with hilopites pasta, mashed potatoes or bread to soak up the rich sauce."
+  ],
+  "wine": "Dry red wine.",
+  "plate": "Deep plate, pearl onions, thyme."
+ },
+ "stir_fry_kotopoulo": {
+  "n": "Chicken Stir Fry",
+  "ing": [
+   "Chicken breast 600 g",
+   "Red and green pepper 2",
+   "Broccoli 200 g",
+   "Carrot 1",
+   "Spring onions 4",
+   "Garlic 3 cloves",
+   "Fresh ginger 2 cm",
+   "Soy sauce 4 tbsp",
+   "Honey 1 tbsp",
+   "Cornflour 1 tbsp",
+   "Sesame oil 1 tbsp",
+   "Sunflower oil 3 tbsp",
+   "Sesame seeds"
+  ],
+  "steps": [
+   "Cutting the chicken: Slice the chicken breast into thin strips against the grain, all the same size so they cook in the same time.",
+   "Marinating: Toss the chicken with 2 tbsp soy sauce and the cornflour and leave it for 15 minutes. The cornflour forms a coating that keeps the meat juicy at high heat.",
+   "Preparing everything first: Important: Cut and lay out every vegetable before you turn on the heat. A stir fry takes 8 minutes total and there is no time to chop mid-cooking.",
+   "Making the sauce: Mix the remaining soy sauce, the honey, the grated ginger and 3 tbsp water in a small bowl.",
+   "Heating the pan: Heat a wok or a wide pan until it is genuinely smoking hot. Important: a lukewarm pan stews the food instead of searing it, and the vegetables go limp.",
+   "Cooking the chicken: Add oil and the chicken in a single layer, leave it untouched for 1 minute to colour, then stir-fry for 3 minutes and remove it.",
+   "Cooking the vegetables: Add a little more oil and stir-fry the harder vegetables — broccoli and carrot — for 2 minutes, then the peppers for another 2.",
+   "Combining: Return the chicken, add the garlic and the sauce and toss everything for 1-2 minutes until the sauce thickens and glazes the ingredients.",
+   "Finishing: Off the heat, add the sesame oil, the spring onions and the sesame seeds, and serve immediately."
+  ],
+  "wine": "An aromatic white — Riesling or Malagousia — or a cold beer.",
+  "plate": "Serve over steamed rice in a deep bowl, with sesame seeds and spring onion scattered on top."
+ },
+ "strapatsada": {
+  "n": "Strapatsada",
+  "ing": [
+   "3 eggs",
+   "2 ripe tomatoes",
+   "2 tbsp olive oil",
+   "Salt & pepper",
+   "50g feta (optional)"
+  ],
+  "steps": [
+   "Prepping the tomatoes: Grate the 2 ripe tomatoes or chop them very finely. Ripe tomatoes have more sweetness and juice, which forms the base of the dish.",
+   "Sautéing the tomato: Sauté the tomato in the 2 tbsp olive oil for 3-4 minutes until the liquid evaporates. Important: the tomato needs to dry out well and reduce into a sauce before you add the eggs — otherwise the dish turns watery and the eggs won't set properly.",
+   "Beating the eggs: Beat the 3 eggs with salt and pepper. Light beating incorporates air, giving a fluffier result.",
+   "Cooking the eggs: Lower the heat, pour the eggs over the tomato, and stir gently until they set lightly but stay moist. Important: take them off the heat just before they fully dry out, since they continue cooking from the residual heat of the pan.",
+   "Serving: Optionally crumble 50g feta on top and serve hot immediately with fresh bread. The feta gives a salty contrast to the tomato's sweetness."
+  ],
+  "wine": "Rosé or a light white.",
+  "plate": "On toast or village bread."
+ },
+ "stratsiatela": {
+  "n": "Stracciatella",
+  "ing": [
+   "Ready-made or homemade sponge cake, 1 (22 cm)",
+   "Heavy cream 35% 500 ml",
+   "Powdered sugar 100 g",
+   "Mascarpone 250 g",
+   "Grated dark chocolate 150 g",
+   "Milk 100 ml",
+   "Amaretto liqueur or vanilla liqueur 2 tbsp",
+   "Vanilla 1 packet"
+  ],
+  "steps": [
+   "Slicing the sponge cake: Cut the sponge cake horizontally into two or three layers of equal thickness.",
+   "Soaking: Mix the milk with the liqueur and lightly sprinkle each layer so it softens without becoming soggy.",
+   "Whipping the cream: Whip the chilled heavy cream with the powdered sugar and vanilla until it forms stiff whipped cream.",
+   "Incorporating the mascarpone: Add the mascarpone to the whipped cream, folding in gently with a spatula until smooth.",
+   "Important: The grated chocolate must be very cold and dry before being folded into the cream, so it forms the characteristic small flecks of stracciatella instead of melting and streaking the cream.",
+   "Adding the chocolate: Gently fold two-thirds of the grated chocolate into the mascarpone cream with light movements.",
+   "Assembling: Spread cream between each sponge cake layer and cover the entire cake with the remaining mixture.",
+   "Finishing: Sprinkle the top and sides with the remaining grated chocolate and chill in the refrigerator for at least 3 hours before serving."
+  ],
+  "wine": "Sweet sparkling wine or cappuccino",
+  "plate": "Serve in slices with extra grated chocolate on top."
+ }
+}
