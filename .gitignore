@@ -10,3 +10,5 @@ node_modules/
 # Τα Reels παράγονται με το ads/reel.py — δεν χρειάζεται να βαραίνουν το repo
 ads/reels/*.mp4
 ads/reels/numbered/
+
+__pycache__/
