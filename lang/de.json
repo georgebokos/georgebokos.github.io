@@ -4409,6 +4409,386 @@
    "wine": "Milch oder Kaffee — traditionell nach der Auferstehungsmesse.",
    "plate": "In Scheiben oder mit der Hand gezupft servieren, mit einem roten Ei dazu."
   },
+  "tyropita": {
+   "n": "Griechische Käsepita",
+   "ing": [
+    "Filoteig 500 g",
+    "Geriebener Feta 500 g",
+    "Eier 3",
+    "Milch 100 ml",
+    "Geschmolzene Butter 100 g",
+    "Salz & Pfeffer",
+    "Sesam (optional)"
+   ],
+   "steps": [
+    "Butter vorbereiten: Die 100 g Butter bei niedriger Hitze oder in der Mikrowelle schmelzen und etwas abkühlen lassen, damit sie sich leicht auf den Filoblättern verteilen lässt.",
+    "Füllung: In einer Schüssel die 500 g geriebenen Feta, die 3 Eier, die 100 ml Milch und Pfeffer mischen. Wichtig: Vor dem Salzen probieren, da Feta bereits salzig ist und man leicht übersalzt.",
+    "Untere Blätter schichten: Die Form einfetten und 6-8 Filoblätter einlegen, jedes mit geschmolzener Butter bestreichen. Die Butter zwischen den Blättern macht sie beim Backen knusprig und luftig.",
+    "Füllung verteilen: Die Füllung gleichmäßig auf den Blättern verteilen, damit jedes Stück gleich viel Käse bekommt.",
+    "Schließen: Mit weiteren 6-8 Blättern abdecken, jedes wieder buttern. Die Ränder nach innen einschlagen, damit die Füllung nicht austritt.",
+    "Vorschneiden: Die Pita vor dem Backen mit dem Messer in Stücke vorschneiden, damit sie sich später leicht teilen lässt, ohne dass der knusprige Teig bricht. Sesam darüber streuen.",
+    "Backen: Bei 180 °C 45-50 Minuten goldbraun und knusprig backen. Vor dem Schneiden 10 Minuten ruhen lassen."
+   ],
+   "wine": "Trockener Weißwein oder Rosé.",
+   "plate": "Warme Stücke, Salat dazu."
+  },
+  "tyropita_kourou": {
+   "n": "Käsepita aus Mürbeteig",
+   "ing": [
+    "Mehl 300 g",
+    "Butter 150 g",
+    "Ei 1",
+    "Wasser 3 EL",
+    "Feta 300 g",
+    "Anthotyro 200 g",
+    "Eier 3",
+    "Milch 100 ml",
+    "Pfeffer"
+   ],
+   "steps": [
+    "Das Mehl mit der kalten, in Stücke geschnittenen Butter verreiben, bis die Masse Bröseln gleicht.",
+    "Das Ei und etwas Wasser zugeben und leicht kneten. 30 Minuten kalt stellen.",
+    "Feta und Anthotyro zusammen zerdrücken. Eier, Milch und Pfeffer zugeben.",
+    "Den Teig in einer Form ausrollen und die Füllung darauf verteilen.",
+    "Bei 180 °C 40-45 Minuten goldbraun backen."
+   ]
+  },
+  "tzatziki_dish": {
+   "n": "Hausgemachtes Tzatziki",
+   "ing": [
+    "Abgetropfter Joghurt 500 g",
+    "Gurke 1 große",
+    "Knoblauch 2-3 Zehen",
+    "Olivenöl 2 EL",
+    "Essig 1 TL",
+    "Dill",
+    "Salz"
+   ],
+   "steps": [
+    "Gurke entwässern: Die 1 große Gurke grob reiben, leicht salzen und 10 Minuten stehen lassen. Wichtig: Mit den Händen oder in einem sauberen Tuch sehr gut ausdrücken, um die gesamte Feuchtigkeit zu entfernen — das ist das Geheimnis eines dicken Tzatziki, das nicht wässrig wird.",
+    "Knoblauch vorbereiten: Die 2-3 Knoblauchzehen mit etwas Salz zu einer Paste zerdrücken. Das Salz bricht die Fasern des Knoblauchs auf und verteilt sein Aroma gleichmäßig, ohne kräftige Stücke zu hinterlassen.",
+    "Mischen: In einer Schüssel den 500 g abgetropften Joghurt, die ausgedrückte Gurke, den zerdrückten Knoblauch, den 1 TL Essig und Salz vermengen. Gut glatt rühren. Der Essig bringt Frische und gleicht die Fülle des Joghurts aus.",
+    "Würzen: Gehackten Dill und die 2 EL Olivenöl zugeben und vorsichtig unterrühren. Das Olivenöl bindet die Masse und gibt ihr eine samtige Textur.",
+    "Ruhen lassen: Zugedeckt mindestens 1 Stunde vor dem Servieren kalt stellen. Das Ruhen lässt die Aromen verschmelzen und mildert die Schärfe des rohen Knoblauchs, für ein runderes Ergebnis."
+   ],
+   "wine": "Trockener Weißwein.",
+   "plate": "In einer Schale, mit einer Spirale Olivenöl und Dill."
+  },
+  "vasilopita": {
+   "n": "Vasilopita (Neujahrskuchen)",
+   "ing": [
+    "Mehl 500 g",
+    "Butter 200 g",
+    "Zucker 200 g",
+    "Eier 4",
+    "Milch 100 ml",
+    "Backpulver 2 TL",
+    "Vanille 2",
+    "Orangenschale",
+    "Puderzucker zum Verzieren",
+    "Münze (Flouri) 1, in Folie gewickelt"
+   ],
+   "steps": [
+    "Aufschlagen: Die Butter mit dem Zucker in der Küchenmaschine 5-7 Minuten hell und luftig aufschlagen.",
+    "Eier: Die Eier einzeln zugeben und dazwischen jeweils gut unterschlagen. Vanille und Orangenschale zugeben.",
+    "Trockene Zutaten: Das Mehl mit dem Backpulver mischen. Mehl und Milch abwechselnd unter die Masse heben.",
+    "Münze: Die eingewickelte Münze in den Teig geben.",
+    "Backen: In einer gefetteten 26-cm-Form bei 175 °C 45-50 Minuten backen. Mit einem Zahnstocher prüfen.",
+    "Verzieren: Nach dem Auskühlen mit Puderzucker ein Motiv aufstäuben (meist die Jahreszahl). Wichtig: Nach der Tradition schneidet der Gastgeber das erste Stück für Christus, eines für das Haus, und serviert dann den Rest."
+   ],
+   "wine": "-",
+   "plate": "Mit Puderzucker bestäubt; die Münze bringt Glück."
+  },
+  "waffle": {
+   "n": "Waffeln",
+   "ing": [
+    "Mehl 250 g",
+    "Milch 300 ml",
+    "Eier 2 (getrennt)",
+    "Geschmolzene Butter 100 g",
+    "Zucker 3 EL",
+    "Backpulver 2 TL",
+    "Vanilleextrakt 1 TL",
+    "Salz 1/2 TL",
+    "Speisestärke 2 EL"
+   ],
+   "steps": [
+    "Eier trennen: Eigelb und Eiweiß sorgfältig trennen. Wichtig: Ein einziger Tropfen Eigelb im Eiweiß verhindert das Steifschlagen — auf diesem Schritt beruht das ganze Rezept.",
+    "Grundmasse: Das Eigelb mit der Milch, der geschmolzenen Butter und der Vanille verquirlen.",
+    "Trockene Zutaten mischen: Mehl, Speisestärke, Zucker, Backpulver und Salz vermengen. Die Speisestärke gibt den Waffeln ihre knusprige Hülle.",
+    "Vereinen: Die trockenen Zutaten unter die Eigelbmasse heben, bis der Teig gerade glatt ist.",
+    "Eiweiß schlagen: Das Eiweiß in einer blitzsauberen, trockenen Schüssel steif schlagen.",
+    "Wichtig: Den Eischnee in drei Portionen behutsam mit Aufwärtsbewegungen unterheben. Diese eingeschlossene Luft ist der Unterschied zwischen einer Waffel und einem dicken Pancake.",
+    "Waffeleisen erhitzen: Das Waffeleisen gründlich vorheizen und mit Butter oder Öl bestreichen, auch wenn es beschichtet ist.",
+    "Befüllen: So viel Teig einfüllen, dass etwa drei Viertel der Fläche bedeckt sind — er dehnt sich beim Backen aus.",
+    "Wichtig: Das Eisen in den ersten 3 Minuten nicht öffnen. Zu frühes Öffnen reißt die Waffel entzwei, weil die Kruste noch nicht fest ist.",
+    "Backen und Servieren: 4-5 Minuten goldbraun und knusprig backen und sofort servieren — Waffeln werden binnen Minuten weich."
+   ],
+   "wine": "Heiße Schokolade oder Kaffee.",
+   "plate": "Warm mit Schlagsahne, Schokolade und Obst in den Vertiefungen servieren."
+  },
+  "waldorf_salata": {
+   "n": "Waldorfsalat",
+   "ing": [
+    "Äpfel 2 (rote)",
+    "Sellerie 3 Stangen",
+    "Walnüsse 80 g",
+    "Weintrauben 100 g (optional)",
+    "Mayonnaise 3 EL",
+    "Joghurt 2 EL",
+    "Zitronensaft",
+    "Salz, Pfeffer",
+    "Kopfsalat zum Servieren"
+   ],
+   "steps": [
+    "Die Äpfel würfeln und mit Zitronensaft beträufeln, damit sie nicht braun werden.",
+    "Den Sellerie dünn schneiden. Die Walnüsse grob hacken.",
+    "Die Mayonnaise mit Joghurt, Salz und Pfeffer verrühren.",
+    "Äpfel, Sellerie, Walnüsse und Trauben mit dem Dressing vermengen.",
+    "Auf Salatblättern servieren."
+   ]
+  },
+  "xoirina_paidakia": {
+   "n": "Schweinerippchen",
+   "ing": [
+    "Schweinerippchen 1,2 kg",
+    "Olivenöl 3 EL",
+    "Zitrone 1",
+    "Knoblauch 3 Zehen",
+    "Oregano & Thymian",
+    "Senf 1 EL",
+    "Salz & Pfeffer"
+   ],
+   "steps": [
+    "Marinieren: In einer Schüssel die 3 EL Olivenöl, den Saft von 1 Zitrone, die 3 zerdrückten Knoblauchzehen, den 1 EL Senf, Oregano, Thymian und Salz mischen. Die 1,2 kg Rippchen gründlich damit einreiben und 30 Minuten marinieren. Wichtig: Die Säure der Zitrone und der Senf machen das Fleisch zart und würzen es bis innen.",
+    "Grill vorheizen: Grill oder Grillpfanne bei mittlerer bis starker Hitze gut vorheizen, bevor das Fleisch daraufkommt, damit es sofort anbrät und schöne Grillstreifen bekommt.",
+    "Erste Seite garen: Die Rippchen 8-10 Minuten auf einer Seite grillen, ohne sie ständig zu bewegen, damit sie richtig bräunen.",
+    "Zweite Seite garen: Wenden und weitere 8-10 Minuten grillen, bis sie durchgegart und saftig sind, mit knuspriger Außenseite.",
+    "Ruhen lassen: Die Rippchen vor dem Servieren 5 Minuten ruhen lassen. Wichtig: Das Ruhen lässt sich die Säfte neu verteilen, sodass das Fleisch beim Schneiden nicht austrocknet.",
+    "Servieren: Mit frischer Zitrone und Zitronenkartoffeln für ein vollständiges traditionelles Gericht servieren."
+   ],
+   "wine": "Trockener Rotwein.",
+   "plate": "Mit Bratkartoffeln, Zitrone und Senf."
+  },
+  "xoirini_tiganias": {
+   "n": "Griechische Schweinepfanne",
+   "ing": [
+    "600 g Schweinenacken",
+    "3 Paprika (rot + grün + gelb)",
+    "1 Zwiebel",
+    "2 Knoblauchzehen",
+    "100 ml Weißwein",
+    "Olivenöl",
+    "Oregano",
+    "Salz & Pfeffer"
+   ],
+   "steps": [
+    "Fleisch vorbereiten: Den 600 g Schweinenacken in gleich große Streifen schneiden und mit Küchenpapier trocken tupfen, damit er bräunt statt im eigenen Saft zu schmoren.",
+    "Fleisch anbraten: Das Olivenöl gut erhitzen und das Schweinefleisch bei starker Hitze rundum braun braten, dann herausnehmen. Wichtig: Portionsweise bei starker Hitze braten, denn eine überfüllte Pfanne lässt das Fleisch Flüssigkeit ziehen und schmoren, statt zu karamellisieren.",
+    "Gemüse anbraten: In derselben Pfanne die Zwiebel und die 3 in Streifen geschnittenen Paprika etwa 5 Minuten anbraten, bis sie leicht weich sind, aber ihre Farbe behalten. 2 Knoblauchzehen zugeben und 1 Minute mitbraten.",
+    "Fleisch zurückgeben und ablöschen: Das Schweinefleisch zurück in die Pfanne geben und mit den 100 ml Weißwein ablöschen, dabei den Boden abkratzen. Der Wein löst den karamellisierten Bratensatz und gibt der Sauce Tiefe.",
+    "Köcheln: Oregano, Salz und Pfeffer zugeben und etwa 10 Minuten köcheln, bis der Alkohol verdampft ist und das Fleisch weich wird, während sich die Aromen verbinden.",
+    "Servieren: Die Schweinepfanne heiß mit frischem Brot zum Auftunken der Sauce servieren, mit etwas zusätzlichem Oregano obenauf."
+   ],
+   "wine": "Trockener Rotwein.",
+   "plate": "Mit Ofenkartoffeln oder Reis."
+  },
+  "xoirino_lemonato": {
+   "n": "Zitronen-Schweinefleisch",
+   "ing": [
+    "Schweinekeule oder -schulter 1 kg, in Portionsstücke geschnitten",
+    "Kartoffeln 1 kg, in dicke Spalten geschnitten",
+    "Olivenöl 1/2 Tasse",
+    "Saft von 3 Zitronen",
+    "Zwiebel 1 große, fein gehackt",
+    "Knoblauch 2 Zehen",
+    "Senf 1 EL",
+    "Oregano 1 EL",
+    "Brühe oder Wasser 1 Tasse",
+    "Salz und frisch gemahlener Pfeffer"
+   ],
+   "steps": [
+    "Vorbereitung: Die Schweinefleischstücke mit Küchenpapier gründlich trocken tupfen und rundum großzügig mit Salz und Pfeffer würzen. Wichtig: Das Fleisch muss vor dem Anbraten völlig trocken sein, sonst kocht es statt zu bräunen und bildet nicht die karamellisierte Kruste, die ihm Tiefe gibt.",
+    "Anbraten: Die Hälfte des Olivenöls in einem schweren Topf bei starker Hitze erhitzen und die Schweinefleischstücke portionsweise rundum anbraten, damit der Topf nicht überfüllt ist. Herausnehmen und beiseitestellen.",
+    "Aromaten: Die Hitze reduzieren, die gehackte Zwiebel und den Knoblauch zugeben und 3-4 Minuten weich dünsten, dabei den Topfboden abkratzen.",
+    "Schmoren: Das Fleisch zurück in den Topf geben, Senf, die Hälfte des Oregano und die Brühe zugeben. Zugedeckt bei niedriger Hitze etwa 45 Minuten schmoren, bis das Fleisch weich zu werden beginnt.",
+    "Kartoffeln zugeben: Die Kartoffeln rings um das Fleisch verteilen, das restliche Olivenöl angießen, mit Salz und Pfeffer würzen und zugedeckt weitere 30-35 Minuten garen, dabei vorsichtig umrühren.",
+    "Zitrone: Sind Fleisch und Kartoffeln fast weich, den Zitronensaft und den restlichen Oregano zugeben. Wichtig: Die Zitrone kommt zum Schluss, denn langes Kochen lässt ihre Säure die Fleischfasern hart machen und ihr frisches Zitrusaroma verlieren.",
+    "Sauce einkochen: 8-10 Minuten offen bei mittlerer Hitze lassen, damit die Sauce andickt und den Zitronengeschmack annimmt. Abschmecken und Salz, Pfeffer und Zitrone anpassen.",
+    "Ruhen lassen: Vom Herd nehmen und das Gericht vor dem Servieren zugedeckt 10 Minuten ruhen lassen, damit sich das Fleisch entspannt und seine Säfte wieder aufnimmt."
+   ],
+   "wine": "Trockener Weißwein wie Assyrtiko oder Moschofilero.",
+   "plate": "Heiß mit den Kartoffeln und reichlich Zitronensauce servieren, dazu frisches Brot und ein grüner Salat."
+  },
+  "xoirino_moutardes": {
+   "n": "Schweinefleisch mit Senf & Apfel",
+   "ing": [
+    "Schweinefilet oder -koteletts 700 g",
+    "Apfel 1 (Granny Smith)",
+    "Dijonsenf 3 EL",
+    "Zwiebel 1",
+    "Knoblauch 2 Zehen",
+    "Weißwein 100 ml",
+    "Sahne 150 ml",
+    "Olivenöl 2 EL",
+    "Thymian, Salz, Pfeffer"
+   ],
+   "steps": [
+    "Fleisch anbraten: Das Schweinefleisch in 2 cm dicke Medaillons schneiden. Mit Salz und Pfeffer würzen und in Olivenöl 3 Minuten pro Seite goldbraun braten. Herausnehmen und beiseitestellen.",
+    "Anbraten: In derselben Pfanne die Zwiebel 3 Minuten dünsten. Den Knoblauch und den gewürfelten Apfel zugeben und weitere 2 Minuten garen.",
+    "Sauce: Mit dem Weißwein ablöschen und 2 Minuten verdampfen lassen. Senf und Sahne zugeben und umrühren. 3 Minuten köcheln.",
+    "Abschluss: Das Fleisch zurück in die Sauce geben und zugedeckt 8-10 Minuten schmoren. Wichtig: Nicht stark kochen lassen — die Sahne flockt sonst aus. Mit Kartoffelpüree oder Reis servieren."
+   ],
+   "wine": "Weißer Chardonnay oder ein leichter Rotwein.",
+   "plate": "Mit cremiger Senfsauce und Apfelscheiben."
+  },
+  "xoirino_prasa": {
+   "n": "Schweinefleisch mit Lauch und Wein",
+   "ing": [
+    "Schweineschulter 700 g (gewürfelt)",
+    "Lauch 4 Stangen",
+    "Zwiebel 1",
+    "Knoblauch 2 Zehen",
+    "Weißwein 150 ml",
+    "Geriebene Tomate 200 g",
+    "Olivenöl",
+    "Lorbeerblätter 2",
+    "Salz & Pfeffer"
+   ],
+   "steps": [
+    "Fleisch vorbereiten: Die 700 g Schweineschulter in gleich große Würfel schneiden und trocken tupfen, damit sie beim Anbraten richtig bräunen.",
+    "Anbraten: Olivenöl erhitzen und die Würfel bei starker Hitze rundum anbraten, um die Säfte einzuschließen. Zwiebel und 2 Knoblauchzehen zugeben und 3 Minuten mitbraten.",
+    "Mit Wein ablöschen: Mit den 150 ml Weißwein ablöschen und den Alkohol verdampfen lassen. Der Wein bringt aromatische Säure und Tiefe in die Sauce.",
+    "Tomate zugeben: Die 200 g geriebene Tomate, 2 Lorbeerblätter, Salz und Pfeffer zugeben und etwa 25 Minuten schmoren, bis das Fleisch weich zu werden beginnt.",
+    "Lauch zugeben: Die 4 Lauchstangen in Ringe schneiden und in den Topf geben. Wichtig: Der Lauch kommt später dazu, damit er sich nicht ganz auflöst und auf dem Teller Textur behält.",
+    "Abschluss: Weitere etwa 15 Minuten schmoren, bis der Lauch weich und das Fleisch zart und glasiert ist. Die Lorbeerblätter entfernen, mit Salz abschmecken und heiß servieren."
+   ],
+   "wine": "Trockener Weißwein.",
+   "plate": "Mit Reis oder Kartoffelpüree."
+  },
+  "xoirino_selino": {
+   "n": "Schweinefleisch mit Sellerie in Avgolemono",
+   "ing": [
+    "Schweinekeule oder -schulter 1 kg, in Portionsstücke geschnitten",
+    "Sellerie (Knolle und Stangen) 1 großes Bund",
+    "Zwiebeln 2 mittelgroße, fein gehackt",
+    "Olivenöl 1/2 Tasse",
+    "Eier 2",
+    "Saft von 2 Zitronen",
+    "Salz und frisch gemahlener Pfeffer",
+    "Heißes Wasser oder Brühe, etwa 1 Liter"
+   ],
+   "steps": [
+    "Vorbereitung: Das Schweinefleisch waschen, in Portionsstücke schneiden und mit Küchenpapier gründlich trocken tupfen, damit es richtig bräunt. Den Sellerie putzen, die Stangen in 4-5 cm große Stücke und die Knolle in dicke Scheiben schneiden.",
+    "Anbraten: In einem weiten Topf das Olivenöl erhitzen und das Schweinefleisch bei starker Hitze rundum schön goldbraun anbraten. Wichtig: Das Fleisch portionsweise statt auf einmal bräunen, sonst sinkt die Temperatur, das Fleisch zieht Saft und kocht statt zu karamellisieren.",
+    "Zwiebel: Die Hitze etwas reduzieren, die Zwiebeln zugeben und 3-4 Minuten glasig dünsten, dabei rühren, damit sie nicht verbrennen.",
+    "Fleisch schmoren: Heißes Wasser oder Brühe angießen, bis das Fleisch fast bedeckt ist, mit Salz und Pfeffer würzen, die Hitze reduzieren und zugedeckt etwa 1 Stunde schmoren, bis es weich zu werden beginnt.",
+    "Sellerie zugeben: Den Sellerie zuerst 2-3 Minuten in kochendem Wasser blanchieren, um die Bitterkeit zu nehmen, abgießen und in den Topf geben. Weitere 20-30 Minuten garen, bis Fleisch und Sellerie zart sind und genug Brühe für das Avgolemono übrig ist.",
+    "Avgolemono: Die Eier in einer Schüssel schaumig schlagen und nach und nach den Zitronensaft zugeben. Den Topf vom Herd nehmen und mit einer Kelle langsam etwas heiße Brühe unter ständigem Schlagen in die Eimasse geben. Wichtig: Die Brühe darf beim Zugeben des Avgolemono nicht kochen, sonst gerinnt es; die heiße Brühe nach und nach zugeben, damit die Temperatur der Eier gleichmäßig steigt.",
+    "Binden: Das Avgolemono in den Topf gießen, ihn sanft kreisend schwenken (nicht mit dem Löffel rühren) und bei sehr niedriger Hitze eine halbe Minute stehen lassen, ohne aufzukochen, damit die Sauce leicht andickt.",
+    "Servieren: Das Gericht vor dem Servieren zugedeckt 5-10 Minuten ruhen lassen, damit sich die Aromen verbinden und das Avgolemono fest wird."
+   ],
+   "wine": "Trockener Weißwein wie Assyrtiko oder Moschofilero.",
+   "plate": "Heiß mit reichlich Avgolemono-Sauce, frisch gemahlenem Pfeffer und frischem Brot zum Auftunken servieren."
+  },
+  "xorta_vrasta": {
+   "n": "Gekochtes Wildgemüse",
+   "ing": [
+    "Saisonale Wildkräuter (Amarant, Löwenzahn, Brennnessel oder Gänsedistel) 1,5 kg",
+    "Natives Olivenöl extra 100 ml",
+    "Saft von 2 Zitronen",
+    "Grobes Salz 1 EL",
+    "1 Zwiebel (optional, für den Sud)",
+    "Essig 1 EL (optional)",
+    "Frisch gemahlener Pfeffer, etwas"
+   ],
+   "steps": [
+    "Putzen: Die Kräuter von den harten Stielen und gelben oder beschädigten Blättern befreien und nur die zarten Teile behalten.",
+    "Waschen: Die Kräuter in reichlich Wasser in 3-4 Durchgängen waschen, da sich zwischen den Blättern oft Erde und Sand verbergen.",
+    "Wichtig: In reichlich kochendem Salzwasser offen kochen, damit die Kräuter ihr natürliches Grün behalten und ihre Bitterkeit verlieren, besonders bei Löwenzahn oder Brennnessel.",
+    "Garzeit: Je nach Art und Zartheit der Kräuter 15-25 Minuten kochen, bis sie weich, aber nicht matschig sind.",
+    "Abtropfen: Die Kräuter in einem Sieb gut abtropfen lassen und leicht andrücken, um überschüssiges Wasser zu entfernen.",
+    "Servieren: Auf einer Platte ausbreiten und großzügig mit Olivenöl und frischem Zitronensaft beträufeln.",
+    "Letzter Schliff: Nach Geschmack salzen und pfeffern und warm oder bei Zimmertemperatur servieren, niemals kalt aus dem Kühlschrank, damit ihr Geschmack zur Geltung kommt."
+   ],
+   "wine": "Gekühlter Retsina oder trockener weißer Assyrtiko aus Santorini",
+   "plate": "Auf einer Tonplatte neben gegrilltem Fisch oder mit Feta und Oliven servieren, mit reichlich Olivenöl und Zitrone auf dem Tisch"
+  },
+  "xtapodi_gigantes": {
+   "n": "Oktopus mit Riesenbohnen",
+   "ing": [
+    "Frischer oder tiefgekühlter Oktopus 1,2 kg",
+    "Gigantes-Bohnen 500 g",
+    "Zwiebeln, 2 große",
+    "Knoblauch, 3 Zehen",
+    "Reife Tomaten, gerieben, 400 g",
+    "Olivenöl 150 ml",
+    "Weinessig 1 Glas",
+    "Lorbeerblätter, 2-3",
+    "Rosmarin, 1 Zweig",
+    "Salz und Pfeffer"
+   ],
+   "steps": [
+    "Oktopus vorbereiten: Den Oktopus gut abspülen und, wenn er frisch ist, leicht klopfen, um seine Fasern mürbe zu machen.",
+    "Wichtig: Ist der Oktopus frisch, friert man ihn am besten zuerst 24 Stunden ein und taut ihn dann auf, denn das Einfrieren bricht die Fasern und macht ihn zarter, ohne dass man klopfen muss.",
+    "Langsam garen: Den Oktopus ohne Wasser bei mittlerer Hitze zugedeckt in den Topf geben und 35-45 Minuten im eigenen Saft garen, bis er zart ist, dabei gelegentlich wenden.",
+    "Bohnen einweichen: Am Vortag die Gigantes-Bohnen mindestens 10-12 Stunden in reichlich kaltem Wasser einweichen.",
+    "Bohnen kochen: Die Bohnen abgießen und in leicht gesalzenem Wasser 40-50 Minuten kochen, bis sie weich sind, aber noch Form haben, dann abgießen.",
+    "Anbraten: In einem weiten Topf das Olivenöl erhitzen und die fein gehackte Zwiebel weich dünsten, den Knoblauch zugeben und mit dem Essig ablöschen.",
+    "Zutaten vereinen: Die geriebene Tomate, Lorbeerblätter, Rosmarin, den in Stücke geschnittenen Oktopus und die Bohnen zugeben, sparsam mit Salz und Pfeffer würzen (der Oktopus ist bereits salzig) und offen 20-25 Minuten köcheln, bis die Sauce andickt.",
+    "Servieren: Das Gericht vor dem heißen Servieren einige Minuten ruhen lassen, damit die Bohnen die Aromen gut aufnehmen."
+   ],
+   "wine": "Trockener weißer Assyrtiko aus Santorini, kühl und mineralisch",
+   "plate": "In einem tiefen Teller mit aufgefächertem frischem Bauernbrot und einem Schuss Olivenöl obenauf servieren"
+  },
+  "xtapodi_makaronaki": {
+   "n": "Oktopus mit Nudeln",
+   "ing": [
+    "Oktopus, frisch oder tiefgekühlt, 1 kg",
+    "Kurze Röhrchennudeln (Kofto Makaronaki) 400 g",
+    "Zwiebel 1 große",
+    "Knoblauch 2 Zehen",
+    "Reife Tomaten, gerieben, 400 g (oder 1 Dose gehackte Tomaten)",
+    "Tomatenmark 1 EL",
+    "Trockener Rotwein 1 Glas",
+    "Olivenöl 1/2 Tasse",
+    "Lorbeerblätter 1-2, Pimentkörner 3-4",
+    "Salz, Pfeffer, Zucker 1 Prise"
+   ],
+   "steps": [
+    "Putzen: Den Oktopus gut waschen und Augen und Schnabel entfernen, falls vorhanden. Tiefgekühlten vollständig auftauen. Arme und Kopf in 3-4 cm große Stücke schneiden.",
+    "Flüssigkeit austreten lassen: Den Oktopus OHNE Öl und Wasser bei mittlerer Hitze in einen weiten Topf geben. Er gibt seine eigene Flüssigkeit ab. 15-20 Minuten im eigenen Saft köcheln, bis er fast alles herausgezogen hat. Wichtig: Oktopus braucht anfangs kein Wasser — er gart in seiner eigenen Flüssigkeit. Das hält ihn saftig und verhindert, dass er zäh wird.",
+    "Anbraten: Das Olivenöl zugeben und den Oktopus 2-3 Minuten anbraten. Die gehackte Zwiebel und den Knoblauch zugeben und rühren, bis sie weich sind.",
+    "Mit Wein ablöschen: Den Rotwein angießen und den Alkohol 2-3 Minuten verdampfen lassen, dabei den Topfboden abkratzen.",
+    "Sauce: Die geriebene Tomate, das in etwas Wasser aufgelöste Tomatenmark, die Lorbeerblätter, den Piment, eine Prise Zucker, Salz und Pfeffer zugeben. Zugedeckt bei niedriger Hitze 40-50 Minuten schmoren, bis der Oktopus zart ist und die Sauce angedickt hat.",
+    "Wasser zugeben: Ist der Oktopus fast fertig, etwa 2-3 Tassen heißes Wasser zugeben, damit genug Flüssigkeit zum Garen der Nudeln da ist.",
+    "Nudeln garen: Die Nudeln in die Sauce geben und gut umrühren. Offen 10-12 Minuten unter häufigem Rühren garen, damit nichts ansetzt, bis sie die Flüssigkeit aufgenommen haben und eine leicht dickliche Sauce bleibt.",
+    "Ruhen lassen: Vom Herd nehmen, die Lorbeerblätter entfernen und das Gericht vor dem Servieren zugedeckt 5 Minuten ruhen lassen."
+   ],
+   "wine": "Trockener Rotwein wie Agiorgitiko oder ein frischer Rosé.",
+   "plate": "Heiß in einem tiefen Teller mit reichlich Sauce, frisch gemahlenem Pfeffer und etwas gehackter Petersilie servieren."
+  },
+  "zele_frouta": {
+   "n": "Fruchtgelee",
+   "ing": [
+    "Geleepulver 2 Päckchen",
+    "Heißes Wasser 500 ml",
+    "Kaltes Wasser 400 ml",
+    "Gemischtes frisches Obst 400 g",
+    "Zucker 2 EL (optional)"
+   ],
+   "steps": [
+    "Das Geleepulver vollständig im heißen Wasser auflösen und rühren, bis keine Körner mehr am Boden bleiben.",
+    "Das kalte Wasser zugeben und die Mischung auf Zimmertemperatur abkühlen lassen.",
+    "Wichtig: Niemals frische Ananas, Kiwi oder Papaya verwenden. Sie enthalten Enzyme, die die Gelatine abbauen, und das Gelee wird nie fest.",
+    "Das Obst in gleichmäßige Stücke schneiden und auf Küchenpapier leicht trocknen.",
+    "Eine dünne Schicht Gelee in die Form gießen und 30 Minuten kalt stellen, bis sie gerade klebrig ist.",
+    "Das Obst auf dieser festen Schicht anordnen — so sinkt nicht alles zu Boden — und das restliche Gelee darüber gießen.",
+    "Mindestens 4 Stunden kalt stellen. Zum Stürzen den Boden nur 5 Sekunden in warmes Wasser tauchen."
+   ],
+   "wine": "Saft oder Sprudelwasser mit Zitrone.",
+   "plate": "Auf eine Platte stürzen, sodass das Obst durch das klare Gelee sichtbar ist."
+  },
   "eliestoursi": {
    "n": "Oliven & eingelegtes Gemüse",
    "ing": [
