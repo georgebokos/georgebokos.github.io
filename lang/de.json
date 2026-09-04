@@ -4564,6 +4564,580 @@
    ],
    "wine": "Nicht zutreffend — eine Basis für andere Desserts.",
    "plate": "Als Füllung verwenden oder in kleinen Gläsern mit Obst und einem Keks servieren."
+  },
+  "krepes_klasikes": {
+   "n": "Klassische Crêpes",
+   "ing": [
+    "Mehl 200 g",
+    "Milch 500 ml",
+    "Eier 3",
+    "Geschmolzene Butter 50 g",
+    "Zucker 1 EL",
+    "Salz 1 Prise",
+    "Butter für die Pfanne"
+   ],
+   "steps": [
+    "Teig anrühren: Die Eier mit der Milch verquirlen, dann das Mehl nach und nach unter Rühren zugeben, damit keine Klümpchen entstehen.",
+    "Passieren: Den Teig durch ein Sieb gießen. Wichtig: Dieser eine Schritt entfernt jedes Klümpchen und macht den Unterschied zwischen glatten und fleckigen Crêpes.",
+    "Butter zugeben: Die geschmolzene Butter, den Zucker und das Salz unterrühren.",
+    "Ruhen lassen: Wichtig: Den Teig mindestens 1 Stunde im Kühlschrank ruhen lassen. Das Mehl quillt und das Gluten entspannt sich — das macht Crêpes zart und leicht wendbar.",
+    "Konsistenz prüfen: Der Teig soll so dünn sein wie Sahne. Ist er beim Ruhen dicker geworden, mit etwas Milch verdünnen.",
+    "Pfanne erhitzen: Eine Crêpepfanne bei mittlerer bis starker Hitze erhitzen und mit Butter auf Küchenpapier auswischen — ein dünner Film, nie eine Lache.",
+    "Erste Crêpe: Man muss akzeptieren, dass die erste immer misslingt. Sie kalibriert die Hitze und würzt die Pfanne.",
+    "Eingießen: Eine kleine Kelle in die Mitte gießen und die Pfanne sofort schwenken, damit sich der Teig zu einem dünnen, gleichmäßigen Kreis verteilt.",
+    "Backen: Etwa 1 Minute backen, bis sich die Ränder lösen und die Unterseite goldbraun ist, dann wenden und 30 Sekunden weiterbacken.",
+    "Stapeln: Auf einem Teller übereinander stapeln — der eingeschlossene Dampf hält sie weich und geschmeidig."
+   ],
+   "wine": "Cidre oder Kaffee.",
+   "plate": "Zu Dreiecken oder Rollen falten und mit Puderzucker und Zitrone bestäuben."
+  },
+  "krepes_nutella": {
+   "n": "Crêpes mit Nuss-Nougat-Creme",
+   "ing": [
+    "Crêpeteig (siehe klassische Crêpes)",
+    "Nuss-Nougat-Creme 300 g",
+    "Bananen 2",
+    "Haselnüsse 60 g",
+    "Puderzucker zum Bestäuben",
+    "Butter für die Pfanne"
+   ],
+   "steps": [
+    "Teig vorbereiten: Den klassischen Crêpeteig zubereiten und 1 Stunde ruhen lassen.",
+    "Haselnüsse rösten: Die Haselnüsse in einer trockenen Pfanne 4 Minuten rösten, dann in einem Tuch abreiben, um die Häutchen zu lösen, und grob hacken.",
+    "Creme erwärmen: Die Nuss-Nougat-Creme in einer Schüssel über warmem Wasser leicht erwärmen oder 15 Sekunden in der Mikrowelle.",
+    "Wichtig: Kalte Nuss-Nougat-Creme reißt die Crêpe beim Verstreichen. Warm gleitet sie auf, ohne die Oberfläche zu beschädigen.",
+    "Crêpes backen: Die Crêpes bei mittlerer bis starker Hitze etwa 1 Minute pro Seite backen.",
+    "Bestreichen: Die Creme auftragen, solange die Crêpe noch warm in der Pfanne oder auf dem Teller ist — die Restwärme hilft, sie dünn und gleichmäßig zu verteilen.",
+    "Wichtig: Ringsum einen 2 cm breiten Rand frei lassen, sonst quillt die Füllung beim Falten an den Seiten heraus.",
+    "Banane zugeben: Bananenscheiben auf eine Hälfte legen.",
+    "Falten: Einmal in der Mitte falten und noch einmal zu einem Dreieck, oder zu einer Rolle aufrollen.",
+    "Abschluss: Die gerösteten Haselnüsse darüber streuen, mit Puderzucker bestäuben und sofort servieren, solange die Creme noch flüssig ist."
+   ],
+   "wine": "Heiße Schokolade oder Milch.",
+   "plate": "Zu einem Dreieck falten, aus dem die Creme quillt, und gehackte Haselnüsse zugeben."
+  },
+  "kritharaki_kotopoulo": {
+   "n": "Kritharaki mit Hähnchen",
+   "ing": [
+    "Kritharaki (Orzo) 300 g",
+    "Hähnchen 800 g in Stücken",
+    "Geriebene Tomate 400 g",
+    "Zwiebel 1",
+    "Knoblauch 2 Zehen",
+    "Weißwein 100 ml",
+    "Zimt",
+    "Piment",
+    "Olivenöl",
+    "Kefalotyri-Käse"
+   ],
+   "steps": [
+    "Hähnchen anbraten: In einem Topf mit Olivenöl die 800 g Hähnchenstücke rundum anbraten und beiseitestellen. Das Anbraten gibt Farbe und Tiefe.",
+    "Aromaten anbraten: Im selben Fett die fein gehackte Zwiebel und die 2 Knoblauchzehen weich dünsten. Mit den 100 ml Weißwein ablöschen und den Alkohol verdampfen lassen.",
+    "Sauce und Gewürze: Die 400 g geriebene Tomate, Zimt, Piment, Salz, Pfeffer und 400 ml Wasser zugeben. Das Hähnchen zurückgeben und zugedeckt 20 Minuten schmoren.",
+    "Kritharaki zugeben: Die 300 g Kritharaki in die Sauce geben und umrühren. WICHTIG: Auf ausreichend Flüssigkeit achten, denn die Nudeln saugen viel Wasser auf — bei Bedarf heißes Wasser nachgießen.",
+    "Kritharaki garen: Weitere 15-18 Minuten garen und regelmäßig rühren, damit nichts am Boden ansetzt und alles gleichmäßig gart.",
+    "Ruhen und servieren: Vom Herd nehmen und 5 Minuten stehen lassen, damit sich die Feuchtigkeit setzt. Mit reichlich geriebenem Kefalotyri servieren."
+   ],
+   "wine": "Trockener Rotwein.",
+   "plate": "Tiefer Teller, geriebener Kefalotyri."
+  },
+  "kritharoto": {
+   "n": "Kritharoto (Orzo-Risotto)",
+   "ing": [
+    "Kritharaki (Orzo) 400 g",
+    "Zwiebel 1",
+    "Knoblauch 2 Zehen",
+    "Weißwein 1/2 Tasse",
+    "Gemüsebrühe 1,2 Liter",
+    "Parmesan 80 g",
+    "Butter 30 g",
+    "Frischer Thymian",
+    "Olivenöl",
+    "Salz & Pfeffer"
+   ],
+   "steps": [
+    "Anbraten: Die Zwiebel in Olivenöl 5 Minuten dünsten. Knoblauch und Thymian zugeben und 1 Minute mitdünsten.",
+    "Kritharaki: Die Nudeln zugeben und 2 Minuten rühren, damit sie leicht rösten — sie bekommen ein nussiges Aroma.",
+    "Wein: Mit Wein ablöschen und rühren, bis er verdampft ist.",
+    "Brühe: Die heiße Brühe nach und nach zugeben (nicht alles auf einmal) und wie bei einem Risotto rühren. Immer nachgießen, sobald die Flüssigkeit aufgenommen ist. Wichtig: Die Brühe in einem separaten Topf heiß halten.",
+    "Garen: 18-20 Minuten weitergaren, bis die Nudeln al dente sind.",
+    "Mantecatura: Vom Herd nehmen, Butter und Parmesan zugeben. Kräftig rühren, damit alles cremig wird. Wichtig: Das ist das Geheimnis der cremigen Textur."
+   ],
+   "wine": "Trockener Weißwein.",
+   "plate": "Cremig, in einem flachen Teller mit geriebenem Parmesan."
+  },
+  "ladopita": {
+   "n": "Griechisches Olivenöl-Fladenbrot",
+   "ing": [
+    "Mehl 400 g",
+    "Lauwarmes Wasser 200 ml",
+    "Trockenhefe 7 g",
+    "Olivenöl 6 EL",
+    "Salz 1 TL",
+    "Oregano",
+    "Sesam"
+   ],
+   "steps": [
+    "Die Hefe im Wasser auflösen und 5 Minuten stehen lassen.",
+    "Mehl, Salz, 4 EL Öl und das Wasser mischen. 8 Minuten kneten.",
+    "30 Minuten gehen lassen.",
+    "Den Teig in einer Form ausbreiten, mit Öl bestreichen und mit Oregano und Sesam bestreuen.",
+    "Bei 200 °C 20-25 Minuten backen."
+   ]
+  },
+  "lagana": {
+   "n": "Lagana (Fastenfladenbrot)",
+   "ing": [
+    "Mehl 500 g",
+    "Lauwarmes Wasser 300 ml",
+    "Trockenhefe 7 g",
+    "Olivenöl 3 EL",
+    "Salz",
+    "Sesam"
+   ],
+   "steps": [
+    "Hefe aktivieren: Die 7 g Trockenhefe im 300 ml lauwarmen Wasser auflösen (nicht heiß, etwa 35 °C). Wichtig: Zu heißes Wasser tötet die Hefe und der Teig geht nicht auf. 5 Minuten stehen lassen, bis es leicht schäumt — ein Zeichen, dass die Hefe lebt.",
+    "Kneten: In einer Schüssel die 500 g Mehl mit dem Salz mischen, die Hefemischung und die 3 EL Olivenöl zugeben. 8-10 Minuten kneten, bis der Teig glatt und elastisch ist — gutes Kneten entwickelt das Gluten, das für eine luftige Krume sorgt.",
+    "Erstes Gehen: Die Schüssel mit einem Tuch abdecken und den Teig an einem warmen Ort etwa 1 Stunde gehen lassen, bis er sich verdoppelt hat. Das Gehen entwickelt Geschmack und macht das Lagana leicht.",
+    "Formen: Den Teig auf Backpapier dünn und flach ausbreiten, eher länglich, wie es für Lagana typisch ist. Mit nassen Fingern rundum Mulden eindrücken — sie halten die Form und verhindern zu starkes Aufgehen.",
+    "Mit Sesam bestreuen: Die Oberfläche leicht mit Wasser oder Öl bestreichen und großzügig mit Sesam bestreuen. Die Feuchtigkeit lässt den Sesam haften, sodass er beim Backen nicht abfällt.",
+    "Backen: Im vorgeheizten Ofen bei 220 °C 20-25 Minuten backen, bis eine goldene, knusprige Kruste entsteht. Die hohe Temperatur bräunt außen schnell und hält das Innere locker und luftig."
+   ],
+   "plate": "Mit Taramosalata, Oliven und Halva servieren."
+  },
+  "lahanodomades": {
+   "n": "Kohlrouladen",
+   "ing": [
+    "Weißkohl 1 großer",
+    "Rinderhackfleisch 500 g",
+    "Carolina-Reis 1/2 Tasse",
+    "Zwiebel 1, fein gehackt",
+    "Frische Petersilie",
+    "Getrocknete Minze 1 TL",
+    "Eier 2",
+    "Saft von 2 Zitronen",
+    "Salz & Pfeffer"
+   ],
+   "steps": [
+    "Kohl blanchieren: Den Strunk unten herausschneiden und den ganzen Kohl 3-4 Minuten in kochendes Wasser tauchen. Die Blätter einzeln ablösen, sobald sie weich werden. Man braucht 18-20 große Blätter — geschmeidig genug zum Rollen, ohne zu reißen.",
+    "Füllung: Rinderhack, Reis (roh), Zwiebel, Petersilie, Minze, Eier, Salz und Pfeffer vermengen. WICHTIG: Der Reis kommt roh hinein, denn er gart in den Rouladen und nimmt dabei deren Saft auf.",
+    "Rollen: 1-2 EL Füllung an den Blattansatz setzen, die Seiten einschlagen und fest zu einer Rolle wickeln. In Schichten mit der Naht nach unten in den Topf legen.",
+    "Schmoren: Die Rouladen mit übrigen Kohlblättern abdecken. Brühe oder Wasser angießen, bis sie bedeckt sind. Ein Gewicht darauflegen (z. B. einen Teller), damit sie sich nicht aufrollen. Zugedeckt 60-70 Minuten köcheln.",
+    "Avgolemono: Die Eier aufschlagen, Zitronensaft zugeben und nach und nach heiße Brühe aus dem Topf unterschlagen (temperieren). Zurück in den Topf gießen und kreisend einrühren — danach nicht mehr aufkochen lassen.",
+    "Servieren: Heiß mit reichlich Avgolemono-Sauce servieren."
+   ],
+   "wine": "Trockener Weißwein.",
+   "plate": "In einem tiefen Teller mit Avgolemono-Sauce."
+  },
+  "lahanorizo": {
+   "n": "Kohlreis",
+   "ing": [
+    "Weißkohl 1 mittelgroßer (etwa 1 kg)",
+    "Carolina-Reis 1 Tasse",
+    "Zwiebel 1 große",
+    "Olivenöl 1/2 Tasse",
+    "Tomate, gerieben, 2 (oder 1 EL Tomatenmark)",
+    "Wasser oder Gemüsebrühe 2-2,5 Tassen",
+    "Saft von 1 Zitrone",
+    "Dill, fein gehackt, 1 Bund",
+    "Salz und Pfeffer"
+   ],
+   "steps": [
+    "Kohl vorbereiten: Die äußeren Blätter und den harten Strunk entfernen. Den Kohl fein in Streifen schneiden und gut waschen. Abtropfen lassen.",
+    "Anbraten: Das Olivenöl in einem weiten Topf erhitzen und die gehackte Zwiebel bei mittlerer Hitze weich und glasig dünsten, ohne sie zu bräunen.",
+    "Kohl zusammenfallen lassen: Den Kohl zugeben und rühren. 8-10 Minuten unter Rühren garen, bis er zusammenfällt und sein Volumen deutlich abnimmt.",
+    "Tomate: Die geriebene Tomate (oder in etwas Wasser aufgelöstes Tomatenmark), Salz und Pfeffer zugeben. 5 Minuten garen, damit sich die Aromen verbinden.",
+    "Wasser zugeben: Das heiße Wasser oder die Brühe angießen und aufkochen. Wichtig: Das Verhältnis Flüssigkeit zu Reis sollte etwa 2 zu 1 sein, damit der Kohlreis saftig bleibt und nicht trocken oder klebrig wird.",
+    "Reis zugeben: Den gewaschenen Reis zugeben, einmal umrühren und die Hitze reduzieren. Zugedeckt 15-18 Minuten köcheln, bis die Flüssigkeit aufgenommen und der Reis weich ist.",
+    "Abschluss: Die Hitze abschalten, Dill und Zitronensaft zugeben. Vorsichtig umrühren, zudecken und vor dem Servieren 10 Minuten ruhen lassen."
+   ],
+   "wine": "Trockener Weißwein oder Retsina.",
+   "plate": "Heiß mit Feta, Oliven und frischem Brot servieren."
+  },
+  "lavraki_alati": {
+   "n": "Wolfsbarsch in der Salzkruste",
+   "ing": [
+    "Ganzer Wolfsbarsch 500-600 g (geputzt)",
+    "Grobes Salz 1 kg",
+    "Eiweiß 2",
+    "Rosmarin & Thymian",
+    "Zitrone 1",
+    "Knoblauch 2 Zehen"
+   ],
+   "steps": [
+    "Fisch füllen: Den Fisch waschen und trocken tupfen. Die Bauchhöhle mit Rosmarin, Thymian, Zitronenscheiben und Knoblauch füllen.",
+    "Salzmischung: Das grobe Salz mit den 2 Eiweiß mischen, bis es wie nasser Sand ist. So bleibt die Kruste beim Backen kompakt.",
+    "Einhüllen: Die Hälfte der Salzmischung auf ein Blech geben, den Fisch darauf legen und vollständig mit dem Rest bedecken. Wichtig: Das Salz soll den Fisch rundum 1-2 cm dick bedecken.",
+    "Backen: Bei 200 °C 25-30 Minuten backen. Die Salzkruste mit einem Löffel aufschlagen. Mit Zitrone und Olivenöl servieren."
+   ],
+   "wine": "Weißer Assyrtiko aus Santorini.",
+   "plate": "Mit Olivenöl, Zitrone und Salzkartoffeln."
+  },
+  "lavraki_fournou": {
+   "n": "Wolfsbarsch aus dem Ofen",
+   "ing": [
+    "Wolfsbarsch 600 g, ganz",
+    "Olivenöl 4 EL",
+    "Saft von 1 Zitrone",
+    "Knoblauch 3 Zehen",
+    "Frische Petersilie",
+    "Thymian",
+    "Tomate 1, in Scheiben",
+    "Salz & Pfeffer"
+   ],
+   "steps": [
+    "Putzen: Den Wolfsbarsch auf jeder Seite 2-3 Mal einschneiden. Innen und außen mit Salz und Pfeffer würzen.",
+    "Füllen: Die Bauchhöhle mit Zitronenscheiben, Knoblauch, Petersilie und Thymian füllen — sie würzen den Fisch beim Backen von innen.",
+    "Form: Die Form mit Tomatenscheiben auslegen (als Unterlage) und den Wolfsbarsch darauf legen. Mit Olivenöl und Zitrone beträufeln.",
+    "Backen: Bei 200 °C 25-30 Minuten backen. WICHTIG: Der Fisch ist fertig, wenn sich das Fleisch mit der Gabel leicht löst und nicht mehr glasig ist.",
+    "Servieren: Die Mittelgräte entfernen und die Filets mit dem Gemüse und der Sauce aus der Form servieren."
+   ],
+   "wine": "Trockener weißer Assyrtiko.",
+   "plate": "Ganz in der Form oder als Filets."
+  },
+  "lavraki_sxaras": {
+   "n": "Gegrillter Wolfsbarsch",
+   "ing": [
+    "Frischer geputzter Wolfsbarsch 2 (je etwa 600 g)",
+    "Olivenöl 6 EL",
+    "Saft von 2 Zitronen",
+    "Knoblauch 2 Zehen",
+    "Getrockneter Oregano 1 TL",
+    "Frische Petersilie 1 kleines Bund",
+    "Grobes Salz 2 TL",
+    "Gemahlener schwarzer Pfeffer 1 TL",
+    "Zitronenscheiben zum Füllen 1 Zitrone"
+   ],
+   "steps": [
+    "Fisch vorbereiten: Den Wolfsbarsch von Schuppen und Innereien befreien, unter kaltem Wasser gut abspülen und innen wie außen sehr gründlich mit Küchenpapier trocknen.",
+    "Füllen: Die Bauchhöhle jedes Fisches mit Zitronenscheiben, einer halbierten Knoblauchzehe und etwas Petersilie füllen, um ihn von innen zu würzen.",
+    "Würzen: Den Fisch außen mit Salz und Pfeffer würzen und an der dicksten Stelle 2-3 schräge Schnitte setzen, damit er bis zur Gräte gleichmäßig gart.",
+    "Wichtig: Der Grill muss sehr gut vorgeheizt und sauber sein und vor dem Auflegen leicht geölt werden, damit die Haut nicht klebt und beim Wenden ganz bleibt.",
+    "Grillen: Den Wolfsbarsch bei mittlerer bis starker Hitze je nach Größe etwa 6-8 Minuten pro Seite grillen, ohne ihn zu oft zu bewegen, damit sich eine schöne Kruste bildet.",
+    "Garprobe: Der Fisch ist fertig, wenn das Fleisch an der Gräte weiß und undurchsichtig ist und sich leicht mit der Gabel löst.",
+    "Ladolemono: Das Olivenöl mit Zitronensaft, gehackter Petersilie und Oregano mischen und sofort nach dem Grill über den Fisch träufeln.",
+    "Servieren: Sofort heiß servieren, ganz oder am Tisch filetiert, mit dem Ladolemono dazu."
+   ],
+   "wine": "Weißer Assyrtiko aus Santorini, frisch und trocken, der die Feinheit des Fisches unterstreicht.",
+   "plate": "Den Wolfsbarsch ganz auf einer Platte mit Zitronenscheiben und Petersilienzweigen servieren, dazu gekochtes Blattgemüse oder griechischer Bauernsalat und Ofenkartoffeln."
+  },
+  "laxanika_sxaras": {
+   "n": "Gegrilltes Gemüse",
+   "ing": [
+    "Auberginen, 2 große",
+    "Zucchini, 3",
+    "Florina-Paprika, 2",
+    "Rote Paprika, 1",
+    "Zwiebeln, 2",
+    "Reife Tomaten, 2",
+    "Olivenöl 100 ml",
+    "Saft von 1 Zitrone",
+    "Oregano 1 EL",
+    "Salz, frisch gemahlener Pfeffer"
+   ],
+   "steps": [
+    "Vorbereitung: Alles Gemüse gut waschen und trocken tupfen. Auberginen und Zucchini längs in etwa 1 cm dicke Scheiben schneiden, die Paprika halbieren und entkernen, die Zwiebeln in dicke Ringe schneiden und mit einem Zahnstocher zusammenhalten, damit sie auf dem Grill nicht auseinanderfallen.",
+    "Auberginen salzen: Die Auberginenscheiben leicht salzen und 15-20 Minuten in einem Sieb stehen lassen, damit sie ihre bittere Flüssigkeit abgeben, dann mit Küchenpapier trocken tupfen.",
+    "Wichtig: Der Grill muss gut durchgeglüht und die Kohle mit weißer Asche überzogen sein, bevor das Gemüse aufkommt, damit es gleichmäßig gart und das typische Raucharoma annimmt, ohne außen zu verbrennen und innen roh zu bleiben.",
+    "Ölen: Alle geschnittenen Gemüse mit einem Pinsel mit Olivenöl bestreichen und kurz vor dem Grillen leicht mit Salz und Pfeffer bestreuen.",
+    "Grillen: Zuerst das Gemüse auflegen, das länger braucht, wie Paprika und Zwiebeln, dann Auberginen, Zucchini und Tomaten. Mit der Zange regelmäßig wenden, damit alles rundum gart und schöne Grillstreifen bekommt.",
+    "Garen beenden: Das Gemüse ist fertig, wenn es weich ist und leicht gebräunte, karamellisierte Ränder hat, je nach Art und Dicke meist nach 8-15 Minuten.",
+    "Servieren: Das warme Gemüse auf einer Platte anrichten, mit frischem Zitronensaft und einem großzügigen Strahl Olivenöl beträufeln, mit Oregano bestreuen und sofort servieren."
+   ],
+   "wine": "Passt gut zu einem weißen Assyrtiko oder einem kühlen Rosé.",
+   "plate": "Auf einer Platte mit Feta und frischem Brot serviert, als Beilage oder Hauptgericht."
+  },
+  "lazania": {
+   "n": "Lasagne",
+   "ing": [
+    "Lasagneplatten 250 g",
+    "Rinderhackfleisch 500 g",
+    "Geriebene Tomate 400 g",
+    "Zwiebel 1",
+    "Knoblauch 2 Zehen",
+    "Rotwein 100 ml",
+    "Milch 800 ml",
+    "Mehl 4 EL",
+    "Butter 70 g",
+    "Kefalotyri-Käse 150 g",
+    "Zimt"
+   ],
+   "steps": [
+    "Bolognese: Zwiebel und 2 Knoblauchzehen anbraten, die 500 g Rinderhack zugeben und kräftig bräunen. Mit den 100 ml Rotwein ablöschen, die 400 g geriebene Tomate und etwas Zimt zugeben und 25 Minuten sanft köcheln, bis die Sauce andickt.",
+    "Béchamel zubereiten: Die 70 g Butter schmelzen, die 4 EL Mehl zugeben und 1-2 Minuten rühren. Nach und nach die 800 ml Milch unter ständigem Rühren zugeben, damit keine Klümpchen entstehen, bis eine samtige Creme entsteht.",
+    "Platten vorbereiten: Müssen die Lasagneplatten vorgekocht werden, der Packungsanweisung folgen. Andernfalls darauf achten, dass die Sauce saftig genug ist, damit die Platten im Ofen weich werden.",
+    "Schichten: In einer gefetteten Form etwas Béchamel auf den Boden geben, dann Lasagneplatten, Bolognese und Käse. Die Schichten etwa 3 Mal wiederholen. WICHTIG: Etwas Béchamel am Boden verhindert, dass die Platten ankleben und verbrennen.",
+    "Letzte Schicht: Mit Béchamel und reichlich geriebenem Kefalotyri abschließen, damit beim Backen eine goldene, knusprige Kruste entsteht.",
+    "Backen und ruhen: Bei 180 °C 40-45 Minuten backen, bis die Oberfläche goldbraun ist. Die Lasagne vor dem Schneiden 15 Minuten abkühlen lassen, damit sich die Schichten setzen und nicht zerfallen."
+   ],
+   "wine": "Trockener Rotwein.",
+   "plate": "Quadratische Portionen, geriebener Käse obenauf."
+  },
+  "loukanka_piperies": {
+   "n": "Bratwurst mit Paprika",
+   "ing": [
+    "Bauernwürste 300 g",
+    "Paprika 3 (rot, grün, gelb)",
+    "Zwiebel 1",
+    "Knoblauch 2 Zehen",
+    "Geriebene Tomate 200 g",
+    "Olivenöl",
+    "Oregano",
+    "Salz & Pfeffer"
+   ],
+   "steps": [
+    "Würste braten: Die 300 g Bauernwürste in Scheiben schneiden und in etwas Olivenöl rundum braun braten, dann herausnehmen. So tritt ihr Fett aus und würzt das Öl.",
+    "Gemüse anbraten: In derselben Pfanne die 3 in Streifen geschnittenen Paprika, die fein gehackte Zwiebel und die 2 Knoblauchzehen etwa 5 Minuten weich dünsten.",
+    "Tomate zugeben: Die 200 g geriebene Tomate, Oregano, Salz und Pfeffer zugeben und die Sauce eindicken lassen.",
+    "Vereinen: Die Würste zurück in die Pfanne geben. Wichtig: Erst gegen Ende zugeben, damit sie durch langes Garen nicht zäh werden.",
+    "Köcheln: 10 Minuten köcheln, bis sich die Aromen verbinden und die Sauce andickt.",
+    "Servieren: Sofort heiß servieren, idealerweise mit frischem Brot zum Auftunken der Sauce."
+   ],
+   "wine": "Trockener Rotwein.",
+   "plate": "Mit Brot oder Reis, Oregano obenauf."
+  },
+  "loukoumades": {
+   "n": "Loukoumades (griechische Honigbällchen)",
+   "ing": [
+    "Mehl 200 g",
+    "Trockenhefe 7 g",
+    "Warmes Wasser 250 ml",
+    "Honig zum Servieren",
+    "Gemahlener Zimt",
+    "Olivenöl zum Frittieren (reichlich)"
+   ],
+   "steps": [
+    "Teig: Die Hefe in warmem Wasser (37 °C) mit 1 TL Zucker auflösen. 5 Minuten stehen lassen, bis es schäumt — ein Zeichen, dass sie aktiv ist.",
+    "Mischen: Mehl und Salz zugeben und gut verrühren. Wichtig: Der Teig soll dünnflüssig sein — dünner als ein normaler Teig.",
+    "Ruhen lassen: Abdecken und 30-45 Minuten gehen lassen, bis er sich verdoppelt hat und Blasen wirft.",
+    "Frittieren: Das Öl auf 175 °C erhitzen. Kleine Löffelportionen Teig ins Öl geben. 2-3 Minuten frittieren und dabei wenden, für gleichmäßige Bräunung.",
+    "Servieren: Sofort mit reichlich Honig und Zimt servieren. Wichtig: Heiß servieren — kalt verlieren sie ihren Reiz."
+   ],
+   "wine": "-",
+   "plate": "Auf einem Teller mit Honig und Zimt."
+  },
+  "loukoumia": {
+   "n": "Hausgemachtes Loukoumi",
+   "ing": [
+    "Zucker 800 g",
+    "Wasser 600 ml",
+    "Speisestärke 120 g",
+    "Zitronensaft 2 EL",
+    "Rosenwasser oder Mastix 2 EL",
+    "Puderzucker 100 g",
+    "Speisestärke 50 g (zum Bestäuben)",
+    "Lebensmittelfarbe",
+    "Pistazien 100 g (optional)"
+   ],
+   "steps": [
+    "Den Zucker mit 300 ml des Wassers und dem Zitronensaft auf 115 °C kochen.",
+    "Wichtig: Der Zitronensaft ist unverzichtbar — ohne Säure kristallisiert der Zucker und das Loukoumi wird körnig statt weich.",
+    "Die Speisestärke im restlichen kalten Wasser auflösen und klümpchenfrei verrühren.",
+    "Die Stärkemischung in dünnem Strahl unter kräftigem, ständigem Rühren in den heißen Sirup gießen.",
+    "Wichtig: Nun 60-75 Minuten bei sehr niedriger Hitze unter häufigem Rühren kochen. Dieses lange, langsame Kochen macht die Masse zäh-elastisch — eine Abkürzung gibt es nicht.",
+    "Die Masse ist fertig, wenn sie durchscheinend und tiefgolden wird und sich als dicke Masse vom Topf löst.",
+    "Rosenwasser, Farbe und Pistazien ganz zum Schluss einrühren.",
+    "In eine mit Stärke bestäubte Form gießen und 12 Stunden bei Zimmertemperatur stehen lassen — nie im Kühlschrank, dort schwitzt es.",
+    "Mit einem geölten Messer in Würfel schneiden und in einer Mischung aus Puderzucker und Stärke wälzen.",
+    "In einer Dose zwischen Schichten derselben Mischung aufbewahren."
+   ],
+   "wine": "Griechischer Kaffee — die klassische Begleitung.",
+   "plate": "Auf einer Platte mit Puderzucker bestäubt servieren, mit einem Glas Wasser dazu."
+  },
+  "macarons": {
+   "n": "Macarons",
+   "ing": [
+    "Mandelmehl 150 g",
+    "Puderzucker 150 g",
+    "Eiweiß 2 (110 g, gereift)",
+    "Kristallzucker 150 g",
+    "Wasser 50 ml",
+    "Lebensmittelfarbe, einige Tropfen",
+    "Weiche Butter 100 g",
+    "Puderzucker 80 g",
+    "Marmelade oder Praliné 50 g"
+   ],
+   "steps": [
+    "Mandelmehl vorbereiten: Das Mandelmehl gründlich mit dem Puderzucker sieben, sodass keine Klümpchen bleiben.",
+    "Italienische Meringue: Wasser mit Zucker auf 118 °C kochen und langsam in die Hälfte des geschlagenen Eiweißes gießen, dabei weiterschlagen, bis die Meringue abgekühlt ist.",
+    "Macaronage: Das restliche Eiweiß mit der Mandelmischung verrühren, dann die Meringue zugeben und mit kreisenden Bewegungen behutsam unterheben.",
+    "Wichtig: Die Masse muss eine lavaartige Konsistenz erreichen — fällt sie vom Teigschaber, soll sie ein Band bilden, das binnen 20 Sekunden verschwindet, sonst reißen die Macarons oder bilden keine 'Füßchen'.",
+    "Dressieren: Die Masse in einen Spritzbeutel füllen und gleichmäßige Kreise von 3-4 cm auf ein mit Backpapier belegtes Blech spritzen, das Blech leicht aufklopfen, um Luftblasen zu lösen.",
+    "Ruhen lassen: Die Macarons 30-45 Minuten bei Zimmertemperatur ruhen lassen, bis sich oben eine dünne, feste Haut bildet.",
+    "Backen: Bei 150 °C 13-15 Minuten backen und das Blech nach der Hälfte drehen, für gleichmäßiges Backen.",
+    "Füllen und zusammensetzen: Butter mit Puderzucker zu einer Creme aufschlagen, die Hälfte der Schalen füllen und mit der anderen Hälfte bedecken."
+   ],
+   "wine": "Süßer Muskat-Schaumwein",
+   "plate": "Auf einer Platte in kräftigen Farben servieren, idealerweise nach 24 Stunden im Kühlschrank zum Durchziehen."
+  },
+  "mafin_sokolatas": {
+   "n": "Schokoladenmuffins",
+   "ing": [
+    "Mehl 280 g",
+    "Kakaopulver 50 g",
+    "Zucker 200 g",
+    "Eier 2",
+    "Milch 240 ml",
+    "Sonnenblumenöl 120 ml",
+    "Schokotropfen 150 g",
+    "Backpulver 2 TL",
+    "Vanilleextrakt 1 TL",
+    "Salz 1 Prise"
+   ],
+   "steps": [
+    "Den Ofen richtig auf 200 °C vorheizen. Wichtig: Muffins brauchen einen heißen Start — dieser erste Hitzestoß gibt ihnen die gewölbte Haube.",
+    "Alle trockenen Zutaten in einer Schüssel mischen: Mehl, Kakao, Zucker, Backpulver und Salz.",
+    "Alle flüssigen Zutaten in einer zweiten Schüssel verquirlen: Eier, Milch, Öl und Vanille.",
+    "Wichtig: Die flüssigen in die trockenen Zutaten gießen und nur 10-12 Mal mit einem Löffel rühren. Der Teig soll klumpig bleiben — das ist die goldene Regel für Muffins.",
+    "Die Schokotropfen mit zwei bis drei weiteren Bewegungen unterheben, nicht mehr.",
+    "In Papierförmchen verteilen und diese zu drei Vierteln füllen, damit Platz zum Aufwölben bleibt.",
+    "Bei 200 °C 5 Minuten backen, dann auf 180 °C reduzieren und weitere 15 Minuten backen.",
+    "Dieser Temperaturabfall lässt die Haube kräftig aufgehen und danach durchgaren, ohne zu verbrennen.",
+    "Vor dem Essen 10 Minuten auf einem Gitter abkühlen lassen, damit die Schokotropfen fest werden."
+   ],
+   "wine": "Milch oder ein Cappuccino.",
+   "plate": "In den Papierförmchen in einem Korb servieren, leicht warm."
+  },
+  "mageiritsa": {
+   "n": "Mageiritsa (Ostersuppe)",
+   "ing": [
+    "Lamminnereien 500 g",
+    "Frische Frühlingszwiebeln 8",
+    "Reis 100 g",
+    "Frischer Dill",
+    "Salatblätter 6",
+    "Eier 3",
+    "Zitronen 2",
+    "Butter 2 EL"
+   ],
+   "steps": [
+    "Innereien reinigen: Die 500 g Lamminnereien sehr gut waschen und 10 Minuten kochen. Abgießen und fein hacken. Wichtig: Das erste Kochen und Abschäumen reinigt die Innereien und nimmt den strengen Geruch.",
+    "Anbraten: Die 2 EL Butter schmelzen und die 8 fein gehackten Frühlingszwiebeln weich und süß dünsten.",
+    "Garen: Die Innereien, die 100 g Reis, die 6 in Streifen geschnittenen Salatblätter, den Dill und so viel heiße Brühe zugeben, dass alles bedeckt ist. 20 Minuten köcheln, bis der Reis weich ist.",
+    "Avgolemono vorbereiten: Die 3 Eier mit dem Saft von 2 Zitronen schaumig schlagen, damit die Suppe später gleichmäßig bindet.",
+    "Mit Avgolemono binden: Wichtig: Vom Herd genommen nach und nach einige Kellen heiße Brühe unter Schlagen in die Ei-Zitronen-Mischung geben, dann alles zurück in den Topf gießen, damit die Eier nicht gerinnen.",
+    "Servieren: Heiß servieren, traditionell nach der Auferstehungsmesse, als erstes Gericht, das die Fastenzeit bricht."
+   ],
+   "wine": "Trockener Weißwein.",
+   "plate": "Tiefer Teller, Dill."
+  },
+  "makaronia_napoliten": {
+   "n": "Spaghetti Napoletana",
+   "ing": [
+    "Spaghetti 500 g",
+    "Ganze Tomaten aus der Dose 800 g",
+    "Knoblauch 3 Zehen",
+    "Frisches Basilikum 1 Bund",
+    "Olivenöl 5 EL",
+    "Zucker 1 TL",
+    "Geriebener Parmesan zum Servieren",
+    "Salz, Pfeffer"
+   ],
+   "steps": [
+    "Tomaten vorbereiten: Die Dosentomaten mit der Hand oder einer Gabel zerdrücken und etwas stückig lassen. Ein Mixer würde sie mit Luft anreichern und die Sauce blass orange machen.",
+    "Öl aromatisieren: Das Öl mit den leicht zerdrückten Knoblauchzehen bei niedriger Hitze 2-3 Minuten erwärmen, bis es duftet, ohne Farbe zu nehmen. Wichtig: Gebräunter Knoblauch wird bitter und die ganze Sauce mit ihm.",
+    "Sauce ansetzen: Den Knoblauch entfernen, die Tomaten zugeben und mit Salz, Pfeffer und dem Zucker zum Ausgleich der Säure würzen.",
+    "Köcheln: Offen 25-30 Minuten sanft köcheln, gelegentlich rühren, bis die Sauce andickt und sich das Öl am Rand absetzt.",
+    "Basilikum zugeben: Den größten Teil der Basilikumblätter in den letzten 5 Minuten hineinzupfen, damit das Aroma frisch bleibt und nicht verkocht.",
+    "Nudeln kochen: Die Spaghetti in reichlich gut gesalzenem Wasser 1 Minute kürzer kochen, als auf der Packung angegeben.",
+    "Nudelwasser aufbewahren: Wichtig: Vor dem Abgießen eine Tasse Kochwasser aufbewahren. Seine Stärke bindet die Sauce an die Nudeln.",
+    "Vereinen: Die Nudeln abgießen und 1 Minute bei mittlerer Hitze in der Sauce schwenken, dabei schluckweise Nudelwasser zugeben, bis jeder Strang überzogen ist.",
+    "Servieren: Sofort mit frischen Basilikumblättern und geriebenem Parmesan servieren."
+   ],
+   "wine": "Ein leichter roter Chianti oder ein griechischer Agiorgitiko ohne Holz.",
+   "plate": "In der Tellermitte zu einem Nest drehen, mit Basilikumblättern obenauf und Käse daneben."
+  },
+  "manitaria_saganaki": {
+   "n": "Pilz-Saganaki",
+   "ing": [
+    "Pilze 400 g",
+    "Feta 80 g",
+    "Knoblauch 2 Zehen",
+    "Weißwein 50 ml",
+    "Olivenöl 2 EL",
+    "Thymian",
+    "Salz & Pfeffer"
+   ],
+   "steps": [
+    "Pilze vorbereiten: Die 400 g Pilze mit einem feuchten Tuch putzen (nicht unter Wasser abspülen) und ganz lassen oder halbieren. Wichtig: Pilze saugen Wasser auf, also nicht einweichen, sonst werden sie matschig und bräunen nicht.",
+    "Bräunen: Die Pilze in 2 EL Olivenöl bei starker Hitze braten, ohne viel zu rühren, damit ihre Feuchtigkeit verdampft und sie karamellisieren. Häufiges Rühren senkt die Temperatur und lässt sie kochen.",
+    "Aromaten und Ablöschen: Die 2 Knoblauchzehen zugeben und mit 50 ml Weißwein ablöschen. Den Alkohol verdampfen lassen. Mit Thymian, Salz und Pfeffer würzen.",
+    "Feta zugeben: Die 80 g Feta in Stücken über die Pilze geben. Der Feta bringt einen salzig-cremigen Geschmack, der das Gericht zusammenhält.",
+    "Feta schmelzen: Die Pfanne 2-3 Minuten zudecken, bis der Feta weich wird und zu schmelzen beginnt. Mit Salz vorsichtig sein, da der Feta bereits salzig ist.",
+    "Servieren: Sofort heiß als Meze servieren, idealerweise mit frischem Brot zum Auftunken."
+   ],
+   "wine": "Trockener Weißwein.",
+   "plate": "Heiß, mit Thymian und Brot."
+  },
+  "manitaropita": {
+   "n": "Pilzpita",
+   "ing": [
+    "Filoblätter 6",
+    "Pilze 600 g",
+    "1 Zwiebel",
+    "Knoblauch 2 Zehen",
+    "Feta 200 g",
+    "Eier 2",
+    "Sahne 100 ml",
+    "Thymian",
+    "Olivenöl",
+    "Salz, Pfeffer"
+   ],
+   "steps": [
+    "Die Pilze in Scheiben schneiden und mit Zwiebel und Knoblauch 10 Minuten anbraten, bis ihre Flüssigkeit verdampft ist. Wichtig: Die Pilze müssen gut abtrocknen, sonst wird die Pita matschig.",
+    "Abkühlen lassen, dann mit zerbröseltem Feta, Eiern, Sahne, Thymian, Salz und Pfeffer mischen.",
+    "Eine Form einfetten und 3 Filoblätter einlegen, jedes mit Öl bestreichen.",
+    "Die Füllung gleichmäßig verteilen.",
+    "Mit den restlichen 3 Filoblättern abdecken, jedes mit Öl bestreichen. Die Oberfläche vorschneiden.",
+    "Bei 180 °C 40-45 Minuten goldbraun backen."
+   ]
+  },
+  "marble_cake": {
+   "n": "Marmorkuchen",
+   "ing": [
+    "Mehl 280 g",
+    "Zucker 200 g",
+    "Eier 4",
+    "Butter 180 g",
+    "Milch 100 ml",
+    "Kakaopulver 3 EL",
+    "Backpulver 2 TL",
+    "Vanilleextrakt 1 TL",
+    "Salz 1 Prise"
+   ],
+   "steps": [
+    "Zutaten vorbereiten: Alles auf Zimmertemperatur bringen, besonders Butter und Eier.",
+    "Butter aufschlagen: Die Butter mit dem Zucker 5 Minuten weiß und luftig aufschlagen.",
+    "Eier zugeben: Die Eier einzeln zugeben und nach jedem gut unterschlagen.",
+    "Grundteig herstellen: Mehl mit Backpulver und Salz darüber sieben und abwechselnd mit der Milch unterheben.",
+    "Teig teilen: Den Teig auf zwei Schüsseln verteilen, möglichst gleichmäßig.",
+    "Schokoladenhälfte: In eine Schüssel den Kakao mit einem Esslöffel warmer Milch sieben, damit die Masse so weich bleibt wie die helle.",
+    "Wichtig: Beide Teige müssen dieselbe Konsistenz haben. Ist einer fester, lässt er sich nicht marmorieren und man bekommt getrennte Schichten statt Maserung.",
+    "Schichten: Die beiden Teige abwechselnd klecksweise in die Form geben, wie ein Schachbrett.",
+    "Wichtig: Mit einem Messer in einer einzigen Achterbewegung durch den Teig ziehen. Mehr Rühren vermischt die Farben zu trübem Braun und zerstört das Muster.",
+    "Backen: Bei 175 °C 50 Minuten backen und vor dem Stürzen 10 Minuten in der Form abkühlen lassen."
+   ],
+   "wine": "Ein Cappuccino oder heiße Schokolade.",
+   "plate": "In Scheiben schneiden, sodass die Maserung sichtbar wird, und auf einem weißen Teller servieren."
+  },
+  "marides": {
+   "n": "Frittierte Sardellen",
+   "ing": [
+    "Marides (kleine Sardellen) 600 g",
+    "Mehl zum Frittieren 1 Tasse",
+    "Salz",
+    "Saft von 1 Zitrone",
+    "Olivenöl zum Frittieren"
+   ],
+   "steps": [
+    "Vorbereitung: Die Marides waschen und sehr gut trocknen. Trockener Fisch = knuspriges Ergebnis, nasser Fisch = blasses Ergebnis.",
+    "Mehlieren: Das Mehl salzen und die Marides in einem Beutel oder Sieb darin wenden. Überschüssiges Mehl abschütteln — eine dünne Schicht = knusprig, eine dicke = pappig.",
+    "Frittieren: Das Öl auf 180 °C erhitzen (taucht man einen Fisch ein, muss es sofort zischen). In kleinen Portionen 2-3 Minuten goldbraun frittieren. WICHTIG: Nicht zu viele auf einmal — das senkt die Temperatur und sie werden ölig.",
+    "Abtropfen: Mit einer Schaumkelle auf Küchenpapier heben, damit das Öl aufgesaugt wird.",
+    "Servieren: Sofort mit Zitronenspalten servieren — Marides verlieren ihre Knusprigkeit schnell."
+   ],
+   "wine": "Trockener Weißwein oder Ouzo.",
+   "plate": "Auf Papier mit Zitronenspalten."
   }
  }
 }

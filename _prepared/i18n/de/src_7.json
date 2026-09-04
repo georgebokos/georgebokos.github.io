@@ -1,0 +1,576 @@
+{
+ "krepes_klasikes": {
+  "n": "Classic Crêpes",
+  "ing": [
+   "Flour 200 g",
+   "Milk 500 ml",
+   "Eggs 3",
+   "Melted butter 50 g",
+   "Sugar 1 tbsp",
+   "Salt 1 pinch",
+   "Butter for the pan"
+  ],
+  "steps": [
+   "Making the batter: Whisk the eggs with the milk, then add the flour gradually while whisking to avoid lumps.",
+   "Straining: Pass the batter through a sieve. Important: this single step removes every lump and is the difference between smooth crêpes and patchy ones.",
+   "Adding the butter: Whisk in the melted butter, the sugar and the salt.",
+   "Resting: Important: Rest the batter in the fridge for at least 1 hour. The flour hydrates and the gluten relaxes, which is what makes crêpes tender and easy to flip.",
+   "Checking the consistency: The batter should be as thin as single cream. If it has thickened while resting, loosen it with a little milk.",
+   "Heating the pan: Heat a crêpe pan over medium-high heat and wipe it with butter on kitchen paper — a thin film, never a pool.",
+   "First crêpe: Accept that the first one always fails. It calibrates the heat and seasons the pan.",
+   "Pouring: Pour a small ladle into the centre and immediately swirl the pan so the batter spreads into a thin even circle.",
+   "Cooking: Cook for about 1 minute, until the edges lift and the underside is golden, then flip and cook 30 seconds more.",
+   "Stacking: Stack them on a plate one on top of the other — the trapped steam keeps them soft and pliable."
+  ],
+  "wine": "Cider or coffee.",
+  "plate": "Fold into triangles or rolls and dust with icing sugar and lemon."
+ },
+ "krepes_nutella": {
+  "n": "Chocolate Hazelnut Crêpes",
+  "ing": [
+   "Crêpe batter (see classic crêpes)",
+   "Chocolate hazelnut spread 300 g",
+   "Bananas 2",
+   "Hazelnuts 60 g",
+   "Icing sugar for dusting",
+   "Butter for the pan"
+  ],
+  "steps": [
+   "Preparing the batter: Make the classic crêpe batter and rest it for 1 hour.",
+   "Toasting the hazelnuts: Toast the hazelnuts in a dry pan for 4 minutes, then rub them in a towel to remove the skins and chop them coarsely.",
+   "Softening the spread: Warm the hazelnut spread slightly in a bowl set over warm water, or for 15 seconds in the microwave.",
+   "Important: Cold hazelnut spread tears the crêpe when you spread it. Warm, it glides on without damaging the surface.",
+   "Cooking the crêpes: Cook the crêpes over medium-high heat, about 1 minute per side.",
+   "Spreading: Spread the hazelnut spread while the crêpe is still warm in the pan or on the plate — the residual heat helps it spread thin and evenly.",
+   "Important: Leave a 2 cm clear border all around, or the filling squeezes out of the sides as you fold.",
+   "Adding the banana: Lay banana slices over half the surface.",
+   "Folding: Fold in half and then in half again into a triangle, or roll it into a cylinder.",
+   "Finishing: Scatter the toasted hazelnuts over, dust with icing sugar and serve immediately while the hazelnut spread is still molten."
+  ],
+  "wine": "Hot chocolate or milk.",
+  "plate": "Fold into a triangle with the hazelnut spread spilling out and add chopped hazelnuts."
+ },
+ "kritharaki_kotopoulo": {
+  "n": "Orzo with Chicken",
+  "ing": [
+   "Kritharaki (orzo) 300g",
+   "Chicken 800g pieces",
+   "Grated tomato 400g",
+   "Onion 1",
+   "Garlic 2 cloves",
+   "White wine 100ml",
+   "Cinnamon",
+   "Allspice",
+   "Olive oil",
+   "Kefalotyri cheese"
+  ],
+  "steps": [
+   "Browning the chicken: In a pot with olive oil, brown the 800g chicken pieces on all sides and set aside. Browning gives the dish color and depth of flavor.",
+   "Sautéing the aromatics: In the same fat, sauté the finely chopped onion and the 2 garlic cloves until softened. Deglaze with the 100ml white wine and let the alcohol evaporate.",
+   "Sauce and spices: Add the 400g grated tomato, cinnamon, allspice, salt, pepper and 400ml water. Return the chicken to the pot and simmer covered for 20 minutes.",
+   "Adding the orzo: Add the 300g kritharaki to the sauce and stir. IMPORTANT: make sure there's enough liquid, as the orzo absorbs a lot of water — top up with hot water if needed.",
+   "Cooking the orzo: Continue cooking for 15-18 minutes, stirring regularly so the orzo doesn't stick to the bottom and cooks evenly.",
+   "Resting and serving: Remove from the heat and let stand for 5 minutes so the moisture settles. Serve topped with plenty of grated kefalotyri."
+  ],
+  "wine": "Dry red.",
+  "plate": "Deep plate, grated kefalotyri."
+ },
+ "kritharoto": {
+  "n": "Orzo Risotto",
+  "ing": [
+   "Orzo 400g",
+   "Onion 1",
+   "Garlic 2 cloves",
+   "White wine 1/2 cup",
+   "Vegetable stock 1.2 liters",
+   "Parmesan 80g",
+   "Butter 30g",
+   "Fresh thyme",
+   "Olive oil",
+   "Salt & pepper"
+  ],
+  "steps": [
+   "Sautéing: Sauté the onion in olive oil for 5 minutes. Add the garlic and thyme and sauté for 1 minute.",
+   "Orzo: Add the orzo and stir for 2 minutes to toast it lightly — it takes on a nutty aroma.",
+   "Wine: Deglaze with wine and stir until it evaporates.",
+   "Stock: Add the hot stock gradually (not all at once), stirring like a risotto. Add a little more each time the liquid is absorbed. Important: keep the stock hot in a separate pot.",
+   "Cooking: Continue for 18-20 minutes until the orzo is al dente.",
+   "Mantecatura: Remove from the heat, add butter and Parmesan. Stir vigorously to make it creamy. Important: this is the secret to a creamy texture."
+  ],
+  "wine": "Dry white wine.",
+  "plate": "Creamy, in a shallow bowl with grated Parmesan."
+ },
+ "ladopita": {
+  "n": "Greek Olive Oil Flatbread",
+  "ing": [
+   "Flour 400g",
+   "Lukewarm water 200ml",
+   "Dry yeast 7g",
+   "Olive oil 6 tbsp",
+   "Salt 1 tsp",
+   "Oregano",
+   "Sesame seeds"
+  ],
+  "steps": [
+   "Dissolve the yeast in the water and let stand for 5 minutes.",
+   "Mix the flour, salt, 4 tbsp of oil and the water. Knead for 8 minutes.",
+   "Let rise for 30 minutes.",
+   "Spread the dough in a baking pan, brush with oil and sprinkle with oregano and sesame seeds.",
+   "Bake at 200°C for 20-25 minutes."
+  ]
+ },
+ "lagana": {
+  "n": "Fasting Flatbread",
+  "ing": [
+   "Flour 500g",
+   "Lukewarm water 300ml",
+   "Dry yeast 7g",
+   "Olive oil 3 tbsp",
+   "Salt",
+   "Sesame seeds"
+  ],
+  "steps": [
+   "Activating the yeast: Dissolve the 7g dry yeast in the 300ml lukewarm water (not hot, around 35°C). Important: if the water is too hot it kills the yeast and the dough won't rise. Let sit for 5 minutes until it foams lightly, a sign the yeast has come alive.",
+   "Kneading: In a bowl, mix the 500g flour with the salt, add the yeast mixture and the 3 tbsp olive oil. Knead for 8-10 minutes until the dough becomes smooth and elastic — good kneading develops the gluten that gives a light, airy crumb.",
+   "First rise: Cover the bowl with a towel and let the dough rest in a warm place for about 1 hour until doubled in size. Rising develops flavor and makes the lagana light.",
+   "Shaping: Spread the dough on parchment paper into a thin, flat shape, fairly elongated as traditional lagana is. Using wet fingers, press dimples all over the surface — these hold the shape and keep it from rising too much.",
+   "Sprinkling with sesame: Lightly brush the surface with water or oil and generously sprinkle with sesame seeds. The moisture helps the sesame stick and keeps it from falling off during baking.",
+   "Baking: Bake in a preheated oven at 220°C for 20-25 minutes until it develops a golden, crisp crust. The high temperature browns the outside quickly while keeping the inside light and airy."
+  ],
+  "plate": "Serve with taramosalata, olives, and halva."
+ },
+ "lahanodomades": {
+  "n": "Cabbage Rolls",
+  "ing": [
+   "Cabbage 1 large",
+   "Ground beef 500g",
+   "Carolina rice 1/2 cup",
+   "Onion 1, finely chopped",
+   "Fresh parsley",
+   "Dried mint 1 tsp",
+   "Eggs 2",
+   "Juice of 2 lemons",
+   "Salt & pepper"
+  ],
+  "steps": [
+   "Blanching the cabbage: Remove the core from the base and submerge the whole cabbage in boiling water for 3-4 minutes. Peel off the leaves one by one as they soften. You'll need 18-20 large leaves — pliable enough to roll without tearing.",
+   "Filling: Mix the ground beef, rice (raw), onion, parsley, mint, eggs, salt and pepper. IMPORTANT: the rice goes in raw, as it will cook inside the rolls, absorbing their juices.",
+   "Rolling: Place 1-2 tbsp of filling at the base of each leaf, fold in the sides and roll tightly like a log. Arrange them in layers in the pot with the seam facing down.",
+   "Simmering: Cover the rolls with any leftover cabbage leaves. Add stock or water until they're covered. Place a weight on top (e.g. a plate) so they don't unroll. Simmer covered for 60-70 minutes.",
+   "Egg-lemon sauce (avgolemono): Beat the eggs, add lemon juice and gradually whisk in hot broth from the pot (tempering). Pour back into the pot and swirl in circular motions — do not let it boil afterward.",
+   "Serving: Serve hot with plenty of avgolemono sauce."
+  ],
+  "wine": "Dry white.",
+  "plate": "In a deep plate with avgolemono sauce."
+ },
+ "lahanorizo": {
+  "n": "Cabbage Rice",
+  "ing": [
+   "Cabbage 1 medium (about 1 kg)",
+   "Carolina rice 1 cup",
+   "Dry onion 1 large",
+   "Olive oil 1/2 cup",
+   "Tomato, grated, 2 (or 1 tbsp tomato paste)",
+   "Water or vegetable stock 2-2.5 cups",
+   "Lemon juice of 1",
+   "Dill, finely chopped, 1 bunch",
+   "Salt and pepper"
+  ],
+  "steps": [
+   "Preparing the cabbage: Remove the outer leaves and the tough core. Slice the cabbage thinly (julienne) and wash it well. Drain.",
+   "Sautéing: Heat the olive oil in a wide pot and sauté the chopped onion over medium heat until softened and glossy, without browning.",
+   "Wilting the cabbage: Add the cabbage and stir. Cook for 8-10 minutes, stirring, until it wilts and its volume reduces significantly.",
+   "Tomato: Add the grated tomato (or tomato paste dissolved in a little water), salt, and pepper. Let it cook for 5 minutes for the flavors to come together.",
+   "Adding water: Pour in the hot water or stock and bring to a boil. Important: the liquid-to-rice ratio should be about 2 to 1, so the lahanorizo stays moist rather than dry or gummy.",
+   "Adding the rice: Add the rinsed rice, stir once, and lower the heat. Cover and simmer for 15-18 minutes, until the liquid is absorbed and the rice is tender.",
+   "Finishing: Turn off the heat, add the dill and lemon juice. Stir gently, cover, and let it rest for 10 minutes before serving."
+  ],
+  "wine": "Dry white or retsina.",
+  "plate": "Serve hot with feta cheese, olives, and fresh bread."
+ },
+ "lavraki_alati": {
+  "n": "Sea Bass in Salt Crust",
+  "ing": [
+   "Whole sea bass 500-600g (cleaned)",
+   "Coarse salt 1kg",
+   "Egg whites 2",
+   "Rosemary & thyme",
+   "Lemon 1",
+   "Garlic 2 cloves"
+  ],
+  "steps": [
+   "Stuffing the fish: Wash and pat the fish dry. Fill the cavity with rosemary, thyme, lemon slices and garlic.",
+   "Salt mixture: Mix the coarse salt with the 2 egg whites until it resembles wet sand. This helps it stay compact during baking.",
+   "Encasing: Spread half the salt mixture on a baking sheet, place the fish on top and cover completely with the remaining mixture. Important: the salt should cover the fish by 1-2 cm on all sides.",
+   "Baking: Bake at 200°C for 25-30 minutes. Crack the salt \"crust\" with a spoon to break it open. Serve with lemon and olive oil."
+  ],
+  "wine": "White Assyrtiko from Santorini.",
+  "plate": "With olive oil, lemon and boiled potatoes."
+ },
+ "lavraki_fournou": {
+  "n": "Baked Sea Bass",
+  "ing": [
+   "Sea bass 600g, whole",
+   "Olive oil 4 tbsp",
+   "Juice of 1 lemon",
+   "Garlic 3 cloves",
+   "Fresh parsley",
+   "Thyme",
+   "Tomato 1, sliced",
+   "Salt & pepper"
+  ],
+  "steps": [
+   "Cleaning: Score the sea bass 2-3 times on each side. Season inside and out with salt and pepper.",
+   "Filling: Fill the cavity with sliced lemon, garlic, parsley and thyme — they flavor the fish from within as it bakes.",
+   "Baking dish: Line the baking dish with tomato slices (the base) and place the sea bass on top. Drizzle with olive oil and lemon.",
+   "Baking: Bake at 200°C for 25-30 minutes. IMPORTANT: the fish is done when the flesh flakes easily with a fork and has lost its translucency.",
+   "Serving: Remove the backbone and serve the fillets with the vegetables and sauce from the pan."
+  ],
+  "wine": "Dry white Assyrtiko.",
+  "plate": "Whole in the baking dish, or as fillets."
+ },
+ "lavraki_sxaras": {
+  "n": "Grilled Sea Bass",
+  "ing": [
+   "Fresh cleaned sea bass 2 (about 600 g each)",
+   "Olive oil 6 tbsp",
+   "Lemon juice 2 lemons",
+   "Garlic 2 cloves",
+   "Dried oregano 1 tsp",
+   "Fresh parsley 1 small bunch",
+   "Coarse salt 2 tsp",
+   "Ground black pepper 1 tsp",
+   "Lemon slices for stuffing 1 lemon"
+  ],
+  "steps": [
+   "Preparing the fish: Clean the sea bass of scales and innards, rinse well under cold water and dry very thoroughly with paper towels, inside and out.",
+   "Stuffing: Fill the cavity of each fish with lemon slices, a garlic clove cut in half, and a little parsley to flavor it from the inside.",
+   "Seasoning: Season the fish with salt and pepper on the outside and make 2-3 diagonal cuts on the thickest part of the body so it cooks evenly through to the bone.",
+   "Important: The grill must be very well preheated and clean, and lightly oiled before placing the fish on it, so the skin doesn't stick and stays intact when you turn it.",
+   "Grilling: Grill the sea bass over medium-high heat for about 6-8 minutes per side, depending on size, without moving it too often so a nice crust forms.",
+   "Checking doneness: The fish is ready when the flesh near the bone is white and opaque and comes away easily with a fork.",
+   "Lemon-oil dressing: Mix the olive oil with the lemon juice, chopped parsley and oregano, and drizzle it over the fish as soon as it comes off the grill.",
+   "Serving: Serve immediately while hot, whole or filleted at the table, with the lemon-oil dressing on the side."
+  ],
+  "wine": "White Assyrtiko wine from Santorini, crisp and dry, which highlights the delicacy of the fish.",
+  "plate": "Serve the sea bass whole on a platter with lemon slices and sprigs of parsley, accompanied by boiled greens or Greek village salad and roast potatoes."
+ },
+ "laxanika_sxaras": {
+  "n": "Grilled Vegetables",
+  "ing": [
+   "Eggplants, 2 large",
+   "Zucchini, 3",
+   "Florina peppers, 2",
+   "Red pepper, 1",
+   "Onion, 2",
+   "Ripe tomatoes, 2",
+   "Olive oil 100 ml",
+   "Lemon juice, 1 lemon",
+   "Oregano 1 tbsp",
+   "Salt, freshly ground pepper"
+  ],
+  "steps": [
+   "Preparation: Wash all the vegetables well and pat them dry. Slice the eggplants and zucchini lengthwise into slices about 1 cm thick, halve the peppers and remove the seeds, and cut the onions into thick rounds, holding them together with a toothpick so they don't fall apart on the grill.",
+   "Salting the eggplant: Salt the eggplant slices lightly and let them sit in a colander for 15-20 minutes to release their bitter moisture, then pat them dry with paper towels.",
+   "Important: The grill must be well lit and the coals turned to white ash before adding the vegetables, so they cook evenly and take on that characteristic smoky flavor without burning outside while staying raw inside.",
+   "Oiling: Brush all the cut vegetables with olive oil using a pastry brush and sprinkle lightly with salt and pepper just before grilling.",
+   "Grilling: Place the vegetables on the grill starting with those that need more time, such as the peppers and onions, then add the eggplant, zucchini and tomatoes. Turn them with tongs at regular intervals so they cook on all sides and get nice grill marks.",
+   "Finishing the cooking: The vegetables are ready when they've softened and developed slightly browned, caramelized edges, usually within 8-15 minutes depending on the type and thickness.",
+   "Serving: Arrange the warm vegetables on a platter, drizzle with fresh lemon juice and a generous stream of olive oil, sprinkle with oregano and serve immediately."
+  ],
+  "wine": "Pairs well with a white Assyrtiko or a cool rosé.",
+  "plate": "Served on a platter with feta and fresh bread, as a side dish or main course."
+ },
+ "lazania": {
+  "n": "Lasagne",
+  "ing": [
+   "Lasagna sheets 250g",
+   "Ground beef 500g",
+   "Grated tomato 400g",
+   "Onion 1",
+   "Garlic 2 cloves",
+   "Red wine 100ml",
+   "Milk 800ml",
+   "Flour 4 tbsp",
+   "Butter 70g",
+   "Kefalotyri cheese 150g",
+   "Cinnamon"
+  ],
+  "steps": [
+   "Bolognese sauce: Sauté the onion and 2 garlic cloves, add the 500g ground beef and brown well. Deglaze with the 100ml red wine, add the 400g grated tomato and a little cinnamon, and simmer gently for 25 minutes until the sauce thickens.",
+   "Making the béchamel: Melt the 70g butter, add the 4 tbsp flour and stir for 1-2 minutes. Gradually add the 800ml milk, whisking constantly so it doesn't form lumps, until it thickens into a velvety cream.",
+   "Preparing the sheets: If the lasagna sheets need pre-boiling, follow the package instructions. Otherwise, make sure the sauce is juicy enough for the sheets to soften in the oven.",
+   "Layering: In a greased baking dish, spread a little béchamel on the bottom, then lasagna sheets, bolognese and cheese. Repeat the layers about 3 times. IMPORTANT: a little béchamel on the bottom keeps the sheets from sticking and burning.",
+   "Final layer: Finish with béchamel and plenty of grated kefalotyri, so a golden, crispy crust forms during baking.",
+   "Baking and resting: Bake at 180°C for 40-45 minutes until the top is golden. Let the lasagna cool for 15 minutes before cutting, so the layers set and don't fall apart."
+  ],
+  "wine": "Dry red.",
+  "plate": "Square portions, grated cheese on top."
+ },
+ "loukanka_piperies": {
+  "n": "Sausages with Peppers",
+  "ing": [
+   "Country-style sausages 300g",
+   "Peppers 3 (red, green, yellow)",
+   "Onion 1",
+   "Garlic 2 cloves",
+   "Grated tomato 200g",
+   "Olive oil",
+   "Oregano",
+   "Salt & pepper"
+  ],
+  "steps": [
+   "Frying the sausages: Slice the 300g country-style sausages into rounds and fry in a little olive oil until browned all over, then remove. This renders their fat and flavors the oil.",
+   "Sautéing the vegetables: In the same pan, sauté the 3 peppers cut into strips, the finely chopped onion and the 2 garlic cloves for about 5 minutes until softened.",
+   "Adding the tomato: Add the 200g grated tomato, oregano, salt and pepper, and let the sauce thicken.",
+   "Combining: Return the sausages to the pan. Important: add them back toward the end so they don't toughen from prolonged cooking.",
+   "Simmering: Simmer for 10 minutes until the flavors meld and the sauce thickens.",
+   "Serving: Serve immediately while hot, ideally with fresh bread to mop up the sauce."
+  ],
+  "wine": "Dry red.",
+  "plate": "With bread or rice, oregano on top."
+ },
+ "loukoumades": {
+  "n": "Greek Honey Donuts",
+  "ing": [
+   "Flour 200g",
+   "Dry yeast 7g",
+   "Warm water 250ml",
+   "Honey for serving",
+   "Ground cinnamon",
+   "Olive oil for frying (plenty)"
+  ],
+  "steps": [
+   "Batter: Dissolve the yeast in warm water (37°C) with 1 tsp sugar. Let sit for 5 minutes until it foams — a sign it's active.",
+   "Mixing: Add flour and salt, mix well. Important: the batter should be thin like a loose batter — thinner than a regular dough.",
+   "Resting: Cover and let rise for 30-45 minutes until doubled and bubbly.",
+   "Frying: Heat oil to 175°C. Drop small spoonfuls of batter into the oil. Fry for 2-3 minutes, turning for even browning.",
+   "Serving: Serve immediately with plenty of honey and cinnamon. Important: serve hot — they lose their charm once cold."
+  ],
+  "wine": "-",
+  "plate": "On a plate with honey and cinnamon."
+ },
+ "loukoumia": {
+  "n": "Homemade Loukoumi",
+  "ing": [
+   "Sugar 800 g",
+   "Water 600 ml",
+   "Cornflour 120 g",
+   "Lemon juice 2 tbsp",
+   "Rose water or mastic 2 tbsp",
+   "Icing sugar 100 g",
+   "Cornflour 50 g (for dusting)",
+   "Food colouring",
+   "Pistachios 100 g (optional)"
+  ],
+  "steps": [
+   "Boil the sugar with 300 ml of the water and the lemon juice to 115°C.",
+   "Important: The lemon juice is essential — without acid the sugar crystallises and the loukoumi turns grainy instead of soft.",
+   "Dissolve the cornflour in the remaining cold water, whisking until no lumps remain.",
+   "Pour the cornflour mixture into the hot syrup in a thin stream, whisking hard and continuously.",
+   "Important: Now cook over very low heat for 60-75 minutes, stirring often. This long slow cooking is what makes it chewy — there is no shortcut.",
+   "The mixture is ready when it turns translucent, deep gold and pulls away from the pan in a thick mass.",
+   "Stir in the rose water, the colouring and the pistachios at the very end.",
+   "Pour into a tin dusted with cornflour and leave it at room temperature for 12 hours — never in the fridge, which makes it weep.",
+   "Cut into cubes with an oiled knife and roll them in a mixture of icing sugar and cornflour.",
+   "Store in a tin between layers of the same dusting mixture."
+  ],
+  "wine": "Greek coffee — the classic pairing.",
+  "plate": "Serve on a platter dusted with icing sugar, with a glass of water alongside."
+ },
+ "macarons": {
+  "n": "Macarons",
+  "ing": [
+   "Almond flour 150 g",
+   "Powdered sugar 150 g",
+   "Egg whites 2 (110 g, aged)",
+   "Granulated sugar 150 g",
+   "Water 50 ml",
+   "Food coloring, a few drops",
+   "Soft butter 100 g",
+   "Powdered sugar 80 g",
+   "Jam or praline 50 g"
+  ],
+  "steps": [
+   "Drying the almond flour: Sift the almond flour thoroughly with the powdered sugar so no lumps remain.",
+   "Italian meringue: Boil water with sugar to 118°C and slowly pour it into half the whisked egg whites, whisking continuously until the meringue cools.",
+   "Macaronage: Mix the remaining egg whites with the almond mixture, then add the meringue, folding gently in circular motions.",
+   "Important: The batter must reach a lava-like consistency - when it falls from the spatula it should form a ribbon that disappears within 20 seconds, otherwise the macarons will crack or fail to form 'feet'.",
+   "Piping: Fill a piping bag with the batter and pipe even circles 3-4 cm across onto a parchment-lined tray, tapping the tray lightly to release air bubbles.",
+   "Resting: Let the macarons rest at room temperature for 30-45 minutes until a thin, firm skin forms on top.",
+   "Baking: Bake at 150°C for 13-15 minutes, rotating the tray halfway through for even baking.",
+   "Filling and assembly: Beat butter with powdered sugar to make a cream, fill half the shells and top with the other half."
+  ],
+  "wine": "Sweet sparkling Muscat wine",
+  "plate": "Serve on a platter in vivid colors, ideally after 24 hours in the refrigerator to mature."
+ },
+ "mafin_sokolatas": {
+  "n": "Chocolate Muffins",
+  "ing": [
+   "Flour 280 g",
+   "Cocoa powder 50 g",
+   "Sugar 200 g",
+   "Eggs 2",
+   "Milk 240 ml",
+   "Sunflower oil 120 ml",
+   "Chocolate chips 150 g",
+   "Baking powder 2 tsp",
+   "Vanilla extract 1 tsp",
+   "Salt 1 pinch"
+  ],
+  "steps": [
+   "Preheat the oven properly to 200°C. Important: muffins need a hot start — that initial blast is what gives them their domed top.",
+   "Mix all the dry ingredients in one bowl: flour, cocoa, sugar, baking powder and salt.",
+   "Whisk all the wet ingredients in another bowl: eggs, milk, oil and vanilla.",
+   "Important: Pour the wet into the dry and stir 10-12 times only, with a spoon. The batter should stay lumpy — this is the golden rule of muffins.",
+   "Fold in the chocolate chips with two or three more turns, no more.",
+   "Divide into paper cases, filling them three quarters full so they have room to dome.",
+   "Bake at 200°C for 5 minutes, then lower to 180°C for another 15 minutes.",
+   "That temperature drop is what makes the top rise sharply and then cook through without burning.",
+   "Cool on a rack for 10 minutes before eating, so the chocolate chips set."
+  ],
+  "wine": "Milk or a cappuccino.",
+  "plate": "Serve in their paper cases in a basket, slightly warm."
+ },
+ "mageiritsa": {
+  "n": "Easter Lamb Soup",
+  "ing": [
+   "Lamb offal 500g",
+   "Fresh spring onions 8",
+   "Rice 100g",
+   "Fresh dill",
+   "Lettuce leaves 6",
+   "Eggs 3",
+   "Lemon 2",
+   "Butter 2 tbsp"
+  ],
+  "steps": [
+   "Cleaning the offal: Wash the 500g lamb offal very well and boil for 10 minutes. Drain and finely chop. Important: the initial boiling and skimming cleans the offal and removes its strong odor.",
+   "Sautéing: Melt the 2 tbsp butter and sauté the 8 finely chopped spring onions until softened and sweet.",
+   "Cooking: Add the offal, the 100g rice, the 6 shredded lettuce leaves, the dill and enough hot stock to cover. Simmer for 20 minutes until the rice softens.",
+   "Preparing the egg-lemon sauce: Whisk the 3 eggs with the juice of 2 lemons until frothy, so the soup thickens evenly later.",
+   "Thickening with avgolemono: Important: off the heat, gradually add a few ladles of hot broth into the egg-lemon mixture while whisking, then pour the mixture back into the pot, so the eggs don't curdle.",
+   "Serving: Serve hot, traditionally after the Resurrection service, as the first dish that breaks the Lenten fast."
+  ],
+  "wine": "Dry white wine.",
+  "plate": "Deep plate, dill."
+ },
+ "makaronia_napoliten": {
+  "n": "Spaghetti Napolitana",
+  "ing": [
+   "Spaghetti 500 g",
+   "Canned whole tomatoes 800 g",
+   "Garlic 3 cloves",
+   "Fresh basil 1 bunch",
+   "Olive oil 5 tbsp",
+   "Sugar 1 tsp",
+   "Grated parmesan for serving",
+   "Salt, pepper"
+  ],
+  "steps": [
+   "Preparing the tomatoes: Crush the canned tomatoes by hand or with a fork, leaving them a little rough. A blender would aerate them and turn the sauce pale orange.",
+   "Infusing the oil: Warm the oil over low heat with the lightly crushed garlic cloves for 2-3 minutes, until fragrant but not coloured. Important: browned garlic turns bitter and the whole sauce follows it.",
+   "Starting the sauce: Remove the garlic, add the tomatoes, season with salt, pepper and the sugar to balance the acidity.",
+   "Simmering: Simmer gently uncovered for 25-30 minutes, stirring now and then, until the sauce thickens and the oil separates at the edges.",
+   "Adding basil: Tear in most of the basil leaves in the last 5 minutes, so the aroma stays fresh instead of cooking away.",
+   "Boiling the pasta: Cook the spaghetti in plenty of well-salted boiling water for 1 minute less than the packet says.",
+   "Reserving pasta water: Important: Save a cup of the cooking water before draining. Its starch is what binds the sauce to the pasta.",
+   "Combining: Drain the pasta and toss it in the pan with the sauce over medium heat for 1 minute, adding pasta water a splash at a time until it coats every strand.",
+   "Serving: Serve immediately with fresh basil leaves and grated parmesan."
+  ],
+  "wine": "A light red Chianti or a Greek Agiorgitiko without oak.",
+  "plate": "Twirl into a nest in the centre of the plate, with basil leaves on top and cheese served alongside."
+ },
+ "manitaria_saganaki": {
+  "n": "Mushroom Saganaki",
+  "ing": [
+   "Mushrooms 400g",
+   "Feta cheese 80g",
+   "Garlic 2 cloves",
+   "White wine 50ml",
+   "Olive oil 2 tbsp",
+   "Thyme",
+   "Salt & pepper"
+  ],
+  "steps": [
+   "Preparing the mushrooms: Clean the 400g mushrooms with a damp cloth (not by rinsing in water) and leave them whole or halved. Important: mushrooms soak up water, so don't submerge them, or they'll become soggy and won't brown.",
+   "Browning: Brown the mushrooms in 2 tbsp olive oil over high heat without stirring too much, so their moisture evaporates and they caramelize. Frequent stirring lowers the temperature and causes them to boil instead.",
+   "Aromatics and deglazing: Add 2 garlic cloves and deglaze with 50ml white wine. Let the alcohol evaporate. Sprinkle with thyme, salt and pepper.",
+   "Adding the feta: Place 80g feta in pieces over the mushrooms. The feta adds a salty, creamy flavor that ties the dish together.",
+   "Melting the feta: Cover the pan for 2-3 minutes until the feta softens and starts to melt. Be careful with the salt, since the feta is already salty.",
+   "Serving: Serve immediately while hot as a meze, ideally with fresh bread to mop up the sauce."
+  ],
+  "wine": "Dry white.",
+  "plate": "Hot, with thyme and bread."
+ },
+ "manitaropita": {
+  "n": "Mushroom Pie",
+  "ing": [
+   "Phyllo sheets 6",
+   "Mushrooms 600g",
+   "1 onion",
+   "Garlic 2 cloves",
+   "Feta cheese 200g",
+   "Eggs 2",
+   "Heavy cream 100ml",
+   "Thyme",
+   "Olive oil",
+   "Salt, pepper"
+  ],
+  "steps": [
+   "Slice the mushrooms and sauté with the onion and garlic for 10 minutes, until their liquid has evaporated. Important: the mushrooms must dry out well, otherwise the pie will turn soggy.",
+   "Let cool, then mix with the crumbled feta, eggs, cream, thyme, salt, and pepper.",
+   "Grease a baking pan and layer 3 phyllo sheets, brushing each sheet with oil.",
+   "Spread the filling evenly.",
+   "Cover with the remaining 3 phyllo sheets, brushing each with oil. Score the surface.",
+   "Bake at 180°C for 40-45 minutes, until golden."
+  ]
+ },
+ "marble_cake": {
+  "n": "Marble Cake",
+  "ing": [
+   "Flour 280 g",
+   "Sugar 200 g",
+   "Eggs 4",
+   "Butter 180 g",
+   "Milk 100 ml",
+   "Cocoa powder 3 tbsp",
+   "Baking powder 2 tsp",
+   "Vanilla extract 1 tsp",
+   "Salt 1 pinch"
+  ],
+  "steps": [
+   "Preparing the ingredients: Have everything at room temperature, especially the butter and the eggs.",
+   "Beating the butter: Beat the butter with the sugar for 5 minutes until white and fluffy.",
+   "Adding the eggs: Add the eggs one at a time, beating well after each addition.",
+   "Making the base batter: Sift in the flour with the baking powder and salt, folding it in alternately with the milk.",
+   "Splitting the batter: Divide the batter into two bowls, keeping them as equal as you can.",
+   "Making the chocolate half: Sift the cocoa into one bowl with a tablespoon of warm milk, so the mixture stays as soft as the plain one.",
+   "Important: The two batters must be the same consistency. If one is stiffer, it will not swirl and you get separate layers instead of marbling.",
+   "Layering: Spoon the two batters alternately into the tin, in dollops, like a chessboard.",
+   "Important: Draw a knife through the batter in one single figure-of-eight movement. More stirring blends the colours into muddy brown and destroys the pattern.",
+   "Baking: Bake at 175°C for 50 minutes and cool in the tin for 10 minutes before turning out."
+  ],
+  "wine": "A cappuccino or hot chocolate.",
+  "plate": "Cut into slices so the marbled pattern shows and serve on a white plate."
+ },
+ "marides": {
+  "n": "Fried Whitebait",
+  "ing": [
+   "Marides (small whitebait) 600g",
+   "Flour for frying 1 cup",
+   "Salt",
+   "Juice of 1 lemon",
+   "Olive oil for frying"
+  ],
+  "steps": [
+   "Preparation: Wash the marides and dry them very well. Dry fish = crispy result, wet fish = pale result.",
+   "Flouring: Salt the flour and coat the marides in a bag or sieve. Shake off the excess flour — a thin coating = crispy, a thick one = soggy.",
+   "Frying: Heat the oil to 180°C (if you dip in a fish, it should sizzle immediately). Fry in small batches for 2-3 minutes until golden. IMPORTANT: don't add too many at once — it drops the temperature and they turn out oily.",
+   "Draining: Remove with a slotted spoon onto paper towels to absorb the oil.",
+   "Serving: Serve immediately with lemon wedges — marides quickly lose their crispness."
+  ],
+  "wine": "Dry white or ouzo.",
+  "plate": "On paper with lemon wedges."
+ }
+}
