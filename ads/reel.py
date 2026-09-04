@@ -56,6 +56,66 @@ SAFE_R = 170     # δεξιά
 TOP    = 200     # κάτω από τη μόνιμη υπογραφή
 AREA   = H - SAFE_B - TOP   # ελεύθερο ύψος για κάθετο κεντράρισμα
 
+def hook_words(el=True):
+    """Οι λέξεις του hook, χωριστά από τη build(), ώστε να τις χρησιμοποιεί
+    και το captions.py: η πρώτη γραμμή της λεζάντας πρέπει να επαναλαμβάνει
+    αυτό που λέει το βίντεο, αλλιώς το μήνυμα διχάζεται."""
+    return {'cost':'η μερίδα' if el else 'per serving',
+            'time':'και έτοιμο' if el else "and it's ready",
+            'ing' :'υλικά. Τίποτα άλλο.' if el else "ingredients. That's all.",
+            'cal' :'θερμίδες η μερίδα' if el else 'calories per serving',
+            'tbl' :'για {n} άτομα' if el else 'for {n} people',
+            'step':'βήματα. Τόσο απλά.' if el else 'steps. That simple.',
+            'occ' :'Κυριακή' if el else 'Sunday',
+            'occ2':'Το πιάτο της ημέρας' if el else 'The dish of the day'}
+
+
+def pick_hook(m, ings, steps, rid, el=True):
+    """Πέντε τύποι hook, με επιλογή ΜΟΝΟ ανάμεσα σε όσους ισχύουν για τη
+    συγκεκριμένη συνταγή.
+
+    Παλιότερα η επιλογή γινόταν με `var % 3` και κάθε εξαίρεση κατέληγε στο
+    κόστος: 21 από τα 30 βίντεο έβγαζαν το ίδιο hook. Τώρα φτιάχνεται πρώτα η
+    λίστα των έγκυρων και ο δείκτης πέφτει πάνω της, ώστε η κατανομή να μένει
+    ισορροπημένη και τα βίντεο να μη μοιάζουν μεταξύ τους."""
+    W_ = hook_words(el)
+    var = sum(ord(c) for c in rid)
+    num = lambda v: re.sub(r'[~\s]', '', str(v or '')).strip()
+    def eur(v):
+        try: return float(re.sub(r'[^\d.]', '', str(v or '')))
+        except ValueError: return None
+    sweet = 'desserts' in (m.get('cats') or [])
+    opts = []
+    # Κάθε αριθμός μπαίνει ΜΟΝΟ όταν παίζει υπέρ του πιάτου. Ένα νούμερο που
+    # εκθέτει το πιάτο κάνει ζημιά: «8.75€ η μερίδα», ή «380 θερμίδες» πάνω σε
+    # γλυκό, διώχνουν τον θεατή αντί να τον κρατήσουν.
+    cps = eur(m.get('cps'))
+    if cps is not None and cps <= 2.50:
+        opts.append((num(m['cps']), W_['cost']))            # φθηνή μερίδα
+    # Ο χρόνος πουλά μόνο όταν είναι μικρός: «100′ και έτοιμο» διώχνει.
+    if m.get('time') and m['time'] <= 40:
+        opts.append((f"{m['time']}′", W_['time']))
+    # Λίγα υλικά = υπόσχεση απλότητας, και είναι νούμερο: διαβάζεται ακαριαία.
+    # Ο τίτλος βήματος δοκιμάστηκε και δεν λειτουργεί ως hook — «Γέμισμα
+    # λαχανικών» δεν σταματά κανέναν.
+    if len(ings) <= 7:
+        opts.append((str(len(ings)), W_['ing']))
+    # Οι θερμίδες πουλάνε φαγητό, όχι γλυκό.
+    if m.get('cal') and m['cal'] <= 400 and not sweet:
+        opts.append((str(m['cal']), W_['cal']))
+    # Το συνολικό κόστος για παρέα — αλλά μόνο αν βγαίνει φθηνά κατ' άτομο.
+    tot = eur(m.get('cost'))
+    if tot is not None and m.get('srv') and m['srv'] >= 4 and tot/m['srv'] <= 2.50:
+        opts.append((num(m['cost']), W_['tbl'].format(n=m['srv'])))
+    if opts:
+        return opts[var % len(opts)]
+    # Ακριβά, αργά ή πλούσια πιάτα: κανένας αριθμός δεν τα ευνοεί. Εκεί το
+    # επιχείρημα δεν είναι το νούμερο αλλά η περίσταση.
+    if len(steps) <= 7:
+        return str(len(steps)), W_['step']
+    return W_['occ'], W_['occ2']
+
+
 def build(rid, lang='el'):
     data = load(rid); m = data['m']; imgp = data['img']
     el = lang == 'el'
@@ -72,38 +132,23 @@ def build(rid, lang='el'):
          'more':'Όλη η συνταγή στην εφαρμογή' if el else 'Full recipe in the app',
          'get':'Σύνδεσμος στο προφίλ' if el else 'Link in bio',
          'url':'fooddaily.github.io',
-         'free':'Δωρεάν στο Google Play' if el else 'Free on Google Play',
-         # hooks του πρώτου δευτερολέπτου
-         'h_cost':'η μερίδα' if el else 'per serving',
-         'h_time':'και έτοιμο' if el else 'and it\'s ready',
-         'h_ing':'υλικά. Τίποτα άλλο.' if el else 'ingredients. That\'s all.'}
+         'free':'Δωρεάν στο Google Play' if el else 'Free on Google Play'}
 
     var = sum(ord(c) for c in rid)
-    zoom_in = (var // 3) % 2 == 0
+    zoom_in = (var // 5) % 2 == 0
 
-    # --- Το hook του πρώτου δευτερολέπτου -----------------------------------
-    # Τρεις τύποι σε εναλλαγή, ώστε τα 30 βίντεο να μη μοιάζουν μεταξύ τους και
-    # να φανεί στα στατιστικά ποιος κρατά τον θεατή. Δύο γραμμές μόνο: ένα
-    # μεγάλο νούμερο και μια λέξη — διαβάζονται με μια ματιά, χωρίς ανάγνωση.
-    def pick_hook():
-        kind = var % 3
-        # Λίγα υλικά = υπόσχεση απλότητας, και είναι νούμερο: διαβάζεται
-        # ακαριαία. Ο τίτλος βήματος δοκιμάστηκε και δεν λειτουργεί ως hook —
-        # «Γέμισμα λαχανικών» δεν σταματά κανέναν.
-        if kind == 2 and len(ings) <= 7:
-            return str(len(ings)), L['h_ing']
-        if kind == 2:
-            kind = 1                        # πολλά υλικά → πέφτει στον χρόνο
-        # Ο χρόνος πουλά μόνο όταν είναι μικρός: «100′ και έτοιμο» διώχνει τον
-        # θεατή αντί να τον κρατήσει. Πάνω από 40′ το hook γίνεται το κόστος.
-        if kind == 1 and m.get('time') and m['time'] <= 40:
-            return f"{m['time']}′", L['h_time']
-        cps = re.sub(r'[~\s]', '', str(m.get('cps') or m.get('cost') or '')).strip()
-        if cps:
-            return cps, L['h_cost']         # κόστος ανά μερίδα
-        return f"{m.get('time','30')}′", L['h_time']
+    hook_big, hook_small = pick_hook(m, ings, steps, rid, el)
 
-    hook_big, hook_small = pick_hook()
+    # Δύο ακόμη άξονες διαφοροποίησης, ώστε 30 βίντεο στη σειρά να μη δείχνουν
+    # πανομοιότυπα: ο τόνος του μεγάλου νούμερου και η στοίχιση του hook.
+    TONES = [(255,214,120), (255,168,92), (255,245,225)]
+    tone  = TONES[(var // 7) % 3]
+    hook_centered = (var // 11) % 2 == 0
+
+    # Και η φράση του CTA εναλλάσσεται, για τον ίδιο λόγο.
+    QS = ([L['q'], 'Η απάντηση κάθε μεσημέρι', 'Τέλος το «τι μαγειρεύουμε;»'] if el
+          else [L['q'], 'The answer, every day', 'No more "what shall we cook?"'])
+    L['q'] = QS[(var // 13) % 3]
 
     photo = Image.open(os.path.join(ROOT, imgp)).convert('RGB')
     bg = cover(photo, W, H)
@@ -199,15 +244,21 @@ def build(rid, lang='el'):
                 nlines = wrap(d, name, f_nm, colw)[:2]
                 blk = f_h1.size + 16 + f_h2.size + 46 + len(nlines)*76 + 54
                 y = H - SAFE_B - blk
-                d.text((pad, y), hook_big, font=f_h1, fill=(255,214,120)); y += f_h1.size + 16
-                d.text((pad, y), hook_small, font=f_h2, fill=(255,250,240)); y += f_h2.size + 46
+                # Άλλοτε κεντραρισμένο, άλλοτε στοιχισμένο αριστερά. Στο κέντρο
+                # λαμβάνεται υπόψη μόνο η ωφέλιμη στήλη, όχι όλο το πλάτος:
+                # δεξιά κάθονται τα κουμπιά του TikTok.
+                def put(t, f, yy, col):
+                    x = pad + (colw - d.textlength(t, font=f))/2 if hook_centered else pad
+                    d.text((x, yy), t, font=f, fill=col)
+                put(hook_big, f_h1, y, tone);            y += f_h1.size + 16
+                put(hook_small, f_h2, y, (255,250,240));  y += f_h2.size + 46
                 for ln in nlines:
-                    d.text((pad, y), ln, font=f_nm, fill=(255,253,248)); y += 76
+                    put(ln, f_nm, y, (255,253,248)); y += 76
                 y += 12
                 # Χωρίς emoji: η DejaVuSans δεν τα περιέχει και βγαίνουν κενά
                 # κουτάκια — φαίνεται σαν ελάττωμα, όχι σαν εικονίδιο.
                 meta = f"{m['time']}′  ·  {m['cal']} kcal  ·  {m.get('srv','')} {L['serv']}"
-                d.text((pad, y), meta, font=f_meta, fill=(240,206,150))
+                put(meta, f_meta, y, (240,206,150))
             elif kind == 'ing':
                 # Το μπλοκ κεντράρεται κάθετα στον ελεύθερο χώρο: αν ξεκινά
                 # ψηλά, τα δύο τρίτα της οθόνης μένουν άδεια και το βίντεο

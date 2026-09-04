@@ -2,6 +2,7 @@
 """Λεζάντα και hashtags για ανάρτηση συνταγής σε Reels / TikTok / Shorts.
 Χρήση: python3 ads/captions.py <id_συνταγής>"""
 import json, os, subprocess, sys
+sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 LINK = 'fooddaily.github.io'
@@ -32,7 +33,12 @@ def caption(rid):
     m = load(rid)
     tags = BASE + CAT.get(m['cats'][0], [])
     cps = (m.get('cps') or m.get('cost') or '').strip()
-    return f"""{m['n']} 🍽️
+    # Η πρώτη γραμμή είναι η μόνη που φαίνεται πριν το «περισσότερα», και
+    # επαναλαμβάνει το hook του βίντεο: αν η λεζάντα λέει άλλο πράγμα από την
+    # εικόνα, το μήνυμα διχάζεται.
+    from reel import pick_hook
+    big, small = pick_hook(m, m['ing'], m['steps'], rid, True)
+    return f"""{big} {small} — {m['n']} 🍽️
 
 ⏱ {m['time']}′  ·  🔥 {m['cal']} θερμίδες  ·  👥 {m['srv']} μερίδες  ·  💰 {cps} η μερίδα
 
