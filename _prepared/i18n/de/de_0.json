@@ -1,0 +1,570 @@
+{
+ "aglio": {
+  "n": "Spaghetti Aglio e Olio",
+  "ing": [
+   "Spaghetti 200 g",
+   "Knoblauch 5 Zehen",
+   "Natives Olivenöl extra 60 ml",
+   "Frische Petersilie",
+   "Scharfe Chilischote 1-2",
+   "Salz",
+   "Parmesan"
+  ],
+  "steps": [
+   "Nudeln kochen: Reichlich Wasser (etwa 2 Liter) mit grobem Salz zum Kochen bringen und die 200 g Spaghetti hineingeben. 8-9 Minuten kochen, damit sie al dente bleiben, also noch Biss haben, denn sie garen in der Pfanne fertig.",
+   "Nudelwasser aufheben: Vor dem Abgießen 1 Tasse des stärkehaltigen Kochwassers aufbewahren. WICHTIG: Dieses Wasser ist das Geheimnis des Rezepts, denn die Stärke bindet das Olivenöl an die Nudeln und erzeugt eine cremige, glänzende Sauce ganz ohne Sahne.",
+   "Aromaten vorbereiten: Die 5 Knoblauchzehen in dünne Scheiben schneiden und die 1-2 Chilischoten fein hacken, damit sie ihr Aroma nach und nach an das Öl abgeben.",
+   "Knoblauch anbraten: Die 60 ml Olivenöl bei schwacher Hitze erwärmen und Knoblauch und Chili 2-3 Minuten anbraten, bis sie leicht goldgelb sind. WICHTIG: Den Knoblauch nicht verbrennen lassen, denn er wird bitter und verdirbt den Geschmack des ganzen Gerichts.",
+   "Mit den Nudeln vereinen: Die abgetropften Spaghetti mit etwas Kochwasser in die Pfanne geben und 1-2 Minuten kräftig schwenken, damit das Öl emulgiert und die Sauce entsteht.",
+   "Servieren: Fein gehackte Petersilie und geriebenen Parmesan zugeben, durchschwenken und sofort heiß servieren, damit die Sauce nicht austrocknet."
+  ],
+  "wine": "Trockener Weißwein.",
+  "plate": "Ein Nest aus Spaghetti, Petersilie, Parmesan."
+ },
+ "aioli": {
+  "n": "Aioli",
+  "ing": [
+   "Mayonnaise 150 g",
+   "Knoblauch 2-3 Zehen",
+   "Zitrone 1/2 (Saft)",
+   "Senf 1 TL",
+   "Salz, Pfeffer"
+  ],
+  "steps": [
+   "Den Knoblauch reiben oder im Mörser mit Salz zerstoßen.",
+   "Mayonnaise, Knoblauch, Zitronensaft und Senf verrühren.",
+   "Abschmecken und Salz und Zitrone anpassen.",
+   "Abgedeckt 30 Minuten im Kühlschrank ziehen lassen, damit sich das Aroma entfaltet.",
+   "Als Dip oder Beilage servieren."
+  ]
+ },
+ "american_pancakes": {
+  "n": "American Pancakes",
+  "ing": [
+   "Mehl 250 g",
+   "Milch 300 ml",
+   "Eier 2",
+   "Zucker 2 EL",
+   "Geschmolzene Butter 50 g",
+   "Backpulver 3 TL",
+   "Vanilleextrakt 1 TL",
+   "Salz 1/2 TL",
+   "Butter für die Pfanne"
+  ],
+  "steps": [
+   "Trockene Zutaten mischen: Mehl, Zucker, Backpulver und Salz in einer Schüssel verrühren.",
+   "Feuchte Zutaten mischen: Die Eier mit der Milch, der geschmolzenen Butter und der Vanille in einer zweiten Schüssel verschlagen.",
+   "Vereinen: Die feuchten Zutaten zu den trockenen gießen und mit einem Löffel nur 10-mal umrühren.",
+   "Wichtig: Der Teig muss klumpig bleiben. Jedes zusätzliche Rühren entwickelt Gluten, und Gluten macht Pancakes flach und gummiartig.",
+   "Ruhen lassen: Den Teig 15 Minuten ruhen lassen. Das Backpulver beginnt zu arbeiten und an der Oberfläche bilden sich Bläschen — das sorgt für die Höhe.",
+   "Pfanne erhitzen: Eine beschichtete Pfanne bei mittlerer Hitze erwärmen und mit etwas Butter und Küchenpapier auswischen.",
+   "Wichtig: Mittlere Hitze, niemals hohe. In einer zu heißen Pfanne verbrennt die Außenseite, während innen roher Teig bleibt.",
+   "Backen: Pro Pancake eine Kelle eingießen und warten, bis sich auf der ganzen Oberfläche Bläschen zeigen und die Ränder fest wirken — etwa 2 Minuten.",
+   "Wenden: Einmal wenden und 1 Minute weiterbacken. Wichtig: nur einmal wenden — ein zweites Wenden lässt sie zusammenfallen.",
+   "Warm halten: Auf einem Teller unter einem sauberen Geschirrtuch stapeln, das hält sie warm und weich, während der Rest gebacken wird."
+  ],
+  "wine": "Filterkaffee oder Orangensaft.",
+  "plate": "3-4 Stück zu einem Turm stapeln, mit Ahornsirup übergossen und Butter obenauf."
+ },
+ "amygdalota": {
+  "n": "Mandel-Marzipangebäck",
+  "ing": [
+   "Mandeln, fein gemahlen 500 g",
+   "Puderzucker 300 g",
+   "Eiweiß 2",
+   "Kristallzucker 100 g",
+   "Orangenblütenwasser 2 EL",
+   "Zitronenschale 1 TL",
+   "Mandelaroma (einige Tropfen)",
+   "Puderzucker zum Bestäuben",
+   "Einige ganze Mandeln zur Deko"
+  ],
+  "steps": [
+   "Mandeln vorbereiten: Die Mandeln blanchieren, häuten und in einer Mühle oder Küchenmaschine fein mahlen, bis sie fast mehlig sind.",
+   "Trockene Zutaten mischen: In einer großen Schüssel die gemahlenen Mandeln mit dem Puderzucker und der Zitronenschale mischen.",
+   "Eiweiß schlagen: Das Eiweiß mit dem Kristallzucker zu einem festen, glänzenden Baiser aufschlagen.",
+   "Masse vereinen: Das Baiser nach und nach zur Mandelmasse geben, zusammen mit Orangenblütenwasser und Mandelaroma, und sanft kneten, bis alles gut verbunden ist.",
+   "Wichtig: Der Teig soll weich sein, aber nicht kleben; ist er zu feucht, etwas mehr Puderzucker zugeben, damit das Gebäck seine Form hält und beim Backen nicht zerläuft.",
+   "Formen: Kleine Portionen abnehmen und zu Birnen oder Halbmonden formen, auf jedes eine Mandel als Deko setzen.",
+   "Backen: Auf ein mit Backpapier belegtes Blech setzen und im vorgeheizten Ofen bei 150 °C 15-18 Minuten backen, bis sie außen leicht goldgelb sind und innen weich bleiben.",
+   "Auskühlen und bestäuben: Vollständig auskühlen lassen und vor dem Servieren großzügig mit Puderzucker bestäuben."
+  ],
+  "wine": "Süßer Samos-Wein",
+  "plate": "Auf einer mit Spitzenpapier ausgelegten Platte servieren, mit Puderzucker bestäubt"
+ },
+ "anginaresPolita": {
+  "n": "Artischocken à la Polita",
+  "ing": [
+   "Artischocken 6",
+   "Erbsen 300 g",
+   "Karotten 4",
+   "Kartoffeln 4",
+   "Dill",
+   "Zitronen 2",
+   "Olivenöl 4 EL"
+  ],
+  "steps": [
+   "Artischocken putzen: Die 6 Artischocken putzen, die harten äußeren Blätter und das Heu entfernen. Sofort in Zitronenwasser legen. Wichtig: Das Zitronenwasser verhindert die Oxidation, damit die Artischocken vor dem Garen nicht schwarz werden.",
+   "Gemüse vorbereiten: Die 4 Karotten und 4 Kartoffeln in dicke Stücke schneiden und die Erbsen (300 g) auspalen, falls frisch.",
+   "Anbraten: Gehackte Zwiebel in einem Teil der 4 EL Olivenöl weich und glasig dünsten, ohne Farbe zu nehmen. Das macht sie süß und bildet die Geschmacksbasis des Gerichts.",
+   "Zutaten zugeben: Artischocken, Karotten, Kartoffeln und Erbsen zugeben. Wasser bis fast zum Bedecken angießen, dazu den Zitronensaft und das restliche Olivenöl.",
+   "Langsam garen: Bei schwacher Hitze 35-40 Minuten schmoren, bis das Gemüse weich ist und die typische zitronige Sauce entsteht. Wichtig: Den Topf schwenken statt mit dem Löffel zu rühren, damit Artischocken und Kartoffeln nicht zerfallen.",
+   "Vollenden und servieren: Zum Schluss die Flüssigkeit leicht einkochen lassen. Reichlich frischen Dill und etwas mehr Zitrone zugeben, dann warm servieren."
+  ],
+  "wine": "Trockener Weißwein.",
+  "plate": "Tiefer Teller, Dill, Zitrone."
+ },
+ "anthotypopita": {
+  "n": "Frischkäse-Pita",
+  "ing": [
+   "Filoblätter 6",
+   "Anthotyro-Käse 500 g",
+   "Eier 4",
+   "Milch 100 ml",
+   "Fein gehackte Minze",
+   "Salz, Pfeffer",
+   "Olivenöl",
+   "Sesam (optional)"
+  ],
+  "steps": [
+   "Die Eier mit der Milch verschlagen. Den zerbröselten Anthotyro, die Minze, etwas Salz und Pfeffer zugeben.",
+   "Eine Backform einfetten und 3 Filoblätter einlegen, jedes mit Öl bestreichen.",
+   "Die Füllung gleichmäßig verteilen.",
+   "Mit den restlichen 3 Filoblättern bedecken und mit Öl bestreichen. Mit Sesam bestreuen.",
+   "Bei 175 °C 40 Minuten backen, bis alles goldbraun ist."
+  ]
+ },
+ "arakas_laderos": {
+  "n": "Geschmorte Erbsen",
+  "ing": [
+   "Erbsen, tiefgekühlt oder frisch 750 g",
+   "Zwiebeln 2",
+   "Karotten 2",
+   "Tomaten 3",
+   "Frischer Dill",
+   "Olivenöl 4 EL",
+   "Salz & Pfeffer"
+  ],
+  "steps": [
+   "Zwiebeln anbraten: In einem Topf mit 4 EL Olivenöl die 2 fein gehackten Zwiebeln bei mittlerer Hitze 4-5 Minuten weich und glasig dünsten, damit sie süß werden und die Geschmacksbasis bilden.",
+   "Gemüse zugeben: Die 2 in Scheiben geschnittenen Karotten und die 750 g Erbsen zugeben und 2-3 Minuten rühren, damit sie sich mit Öl überziehen.",
+   "Tomate zugeben: Die 3 geriebenen Tomaten, Salz, Pfeffer und 100 ml Wasser zugeben. Sanft rühren. Wichtig: sanft rühren, damit die Erbsen nicht zerfallen und ihre Form behalten.",
+   "Langsam garen: Zugedeckt bei schwacher Hitze 30 Minuten schmoren, bis die Erbsen weich sind und die Flüssigkeit zu einer öligen Sauce einkocht.",
+   "Flüssigkeit prüfen: Kocht es zu früh trocken, etwas heißes Wasser nachgießen. Das Gericht soll saftig bleiben, aber nicht wässrig.",
+   "Vollenden: Zum Schluss reichlich gehackten frischen Dill zugeben und umrühren, damit er sein frisches Aroma behält.",
+   "Servieren: Die Erbsen 10 Minuten vom Herd ruhen lassen und lauwarm mit Feta und Brot servieren, denn Ladera-Gerichte schmecken nicht kochend heiß am besten."
+  ],
+  "wine": "Weiß oder Rosé.",
+  "plate": "Mit Weißbrot und Feta. Ein klassisches griechisches Olivenölgericht."
+ },
+ "arnaki_lemonato": {
+  "n": "Zitronen-Lammbraten",
+  "ing": [
+   "Lammkeule 1,5 kg",
+   "Zitronen 3",
+   "Knoblauch 6 Zehen",
+   "Olivenöl 4 EL",
+   "Oregano",
+   "Kartoffeln 600 g"
+  ],
+  "steps": [
+   "Marinieren: In einer Schüssel den Saft von 3 Zitronen, 4 EL Olivenöl, 6 zerdrückte Knoblauchzehen und Oregano vermischen. Die Mischung rundum in die 1,5 kg Lammkeule einreiben und mindestens 2 Stunden kalt stellen (idealerweise über Nacht), damit die Säure der Zitrone das Fleisch zart macht und die Aromen tief eindringen.",
+   "Ofen vorheizen: Den Ofen auf 190 °C Ober-/Unterhitze vorheizen, damit das Fleisch gleichmäßig gart.",
+   "Blech vorbereiten: Die 600 g Kartoffeln in Spalten schneiden und rund um das Lamm im Bräter verteilen. Die Marinade darübergießen und etwas Wasser zugeben, damit nichts austrocknet.",
+   "Braten: Mit Folie abdecken und bei 190 °C insgesamt 75-80 Minuten braten. Das anfängliche Abdecken hält den Saft im Fleisch und macht es zart.",
+   "Nach der Hälfte wenden: Nach 50 Minuten Fleisch und Kartoffeln wenden und die Folie entfernen, damit alles bräunt und eine knusprige Kruste bekommt. Wichtig: Ist die Flüssigkeit verkocht, etwas heißes Wasser nachgießen, damit die Kartoffeln nicht verbrennen.",
+   "Garprobe: Das Lamm ist fertig, wenn sich das Fleisch leicht vom Knochen löst. Wenn nötig, einige Minuten länger garen.",
+   "Ruhen und servieren: Den Bräter herausnehmen und das Fleisch 10 Minuten ruhen lassen, damit sich der Saft verteilt, dann mit den Kartoffeln und dem Bratensaft servieren."
+  ],
+  "wine": "Trockener Rotwein.",
+  "plate": "Lamm mit Kartoffeln, Zitrone, Oregano."
+ },
+ "arni_fournou_patates": {
+  "n": "Lammbraten mit Kartoffeln",
+  "ing": [
+   "Lammkeule oder -schulter 1,5 kg",
+   "Kartoffeln 1,2 kg",
+   "Saft von 2 Zitronen",
+   "Olivenöl 100 ml",
+   "Knoblauch 4-5 Zehen",
+   "Oregano 2 EL",
+   "Senf 1 EL",
+   "Wasser oder Fleischbrühe 1 Glas",
+   "Salz und Pfeffer nach Geschmack"
+  ],
+  "steps": [
+   "Fleisch vorbereiten: Das Lamm gut waschen und mit Küchenpapier trocken tupfen. Mit einem Messer rundum kleine Einschnitte machen und Knoblauchstücke hineinstecken.",
+   "Marinieren: In einer Schüssel Olivenöl, Zitronensaft, Senf, Oregano, Salz und Pfeffer mischen. Das Fleisch gut damit einreiben und mindestens 1 Stunde marinieren, idealerweise über Nacht im Kühlschrank.",
+   "Kartoffeln: Die Kartoffeln schälen und in Scheiben oder Stücke schneiden. Rund um das Fleisch im Bräter verteilen und mit etwas Olivenöl, Zitronensaft, Oregano und Salz beträufeln.",
+   "Wichtig: Das Wasser oder die Brühe angießen und den Bräter für die ersten Stunden fest mit Folie verschließen; so dämpft das Fleisch, bleibt saftig und wird zart, ohne auszutrocknen.",
+   "Erstes Garen: Im vorgeheizten Ofen bei 160 °C etwa 2 bis 2,5 Stunden zugedeckt garen, bis das Fleisch zart ist und sich leicht vom Knochen löst.",
+   "Aufdecken und bräunen: Die Folie entfernen, die Temperatur auf 200 °C erhöhen und weitere 30-40 Minuten braten, dabei die Kartoffeln wenden, bis Fleisch und Kartoffeln schön gebräunt sind.",
+   "Ruhen: Den Bräter aus dem Ofen nehmen und das Fleisch 10 Minuten ruhen lassen, bevor es tranchiert wird, damit sich der Saft setzt.",
+   "Servieren: Das Lamm in Portionen tranchiert zusammen mit den Kartoffeln servieren und mit dem Bratensaft beträufeln."
+  ],
+  "wine": "Xinomavro aus Naoussa oder ein anderer kräftiger trockener Rotwein.",
+  "plate": "Auf einem Teller mit gekochtem Blattgemüse oder Bauernsalat und frischem Brot für den Bratensaft servieren."
+ },
+ "arni_kleftiko": {
+  "n": "Lamm Kleftiko",
+  "ing": [
+   "Lammschulter 1,2 kg (in Stücken)",
+   "Kartoffeln 4",
+   "Paprika 2",
+   "Tomaten 2",
+   "Knoblauch 4 Zehen",
+   "Zitrone 1",
+   "Olivenöl",
+   "Oregano",
+   "Thymian",
+   "Kefalotyri-Käse 100 g",
+   "Salz & Pfeffer"
+  ],
+  "steps": [
+   "Marinieren: Den Saft von 1 Zitrone mit 4 zerdrückten Knoblauchzehen, Oregano, Thymian und Olivenöl mischen. Die 1,2 kg Lammschulterstücke damit einreiben und mindestens 1 Stunde ziehen lassen, damit die Aromen eindringen und das Fleisch zarter wird.",
+   "Gemüse vorbereiten: 4 Kartoffeln, 2 Paprika und 2 Tomaten in dicke Stücke schneiden, damit sie die lange Garzeit überstehen.",
+   "Päckchen aufbauen: Auf einem großen Bogen Backpapier Lamm, Kartoffeln, Paprika, Tomaten, 4 Knoblauchzehen und die 100 g Kefalotyri anrichten. Mit Salz und Pfeffer würzen.",
+   "Verschließen: Das Backpapier fest zu einem Päckchen schließen, eventuell mit einer zweiten Lage oder Folie. Wichtig: Ein dichter Verschluss hält den Dampf, sodass das Fleisch im eigenen Saft langsam gart und herrlich zart wird.",
+   "Langsam garen: Bei 160 °C 2,5-3 Stunden garen. Die niedrige Temperatur und die lange Garzeit machen das Fleisch so zart, dass es auf der Zunge zergeht.",
+   "Bräunen: In den letzten 20 Minuten das Papier oben öffnen, damit das Fleisch bräunt und überschüssige Flüssigkeit verdampft.",
+   "Servieren: Das Kleftiko direkt im geöffneten Papier mit allem Saft servieren, damit es heiß und aromatisch bleibt."
+  ],
+  "wine": "Kräftiger Rotwein.",
+  "plate": "Im Backpapier, mit geschmolzenem Kefalotyri und Oregano."
+ },
+ "arni_souvia": {
+  "n": "Osterlamm vom Spieß",
+  "ing": [
+   "Ganzes Lamm 10-12 kg",
+   "Olivenöl 200 ml",
+   "Zitronen 4",
+   "Knoblauch 10 Zehen",
+   "Reichlich Oregano & Thymian",
+   "Grobes Salz & Pfeffer"
+  ],
+  "steps": [
+   "Am Vorabend marinieren: Das 10-12 kg schwere Lamm aufklappen und innen wie außen gründlich mit grobem Salz, Pfeffer, reichlich Oregano und Thymian, den 10 Knoblauchzehen, dem Saft der 4 Zitronen und den 200 ml Olivenöl einreiben. Wichtig: Über Nacht marinieren lässt Salz und Aromen tief ins Fleisch ziehen, sodass der Geschmack nicht nur an der Oberfläche bleibt.",
+   "Auf den Spieß binden: Den Spieß entlang der Wirbelsäule führen und das Lamm an Keulen, Schultern und Rumpf sehr fest mit Draht binden. Festes Binden verhindert, dass das Fleisch lose hängt und sich ungleichmäßig über dem Feuer dreht.",
+   "Feuer entfachen: Um 8:00 Uhr morgens die Holzkohle anzünden und bis zur Glut ohne Flammen herunterbrennen lassen, bevor es losgeht. Wichtig: niemals über offener Flamme grillen — außen verkohlt es, während es innen roh bleibt. Gebraucht wird gleichmäßige Hitze aus heißer Glut.",
+   "Gleichmäßig drehen: Das Lamm etwa 30 cm vom Feuer entfernt positionieren und langsam ununterbrochen drehen. Dieser Abstand sorgt für langsames Garen, das Fett schmilzt allmählich aus und das Fleisch bleibt saftig.",
+   "Während des Bratens bestreichen: Alle 30-40 Minuten das Lamm mit einer Mischung aus Olivenöl und Zitrone bestreichen. Das hält die Oberfläche feucht, hilft beim gleichmäßigen Bräunen und bringt mit jeder Schicht Geschmack.",
+   "Garprobe: Nach etwa 3,5 Stunden sollte das Lamm gleichmäßig gebräunt und die Haut knusprig sein. In die dickste Stelle der Keule schneiden — läuft klarer Saft aus, ist es fertig. Ist er rosa, weiterbraten.",
+   "Ruhen und tranchieren: Das Lamm vom Spieß nehmen und 15 Minuten ruhen lassen, bevor es zerteilt wird. Das Ruhen verteilt den Saft im Fleisch, sodass er beim Anschneiden nicht sofort ausläuft und das Fleisch saftig bleibt."
+  ],
+  "wine": "Trockener Rotwein.",
+  "plate": "Ganzes Lamm, Zitrone, Oregano. Eine Ostertradition!"
+ },
+ "astakomakaronada": {
+  "n": "Hummer-Pasta",
+  "ing": [
+   "Frischer Hummer 1 kg (oder 2 kleinere)",
+   "Linguine oder Spaghetti 400 g",
+   "Reife Tomaten, gerieben, 500 g",
+   "1 mittlere Zwiebel, fein gehackt",
+   "Knoblauch, 2 Zehen",
+   "Natives Olivenöl extra 100 ml",
+   "Trockener Weißwein 1 Glas",
+   "Chiliflocken oder scharfe Paprika 1/2 TL",
+   "Frische Petersilie, gehackt, 2 EL",
+   "Salz und Pfeffer"
+  ],
+  "steps": [
+   "Hummer vorbereiten: Den Hummer 8-10 Minuten in Salzwasser kochen, bis die Schale rot wird, abkühlen lassen und das Fleisch aus Schwanz und Scheren vorsichtig lösen, die Schalen für den Fond aufheben.",
+   "Hummerfond: Die Schalen in etwas Olivenöl 5 Minuten anrösten, bis sie duften, mit etwas Wasser ablöschen und 15 Minuten köcheln lassen, dann abseihen und den Fond beiseitestellen.",
+   "Sauce: In einem weiten Topf Zwiebel und Knoblauch in Olivenöl weich dünsten, mit dem Wein ablöschen und den Alkohol verdampfen lassen.",
+   "Wichtig: Die geriebenen Tomaten und den Hummerfond zugeben und 25-30 Minuten offen bei schwacher Hitze köcheln lassen, damit die Sauce eindickt und sich die Aromen konzentrieren — langsames Köcheln ist das Geheimnis für einen tiefen Geschmack nach Meer.",
+   "Nudeln kochen: Die Linguine in reichlich Salzwasser al dente kochen, ein halbes Glas Kochwasser aufheben.",
+   "Vereinen: Das in Stücke geschnittene Hummerfleisch in die Sauce geben und 2-3 Minuten erwärmen, ohne stark zu kochen, damit das Fleisch nicht zäh wird.",
+   "Vollenden: Die abgetropften Nudeln in die Sauce geben, gut durchschwenken, bei Bedarf etwas Nudelwasser zugeben, und sofort mit Petersilie und Chiliflocken servieren.",
+   "Servieren: Auf warme Teller verteilen und die ganzen Scheren obenauf legen — das macht Eindruck."
+  ],
+  "wine": "Weißer Assyrtiko aus Santorin, kühl und mineralisch, hebt die Süße des Hummers hervor.",
+  "plate": "In einem tiefen weißen Teller servieren, die Hummerscheren obenauf, etwas frische Petersilie und eine Zitronenspalte dazu."
+ },
+ "avga_gemista": {
+  "n": "Gefüllte Eier",
+  "ing": [
+   "Eier 8",
+   "Mayonnaise 4 EL",
+   "Dijonsenf 1 TL",
+   "Zitronensaft 1 TL",
+   "Frischer Dill 2 EL",
+   "Edelsüßer Paprika zum Bestäuben",
+   "Kapern oder Oliven zum Garnieren",
+   "Salz, weißer Pfeffer"
+  ],
+  "steps": [
+   "Eier kochen: Die Eier in kaltes Wasser legen, aufkochen und genau 10 Minuten kochen, damit das Eigelb ganz fest wird.",
+   "Abkühlen: Wichtig: Sofort 5 Minuten in Eiswasser geben. Das stoppt das Garen, verhindert den grau-grünen Rand um das Eigelb und macht sie leicht schälbar.",
+   "Schälen: Unter fließendem Wasser schälen — der Strahl kommt unter die Haut und löst die Schale in Stücken.",
+   "Halbieren: Der Länge nach schneiden und das Messer zwischen jedem Schnitt abwischen, damit das Eiweiß sauber bleibt.",
+   "Eigelb entnehmen: Das Eigelb in eine Schüssel geben und das Eiweiß auf der Servierplatte bereitstellen.",
+   "Füllung zubereiten: Das Eigelb mit einer Gabel ganz glatt zerdrücken, dann Mayonnaise, Senf, Zitronensaft, Dill, Salz und Pfeffer untermischen.",
+   "Konsistenz prüfen: Die Füllung soll fest genug sein, um beim Spritzen ihre Form zu halten. Wichtig: Ist sie zu weich, läuft sie binnen Minuten aus dem Eiweiß.",
+   "Füllen: Die Masse mit einem Spritzbeutel für ein sauberes Ergebnis einfüllen oder großzügig mit dem Löffel einsetzen.",
+   "Garnieren: Mit Paprika bestäuben und auf jede Hälfte eine Kaper oder ein Stück Olive setzen.",
+   "Kühlen: Vor dem Servieren 30 Minuten kalt stellen, damit die Füllung fest wird und ihre Form hält."
+  ],
+  "wine": "Ein Schaumwein oder ein trockener Weißer als Aperitif.",
+  "plate": "In geraden Reihen auf einer flachen Platte anrichten, mit Paprika bestäubt und Dill bestreut."
+ },
+ "avga_matia": {
+  "n": "Spiegeleier mit Wurst",
+  "ing": [
+   "4 Eier",
+   "100 g Wurst oder geräucherter Schweinerücken (Apaki)",
+   "1 EL Olivenöl",
+   "Salz & Pfeffer",
+   "Brot zum Servieren"
+  ],
+  "steps": [
+   "Wurst schneiden: Die 100 g Wurst (oder Apaki) in etwa einen halben Zentimeter dicke Scheiben schneiden, damit sie gleichmäßig bräunen.",
+   "Wurst anbraten: 1 EL Olivenöl erhitzen und die Scheiben 2-3 Minuten braten, bis sie gebräunt sind und ihr aromatisches Fett austritt, das die Eier würzt.",
+   "Eier aufschlagen: Die 4 Eier vorsichtig neben die Wurst schlagen. Wichtig: Jedes Ei zuerst in eine Tasse schlagen, wenn du Angst um das Eigelb hast, und dann sanft in die Pfanne gleiten lassen.",
+   "Hitze reduzieren: Die Hitze verringern, damit das Eiweiß langsam stockt, ohne am Rand zu verbrennen, während das Eigelb flüssig bleibt.",
+   "Braten: 2-3 Minuten für flüssiges Eigelb oder 4 Minuten für durchgegart. Die Pfanne kann abgedeckt werden, damit die Oberfläche des Eiweißes stockt.",
+   "Servieren: Zum Schluss mit Salz und Pfeffer bestreuen und sofort mit frischem Brot zum Tunken servieren."
+  ],
+  "wine": "-",
+  "plate": "Sofort, mit Toast oder Brot."
+ },
+ "avgolemono_soupa": {
+  "n": "Ei-Zitronen-Suppe",
+  "ing": [
+   "Hühnerbrühe 1,5 l",
+   "Reis 100 g",
+   "Eier 3",
+   "Zitronen 2",
+   "Salz & Pfeffer"
+  ],
+  "steps": [
+   "Brühe und Reis kochen: Die 1,5 l Hühnerbrühe aufkochen, die 100 g Reis zugeben und etwa 15 Minuten garen, bis er weich ist. Eine gute Brühe ist die Geschmacksgrundlage der Suppe.",
+   "Eier aufschlagen: Die 3 Eier in einer Schüssel schaumig schlagen und nach und nach den Saft von 2 Zitronen unterschlagen. Gutes Aufschlagen ergibt ein leichtes, samtiges Avgolemono.",
+   "Temperieren: Langsam einige Kellen heiße Brühe unter ständigem Rühren in die Eimasse geben. Wichtig: Die Brühe wird langsam und unter ständigem Rühren zugegeben, damit die Temperatur der Eier allmählich steigt und sie nicht gerinnen.",
+   "Mit der Suppe vereinen: Die Hitze reduzieren oder ausschalten und das Avgolemono unter sanftem Rühren in den Topf gießen. Wichtig: Die Suppe danach nicht mehr aufkochen, sonst gerinnen die Eier und die Konsistenz ist verdorben.",
+   "Abschmecken: Probieren und nach Belieben Salz, Pfeffer oder etwas mehr Zitrone zugeben. Die Balance aus Säure und Salz gibt die typische Frische.",
+   "Servieren: Die Suppe sofort heiß und schaumig servieren, mit frisch gemahlenem Pfeffer obenauf. Das Avgolemono dickt mit der Zeit ein, deshalb schmeckt es frisch am besten."
+  ],
+  "wine": "Trockener Weißwein.",
+  "plate": "Mit frischem Brot. Klassisches griechisches Soulfood."
+ },
+ "bakaliaro": {
+  "n": "Stockfisch mit Knoblauchcreme",
+  "ing": [
+   "Stockfisch 600 g",
+   "Mehl 1 Tasse",
+   "Olivenöl",
+   "Kartoffeln 3 (für die Skordalia)",
+   "Knoblauch 5 Zehen",
+   "Essig 2 EL"
+  ],
+  "steps": [
+   "Entsalzen: Den Stockfisch (600 g) 24-36 Stunden in kaltem Wasser wässern, dabei das Wasser 3-4 Mal täglich wechseln. Wichtig: Häufiges Wasserwechseln ist entscheidend, um das überschüssige Salz zu entfernen, sonst bleibt der Fisch unerträglich salzig.",
+   "Trocknen: Den Fisch gut abtropfen lassen und mit Küchenpapier trocken tupfen, damit die Panade haftet und das Öl beim Braten nicht spritzt.",
+   "Kartoffeln kochen: Die 3 Kartoffeln mit Schale weich kochen, dann noch heiß schälen, damit sich die Skordalia leichter und feiner pürieren lässt.",
+   "Skordalia: Die Kartoffeln zusammen mit den 5 Knoblauchzehen zerdrücken und dabei nach und nach Olivenöl und die 2 EL Essig zugeben, bis eine Creme entsteht. Wichtig: Das Öl nach und nach zugeben, damit die Masse emulgiert und nicht gerinnt.",
+   "Panieren und braten: Den Fisch in der Tasse Mehl wenden und in heißem Olivenöl 3-4 Minuten pro Seite goldbraun und knusprig braten.",
+   "Servieren: Auf Küchenpapier abtropfen lassen und heiß mit der Skordalia und Oliven servieren — die klassische Kombination."
+  ],
+  "wine": "Trockener Weißwein.",
+  "plate": "Stockfisch mit Skordalia, Oliven und Blattgemüse."
+ },
+ "bakaliaros_plaki": {
+  "n": "Stockfisch Plaki aus dem Ofen",
+  "ing": [
+   "Gesalzener (gewässerter) oder frischer Kabeljau 1 kg",
+   "Reife Tomaten, gerieben, 800 g",
+   "Zwiebeln, 2 große",
+   "Knoblauch, 3 Zehen",
+   "Kartoffeln, 3 große",
+   "Olivenöl 150 ml",
+   "Petersilie, gehackt, 1 kleiner Bund",
+   "Zucker 1 TL (gegen die Säure der Tomate)",
+   "Frisch gemahlener schwarzer Pfeffer",
+   "Lorbeerblatt, 1"
+  ],
+  "steps": [
+   "Entsalzen: Bei Stockfisch diesen 24 Stunden in kaltem Wasser wässern und das Wasser 3-4 Mal wechseln, damit das überschüssige Salz entfernt wird. Wichtig: Vor dem Garen ein kleines Stück probieren; ist er noch sehr salzig, einige Stunden länger wässern, sonst wird das Gericht unerträglich salzig.",
+   "Gemüse vorbereiten: Die Zwiebeln schälen und in dünne Scheiben schneiden, den Knoblauch fein hacken. Die Kartoffeln schälen und in dicke Scheiben oder Spalten schneiden.",
+   "Anbraten: In einem weiten Topf die Hälfte des Olivenöls erhitzen und die Zwiebeln bei schwacher Hitze weich und glasig dünsten, ohne Farbe zu nehmen. Den Knoblauch eine Minute mitdünsten.",
+   "Tomatensauce: Die geriebenen Tomaten, das Lorbeerblatt, den Zucker, Salz und Pfeffer zugeben und die Sauce 15-20 Minuten köcheln lassen, bis sie eindickt und die überschüssige Flüssigkeit verdampft ist.",
+   "In der Form schichten: Die Kartoffeln auf dem Boden einer Auflaufform verteilen, leicht mit Salz und Pfeffer würzen (weniger, wenn der Fisch salzig ist) und etwas Sauce darübergießen. Die Fischstücke mit der Hautseite nach unten darauflegen.",
+   "Backen: Mit der restlichen Tomatensauce bedecken, mit dem restlichen Olivenöl beträufeln und im vorgeheizten Ofen bei 190 °C 40-45 Minuten backen, bis die Kartoffeln weich sind und die Sauce am Rand leicht karamellisiert. Wichtig: Die Form nicht die ganze Zeit mit Folie abdecken, damit die Sauce einkocht und Tiefe entwickelt.",
+   "Servieren: Das Gericht nach dem Backen 5-10 Minuten stehen lassen, mit frischer gehackter Petersilie bestreuen und heiß servieren."
+  ],
+  "wine": "Trockener weißer Assyrtiko aus Santorin oder gut gekühlter Retsina",
+  "plate": "Auf einem Tonteller servieren, dazu eine Scheibe Landbrot für die Sauce und etwas frischer Kraut-Karotten-Salat"
+ },
+ "bakaliaros_prasa": {
+  "n": "Stockfisch mit Lauch",
+  "ing": [
+   "Stockfisch 800 g",
+   "Lauch 1 kg",
+   "Geriebene Tomate 400 g",
+   "Tomatenmark 1 EL",
+   "Zwiebel 1",
+   "Olivenöl 1/2 Tasse",
+   "Lorbeerblatt 1",
+   "Zucker 1 TL",
+   "Frische Petersilie",
+   "Pfeffer"
+  ],
+  "steps": [
+   "Stockfisch entsalzen: Wichtig: Den Stockfisch 24-36 Stunden im Kühlschrank wässern und das Wasser 5-6 Mal wechseln. Zu kurz gewässerter Stockfisch ist ungenießbar salzig und lässt sich später nicht mehr korrigieren.",
+   "Prüfen: Ein kleines Stück von der dicksten Stelle probieren — es soll angenehm herzhaft schmecken, nicht salzig.",
+   "Schneiden: Den Fisch in große Portionen schneiden und größere Gräten mit einer Pinzette entfernen.",
+   "Lauch putzen: Den Lauch in dicke Ringe schneiden und zwischen den Schichten gründlich waschen, dort versteckt sich immer Erde.",
+   "Lauch anbraten: Lauch und Zwiebel im Öl bei mittlerer Hitze 10 Minuten dünsten, bis sie zusammenfallen und süß werden. Dieser langsame Beginn macht das Gericht aus.",
+   "Tomatenmark zugeben: Das Tomatenmark einrühren und 1 Minute mitrösten, dann die geriebene Tomate, das Lorbeerblatt und den Zucker zugeben.",
+   "Sauce köcheln: 20 Minuten köcheln lassen, bis der Lauch ganz weich ist und die Sauce eingedickt hat.",
+   "Fisch zugeben: Die Fischstücke ohne Rühren auf die Sauce legen, zudecken und nur 15 Minuten garen. Wichtig: Stockfisch zerfällt schnell, deshalb kommt er zuletzt hinein und wird nie umgerührt.",
+   "Würzen: Nur mit Pfeffer würzen — der Fisch bringt sein eigenes Salz mit. Vor dem Salzen probieren.",
+   "Ruhen: Petersilie darüberstreuen und vor dem Servieren 10 Minuten vom Herd ruhen lassen."
+  ],
+  "wine": "Ein trockener Weißer mit Säure — Assyrtiko oder Robola.",
+  "plate": "Die Fischstücke ganz auf einem Lauchbett in einem tiefen Teller servieren, mit Sauce übergossen und Brot dazu."
+ },
+ "baklava": {
+  "n": "Baklava",
+  "ing": [
+   "Filoteig 450 g",
+   "Gemahlene Walnüsse 300 g",
+   "Mandeln 100 g",
+   "Zimt & Nelken",
+   "Butter 200 g",
+   "Sirup: Zucker 300 g, Wasser 200 ml, Honig 3 EL"
+  ],
+  "steps": [
+   "Füllung vorbereiten: Die 300 g gemahlenen Walnüsse mit den 100 g Mandeln, Zimt und gemahlenen Nelken mischen. Die Gewürze geben dem Baklava seine typische aromatische Tiefe.",
+   "Blätter schichten: 5-6 Filoblätter einzeln mit geschmolzener Butter bestreichen und auf den Boden der Form legen, dann die Füllung verteilen. WICHTIG: Jedes Blatt gut buttern, damit sie knusprig werden und nicht zusammenkleben.",
+   "Schichten: Abwechselnd gebutterte Blätter und Füllung schichten und genug Blätter für eine reichliche Deckschicht aufheben.",
+   "Einschneiden: Das Baklava vor dem Backen diagonal in Rauten schneiden. Das Einschneiden vor dem Backen geschieht, solange die Blätter weich sind, damit sie danach nicht zersplittern und der Sirup überall einziehen kann.",
+   "Backen: Im vorgeheizten Ofen bei 170 °C 45-50 Minuten backen, bis alles tief goldbraun und knusprig ist. Die niedrige Temperatur backt die Blätter gleichmäßig, ohne sie zu verbrennen.",
+   "Sirup kochen: Die 300 g Zucker mit den 200 ml Wasser und den 3 EL Honig einige Minuten kochen, bis der Sirup leicht eindickt.",
+   "Tränken: Heißen Sirup über kaltes Baklava gießen oder kalten Sirup über heißes Baklava. WICHTIG: niemals beides gleich warm, sonst wird das Baklava matschig und verliert seine Knusprigkeit.",
+   "Ruhen: Das Baklava vor dem Schneiden und Servieren mindestens 2 Stunden den Sirup aufsaugen lassen, damit er gleichmäßig durch alle Schichten zieht."
+  ],
+  "wine": "-",
+  "plate": "Bei Zimmertemperatur, in Rautenform geschnitten."
+ },
+ "bamies_laderes": {
+  "n": "Geschmorte Okra",
+  "ing": [
+   "Okra 750 g",
+   "Geriebene Tomate 400 g",
+   "Zwiebel 1",
+   "Olivenöl 4 EL",
+   "Essig 1 EL",
+   "Zucker 1/2 TL",
+   "Salz & Pfeffer"
+  ],
+  "steps": [
+   "Okra putzen: Die 750 g Okra putzen, dabei den kegelförmigen Stielansatz vorsichtig abschneiden, ohne die Schote zu öffnen. Wichtig: Schneidet man zu tief, öffnet sich die Okra und wird beim Garen schleimig.",
+   "Essig und Sonne: Die Okra mit 1 EL Essig beträufeln und 30 Minuten in die Sonne stellen. Der Essig verringert die Schleimbildung und hilft ihnen, beim Garen fest zu bleiben.",
+   "Zwiebel anbraten: In einem Topf oder Bräter die 4 EL Olivenöl erhitzen und die 1 fein gehackte Zwiebel weich und glasig dünsten.",
+   "Okra zugeben: Die Okra ohne Rühren auf die Zwiebel geben, damit die Schoten nicht brechen und ihre Form behalten.",
+   "Tomate und Würze: Die 400 g geriebene Tomate, einen halben Teelöffel Zucker, Salz und Pfeffer zugeben. Der Zucker gleicht die Säure der Tomate aus.",
+   "Langsam garen: Bei schwacher Hitze 40 Minuten ohne Rühren schmoren, nur den Topf sanft schwenken, damit die Okra nicht zerfällt. Lauwarm mit frischem Brot servieren."
+  ],
+  "wine": "Rosé.",
+  "plate": "Mit frischem Brot und Feta."
+ },
+ "banoffee": {
+  "n": "Banoffee Pie",
+  "ing": [
+   "Butterkekse 300 g",
+   "Butter 130 g",
+   "Dulce de leche oder Kondensmilch 400 g",
+   "Bananen 4",
+   "Schlagsahne 400 ml",
+   "Puderzucker 2 EL",
+   "Zartbitterschokolade zum Reiben"
+  ],
+  "steps": [
+   "Die Kekse zu feinen Bröseln zerkleinern und mit der geschmolzenen Butter mischen, bis die Masse wie nasser Sand aussieht.",
+   "Die Masse fest in eine Tarteform drücken, Boden und Rand, dabei mit einem Glasboden gleichmäßig verdichten.",
+   "Den Boden 30 Minuten kalt stellen, damit er fest wird. Wichtig: Ein ungekühlter Boden bröselt schon beim ersten Anschnitt.",
+   "Das Dulce de leche gleichmäßig auf dem Boden verteilen.",
+   "Die Bananen in Scheiben schneiden und leicht überlappend auf dem Karamell verteilen.",
+   "Wichtig: Die Bananenscheiben zuerst in etwas Zitronensaft wenden, sonst werden sie binnen einer Stunde braun und unappetitlich.",
+   "Die Sahne mit dem Puderzucker steif schlagen und großzügig in Wellen auf den Bananen verteilen.",
+   "Zartbitterschokolade darüberreiben und vor dem Servieren 2 Stunden kalt stellen."
+  ],
+  "wine": "Kaffee oder ein Süßwein.",
+  "plate": "Mit einem heißen Messer in Stücke schneiden, damit die drei Schichten sauber sichtbar bleiben."
+ },
+ "barbounia": {
+  "n": "Gebratene Rotbarben",
+  "ing": [
+   "Frische Rotbarben 1 kg (mittelgroß, 8-10 Stück)",
+   "Grobes Salz, nach Bedarf",
+   "Weizenmehl 1 Tasse",
+   "Oliven- oder Sonnenblumenöl zum Braten 1/2 Liter",
+   "Zitronen 2 (in Scheiben und für den Saft)",
+   "Frisch gemahlener Pfeffer, nach Bedarf",
+   "Frische Petersilie 1 Bund (zum Servieren)"
+  ],
+  "steps": [
+   "Putzen: Die Rotbarben von der Schwanzflosse zum Kopf schuppen, mit einem kleinen Schnitt am Bauch ausnehmen und sehr gut mit kaltem Wasser abspülen. Abtropfen lassen.",
+   "Trocknen: Die Barben auf Küchenpapier legen und innen wie außen gründlich trocknen. Wichtig: Der Fisch muss vor dem Mehlieren völlig trocken sein, denn Feuchtigkeit lässt das Öl spritzen und verhindert eine knusprige Kruste.",
+   "Salzen: Die Barben erst wenige Minuten vor dem Braten mit grobem Salz salzen, nicht früher, damit sie keine Flüssigkeit ziehen und weich werden.",
+   "Mehlieren: Das Mehl auf einen flachen Teller geben und jede Barbe gleichmäßig darin wenden. Überschüssiges Mehl abklopfen, damit es im Öl nicht verbrennt.",
+   "Öl erhitzen: Reichlich Öl in einer tiefen Pfanne stark erhitzen (etwa 175-180 °C). Mit etwas Mehl testen: Zischt es sofort, ist das Öl bereit.",
+   "Braten: Die Barben portionsweise 3-4 Minuten pro Seite goldbraun und knusprig braten. Die Pfanne nicht überladen, sonst fällt die Temperatur.",
+   "Abtropfen: Mit einem Schaumlöffel herausnehmen und auf Küchenpapier abtropfen lassen, um überschüssiges Öl zu entfernen.",
+   "Servieren: Sofort heiß servieren, mit reichlich Zitronensaft, frisch gemahlenem Pfeffer und gehackter Petersilie."
+  ],
+  "wine": "Trockener Weißwein, gut gekühlt, oder Ouzo.",
+  "plate": "Mit Zitronenspalten, gekochtem Blattgemüse oder einem erfrischenden Bauernsalat servieren."
+ },
+ "bechamel": {
+  "n": "Béchamelsauce",
+  "ing": [
+   "Butter 60 g",
+   "Mehl 60 g",
+   "Milch 700 ml",
+   "Salz",
+   "Muskatnuss",
+   "Weißer Pfeffer"
+  ],
+  "steps": [
+   "Die Butter in einem Topf bei mittlerer Hitze schmelzen.",
+   "Das Mehl zugeben und 1-2 Minuten zügig rühren, bis es duftet.",
+   "Nach und nach die Milch unter ständigem Rühren zugeben.",
+   "Rühren, bis die Sauce eindickt (8-10 Minuten).",
+   "Mit Salz und Pfeffer würzen und die Muskatnuss zugeben."
+  ]
+ },
+ "beef_bourguignon": {
+  "n": "Boeuf Bourguignon",
+  "ing": [
+   "Rindfleisch (Schulter oder Wade) 1,2 kg",
+   "Trockener Rotwein 500 ml",
+   "Rinderbrühe 500 ml",
+   "Geräucherter Speck 150 g",
+   "Kleine Zwiebeln 300 g",
+   "Champignons 300 g",
+   "Karotten 3",
+   "Knoblauch 3 Zehen",
+   "Tomatenmark 2 EL",
+   "Mehl 2 EL",
+   "Butter 40 g",
+   "Lorbeerblätter 2, Thymian, Salz, Pfeffer"
+  ],
+  "steps": [
+   "Fleisch schneiden: Das Rindfleisch in große Würfel von 4-5 cm schneiden. Wichtig: nicht klein schneiden — langes Garen lässt sie schrumpfen, und kleine Stücke zerfallen zu Fasern.",
+   "Trocknen: Die Würfel völlig trocken tupfen und mit Salz und Pfeffer würzen. Eine feuchte Oberfläche bräunt nie.",
+   "Speck auslassen: Den gewürfelten Speck in einem schweren Topf knusprig auslassen, dann herausnehmen und beiseitestellen.",
+   "Fleisch anbraten: Die Würfel im Speckfett in kleinen Portionen anbraten, damit der Topf heiß bleibt und jedes Stück eine dunkle Kruste bekommt. Dieser Schritt bestimmt die Farbe des fertigen Gerichts.",
+   "Gemüse anbraten: Karotten und Zwiebeln zugeben, 5 Minuten anbraten, Knoblauch und Tomatenmark zugeben und 1 Minute weiterbraten.",
+   "Mehl zugeben: Mit dem Mehl bestäuben und 2 Minuten rühren, um den Mehlgeschmack auszubacken.",
+   "Mit Wein ablöschen: Den Wein angießen, den Topfboden abkratzen und 5 Minuten kochen lassen, damit der Alkohol verdampft.",
+   "Langsam garen: Brühe, Lorbeerblätter, Thymian und Speck zugeben, zudecken und bei sehr schwacher Hitze 2 Stunden 30 Minuten garen, oder im Ofen bei 160 °C.",
+   "Champignons zugeben: Die Champignons in Butter goldbraun braten und in den letzten 20 Minuten unterrühren.",
+   "Prüfen: Das Gericht ist fertig, wenn ein Stück Fleisch der Gabel ohne jeden Widerstand nachgibt.",
+   "Einkochen: Bei Bedarf offen bei mittlerer Hitze einkochen, bis die Sauce glänzt und am Fleisch haftet."
+  ],
+  "wine": "Ein Pinot Noir aus dem Burgund oder derselbe Wein, der im Topf war.",
+  "plate": "In einer tiefen Schale über Kartoffelpüree servieren, Zwiebeln und Champignons obenauf."
+ }
+}
