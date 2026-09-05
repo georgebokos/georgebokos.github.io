@@ -1,0 +1,382 @@
+{
+ "tyropita": {
+  "n": "Greek Cheese Pie",
+  "ing": [
+   "Phyllo pastry 500g",
+   "Grated feta cheese 500g",
+   "Eggs 3",
+   "Milk 100ml",
+   "Melted butter 100g",
+   "Salt & pepper",
+   "Sesame seeds (optional)"
+  ],
+  "steps": [
+   "Preparing the butter: Melt the 100g butter over low heat or in the microwave and let it cool slightly, so it spreads easily over the phyllo sheets.",
+   "Filling: In a bowl, mix the 500g grated feta, the 3 eggs, the 100ml milk and pepper. Important: taste before adding salt, as feta is already salty and you risk over-seasoning.",
+   "Layering the bottom sheets: Grease the baking pan and layer 6-8 sheets of phyllo, brushing each one with melted butter. The butter between the sheets makes them crisp and puffed when baked.",
+   "Spreading the filling: Spread the filling evenly over the sheets, so each piece gets an equal amount of cheese.",
+   "Sealing: Cover with another 6-8 sheets, buttering each one again. Fold the edges inward so the filling doesn't escape.",
+   "Scoring: Score the pie into pieces with a knife before baking, so it cuts easily afterward without breaking the crisp phyllo. Sprinkle sesame seeds on top.",
+   "Baking: Bake at 180°C for 45-50 minutes until golden and crispy. Let it rest for 10 minutes before cutting."
+  ],
+  "wine": "Dry white wine or rosé.",
+  "plate": "Warm pieces, salad on the side."
+ },
+ "tyropita_kourou": {
+  "n": "Shortcrust Cheese Pie",
+  "ing": [
+   "Flour 300g",
+   "Butter 150g",
+   "Egg 1",
+   "Water 3 tbsp",
+   "Feta 300g",
+   "Anthotyro cheese 200g",
+   "Eggs 3",
+   "Milk 100ml",
+   "Pepper"
+  ],
+  "steps": [
+   "Mix the flour with cold butter, cut into pieces, until it resembles breadcrumbs.",
+   "Add the egg and a little water, and knead lightly. Chill in the fridge for 30 minutes.",
+   "Mash the feta and anthotyro together. Add the eggs, milk and pepper.",
+   "Roll out the dough in a baking pan and spread the filling over it.",
+   "Bake at 180°C for 40-45 minutes until golden."
+  ]
+ },
+ "tzatziki_dish": {
+  "n": "Homemade Tzatziki",
+  "ing": [
+   "Strained yogurt 500g",
+   "Cucumber 1 large",
+   "Garlic 2-3 cloves",
+   "Olive oil 2 tbsp",
+   "Vinegar 1 tsp",
+   "Dill",
+   "Salt"
+  ],
+  "steps": [
+   "Draining the cucumber: Grate the 1 large cucumber on the coarse side of a grater, salt it lightly, and let it sit for 10 minutes. Important: squeeze it very well with your hands or in a clean towel to remove all the moisture — this is the secret to a thick tzatziki that doesn't turn watery.",
+   "Preparing the garlic: Mash the 2-3 garlic cloves into a paste with a little salt. The salt breaks down the fibers of the garlic and distributes its flavor evenly without leaving strong chunks.",
+   "Mixing: In a bowl, combine the 500g strained yogurt, the squeezed cucumber, the mashed garlic, the 1 tsp vinegar, and salt. Mix well until smooth. The vinegar adds freshness and balances the richness of the yogurt.",
+   "Flavoring: Add chopped dill and the 2 tbsp olive oil and stir gently. The olive oil binds the mixture and gives it a velvety texture.",
+   "Resting: Cover and refrigerate for at least 1 hour before serving. Resting lets the flavors meld and mellows the sharpness of the raw garlic, giving a rounder result."
+  ],
+  "wine": "Dry white wine.",
+  "plate": "In a bowl, with a spiral of olive oil and dill."
+ },
+ "vasilopita": {
+  "n": "New Year's Cake",
+  "ing": [
+   "Flour 500g",
+   "Butter 200g",
+   "Sugar 200g",
+   "Eggs 4",
+   "Milk 100ml",
+   "Baking powder 2 tsp",
+   "Vanilla 2",
+   "Orange zest",
+   "Powdered sugar for garnish",
+   "Coin (flouri) 1, wrapped in foil"
+  ],
+  "steps": [
+   "Whisking: Beat the butter with the sugar in a mixer for 5-7 minutes until light and fluffy.",
+   "Eggs: Add the eggs one at a time, beating well between each addition. Add the vanilla and zest.",
+   "Dry ingredients: Combine the flour with the baking powder. Add the flour and milk alternately to the mixture, folding gently.",
+   "Coin: Place the wrapped coin inside the batter.",
+   "Baking: In a greased 26 cm pan, bake at 175°C for 45-50 minutes. Test with a toothpick.",
+   "Garnish: Once cooled, dust with powdered sugar in a design (usually the year). Important: tradition — the host cuts the first piece for Christ, one for the household, then serves the rest."
+  ],
+  "wine": "-",
+  "plate": "Dusted with powdered sugar; the coin brings good luck."
+ },
+ "waffle": {
+  "n": "Waffles",
+  "ing": [
+   "Flour 250 g",
+   "Milk 300 ml",
+   "Eggs 2 (separated)",
+   "Melted butter 100 g",
+   "Sugar 3 tbsp",
+   "Baking powder 2 tsp",
+   "Vanilla extract 1 tsp",
+   "Salt 1/2 tsp",
+   "Cornflour 2 tbsp"
+  ],
+  "steps": [
+   "Separating the eggs: Separate the yolks from the whites carefully. Important: a single drop of yolk in the whites stops them whipping — this is the step the whole recipe rests on.",
+   "Making the base: Whisk the yolks with the milk, the melted butter and the vanilla.",
+   "Mixing the dry ingredients: Combine the flour, cornflour, sugar, baking powder and salt. The cornflour is what gives waffles their crisp shell.",
+   "Combining: Fold the dry ingredients into the yolk mixture until just smooth.",
+   "Whipping the whites: Whip the egg whites to firm peaks in a spotlessly clean, dry bowl.",
+   "Important: Fold the whites in gently in three additions, with upward strokes. This trapped air is the difference between a waffle and a thick pancake.",
+   "Heating the iron: Heat the waffle iron thoroughly and brush it with butter or oil, even if it is non-stick.",
+   "Filling: Pour in enough batter to cover about three quarters of the surface — it expands as it cooks.",
+   "Important: Do not open the iron for the first 3 minutes. Opening early tears the waffle in half, because the crust has not set yet.",
+   "Cooking and serving: Cook for 4-5 minutes until golden and crisp, and serve at once — waffles soften within minutes of coming out."
+  ],
+  "wine": "Hot chocolate or coffee.",
+  "plate": "Serve warm with whipped cream, chocolate and fruit tucked into the squares."
+ },
+ "waldorf_salata": {
+  "n": "Waldorf Salad",
+  "ing": [
+   "Apples 2 (red)",
+   "Celery 3 sprigs",
+   "Walnuts 80g",
+   "Grapes 100g (optional)",
+   "Mayonnaise 3 tbsp",
+   "Yogurt 2 tbsp",
+   "Lemon juice",
+   "Salt, pepper",
+   "Lettuce, for serving"
+  ],
+  "steps": [
+   "Dice the apples and sprinkle with lemon juice to prevent browning.",
+   "Thinly slice the celery. Roughly chop the walnuts.",
+   "Mix the mayonnaise with the yogurt, salt, and pepper.",
+   "Combine the apples, celery, walnuts, and grapes with the dressing.",
+   "Serve on lettuce leaves."
+  ]
+ },
+ "xoirina_paidakia": {
+  "n": "Pork Ribs",
+  "ing": [
+   "Pork ribs 1.2kg",
+   "Olive oil 3 tbsp",
+   "Lemon 1",
+   "Garlic 3 cloves",
+   "Oregano & thyme",
+   "Mustard 1 tbsp",
+   "Salt & pepper"
+  ],
+  "steps": [
+   "Marinating: In a bowl, mix the 3 tbsp olive oil, the juice of 1 lemon, the 3 crushed garlic cloves, the 1 tbsp mustard, oregano, thyme and salt. Rub the mixture thoroughly over the 1.2kg ribs and let marinate for 30 minutes. Important: the lemon's acidity and the mustard tenderize the meat and flavor it deeply.",
+   "Preheating the grill: Heat the grill or grill pan well over medium-high heat before adding the meat, so it sears immediately and develops nice grill marks.",
+   "Cooking the first side: Grill the ribs for 8-10 minutes on one side without moving them repeatedly, so they brown properly.",
+   "Cooking the second side: Turn and grill for another 8-10 minutes until cooked through and juicy with a crispy exterior.",
+   "Resting: Let the ribs rest for 5 minutes before serving. Important: resting allows the juices to redistribute, so the meat doesn't dry out when cut.",
+   "Serving: Serve with fresh lemon and lemon potatoes for a complete traditional dish."
+  ],
+  "wine": "Dry red.",
+  "plate": "With fried potatoes, lemon and mustard."
+ },
+ "xoirini_tiganias": {
+  "n": "Greek Pork Pan-fry",
+  "ing": [
+   "600g pork neck/shoulder",
+   "3 peppers (red + green + yellow)",
+   "1 onion",
+   "2 cloves garlic",
+   "100ml white wine",
+   "Olive oil",
+   "Oregano",
+   "Salt & pepper"
+  ],
+  "steps": [
+   "Prepping the meat: Cut the 600g pork neck into evenly sized strips and pat them dry with paper towels, so they brown instead of stewing in their own juices.",
+   "Browning the pork: Heat the olive oil well and fry the pork over high heat until browned all over, then remove it. Important: cook it in batches over high heat, since overcrowding the pan makes the meat release liquid and stew instead of caramelizing.",
+   "Sautéing the vegetables: In the same pan, sauté the onion and the 3 peppers, cut into strips, for about 5 minutes until slightly softened but still holding their color. Add 2 cloves of garlic and sauté for 1 more minute.",
+   "Returning the meat and deglazing: Return the pork to the pan and deglaze with the 100ml white wine, scraping the bottom. The wine dissolves the caramelized bits and adds depth to the sauce.",
+   "Simmering: Add oregano, salt, and pepper, and simmer for about 10 minutes until the alcohol evaporates and the meat softens as the flavors come together.",
+   "Serving: Serve the pork stir-fry hot with fresh bread to mop up the sauce, and a little extra oregano on top."
+  ],
+  "wine": "Dry red.",
+  "plate": "With roast potatoes or rice."
+ },
+ "xoirino_lemonato": {
+  "n": "Lemon Pork",
+  "ing": [
+   "Pork leg or shoulder 1 kg, cut into portions",
+   "Potatoes 1 kg, cut into thick wedges",
+   "Olive oil 1/2 cup",
+   "Lemon juice of 3 lemons",
+   "Dry onion 1 large, finely chopped",
+   "Garlic 2 cloves",
+   "Mustard 1 tbsp",
+   "Oregano 1 tbsp",
+   "Stock or water 1 cup",
+   "Salt and freshly ground pepper"
+  ],
+  "steps": [
+   "Preparation: Pat the pork pieces thoroughly dry with paper towels and season generously with salt and pepper on all sides. Important: the meat must be completely dry before searing, otherwise it will boil instead of browning and won't develop the caramelized crust that gives it depth of flavor.",
+   "Searing: Heat half the olive oil in a heavy pot over high heat and brown the pork pieces on all sides, in batches so they don't crowd the pot. Remove and set aside.",
+   "Aromatics: Lower the heat, add the chopped onion and garlic, and sauté for 3-4 minutes until softened, scraping the bottom of the pot.",
+   "Simmering: Return the meat to the pot, add the mustard, half the oregano, and the stock. Cover and simmer over low heat for about 45 minutes, until the meat starts to become tender.",
+   "Adding the potatoes: Add the potatoes around the meat, pour in the remaining olive oil, season with salt and pepper, and continue cooking covered for another 30-35 minutes, stirring gently.",
+   "Lemon: When the meat and potatoes are almost tender, add the lemon juice and the remaining oregano. Important: the lemon goes in at the end, because prolonged boiling makes its acidity toughen the meat fibers and lose its fresh, bright citrus aroma.",
+   "Reducing the sauce: Leave uncovered for 8-10 minutes over medium heat so the sauce thickens and takes on the lemon flavor. Taste and adjust salt, pepper, and lemon.",
+   "Resting: Remove from the heat and let the dish rest, covered, for 10 minutes before serving, so the meat relaxes and reabsorbs its juices."
+  ],
+  "wine": "Dry white, such as Assyrtiko or Moschofilero.",
+  "plate": "Serve hot with the potatoes and plenty of lemon sauce, accompanied by fresh bread and a green salad."
+ },
+ "xoirino_moutardes": {
+  "n": "Pork with Mustard & Apple",
+  "ing": [
+   "Pork fillet or chops 700g",
+   "Apple 1 (Granny Smith)",
+   "Dijon mustard 3 tbsp",
+   "Onion 1",
+   "Garlic 2 cloves",
+   "White wine 100ml",
+   "Heavy cream 150ml",
+   "Olive oil 2 tbsp",
+   "Thyme, salt, pepper"
+  ],
+  "steps": [
+   "Browning the meat: Cut the pork into 2 cm medallions. Season with salt and pepper and brown in olive oil for 3 minutes per side until golden. Remove and set aside.",
+   "Sautéing: In the same pan, sauté the onion for 3 minutes. Add the garlic and diced apple, and cook for another 2 minutes.",
+   "Sauce: Deglaze with the white wine and let it evaporate for 2 minutes. Add the mustard and cream, and stir. Simmer for 3 minutes.",
+   "Finishing: Return the meat to the sauce and simmer covered for 8-10 minutes. Important: don't let it boil hard — the cream will split. Serve with mashed potatoes or rice."
+  ],
+  "wine": "White Chardonnay or a light red.",
+  "plate": "With a creamy mustard sauce and apple slices."
+ },
+ "xoirino_prasa": {
+  "n": "Pork with Leeks and Wine",
+  "ing": [
+   "Pork shoulder 700g (cubed)",
+   "Leeks 4",
+   "Onion 1",
+   "Garlic 2 cloves",
+   "White wine 150ml",
+   "Grated tomato 200g",
+   "Olive oil",
+   "Bay leaves 2",
+   "Salt & pepper"
+  ],
+  "steps": [
+   "Preparing the meat: Cut the 700g pork shoulder into evenly sized cubes and pat dry, so they brown properly when seared.",
+   "Browning and sautéing: Heat olive oil and brown the cubes on all sides over high heat to seal in the juices. Add the onion and 2 garlic cloves and sauté for 3 minutes.",
+   "Deglazing with wine: Deglaze with the 150ml white wine and let the alcohol evaporate. The wine adds aromatic acidity and depth to the sauce.",
+   "Adding the tomato: Add the 200g grated tomato, 2 bay leaves, salt and pepper, and simmer for about 25 minutes until the meat starts to become tender.",
+   "Adding the leeks: Slice the 4 leeks into rounds and add them to the pot. Important: the leeks go in later so they don't dissolve completely and keep their texture on the plate.",
+   "Finishing: Simmer for about another 15 minutes until the leeks soften and the meat becomes tender and glazed. Remove the bay leaves, taste for salt and serve hot."
+  ],
+  "wine": "Dry white.",
+  "plate": "With rice or mashed potatoes."
+ },
+ "xoirino_selino": {
+  "n": "Pork with Celery Avgolemono",
+  "ing": [
+   "Pork leg or shoulder 1 kg, cut into portions",
+   "Celery (root and stalks) 1 large bunch",
+   "Dry onions 2 medium, finely chopped",
+   "Olive oil 1/2 cup",
+   "Eggs 2",
+   "Lemons juice of 2",
+   "Salt and freshly ground pepper",
+   "Hot water or stock, about 1 liter"
+  ],
+  "steps": [
+   "Preparation: Wash the pork, cut it into portions, and pat it thoroughly dry with paper towels so it browns properly. Clean the celery, cutting the stalks into 4-5cm pieces and the celery root into thick slices.",
+   "Searing: In a wide pot, heat the olive oil and sear the pork over high heat on all sides until nicely golden. Important: brown the meat in batches rather than all at once, otherwise the temperature drops, the meat releases its juices, and it boils instead of caramelizing.",
+   "Onion: Lower the heat slightly, add the onions, and sweat them for 3-4 minutes until they turn glossy, stirring so they don't burn.",
+   "Simmering the meat: Add hot water or stock until the meat is almost covered, season with salt and pepper, lower the heat, and simmer covered for about 1 hour until it starts to become tender.",
+   "Adding the celery: First blanch the celery for 2-3 minutes in boiling water to remove its bitterness, drain, and add it to the pot. Continue cooking for another 20-30 minutes, until the meat and celery are tender and enough broth remains for the avgolemono.",
+   "Avgolemono (egg-lemon sauce): Beat the eggs in a bowl until frothy and gradually add the lemon juice. Remove the pot from the heat and, with a ladle, slowly add a little hot broth to the egg mixture while whisking constantly. Important: the broth must not be boiling when you add the avgolemono, or it will curdle; add the hot broth gradually so the eggs' temperature rises evenly.",
+   "Thickening: Pour the avgolemono into the pot, swirl gently in circular motions (do not stir with a spoon) and set over very low heat for half a minute, without letting it boil, so the sauce thickens slightly.",
+   "Serving: Let the dish rest, covered, for 5-10 minutes before serving, so the flavors come together and the avgolemono sets."
+  ],
+  "wine": "Dry white, such as Assyrtiko or Moschofilero.",
+  "plate": "Serve hot with plenty of avgolemono sauce, freshly ground pepper, and fresh bread to soak up the juices."
+ },
+ "xorta_vrasta": {
+  "n": "Boiled Wild Greens",
+  "ing": [
+   "Seasonal greens (amaranth, dandelion greens, nettles or sow thistle) 1.5 kg",
+   "Extra virgin olive oil 100 ml",
+   "Lemon juice, 2 lemons",
+   "Coarse salt 1 tbsp",
+   "1 onion (optional, for the broth)",
+   "Vinegar 1 tbsp (optional)",
+   "Freshly ground pepper, a little"
+  ],
+  "steps": [
+   "Trimming: Separate the greens from the tough stalks and any yellow or damaged leaves, keeping only the tender parts.",
+   "Washing: Wash the greens in plenty of water, through 3-4 changes, as they often hide soil and grit between the leaves.",
+   "Important: Boil in plenty of boiling salted water, uncovered, so the greens keep their natural green color and lose their bitterness, especially if using dandelion greens or nettles.",
+   "Cooking time: Let them boil for 15-25 minutes depending on the type and tenderness of the greens, until softened but not mushy.",
+   "Draining: Drain the greens well in a colander, pressing gently to remove excess water.",
+   "Serving: Spread them on a platter and drizzle generously with olive oil and fresh lemon juice.",
+   "Final touch: Add salt and pepper to taste and serve warm or at room temperature, never cold from the fridge, so their flavor comes through."
+  ],
+  "wine": "Chilled retsina or dry white Assyrtiko from Santorini",
+  "plate": "Serve on an earthenware platter alongside grilled fish or feta and olives, with plenty of olive oil and lemon on the table"
+ },
+ "xtapodi_gigantes": {
+  "n": "Octopus with Giant Beans",
+  "ing": [
+   "Fresh or frozen octopus 1.2 kg",
+   "Gigantes beans 500 g",
+   "Onions, 2 large",
+   "Garlic, 3 cloves",
+   "Ripe tomatoes, grated, 400 g",
+   "Olive oil 150 ml",
+   "Wine vinegar 1 glass",
+   "Bay leaves, 2-3",
+   "Rosemary, 1 sprig",
+   "Salt and pepper"
+  ],
+  "steps": [
+   "Preparing the octopus: Rinse the octopus well and beat it lightly to tenderize its fibers, if it's fresh.",
+   "Important: If the octopus is fresh, it's best to freeze it for 24 hours first and then thaw it, as freezing breaks down its fibers and makes it more tender without needing to beat it.",
+   "Slow cooking: Place the octopus in a pot without water, over medium heat, covered, and let it cook in its own juices for 35-45 minutes until tender, turning it occasionally.",
+   "Soaking the beans: The day before, soak the gigantes beans in plenty of cold water for at least 10-12 hours.",
+   "Boiling the beans: Drain the beans and boil them in lightly salted water for 40-50 minutes until softened but still holding their shape, then drain.",
+   "Sautéing: In a wide pot, heat the olive oil and sauté the finely chopped onion until softened, add the garlic and deglaze with the vinegar.",
+   "Combining the ingredients: Add the grated tomato, bay leaves, rosemary, the octopus cut into pieces, and the beans, season lightly with salt and pepper (being mindful of the octopus's saltiness) and simmer uncovered for 20-25 minutes until the sauce thickens.",
+   "Serving: Let the dish rest a few minutes before serving hot, so the beans absorb the flavors well."
+  ],
+  "wine": "Dry white Assyrtiko from Santorini, cool and mineral",
+  "plate": "Serve in a deep plate with a fan of fresh village bread and a drizzle of olive oil on top"
+ },
+ "xtapodi_makaronaki": {
+  "n": "Octopus with Pasta",
+  "ing": [
+   "Octopus, fresh or frozen, 1 kg",
+   "Ditalini pasta (kofto makaronaki) 400g",
+   "Dry onion 1 large",
+   "Garlic 2 cloves",
+   "Ripe tomatoes, grated, 400g (or 1 can chopped tomatoes)",
+   "Tomato paste 1 tbsp",
+   "Dry red wine 1 glass",
+   "Olive oil 1/2 cup",
+   "Bay leaves 1-2, allspice berries 3-4",
+   "Salt, pepper, sugar 1 pinch"
+  ],
+  "steps": [
+   "Cleaning: Wash the octopus well and remove the eyes and beak if present. If frozen, thaw completely. Cut the tentacles and head into 3-4cm pieces.",
+   "Releasing the liquid: Place the octopus in a wide pot WITHOUT oil or water over medium heat. It will release its own liquid. Let it simmer in its own juices for 15-20 minutes, until it has drawn out almost all of it. Important: octopus doesn't need water at the start — it cooks in its own liquid. This keeps it juicy and prevents it from toughening.",
+   "Sautéing: Add the olive oil and sauté the octopus for 2-3 minutes. Add the chopped onion and garlic and stir until softened.",
+   "Deglazing with wine: Pour in the red wine and let the alcohol evaporate for 2-3 minutes, scraping the bottom of the pot.",
+   "Sauce: Add the grated tomato, the tomato paste dissolved in a little water, the bay leaves, allspice, a pinch of sugar, salt, and pepper. Simmer covered over low heat for 40-50 minutes, until the octopus is tender and the sauce has thickened.",
+   "Adding water: When the octopus is almost done, add about 2-3 cups of hot water so there's enough liquid to cook the pasta.",
+   "Cooking the pasta: Add the ditalini to the sauce and stir well. Cook uncovered for 10-12 minutes, stirring frequently so it doesn't stick, until it absorbs the liquid and is left with a slightly thick sauce.",
+   "Resting: Remove from the heat, discard the bay leaves, and let the dish rest covered for 5 minutes before serving."
+  ],
+  "wine": "Dry red, such as Agiorgitiko, or a crisp rosé.",
+  "plate": "Serve hot in a deep plate with plenty of sauce, freshly ground pepper, and a little chopped parsley."
+ },
+ "zele_frouta": {
+  "n": "Fruit Jelly",
+  "ing": [
+   "Jelly powder 2 packets",
+   "Hot water 500 ml",
+   "Cold water 400 ml",
+   "Mixed fresh fruit 400 g",
+   "Sugar 2 tbsp (optional)"
+  ],
+  "steps": [
+   "Dissolve the jelly powder completely in the hot water, stirring until no grains remain on the bottom.",
+   "Add the cold water and let the mixture cool to room temperature.",
+   "Important: Never use fresh pineapple, kiwi or papaya. They contain enzymes that break down gelatine, and the jelly will never set.",
+   "Cut the fruit into even pieces and dry them lightly on kitchen paper.",
+   "Pour a thin layer of jelly into the mould and refrigerate for 30 minutes until just tacky.",
+   "Arrange the fruit on this set layer — this stops everything sinking to the bottom — and pour over the rest of the jelly.",
+   "Refrigerate for at least 4 hours. To unmould, dip the base in warm water for 5 seconds only."
+  ],
+  "wine": "Juice or sparkling water with lemon.",
+  "plate": "Turn out onto a platter so the fruit shows through the clear jelly."
+ }
+}

@@ -1,0 +1,558 @@
+{
+ "patatokeftedes": {
+  "n": "Kartoffelpuffer",
+  "ing": [
+   "Kartoffeln 800 g",
+   "Eier 2",
+   "Feta 150 g",
+   "Frühlingszwiebeln 2",
+   "Petersilie",
+   "Mehl 3 EL",
+   "Salz, Pfeffer",
+   "Olivenöl zum Braten"
+  ],
+  "steps": [
+   "Die Kartoffeln kochen und stampfen. Vollständig abkühlen lassen — warmes Püree saugt Öl auf und die Puffer halten nicht zusammen.",
+   "Das Püree mit Eiern, zerbröseltem Feta, Frühlingszwiebeln, Petersilie, Mehl, Salz und Pfeffer mischen.",
+   "Kleine runde Taler formen.",
+   "Das Öl bei mittlerer bis starker Hitze erhitzen.",
+   "3-4 Minuten pro Seite kräftig braun braten.",
+   "Mit Tzatziki servieren."
+  ]
+ },
+ "patatosalata": {
+  "n": "Kartoffelsalat",
+  "ing": [
+   "Mittelgroße Kartoffeln 1 kg",
+   "Zwiebel oder Frühlingszwiebel 1",
+   "Petersilie, fein gehackt, 1/2 Bund",
+   "Natives Olivenöl extra 6 EL",
+   "Essig oder Zitronensaft 3 EL",
+   "Senf 1 TL",
+   "Oregano 1 TL",
+   "Salz und frisch gemahlener Pfeffer"
+  ],
+  "steps": [
+   "Vorbereitung: Die Kartoffeln gut waschen und ganz und ungeschält mit reichlich kaltem Wasser und etwas Salz in einen Topf geben.",
+   "Kochen: Die Kartoffeln je nach Größe etwa 25-30 Minuten kochen. Wichtig: Ganz und mit Schale kochen, damit sie nicht zu viel Wasser ziehen und matschig werden. Sie sind fertig, wenn eine Gabel leicht hineingleitet, sie aber nicht zerfallen.",
+   "Schälen: Die Kartoffeln abgießen und noch warm, aber handwarm genug, die Schalen abziehen.",
+   "Schneiden: Die Kartoffeln in dicke Scheiben oder große Stücke schneiden und noch warm in eine große Salatschüssel geben, damit sie das Dressing besser aufnehmen.",
+   "Dressing: In einer Schüssel Olivenöl, Essig oder Zitronensaft, Senf, Oregano, Salz und Pfeffer mit einer Gabel verrühren.",
+   "Mischen: Zwiebel und Petersilie fein hacken, zu den Kartoffeln geben, das Dressing zugeben und vorsichtig mischen, damit die Kartoffeln nicht zerfallen.",
+   "Ruhen lassen: Den Salat mindestens 15-20 Minuten ruhen lassen, damit sich die Aromen verbinden. Warm oder bei Zimmertemperatur servieren, mit einem zusätzlichen Schuss Olivenöl."
+  ],
+  "wine": "Trockener Weißwein oder Ouzo.",
+  "plate": "Warm auf einem flachen Teller servieren, mit frischer Petersilie bestreut und einem Schuss Olivenöl."
+ },
+ "patsas": {
+  "n": "Patsas (Kuttelsuppe)",
+  "ing": [
+   "Rinderkutteln 1,5 kg",
+   "Rinderfuß 1 (optional, für Bindung)",
+   "Knoblauch 1 ganze Knolle",
+   "Essig 4 EL",
+   "Mehl 2 EL",
+   "Eier 2",
+   "Saft von 2 Zitronen",
+   "Butter 40 g",
+   "Lorbeerblätter 2, Pfefferkörner",
+   "Salz, Pfeffer, Chiliflocken"
+  ],
+  "steps": [
+   "Kutteln reinigen: Wichtig: Die Kutteln wiederholt unter fließendem Wasser waschen und mit grobem Salz und Essig abreiben. Dieser Schritt entscheidet alles — schlecht gereinigte Kutteln riechen unangenehm, und kein Kochen der Welt behebt das.",
+   "Blanchieren: 10 Minuten in reichlich Wasser kochen, abgießen und abspülen, dieses erste Wasser vollständig weggießen.",
+   "Schneiden: Die blanchierten Kutteln in etwa 3 cm breite Streifen schneiden.",
+   "Kochen: Mit frischem Wasser bedecken, den Fuß, die Lorbeerblätter und die Pfefferkörner zugeben und 3 Stunden köcheln.",
+   "Abschäumen: In den ersten 20 Minuten den Schaum von der Oberfläche abschöpfen, damit die Brühe klar statt trüb bleibt.",
+   "Prüfen: Die Kutteln sind fertig, wenn sie völlig weich und gelatinös sind und ein Stück sich leicht zwischen den Fingern zerreißen lässt.",
+   "Abseihen: Die Brühe abseihen und etwa 1,5 Liter davon behalten — sie ist die Seele des Gerichts.",
+   "Mehlschwitze: Die Butter schmelzen, das Mehl einrühren und 2 Minuten rösten, dann nach und nach heiße Brühe einrühren, damit keine Klümpchen entstehen.",
+   "Avgolemono: Die Eier mit dem Zitronensaft aufschlagen und unter ständigem Schlagen kellenweise langsam mit heißer Brühe temperieren. Wichtig: Wer hier hastet, lässt die Eier sofort gerinnen.",
+   "Vereinen: Das Avgolemono zurück in den Topf gießen, vorsichtig rühren und nie wieder aufkochen lassen.",
+   "Servieren: Mit einer Knoblauch-Essig-Sauce (Skordostoumbi) und Chiliflocken auf dem Tisch servieren, damit jeder sich selbst würzen kann."
+  ],
+  "wine": "Traditionell keiner — Patsas trinkt man mit Tsipouro oder schlichtem Wasser.",
+  "plate": "Dampfend heiß in einer tiefen Schale servieren, mit Knoblauch-Essig und Chiliflocken dazu."
+ },
+ "pavlova": {
+  "n": "Pavlova",
+  "ing": [
+   "Eiweiß 4 (zimmerwarm)",
+   "Kristallzucker 250 g",
+   "Speisestärke 1 TL",
+   "Zitronensaft 1 TL",
+   "Vanilleextrakt 1 TL",
+   "Sahne (zum Schlagen) 300 ml",
+   "Puderzucker 2 EL",
+   "Erdbeeren 200 g",
+   "Kiwi 2 Stück",
+   "Passionsfrucht 2 Stück (optional)",
+   "Minzblätter zum Garnieren"
+  ],
+  "steps": [
+   "Vorheizen: Den Ofen auf 120 °C (Umluft) vorheizen und ein Blech mit Backpapier auslegen, darauf einen Kreis von 20 cm als Hilfslinie zeichnen.",
+   "Eiweiß schlagen: Das Eiweiß in einer sauberen, trockenen Schüssel mit dem Mixer bei mittlerer Geschwindigkeit schaumig schlagen, bis sich weiche Spitzen bilden.",
+   "Zucker zugeben: Den Zucker nach und nach löffelweise zugeben und bei hoher Geschwindigkeit weiterschlagen, bis die Meringue glänzend und dick ist.",
+   "Wichtig: Die Meringue ist fertig, wenn man beim Verreiben zwischen den Fingern keine Zuckerkörnchen mehr spürt; sonst 'weint' die Pavlova beim Backen Sirup.",
+   "Unterheben: Speisestärke, Zitronensaft und Vanille vorsichtig mit dem Teigschaber in Bewegungen von unten nach oben unterheben, damit die Meringue ihr Volumen behält.",
+   "Formen: Die Meringue innerhalb des gezeichneten Kreises verstreichen und in der Mitte eine leichte Mulde formen, die später die Füllung aufnimmt.",
+   "Backen: 75-90 Minuten backen, ohne die Ofentür zu öffnen, bis die Oberfläche hart und knusprig ist. Den Ofen ausschalten und die Meringue bei leicht geöffneter Tür darin vollständig auskühlen lassen.",
+   "Schlagsahne: Die Sahne mit dem Puderzucker leicht andicken lassen, ohne sie zu steif zu schlagen.",
+   "Zusammensetzen: Die Schlagsahne auf dem ausgekühlten Meringueboden verteilen und kurz vor dem Servieren großzügig mit Erdbeeren, Kiwi und Passionsfruchtmark garnieren."
+  ],
+  "wine": "Süßer Samos-Wein",
+  "plate": "Auf einer flachen Platte servieren, in Stücke geschnitten, mit einem zusätzlichen Löffel frischem Saisonobst"
+ },
+ "paximadakia_elaioladou": {
+  "n": "Olivenöl-Paximadakia",
+  "ing": [
+   "Mehl 500 g",
+   "Olivenöl 150 ml",
+   "Zucker 100 g",
+   "Eier 2",
+   "Orangensaft 100 ml",
+   "Sesam 4 EL",
+   "Backpulver 2 TL",
+   "Zimt 1 TL",
+   "Gemahlene Nelken 1/4 TL"
+  ],
+  "steps": [
+   "Flüssiges verquirlen: Das Olivenöl mit dem Zucker und dem Orangensaft verquirlen, bis alles emulgiert und leicht andickt.",
+   "Eier zugeben: Die Eier unterschlagen, ein Eigelb zum Bestreichen zurückbehalten.",
+   "Teig herstellen: Das gesiebte Mehl mit Backpulver und den Gewürzen zugeben und zu einem festen, geschmeidigen Teig verarbeiten.",
+   "Kneten: 5 Minuten glatt kneten. Wichtig: Anders als Koulourakia wollen Paximadakia einen gut gekneteten Teig — sie müssen zwei Backgänge überstehen.",
+   "Stangen formen: Etwa 6 cm breite lange Stangen formen und auf dem Blech leicht flach drücken.",
+   "Bestreichen: Mit dem zurückbehaltenen Eigelb bestreichen und Sesam rundum auf die Oberfläche drücken.",
+   "Erstes Backen: Bei 180 °C 30 Minuten backen, bis sie fest und goldbraun sind.",
+   "Wichtig: Herausnehmen und vor dem Schneiden 15 Minuten abkühlen lassen. Heiße Stangen zerbröseln unter dem Messer, abgekühlte lassen sich sauber schneiden.",
+   "Schneiden: Mit einem Sägemesser in etwa 1,5 cm dicke Scheiben sägen.",
+   "Zweites Backen: Die Scheiben mit der Schnittfläche nach oben legen und bei 150 °C 25-30 Minuten erneut backen, bis sie völlig trocken sind. Dieses zweite Backen bei niedriger Hitze macht sie wochenlang haltbar."
+  ],
+  "wine": "Griechischer Kaffee oder Tee.",
+  "plate": "In einem Korb oder Glasgefäß servieren — sie halten sich wochenlang."
+ },
+ "pennes_araviata": {
+  "n": "Penne all'Arrabbiata",
+  "ing": [
+   "Penne 200 g",
+   "Geriebene Tomate 400 g",
+   "Knoblauch 4 Zehen",
+   "Scharfe Chilischote 1-2",
+   "Natives Olivenöl extra 4 EL",
+   "Frisches Basilikum",
+   "Salz",
+   "Parmesan"
+  ],
+  "steps": [
+   "Aromaten vorbereiten: Die 4 Knoblauchzehen in dünne Scheiben schneiden und die 1-2 Chilischoten fein hacken. Dünne Knoblauchscheiben geben Aroma ab, ohne leicht zu verbrennen.",
+   "Anbraten: In 4 EL Olivenöl bei mittlerer Hitze Knoblauch und Chili etwa 2 Minuten anbraten, bis sie duften. WICHTIG: Den Knoblauch nicht verbrennen lassen, denn er wird bitter und verdirbt die ganze Sauce.",
+   "Sauce: Die 400 g geriebene Tomate und etwas Salz zugeben. Bei niedriger Hitze 15 Minuten köcheln, bis die Sauce andickt, glänzt und ihre rohe Säure verliert.",
+   "Nudeln kochen: Die 200 g Penne in reichlich kochendem Salzwasser al dente garen, also leicht bissfest, 1-2 Minuten kürzer als auf der Packung. Sie garen in der Sauce fertig.",
+   "Kochwasser: Vor dem Abgießen eine Tasse des stärkehaltigen Kochwassers aufbewahren. Es bindet die Sauce an die Nudeln und macht sie samtig.",
+   "Schwenken: Die Penne mit etwas Kochwasser in die Sauce geben und 1-2 Minuten bei starker Hitze schwenken, bis sie gut überzogen sind. Frisches Basilikum zugeben.",
+   "Servieren: Sofort heiß servieren und nach Belieben mit Parmesan bestreuen. Arrabbiata schmeckt frisch zubereitet am besten, damit die Sauce nicht austrocknet."
+  ],
+  "wine": "Trockener Rotwein.",
+  "plate": "Tiefer Teller, Basilikum, Olivenöl."
+ },
+ "pennes_kolokythi": {
+  "n": "Penne mit Zucchinicreme",
+  "ing": [
+   "Penne 200 g",
+   "Zucchini 3 (400 g)",
+   "Sahne 150 ml",
+   "Knoblauch 2 Zehen",
+   "Butter 20 g",
+   "Parmesan 50 g",
+   "Basilikum oder Minze",
+   "Salz & Pfeffer"
+  ],
+  "steps": [
+   "Zucchini schneiden: Die 3 Zucchini (400 g) in Scheiben oder kleine Würfel schneiden. Leicht trocken tupfen, damit sie in der Pfanne bräunen statt zu dämpfen.",
+   "Zucchini bräunen: Die Zucchini in 20 g Butter 5-6 Minuten goldbraun braten. WICHTIG: Nicht ständig rühren — sie sollen in der heißen Butter liegen und karamellisieren, was der Sauce Süße und Tiefe gibt.",
+   "Knoblauch: Die 2 fein gehackten Knoblauchzehen zugeben und nur 1 Minute anbraten, bis sie duften — nicht länger, denn Knoblauch verbrennt in Butter leicht und wird bitter.",
+   "Cremige Sauce: Die 150 ml Sahne, Salz und Pfeffer zugeben und 5 Minuten köcheln, bis die Sauce leicht andickt. Die Sahne überzieht die Zucchini und schafft eine samtige Textur.",
+   "Nudeln kochen: Die 200 g Penne al dente, also leicht bissfest, kochen. WICHTIG: Etwas Nudelwasser aufbewahren — seine Stärke hilft, dass die Sauce an den Penne haftet und sie schmackhafter macht.",
+   "Vereinen und Servieren: Die Penne mit etwas Nudelwasser in die Sauce geben und bei niedriger Hitze unterrühren. Die 50 g Parmesan und frisches Basilikum oder Minze zugeben und sofort servieren."
+  ],
+  "wine": "Trockener Weißwein.",
+  "plate": "Tiefer Teller, geriebener Parmesan, Minze."
+ },
+ "pennes_kotopoulo_manitaria": {
+  "n": "Penne mit Hähnchen & Pilzen",
+  "ing": [
+   "Penne 500 g",
+   "Hähnchenbrust 500 g",
+   "Frische Pilze 300 g",
+   "Sahne 200 ml",
+   "Zwiebel 1",
+   "Knoblauch 2 Zehen",
+   "Geriebener Parmesan 80 g",
+   "Weißwein 100 ml",
+   "Olivenöl 4 EL",
+   "Salz, Pfeffer, frische Petersilie"
+  ],
+  "steps": [
+   "Hähnchen vorbereiten: Die Hähnchenbrust in kleine Würfel oder Streifen schneiden und mit Salz und Pfeffer würzen.",
+   "Hähnchen anbraten: In einer großen Pfanne das Olivenöl bei starker Hitze erhitzen und das Hähnchen rundum goldbraun braten. Herausnehmen und beiseitestellen.",
+   "Pilze: In derselben Pfanne die gehackte Zwiebel und den Knoblauch 2-3 Minuten weich dünsten, dann die geschnittenen Pilze zugeben. Wichtig: Die Pilze anfangs nicht ständig rühren; sie ein paar Minuten ruhig liegen lassen, damit sie karamellisieren und ihre Flüssigkeit abgeben, statt nur zu kochen.",
+   "Mit Wein ablöschen: Mit dem Weißwein ablöschen und den Alkohol 2 Minuten bei starker Hitze verdampfen lassen.",
+   "Nudeln: Inzwischen die Penne nach Packungsangabe in reichlich Salzwasser al dente kochen und eine Tasse Kochwasser aufbewahren.",
+   "Zutaten vereinen: Das Hähnchen zurück zu den Pilzen geben, die Sahne zugeben und 3-4 Minuten köcheln, bis die Sauce andickt.",
+   "Abschluss: Die Penne abgießen und in die Pfanne geben, gut mit der Sauce vermengen und bei Bedarf etwas Kochwasser für eine cremigere Textur zugeben. Den Parmesan zugeben und unterrühren, bis er geschmolzen ist.",
+   "Servieren: Sofort heiß servieren, mit frisch gehackter Petersilie und zusätzlichem Parmesan bestreut."
+  ],
+  "wine": "Weißer Assyrtiko oder ein leichter Chardonnay passen hervorragend zur cremigen Sauce.",
+  "plate": "In einem tiefen Teller mit geriebenem Parmesan und frischer Petersilie obenauf servieren, dazu frisches Brot."
+ },
+ "pesto": {
+  "n": "Hausgemachtes Basilikumpesto",
+  "ing": [
+   "Frisches Basilikum 60 g",
+   "Pinienkerne 40 g",
+   "Parmesan 50 g",
+   "Knoblauch 1 Zehe",
+   "Olivenöl 100 ml",
+   "Salz"
+  ],
+  "steps": [
+   "Die Pinienkerne in einer trockenen Pfanne 2 Minuten leicht rösten.",
+   "Basilikum, Pinienkerne, Parmesan, Knoblauch und Salz in den Mixer geben.",
+   "Unter allmählichem Zugießen des Olivenöls zu einer glatten Paste mixen.",
+   "Abschmecken und salzen.",
+   "In einem Glas mit etwas Öl obenauf im Kühlschrank aufbewahren."
+  ]
+ },
+ "pilafi_laxanikon": {
+  "n": "Gemüsepilaw",
+  "ing": [
+   "Langkornreis 300 g",
+   "Karotte 1",
+   "Zucchini 1",
+   "Rote Paprika 1",
+   "Zwiebel 1",
+   "Knoblauch 2 Zehen",
+   "Geriebene Tomate 200 g",
+   "Gemüsebrühe 600 ml",
+   "Olivenöl 3 EL",
+   "Kurkuma ½ TL",
+   "Salz, Pfeffer, Thymian"
+  ],
+  "steps": [
+   "Gemüse anbraten: Das Olivenöl in einem weiten Topf erhitzen. Die Zwiebel 3 Minuten anbraten, dann den Knoblauch 1 Minute. Die gewürfelte Karotte, Zucchini und Paprika zugeben und 4-5 Minuten mitbraten.",
+   "Reis: Den Reis zugeben und 2 Minuten unter Rühren anrösten, bis er leicht nussig duftet.",
+   "Garen: Tomate, Brühe, Kurkuma, Thymian und Salz zugeben. Umrühren und aufkochen. Wichtig: Sofort die Hitze reduzieren, zudecken und 15-18 Minuten garen, ohne den Deckel zu heben.",
+   "Abschluss: Vom Herd nehmen und zugedeckt 5 Minuten stehen lassen. Mit einer Gabel auflockern. Mit frischen Kräutern servieren."
+  ],
+  "wine": "Leichter Weißwein.",
+  "plate": "Mit frischer Petersilie und geriebenem Feta."
+ },
+ "pizza_4formaggi": {
+  "n": "Vier-Käse-Pizza",
+  "ing": [
+   "Pizzateig 1 Portion",
+   "Tomatensauce 100 ml",
+   "Mozzarella 120 g",
+   "Gorgonzola 60 g",
+   "Geriebener Parmesan 40 g",
+   "Taleggio oder Grana 60 g",
+   "Basilikum"
+  ],
+  "steps": [
+   "Den Teig ausrollen und mit etwas Tomatensauce bestreichen.",
+   "Die 4 Käsesorten gleichmäßig verteilen.",
+   "Bei 250 °C 12-14 Minuten backen, bis der Käse schmilzt und goldbraun wird.",
+   "Mit Basilikum garnieren und servieren."
+  ]
+ },
+ "pizza_capricciosa": {
+  "n": "Pizza Capricciosa",
+  "ing": [
+   "Pizzateig 300 g",
+   "Tomatensauce 150 g",
+   "Mozzarella 200 g",
+   "Schinken 100 g",
+   "Frische Champignons 100 g",
+   "Eingelegte Artischocken 4 Stück",
+   "Kalamata-Oliven 10 Stück",
+   "Olivenöl 2 EL",
+   "Oregano 1 TL",
+   "Salz, Pfeffer"
+  ],
+  "steps": [
+   "Teig: Den Teig auf einem runden Blech oder Pizzastein 0,5 cm dick ausrollen.",
+   "Sauce: Die Tomatensauce gleichmäßig verteilen und einen 1 cm breiten Rand frei lassen.",
+   "Champignons: Die Champignons vor dem Belegen in etwas Olivenöl leicht anbraten, damit sie beim Backen kein Wasser abgeben.",
+   "Belag: Den Mozzarella verteilen, dann Schinken, Champignons, halbierte Artischocken und Oliven.",
+   "Wichtig: Der Ofen muss mindestens 20 Minuten vorher auf 250 °C vorgeheizt sein, idealerweise mit Pizzastein, damit der Teig schnell backt und knusprig bleibt, ohne dass der Belag austrocknet.",
+   "Backen: Auf der untersten Schiene 10-12 Minuten backen, bis der Rand kräftig gebräunt ist.",
+   "Beträufeln: Sofort nach dem Ofen mit einem Faden Olivenöl beträufeln.",
+   "Servieren: Mit Oregano bestreuen und sofort in Stücke schneiden."
+  ],
+  "wine": "Roter Merlot oder Sangiovese",
+  "plate": "Ganz auf einem Holzbrett servieren, in Stücke geschnitten."
+ },
+ "pizza_carbonara": {
+  "n": "Carbonara-Pizza",
+  "ing": [
+   "Pizzateig 1 Portion",
+   "Sahne 150 ml",
+   "Eier 2",
+   "Bacon oder Pancetta 120 g",
+   "Mozzarella 150 g",
+   "Geriebener Parmesan 40 g",
+   "Knoblauch 1 Zehe",
+   "Frischer schwarzer Pfeffer"
+  ],
+  "steps": [
+   "Den Bacon mit etwas Knoblauch knusprig braten.",
+   "Die Eier mit der Sahne und dem Parmesan verquirlen.",
+   "Den Teig ausrollen und mit der Ei-Sahne-Mischung bestreichen.",
+   "Mit Mozzarella und dem Bacon belegen.",
+   "Bei 230 °C 13-15 Minuten backen.",
+   "Frischen Pfeffer darüber mahlen und sofort servieren."
+  ]
+ },
+ "pizza_diavola": {
+  "n": "Pizza Diavola",
+  "ing": [
+   "Pizzateig 300 g",
+   "Tomatensauce 150 g",
+   "Mozzarella 200 g",
+   "Scharfe Salami (Soppressata) 100 g",
+   "Chiliflocken 1 TL",
+   "Olivenöl 2 EL",
+   "Knoblauch 1 Zehe",
+   "Oregano 1 TL",
+   "Salz, Pfeffer"
+  ],
+  "steps": [
+   "Teig: Den Teig auf einem runden Blech oder Pizzastein dünn ausrollen.",
+   "Sauce: Die Tomatensauce mit dem fein gehackten Knoblauch mischen und gleichmäßig verteilen.",
+   "Käse: Den Mozzarella in Stücken über die ganze Fläche verteilen.",
+   "Salami: Die Scheiben scharfer Salami gleichmäßig auf der Pizza anordnen.",
+   "Wichtig: Piccante (scharfe) Salami statt milder verwenden, denn sie gibt beim Backen den typischen scharfen 'Diavola'-Geschmack, während ihr Fett austritt und über den Käse schmilzt.",
+   "Backen: Bei 250 °C 10-12 Minuten backen, bis die Salami an den Rändern leicht brutzelt.",
+   "Schärfe: Sofort nach dem Ofen mit Chiliflocken bestreuen.",
+   "Servieren: Mit Olivenöl beträufeln und sofort heiß servieren."
+  ],
+  "wine": "Roter Primitivo oder Zibibbo",
+  "plate": "Auf einem Holzbrett, in Stücke geschnitten, mit zusätzlichen Chiliflocken dazu."
+ },
+ "pizza_kotopoulo": {
+  "n": "Hähnchenpizza",
+  "ing": [
+   "Pizzateig 1 Portion",
+   "Tomatensauce 120 ml",
+   "Mozzarella 180 g",
+   "Hähnchenbrust 200 g",
+   "Bunte Paprika 1",
+   "Zwiebel ½",
+   "Senf 1 TL",
+   "Edelsüßes Paprikapulver",
+   "Salz, Pfeffer"
+  ],
+  "steps": [
+   "Das Hähnchen in Streifen schneiden und mit Senf, Paprika, Salz und Pfeffer marinieren.",
+   "Das Hähnchen in der Pfanne durchgaren.",
+   "Den Teig ausrollen und mit Tomatensauce bestreichen.",
+   "Mit Mozzarella, Hähnchen, Paprika und Zwiebel belegen.",
+   "Bei 250 °C 13-15 Minuten backen.",
+   "Heiß servieren."
+  ]
+ },
+ "pizza_margarita": {
+  "n": "Pizza Margherita",
+  "ing": [
+   "Pizzamehl 300 g",
+   "Warmes Wasser 180 ml",
+   "Trockenhefe 7 g",
+   "Olivenöl 2 EL",
+   "Salz 1 TL",
+   "Tomatensauce 150 ml",
+   "Mozzarella 200 g",
+   "Frisches Basilikum"
+  ],
+  "steps": [
+   "Die Hefe im warmen Wasser auflösen und 5 Minuten stehen lassen, bis es schäumt.",
+   "Mehl, Salz, Olivenöl und das Hefewasser mischen. 8-10 Minuten kneten.",
+   "Den Teig zugedeckt 1 Stunde gehen lassen.",
+   "Den Teig zu einem runden Boden ausrollen. Mit Tomatensauce bestreichen.",
+   "Mit Mozzarellastücken belegen.",
+   "Bei 250 °C 12-15 Minuten goldbraun backen.",
+   "Aus dem Ofen nehmen, mit frischem Basilikum belegen und sofort servieren."
+  ]
+ },
+ "pizza_pepperoni": {
+  "n": "Pepperoni-Pizza",
+  "ing": [
+   "Pizzateig 1 Portion",
+   "Tomatensauce 150 ml",
+   "Mozzarella 200 g",
+   "Pepperoni-Salami 100 g",
+   "Oregano",
+   "Chiliflocken (optional)"
+  ],
+  "steps": [
+   "Den Teig ausrollen und mit Tomatensauce bestreichen.",
+   "Mit Mozzarella und Pepperoni-Scheiben belegen.",
+   "Bei 250 °C 12-14 Minuten goldbraun backen.",
+   "Mit Oregano und nach Belieben Chiliflocken bestreuen.",
+   "Sofort servieren."
+  ]
+ },
+ "pizza_prosciutto": {
+  "n": "Pizza mit Prosciutto & Champignons",
+  "ing": [
+   "Pizzateig 1 Portion",
+   "Tomatensauce 150 ml",
+   "Mozzarella 200 g",
+   "Prosciutto 80 g",
+   "Champignons 120 g",
+   "Oliven 50 g",
+   "Oregano"
+  ],
+  "steps": [
+   "Den Teig ausrollen und mit Tomatensauce bestreichen.",
+   "Mit Mozzarella, geschnittenen Champignons und Oliven belegen.",
+   "Bei 250 °C 12 Minuten backen.",
+   "Aus dem Ofen nehmen und den Prosciutto darauf legen.",
+   "Mit Oregano bestreuen und servieren."
+  ]
+ },
+ "pizza_prosciutto_rucola": {
+  "n": "Pizza mit Prosciutto und Rucola",
+  "ing": [
+   "Pizzateig 300 g",
+   "Tomatensauce 100 g",
+   "Mozzarella Fior di Latte 200 g",
+   "Prosciutto crudo 80 g",
+   "Frischer Rucola 1 Handvoll",
+   "Parmesanspäne 30 g",
+   "Natives Olivenöl extra 2 EL",
+   "Zitronensaft 1 TL",
+   "Salz, Pfeffer"
+  ],
+  "steps": [
+   "Teig: Den Teig auf einem runden Blech oder Pizzastein dünn ausrollen.",
+   "Sauce: Eine dünne Schicht Tomatensauce auf der Fläche verteilen.",
+   "Käse: Den Mozzarella in Stücken gleichmäßig verteilen.",
+   "Wichtig: Prosciutto crudo wird NIEMALS mitgebacken, da er zäh wird und sein Aroma verliert; er kommt immer roh nach dem Backen darauf.",
+   "Backen: Bei 250 °C 8-10 Minuten backen, bis der Teig goldbraun und der Käse gut geschmolzen ist.",
+   "Rucola: Den Rucola in einer Schüssel mit etwas Olivenöl und Zitronensaft vermengen.",
+   "Servieren: Sobald die Pizza aus dem Ofen kommt, die Prosciuttoscheiben und den Rucola darauf anrichten.",
+   "Abschluss: Mit Parmesanspänen bestreuen und mit einem letzten Schuss Olivenöl beträufeln."
+  ],
+  "wine": "Weißer Sauvignon Blanc",
+  "plate": "Auf einem Holzbrett, diagonal in Stücke geschnitten."
+ },
+ "pizza_special": {
+  "n": "Pizza Spezial",
+  "ing": [
+   "Pizzateig 1 Portion",
+   "Tomatensauce 150 ml",
+   "Mozzarella 200 g",
+   "Pepperoni-Salami 60 g",
+   "Champignons 80 g",
+   "Paprika ½",
+   "Schinken 60 g",
+   "Oliven 40 g",
+   "Oregano"
+  ],
+  "steps": [
+   "Den Teig ausrollen und mit Tomatensauce bestreichen.",
+   "Mit Mozzarella belegen und alle Zutaten gleichmäßig verteilen.",
+   "Bei 250 °C 13-15 Minuten goldbraun backen.",
+   "Mit Oregano bestreuen und heiß servieren."
+  ]
+ },
+ "pizza_stagioni": {
+  "n": "Pizza Quattro Stagioni",
+  "ing": [
+   "Pizzateig 1 Portion",
+   "Tomatensauce 150 ml",
+   "Mozzarella 200 g",
+   "Schinken 60 g",
+   "Champignons 80 g",
+   "Artischocken aus der Dose 4 Stück",
+   "Schwarze Oliven 40 g",
+   "Oregano"
+  ],
+  "steps": [
+   "Den Teig ausrollen und mit Tomatensauce und Mozzarella belegen.",
+   "Die Pizza gedanklich in 4 Bereiche teilen.",
+   "In jeden Bereich einen der 4 Beläge geben: Schinken, Champignons, Artischocken, Oliven.",
+   "Bei 250 °C 13-15 Minuten backen.",
+   "Mit Oregano bestreuen und servieren."
+  ]
+ },
+ "pizza_verdure": {
+  "n": "Gemüsepizza",
+  "ing": [
+   "Pizzateig 1 Portion",
+   "Tomatensauce 150 ml",
+   "Mozzarella 150 g",
+   "Bunte Paprika 1",
+   "Zucchini 1 kleine",
+   "Aubergine ½",
+   "Oliven 40 g",
+   "Oregano",
+   "Olivenöl"
+  ],
+  "steps": [
+   "Das Gemüse in dünne Scheiben schneiden. In der Pfanne mit etwas Öl leicht anbraten.",
+   "Den Teig ausrollen und mit Tomatensauce bestreichen.",
+   "Mit Mozzarella und dem Gemüse belegen.",
+   "Mit Oregano und etwas Olivenöl beträufeln.",
+   "Bei 250 °C 13-15 Minuten backen.",
+   "Heiß servieren."
+  ]
+ },
+ "politiki_salata": {
+  "n": "Politiki-Salat",
+  "ing": [
+   "Weißkohl 1/2",
+   "Karotten 2",
+   "Sellerie 2 Stangen",
+   "Rote Paprika 1",
+   "Olivenöl 4 EL",
+   "Zitrone 1",
+   "Salz",
+   "Essig 1 EL"
+  ],
+  "steps": [
+   "Den Kohl in feine Streifen und die Karotten in Stifte schneiden.",
+   "Paprika und Sellerie fein hacken.",
+   "Olivenöl, Zitronensaft, Essig und Salz mischen.",
+   "Das gesamte Gemüse mit dem Dressing vermengen.",
+   "Vor dem Servieren 30 Minuten durchziehen lassen."
+  ]
+ },
+ "portokalopita": {
+  "n": "Portokalopita (Orangenkuchen mit Filoteig)",
+  "ing": [
+   "Filoteig 450 g",
+   "Abgetropfter Joghurt 200 g",
+   "Eier 4",
+   "Zucker 250 g (für den Teig)",
+   "Sonnenblumenöl 200 ml",
+   "Schale von 2-3 Orangen",
+   "Backpulver 2 TL",
+   "Zucker 500 g (für den Sirup)",
+   "Wasser 500 ml",
+   "Orangensaft 1 Tasse"
+  ],
+  "steps": [
+   "Filoteig trocknen: Die Filoblätter ausrollen und zerknüllt 2-3 Stunden auf einem Blech oder der Arbeitsfläche ausbreiten, damit sie gut trocknen und knusprig werden. Wichtig: Gut getrockneter Filoteig ist das Geheimnis einer echten Portokalopita, denn er nimmt den Sirup richtig auf und gibt die typische schwammige Textur, ohne matschig zu werden.",
+   "Zerbröseln: Den getrockneten Filoteig mit der Hand in kleine Stücke in eine große Schüssel brechen.",
+   "Teigmasse: In einer zweiten Schüssel die Eier mit dem Zucker luftig aufschlagen, das Sonnenblumenöl, den Joghurt, die Orangenschale und zuletzt das Backpulver zugeben. Glatt rühren.",
+   "Vereinen: Die flüssige Masse über den zerbröselten Filoteig gießen und vorsichtig rühren, bis alles aufgesogen und jedes Stück durchtränkt ist.",
+   "Backen: Eine Form ausbuttern, die Masse einfüllen und im vorgeheizten Ofen bei 170 °C etwa 40-45 Minuten backen, bis die Oberfläche goldbraun ist.",
+   "Sirup: Während des Backens Wasser mit Zucker und Orangensaft 5-7 Minuten kochen, bis der Sirup leicht andickt. Vom Herd nehmen und lauwarm abkühlen lassen.",
+   "Sirup aufgießen: Wichtig: Ein heißes Gebäck immer mit lauwarmem Sirup übergießen (oder umgekehrt), nie heiß auf heiß, damit es gleichmäßig aufnimmt und saftig bleibt, ohne matschig zu werden.",
+   "Ruhen lassen: Die Portokalopita mindestens 2-3 Stunden den ganzen Sirup aufsaugen lassen, bevor sie in Stücke geschnitten und serviert wird."
+  ],
+  "wine": "Sauerkirschsirup oder ein süßer Weißwein.",
+  "plate": "Kalt mit einer Kugel Vanilleeis und etwas Orangenschale servieren."
+ }
+}

@@ -1,6 +1,6 @@
 // FoodDaily Service Worker v3.5
-const VERSION = '2026-08-30-120';
-const CACHE = `fooddaily-2026-08-30-120`;
+const VERSION = '2026-09-04-126';
+const CACHE = `fooddaily-2026-09-04-126`;
 const ASSETS = [
   '/',
   '/index.html',
@@ -15,6 +15,9 @@ const STANDALONE_PAGES = new Set(['/install.html']);
 // Ξεχωριστές εφαρμογές που απλώς μοιράζονται το domain. Το FoodDaily δεν τις
 // αγγίζει καθόλου — έχουν δικό τους service worker με πιο συγκεκριμένη εμβέλεια.
 const OTHER_APPS = ['/diy/', '/dances/', '/espa/'];
+
+// Πακέτα μετάφρασης: lang/<κωδικός>.json
+const isLangPack = url => url.pathname.startsWith('/lang/') && url.pathname.endsWith('.json');
 
 // Install: cache core files immediately, don't wait for old SW to go away
 self.addEventListener('install', e => {
@@ -161,9 +164,12 @@ self.addEventListener('fetch', e => {
   // έβλεπε πάντα την προηγούμενη έκδοση — οι νέες συνταγές εμφανίζονταν μόλις
   // στο επόμενο άνοιγμα. Τώρα ζητάμε πρώτα το δίκτυο και κρατάμε το cache μόνο
   // ως εφεδρεία, ώστε η εφαρμογή να δουλεύει και χωρίς σύνδεση.
+  // Τα πακέτα γλώσσας είναι περιεχόμενο, όχι στατικό: μια διόρθωση μετάφρασης
+  // πρέπει να φτάνει αμέσως, γι' αυτό μπαίνουν στη λογική «δίκτυο πρώτα».
   const isPage = e.request.mode === 'navigate'
               || url.pathname === '/'
-              || url.pathname.endsWith('.html');
+              || url.pathname.endsWith('.html')
+              || isLangPack(url);
 
   if (isPage) {
     e.respondWith(
@@ -175,7 +181,7 @@ self.addEventListener('fetch', e => {
         return resp;
       }).catch(() =>
         caches.match(e.request).then(cached =>
-          cached || (STANDALONE_PAGES.has(url.pathname) ? null : caches.match('/index.html'))
+          cached || (STANDALONE_PAGES.has(url.pathname) || isLangPack(url) ? null : caches.match('/index.html'))
         )
       )
     );

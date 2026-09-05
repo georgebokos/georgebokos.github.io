@@ -1,0 +1,528 @@
+{
+ "saganaki": {
+  "n": "Gebratener Käse Saganaki",
+  "ing": [
+   "Kefalotyri oder Graviera 200 g (1 cm dicke Scheiben)",
+   "Mehl",
+   "Olivenöl 3 EL",
+   "Saft von 1/2 Zitrone",
+   "Oregano"
+  ],
+  "steps": [
+   "Eintauchen: Die Käsescheibe 1 Minute in kaltes Wasser tauchen — so haftet das Mehl besser.",
+   "Mehlieren: Beide Seiten leicht mehlieren. Überschüssiges Mehl abklopfen.",
+   "Braten: Öl in einer heißen Pfanne erhitzen (idealerweise einer kleinen Saganaki-Pfanne). 1,5-2 Minuten pro Seite braten, bis der Käse goldbraun ist und innen gerade zu schmelzen beginnt. Wichtig: Sehr heißes Öl gibt eine knusprige Kruste.",
+   "Servieren: Sofort in der Pfanne servieren, mit Zitrone und Oregano beträufelt. Heiß essen."
+  ],
+  "wine": "Trockener Weißwein.",
+  "plate": "In der Pfanne oder auf einem warmen Teller mit Zitrone."
+ },
+ "salata_avokanto": {
+  "n": "Avocado-Kirschtomaten-Salat",
+  "ing": [
+   "Avocado 1 reife",
+   "Kirschtomaten 200 g",
+   "Gurke ½",
+   "Frühlingszwiebeln 2",
+   "Zitrone 1",
+   "Olivenöl 2 EL",
+   "Salz & Pfeffer",
+   "Frisches Basilikum oder Koriander"
+  ],
+  "steps": [
+   "Avocado schneiden: Die Avocado halbieren, den Kern entfernen und in Würfel oder Scheiben schneiden. Wichtig: Sofort mit Zitronensaft beträufeln, damit sie nicht braun wird.",
+   "Vorbereitung: Die Kirschtomaten halbieren, die Gurke in Halbmonde schneiden und die Frühlingszwiebeln fein hacken.",
+   "Servieren: Alles vermengen oder auf einer Platte anrichten. Mit Olivenöl und Zitrone beträufeln. Mit Salz, Pfeffer und frischen Kräutern würzen. Sofort servieren."
+  ],
+  "wine": "Weißer Sauvignon Blanc.",
+  "plate": "Auf einer Platte mit frischem Basilikum."
+ },
+ "salata_caesar": {
+  "n": "Caesar Salad",
+  "ing": [
+   "Romanasalat 1",
+   "Croutons 80 g",
+   "Parmesan 40 g",
+   "Mayonnaise 3 EL",
+   "Zitrone 1/2",
+   "Knoblauch 1 Zehe",
+   "Worcestershiresauce 1 TL",
+   "Sardellen 3 (optional)",
+   "Salz, Pfeffer"
+  ],
+  "steps": [
+   "Das Caesar-Dressing anrühren: Mayonnaise, Zitronensaft, geriebener Knoblauch, Worcestershiresauce, Salz und Pfeffer.",
+   "Den Romanasalat in Stücke schneiden und gründlich waschen.",
+   "Den Salat mit dem Dressing vermengen.",
+   "Croutons und geriebenen Parmesan zugeben.",
+   "Sofort servieren."
+  ]
+ },
+ "salata_kinoa": {
+  "n": "Quinoa-Salat",
+  "ing": [
+   "Quinoa 200 g",
+   "1 Gurke",
+   "Kirschtomaten 200 g",
+   "1 Avocado",
+   "Rote Zwiebel 1/2",
+   "Koriander oder Petersilie",
+   "Olivenöl 3 EL",
+   "Zitronensaft 2 EL",
+   "Salz, Pfeffer"
+  ],
+  "steps": [
+   "Die Quinoa abspülen und nach Packungsangabe garen (etwa 15 Minuten). Abkühlen lassen.",
+   "Gurke, Kirschtomaten, Avocado und rote Zwiebel würfeln.",
+   "Die Quinoa mit dem Gemüse und dem Koriander vermengen.",
+   "Öl, Zitronensaft, Salz und Pfeffer zugeben.",
+   "Sofort oder gekühlt aus dem Kühlschrank servieren."
+  ]
+ },
+ "salata_nisoaz": {
+  "n": "Salade Niçoise",
+  "ing": [
+   "Thunfisch aus der Dose 200 g",
+   "Eier 3",
+   "Grüne Bohnen 150 g",
+   "Tomaten 2",
+   "Schwarze Oliven 60 g",
+   "Kleine Kartoffeln 200 g",
+   "Kapern 2 EL",
+   "Olivenöl 4 EL",
+   "Essig 2 EL",
+   "Senf 1 TL"
+  ],
+  "steps": [
+   "Die Eier hart kochen (10 Minuten), Kartoffeln und grüne Bohnen getrennt kochen.",
+   "Die Tomaten in Scheiben schneiden und die Eier vierteln.",
+   "Ein Dressing aus Olivenöl, Essig, Senf, Salz und Pfeffer anrühren.",
+   "Alle Zutaten sauber getrennt auf dem Teller anrichten.",
+   "Mit dem Dressing beträufeln und servieren."
+  ]
+ },
+ "salata_pantzarion": {
+  "n": "Rote-Bete-Feta-Salat",
+  "ing": [
+   "Rote Bete 4 große",
+   "Feta 150 g",
+   "Walnüsse 50 g",
+   "Rucola 1 Handvoll",
+   "Olivenöl 3 EL",
+   "Balsamicoessig 2 EL",
+   "Salz, Pfeffer",
+   "Honig 1 TL"
+  ],
+  "steps": [
+   "Die Rote Bete mit Schale 45-50 Minuten kochen. Schälen und in kleine Würfel schneiden.",
+   "Ein Dressing aus Olivenöl, Balsamico, Honig, Salz und Pfeffer anrühren.",
+   "Den Rucola auf dem Teller verteilen und die Rote Bete darauf geben.",
+   "Feta darüber bröseln, dazu die Walnüsse und das Dressing.",
+   "Sofort servieren."
+  ]
+ },
+ "salata_rodi": {
+  "n": "Granatapfelsalat",
+  "ing": [
+   "Babyspinat 100 g",
+   "Granatapfel 1",
+   "Walnüsse 60 g",
+   "Feta 80 g",
+   "Balsamicoessig 2 EL",
+   "Honig 1 TL",
+   "Olivenöl 2 EL"
+  ],
+  "steps": [
+   "Spinat vorbereiten: Die 100 g Babyspinat in kaltem Wasser waschen und sehr gut trocknen, idealerweise in einer Salatschleuder. Wichtig: Die Blätter müssen völlig trocken sein, sonst verdünnt das Wasser das Dressing und es haftet nicht an den Blättern.",
+   "Granatapfel entkernen: 1 Granatapfel halbieren und die Kerne lösen, indem man über einer Schüssel mit einem Löffel von oben auf die Schale klopft. Um Flecken zu vermeiden, den Granatapfel dabei unter Wasser halten — die Häutchen schwimmen oben, die Kerne sinken.",
+   "Walnüsse rösten: Die 60 g Walnüsse in einer trockenen Pfanne (ohne Öl) bei mittlerer Hitze etwa 5 Minuten unter Rühren rösten. Das Rösten löst ihre Öle und verstärkt Aroma und Biss.",
+   "Dressing: In einer Schüssel die 2 EL Balsamico, 1 TL Honig und 2 EL Olivenöl mit einer Prise Salz verquirlen, bis alles emulgiert und gut verbunden ist. Der Honig gleicht die Säure des Balsamico aus.",
+   "Anrichten: Auf einer Platte den Spinat verteilen, die Granatapfelkerne, die gerösteten Walnüsse und 80 g zerbröselten Feta darüber streuen.",
+   "Servieren: Erst kurz vor dem Servieren mit dem Dressing beträufeln und vorsichtig vermengen. Wichtig: Das Dressing im letzten Moment zugeben, sonst fällt der Spinat zusammen und verliert seine Frische."
+  ],
+  "wine": "Roséwein.",
+  "plate": "Granatapfelkerne, Feta, Walnüsse."
+ },
+ "salata_roka_syko": {
+  "n": "Rucola-Feigen-Prosciutto-Salat",
+  "ing": [
+   "Rucola 100 g",
+   "Frische Feigen 4",
+   "Prosciutto 80 g",
+   "Geriebener Parmesan 30 g",
+   "Walnüsse 30 g",
+   "Olivenöl 3 EL",
+   "Balsamicocreme 2 EL",
+   "Salz, Pfeffer"
+  ],
+  "steps": [
+   "Den Rucola auf dem Teller verteilen.",
+   "Die Feigen vierteln und auf dem Rucola anrichten.",
+   "Prosciuttoscheiben und gehackte Walnüsse zugeben.",
+   "Parmesan darüber reiben.",
+   "Mit Olivenöl und Balsamicocreme beträufeln und mit Salz und Pfeffer würzen."
+  ]
+ },
+ "salata_rokka": {
+  "n": "Rucola-Parmesan-Salat",
+  "ing": [
+   "Rucola 100 g",
+   "Parmesan 60 g",
+   "Kirschtomaten 100 g",
+   "Balsamicoessig 2 EL",
+   "Olivenöl 2 EL"
+  ],
+  "steps": [
+   "Waschen: Die 100 g Rucola gründlich waschen und abtropfen lassen oder mit Küchenpapier trocken tupfen, damit das Dressing an den Blättern haftet und der Salat nicht wässrig wird.",
+   "Kirschtomaten schneiden: Die 100 g Kirschtomaten halbieren und mit dem Rucola auf einer Platte anrichten.",
+   "Parmesan: Die 60 g Parmesan mit einem Sparschäler in dünne Späne hobeln. Wichtig: Niemals reiben, denn dünne Späne geben eine bessere Textur und in jedem Bissen mehr Geschmack.",
+   "Dressing: Den Salat mit den 2 EL Balsamico und den 2 EL Olivenöl beträufeln, damit sich Säure und Öl ausgleichen.",
+   "Servieren: Frischen Pfeffer darüber mahlen und sofort servieren, denn Rucola fällt nach dem Dressing schnell zusammen."
+  ],
+  "wine": "Trockener Weißwein.",
+  "plate": "Parmesan in Spänen gehobelt — das macht den Unterschied!"
+ },
+ "salata_tonou": {
+  "n": "Thunfischsalat",
+  "ing": [
+   "Thunfisch in Öl 3 Dosen",
+   "Gekochte Eier 3",
+   "Mais 200 g",
+   "Rote Zwiebel 1",
+   "Kirschtomaten 200 g",
+   "Kopfsalat 1 Kopf",
+   "Kapern 2 EL",
+   "Mayonnaise 3 EL oder Olivenöl 4 EL",
+   "Saft von 1 Zitrone",
+   "Frischer Dill, Salz, Pfeffer"
+  ],
+  "steps": [
+   "Thunfisch abtropfen: Den Thunfisch gut abtropfen lassen und mit der Gabel in große Stücke zerteilen. Wichtig: Das Abtropfen zählt — das Dosenöl ist neutral und würde das Dressing verdünnen.",
+   "Eier kochen: Die Eier 9 Minuten kochen, für ein festes, aber nicht kreidiges Eigelb, dann sofort in Eiswasser abkühlen, damit sie sich sauber schälen lassen.",
+   "Zwiebel mildern: Die rote Zwiebel dünn schneiden und 10 Minuten in kaltem Wasser mit etwas Zitrone einlegen, damit sie ihre Schärfe verliert.",
+   "Salat vorbereiten: Den Kopfsalat waschen, gründlich trocknen und mit der Hand in mundgerechte Stücke zupfen. Nasse Blätter stoßen das Dressing ab.",
+   "Dressing anrühren: Mayonnaise oder Öl mit Zitronensaft, gehacktem Dill, Salz und Pfeffer zu einer glatten Emulsion verquirlen.",
+   "Anrichten: In einer weiten Schale den Salat schichten, dann Thunfisch, Mais, die halbierten Kirschtomaten, die abgetropfte Zwiebel und die Kapern.",
+   "Eier zugeben: Die Eier vierteln und am Rand anordnen, statt sie unterzumischen, damit sie ganz und ansehnlich bleiben.",
+   "Dressing: Das Dressing erst im Moment des Servierens darüber gießen. Zu früh angemacht fällt der Salat binnen Minuten zusammen."
+  ],
+  "wine": "Ein trockener Sauvignon Blanc oder ein griechischer Assyrtiko.",
+  "plate": "In einer weiten flachen Schale servieren, mit den Eiervierteln am Rand und Dill darüber gestreut."
+ },
+ "salata_zymarikon": {
+  "n": "Nudelsalat",
+  "ing": [
+   "Kurze Nudeln (Fusilli oder Penne) 400 g",
+   "Kirschtomaten 250 g",
+   "Gurke 1",
+   "Feta 200 g",
+   "Schwarze Oliven 100 g",
+   "Rote Paprika 1",
+   "Rote Zwiebel 1/2",
+   "Olivenöl 6 EL",
+   "Rotweinessig 2 EL",
+   "Getrockneter Oregano 1 TL",
+   "Frisches Basilikum, Salz, Pfeffer"
+  ],
+  "steps": [
+   "Nudeln kochen: Die Nudeln in gut gesalzenem Wasser gerade al dente garen — sie werden beim Abkühlen fester, also nicht zu weich kochen.",
+   "Abkühlen: Wichtig: Abgießen und unter kaltem Wasser abschrecken, um das Garen zu stoppen, dann mit einem Löffel Öl vermengen, damit sie nicht zusammenkleben.",
+   "Gemüse schneiden: Gurke und Paprika in kleine gleichmäßige Würfel schneiden und die Kirschtomaten halbieren.",
+   "Tomaten abtropfen: Die halbierten Tomaten mit einer Prise Salz 10 Minuten in einem Sieb stehen lassen, damit ihr Saft den Salat später nicht verwässert.",
+   "Dressing anrühren: Öl, Essig, Oregano, Salz und Pfeffer verquirlen, bis alles emulgiert und leicht andickt.",
+   "Vereinen: Die abgekühlten Nudeln mit dem Gemüse, den Oliven und der Hälfte des Dressings vorsichtig vermengen.",
+   "Kühlen: Mindestens 30 Minuten kalt stellen. Nudelsalat braucht diese Zeit — die Nudeln nehmen das Dressing auf und die Aromen setzen sich.",
+   "Abschluss: Kurz vor dem Servieren den zerbröselten Feta, das frische Basilikum und das restliche Dressing zugeben und abschmecken — kalte Speisen brauchen immer mehr Salz, als es scheint."
+  ],
+  "wine": "Ein gekühlter Rosé oder ein leichter weißer Roditis.",
+  "plate": "In einer weiten Schale bei kühler Zimmertemperatur servieren, mit Feta darüber gebröselt und Basilikumblättern."
+ },
+ "saligkaria_boubouristi": {
+  "n": "Schnecken Boubouristi",
+  "ing": [
+   "Schnecken (Chochlioi) 1 kg",
+   "Mehl zum Wenden",
+   "Olivenöl 1/2 Tasse",
+   "Rotweinessig 100 ml",
+   "Frischer Rosmarin 3 Zweige",
+   "Grobes Salz",
+   "Pfeffer"
+  ],
+  "steps": [
+   "Schnecken entschlacken: Wichtig: Die lebenden Schnecken 5-7 Tage in einem abgedeckten, belüfteten Behälter mit Mehl oder Kleie halten, damit sie sich entleeren. Dieser Schritt ist aus Sicherheitsgründen nicht optional.",
+   "Waschen: Wiederholt in reichlich Wasser mit etwas Essig waschen, bis das Wasser völlig klar bleibt.",
+   "Blanchieren: 5 Minuten in Salzwasser kochen, dann gut abtropfen lassen.",
+   "Trocknen: Sehr gut trocknen, auch die Gehäuseöffnungen. Wichtig: Zurückgebliebenes Wasser spritzt heftig, sobald es auf das heiße Öl trifft.",
+   "Mehlieren: Die offene Seite jeder Schnecke in Mehl tauchen und den Überschuss abklopfen. Das Mehl verschließt die Öffnung und bildet die Kruste.",
+   "Öl erhitzen: Das Öl in einer weiten Pfanne sehr heiß werden lassen — dieses Gericht gelingt nur bei starker Hitze.",
+   "Braten: Die Schnecken mit der Öffnung nach unten ins Öl setzen — das bedeutet Boubouristi — und 2-3 Minuten braten, ohne sie zu bewegen.",
+   "Essig zugeben: Zurücktreten und den Essig angießen. Es spritzt und dampft heftig. 1-2 Minuten verdampfen lassen.",
+   "Abschluss: Rosmarin und grobes Salz zugeben, die Pfanne einmal schwenken und sofort brutzelnd servieren."
+  ],
+  "wine": "Kretischer Raki oder ein kräftiger Weißwein mit Säure.",
+  "plate": "Direkt aus der Pfanne servieren, mit der Öffnung nach oben, mit der Essigsauce und Brot zum Auftunken."
+ },
+ "saltsa_kotopoulo": {
+  "n": "Zitronen-Kräuter-Sauce für Hähnchen",
+  "ing": [
+   "60 g Butter",
+   "3 Knoblauchzehen",
+   "2 EL Zitronensaft",
+   "1 TL Zitronenschale",
+   "1 TL Dijonsenf",
+   "Frischer Thymian oder Oregano",
+   "Salz & Pfeffer",
+   "Petersilie"
+  ],
+  "steps": [
+   "Butter schmelzen: Die 60 g Butter in einem kleinen Topf bei niedriger Hitze schmelzen, damit sie nicht verbrennt und bitter wird.",
+   "Knoblauch anbraten: 3 gehackte Knoblauchzehen zugeben und 1-2 Minuten anbraten, nur bis sie duften. Wichtig: Nicht bräunen lassen, denn verbrannter Knoblauch wird bitter und verdirbt die Sauce.",
+   "Zitrone zugeben: Die 2 EL Zitronensaft, 1 TL Schale, 1 TL Dijonsenf und Thymian oder Oregano zugeben. Die Schale bringt intensives Aroma ohne zusätzliche Säure.",
+   "Sauce binden: Umrühren und 2-3 Minuten köcheln, bis die Sauce leicht andickt und sich die Aromen verbinden. Der Senf hilft beim Emulgieren.",
+   "Würzen: Abschmecken und nach Bedarf salzen und pfeffern, dabei die Säure der Zitrone berücksichtigen.",
+   "Abschluss und Servieren: Vom Herd nehmen, gehackte Petersilie zugeben und sofort über das heiße Hähnchen gießen. Wichtig: Heiß servieren, denn die Hitze löst die Aromen und macht das Gericht lebendig."
+  ],
+  "wine": "Trockener Weißwein oder ein leichter Rosé.",
+  "plate": "Über Filet oder Schenkel gießen, mit Zitronenschale und Thymian garnieren."
+ },
+ "saltsa_tomatas": {
+  "n": "Hausgemachte Tomatensauce",
+  "ing": [
+   "Tomaten aus der Dose 800 g",
+   "Zwiebel 1",
+   "Knoblauch 3 Zehen",
+   "Olivenöl 4 EL",
+   "Frisches Basilikum",
+   "Oregano 1 TL",
+   "Zucker 1 TL",
+   "Salz, Pfeffer"
+  ],
+  "steps": [
+   "Zwiebel und Knoblauch 5 Minuten im Öl anbraten.",
+   "Tomaten, Zucker, Oregano, Salz und Pfeffer zugeben.",
+   "20-25 Minuten unter gelegentlichem Rühren köcheln.",
+   "Zum Schluss frisches Basilikum unterrühren.",
+   "Für Nudeln, Pizza oder als Basis für andere Rezepte verwenden."
+  ]
+ },
+ "samali": {
+  "n": "Samali (Grieß-Kokos-Kuchen)",
+  "ing": [
+   "Feiner Grieß 250 g",
+   "Kokosraspeln 100 g",
+   "Zucker 150 g",
+   "Joghurt 250 g",
+   "Eier 2",
+   "Backpulver 1 TL",
+   "Butter 80 g",
+   "Mandeln zum Garnieren",
+   "Sirup: Zucker 250 g, Wasser 250 ml, Orangenblütenwasser 2 EL"
+  ],
+  "steps": [
+   "Sirup: Zucker, Wasser und Orangenblütenwasser 5 Minuten kochen. Abkühlen lassen.",
+   "Teig: Grieß, Kokosraspeln, Zucker, Joghurt, Eier, geschmolzene Butter und Backpulver vermengen.",
+   "Backen: Den Teig gleichmäßig in einer gefetteten Form verteilen. Mandeln darüber streuen. Bei 180 °C 25-30 Minuten backen.",
+   "Vorschneiden: Sofort nach dem Ofen in Rauten oder Quadrate schneiden.",
+   "Tränken: Den kalten Sirup sofort darüber gießen. Mindestens 30 Minuten vollständig aufsaugen lassen. Wichtig: Kalter Sirup auf heißem Kuchen sorgt für perfekte Aufnahme, ohne dass er matschig wird."
+  ],
+  "wine": "-",
+  "plate": "In Rauten geschnitten, mit Mandeln obenauf."
+ },
+ "sardeles_lemonates": {
+  "n": "Zitronensardinen",
+  "ing": [
+   "Frische Sardinen 500 g",
+   "Olivenöl 3 EL",
+   "Zitronen 2",
+   "Oregano",
+   "Salz & Pfeffer",
+   "Mehl (optional)"
+  ],
+  "steps": [
+   "Putzen: Die 500 g frischen Sardinen putzen, die Innereien und nach Belieben die Köpfe entfernen und unter kaltem Wasser sehr gut abspülen. Wichtig: Mit Küchenpapier sehr gründlich trocknen, denn Feuchtigkeit verhindert das Bräunen und lässt das Öl spritzen.",
+   "Salzen: Die Sardinen erst kurz vor dem Garen salzen. Zu frühes Salzen zieht Feuchtigkeit heraus und trocknet sie aus.",
+   "Mehlieren (optional): Für eine knusprigere Kruste leicht mit Mehl bestäuben und den Überschuss abklopfen, damit sie nicht zu viel Mehl aufnehmen und schwer werden.",
+   "Garen: Auf einem heißen Grill oder in der Pfanne mit 3 EL Olivenöl 3-4 Minuten pro Seite garen, bis sie gebräunt sind und das Fleisch undurchsichtig wird. Nicht wiederholt wenden, damit sie nicht zerfallen.",
+   "Ladolemono: Den Saft von 2 Zitronen mit etwas Olivenöl und Oregano mischen, für ein frisches Dressing, das die Fülle des Fisches durchbricht.",
+   "Servieren: Sofort heiß servieren, mit dem Ladolemono, Oregano und grobem Salz beträufelt."
+  ],
+  "wine": "Trockener Weißwein.",
+  "plate": "Mit Zitrone, Oliven und frischem Brot. Der Inbegriff des griechischen Sommers."
+ },
+ "semifredo": {
+  "n": "Semifreddo",
+  "ing": [
+   "Eigelb 5",
+   "Zucker 120 g",
+   "Sahne 500 ml",
+   "Vanilleextrakt 1 TL",
+   "Geröstete Haselnüsse 100 g",
+   "Zartbitterschokolade 80 g"
+  ],
+  "steps": [
+   "Das Eigelb mit dem Zucker etwa 8 Minuten über dem Wasserbad aufschlagen, bis die Masse hell, dick und handwarm ist.",
+   "Wichtig: Die Schüssel darf das Wasser nie berühren und die Hitze muss niedrig bleiben, sonst stockt das Eigelb und die Masse ist verdorben.",
+   "Vom Herd nehmen und weiterschlagen, bis alles vollständig auf Zimmertemperatur abgekühlt ist.",
+   "Die Sahne separat halbsteif schlagen — weicher als für eine Torte, denn sie wird im Gefrierfach fester.",
+   "Die Sahne in drei Portionen vorsichtig unter die abgekühlte Eigelbmasse heben, dabei so viel Luft wie möglich erhalten.",
+   "Die gehackten Haselnüsse und die geraspelte Schokolade unterheben.",
+   "Eine Kastenform mit Frischhaltefolie auslegen, mit großzügigem Überhang, und die Masse einfüllen.",
+   "Mindestens 6 Stunden einfrieren. Anders als Eiscreme braucht Semifreddo keine Eismaschine — die eingeschlagene Luft hält es weich.",
+   "Mit Hilfe der Folie stürzen und gefroren aufschneiden, dann die Scheiben vor dem Servieren 5 Minuten stehen lassen."
+  ],
+  "wine": "Vin Santo oder Mavrodafni.",
+  "plate": "In Scheiben schneiden und mit gerösteten Haselnüssen und Schokoladensauce servieren."
+ },
+ "seskula": {
+  "n": "Gekochter Mangold",
+  "ing": [
+   "Mangold 1 kg",
+   "Olivenöl 4 EL",
+   "Zitronensaft 2 EL",
+   "Knoblauch 2 Zehen (optional)",
+   "Salz, Pfeffer"
+  ],
+  "steps": [
+   "Den Mangold gut waschen und die Stiele in Stücke schneiden.",
+   "Salzwasser zum Kochen bringen.",
+   "Zuerst die Stiele 5 Minuten kochen, dann die Blätter weitere 5-8 Minuten zugeben.",
+   "Gut abtropfen lassen.",
+   "Warm mit reichlich Olivenöl, Zitronensaft, Salz und Pfeffer servieren."
+  ]
+ },
+ "sfoliatopitakia": {
+  "n": "Blätterteigtaschen mit Feta",
+  "ing": [
+   "Blätterteig 2 Platten",
+   "Feta 250 g",
+   "Ei 1 (zum Bestreichen)",
+   "Sesam",
+   "Pfeffer"
+  ],
+  "steps": [
+   "Den Blätterteig in Quadrate schneiden.",
+   "Auf jedes Quadrat Feta setzen und mit Pfeffer würzen.",
+   "Zu Dreiecken falten und die Ränder festdrücken.",
+   "Mit verquirltem Ei bestreichen und mit Sesam bestreuen.",
+   "Bei 200 °C 20-25 Minuten goldbraun backen."
+  ]
+ },
+ "skordalia": {
+  "n": "Skordalia (Knoblauch-Kartoffel-Creme)",
+  "ing": [
+   "Kartoffeln 4 große",
+   "Knoblauch 6-8 Zehen",
+   "Olivenöl 150 ml",
+   "Essig 2 EL",
+   "Salz"
+  ],
+  "steps": [
+   "Kartoffeln kochen: Die 4 großen Kartoffeln ganz und mit Schale in Salzwasser weich kochen. Die Schale verhindert, dass die Kartoffeln zu viel Wasser aufnehmen und wässrig werden.",
+   "Schälen: Die Kartoffeln noch heiß schälen. Wichtig: Heiße Kartoffeln lassen sich gleichmäßig zerdrücken und binden besser mit dem Öl, kalte werden klebrig.",
+   "Knoblauch zerstoßen: Die 6-8 Knoblauchzehen mit etwas Salz im Mörser zu einer Paste zerstoßen. Das Salz hilft beim Zerreiben und löst die Aromen.",
+   "Vereinen: Die heißen Kartoffeln zugeben und zusammen mit dem Knoblauch im Mörser oder kurz im Mixer zu einer glatten Basis zerdrücken.",
+   "Emulgieren: Die 150 ml Olivenöl und die 2 EL Essig abwechselnd in kleinen Mengen zugeben und ständig schlagen, bis die Skordalia cremig und luftig ist.",
+   "Abschluss: Abschmecken und Salz und Essig anpassen. Wichtig: Die Kartoffel im Mixer nicht überarbeiten, denn sie gibt Stärke ab und wird klebrig wie Kleister."
+  ],
+  "wine": "Ouzo!",
+  "plate": "Schale, Olivenöl, Oliven. Zu Stockfisch."
+ },
+ "snitsel_xoirino": {
+  "n": "Schweineschnitzel",
+  "ing": [
+   "Schweinerücken 4 Scheiben (je etwa 150 g)",
+   "Mehl 100 g",
+   "Eier 2",
+   "Semmelbrösel 200 g",
+   "Zitrone 1",
+   "Sonnenblumenöl zum Braten",
+   "Salz, Pfeffer"
+  ],
+  "steps": [
+   "Fleisch plattieren: Jede Scheibe zwischen zwei Lagen Frischhaltefolie legen und mit dem Klopfer oder Nudelholz auf gleichmäßige 5 mm klopfen. Wichtig: Gleichmäßige Dicke ist alles — dünne Ränder verbrennen, während dicke Mitten roh bleiben.",
+   "Würzen: Beide Seiten mit Salz und Pfeffer würzen und die Scheiben 10 Minuten ruhen lassen.",
+   "Panierstraße aufbauen: Drei flache Teller bereitstellen: Mehl, verquirlte Eier, Semmelbrösel.",
+   "Panieren: Jede Scheibe in Mehl wenden und den Überschuss abklopfen, dann in Ei tauchen und abtropfen lassen, dann fest in die Semmelbrösel drücken.",
+   "Panade ruhen lassen: Die panierten Schnitzel 10 Minuten ruhen lassen. So verbinden sich die Brösel mit dem Ei und die Panade löst sich in der Pfanne nicht ab.",
+   "Öl erhitzen: Reichlich Öl in einer weiten Pfanne auf 175 °C erhitzen — ein hineingeworfener Brösel soll sofort zischen, ohne augenblicklich zu bräunen.",
+   "Braten: 3-4 Minuten pro Seite tief goldbraun braten und nur einmal wenden. Wiederholtes Wenden bricht die Panade.",
+   "Pfanne nicht überfüllen: Höchstens zwei auf einmal braten. Wichtig: Eine überfüllte Pfanne senkt die Öltemperatur und die Panade saugt Fett auf, statt knusprig zu werden.",
+   "Abtropfen: Auf einem Gitter abtropfen lassen, nicht auf Papier — Papier hält den Dampf darunter und die untere Kruste wird weich.",
+   "Servieren: Sofort mit Zitronenspalten servieren."
+  ],
+  "wine": "Ein kaltes Bier oder ein frischer Weißwein wie Moschofilero.",
+  "plate": "Ein Schnitzel pro Teller, das fast den ganzen Teller bedeckt, mit einer halben Zitrone und Pommes oder Kartoffelpüree dazu."
+ },
+ "sofrito": {
+  "n": "Korfu-Sofrito",
+  "ing": [
+   "Kalbfleisch, Oberschale oder Schulter, in Scheiben 800 g",
+   "Knoblauch 6-8 Zehen, fein gehackt",
+   "Petersilie 1 großes Bund, fein gehackt",
+   "Weißweinessig 1 Tasse",
+   "Trockener Weißwein 1/2 Tasse",
+   "Mehl zum leichten Bestäuben 3-4 EL",
+   "Olivenöl 1/2 Tasse",
+   "Salz und frisch gemahlener Pfeffer"
+  ],
+  "steps": [
+   "Vorbereitung: Die Kalbsscheiben leicht klopfen, um sie zart zu machen, und mit Salz und Pfeffer würzen. Beidseitig mit Mehl bestäuben und den Überschuss abklopfen.",
+   "Anbraten: Das Olivenöl in einer tiefen Pfanne gut erhitzen und die Scheiben bei starker Hitze beidseitig schön bräunen. In einen Topf umfüllen.",
+   "Das Geheimnis der Sauce: Im selben Öl den gehackten Knoblauch und die Petersilie eine halbe Minute anbraten, nur bis sie duften, ohne sie verbrennen zu lassen.",
+   "Ablöschen: Mit Essig und Wein ablöschen, den Alkohol 1-2 Minuten verdampfen lassen und die Sauce über das Fleisch gießen.",
+   "Wichtig: Authentisches Sofrito enthält keine Tomate. Seine typisch weiße Farbe und der säuerliche Geschmack kommen allein von Essig, Knoblauch und Petersilie — also nicht der Versuchung nachgeben, Tomatenmark zuzugeben.",
+   "Schmoren: Etwas heißes Wasser zugeben, sodass das Fleisch fast bedeckt ist, zudecken und bei niedriger Hitze 1 bis 1,5 Stunden schmoren.",
+   "Eindicken: Das Fleisch ist fertig, wenn es sehr zart ist und die Sauce zu einer samtigen Konsistenz eingekocht ist. Bei Bedarf gegen Ende den Deckel abnehmen, damit die Sauce andickt.",
+   "Servieren: Mit Salz abschmecken und heiß servieren, die Sauce großzügig darüber löffeln."
+  ],
+  "wine": "Trockener Weißwein, idealerweise ein korfiotischer Kakotrygis.",
+  "plate": "Mit Kartoffelpüree oder lockerem Reis servieren, der die weiße Sauce aufnimmt."
+ },
+ "sokolatopita": {
+  "n": "Schokoladenkuchen mit Sirup",
+  "ing": [
+   "Weizenmehl 2 Tassen",
+   "Zucker 1,5 Tassen",
+   "Ungesüßter Kakao 3/4 Tasse",
+   "Eier 3",
+   "Sonnenblumen- oder Pflanzenöl 1 Tasse",
+   "Milch 1 Tasse",
+   "Backpulver 2 TL",
+   "Vanille 1 Päckchen",
+   "Kochendes Wasser 1 Tasse (für den Sirup)",
+   "Zucker 1,5 Tassen mit 2 EL Kakao (für den Sirup)"
+  ],
+  "steps": [
+   "Vorbereitung: Den Ofen auf 180 °C Umluft vorheizen und eine Form von etwa 25x35 cm ausbuttern oder mit Backpapier auslegen.",
+   "Trockene Zutaten mischen: In einer großen Schüssel Mehl, Kakao und Backpulver sieben, den Zucker zugeben und gut vermengen.",
+   "Flüssige Zutaten mischen: In einer zweiten Schüssel die Eier mit Öl, Milch und Vanille glatt verquirlen.",
+   "Vereinen: Die flüssigen Zutaten zu den trockenen gießen und glatt rühren. Wichtig: Den Teig nicht überrühren, denn das entwickelt das Gluten und der Kuchen wird kompakt und zäh statt locker.",
+   "Backen: Die Masse in die Form gießen und 30-35 Minuten backen, bis der Kuchen aufgegangen ist und ein Zahnstocher in der Mitte sauber herauskommt.",
+   "Sirup: Während des Backens Wasser mit Zucker und Kakao in einem Topf 4-5 Minuten kochen, bis der Sirup leicht andickt.",
+   "Sirup aufgießen: Sofort nach dem Ofen den Kuchen in Stücke vorschneiden und den heißen Sirup langsam über den heißen Kuchen gießen, damit er gleichmäßig einzieht.",
+   "Ruhen lassen: Den Schokoladenkuchen vor dem Servieren mindestens 2 Stunden abkühlen und den Sirup aufsaugen lassen."
+  ],
+  "wine": "Süßer Mavrodafni oder ein heißer Kaffee.",
+  "plate": "In Stücken mit einer Kugel Vanilleeis oder Schlagsahne servieren."
+ },
+ "solomos_fournou": {
+  "n": "Lachs aus dem Ofen",
+  "ing": [
+   "Lachsfilets 2 (insgesamt 300 g)",
+   "Zitrone 1",
+   "Knoblauch 2 Zehen",
+   "Olivenöl 2 EL",
+   "Frischer Dill",
+   "Salz & Pfeffer",
+   "Honig 1 TL (optional)",
+   "Sojasauce 1 TL (optional)"
+  ],
+  "steps": [
+   "Marinade: Olivenöl, den Saft einer halben Zitrone, dünn geschnittenen Knoblauch, Salz, Pfeffer und Dill mischen. Für eine süß-saure Note Honig und Sojasauce zugeben. Die Filets damit einreiben und 15 Minuten ziehen lassen.",
+   "Backen: Die Filets auf ein mit Backpapier belegtes Blech legen. Bei 200 °C je nach Dicke 12-15 Minuten backen. Wichtig: Der Lachs ist fertig, wenn er sich mit der Gabel leicht in Segmente teilen lässt und die Mitte noch leicht rosa ist.",
+   "Servieren: Sofort mit Zitronenscheiben, frischem Dill und Reis oder Ofengemüse dazu servieren."
+  ],
+  "wine": "Weißer Assyrtiko oder Sauvignon Blanc.",
+  "plate": "Mit Zitronenscheiben und frischem Dill."
+ }
+}

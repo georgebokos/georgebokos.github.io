@@ -1,0 +1,31 @@
+══ EL ══
+
+ΤΙΤΛΟΙ (μέγιστο 30)
+  [23] Τι μαγειρεύουμε σήμερα;
+  [22] 376 ελληνικές συνταγές
+  [20] Μαγείρεψε ό,τι έχεις
+  [23] Πόσο κοστίζει η μερίδα;
+  [21] Μια πρόταση κάθε μέρα
+
+ΠΕΡΙΓΡΑΦΕΣ (μέγιστο 90)
+  [81] Σταμάτα να σκέφτεσαι τι θα φάτε. Μια πρόταση κάθε μέρα, με φωτογραφία και κόστος.
+  [66] Γράψε τι έχεις στο ψυγείο και βρες τι μπορείς να μαγειρέψεις τώρα.
+  [77] Μουσακάς, γεμιστά, φασολάδα. Βήμα βήμα, με λίστα αγορών και κόστος ανά άτομο.
+  [71] Μενού για καλεσμένους, εορτές και νηστεία. Δουλεύει και χωρίς ίντερνετ.
+  [63] Θερμίδες, χρόνος και κόστος σε κάθε συνταγή. Χωρίς διαφημίσεις.
+
+══ EN ══
+
+ΤΙΤΛΟΙ (μέγιστο 30)
+  [21] What to cook tonight?
+  [17] 376 Greek recipes
+  [18] Cook what you have
+  [24] See the cost per serving
+  [19] One idea, every day
+
+ΠΕΡΙΓΡΑΦΕΣ (μέγιστο 90)
+  [79] Stop deciding what to eat. One dish a day, with a photo, the time and the cost.
+  [65] Type what is in your fridge and find what you can cook right now.
+  [67] Moussaka, pastitsio, bean soup. Step by step, with a shopping list.
+  [67] Menus for guests, feast days and fasting. Works with no connection.
+  [60] Calories, time and cost on every recipe. No ads, no account.

@@ -1,0 +1,571 @@
+{
+ "tabouleh": {
+  "n": "Tabbouleh",
+  "ing": [
+   "Bulgur 150 g",
+   "Frische Petersilie 2 kleine Bund",
+   "Tomaten 3",
+   "1 Gurke",
+   "Frühlingszwiebeln 4",
+   "Minze",
+   "Olivenöl 4 EL",
+   "Zitronensaft 3 EL",
+   "Salz, Pfeffer"
+  ],
+  "steps": [
+   "Den Bulgur nach Packungsangabe garen oder 20 Minuten in heißem Wasser quellen lassen. Abkühlen lassen.",
+   "Petersilie, Minze, Tomaten, Gurke und Frühlingszwiebeln fein hacken.",
+   "Den Bulgur mit dem Gemüse vermengen.",
+   "Öl, Zitronensaft, Salz und Pfeffer zugeben und durchmischen.",
+   "15 Minuten kalt stellen, damit sich die Aromen verbinden."
+  ]
+ },
+ "taramosalata": {
+  "n": "Taramosalata (Fischrogencreme)",
+  "ing": [
+   "Tarama (Fischrogen) 100 g",
+   "Altbackenes Brot 4 Scheiben",
+   "Olivenöl 150 ml",
+   "Zitronensaft 2 EL",
+   "Geriebene Zwiebel, 1 kleine"
+  ],
+  "steps": [
+   "Brot einweichen: Die 4 Scheiben altbackenes Brot (ohne Rinde) einige Minuten in Wasser einweichen, bis sie weich sind. Altbackenes Brot bindet besser und gibt der Taramosalata eine leichte, luftige Textur.",
+   "Ausdrücken: Das Brot mit den Händen sehr gut ausdrücken, um das gesamte Wasser zu entfernen. Wichtig: Bleibt Wasser zurück, wird die Taramosalata wässrig und bindet nicht.",
+   "Basis im Mixer: Die 100 g Tarama, das ausgedrückte Brot und die 1 kleine geriebene Zwiebel in den Mixer geben und zu einer glatten Paste verarbeiten.",
+   "Öl und Zitrone zugeben: Die 150 ml Olivenöl in sehr dünnem Strahl zugießen, abwechselnd mit den 2 EL Zitronensaft, während der Mixer durchgehend läuft. Der langsame Ölstrahl erzeugt eine Emulsion und hält die Masse zusammen.",
+   "Luftig aufschlagen: Weitermixen, bis eine luftige, gleichmäßige Creme entsteht. Abschmecken und die Zitrone nach Geschmack anpassen.",
+   "Im Kühlschrank ruhen: Die Taramosalata vor dem Servieren mindestens 1 Stunde kalt stellen. Das Kühlen festigt die Textur und lässt die Aromen verschmelzen."
+  ],
+  "wine": "Ouzo oder trockener Weißwein.",
+  "plate": "In einer Schale mit Olivenöl und Oliven, Lagana-Brot dazu."
+ },
+ "tartaFragola": {
+  "n": "Erdbeertarte",
+  "ing": [
+   "Mürbeteig",
+   "Konditorcreme",
+   "Erdbeeren 400 g",
+   "Tortenguss",
+   "Puderzucker"
+  ],
+  "steps": [
+   "Boden blind backen: Den Mürbeteig in die Form ausrollen, den Boden mit einer Gabel einstechen und blind backen (mit Backgewichten oder getrockneten Bohnen) 15 Minuten, dann weitere 5 Minuten ohne Gewichte bei 180 °C. Wichtig: Das Blindbacken verhindert, dass der Teig aufgeht, und hält den Boden knusprig, damit er von der Creme nicht aufweicht.",
+   "Boden abkühlen: Den Boden vollständig auskühlen lassen, bevor die Creme daraufkommt. Ist er noch warm, schmilzt die Konditorcreme und wird flüssig.",
+   "Creme aufstreichen: Die kalte Konditorcreme mit einer Palette gleichmäßig auf dem Boden verteilen, damit jedes Stück eine gleichmäßige Schicht hat.",
+   "Erdbeeren anordnen: Die 400 g Erdbeeren in Scheiben schneiden und dekorativ in Kreisen oder konzentrischen Ringen auf der Creme anordnen. Eine gleichmäßige Anordnung sieht beeindruckend aus.",
+   "Glasieren: Die Erdbeeren vorsichtig mit Tortenguss bestreichen, für Glanz und damit die Früchte nicht oxidieren und austrocknen.",
+   "Kühlen und Servieren: Die Tarte 1 Stunde kalt stellen, damit sie fest wird und sich sauber schneiden lässt. Kurz vor dem Servieren mit Puderzucker bestäuben."
+  ],
+  "wine": "Weißer Schaumwein.",
+  "plate": "Puderzucker, Erdbeeren."
+ },
+ "tarta_lemoni": {
+  "n": "Zitronentarte",
+  "ing": [
+   "Mehl 200 g",
+   "Kalte Butter 100 g",
+   "Zucker 50 g",
+   "Ei 1",
+   "Füllung: Eier 3, Zucker 150 g, Saft von 3 Zitronen, Schale von 2 Zitronen, Butter 80 g",
+   "Sahne 50 ml"
+  ],
+  "steps": [
+   "Teig: Die kalte Butter würfeln und mit Mehl und Zucker zu Bröseln verreiben. Das Ei zugeben und minimal kneten. Wichtig: Den Teig nicht warm werden lassen — kalte Butter macht den Boden knusprig.",
+   "Kühlen: In Folie wickeln und 30 Minuten kalt stellen.",
+   "Tarteboden: Dünn in eine Tarteform ausrollen und mit der Gabel einstechen. Mit Backpapier auslegen und mit Gewichten (Bohnen) füllen. Bei 180 °C 15 Minuten blind backen, die Gewichte entfernen und weitere 5 Minuten backen.",
+   "Füllung: Die Eier mit dem Zucker verquirlen, Zitronensaft, Schale und Sahne zugeben. Im Wasserbad unter Rühren erhitzen, bis die Masse leicht andickt (82 °C). Die Butter unterrühren.",
+   "Fertigbacken: Die Füllung in den Tarteboden gießen. Bei 160 °C 20-25 Minuten backen — die Füllung soll in der Mitte noch leicht wackeln.",
+   "Abkühlen: Vor dem Schneiden vollständig auskühlen lassen."
+  ],
+  "wine": "-",
+  "plate": "In dünnen Stücken mit etwas Sahne."
+ },
+ "tiganites_ellinikes": {
+  "n": "Griechische Tiganites",
+  "ing": [
+   "Mehl 300 g",
+   "Lauwarmes Wasser 350 ml",
+   "Frische Hefe 20 g oder Trockenhefe 7 g",
+   "Zucker 1 TL",
+   "Salz 1/2 TL",
+   "Sonnenblumenöl zum Frittieren",
+   "Honig zum Servieren",
+   "Zimt und Walnüsse"
+  ],
+  "steps": [
+   "Hefe aktivieren: Die Hefe mit dem Zucker in etwas lauwarmem Wasser auflösen und 10 Minuten stehen lassen, bis es schäumt.",
+   "Wichtig: Das Wasser muss lauwarm sein, niemals heiß. Über 45 °C stirbt die Hefe und der Teig geht nie auf.",
+   "Teig anrühren: Das Mehl mit dem Salz mischen, die Hefemischung und das restliche Wasser zugeben und zu einem glatten, dickflüssigen Teig verrühren.",
+   "Gehen lassen: Die Schüssel mit einem Tuch abdecken und 1 Stunde an einem warmen Ort stehen lassen, bis sich der Teig verdoppelt hat und die Oberfläche mit Blasen bedeckt ist.",
+   "Wichtig: Den Teig nach dem Gehen nicht mehr rühren. Diese Blasen sind die ganze Struktur — Rühren lässt sie zusammenfallen und die Tiganites werden flach.",
+   "Öl erhitzen: Reichlich Öl in einer tiefen Pfanne auf 175 °C erhitzen. Tiganites müssen schwimmen, das Öl sollte also mindestens 3 cm hoch stehen.",
+   "Testen: Etwas Teig hineingeben — er soll sofort an die Oberfläche steigen und aufgehen.",
+   "Frittieren: Mit einem geölten Löffel Portionen hineingeben, ohne die Pfanne zu überfüllen.",
+   "Garen: 2 Minuten pro Seite frittieren, bis sie tief goldbraun und aufgegangen sind, dabei einmal wenden.",
+   "Abtropfen und servieren: Auf einem Gitter abtropfen lassen und sofort servieren, mit Honig beträufelt und mit Zimt und gehackten Walnüssen bestreut."
+  ],
+  "wine": "Griechischer Kaffee oder Tsipouro.",
+  "plate": "Kochend heiß servieren, mit Honig beträufelt und mit Zimt und Walnüssen bestäubt."
+ },
+ "tiganites_melitzanes": {
+  "n": "Frittierte Auberginenscheiben",
+  "ing": [
+   "2 große Auberginen",
+   "Mehl zum Wenden",
+   "Olivenöl zum Frittieren",
+   "Knoblauch 2 Zehen",
+   "Essig 2 EL",
+   "Salz"
+  ],
+  "steps": [
+   "Die Auberginen in 1 cm dicke Scheiben schneiden. Salzen und 20 Minuten stehen lassen. Trocken tupfen.",
+   "Jede Scheibe in Mehl wenden.",
+   "In heißem Öl 2-3 Minuten pro Seite goldbraun frittieren.",
+   "Auf Küchenpapier abtropfen lassen.",
+   "Mit geriebenem Knoblauch, Essig und Salz obenauf servieren."
+  ]
+ },
+ "tiganites_patates": {
+  "n": "Hausgemachte Pommes",
+  "ing": [
+   "4 mittelgroße Kartoffeln",
+   "Olivenöl oder Frittieröl",
+   "Grobes Salz",
+   "Oregano (optional)"
+  ],
+  "steps": [
+   "Schneiden: Die 4 mittelgroßen Kartoffeln schälen und in dicke Scheiben oder Würfel schneiden, damit sie außen knusprig und innen locker bleiben.",
+   "Trocknen: Wichtig: Die Kartoffeln mit Küchenpapier sehr gut trocknen, denn Feuchtigkeit lässt das Öl spritzen und verhindert die Knusprigkeit.",
+   "Frittieren: Reichlich Öl bei starker Hitze erhitzen und die Kartoffeln 12-15 Minuten frittieren, dabei wenden, damit sie rundum gleichmäßig bräunen.",
+   "Abtropfen: Mit einer Schaumkelle herausnehmen und auf Küchenpapier abtropfen lassen, damit überschüssiges Öl aufgesaugt wird.",
+   "Salzen und Servieren: Sofort im heißen Zustand mit grobem Salz salzen, damit es haftet, und nach Belieben mit Oregano bestreuen. Sofort servieren."
+  ],
+  "wine": "-",
+  "plate": "Kochend heiß, mit Oregano, dazu Tzatziki oder Ketchup."
+ },
+ "tiramisu": {
+  "n": "Tiramisu",
+  "ing": [
+   "Löffelbiskuits (Savoiardi) 250 g",
+   "Mascarpone 500 g",
+   "Eier 4",
+   "Zucker 100 g",
+   "Starker Espresso 200 ml",
+   "Kahlúa- oder Amarettolikör 3 EL (optional)",
+   "Kakaopulver"
+  ],
+  "steps": [
+   "Das Eigelb mit dem Zucker hell und luftig aufschlagen.",
+   "Den Mascarpone zugeben und behutsam unterheben.",
+   "Das Eiweiß steif schlagen und vorsichtig unter die Masse heben.",
+   "Den Espresso mit dem Likör in einer flachen Schale mischen.",
+   "Die Löffelbiskuits kurz eintauchen (1-2 Sekunden pro Seite) und in eine Form legen.",
+   "Die Hälfte der Creme darauf verteilen. Eine weitere Lage Löffelbiskuits, dann die restliche Creme.",
+   "Mit Kakao bestäuben und 4-6 Stunden kalt stellen."
+  ]
+ },
+ "tirokafteri": {
+  "n": "Tirokafteri (scharfe Käsecreme)",
+  "ing": [
+   "200 g Feta",
+   "150 g Anthotyro oder Katiki",
+   "3 EL Olivenöl",
+   "2-3 scharfe Peperoni",
+   "1 Knoblauchzehe",
+   "Salz & Pfeffer"
+  ],
+  "steps": [
+   "Zutaten wählen: Die Käsesorten Zimmertemperatur annehmen lassen, damit sie sich im Mixer leichter und gleichmäßiger verbinden.",
+   "Käse pürieren: Die 200 g Feta, die 150 g Anthotyro oder Katiki, die 3 EL Olivenöl und die 1 Knoblauchzehe in den Mixer geben. Zu einer glatten, cremigen Paste verarbeiten.",
+   "Peperoni vorbereiten: Die 2-3 scharfen Peperoni fein hacken. Wichtig: Für weniger Schärfe Kerne und Trennwände entfernen, denn dort konzentriert sich das meiste Capsaicin.",
+   "Vereinen: Die gehackten Peperoni mit einem Löffel (nicht im Mixer) unter die cremige Masse heben, damit Stückchen bleiben und die Tirokafteri Textur behält.",
+   "Würze anpassen: Abschmecken und bei Bedarf salzen und pfeffern, dabei bedenken, dass der Feta bereits salzig ist.",
+   "Ruhen lassen: Die Tirokafteri vor dem Servieren mindestens 30 Minuten kalt stellen, damit die Textur fest wird und sich die Aromen verbinden."
+  ],
+  "wine": "Tsipouro oder ein süßer Rotwein.",
+  "plate": "In einer Schale, mit Olivenöl beträufelt, mit Peperoni garniert, zu Pitabrot serviert."
+ },
+ "tomatokeftedes": {
+  "n": "Tomatenpuffer aus Santorini",
+  "ing": [
+   "Reife Tomaten 3 große",
+   "Mehl 100 g",
+   "Zwiebel 1",
+   "Petersilie eine Handvoll",
+   "Frische Minze 5-6 Blätter",
+   "Salz & Pfeffer",
+   "Olivenöl zum Braten"
+  ],
+  "steps": [
+   "Tomaten vorbereiten: Die Tomaten schneiden, die Kerne entfernen und gut ausdrücken, um die Flüssigkeit loszuwerden. Fein hacken oder grob reiben. Wichtig: Werden sie nicht gut genug ausgedrückt, wird die Masse wässrig.",
+   "Masse: Tomate, fein gehackte Zwiebel, Petersilie, Minze, Salz und Pfeffer vermengen. Das Mehl nach und nach zugeben, bis eine dicke, formbare Masse entsteht. 10 Minuten ruhen lassen.",
+   "Braten: Öl in einer Pfanne erhitzen. Löffelweise Portionen hineingeben und leicht flach drücken. Bei mittlerer Hitze 3-4 Minuten pro Seite goldbraun braten.",
+   "Servieren: Auf Küchenpapier legen, damit überschüssiges Öl abtropft. Heiß mit Tzatziki oder Joghurt servieren."
+  ],
+  "wine": "Trockener Weißwein oder Rosé.",
+  "plate": "Heiß, mit Tzatziki oder Joghurt dazu."
+ },
+ "tost_tyri": {
+  "n": "Käsetoast",
+  "ing": [
+   "4 Scheiben Toastbrot",
+   "80 g Gouda oder Emmentaler",
+   "80 g Schinken",
+   "10 g Butter oder Margarine"
+  ],
+  "steps": [
+   "Brot vorbereiten: Je eine Seite der 4 Brotscheiben mit den 10 g Butter oder Margarine dünn bestreichen. Die Butter macht die Außenseite knusprig und goldbraun.",
+   "Belag: Die 80 g Gouda oder Emmentaler und die 80 g Schinken auf die Scheiben verteilen. Wichtig: Käse sowohl über als auch unter den Schinken legen, damit er beim Schmelzen das Sandwich verschließt und es nicht auseinanderfällt.",
+   "Sandwich schließen: Das Sandwich mit der gebutterten Seite nach außen schließen, damit sie die heiße Fläche berührt und bräunt.",
+   "Grillen: Im Sandwichmaker oder in der Pfanne bei mittlerer Hitze 3-4 Minuten pro Seite grillen, bis der Käse schmilzt und das Brot knusprig und goldbraun ist.",
+   "Servieren: Das Sandwich diagonal schneiden und sofort servieren, solange der Käse geschmolzen und die Außenseite knusprig ist."
+  ],
+  "wine": "-",
+  "plate": "Heiß, sofort, diagonal geschnitten."
+ },
+ "touloumpes": {
+  "n": "Touloumbes",
+  "ing": [
+   "Grieß (fein) 100 g",
+   "Mehl 200 g",
+   "Wasser 400 ml",
+   "Butter 80 g",
+   "Eier 4",
+   "Zucker 600 g (für den Sirup)",
+   "Wasser 500 ml (für den Sirup)",
+   "Zitrone 1",
+   "Sonnenblumenöl zum Frittieren",
+   "Zimtstange 1"
+  ],
+  "steps": [
+   "Zuerst den Sirup zubereiten: Zucker, Wasser, Zitrone und Zimt 8 Minuten kochen, dann vollständig abkühlen lassen.",
+   "Wichtig: Der Sirup muss kalt und die Touloumbes heiß sein. Dieser Kontrast lässt sie Sirup aufnehmen, ohne matschig zu werden.",
+   "Wasser und Butter aufkochen, dann Mehl und Grieß auf einmal hineingeben.",
+   "3-4 Minuten kräftig über der Hitze rühren, bis sich der Teig vom Rand löst und eine Kugel bildet.",
+   "15 Minuten abkühlen lassen. Wichtig: Eier in heißen Teig gegeben stocken zu Rührei-Klümpchen.",
+   "Die Eier einzeln zugeben und nach jedem kräftig schlagen, bis der Teig wieder glatt und glänzend ist.",
+   "Mit einer Sterntülle 6 cm lange Stücke direkt in 160 °C heißes Öl spritzen — niedriger als üblich, damit sie innen durchgaren.",
+   "6-8 Minuten langsam frittieren und dabei wenden, bis sie rundum tief goldbraun sind. Wer hier hetzt, bekommt sie innen roh.",
+   "Direkt aus dem Öl in den kalten Sirup heben und 1 Minute darin lassen.",
+   "Auf einem Gitter abtropfen lassen und mit Zimt servieren."
+  ],
+  "wine": "Griechischer Kaffee.",
+  "plate": "Auf einer Platte servieren, mit glänzendem Sirup und einem Hauch Zimt."
+ },
+ "tourlou": {
+  "n": "Gemischtes Ofengemüse (Tourlou)",
+  "ing": [
+   "Große Auberginen 2",
+   "Zucchini 3",
+   "Kartoffeln 4 mittelgroße",
+   "Paprika (rot und grün) 2",
+   "Reife Tomaten 4 (oder 1 Dose gehackte Tomaten)",
+   "Zwiebeln 2 große",
+   "Knoblauch 3-4 Zehen",
+   "Olivenöl 1 Tasse",
+   "Petersilie 1 Bund",
+   "Salz, Pfeffer, Oregano"
+  ],
+  "steps": [
+   "Gemüse vorbereiten: Auberginen und Zucchini in dicke Scheiben, die Kartoffeln in Scheiben, die Paprika in Streifen und die Zwiebeln in Halbmonde schneiden. Wichtig: Die Auberginen salzen und 20 Minuten in einem Sieb stehen lassen, damit sie ihre bittere Flüssigkeit abgeben, dann abspülen und trocknen, damit sie nicht bitter werden und nicht zu viel Öl aufsaugen.",
+   "Form bestücken: Eine große Form einfetten und das gesamte Gemüse gemischt darin verteilen, damit es gleichmäßig gart und die Aromen teilt.",
+   "Tomate und Knoblauch: Die Tomaten und Knoblauchzehen reiben oder fein hacken und zusammen mit der Hälfte der Petersilie über das Gemüse streuen.",
+   "Würzen: Großzügig mit Olivenöl beträufeln, mit Salz, Pfeffer und Oregano bestreuen und mit den Händen vorsichtig durchmischen, damit alles mit Öl überzogen ist.",
+   "Zugedeckt backen: Die Form mit Alufolie abdecken und im vorgeheizten Ofen bei 180 °C etwa 45 Minuten backen, bis das Gemüse weich wird und seinen Saft abgibt.",
+   "Bräunen: Die Folie entfernen, auf 200 °C erhöhen und weitere 25-30 Minuten backen, bis alles schön gebräunt ist und die meiste Flüssigkeit aufgenommen wurde.",
+   "Ruhen und Servieren: Die Form aus dem Ofen nehmen, mit der restlichen frischen Petersilie bestreuen und 10-15 Minuten ruhen lassen. Wichtig: Tourlou schmeckt am besten warm oder bei Zimmertemperatur, wenn sich die Aromen gesetzt haben."
+  ],
+  "wine": "Rosé oder trockener Weißwein.",
+  "plate": "Mit Feta und frischem Brot zum Auftunken des Safts servieren."
+ },
+ "tourta_fountoukiou": {
+  "n": "Schoko-Haselnuss-Torte",
+  "ing": [
+   "Butterkekse 250 g",
+   "Geschmolzene ungesalzene Butter 100 g",
+   "Nuss-Nougat-Creme 400 g",
+   "Sahne (35 % Fett) 500 ml",
+   "Frischkäse 250 g",
+   "Puderzucker 80 g",
+   "Geröstete Haselnüsse 150 g",
+   "Gelatineblätter 4",
+   "Kakaopulver 2 EL",
+   "Salz eine Prise"
+  ],
+  "steps": [
+   "Boden: Die Kekse in der Küchenmaschine zu Bröseln zerkleinern und mit der geschmolzenen Butter und einer Prise Salz mischen.",
+   "Boden formen: Die Masse in einen 22-cm-Ring geben, dessen Boden mit Backpapier ausgelegt ist, und mit dem Löffelrücken fest andrücken. 30 Minuten kalt stellen.",
+   "Gelatine einweichen: Die Gelatineblätter 5 Minuten in kaltem Wasser einweichen, ausdrücken und in etwas warmer Sahne auflösen.",
+   "Wichtig: Die Gelatine muss nur lauwarm sein, wenn sie unter die Mischung aus Nuss-Nougat-Creme und Frischkäse gehoben wird, damit sie die Creme weder ausflocken lässt noch vorzeitig zu Klümpchen geliert.",
+   "Haselnusscreme: Den Frischkäse mit dem Puderzucker luftig aufschlagen, die Nuss-Nougat-Creme zugeben und glatt rühren, dann die Gelatine einrühren.",
+   "Sahne schlagen: Die restliche Sahne mittelfest schlagen und mit Bewegungen von unten nach oben behutsam unter die Haselnussmasse heben, damit keine Luft verloren geht.",
+   "Füllen: Die Creme auf dem Boden verteilen, die Oberfläche mit einer Palette glätten und mindestens 6 Stunden oder über Nacht kalt stellen.",
+   "Dekorieren: Vorsichtig aus dem Ring lösen, die Oberfläche mit Kakao bestäuben und grob gehackte geröstete Haselnüsse am Rand verteilen.",
+   "Servieren: Mit einem in heißes Wasser getauchten Messer schneiden, für saubere Stücke."
+  ],
+  "wine": "Süßer Samos-Wein (Vin Doux)",
+  "plate": "Auf einem Teller mit etwas Kakao ringsum und einem Löffel Schlagsahne dazu servieren"
+ },
+ "tourta_karydas": {
+  "n": "Kokostorte",
+  "ing": [
+   "Weizenmehl 300 g",
+   "Zucker 250 g",
+   "Eier 4",
+   "Butter 200 g",
+   "Kokosraspeln 150 g",
+   "Milch 250 ml",
+   "Backpulver 2 TL",
+   "Sahne 300 ml",
+   "Puderzucker 100 g",
+   "Kokoscreme (Kokosmilch) 200 ml",
+   "Vanille 1 TL"
+  ],
+  "steps": [
+   "Ofen vorbereiten: Den Ofen auf 175 °C (Umluft) vorheizen und zwei runde 22-cm-Formen ausbuttern.",
+   "Butter und Zucker aufschlagen: Die Butter mit dem Zucker in der Küchenmaschine etwa 5 Minuten hell und luftig aufschlagen.",
+   "Eier zugeben: Die Eier einzeln zugeben und nach jedem gut unterschlagen, damit sie vollständig eingearbeitet sind.",
+   "Trockene Zutaten mischen: In einer separaten Schüssel das Mehl mit dem Backpulver sieben und die Kokosraspeln zugeben.",
+   "Wichtig: Die trockenen Zutaten und die Milch abwechselnd unter die Buttermasse heben, beginnend und endend mit den trockenen Zutaten, und behutsam rühren, damit keine Luft verloren geht und der Teig locker bleibt.",
+   "Backen: Den Teig auf die beiden Formen verteilen und 30-35 Minuten backen, bis ein Zahnstocher sauber herauskommt.",
+   "Füllcreme: Die Sahne mit dem Puderzucker und der Kokosmilch steif aufschlagen.",
+   "Zusammensetzen: Sind die Böden vollständig ausgekühlt, sie mit der Kokoscreme füllen und überziehen.",
+   "Dekorieren: Die gesamte Oberfläche und die Seiten großzügig mit zusätzlichen Kokosraspeln bestreuen.",
+   "Kühlen und Servieren: Die Torte vor dem Schneiden mindestens 2 Stunden kalt stellen, damit die Creme fest wird."
+  ],
+  "wine": "Süßer Samos-Wein",
+  "plate": "Auf einer Platte mit etwas zusätzlichen Kokosraspeln und frischem Obst dazu servieren"
+ },
+ "tourta_lemoniou": {
+  "n": "Zitronentorte",
+  "ing": [
+   "Weizenmehl 250 g",
+   "Kristallzucker 200 g",
+   "Eier 4",
+   "Weiche Butter 150 g",
+   "Backpulver 1 Päckchen",
+   "Schale von 2 Zitronen",
+   "Zitronensaft 80 ml",
+   "Frischkäse 250 g",
+   "Butter 100 g (für die Buttercreme)",
+   "Puderzucker 150 g",
+   "Lemon Curd 150 g"
+  ],
+  "steps": [
+   "Grundmasse aufschlagen: Die Butter mit dem Zucker luftig aufschlagen, dann die Eier einzeln zusammen mit der Zitronenschale zugeben.",
+   "Feuchte und trockene Zutaten einarbeiten: Das Mehl mit dem Backpulver abwechselnd mit dem Zitronensaft zugeben und behutsam unterheben.",
+   "Backen: Den Teig in eine runde 22-cm-Form füllen und bei 175 °C 35-40 Minuten backen, bis er goldbraun ist und ein Spieß sauber herauskommt.",
+   "In Schichten teilen: Vollständig auskühlen lassen, dann den Kuchen waagerecht in zwei oder drei Schichten schneiden.",
+   "Frischkäse-Zitronen-Creme: Den Frischkäse mit der Butter und dem Puderzucker hell und glatt aufschlagen.",
+   "Wichtig: Der Lemon Curd muss völlig kalt sein, bevor er auf die Böden gestrichen wird, sonst lässt er die Frischkäsecreme schmelzen und die Torte hält ihre Form nicht.",
+   "Füllen: Frischkäsecreme und Lemon Curd abwechselnd zwischen die Schichten streichen und leicht andrücken, damit sich die Schichten setzen.",
+   "Überziehen und dekorieren: Die ganze Torte mit der restlichen Frischkäsecreme überziehen und mit Zitronenscheiben oder Zitronenschale dekorieren."
+  ],
+  "wine": "Süßer Muskatwein oder Zitronentee",
+  "plate": "Gekühlt in Stücken servieren, mit einer Zitronenscheibe am Tellerrand."
+ },
+ "tourta_moka": {
+  "n": "Mokkatorte",
+  "ing": [
+   "Weizenmehl 200 g",
+   "Kakaopulver 30 g",
+   "Kristallzucker 200 g",
+   "Eier 4",
+   "Weiche Butter 150 g",
+   "Backpulver 1 Päckchen",
+   "Milch 100 ml",
+   "Starker Espresso, kalt, 4 EL",
+   "Butter 200 g (für die Buttercreme)",
+   "Puderzucker 150 g",
+   "Kakaopulver 2 EL (zum Bestäuben)"
+  ],
+  "steps": [
+   "Grundmasse aufschlagen: Die Butter mit dem Zucker luftig aufschlagen, dann die Eier einzeln zugeben und nach jedem gut unterschlagen.",
+   "Trockene Zutaten einarbeiten: Das Mehl mit Kakao und Backpulver mischen und abwechselnd mit der Milch unter die Masse heben.",
+   "Backen: Den Teig in eine runde 22-cm-Form füllen und bei 175 °C 35-40 Minuten backen, bis ein Spieß sauber herauskommt.",
+   "In Schichten teilen: Den Kuchen vollständig auskühlen lassen, dann waagerecht in drei gleiche Schichten schneiden.",
+   "Mit Kaffee tränken: Jede Schicht mit etwas Espresso beträufeln, sodass sie leicht feucht, aber nicht durchweicht ist.",
+   "Mokka-Buttercreme: Die Butter mit dem Puderzucker hell aufschlagen, dann nach und nach den restlichen Espresso zugeben, bis die Creme glatt ist.",
+   "Wichtig: Die Buttercreme muss bei kühler Zimmertemperatur aufgeschlagen werden; ist die Butter zu weich, gerinnt die Creme und hält an den Seiten der Torte nicht.",
+   "Zusammensetzen und Abschluss: Buttercreme zwischen die Schichten streichen, die ganze Torte überziehen und die Oberfläche mit Kakao bestäuben."
+  ],
+  "wine": "Espresso oder süßer Vinsanto",
+  "plate": "In Stücken mit einem leichten Kakaostaub und Kaffeebohnen als Garnitur servieren."
+ },
+ "tourta_pagoto": {
+  "n": "Eistorte",
+  "ing": [
+   "Vanilleeis 1 Liter",
+   "Schokoladeneis 1 Liter",
+   "Butterkekse 250 g",
+   "Butter 100 g",
+   "Sahne 200 ml",
+   "Zartbitterschokolade 150 g",
+   "Geröstete Mandeln 80 g"
+  ],
+  "steps": [
+   "Die zerbröselten Kekse mit der geschmolzenen Butter mischen und in den Boden einer Springform drücken.",
+   "Den Boden 20 Minuten einfrieren, damit er fest ist, bevor das Eis daraufkommt.",
+   "Wichtig: Das Eis 15 Minuten im Kühlschrank weich werden lassen, nicht auf der Arbeitsfläche und niemals in der Mikrowelle. Halb geschmolzenes Eis friert mit Eiskristallen wieder ein und verliert seine Textur.",
+   "Das Vanilleeis in einer gleichmäßigen Schicht auf dem Boden verteilen und 1 Stunde zurück ins Gefrierfach stellen.",
+   "Das Schokoladeneis auf der gefrorenen ersten Schicht verteilen und weitere 2 Stunden einfrieren.",
+   "Die Sahne erhitzen, über die gehackte Schokolade gießen und rühren, bis eine glatte, glänzende Ganache entsteht.",
+   "Wichtig: Die Ganache vor dem Aufgießen auf Zimmertemperatur abkühlen lassen. Warme Ganache schmilzt einen Kanal quer durch die Schichten.",
+   "Über die Torte gießen, die gerösteten Mandeln darüber streuen und abschließend 2 Stunden einfrieren.",
+   "15 Minuten vor dem Servieren in den Kühlschrank stellen und mit einem heißen Messer schneiden."
+  ],
+  "wine": "Schaumwein oder Champagner.",
+  "plate": "In Stücken servieren, sodass die Schichten sichtbar sind, mit der Ganache, die an den Rändern herabläuft."
+ },
+ "trahanas": {
+  "n": "Trahanas-Suppe",
+  "ing": [
+   "Saurer Trahanas 200 g",
+   "Gemüsebrühe oder Wasser 1,5 Liter",
+   "Geriebene Tomate 200 g",
+   "Olivenöl 2 EL",
+   "Feta zum Servieren",
+   "Salz & Pfeffer"
+  ],
+  "steps": [
+   "Einweichen: Den Trahanas 15-30 Minuten in etwas Wasser einweichen, damit er quillt — so gart er gleichmäßiger.",
+   "Anbraten: Kurz in Olivenöl anbraten.",
+   "Kochen: Brühe und Tomate zugeben, aufkochen und umrühren. Bei niedriger Hitze 20 Minuten garen, dabei regelmäßig rühren, damit nichts ansetzt.",
+   "Andicken: Der Trahanas gibt Stärke ab und die Suppe dickt von selbst an. Wichtig: Wird sie zu dick, etwas heißes Wasser zugeben.",
+   "Servieren: In einer tiefen Schale mit Fetastücken obenauf — sie schmelzen von der Hitze leicht an."
+  ],
+  "wine": "-",
+  "plate": "Mit einem Stück Feta und einem Schuss Olivenöl."
+ },
+ "tria_sokolata": {
+  "n": "Drei-Schokoladen-Torte",
+  "ing": [
+   "Butterkekse (Petit Beurre) 200 g",
+   "Geschmolzene Butter 80 g",
+   "Zartbitterschokolade 200 g",
+   "Vollmilchschokolade 200 g",
+   "Weiße Schokolade 200 g",
+   "Sahne 35 % 600 ml",
+   "Gelatineblätter 6",
+   "Puderzucker 50 g",
+   "Vanille 1 Päckchen"
+  ],
+  "steps": [
+   "Keksboden: Die Kekse zerbröseln und mit der geschmolzenen Butter mischen. Auf dem Boden eines Tortenrings verteilen und kalt stellen.",
+   "Gelatine einweichen: Die Gelatineblätter 5-10 Minuten in kaltem Wasser einweichen, bis sie weich sind.",
+   "Zartbittermousse: Die Zartbitterschokolade schmelzen, 1/3 der Sahne halbsteif schlagen und mit 2 ausgedrückten, aufgelösten Gelatineblättern unterheben.",
+   "Erste Schicht: Die Zartbittermousse auf dem Boden verteilen und 30 Minuten einfrieren, bis sie fest ist.",
+   "Vollmilchmousse: Denselben Vorgang mit der Vollmilchschokolade wiederholen, als zweite Schicht verteilen und wieder einfrieren.",
+   "Wichtig: Jede Moussesicht muss im Gefrierfach gut fest sein, bevor die nächste daraufkommt, sonst vermischen sich die Schichten und die drei Schokoladenebenen sind nicht klar erkennbar.",
+   "Weiße Mousse: Die dritte Mousse auf gleiche Weise mit weißer Schokolade zubereiten und als letzte Schicht verteilen, die Oberfläche gut glätten.",
+   "Abschließen und lösen: Die Torte mindestens 4 Stunden oder über Nacht einfrieren, dann mit einem heißen Messer am Rand entlangfahren, um den Ring zu lösen."
+  ],
+  "wine": "Süßer Mavrodafni aus Patras",
+  "plate": "In Stücken mit etwas Schokoladensauce und Spänen der drei Schokoladen obenauf serviert."
+ },
+ "troufakia": {
+  "n": "Schokoladentrüffel",
+  "ing": [
+   "Zartbitterschokolade 300 g",
+   "Sahne 200 ml",
+   "Butter 40 g",
+   "Kakaopulver zum Wälzen",
+   "Weinbrand 2 EL (optional)",
+   "Gemahlene Kekse 100 g (optional)"
+  ],
+  "steps": [
+   "Die Schokolade fein und gleichmäßig hacken — große Stücke schmelzen nicht vollständig und lassen die Ganache körnig werden.",
+   "Die Sahne bis knapp unter den Siedepunkt erhitzen, bis sich am Rand kleine Blasen bilden, und niemals kochen lassen.",
+   "Die heiße Sahne über die Schokolade gießen und 2 Minuten unberührt stehen lassen, damit sich die Wärme gleichmäßig verteilt.",
+   "Von der Mitte nach außen in kleinen Kreisen rühren, bis die Ganache glänzend und glatt ist.",
+   "Wichtig: Gerinnt die Masse und sieht ölig aus, einen Esslöffel kalte Sahne zugeben und kräftig schlagen — das bringt sie wieder zusammen.",
+   "Die Butter und den Weinbrand einrühren und 3 Stunden kalt stellen, bis die Masse formbar fest ist.",
+   "Mit kühlen Händen zu Kugeln rollen und zügig arbeiten, damit die Ganache nicht an den Handflächen schmilzt.",
+   "Jede Kugel in Kakao oder gemahlenen Keksen wälzen und vor dem Servieren eine weitere Stunde kalt stellen."
+  ],
+  "wine": "Weinbrand oder ein süßer Rotwein.",
+  "plate": "In Papierförmchen auf einer Platte servieren, mit Kakao bestäubt."
+ },
+ "tsigarelli": {
+  "n": "Tsigarelli (korfiotisches Wildgemüse)",
+  "ing": [
+   "Gemischte Wildkräuter 1,5 kg",
+   "Wilder Fenchel 1 Bund",
+   "Frühlingszwiebeln 5",
+   "Zwiebel 1",
+   "Reis 3 EL",
+   "Olivenöl 3/4 Tasse",
+   "Chiliflocken 1 TL",
+   "Edelsüßes Paprikapulver 1 TL",
+   "Saft von 1 Zitrone",
+   "Salz, Pfeffer"
+  ],
+  "steps": [
+   "Kräuter putzen: Die Wildkräuter mehrfach in frischem Wasser waschen, bis am Schüsselboden kein Sand mehr zurückbleibt. Wildkräuter halten weit mehr Erde, als man ihnen ansieht.",
+   "Schneiden: Grob schneiden — Wildkräuter fallen stark zusammen, und fein geschnittene werden zu Brei.",
+   "Zwiebeln anbraten: Zwiebel und Frühlingszwiebeln im Öl bei mittlerer Hitze 6 Minuten weich und süß dünsten.",
+   "Gewürze zugeben: Wichtig: Paprika und Chili vom Herd genommen oder bei ganz niedriger Hitze zugeben. Paprikapulver verbrennt in Sekunden und wird bitter.",
+   "Kräuter zugeben: Die Kräuter portionsweise zugeben und jede Portion zusammenfallen lassen, bevor die nächste folgt, sonst läuft der Topf über.",
+   "Fenchel zugeben: Den gehackten wilden Fenchel unterrühren — er gibt dem Tsigarelli seine korfiotische Identität.",
+   "Reis zugeben: Den Reis und etwa eine Tasse heißes Wasser zugeben, das das Gericht beim Garen bindet.",
+   "Schmoren: Zugedeckt bei niedriger Hitze 25-30 Minuten garen, bis die Kräuter zart sind und die Flüssigkeit größtenteils aufgenommen ist.",
+   "Abschluss: Den Zitronensaft vom Herd genommen zugeben, abschmecken und 10 Minuten stehen lassen. Man isst es warm oder bei Zimmertemperatur."
+  ],
+  "wine": "Ein trockener Weißwein von Korfu — Kakotrygis — oder ein frischer Robola.",
+  "plate": "In einer tiefen Schüssel mit reichlich Öl obenauf servieren, Feta daneben und Brot."
+ },
+ "tsipoura": {
+  "n": "Dorade aus dem Ofen",
+  "ing": [
+   "Dorade 500 g",
+   "Zitrone 1",
+   "Knoblauch 3 Zehen",
+   "Olivenöl 3 EL",
+   "Thymian & Oregano",
+   "Salz & Pfeffer",
+   "Kartoffeln 300 g"
+  ],
+  "steps": [
+   "Putzen und einschneiden: Die 500 g Dorade putzen und gut trocknen. Auf jeder Seite 2-3 schräge Schnitte setzen. Die Schnitte lassen sie gleichmäßig garen und den Geschmack ins Fleisch ziehen.",
+   "Salzen und Würzen: Mit Salz und Pfeffer würzen und Oregano innen und außen aufstreuen. WICHTIG: Die Haut vor dem Salzen mit Küchenpapier gründlich trocknen, denn Feuchtigkeit verhindert eine knusprige Haut.",
+   "Bauchhöhle füllen: Zitronenscheiben und Knoblauch zusammen mit etwas Thymian in die Bauchhöhle geben. Das würzt den Fisch beim Braten von innen.",
+   "Kartoffeln vorbereiten: Die 300 g Kartoffeln in dünne Scheiben schneiden und auf dem Boden der Form verteilen. Den Fisch darauf legen, damit die Kartoffeln in seinem Saft garen.",
+   "Beträufeln: 3 EL Olivenöl und den Saft der restlichen Zitrone über Fisch und Kartoffeln gießen.",
+   "Backen: Im vorgeheizten Ofen bei 200 °C 25-30 Minuten backen. WICHTIG: Nicht übergaren — er ist fertig, sobald sich das Fleisch leicht von der Gräte löst, sonst trocknet er aus.",
+   "Servieren: Sofort mit frischem Zitronensaft und etwas Olivenöl obenauf servieren."
+  ],
+  "wine": "Trockener Weißwein.",
+  "plate": "Fisch diagonal angerichtet, Kartoffeln, Thymian."
+ },
+ "tsoureki": {
+  "n": "Tsoureki (griechischer Osterzopf)",
+  "ing": [
+   "Weizenmehl (Type 550) 1 kg",
+   "Milch 250 ml",
+   "Zucker 250 g",
+   "Butter 150 g",
+   "Eier 4",
+   "Frische Hefe 40 g oder Trockenhefe 14 g",
+   "Mahlepi 1 TL",
+   "Mastix 3 Tränen",
+   "Schale von 1 Orange",
+   "Salz 1 TL",
+   "Mandeln für die Oberfläche"
+  ],
+  "steps": [
+   "Hefe aktivieren: Die Hefe in lauwarmer Milch mit einem Löffel Zucker und etwas Mehl auflösen und 15 Minuten stehen lassen, bis es schäumt.",
+   "Wichtig: Schäumt es nicht, ist die Hefe tot. Neu anfangen — später kann nichts mehr das retten.",
+   "Mastix mahlen: Die Mastixtränen im Mörser mit einer Prise Zucker zerreiben. Wichtig: Nicht mehr als 3 Tränen verwenden — zu viel Mastix schmeckt bitter und medizinisch.",
+   "Teig ansetzen: Das Mehl mit Zucker, Mahlepi, gemahlenem Mastix, Orangenschale und Salz mischen, dann die Hefemischung und die verquirlten Eier zugeben.",
+   "Kneten: 15 Minuten kneten und dabei die weiche Butter nach und nach zugeben, bis der Teig glatt und elastisch ist.",
+   "Wichtig: Der Teig muss den Fenstertest bestehen — ein Stück lässt sich so dünn ziehen, dass Licht hindurchscheint, ohne zu reißen. Das gibt dem Tsoureki seine faserige Struktur.",
+   "Erstes Gehen: Zugedeckt an einem warmen, zugfreien Ort 2-3 Stunden gehen lassen, bis der Teig sein Volumen verdreifacht hat.",
+   "Flechten: In drei Stränge teilen und flechten, die Enden darunter einschlagen.",
+   "Zweites Gehen: Auf dem Blech weitere 1-1,5 Stunden gehen lassen. Wichtig: Wird dieses zweite Gehen übersprungen, wird das Tsoureki kompakt und lässt sich nicht in Fasern zupfen.",
+   "Backen: Mit Ei bestreichen, Mandeln darüber streuen und bei 170 °C 40 Minuten backen, bei zu schneller Bräunung mit Folie abdecken."
+  ],
+  "wine": "Milch oder Kaffee — traditionell nach der Auferstehungsmesse.",
+  "plate": "In Scheiben oder mit der Hand gezupft servieren, mit einem roten Ei dazu."
+ }
+}

@@ -1,7 +1,14 @@
 .claude/
-dist/
+category_mockups*.html
 category_mockups.html
 category_mockups2.html
 category_mockups3.html
 category_mockups4.html
-category_mockups*.html
+dist/
+node_modules/
+
+# Τα Reels παράγονται με το ads/reel.py — δεν χρειάζεται να βαραίνουν το repo
+ads/reels/*.mp4
+ads/reels/numbered/
+
+__pycache__/

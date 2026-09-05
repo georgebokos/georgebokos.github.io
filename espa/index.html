@@ -4,7 +4,7 @@
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
 <title>ΕΣΠΑ Βοηθός — Ανάλυση Πρόσκλησης & Αίτηση Στήριξης</title>
-<meta name="description" content="Αναλύει την πρόσκληση εκδήλωσης ενδιαφέροντος ενός επιχορηγούμενου προγράμματος ΕΣΠΑ και συντάσσει αυτόματα τον φάκελο της αίτησης στήριξης με ελάχιστα στοιχεία.">
+<meta name="description" content="Ελέγχει σε ένα λεπτό αν η επιχείρηση είναι επιλέξιμη σε ένα πρόγραμμα ΕΣΠΑ — με βάση την περιοχή της και την πρόσκληση — και μετά συντάσσει αυτόματα τον φάκελο της αίτησης στήριξης.">
 <meta name="theme-color" content="#0b3d68">
 <link rel="manifest" href="manifest.json">
 <link rel="icon" href="icon.svg" type="image/svg+xml">
@@ -81,6 +81,8 @@ nav.steps{
 }
 .step:hover{background:var(--line2);color:var(--ink)}
 .step.on{background:var(--acc-soft);color:var(--acc);border-color:color-mix(in srgb,var(--acc) 30%,transparent)}
+.step.lock{opacity:.45}
+.step.lock::after{content:"🔒";font-size:10px;margin-left:1px}
 .step .num{
   width:20px;height:20px;border-radius:50%;display:grid;place-items:center;
   font-size:11px;background:var(--line);color:var(--ink2);flex:0 0 auto
@@ -236,6 +238,31 @@ details.acc>summary::before{content:"▸";color:var(--ink2);transition:.15s}
 details.acc[open]>summary::before{transform:rotate(90deg)}
 details.acc .body{padding:0 13px 13px;font-size:13px}
 
+/* ── Πόρισμα γρήγορου ελέγχου ───────────────────────────── */
+.verdict{
+  border-radius:14px;padding:18px;border:1px solid var(--line);background:var(--bg);
+  display:flex;gap:15px;align-items:flex-start
+}
+.verdict .ic{font-size:34px;line-height:1;flex:0 0 auto}
+.verdict .h{font-size:19px;font-weight:800;margin:0 0 4px}
+.verdict .d{font-size:13.5px;color:var(--ink2)}
+.verdict.ok  {background:var(--ok-bg);  border-color:color-mix(in srgb,var(--ok) 35%,transparent)}
+.verdict.ok .h{color:var(--ok)}
+.verdict.warn{background:var(--warn-bg);border-color:color-mix(in srgb,var(--warn) 35%,transparent)}
+.verdict.warn .h{color:var(--warn)}
+.verdict.bad {background:var(--bad-bg); border-color:color-mix(in srgb,var(--bad) 35%,transparent)}
+.verdict.bad .h{color:var(--bad)}
+.vgrid{display:grid;gap:8px;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));margin-top:14px}
+.vrow{
+  display:flex;gap:9px;align-items:flex-start;padding:9px 11px;border-radius:10px;
+  background:var(--card);border:1px solid var(--line);font-size:13px
+}
+.vrow .i{flex:0 0 auto}
+.vrow b{display:block;font-size:12.5px;margin-bottom:2px}
+.vrow span{color:var(--ink2);font-size:12.5px}
+.vrow.bad{border-color:color-mix(in srgb,var(--bad) 40%,transparent)}
+.vrow.warn{border-color:color-mix(in srgb,var(--warn) 40%,transparent)}
+
 .empty{text-align:center;padding:34px 16px;color:var(--ink2)}
 .empty .big{font-size:40px;opacity:.5}
 
@@ -296,14 +323,14 @@ footer.foot{
     <div class="logo">🇪🇺</div>
     <div>
       <h1>ΕΣΠΑ Βοηθός</h1>
-      <div class="sub">Ανάλυση πρόσκλησης → έτοιμος φάκελος αίτησης στήριξης</div>
+      <div class="sub">Έλεγχος επιλεξιμότητας → έτοιμος φάκελος αίτησης στήριξης</div>
     </div>
   </div>
 </header>
 
 <nav class="steps">
   <div class="steps-in" id="steps">
-    <button class="step on" data-p="p1"><span class="num"><span>1</span></span>📄 Πρόσκληση</button>
+    <button class="step on" data-p="p1"><span class="num"><span>1</span></span>🎯 Γρήγορος έλεγχος</button>
     <button class="step"    data-p="p2"><span class="num"><span>2</span></span>🔎 Ανάλυση</button>
     <button class="step"    data-p="p3"><span class="num"><span>3</span></span>🏢 Φορέας</button>
     <button class="step"    data-p="p4"><span class="num"><span>4</span></span>✅ Επιλεξιμότητα</button>
@@ -315,53 +342,98 @@ footer.foot{
 
 <main>
 
-<!-- ══════════════ 1. ΠΡΟΣΚΛΗΣΗ ══════════════ -->
+<!-- ══════════════ 1. ΓΡΗΓΟΡΟΣ ΕΛΕΓΧΟΣ ══════════════ -->
 <section class="pane on" id="p1">
   <div class="card">
-    <h2>📄 Δώσε την πρόσκληση</h2>
-    <p class="hint">Ανέβασε το αρχείο της πρόσκλησης εκδήλωσης ενδιαφέροντος (PDF, DOCX ή κείμενο) ή επικόλλησε το κείμενό της. Η ανάλυση γίνεται <b>εξ ολοκλήρου στη συσκευή σου</b> — κανένα αρχείο δεν ανεβαίνει πουθενά.</p>
+    <h2>🎯 Γρήγορος έλεγχος επιλεξιμότητας</h2>
+    <p class="hint">Πριν ασχοληθείς με τον φάκελο: δώσε την πρόσκληση, πες <b>πού βρίσκεται</b> η επιχείρηση και πέντε βασικά στοιχεία. Θα δεις αμέσως αν το επενδυτικό σχέδιο ενισχύεται — και με τι ποσοστό.</p>
 
+    <h3>Βήμα Α — η πρόσκληση</h3>
     <div class="drop" id="drop">
       <div class="big">📥</div>
       <b>Σύρε εδώ το αρχείο ή πάτησε για επιλογή</b>
-      <span>PDF · DOCX · TXT · HTML — έως ~40 MB</span>
+      <span>PDF · DOCX · TXT · HTML — η ανάγνωση γίνεται στη συσκευή σου</span>
       <input type="file" id="file" accept=".pdf,.docx,.doc,.txt,.text,.html,.htm,.rtf,.md" hidden>
     </div>
-
     <div class="btnrow">
       <button class="btn gh sm" id="btnPaste">✏️ Επικόλληση κειμένου</button>
       <button class="btn gh sm" id="btnDemo">🧪 Δοκιμαστική πρόσκληση</button>
       <button class="btn gh sm" id="btnLoadPrj">📂 Άνοιγμα έργου (.json)</button>
       <input type="file" id="filePrj" accept=".json" hidden>
     </div>
-
     <div id="pasteWrap" style="display:none;margin-top:14px">
       <div class="field">
         <label for="rawText">Κείμενο πρόσκλησης</label>
-        <textarea id="rawText" style="min-height:220px" placeholder="Επικόλλησε εδώ ολόκληρο το κείμενο της πρόσκλησης…"></textarea>
+        <textarea id="rawText" style="min-height:200px" placeholder="Επικόλλησε εδώ ολόκληρο το κείμενο της πρόσκλησης…"></textarea>
       </div>
       <div class="btnrow"><button class="btn pri" id="btnAnalyzeText">🔎 Ανάλυση</button></div>
     </div>
-
     <div id="fileInfo" style="display:none;margin-top:14px"></div>
   </div>
 
   <div class="card">
-    <h2>ℹ️ Τι κάνει το εργαλείο</h2>
-    <div class="grid g2">
-      <div>
-        <p><b>1.</b> Διαβάζει την πρόσκληση και εντοπίζει: προθεσμίες, προϋπολογισμό, ένταση ενίσχυσης, καθεστώς ενίσχυσης, επιλέξιμους ΚΑΔ, κατηγορίες δαπανών με τα όριά τους, κριτήρια βαθμολόγησης και δικαιολογητικά.</p>
-        <p><b>2.</b> Ζητάει <b>λίγα στοιχεία</b> για την επιχείρηση (ΑΦΜ, ΚΑΔ, ΕΜΕ, τζίρος, τι θέλεις να κάνεις).</p>
-      </div>
-      <div>
-        <p><b>3.</b> Ελέγχει την επιλεξιμότητα, χτίζει τον προϋπολογισμό μέσα στα όρια της πρόσκλησης και εκτιμά τη βαθμολογία.</p>
-        <p><b>4.</b> Συντάσσει την <b>αίτηση στήριξης</b>, την υπεύθυνη δήλωση και τη λίστα δικαιολογητικών — έτοιμα για εκτύπωση, Word ή αντιγραφή στο ΟΠΣΚΕ.</p>
-      </div>
+    <h2>📍 Πού βρίσκεται η επιχείρηση</h2>
+    <p class="hint">Η περιοχή κρίνει δύο πράγματα: αν η δράση «πιάνει» εκεί, και με τι ποσοστό ενισχύεται το σχέδιο.</p>
+    <div class="grid g3">
+      <div class="field"><label for="q_cRegion">Περιφέρεια υλοποίησης <span class="req">*</span></label>
+        <select id="q_cRegion" data-k="cRegion"><option value="">— επιλογή —</option></select></div>
+      <div class="field"><label for="q_cUnitReg">Περιφερειακή ενότητα</label>
+        <select id="q_cUnitReg" data-k="cUnitReg"><option value="">— επιλογή —</option></select>
+        <div class="fnote" id="q_unitNote"></div></div>
+      <div class="field"><label for="q_cCity">Δήμος / πόλη</label>
+        <input type="text" id="q_cCity" data-k="cCity" placeholder="π.χ. Λάρισα"></div>
     </div>
-    <div class="note warn" style="margin-top:12px">
-      <b>Προσοχή — βοηθητικό εργαλείο, όχι υποβολή.</b>
-      Η αυτόματη ανάγνωση είναι <i>πρόταση</i>: κάθε πεδίο που εντοπίζεται μπορεί και <b>πρέπει</b> να ελεγχθεί από εσένα πριν χρησιμοποιηθεί. Η επίσημη υποβολή γίνεται αποκλειστικά στο πληροφοριακό σύστημα της δράσης (ΟΠΣΚΕ/ΠΣΚΕ) και υπεύθυνος για την ακρίβεια των στοιχείων παραμένει ο δικαιούχος.
+    <div id="q_areaBox" style="margin-top:12px"></div>
+  </div>
+
+  <div class="card">
+    <h2>🏢 Τα βασικά της επιχείρησης</h2>
+    <div class="grid g3">
+      <div class="field"><label for="q_cKad">Κύριος ΚΑΔ <span class="req">*</span></label>
+        <input type="text" id="q_cKad" data-k="cKad" placeholder="π.χ. 56.10.11">
+        <div class="fnote" id="q_kadNote"></div></div>
+      <div class="field"><label for="q_cKad2">Δευτερεύοντες ΚΑΔ (με κόμμα)</label>
+        <input type="text" id="q_cKad2" data-k="cKad2" placeholder="47.11, 82.99"></div>
+      <div class="field"><label for="q_cStart">Ημερομηνία έναρξης εργασιών</label>
+        <input type="date" id="q_cStart" data-k="cStart">
+        <div class="fnote" id="q_ageNote"></div></div>
+      <div class="field"><label for="q_cEme">ΕΜΕ προηγούμενου έτους</label>
+        <input type="number" id="q_cEme" data-k="cEme" step="0.01" min="0" placeholder="π.χ. 3,5"></div>
+      <div class="field"><label for="q_cTurn1">Κύκλος εργασιών ν-1 (€)</label>
+        <input type="number" id="q_cTurn1" data-k="cTurn1" step="0.01" min="0">
+        <div class="fnote" id="q_sizeNote"></div></div>
+      <div class="field"><label for="q_qBudget">Εκτιμώμενο ύψος επένδυσης (€)</label>
+        <input type="number" id="q_qBudget" data-k="qBudget" step="100" min="0" placeholder="π.χ. 80.000"></div>
     </div>
+  </div>
+
+  <div class="card" id="qResult">
+    <h2>📋 Πόρισμα</h2>
+    <div id="qVerdict"></div>
+    <div id="qChecks" style="margin-top:14px"></div>
+    <div class="btnrow" id="qActions"></div>
+  </div>
+
+  <div class="card">
+    <details class="acc" style="border:none;background:transparent;margin:0">
+      <summary style="padding:0">ℹ️ Τι κάνει αυτό το εργαλείο και τι δεν κάνει</summary>
+      <div class="body" style="padding:12px 0 0">
+        <div class="grid g2">
+          <div>
+            <p><b>1.</b> Διαβάζει την πρόσκληση και εντοπίζει: προθεσμίες, προϋπολογισμό, ένταση ενίσχυσης, καθεστώς, περιοχές εφαρμογής, επιλέξιμους ΚΑΔ, κατηγορίες δαπανών με τα όριά τους, κριτήρια βαθμολόγησης και δικαιολογητικά.</p>
+            <p><b>2.</b> Ζητάει <b>λίγα στοιχεία</b> για την επιχείρηση και κρίνει την επιλεξιμότητα.</p>
+          </div>
+          <div>
+            <p><b>3.</b> Χτίζει τον προϋπολογισμό μέσα στα όρια της πρόσκλησης και εκτιμά τη βαθμολογία.</p>
+            <p><b>4.</b> Συντάσσει την <b>αίτηση στήριξης</b>, την υπεύθυνη δήλωση και τη λίστα δικαιολογητικών — για εκτύπωση, Word ή αντιγραφή στο ΟΠΣΚΕ.</p>
+          </div>
+        </div>
+        <div class="note warn" style="margin:12px 0 0">
+          <b>Βοηθητικό εργαλείο, όχι υποβολή.</b>
+          Η αυτόματη ανάγνωση είναι <i>πρόταση</i>: κάθε πεδίο που εντοπίζεται μπορεί και <b>πρέπει</b> να ελεγχθεί από εσένα. Η επίσημη υποβολή γίνεται αποκλειστικά στο πληροφοριακό σύστημα της δράσης (ΟΠΣΚΕ/ΠΣΚΕ) και υπεύθυνος για την ακρίβεια των στοιχείων παραμένει ο δικαιούχος.
+        </div>
+      </div>
+    </details>
   </div>
 </section>
 
@@ -379,6 +451,11 @@ footer.foot{
     </div>
     <div class="card"><h2>🗂️ Ταυτότητα δράσης</h2><div class="grid g2" id="fIdent"></div></div>
     <div class="card"><h2>💰 Χρηματοδοτικά στοιχεία</h2><div class="grid g3" id="fFin"></div></div>
+    <div class="card">
+      <h2>🗺️ Περιοχές εφαρμογής</h2>
+      <p class="hint">Πού «πιάνει» η δράση. Πάτησε μια περιφέρεια για να την προσθέσεις ή να την αφαιρέσεις.</p>
+      <div id="fAreas"></div>
+    </div>
     <div class="card">
       <h2>🏷️ Επιλέξιμοι ΚΑΔ</h2>
       <p class="hint" id="kadHint"></p>
@@ -441,6 +518,8 @@ footer.foot{
       <div class="field"><label for="cRegion">Περιφέρεια υλοποίησης <span class="req">*</span></label>
         <select id="cRegion" data-k="cRegion"><option value="">— επιλογή —</option></select>
         <div class="fnote" id="regNote"></div></div>
+      <div class="field"><label for="cUnitReg">Περιφερειακή ενότητα</label>
+        <select id="cUnitReg" data-k="cUnitReg"><option value="">— επιλογή —</option></select></div>
       <div class="field"><label for="cUnit">Τόπος υλοποίησης (αν διαφέρει)</label><input type="text" id="cUnit" data-k="cUnit"></div>
       <div class="field"><label for="cPhone">Τηλέφωνο</label><input type="tel" id="cPhone" data-k="cPhone"></div>
       <div class="field"><label for="cMail">Email</label><input type="email" id="cMail" data-k="cMail"></div>
@@ -647,10 +726,54 @@ function grDate(iso){
 const REGIONS = [
   ['Ανατολική Μακεδονία & Θράκη',50],['Κεντρική Μακεδονία',50],['Δυτική Μακεδονία',50],
   ['Ήπειρος',50],['Θεσσαλία',50],['Ιόνια Νησιά',40],['Δυτική Ελλάδα',50],
-  ['Στερεά Ελλάδα',40],['Πελοπόννησος',40],['Αττική — Δυτικός Τομέας Αθηνών',15],
-  ['Αττική — Ανατολική/Δυτική Αττική, Πειραιάς & Νήσοι',15],
-  ['Αττική — λοιποί τομείς Αθηνών',0],['Βόρειο Αιγαίο',50],['Νότιο Αιγαίο',40],['Κρήτη',40]
+  ['Στερεά Ελλάδα',40],['Πελοπόννησος',40],['Αττική',0],
+  ['Βόρειο Αιγαίο',50],['Νότιο Αιγαίο',40],['Κρήτη',40]
 ];
+
+/* Περιφερειακές ενότητες (Καλλικράτης). Καθορίζουν πού βρίσκεται η επιχείρηση
+   — και στην Αττική καθορίζουν και το αν η περιοχή ενισχύεται καθόλου. */
+const REGION_UNITS = {
+  'Ανατολική Μακεδονία & Θράκη':['Δράμας','Έβρου','Καβάλας','Θάσου','Ξάνθης','Ροδόπης'],
+  'Κεντρική Μακεδονία':['Ημαθίας','Θεσσαλονίκης','Κιλκίς','Πέλλας','Πιερίας','Σερρών','Χαλκιδικής'],
+  'Δυτική Μακεδονία':['Γρεβενών','Καστοριάς','Κοζάνης','Φλώρινας'],
+  'Ήπειρος':['Άρτας','Θεσπρωτίας','Ιωαννίνων','Πρέβεζας'],
+  'Θεσσαλία':['Καρδίτσας','Λάρισας','Μαγνησίας','Σποράδων','Τρικάλων'],
+  'Ιόνια Νησιά':['Ζακύνθου','Ιθάκης','Κέρκυρας','Κεφαλληνίας','Λευκάδας'],
+  'Δυτική Ελλάδα':['Αιτωλοακαρνανίας','Αχαΐας','Ηλείας'],
+  'Στερεά Ελλάδα':['Βοιωτίας','Ευβοίας','Ευρυτανίας','Φθιώτιδας','Φωκίδας'],
+  'Πελοπόννησος':['Αργολίδας','Αρκαδίας','Κορινθίας','Λακωνίας','Μεσσηνίας'],
+  'Αττική':['Κεντρικός Τομέας Αθηνών','Βόρειος Τομέας Αθηνών','Δυτικός Τομέας Αθηνών',
+            'Νότιος Τομέας Αθηνών','Ανατολική Αττική','Δυτική Αττική','Πειραιώς','Νήσων'],
+  'Βόρειο Αιγαίο':['Ικαρίας','Λέσβου','Λήμνου','Σάμου','Χίου'],
+  'Νότιο Αιγαίο':['Άνδρου','Θήρας','Καλύμνου','Καρπάθου','Κέας-Κύθνου','Κω','Μήλου',
+                  'Μυκόνου','Νάξου','Πάρου','Ρόδου','Σύρου','Τήνου'],
+  'Κρήτη':['Ηρακλείου','Λασιθίου','Ρεθύμνης','Χανίων']
+};
+
+/* Η Αττική δεν είναι ενιαία: μόνο μέρος της είναι ενισχυόμενη περιοχή.
+   Ό,τι δεν αναφέρεται εδώ έχει βασικό ποσοστό 0 (μη ενισχυόμενη). */
+const ATTIKI_RATES = {
+  'Δυτικός Τομέας Αθηνών':15,'Ανατολική Αττική':15,'Δυτική Αττική':15,
+  'Πειραιώς':15,'Νήσων':15
+};
+
+/* Λεκτικά με τα οποία αναφέρεται κάθε περιφέρεια μέσα σε μια πρόσκληση.
+   Χρησιμεύουν για να βρεθεί ΠΟΥ εφαρμόζεται η δράση και με ΤΙ ποσοστό. */
+const REGION_STEMS = {
+  'Ανατολική Μακεδονία & Θράκη':['ΜΑΚΕΔΟΝΙΑΣ ΚΑΙ ΘΡΑΚ','ΜΑΚΕΔΟΝΙΑΣ & ΘΡΑΚ','ΜΑΚΕΔΟΝΙΑ ΚΑΙ ΘΡΑΚ','ΜΑΚΕΔΟΝΙΑ & ΘΡΑΚ','ΑΝΑΤΟΛΙΚΗΣ ΜΑΚΕΔΟΝΙΑΣ'],
+  'Κεντρική Μακεδονία':['ΚΕΝΤΡΙΚΗΣ ΜΑΚΕΔΟΝΙΑ','ΚΕΝΤΡΙΚΗ ΜΑΚΕΔΟΝΙΑ'],
+  'Δυτική Μακεδονία':['ΔΥΤΙΚΗΣ ΜΑΚΕΔΟΝΙΑ','ΔΥΤΙΚΗ ΜΑΚΕΔΟΝΙΑ'],
+  'Ήπειρος':['ΗΠΕΙΡΟΥ','ΗΠΕΙΡΟΣ'],
+  'Θεσσαλία':['ΘΕΣΣΑΛΙΑΣ','ΘΕΣΣΑΛΙΑ'],
+  'Ιόνια Νησιά':['ΙΟΝΙΩΝ ΝΗΣΩΝ','ΙΟΝΙΑ ΝΗΣΙΑ','ΙΟΝΙΩΝ ΝΗΣΙΩΝ'],
+  'Δυτική Ελλάδα':['ΔΥΤΙΚΗΣ ΕΛΛΑΔΑ','ΔΥΤΙΚΗ ΕΛΛΑΔΑ'],
+  'Στερεά Ελλάδα':['ΣΤΕΡΕΑΣ ΕΛΛΑΔΑ','ΣΤΕΡΕΑ ΕΛΛΑΔΑ'],
+  'Πελοπόννησος':['ΠΕΛΟΠΟΝΝΗΣΟΥ','ΠΕΛΟΠΟΝΝΗΣΟΣ'],
+  'Αττική':['ΑΤΤΙΚΗΣ','ΑΤΤΙΚΗ'],
+  'Βόρειο Αιγαίο':['ΒΟΡΕΙΟΥ ΑΙΓΑΙΟ','ΒΟΡΕΙΟ ΑΙΓΑΙΟ'],
+  'Νότιο Αιγαίο':['ΝΟΤΙΟΥ ΑΙΓΑΙΟ','ΝΟΤΙΟ ΑΙΓΑΙΟ'],
+  'Κρήτη':['ΚΡΗΤΗΣ','ΚΡΗΤΗ']
+};
 
 /* Ονομασίες διψήφιων κλάδων ΚΑΔ (NACE Rev.2) — για να βλέπει ο χρήστης τι
    σημαίνει κάθε κωδικός που εντοπίστηκε στην πρόσκληση. */
@@ -736,11 +859,21 @@ const S = {
     title:'',code:'',authority:'',program:'',fund:'',
     dateFrom:'',dateTo:'',totalBudget:'',minBudget:'',maxBudget:'',
     intensity:'',regime:'',duration:'',system:'',
-    kad:[], costs:[], crits:[], docs:[], secs:[], reqs:{}
+    kad:[], costs:[], crits:[], docs:[], secs:[], reqs:{}, areas:[], regionRates:{}
   },
-  co:{}, budget:{}, scores:{}, goals:[], docsDone:{}, docsExtra:[],
+  co:{}, budget:{}, scores:{}, goals:[], docsDone:{}, docsExtra:[], unlocked:false,
   parts:Object.fromEntries(DOC_PARTS.map(p=>[p[0],true]))
 };
+
+/* Παλαιότερα η Αττική ήταν σπασμένη σε τρεις ψευδο-περιφέρειες. Τώρα είναι
+   μία περιφέρεια με περιφερειακές ενότητες — μεταφέρουμε ό,τι είχε αποθηκευτεί. */
+function migrateRegion(){
+  const r = S.co && S.co.cRegion;
+  if(typeof r==='string' && r.indexOf('Αττική —')===0){
+    S.co.cRegion='Αττική';
+    if(!S.co.cUnitReg) S.co.cUnitReg = r.indexOf('Δυτικός Τομέας')>=0 ? 'Δυτικός Τομέας Αθηνών' : '';
+  }
+}
 
 const LS='espa_project_v1';
 function save(){ try{ localStorage.setItem(LS, JSON.stringify(S)); }catch(e){} }
@@ -749,7 +882,8 @@ function load(){
     const j=JSON.parse(localStorage.getItem(LS)||'null');
     if(!j) return false;
     Object.assign(S,j);
-    S.call = Object.assign({kad:[],costs:[],crits:[],docs:[],secs:[],reqs:{}}, j.call||{});
+    S.call = Object.assign({kad:[],costs:[],crits:[],docs:[],secs:[],reqs:{},areas:[],regionRates:{}}, j.call||{});
+    migrateRegion();
     return true;
   }catch(e){ return false; }
 }
@@ -838,9 +972,44 @@ const RE_DATE  = /(\d{1,2})[\/\.\-](\d{1,2})[\/\.\-](\d{4})/g;
 const RE_DATEGR= /(\d{1,2})\s*(?:ης|ΗΣ)?\s+([Α-Ω]{4,12})\s+(\d{4})/g;
 const RE_KAD   = /(?:^|[^\d.,])(\d{2})\.(\d{2})(?:\.(\d{2})(?:\.(\d{2}))?)?(?![\d.,%])/g;
 
+/** Ανασύνθεση γραμμών κειμένου που προήλθε από PDF.
+    Τα PDF δεν έχουν έννοια «παραγράφου»: κάθε κελί πίνακα και κάθε οπτική
+    γραμμή βγαίνει χωριστά. Ένα κριτήριο σαν
+        1 | Ωριμότητα και πληρότητα του επενδυτικού σχεδίου | 30%
+    φτάνει ως τέσσερις ξεχωριστές γραμμές («1», «Ωριμότητα…», «σχεδίου», «30%»)
+    και καμία τους δεν είναι αναγνωρίσιμη μόνη της. Εδώ ξαναενώνονται. */
+function reflow(R){
+  const src = R.split('\n').map(l=>l.replace(/[ \t\u00a0]+/g,' ').trim());
+  const out = [];
+  for(let i=0;i<src.length;i++){
+    const l = src[i];
+    if(l===''){ if(out.length && out[out.length-1]!=='') out.push(''); continue; }
+    // (α) σκέτος αριθμός = στήλη «Α/Α» πίνακα ⇒ γίνεται αρίθμηση της επόμενης γραμμής
+    if(/^\d{1,2}$/.test(l) && i+1<src.length && /^[Α-ΩΆ-Ώ]/.test(src[i+1]) && src[i+1].length>=8){
+      src[i+1] = l+'. '+src[i+1];
+      continue;
+    }
+    const prev = out.length? out[out.length-1] : '';
+    // (β) σκέτο ποσοστό = κελί ορίου ή βαρύτητας ⇒ στο τέλος της γραμμής του
+    if(prev && /^(?:έως|ΕΩΣ|μέχρι|ΜΕΧΡΙ)?\s*\d{1,3}(?:,\d{1,2})?\s*%$/.test(l)){
+      out[out.length-1] = prev+' '+l; continue;
+    }
+    // (γ) συνέχεια σπασμένης φράσης: αρχίζει με πεζό και η προηγούμενη δεν έκλεισε
+    if(prev.length>25 && /^[α-ωά-ώ]/.test(l) && !/[.:;%!·]$/.test(prev)){
+      out[out.length-1] = prev+' '+l; continue;
+    }
+    // (δ) μονολεκτικό ακρωνύμιο που ξέμεινε στην επόμενη γραμμή («…Δηλώσεις ΕΦΚΑ»)
+    if(prev.length>25 && /^[Α-ΩΆ-Ώ]{2,10}$/.test(l) && !/[.:;%!·]$/.test(prev)){
+      out[out.length-1] = prev+' '+l; continue;
+    }
+    out.push(l);
+  }
+  return out.join('\n');
+}
+
 /** Ανάλυση: γεμίζει το S.call από το ακατέργαστο κείμενο. */
 function analyze(raw){
-  const R = raw.replace(/\r\n/g,'\n').replace(/ /g,' ');
+  const R = reflow(raw.replace(/\r\n/g,'\n'));
   const N = normKeep(R);
   S.raw = R;
   const c = S.call;
@@ -992,7 +1161,66 @@ function analyze(raw){
   c.crits = extractCrits(R,N,c.secs);
   c.docs  = extractDocs(R,N,c.secs);
   c.reqs  = extractReqs(R,N);
+  c.areas = extractAreas(R,N);
+  c.regionRates = extractRegionRates(R,N);
   return c;
+}
+
+/* — περιοχές εφαρμογής: πού «πιάνει» η δράση ——————————————————————————
+   Μια περιφέρεια θεωρείται επιλέξιμη όταν αναφέρεται στο κείμενο και ΔΕΝ
+   αναφέρεται ως εξαίρεση («πλην Αττικής», «εκτός Νοτίου Αιγαίου»). Αν δεν
+   αναφέρεται καμία, η δράση αντιμετωπίζεται ως πανελλαδική. */
+function extractAreas(R,N){
+  const inc=[], exc=[];
+  for(const [reg,stems] of Object.entries(REGION_STEMS)){
+    let found=false, excluded=false;
+    for(const st of stems){
+      let i=-1;
+      while((i=N.indexOf(st,i+1))>=0){
+        found=true;
+        const before = N.slice(Math.max(0,i-34), i);
+        if(/(ΕΚΤΟΣ|ΠΛΗΝ|ΕΞΑΙΡ|ΔΕΝ ΠΕΡΙΛΑΜΒΑΝ)[^.]{0,26}$/.test(before)) excluded=true;
+      }
+    }
+    if(found){ (excluded?exc:inc).push(reg); }
+  }
+  // «όλη η χώρα»: καμία περιφέρεια δεν κατονομάζεται ⇒ πανελλαδική εμβέλεια
+  if(!inc.length && !exc.length) return [];
+  if(!inc.length && exc.length)  return REGIONS.map(r=>r[0]).filter(r=>!exc.includes(r));
+  return inc;
+}
+
+/* — ένταση ενίσχυσης ανά περιφέρεια ————————————————————————————————————
+   Πολλές προσκλήσεις έχουν πίνακα «Περιφέρεια → ποσοστό». Κρατάμε το ποσοστό
+   που βρίσκεται κοντά στο όνομα της περιφέρειας, μόνο όταν το συμφραζόμενο
+   μιλάει για ενίσχυση/επιχορήγηση. */
+const ALL_STEMS = Object.values(REGION_STEMS).flat();
+function extractRegionRates(R,N){
+  const out={};
+  for(const [reg,stems] of Object.entries(REGION_STEMS)){
+    for(const st of stems){
+      let i=-1;
+      while((i=N.indexOf(st,i+1))>=0){
+        const ctx = N.slice(Math.max(0,i-700), i+700);
+        if(!/ΕΝΤΑΣΗ|ΕΝΙΣΧΥΣ|ΕΠΙΧΟΡΗΓΗΣ|ΔΗΜΟΣΙΑΣ ΔΑΠΑΝΗΣ|ΧΡΗΜΑΤΟΔΟΤΗΣΗΣ/.test(ctx)) continue;
+        // Μόνο ό,τι ακολουθεί ΑΜΕΣΩΣ το όνομα, και πάντα πριν από την επόμενη
+        // περιφέρεια — αλλιώς η «Κρήτη» θα κληρονομούσε το ποσοστό της Θεσσαλίας.
+        let seg = N.slice(i+st.length, Math.min(N.length, i+st.length+42));
+        let cut = seg.length;
+        for(const other of ALL_STEMS){
+          const k = seg.indexOf(other);
+          if(k>=0 && k<cut) cut=k;
+        }
+        seg = seg.slice(0,cut);
+        const m = /(\d{1,3}(?:,\d{1,2})?)\s*%/.exec(seg);
+        if(m){
+          const v = grNum(m[1]);
+          if(v>0 && v<=100 && out[reg]==null) out[reg]=v;
+        }
+      }
+    }
+  }
+  return out;
 }
 
 /* — ενότητες — */
@@ -1087,7 +1315,7 @@ function extractCosts(R,N,secs){
     for(let i=0;i<lines.length;i++){
       const l = lines[i];
       if(l.length<6 || l.length>150) continue;
-      const num = /^(?:\d{1,2}[\.\)]|[Α-Ω]\d?[\.\)]|[•▪◦\-–●]\s?|\d{1,2}\.\d{1,2}\.?)\s*(.+)$/.exec(l);
+      const num = /^(?:\d{1,2}\.\d{1,2}\.?\s*|\d{1,2}[\.\)]\s*|\d{1,2}\s+|[Α-Ω]\d?[\.\)]\s*|[•▪◦\-–●]\s*)(.+)$/.exec(l);
       let title = num ? num[1] : null;
       if(!title){
         // γραμμή πίνακα: «Τίτλος .... έως 40%»
@@ -1130,7 +1358,7 @@ function extractCrits(R,N,secs){
       if(!looks) continue;
       if(!/[Α-Ωα-ωΆ-Ώά-ώ]{6}/.test(l)) continue;
       if(/^(ΠΙΝΑΚΑΣ|ΣΥΝΟΛΟ|ΑΡΘΡΟ|ΠΑΡΑΡΤΗΜΑ)/.test(nt)) continue;
-      let title = l.replace(/^(?:\d{1,2}[\.\)]|[Α-Ω]\d?[\.\)]|[•▪●\-–])\s*/,'')
+      let title = l.replace(/^(?:\d{1,2}[\.\)]\s*|\d{1,2}\s+|[Α-Ω]\d?[\.\)]\s*|[•▪●\-–]\s*)/,'')
                    .replace(/\s*\d{1,3}(?:,\d{1,2})?\s*%\s*$/,'')
                    .replace(/[\.\:\s]+$/,'').trim();
       if(title.length<8||title.length>130) continue;
@@ -1238,6 +1466,8 @@ function renderAnalysis(){
     fld('regime','Καθεστώς ενίσχυσης')+
     fld('fund','Ταμείο / συγχρηματοδότηση','text','π.χ. ΕΤΠΑ, ΕΚΤ+');
 
+  renderAreas();
+
   /* ΚΑΔ */
   const divs = {};
   c.kad.forEach(k=>{ const d=k.slice(0,2); (divs[d]=divs[d]||[]).push(k); });
@@ -1280,6 +1510,93 @@ function renderAnalysis(){
     : '<p class="hint">Δεν αναγνωρίστηκαν ενότητες.</p>';
 }
 
+/* ── 6β. Περιοχές εφαρμογής & πόρισμα γρήγορου ελέγχου ────────────────── */
+function areaChips(clickable){
+  const areas=S.call.areas||[], rr=S.call.regionRates||{};
+  const all = areas.length? REGIONS.map(r=>r[0]) : [];
+  const list = clickable ? REGIONS.map(r=>r[0]) : areas;
+  return list.map(r=>{
+    const on = areas.includes(r), me = S.co.cRegion===r;
+    const rate = rr[r]!=null ? ` · ${pct(rr[r])}` : '';
+    return `<span class="chip ${on?'on':''}" ${clickable?`data-area="${esc(r)}" style="cursor:pointer"`:''}>`+
+           `${me?'📍 ':''}${esc(r)}${rate}</span>`;
+  }).join('');
+}
+function renderAreas(){
+  const el=$('#fAreas'); if(!el) return;
+  const areas=S.call.areas||[];
+  const head = areas.length
+    ? `<p class="hint">Εντοπίστηκαν <b>${areas.length}</b> περιφέρειες. Το 📍 δείχνει πού είναι η επιχείρησή σου.</p>`
+    : `<div class="note warn"><b>Δεν κατονομάστηκε καμία περιφέρεια.</b>Η δράση αντιμετωπίζεται ως πανελλαδική. Αν στην πρόσκληση υπάρχει περιορισμός περιοχών, διάλεξέ τες εδώ.</div>`;
+  el.innerHTML = head + `<div class="chips">${areaChips(true)}</div>`;
+}
+function renderAreaBox(){
+  const el=$('#q_areaBox'); if(!el) return;
+  if(!S.raw){ el.innerHTML=''; return; }
+  const areas=S.call.areas||[], reg=S.co.cRegion;
+  if(!areas.length){
+    el.innerHTML = `<div class="note"><b>Η πρόσκληση δεν όρισε ρητά περιοχές.</b>Θεωρείται πανελλαδική — μπορείς να το διορθώσεις στο βήμα 2.</div>`;
+    return;
+  }
+  const inside = reg && areas.includes(reg);
+  const cls = !reg ? '' : (inside?'ok':'bad');
+  el.innerHTML =
+    `<div class="note ${cls}"><b>Περιοχές εφαρμογής της δράσης</b>`+
+    (reg ? (inside ? `Η περιοχή «${esc(reg)}» περιλαμβάνεται. ` : `Η περιοχή «${esc(reg)}» <b>δεν</b> περιλαμβάνεται. `) : '')+
+    `</div><div class="chips">${areaChips(false)}</div>`;
+}
+
+/** Το πόρισμα του βήματος 1: επιλέξιμη, με εκκρεμότητες ή όχι. */
+function renderQuick(){
+  renderCompany();
+  renderAreaBox();
+  const V=$('#qVerdict'), C=$('#qChecks'), A=$('#qActions');
+  if(!V) return;
+  if(!S.raw){
+    V.innerHTML = `<div class="verdict"><div class="ic">📄</div><div>
+      <p class="h">Δώσε πρώτα την πρόσκληση</p>
+      <div class="d">Χωρίς αυτήν δεν υπάρχουν κανόνες να ελεγχθούν. Ανέβασε το αρχείο παραπάνω ή δοκίμασε τη δοκιμαστική πρόσκληση.</div></div></div>`;
+    C.innerHTML=''; A.innerHTML=''; return;
+  }
+  const rs = coreRules();
+  const n={ok:0,warn:0,bad:0}; rs.forEach(r=>n[r.st]++);
+  const st = n.bad? 'bad' : (n.warn? 'warn':'ok');
+  const head = {
+    ok:  ['✅','Η επιχείρηση είναι επιλέξιμη','Πληροί όλες τις προϋποθέσεις που εντοπίστηκαν στην πρόσκληση.'],
+    warn:['⚠️','Πιθανώς επιλέξιμη — με εκκρεμότητες',`${n.warn} σημείο(α) χρειάζονται στοιχεία ή επιβεβαίωση.`],
+    bad: ['⛔','Δεν πληροί τις προϋποθέσεις',`${n.bad} κώλυμα(τα). Δες παρακάτω τι φταίει — συχνά διορθώνεται αν η αυτόματη ανάγνωση αστόχησε.`]
+  }[st];
+
+  const areaBad = rs.some(r=>(r.t==='Περιοχή υλοποίησης'||r.t==='Ενισχυόμενη περιοχή') && r.st==='bad');
+  const int = intensityUsed(), est=+S.co.qBudget||budTotal()||0;
+  const money = areaBad
+    ? `<div class="vrow" style="margin-top:14px"><span class="i">📍</span><div>
+        <b>Δεν υπολογίζεται επιχορήγηση</b>
+        <span>Η περιοχή υλοποίησης δεν καλύπτεται από τη δράση. Αν η επιχείρηση υλοποιεί σε άλλη περιφέρεια, δήλωσε εκείνη.</span></div></div>`
+    : (int>0 && est>0)
+    ? `<div class="vrow" style="margin-top:14px;background:var(--card)"><span class="i">💶</span><div>
+        <b>Εκτιμώμενη επιχορήγηση ${eur(est*int/100)} από ${eur(est)}</b>
+        <span>ένταση ${pct(int)} — ${esc(intensitySource())}. Ιδιωτική συμμετοχή ${eur(est-est*int/100)}.</span></div></div>`
+    : (int>0
+        ? `<div class="vrow" style="margin-top:14px"><span class="i">💶</span><div><b>Ένταση ενίσχυσης ${pct(int)}</b>
+           <span>${esc(intensitySource())}. Συμπλήρωσε εκτιμώμενο ύψος επένδυσης για να δεις ποσά.</span></div></div>`
+        : '');
+
+  V.innerHTML = `<div class="verdict ${st}"><div class="ic">${head[0]}</div><div style="flex:1">
+    <p class="h">${esc(head[1])}</p><div class="d">${esc(head[2])}</div>${money}</div></div>`;
+
+  const ic={ok:'✅',warn:'⚠️',bad:'⛔'};
+  C.innerHTML = `<div class="vgrid">`+rs.map(r=>
+    `<div class="vrow ${r.st==='ok'?'':r.st}"><span class="i">${ic[r.st]}</span><div>
+      <b>${esc(r.t)}</b><span>${esc(r.msg)}${r.fix?' — '+esc(r.fix):''}</span></div></div>`).join('')+`</div>`;
+
+  A.innerHTML =
+    (st==='bad'
+      ? `<button class="btn" id="qGo">Συνέχεια παρά τα κωλύματα ›</button>`
+      : `<button class="btn pri" id="qGo">Συνέχεια στην πλήρη προετοιμασία ›</button>`)+
+    `<button class="btn gh" id="qFix">🔎 Διόρθωση ευρημάτων πρόσκλησης</button>`;
+}
+
 /* ── 7. ΚΑΔ: αντιστοίχιση ─────────────────────────────────────────────── */
 function myKads(){
   return [S.co.cKad||'', ...(String(S.co.cKad2||'').split(/[,;]/))]
@@ -1315,49 +1632,103 @@ function yearsRunning(){
   if(isNaN(d)) return null;
   return (Date.now()-d.getTime())/(365.25*864e5);
 }
-function regionRate(){
+/** Βασικό ποσοστό ΧΠΕ της περιοχής, πριν την προσαύξηση μεγέθους.
+    Στην Αττική εξαρτάται από την περιφερειακή ενότητα. */
+function areaBaseRate(){
   const r = REGIONS.find(x=>x[0]===S.co.cRegion);
   if(!r) return null;
+  if(S.co.cRegion==='Αττική'){
+    const u = S.co.cUnitReg;
+    if(!u) return null;                       // χωρίς ΠΕ δεν κρίνεται η Αττική
+    return ATTIKI_RATES[u]||0;
+  }
+  return r[1];
+}
+/** Ενδεικτικό ανώτατο ποσοστό ΧΠΕ για την επιχείρηση (μέγεθος + περιοχή). */
+function regionRate(){
+  const base = areaBaseRate();
+  if(base==null) return null;
   const sz = sizeOf();
   const bonus = sz==='Πολύ μικρή'||sz==='Μικρή' ? 20 : (sz==='Μεσαία'?10:0);
-  return r[1]===0 ? 0 : Math.min(r[1]+bonus, 70);
+  return base===0 ? 0 : Math.min(base+bonus, 70);
 }
-function renderCompany(){
-  const sel=$('#cRegion');
-  if(sel.options.length<=1)
+/** Ποσοστό που ορίζει η ΙΔΙΑ η πρόσκληση για την περιφέρεια της επιχείρησης. */
+function callRegionRate(){
+  const rr = S.call.regionRates||{};
+  const v = rr[S.co.cRegion];
+  return (v!=null && isFinite(v)) ? v : null;
+}
+/** Γεμίζει ΟΛΑ τα μενού περιφέρειας/ενότητας — υπάρχουν και στο βήμα 1 και στο 3. */
+function fillRegionSelects(){
+  $$('select[data-k="cRegion"]').forEach(sel=>{
+    if(sel.options.length>1) return;
     sel.innerHTML = '<option value="">— επιλογή —</option>' +
       REGIONS.map(r=>`<option>${esc(r[0])}</option>`).join('');
-  $$('[data-k]').forEach(el=>{
-    const k=el.dataset.k;
-    if(S.co[k]!=null && el.value!==S.co[k]) el.value=S.co[k];
   });
-  $('#goalChips').innerHTML = GOALS.map(g=>
+  const units = REGION_UNITS[S.co.cRegion]||[];
+  if(S.co.cUnitReg && !units.includes(S.co.cUnitReg)) S.co.cUnitReg='';
+  $$('select[data-k="cUnitReg"]').forEach(sel=>{
+    const want = '<option value="">— επιλογή —</option>' +
+      units.map(u=>`<option>${esc(u)}</option>`).join('');
+    if(sel.innerHTML!==want) sel.innerHTML = want;
+    sel.disabled = !units.length;
+  });
+}
+/** Γράφει το ίδιο σχόλιο σε όσα σημεία υπάρχουν (βήμα 1 και βήμα 3). */
+function setNote(ids, text, cls){
+  ids.forEach(id=>{
+    const el=$('#'+id);
+    if(!el) return;
+    el.textContent = text||'';
+    el.className = 'fnote'+(cls?' '+cls:'');
+  });
+}
+function renderCompany(){
+  fillRegionSelects();
+  $$('[data-k]').forEach(el=>{
+    const k=el.dataset.k, v=S.co[k];
+    if(v!=null && el.value!==v) el.value=v;
+  });
+  const gc=$('#goalChips');
+  if(gc) gc.innerHTML = GOALS.map(g=>
     `<span class="chip ${S.goals.includes(g)?'on':''}" data-goal="${esc(g)}" style="cursor:pointer">${esc(g)}</span>`).join('');
+
   // ΑΦΜ
-  const a=String(S.co.cAfm||'').trim(), an=$('#afmNote'), ai=$('#cAfm');
-  if(!a){ an.textContent=''; an.className='fnote'; ai.classList.remove('bad'); }
-  else if(afmValid(a)){ an.textContent='✓ Έγκυρο ΑΦΜ'; an.className='fnote ok'; ai.classList.remove('bad'); }
-  else { an.textContent='✗ Μη έγκυρο ΑΦΜ (έλεγχος ψηφίου)'; an.className='fnote err'; ai.classList.add('bad'); }
-  // έτη
-  const y=yearsRunning(), yn=$('#ageNote');
-  yn.textContent = y==null ? '' : `Λειτουργία ${dec(y)} έτη`;
-  yn.className='fnote';
+  const a=String(S.co.cAfm||'').trim(), ai=$('#cAfm');
+  if(!a) setNote(['afmNote'],'');
+  else if(afmValid(a)) setNote(['afmNote'],'✓ Έγκυρο ΑΦΜ','ok');
+  else setNote(['afmNote'],'✗ Μη έγκυρο ΑΦΜ (έλεγχος ψηφίου)','err');
+  if(ai) ai.classList.toggle('bad', !!a && !afmValid(a));
+
+  // Χρόνος λειτουργίας
+  const y=yearsRunning();
+  setNote(['ageNote','q_ageNote'], y==null?'':`Λειτουργία ${dec(y)} έτη`);
+
   // ΚΑΔ
-  const kn=$('#kadNote'), list=callKads(), mine=myKads();
-  if(!S.co.cKad || !list.length){ kn.textContent=''; kn.className='fnote'; }
-  else if(list.some(k=>kadHit(k,mine))){ kn.textContent='✓ Ταιριάζει με τους επιλέξιμους ΚΑΔ'; kn.className='fnote ok'; }
-  else { kn.textContent='✗ Δεν βρέθηκε στη λίστα επιλέξιμων ΚΑΔ'; kn.className='fnote err'; }
-  // μέγεθος / περιφέρεια
-  $('#cSize').value = sizeOf()||'—';
-  const rr=regionRate(), rn=$('#regNote');
-  rn.className='fnote';
-  rn.textContent = rr==null ? '' :
-    (rr===0 ? 'Μη ενισχυόμενη περιοχή στον ΧΠΕ 2022-2027 (ενδεικτικά)'
-            : `Ενδεικτικό ανώτατο ποσοστό ΧΠΕ: ${rr}% — η πρόσκληση υπερισχύει`);
+  const list=callKads(), mine=myKads();
+  if(!S.co.cKad || !list.length) setNote(['kadNote','q_kadNote'],'');
+  else if(list.some(k=>kadHit(k,mine))) setNote(['kadNote','q_kadNote'],'✓ Ταιριάζει με τους επιλέξιμους ΚΑΔ','ok');
+  else setNote(['kadNote','q_kadNote'],'✗ Δεν βρέθηκε στη λίστα επιλέξιμων ΚΑΔ','err');
+
+  // Μέγεθος
+  const sz=sizeOf();
+  const cs=$('#cSize'); if(cs) cs.value = sz||'—';
+  setNote(['q_sizeNote'], sz?`Μέγεθος: ${sz} επιχείρηση`:'');
+
+  // Περιοχή
+  const base=areaBaseRate(), rr=regionRate(), cr=callRegionRate();
+  let rtxt='', rcls='';
+  if(cr!=null){ rtxt=`Η πρόσκληση ορίζει ${pct(cr)} για ${S.co.cRegion}`; rcls='ok'; }
+  else if(base==null && S.co.cRegion==='Αττική') { rtxt='Διάλεξε περιφερειακή ενότητα — στην Αττική διαφέρει ανά περιοχή'; rcls='err'; }
+  else if(base===0) { rtxt='Μη ενισχυόμενη περιοχή στον ΧΠΕ 2022-2027 (ενδεικτικά)'; rcls='err'; }
+  else if(rr!=null) rtxt=`Ενδεικτικό ανώτατο ποσοστό ΧΠΕ: ${pct(rr)} — η πρόσκληση υπερισχύει`;
+  setNote(['regNote','q_unitNote'], rtxt, rcls);
 }
 
 /* ── 9. Επιλεξιμότητα ─────────────────────────────────────────────────── */
-function rules(){
+/** Οι κανόνες που κρίνουν αν η επιχείρηση ΜΠΟΡΕΙ καν να συμμετάσχει.
+    Τους μοιράζονται ο γρήγορος έλεγχος (βήμα 1) και ο πλήρης (βήμα 4). */
+function coreRules(){
   const c=S.call, co=S.co, out=[];
   const add=(t,st,msg,fix)=>out.push({t,st,msg,fix});
 
@@ -1369,69 +1740,89 @@ function rules(){
     else add('Προθεσμία υποβολής','ok',`Απομένουν ${d} ημέρες — λήξη ${grDate(c.dateTo)}.`);
   } else add('Προθεσμία υποβολής','warn','Δεν εντοπίστηκε καταληκτική ημερομηνία.','Συμπλήρωσέ τη στο βήμα 2.');
 
-  // 2. ΚΑΔ
+  // 2. Περιοχή υλοποίησης — «πιάνει» εδώ η δράση;
+  const areas=c.areas||[], reg=co.cRegion, unit=co.cUnitReg;
+  if(!reg) add('Περιοχή υλοποίησης','warn','Δεν δήλωσες πού βρίσκεται η επιχείρηση.','Χωρίς αυτό δεν κρίνεται ούτε η περιοχή ούτε το ποσοστό ενίσχυσης.');
+  else if(!areas.length)
+    add('Περιοχή υλοποίησης','warn',`${reg}${unit?' — ΠΕ '+unit:''}. Η πρόσκληση δεν όρισε ρητά περιοχές, οπότε θεωρείται πανελλαδική.`,'Επιβεβαίωσε την περιοχή εφαρμογής στο βήμα 2.');
+  else if(areas.includes(reg))
+    add('Περιοχή υλοποίησης','ok',`${reg}${unit?' — ΠΕ '+unit:''}: περιλαμβάνεται στις περιοχές εφαρμογής της δράσης.`);
+  else
+    add('Περιοχή υλοποίησης','bad',`Η δράση εφαρμόζεται σε: ${areas.join(', ')}. Η περιοχή «${reg}» δεν περιλαμβάνεται.`,'Αν η επιχείρηση υλοποιεί σε άλλη περιφέρεια, δήλωσε εκείνη.');
+
+  // 3. Ενισχυόμενη περιοχή (μετράει μόνο σε καθεστώς ΓΑΚ/περιφερειακών ενισχύσεων)
+  const isGak = /651\/2014|ΓΑΚ|ΠΕΡΙΦΕΡΕΙΑΚ/.test(normKeep(c.regime||''));
+  const base = areaBaseRate();
+  if(reg && isGak){
+    if(base==null) add('Ενισχυόμενη περιοχή','warn','Δήλωσε περιφερειακή ενότητα — στην Αττική κρίνει το αν η περιοχή ενισχύεται καθόλου.');
+    else if(base===0) add('Ενισχυόμενη περιοχή','bad',`${reg}${unit?' — ΠΕ '+unit:''}: μη ενισχυόμενη περιοχή στον Χάρτη Περιφερειακών Ενισχύσεων 2022-2027, ενώ η δράση είναι σε καθεστώς περιφερειακών ενισχύσεων.`,'Σε καθεστώς de minimis δεν υπάρχει τέτοιος περιορισμός — επιβεβαίωσε το καθεστώς.');
+    else add('Ενισχυόμενη περιοχή','ok',`Ενισχυόμενη περιοχή — βασικό ποσοστό ΧΠΕ ${pct(base)}, με το μέγεθος της επιχείρησης έως ${pct(regionRate())}.`);
+  }
+
+  // 4. ΚΑΔ
   const list=callKads(), mine=myKads();
   if(!list.length) add('Επιλεξιμότητα ΚΑΔ','warn','Δεν υπάρχει λίστα επιλέξιμων ΚΑΔ.','Πρόσθεσε τους ΚΑΔ του παραρτήματος στο βήμα 2.');
-  else if(!mine.length) add('Επιλεξιμότητα ΚΑΔ','warn','Δεν έχεις δηλώσει ΚΑΔ.','Συμπλήρωσε τον κύριο ΚΑΔ στο βήμα 3.');
+  else if(!mine.length) add('Επιλεξιμότητα ΚΑΔ','warn','Δεν έχεις δηλώσει ΚΑΔ.','Συμπλήρωσε τον κύριο ΚΑΔ.');
   else {
     const hits = list.filter(k=>kadHit(k,mine));
     if(hits.length) add('Επιλεξιμότητα ΚΑΔ','ok',`Ταιριάζουν ${hits.length} κωδικοί: ${hits.slice(0,6).join(', ')}${hits.length>6?'…':''}`);
     else add('Επιλεξιμότητα ΚΑΔ','bad','Κανένας από τους ΚΑΔ σου δεν βρίσκεται στη λίστα.','Έλεγξε δευτερεύοντες ΚΑΔ ή προσθήκη ΚΑΔ πριν την υποβολή.');
   }
 
-  // 3. Μέγεθος
+  // 5. Μέγεθος
   const sz=sizeOf(), want=(c.reqs&&c.reqs.sizes)||[];
   if(!sz) add('Μέγεθος επιχείρησης','warn','Δεν υπολογίστηκε — λείπουν ΕΜΕ ή κύκλος εργασιών.','Συμπλήρωσε τα οικονομικά στοιχεία.');
   else if(sz==='Μεγάλη' && want.length && !want.includes('Μεγάλη'))
     add('Μέγεθος επιχείρησης','bad',`Η επιχείρηση χαρακτηρίζεται «${sz}», ενώ η δράση απευθύνεται σε ${want.join(', ')}.`);
   else add('Μέγεθος επιχείρησης','ok',`Χαρακτηρισμός: ${sz} (σύσταση 2003/361/ΕΚ).`+(String(co.cLinked)==='yes'?' Προσοχή: με συνδεδεμένες/συνεργαζόμενες τα μεγέθη αθροίζονται.':''));
 
-  // 4. ΕΜΕ
+  // 6. ΕΜΕ
   if(c.reqs && c.reqs.minEme!=null){
+    const raw = String(co.cEme==null?'':co.cEme).trim();
     const e=+co.cEme||0;
-    if(e>=c.reqs.minEme) add('Ελάχιστες ΕΜΕ','ok',`${e} ΕΜΕ ≥ ${c.reqs.minEme} που απαιτούνται.`);
-    else add('Ελάχιστες ΕΜΕ','bad',`Δηλώθηκαν ${e} ΕΜΕ, απαιτούνται ${c.reqs.minEme}.`,'Έλεγξε τα Ε4/ΑΠΔ της περιόδου αναφοράς.');
+    if(raw==='') add('Ελάχιστες ΕΜΕ','warn',`Η δράση απαιτεί ≥ ${c.reqs.minEme} ΕΜΕ — δεν δήλωσες ΕΜΕ.`,'Προκύπτουν από τα Ε4/ΑΠΔ της περιόδου αναφοράς.');
+    else if(e>=c.reqs.minEme) add('Ελάχιστες ΕΜΕ','ok',`${dec(e)} ΕΜΕ ≥ ${c.reqs.minEme} που απαιτούνται.`);
+    else add('Ελάχιστες ΕΜΕ','bad',`Δηλώθηκαν ${dec(e)} ΕΜΕ, απαιτούνται ${c.reqs.minEme}.`,'Έλεγξε τα Ε4/ΑΠΔ της περιόδου αναφοράς.');
   }
-  // 5. Έτη λειτουργίας
+  // 7. Έτη λειτουργίας
   if(c.reqs && c.reqs.minYears!=null){
     const y=yearsRunning();
     if(y==null) add('Χρόνος λειτουργίας','warn',`Απαιτούνται ≥ ${c.reqs.minYears} έτη/χρήσεις — δεν δήλωσες ημερομηνία έναρξης.`);
     else if(y>=c.reqs.minYears) add('Χρόνος λειτουργίας','ok',`${dec(y)} έτη ≥ ${c.reqs.minYears}.`);
     else add('Χρόνος λειτουργίας','bad',`${dec(y)} έτη < ${c.reqs.minYears} που απαιτούνται.`);
   }
-  // 6. Περιφέρεια
-  const rr=regionRate();
-  if(co.cRegion){
-    if(rr===0) add('Τόπος υλοποίησης','warn','Η περιοχή δεν ενισχύεται από τον Χάρτη Περιφερειακών Ενισχύσεων για καθεστώς ΓΑΚ. Σε καθεστώς de minimis δεν υπάρχει θέμα.');
-    else add('Τόπος υλοποίησης','ok',`${co.cRegion} — ενδεικτικό ανώτατο ποσοστό ΧΠΕ ${rr}%.`);
-  } else add('Τόπος υλοποίησης','warn','Δεν δηλώθηκε περιφέρεια υλοποίησης.');
-
-  // 7. Προϋπολογισμός
-  const tot=budTotal();
+  // 8. Ύψος επένδυσης (αναλυτικός Π/Υ αν υπάρχει, αλλιώς η εκτίμηση του βήματος 1)
+  const tot=budTotal() || (+co.qBudget||0);
+  const src=budTotal()? '' : ' (εκτίμηση)';
   if(tot>0){
     const mn=+c.minBudget||0, mx=+c.maxBudget||0;
-    if(mn && tot<mn) add('Ύψος προϋπολογισμού','bad',`${eur(tot)} < ελάχιστο ${eur(mn)}.`,'Πρόσθεσε επιλέξιμες δαπάνες.');
-    else if(mx && tot>mx) add('Ύψος προϋπολογισμού','bad',`${eur(tot)} > μέγιστο ${eur(mx)}. Το υπερβάλλον δεν επιχορηγείται.`,'Μείωσε ή δήλωσέ το ως μη επιχορηγούμενο.');
-    else add('Ύψος προϋπολογισμού','ok',`${eur(tot)} εντός ορίων.`);
-  } else add('Ύψος προϋπολογισμού','warn','Δεν έχει συμπληρωθεί προϋπολογισμός.','Βήμα 5.');
+    if(mn && tot<mn) add('Ύψος επένδυσης','bad',`${eur(tot)}${src} < ελάχιστο ${eur(mn)}.`,'Πρόσθεσε επιλέξιμες δαπάνες ή δες αν συμφέρει άλλη δράση.');
+    else if(mx && tot>mx) add('Ύψος επένδυσης','warn',`${eur(tot)}${src} > μέγιστο ${eur(mx)}. Το υπερβάλλον δεν επιχορηγείται.`,'Το σχέδιο μπορεί να υποβληθεί, με μη επιχορηγούμενο το υπερβάλλον.');
+    else add('Ύψος επένδυσης','ok',`${eur(tot)}${src} εντός των ορίων της πρόσκλησης.`);
+  } else add('Ύψος επένδυσης','warn','Δεν έχει δηλωθεί ύψος επένδυσης.');
 
-  // 8. De minimis
+  // 9. De minimis
   if(c.reqs && c.reqs.deMinimis){
-    const used=+co.cDeMin||0, grant=budGrant(), cap=300000;
+    const used=+co.cDeMin||0, grant=(budTotal()||(+co.qBudget||0))*intensityUsed()/100, cap=300000;
     if(used+grant>cap) add('Σώρευση de minimis','bad',`Σύνολο ${eur(used+grant)} > ${eur(cap)} της τριετίας (Καν. 2831/2023).`,'Μείωσε το αιτούμενο ποσό ή έλεγξε τη σώρευση με συνδεδεμένες.');
     else add('Σώρευση de minimis','ok',`${eur(used+grant)} από ${eur(cap)} του ορίου τριετίας.`);
   }
-  // 9. Πληρότητα στοιχείων
+  return out;
+}
+
+/** Ο πλήρης έλεγχος: οι βασικοί κανόνες συν ό,τι αφορά την ετοιμότητα φακέλου. */
+function rules(){
+  const out = coreRules();
+  const add=(t,st,msg,fix)=>out.push({t,st,msg,fix});
+
   const need=[['cName','επωνυμία'],['cAfm','ΑΦΜ'],['cForm','νομική μορφή'],['cKad','κύριος ΚΑΔ'],['rName','νόμιμος εκπρόσωπος'],['pWhat','περιγραφή σχεδίου']];
   const miss=need.filter(([k])=>!String(S.co[k]||'').trim()).map(x=>x[1]);
   if(miss.length) add('Πληρότητα στοιχείων','warn',`Λείπουν: ${miss.join(', ')}.`,'Βήμα 3.');
   else add('Πληρότητα στοιχείων','ok','Όλα τα υποχρεωτικά πεδία συμπληρώθηκαν.');
   if(S.co.cAfm && !afmValid(String(S.co.cAfm))) add('Εγκυρότητα ΑΦΜ','bad','Το ΑΦΜ δεν περνά τον έλεγχο ψηφίου ελέγχου.');
 
-  // 10. Ιδιωτική συμμετοχή
   const priv=budTotal()-budGrant();
   if(priv>0) add('Ιδιωτική συμμετοχή','warn',`Απαιτείται τεκμηρίωση ${eur(priv)} (${S.co.pFund||'πηγή μη δηλωμένη'}).`,'Βεβαίωση τραπεζικών υπολοίπων ή έγκριση δανείου.');
-
   return out;
 }
 function renderElig(){
@@ -1481,11 +1872,23 @@ function renderScore(){
 
 /* ── 10. Προϋπολογισμός ───────────────────────────────────────────────── */
 function budTotal(){ return (S.call.costs||[]).reduce((s,_,i)=>s+(+S.budget[i]||0),0); }
+/* Σειρά προτεραιότητας: ποσοστό της πρόσκλησης για τη συγκεκριμένη περιφέρεια →
+   γενικό ποσοστό της πρόσκλησης → ενδεικτικό ποσοστό του Χάρτη Περιφερειακών
+   Ενισχύσεων. Ό,τι ορίζει η πρόσκληση υπερισχύει πάντα. */
 function intensityUsed(){
+  const cr = callRegionRate();
+  if(cr!=null && cr>0) return cr;
   const i=+S.call.intensity;
   if(isFinite(i)&&i>0) return i;
   const r=regionRate();
   return r!=null&&r>0 ? r : 0;
+}
+function intensitySource(){
+  if(callRegionRate()!=null) return 'ποσοστό της πρόσκλησης για '+S.co.cRegion;
+  const i=+S.call.intensity;
+  if(isFinite(i)&&i>0) return 'γενικό ποσοστό της πρόσκλησης';
+  const r=regionRate();
+  return r!=null&&r>0 ? 'ενδεικτικό ποσοστό ΧΠΕ — επιβεβαίωσε από την πρόσκληση' : 'δεν ορίστηκε';
 }
 function budGrant(){ return budTotal()*intensityUsed()/100; }
 
@@ -1847,10 +2250,18 @@ function saveProject(){
 
 /* ── 15. Πλοήγηση ─────────────────────────────────────────────────────── */
 const PANES=['p1','p2','p3','p4','p5','p6','p7'];
+/** Τα βήματα 2-7 ανοίγουν μόνο αφού γίνει ο γρήγορος έλεγχος του βήματος 1. */
+function locked(id){ return id!=='p1' && !S.unlocked; }
 function go(id){
+  if(locked(id)){
+    toast(S.raw ? 'Ολοκλήρωσε πρώτα τον γρήγορο έλεγχο' : 'Δώσε πρώτα την πρόσκληση στο βήμα 1', 3000);
+    const box=$('#qResult'); if(box) box.scrollIntoView({behavior:'smooth',block:'center'});
+    return;
+  }
   PANES.forEach(p=>$('#'+p).classList.toggle('on', p===id));
   $$('.step').forEach(b=>b.classList.toggle('on', b.dataset.p===id));
   window.scrollTo({top:0,behavior:'smooth'});
+  if(id==='p1') renderQuick();
   if(id==='p2') renderAnalysis();
   if(id==='p3') renderCompany();
   if(id==='p4') renderElig();
@@ -1858,11 +2269,11 @@ function go(id){
   if(id==='p6'){ renderDocOpts(); if($('#docPrev').innerHTML.indexOf('Πάτησε')>-1) genDoc(); }
   if(id==='p7') renderDocs();
   markSteps();
-  $('#fabNext').style.display = id==='p7' ? 'none':'';
+  $('#fabNext').style.display = (id==='p7'||id==='p1') ? 'none':'';
 }
 function markSteps(){
   const done = {
-    p1: !!S.raw,
+    p1: !!S.raw && !!S.unlocked,
     p2: !!(S.call.title||S.call.dateTo||callKads().length),
     p3: !!(S.co.cName&&S.co.cAfm&&S.co.cKad),
     p4: !!S.raw && !!S.co.cName,
@@ -1870,7 +2281,10 @@ function markSteps(){
     p6: $('#docPrev') && $('#docPrev').innerHTML.indexOf('Πάτησε')<0,
     p7: Object.values(S.docsDone||{}).some(Boolean)
   };
-  $$('.step').forEach(b=>b.classList.toggle('done', !!done[b.dataset.p] && !b.classList.contains('on')));
+  $$('.step').forEach(b=>{
+    b.classList.toggle('done', !!done[b.dataset.p] && !locked(b.dataset.p) && !b.classList.contains('on'));
+    b.classList.toggle('lock', locked(b.dataset.p));
+  });
 }
 function renderDocOpts(){
   $('#docOpts').innerHTML = DOC_PARTS.map(([k,l])=>
@@ -1887,10 +2301,10 @@ async function runAnalyze(text, name){
     analyze(text);
     S.budget = {};                       // νέα πρόσκληση ⇒ νέες γραμμές
     save();
-    renderAnalysis(); renderCompany(); markSteps();
-    go('p2');
+    renderAnalysis(); renderCompany(); renderQuick(); markSteps();
     const c=S.call;
-    toast(`Έτοιμο: ${c.kad.length} ΚΑΔ, ${c.costs.length} κατηγορίες δαπανών, ${c.crits.length} κριτήρια`,4200);
+    const box=$('#qResult'); if(box) box.scrollIntoView({behavior:'smooth',block:'start'});
+    toast(`Έτοιμο: ${c.kad.length} ΚΑΔ, ${c.costs.length} κατηγορίες δαπανών, ${c.areas.length||'—'} περιοχές`,4200);
   }catch(e){
     console.error(e);
     toast('Η ανάλυση απέτυχε: '+e.message,4000);
@@ -1943,7 +2357,12 @@ const DEMO = [
 'Η ένταση ενίσχυσης ανέρχεται σε 60% του επιλέξιμου προϋπολογισμού. Η ιδιωτική συμμετοχή ανέρχεται σε 40%.',
 'Η διάρκεια υλοποίησης δεν μπορεί να υπερβαίνει τους 18 μήνες από την απόφαση ένταξης.',
 '',
-'5. ΕΠΙΛΕΞΙΜΕΣ ΔΑΠΑΝΕΣ',
+'5. ΠΕΡΙΟΧΕΣ ΕΦΑΡΜΟΓΗΣ ΚΑΙ ΕΝΤΑΣΗ ΑΝΑ ΠΕΡΙΦΕΡΕΙΑ',
+'Η δράση εφαρμόζεται στις Περιφέρειες Θεσσαλίας, Ηπείρου, Δυτικής Ελλάδας, Κεντρικής Μακεδονίας, Ανατολικής Μακεδονίας και Θράκης, Πελοποννήσου και Κρήτης.',
+'Η ένταση ενίσχυσης διαμορφώνεται ανά περιφέρεια ως εξής: Θεσσαλίας 60%, Ηπείρου 60%, Δυτικής Ελλάδας 60%, Κεντρικής Μακεδονίας 55%, Ανατολικής Μακεδονίας και Θράκης 60%, Πελοποννήσου 50%, Κρήτης 50%.',
+'Εξαιρείται η Περιφέρεια Αττικής.',
+'',
+'6. ΕΠΙΛΕΞΙΜΕΣ ΔΑΠΑΝΕΣ',
 '1. Κτηριακές εργασίες, ειδικές εγκαταστάσεις και διαμόρφωση περιβάλλοντος χώρου, έως 40% του επιχορηγούμενου προϋπολογισμού.',
 '2. Μηχανήματα και λοιπός παραγωγικός εξοπλισμός.',
 '3. Ψηφιακός εξοπλισμός, λογισμικό και υπηρεσίες cloud, έως 30% του προϋπολογισμού.',
@@ -1954,7 +2373,7 @@ const DEMO = [
 '8. Μισθολογικό κόστος νέου προσωπικού, έως 20%.',
 '9. Μεταφορικά μέσα επαγγελματικής χρήσης, έως 15%.',
 '',
-'6. ΚΡΙΤΗΡΙΑ ΑΞΙΟΛΟΓΗΣΗΣ',
+'7. ΚΡΙΤΗΡΙΑ ΑΞΙΟΛΟΓΗΣΗΣ',
 '1. Ωριμότητα και πληρότητα του επενδυτικού σχεδίου 25%',
 '2. Συμβολή στον ψηφιακό μετασχηματισμό της επιχείρησης 20%',
 '3. Συμβολή στην εξοικονόμηση ενέργειας και στην πράσινη μετάβαση 20%',
@@ -1962,7 +2381,7 @@ const DEMO = [
 '5. Δημιουργία νέων θέσεων εργασίας 10%',
 '6. Εξωστρέφεια και προσανατολισμός σε νέες αγορές 10%',
 '',
-'7. ΔΙΚΑΙΟΛΟΓΗΤΙΚΑ ΣΥΜΜΕΤΟΧΗΣ',
+'8. ΔΙΚΑΙΟΛΟΓΗΤΙΚΑ ΣΥΜΜΕΤΟΧΗΣ',
 '1. Ηλεκτρονική αίτηση χρηματοδότησης υπογεγραμμένη από τον νόμιμο εκπρόσωπο',
 '2. Καταστατικό και πιστοποιητικό ισχύουσας εκπροσώπησης ΓΕΜΗ',
 '3. Βεβαίωση έναρξης εργασιών και μεταβολών με τους ενεργούς ΚΑΔ',
@@ -2026,6 +2445,10 @@ function bind(){
     if(w.style.display==='') $('#rawText').focus();
   });
   $('#btnAnalyzeText').addEventListener('click', ()=>runAnalyze($('#rawText').value,'επικόλληση'));
+  $('#p1').addEventListener('click', e=>{
+    if(e.target.closest('#qGo')){ S.unlocked=true; save(); markSteps(); go('p3'); return; }
+    if(e.target.closest('#qFix')){ S.unlocked=true; save(); markSteps(); go('p2'); return; }
+  });
   $('#btnDemo').addEventListener('click', ()=>{ $('#rawText').value=DEMO; runAnalyze(DEMO,'δοκιμαστική πρόσκληση'); });
   $('#btnLoadPrj').addEventListener('click', ()=>$('#filePrj').click());
   $('#filePrj').addEventListener('change', async e=>{
@@ -2033,8 +2456,10 @@ function bind(){
     try{
       const j=JSON.parse(await f.text());
       Object.assign(S,j);
-      S.call=Object.assign({kad:[],costs:[],crits:[],docs:[],secs:[],reqs:{}}, j.call||{});
-      save(); renderAll(); go('p2'); toast('Το έργο φορτώθηκε');
+      S.call=Object.assign({kad:[],costs:[],crits:[],docs:[],secs:[],reqs:{},areas:[],regionRates:{}}, j.call||{});
+      migrateRegion(); save(); renderAll();
+      if(S.unlocked) go('p2'); else renderQuick();
+      toast('Το έργο φορτώθηκε');
     }catch(err){ toast('Μη έγκυρο αρχείο έργου'); }
   });
 
@@ -2065,6 +2490,12 @@ function bind(){
     if(dc){ S.call.costs.splice(+dc.dataset.delcost,1); S.budget={}; save(); renderAnalysis(); return; }
     const dr=e.target.closest('[data-delcrit]');
     if(dr){ S.call.crits.splice(+dr.dataset.delcrit,1); save(); renderAnalysis(); return; }
+    const ar=e.target.closest('[data-area]');
+    if(ar){
+      const v=ar.dataset.area, i=(S.call.areas||[]).indexOf(v);
+      if(i<0) (S.call.areas=S.call.areas||[]).push(v); else S.call.areas.splice(i,1);
+      save(); renderAreas(); return;
+    }
   });
   $('#btnAddCost').addEventListener('click', ()=>{
     S.call.costs.push({t:'Νέα κατηγορία δαπάνης', cap:null}); save(); renderAnalysis();
@@ -2073,12 +2504,16 @@ function bind(){
     S.call.crits.push({t:'Νέο κριτήριο', w:null}); save(); renderAnalysis();
   });
 
-  /* — βήμα 3: στοιχεία φορέα — */
-  const p3=$('#p3');
-  p3.addEventListener('input', e=>{
+  /* — στοιχεία φορέα: τα ίδια πεδία υπάρχουν στο βήμα 1 και στο βήμα 3,
+       γι' αυτό ο χειρισμός δένεται στο έγγραφο και συγχρονίζει και τα δύο — */
+  document.addEventListener('input', e=>{
     const k=e.target.dataset.k; if(!k) return;
-    S.co[k]=e.target.value; save(); renderCompany(); markSteps();
+    S.co[k]=e.target.value;
+    if(k==='cRegion') S.co.cUnitReg='';          // άλλη περιφέρεια ⇒ άλλες ενότητες
+    save(); renderCompany(); markSteps();
+    if($('#p1').classList.contains('on')) renderQuick();
   });
+  const p3=$('#p3');
   p3.addEventListener('click', e=>{
     const g=e.target.closest('[data-goal]'); if(!g) return;
     const v=g.dataset.goal, i=S.goals.indexOf(v);
@@ -2133,7 +2568,8 @@ function bind(){
 }
 
 function renderAll(){
-  renderAnalysis(); renderCompany(); renderElig(); renderBudget(); renderDocs(); renderDocOpts(); markSteps();
+  renderAnalysis(); renderCompany(); renderQuick(); renderElig();
+  renderBudget(); renderDocs(); renderDocOpts(); markSteps();
 }
 
 /* ── 19. Εκκίνηση ─────────────────────────────────────────────────────── */
@@ -2146,7 +2582,12 @@ function renderAll(){
   });
   bind();
   renderAll();
-  if(had && S.raw){ go('p2'); toast('Επαναφορά προηγούμενου έργου',2200); }
+  if(had && S.raw){
+    if(S.unlocked) go('p2'); else renderQuick();
+    toast('Επαναφορά προηγούμενου έργου',2200);
+  }
+  // Το βήμα 1 δεν χρειάζεται πλωτό «Επόμενο» — έχει τα δικά του κουμπιά.
+  $('#fabNext').style.display = $('#p1').classList.contains('on') ? 'none' : '';
   if('serviceWorker' in navigator)
     window.addEventListener('load', ()=>navigator.serviceWorker.register('sw.js').catch(()=>{}));
 })();

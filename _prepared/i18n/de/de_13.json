@@ -1,0 +1,571 @@
+{
+ "solomos_krousta": {
+  "n": "Lachs im Blätterteig",
+  "ing": [
+   "Lachsfilet 800 g (ohne Haut, am Stück)",
+   "Blätterteig 1 Platte",
+   "Babyspinat 300 g",
+   "Frischkäse 150 g",
+   "Lauch 1",
+   "Frischer Dill 1 Bund",
+   "Schale von 1 Zitrone",
+   "Eigelb 1 (zum Bestreichen)",
+   "Butter 20 g",
+   "Salz, Pfeffer"
+  ],
+  "steps": [
+   "Lachs vorbereiten: Das Filet mit den Fingern nach Gräten abtasten und gefundene mit einer Pinzette ziehen. Vollständig trocken tupfen und würzen.",
+   "Spinat andünsten: Den geschnittenen Lauch 3 Minuten in Butter dünsten, den Spinat zugeben und zusammenfallen lassen.",
+   "Abtropfen: Wichtig: Den Spinat in ein Sieb geben und kräftig ausdrücken, bis kein Tropfen Flüssigkeit mehr kommt, dann abkühlen lassen. Eine feuchte Füllung ist der einzige Grund, warum dieses Gericht misslingt — sie dämpft den Teig von innen.",
+   "Füllung zubereiten: Den ausgedrückten Spinat mit dem Frischkäse, dem gehackten Dill, der Zitronenschale, Salz und Pfeffer mischen.",
+   "Zusammensetzen: Den Teig ausrollen, die Hälfte der Füllung in der Mitte in Form des Filets verteilen, den Lachs darauf legen und mit dem Rest bedecken.",
+   "Einschlagen: Den Teig darüber falten, die Ränder gut verschließen und mit der Naht nach unten auf ein ausgelegtes Blech legen. Dicke Überlappungen abschneiden — doppelter Teig bleibt roh.",
+   "Kühlen: 20 Minuten kalt stellen, damit der Teig fest wird, bevor er in die Hitze kommt.",
+   "Verzieren: Mit Eigelb bestreichen und ein leichtes Muster einritzen, dabei nur die oberste Schicht schneiden.",
+   "Backen: Bei 200 °C 25-30 Minuten backen, bis alles tief goldbraun und rundum knusprig ist.",
+   "Ruhen lassen: 5 Minuten stehen lassen, dann mit einem Sägemesser in dicke Scheiben schneiden."
+  ],
+  "wine": "Ein leicht im Holz gereifter Chardonnay oder ein griechischer Malagousia.",
+  "plate": "In dicken Scheiben servieren, sodass die grüne Füllung rund um den rosa Lachs sichtbar ist, mit einer Zitronen-Dill-Sauce dazu."
+ },
+ "soupa_fide": {
+  "n": "Fadennudelsuppe",
+  "ing": [
+   "Fadennudeln (Fide) 200 g",
+   "Hühner- oder Gemüsebrühe 1,5 Liter",
+   "Karotte 1",
+   "Sellerie 1 Stange",
+   "Zwiebel 1",
+   "Butter 30 g",
+   "Saft von 1/2 Zitrone",
+   "Frische Petersilie, Salz, Pfeffer"
+  ],
+  "steps": [
+   "Gemüse vorbereiten: Zwiebel, Karotte und Sellerie fein würfeln, damit sie in der Suppe aufgehen, statt als Stücke darin zu liegen.",
+   "Anbraten: Alles in der Butter bei mittlerer Hitze 6-7 Minuten weich und duftend dünsten. Diese Basis unterscheidet eine echte Suppe von heißem Wasser mit Nudeln.",
+   "Brühe zugeben: Die Brühe angießen und sprudelnd aufkochen.",
+   "Fadennudeln rösten: Wichtig: Die Fadennudeln vor dem Zugeben 2 Minuten in einer trockenen Pfanne leicht goldbraun rösten. So bleiben die Fäden getrennt und bekommen eine nussige Tiefe.",
+   "Nudeln zugeben: Die gerösteten Fadennudeln in die kochende Brühe geben und sofort umrühren, damit sie sich nicht als Klumpen am Boden absetzen.",
+   "Garen: Nur 5-6 Minuten kochen. Fadennudeln sind sehr dünn — eine Minute zu lang und sie zerfallen in der Brühe.",
+   "Würzen: Mit Salz und Pfeffer würzen und vom Herd genommen den Zitronensaft für Frische zugeben.",
+   "Servieren: Sofort mit gehackter Petersilie servieren. Wichtig: Beim Stehen saugen die Nudeln weiter Flüssigkeit auf, sodass eine stehen gelassene Suppe zu Brei wird."
+  ],
+  "wine": "Nicht zutreffend — eine leichte Suppe, am besten mit Wasser oder einem milden Weißwein.",
+  "plate": "In einer tiefen Schale mit Petersilie obenauf und einer Zitronenspalte am Rand servieren."
+ },
+ "soupa_kolokythas": {
+  "n": "Kürbiscremesuppe",
+  "ing": [
+   "Kürbis 1 kg",
+   "Zwiebel 1",
+   "Knoblauch 2 Zehen",
+   "Gemüsebrühe 700 ml",
+   "Sahne 100 ml",
+   "Ingwer 1 TL",
+   "Kreuzkümmel 1/2 TL",
+   "Olivenöl 3 EL",
+   "Salz, Pfeffer"
+  ],
+  "steps": [
+   "Den Kürbis würfeln und mit Zwiebel und Knoblauch 5 Minuten anbraten.",
+   "Ingwer, Kreuzkümmel, Salz und Pfeffer zugeben.",
+   "Mit der Brühe bedecken und 25 Minuten weich köcheln.",
+   "Mit dem Mixer pürieren, dann die Sahne unterrühren.",
+   "Heiß mit einem Schuss Olivenöl obenauf servieren."
+  ]
+ },
+ "soupa_kremydion": {
+  "n": "Französische Zwiebelsuppe",
+  "ing": [
+   "Zwiebeln 6 große",
+   "Butter 3 EL",
+   "Olivenöl 2 EL",
+   "Weißwein 100 ml",
+   "Rinderbrühe 1 l",
+   "Altbackenes Brot 4 Scheiben",
+   "Gruyère oder Graviera 150 g",
+   "Thymian",
+   "Salz, Pfeffer"
+  ],
+  "steps": [
+   "Die Zwiebeln fein schneiden. In Butter und Öl bei niedriger Hitze 40 Minuten karamellisieren lassen.",
+   "Mit dem Wein ablöschen und verdampfen lassen.",
+   "Brühe, Thymian, Salz und Pfeffer zugeben. 15 Minuten köcheln.",
+   "Die Suppe in feuerfeste Schalen füllen, je eine Brotscheibe und den Käse darauf legen.",
+   "3-4 Minuten unter dem Grill überbacken, bis der Käse schmilzt."
+  ]
+ },
+ "soupa_laxanikon": {
+  "n": "Gemüsesuppe",
+  "ing": [
+   "Kartoffeln 2",
+   "Karotten 2",
+   "1 Zucchini",
+   "Sellerie 2 Zweige",
+   "1 Zwiebel",
+   "Knoblauch 2 Zehen",
+   "1 Tomate",
+   "Gemüsebrühe 1,5 l",
+   "Olivenöl 3 EL",
+   "Petersilie",
+   "Salz, Pfeffer"
+  ],
+  "steps": [
+   "Zwiebel und Knoblauch 3 Minuten im Öl anbraten.",
+   "Die gehackten Karotten, Kartoffeln und den Sellerie zugeben. 5 Minuten mitbraten.",
+   "Zucchini, Tomate, Brühe, Salz und Pfeffer zugeben.",
+   "25 Minuten köcheln, bis das Gemüse weich ist.",
+   "Mit frischer Petersilie und Brot servieren."
+  ]
+ },
+ "soupa_manitarion": {
+  "n": "Champignoncremesuppe",
+  "ing": [
+   "Pilze 500 g",
+   "Zwiebel 1",
+   "Knoblauch 2 Zehen",
+   "Butter 2 EL",
+   "Sahne 200 ml",
+   "Gemüsebrühe 700 ml",
+   "Thymian",
+   "Salz & Pfeffer"
+  ],
+  "steps": [
+   "Vorbereitung: Die 500 g Pilze putzen und in Scheiben schneiden, die Zwiebel und die 2 Knoblauchzehen fein hacken, damit sie gleichmäßig garen.",
+   "Aromaten anbraten: Die 2 EL Butter in einem Topf schmelzen und Zwiebel und Knoblauch glasig dünsten, ohne sie zu bräunen, damit sie süßer werden.",
+   "Pilze garen: Die Pilze zugeben und 8 Minuten garen, bis ihre Flüssigkeit verdampft ist. Wichtig: Sie sollen ihre gesamte Feuchtigkeit abgeben und verdampfen lassen, denn das konzentriert den Geschmack und verhindert eine wässrige Suppe.",
+   "Brühe zugeben: Die 700 ml Gemüsebrühe und den Thymian angießen und 15 Minuten köcheln, damit sich die Aromen verbinden.",
+   "Pürieren: Die Suppe mit dem Stabmixer samtig und glatt pürieren, ohne Stückchen.",
+   "Abschluss: Die 200 ml Sahne zugeben, mit Salz und Pfeffer würzen und noch kurz erwärmen, ohne aufzukochen, damit die Sahne nicht ausflockt. Heiß servieren."
+  ],
+  "wine": "Weißwein.",
+  "plate": "Mit ganzen gebratenen Pilzen obenauf und frischem Brot."
+ },
+ "soupa_tomatas": {
+  "n": "Cremige Tomatensuppe",
+  "ing": [
+   "Tomaten 800 g (oder aus der Dose)",
+   "Zwiebel 1",
+   "Knoblauch 2 Zehen",
+   "Gemüsebrühe 500 ml",
+   "Sahne 100 ml",
+   "Olivenöl 3 EL",
+   "Frisches Basilikum",
+   "Salz, Pfeffer",
+   "Zucker 1 TL"
+  ],
+  "steps": [
+   "Zwiebel und Knoblauch 5 Minuten im Öl anbraten.",
+   "Tomaten, Brühe, Zucker, Salz und Pfeffer zugeben. 20 Minuten köcheln.",
+   "Mit dem Mixer glatt pürieren.",
+   "Die Sahne unterrühren und durcherwärmen.",
+   "Mit frischem Basilikum und Brot servieren."
+  ]
+ },
+ "soupies": {
+  "n": "Sepia in Weißwein",
+  "ing": [
+   "Sepia 800 g",
+   "Weißwein 150 ml",
+   "Zwiebel 1",
+   "Knoblauch 2 Zehen",
+   "Geriebene Tomate 200 g",
+   "Spinat 200 g (optional)",
+   "Olivenöl",
+   "Dill",
+   "Salz & Pfeffer"
+  ],
+  "steps": [
+   "Sepia putzen: Die 800 g Sepia putzen, Schulp und Innereien entfernen und in Stücke schneiden. Nach Belieben die Tinte für eine dunklere, kräftigere Variante aufbewahren. Vor dem Braten gründlich trocken tupfen.",
+   "Sepia anbraten: Die Sepia bei starker Hitze 2-3 Minuten braten. Wichtig: Sie geben zunächst Flüssigkeit ab — diese verdampfen lassen, sonst kocht die Sepia statt zu bräunen und schmeckt fad.",
+   "Aromatische Basis: Die 1 fein gehackte Zwiebel und die 2 Knoblauchzehen zugeben und 3 Minuten weich dünsten. Mit den 150 ml Weißwein ablöschen und den Alkohol verdampfen lassen.",
+   "Sauce und langsames Schmoren: Die 200 g geriebene Tomate, Salz und Pfeffer zugeben. Zugedeckt 30-35 Minuten schmoren, bis die Sepia ganz zart ist. Wichtig: Sepia braucht Geduld — entweder sehr kurz anbraten oder lange sanft schmoren, denn alles dazwischen lässt sie zäh und gummiartig.",
+   "Spinat und Abschluss: Wird der 200 g Spinat verwendet, ihn in den letzten 5 Minuten zugeben, damit er zusammenfällt und dabei Farbe und Nährstoffe behält. Mit gehacktem Dill für Frische abschließen und heiß servieren."
+  ],
+  "wine": "Trockener Weißwein.",
+  "plate": "Mit Reis oder frischem Brot, Dill."
+ },
+ "soupies_melani": {
+  "n": "Sepia in Tintensauce",
+  "ing": [
+   "Frische oder tiefgekühlte Sepia 1,2 kg (mit ihrer Tinte)",
+   "Zwiebeln, 3 große, fein gehackt",
+   "Knoblauch, 2 Zehen, fein gehackt",
+   "Olivenöl 1 Tasse",
+   "Trockener Weißwein 1 Glas",
+   "Tomatenmark 2 EL",
+   "Sepiatinte, 2-3 Beutel (10-15 g)",
+   "Lorbeerblätter, 2",
+   "Salz, frisch gemahlener Pfeffer",
+   "Gehackte Petersilie zum Garnieren"
+  ],
+  "steps": [
+   "Putzen: Die Sepia putzen, Schulp, Innereien und Auge entfernen und die Tintenbeutel vorsichtig in einer Schüssel mit etwas Wasser beiseitelegen. Die Sepia in Scheiben oder Stücke schneiden.",
+   "Zwiebeln anbraten: In einem weiten Topf das Olivenöl erhitzen und die Zwiebeln bei niedriger Hitze etwa 10-12 Minuten weich und glasig dünsten, dabei oft rühren, damit sie nicht dunkel werden.",
+   "Sepia zugeben: Knoblauch und Sepia in den Topf geben und bei starker Hitze 5-6 Minuten anbraten, bis sie die Farbe wechseln und ihre Flüssigkeit abgeben.",
+   "Mit Wein ablöschen: Mit dem Weißwein ablöschen und den Alkohol 2-3 Minuten verdampfen lassen, dann Tomatenmark, Lorbeerblätter, Salz und Pfeffer zugeben.",
+   "Wichtig: Sepia braucht langsames, sanftes Schmoren, um zart zu werden, ohne gummiartig zu sein; je nach Größe braucht sie 45-60 Minuten bei niedriger Hitze im geschlossenen Topf, dabei etwas heißes Wasser nachgießen, wenn die Flüssigkeit knapp wird.",
+   "Tinte zugeben: Kurz vor Ende der Garzeit die Sepiatinte in etwas Kochflüssigkeit auflösen und in den Topf geben, gut umrühren, damit die Sauce tiefschwarz wird.",
+   "Letztes Köcheln: Offen weitere 10-15 Minuten köcheln, bis die Sauce andickt und samtig wird, dabei Salz und Pfeffer anpassen.",
+   "Servieren: Die Sepia heiß servieren, mit gehackter Petersilie bestreut, dazu weißer Reis oder Nudeln, die die Tintensauce aufnehmen."
+  ],
+  "wine": "Trockener weißer Assyrtiko aus Santorini, kühl und mineralisch.",
+  "plate": "Auf einem flachen Teller über weißem Reis oder kleinen Nudeln serviert, mit frischer Petersilie und einer Zitronenspalte dazu."
+ },
+ "soupies_spanaki": {
+  "n": "Sepia mit Spinat",
+  "ing": [
+   "Sepia 600 g, geputzt",
+   "Spinat 500 g",
+   "Zwiebel 1",
+   "Knoblauch 2 Zehen",
+   "Weißwein 1/2 Tasse",
+   "Frischer Dill",
+   "Olivenöl 4 EL",
+   "Salz & Pfeffer"
+  ],
+  "steps": [
+   "Sepia putzen: In Streifen schneiden. Gut waschen, um die Tinte zu entfernen (wenn keine dunkle Sauce gewünscht ist).",
+   "Anbraten: Zwiebel und Knoblauch 5 Minuten im Öl dünsten. Die Sepia zugeben und 5 Minuten bei starker Hitze anbraten.",
+   "Ablöschen: Mit Wein ablöschen und 2 Minuten verdampfen lassen.",
+   "Schmoren: Etwas Wasser zugeben und mit Salz und Pfeffer würzen. Zugedeckt 30-35 Minuten schmoren, bis die Sepia zart ist.",
+   "Spinat: Den Spinat (frisch oder tiefgekühlt) und den Dill zugeben. Weitere 5-10 Minuten garen, bis er zusammenfällt. Wichtig: Den Spinat nicht übergaren — er verliert Farbe und Nährstoffe."
+  ],
+  "wine": "Trockener Weißwein.",
+  "plate": "In einem tiefen Teller mit Brot."
+ },
+ "soutzoukakia": {
+  "n": "Soutzoukakia aus Smyrna",
+  "ing": [
+   "500 g Rinderhackfleisch",
+   "1 Ei",
+   "2 Scheiben altbackenes Brot",
+   "2 Knoblauchzehen",
+   "1 TL Kreuzkümmel",
+   "400 g geriebene Tomate",
+   "Zimt",
+   "Olivenöl",
+   "Salz & Pfeffer"
+  ],
+  "steps": [
+   "Brot einweichen: 2 Scheiben altbackenes Brot in etwas Wasser einweichen und sehr gut ausdrücken. Wichtig: Das Brot muss gut ausgedrückt sein, denn überschüssige Feuchtigkeit macht die Hackmasse weich und die Soutzoukakia zerfallen beim Braten.",
+   "Kneten: In einer Schüssel 500 g Rinderhack, 1 Ei, das ausgedrückte Brot, 2 geriebene Knoblauchzehen, 1 TL Kreuzkümmel, etwas Zimt, Salz und Pfeffer vermengen. 5 Minuten kräftig kneten. Gutes Kneten bindet die Masse, sodass sie ihre Form hält.",
+   "Masse ruhen lassen: Die Hackmasse 30 Minuten im Kühlschrank ruhen lassen, damit sie fester wird und sich die Aromen verbinden, besonders Kreuzkümmel und Zimt, die Soutzoukakia nach Smyrna-Art ausmachen.",
+   "Formen: Zu länglichen, wurstartigen Rollen formen, mit leicht feuchten Händen, damit die Masse nicht klebt.",
+   "Anbraten: Die Soutzoukakia in etwas Olivenöl bei mittlerer bis starker Hitze rundum bräunen. Sie müssen jetzt noch nicht durchgegart sein, denn sie garen in der Sauce fertig.",
+   "Sauce: In derselben Pfanne die 400 g geriebene Tomate, etwas Zimt, Salz, Pfeffer und etwas Wasser zugeben. 5 Minuten köcheln, damit die Sauce leicht andickt.",
+   "Schmoren: Die Soutzoukakia zurück in die Sauce geben und 20 Minuten bei niedriger Hitze schmoren. Wichtig: Das langsame Schmoren lässt sie die Sauce aufsaugen und macht sie weich und saftig. Mit Reis oder Kartoffeln servieren."
+  ],
+  "wine": "Trockener Rotwein.",
+  "plate": "Mit Reis oder Kartoffelpüree, Tomatensauce darüber gelöffelt."
+ },
+ "souvlakia": {
+  "n": "Schweine-Souvlaki",
+  "ing": [
+   "Schweinenacken 600 g",
+   "Olivenöl 3 EL",
+   "Oregano",
+   "Zitronensaft",
+   "Knoblauch 2 Zehen",
+   "Salz & Pfeffer"
+  ],
+  "steps": [
+   "Fleisch schneiden: Den 600 g Schweinenacken in gleich große Würfel von 2-3 cm schneiden. Gleichmäßige Stücke garen gleich schnell und trocknen nicht ungleichmäßig aus.",
+   "Marinade: 3 EL Olivenöl, Zitronensaft, Oregano und 2 zerdrückte Knoblauchzehen mischen. WICHTIG: Nicht früh salzen, denn Salz zieht Flüssigkeit heraus und trocknet das Fleisch aus — stattdessen erst kurz vor dem Grillen salzen.",
+   "Marinieren: Das Fleisch mindestens 1 Stunde im Kühlschrank in der Marinade ziehen lassen. Zitrone und Olivenöl machen das Schweinefleisch zart und würzen es bis innen.",
+   "Aufspießen: Die Würfel auf Spieße stecken, ohne sie zu fest zusammenzudrücken. Kleine Abstände zwischen den Stücken lassen Luft zirkulieren, sodass sie rundum bräunen.",
+   "Grillen: Auf gut vorgeheiztem Grill 10-12 Minuten grillen und alle 2-3 Minuten wenden, für gleichmäßige Bräunung. WICHTIG: Der Grill muss sehr heiß sein, bevor das Fleisch daraufkommt, damit sich eine Kruste bildet und die Spieße nicht kleben.",
+   "Ruhen lassen: Die Spieße vor dem Servieren 2-3 Minuten ruhen lassen, damit sich die Säfte setzen.",
+   "Servieren: In warmem Pitabrot mit Tzatziki, Tomate und Zwiebel servieren."
+  ],
+  "wine": "Trockener Rotwein.",
+  "plate": "Im Pitabrot oder auf dem Teller mit Kartoffeln."
+ },
+ "spaghetti_bolognese": {
+  "n": "Spaghetti Bolognese",
+  "ing": [
+   "Spaghetti 320 g",
+   "Rinderhackfleisch 400 g",
+   "Geriebene Tomate 400 g",
+   "Zwiebel 1",
+   "Karotte 1",
+   "Sellerie 1 Stange",
+   "Knoblauch 2 Zehen",
+   "Rotwein 100 ml",
+   "Milch 50 ml",
+   "Olivenöl",
+   "Parmesan"
+  ],
+  "steps": [
+   "Soffritto: Zwiebel, Karotte und Selleriestange fein hacken und 5 Minuten in Olivenöl weich dünsten. WICHTIG: Diese aromatische Basis (Soffritto) ist das Fundament des Bolognese-Geschmacks.",
+   "Knoblauch und Fleisch zugeben: Die 2 Knoblauchzehen 1 Minute zugeben, dann die 400 g Rinderhack, unter Rühren braun braten, bis die Flüssigkeit verdampft ist.",
+   "Mit Wein ablöschen: Mit den 100 ml Rotwein ablöschen und den Alkohol verdampfen lassen, dabei den Pfannenboden abkratzen, um die Aromen zu lösen.",
+   "Sauce: Die 400 g geriebene Tomate, die 50 ml Milch, Salz und Pfeffer zugeben. Die Milch rundet die Säure der Tomate ab und macht die Sauce samtiger.",
+   "Schmoren: Zugedeckt 35-40 Minuten unter gelegentlichem Rühren schmoren, damit die Sauce andickt und sich die Aromen konzentrieren.",
+   "Nudeln kochen und servieren: Die 320 g Spaghetti al dente kochen, mit der Sauce vermengen und mit geriebenem Parmesan servieren."
+  ],
+  "wine": "Trockener Rotwein.",
+  "plate": "Spaghettinest, Sauce in der Mitte, Parmesan."
+ },
+ "spaghetti_poutanesca": {
+  "n": "Spaghetti alla Puttanesca",
+  "ing": [
+   "Spaghetti 200 g",
+   "Geriebene Tomate 400 g",
+   "Kalamata-Oliven 80 g",
+   "Kapern 2 EL",
+   "Sardellen 4 (optional)",
+   "Knoblauch 3 Zehen",
+   "Scharfe Chilischote 1",
+   "Natives Olivenöl extra",
+   "Basilikum oder Petersilie"
+  ],
+  "steps": [
+   "Nudeln kochen: Salzwasser aufkochen und die 200 g Spaghetti garen. WICHTIG: Eine Tasse Nudelwasser aufbewahren, denn seine Stärke hilft später, dass die Sauce an den Nudeln haftet.",
+   "Aromatische Basis: Die 3 Knoblauchzehen, die Chilischote und die 4 Sardellen 2 Minuten in Olivenöl anbraten und rühren, bis sich die Sardellen auflösen und ihre Umami-Note abgeben.",
+   "Sauce zugeben: Die 400 g geriebene Tomate, die 80 g Kalamata-Oliven und die 2 EL Kapern zugeben. Diese salzigen Zutaten geben der Puttanesca ihren kräftigen Charakter.",
+   "Köcheln: Die Sauce 12-15 Minuten einkochen, bis sie reduziert und angedickt ist. Vor dem Salzen probieren, da Sardellen, Oliven und Kapern bereits salzig sind.",
+   "Vereinen: Die Spaghetti kurz vor al dente abgießen und mit etwas Nudelwasser in die Sauce geben. 1-2 Minuten bei starker Hitze schwenken, bis alles überzogen ist.",
+   "Servieren: Vom Herd nehmen, frisches Basilikum oder Petersilie und einen rohen Löffel Olivenöl für Glanz und Aroma zugeben. Sofort servieren."
+  ],
+  "wine": "Trockener Rotwein.",
+  "plate": "Tiefer Teller, Oliven und Basilikum obenauf."
+ },
+ "spanaki_giaourti": {
+  "n": "Spinat mit Joghurt",
+  "ing": [
+   "Frischer Spinat 500 g",
+   "Abgetropfter Joghurt 300 g",
+   "Knoblauch 2 Zehen",
+   "Olivenöl 3 EL",
+   "1/2 Zitrone",
+   "Salz",
+   "Chiliflocken"
+  ],
+  "steps": [
+   "Den Spinat in einer Pfanne mit etwas Öl 3-4 Minuten zusammenfallen lassen. Überschüssige Flüssigkeit ausdrücken.",
+   "Den Joghurt mit geriebenem Knoblauch, Zitrone und Salz verrühren.",
+   "Den Joghurt auf dem Teller ausstreichen.",
+   "Den Spinat darauf geben.",
+   "Mit Öl beträufeln und mit Chiliflocken bestreuen."
+  ]
+ },
+ "spanakopita": {
+  "n": "Spinat-Feta-Pita",
+  "ing": [
+   "Filoteig 500 g",
+   "Spinat 1 kg",
+   "Geriebener Feta 400 g",
+   "Frische Frühlingszwiebeln 6",
+   "Eier 3",
+   "Frischer Dill",
+   "Olivenöl 4 EL",
+   "Geschmolzene Butter 80 g"
+  ],
+  "steps": [
+   "Spinat vorbereiten: Den 1 kg Spinat sehr gut waschen und fein hacken. Leicht salzen und mit den Händen durchkneten, damit er seine Flüssigkeit abgibt.",
+   "Ausdrücken: Den Spinat sehr gut ausdrücken, um möglichst viel Wasser zu entfernen. Wichtig: Je trockener der Spinat, desto knuspriger die Pita — Feuchtigkeit weicht den Teig auf.",
+   "Füllung: In einer Schüssel den Spinat mit den 400 g geriebenem Feta, den 6 gehackten Frühlingszwiebeln, dem Dill, den 3 Eiern und den 4 EL Olivenöl mischen. Pfeffer zugeben und vor dem Salzen probieren, da Feta bereits salzig ist.",
+   "Untere Blätter schichten: Die Form ausbuttern und die Hälfte der Filoblätter einlegen, jedes Blatt mit geschmolzener Butter (von den 80 g) bestreichen. Die Butter zwischen den Blättern gibt Knusprigkeit und Farbe.",
+   "Füllen und schließen: Die Füllung gleichmäßig verteilen und mit den restlichen Blättern abdecken, jedes wieder buttern. Die Ränder nach innen einschlagen.",
+   "Vorschneiden: Die Oberfläche mit dem Messer in Stücke vorschneiden, ohne bis zur Füllung durchzuschneiden. So lässt sich die Pita später leicht teilen und der Dampf kann beim Backen entweichen.",
+   "Backen: Bei 180 °C 50-55 Minuten backen, bis der Teig bräunt und knusprig wird. Vor dem Schneiden 10 Minuten ruhen lassen."
+  ],
+  "wine": "Rosé oder aromatischer Weißwein.",
+  "plate": "Warm, mit Joghurt dazu."
+ },
+ "spanakoryzo": {
+  "n": "Spinatreis",
+  "ing": [
+   "Spinat 600 g",
+   "Reis 150 g",
+   "Zwiebel 1",
+   "Frühlingszwiebeln 4",
+   "Olivenöl 4 EL",
+   "Dill",
+   "Zitrone 1"
+  ],
+  "steps": [
+   "Spinat vorbereiten: 600 g Spinat in reichlich Wasser sehr gut waschen, um Erde und Sand zu entfernen, dann fein hacken. WICHTIG: Sehr gut abtropfen lassen, denn überschüssiges Wasser verdünnt das Gericht und stört das Verhältnis von Flüssigkeit zu Reis.",
+   "Zwiebeln anbraten: In einem Topf 4 EL Olivenöl erhitzen und 1 fein gehackte Zwiebel zusammen mit 4 fein gehackten Frühlingszwiebeln bei mittlerer Hitze 4-5 Minuten weich und glasig dünsten, ohne Farbe nehmen zu lassen. Das macht sie süßer und gibt Tiefe.",
+   "Spinat zusammenfallen lassen: Den Spinat zugeben und 3-4 Minuten bei starker Hitze rühren, bis er zusammenfällt und sein Volumen abnimmt. Der Spinat gibt seine eigene Flüssigkeit ab, die beim Garen des Reises hilft.",
+   "Reis zugeben: Die 150 g Reis zugeben und 1 Minute rühren, damit die Körner mit Öl überzogen werden (sie glänzen), sodass der Reis körnig und locker bleibt. 350 ml heißes Wasser und Salz zugeben.",
+   "Köcheln: Die Hitze reduzieren, zudecken und 18-20 Minuten köcheln, bis der Reis die Flüssigkeit aufgenommen hat und weich ist. Nicht ständig rühren, damit er nicht matschig wird.",
+   "Abschluss: Vom Herd nehmen und den Saft von 1 Zitrone sowie reichlich frisch gehackten Dill zugeben. WICHTIG: Zitrone und Dill kommen ganz zum Schluss vom Herd genommen dazu, um Frische und Aroma zu erhalten, die beim Kochen verloren gingen.",
+   "Servieren: Zugedeckt 5 Minuten ruhen lassen und mit Feta dazu servieren, dessen Salzigkeit gut zur Säure der Zitrone passt."
+  ],
+  "wine": "Aromatischer Weißwein.",
+  "plate": "Tiefer Teller, Zitrone, Feta dazu."
+ },
+ "spanakotypopita": {
+  "n": "Spinat-Käse-Pita",
+  "ing": [
+   "Filoblätter 8",
+   "Frischer Spinat 600 g",
+   "Feta 300 g",
+   "Graviera 100 g",
+   "Eier 3",
+   "Frühlingszwiebeln 4",
+   "Dill",
+   "Olivenöl",
+   "Salz, Pfeffer"
+  ],
+  "steps": [
+   "Den Spinat waschen und fein hacken. Salzen und sehr gut ausdrücken, um die Flüssigkeit zu entfernen.",
+   "Den Spinat mit zerbröseltem Feta, geriebener Graviera, Eiern, Frühlingszwiebeln und Dill mischen. Mit Salz abschmecken.",
+   "Eine Form einfetten und 4 Filoblätter einlegen, jedes Blatt mit Öl bestreichen.",
+   "Die Füllung gleichmäßig verteilen.",
+   "Mit den restlichen 4 Filoblättern abdecken, jedes mit Öl bestreichen. Die Oberfläche vorschneiden und leicht mit Wasser besprenkeln.",
+   "Bei 185 °C 45-50 Minuten backen, bis alles kräftig goldbraun ist."
+  ]
+ },
+ "spetzofai": {
+  "n": "Spetzofai vom Pilion",
+  "ing": [
+   "Bauernwürste 700 g",
+   "Grüne Paprika (Florina oder lang) 6",
+   "Geriebene Tomate 500 g",
+   "Tomatenmark 1 EL",
+   "Zwiebel 1",
+   "Knoblauch 3 Zehen",
+   "Olivenöl 1/2 Tasse",
+   "Rotwein 100 ml",
+   "Chiliflocken 1/2 TL",
+   "Lorbeerblatt 1",
+   "Salz, Pfeffer"
+  ],
+  "steps": [
+   "Würste vorbereiten: Die Würste in dicke Scheiben von 3 cm schneiden. Bauernwurst mit Fenchel und Lauch gibt diesem Gericht seinen Pilion-Geschmack.",
+   "Würste anbraten: Im Öl bei starker Hitze rundum kräftig bräunen, dann herausnehmen. Wichtig: Ihr ausgelassenes Fett bleibt in der Pfanne und wird zum Rückgrat der Sauce.",
+   "Paprika braten: Die Paprika in dicke Streifen schneiden und im selben Fett 4-5 Minuten braten, bis sie Blasen werfen und an den Rändern weich werden.",
+   "Paprika herausnehmen: Auch die Paprika herausnehmen, damit sie beim Köcheln der Sauce nicht übergaren und zerfallen.",
+   "Sauce zubereiten: Die gehackte Zwiebel und den Knoblauch 4 Minuten dünsten, das Tomatenmark zugeben und 1 Minute mitrösten.",
+   "Ablöschen: Den Wein angießen und verdampfen lassen, dabei alles vom Pfannenboden lösen.",
+   "Köcheln: Die geriebene Tomate, das Lorbeerblatt und die Chiliflocken zugeben und 15 Minuten köcheln, bis die Sauce andickt.",
+   "Vereinen: Würste und Paprika zurückgeben und weitere 10 Minuten zusammen köcheln, damit sich die Aromen verbinden, ohne dass die Paprika zerfällt.",
+   "Ruhen lassen: Vom Herd nehmen und 10 Minuten stehen lassen. Spetzofai gehört zu den Gerichten, die warm besser schmecken als kochend heiß."
+  ],
+  "wine": "Ein kräftiger Rotwein — Xinomavro oder ein Rapsani aus derselben Region.",
+  "plate": "Direkt aus der Pfanne oder in einer Tonschale servieren, mit reichlich Brot und Feta dazu."
+ },
+ "spitiki_marmelada": {
+  "n": "Hausgemachte Marmelade",
+  "ing": [
+   "Obst (Erdbeeren, Aprikosen oder Feigen) 1 kg",
+   "Zucker 700 g",
+   "Zitronensaft 3 EL",
+   "Wasser 100 ml"
+  ],
+  "steps": [
+   "Reifes, aber festes Obst wählen — überreifes Obst hat das Pektin verloren, das die Marmelade gelieren lässt.",
+   "Das Obst waschen, entstielen und in gleichmäßige Stücke schneiden.",
+   "Abwechselnd mit dem Zucker in eine Schüssel schichten und 4 Stunden oder über Nacht stehen lassen, bis der Saft frei austritt.",
+   "Wichtig: Dieses Ziehen bedeutet später kürzeres Kochen, sodass das Obst seine Farbe und seinen frischen Geschmack behält, statt gekocht zu schmecken.",
+   "Alles in einen weiten flachen Topf umfüllen. Ein weiter Topf verdampft schneller und braucht viel weniger Kochzeit als ein tiefer.",
+   "Aufkochen und den Schaum sorgfältig abschöpfen.",
+   "Bei mittlerer bis starker Hitze 20-30 Minuten kochen, dabei rühren, damit nichts am Boden ansetzt.",
+   "Wichtig: Auf einem im Gefrierfach gekühlten Teller testen — ein Tropfen soll Falten werfen, wenn man ihn mit dem Finger schiebt. Läuft er, weiterkochen.",
+   "In den letzten 3 Minuten den Zitronensaft zugeben: Pektin und Säure helfen beim Gelieren und verhindern das Kristallisieren.",
+   "Kochend heiß in sterilisierte Gläser füllen, sofort verschließen und 5 Minuten auf den Kopf stellen, damit ein Vakuum entsteht."
+  ],
+  "wine": "Nicht zutreffend — fürs Frühstück.",
+  "plate": "In einem Glas mit einem Holzlöffel servieren, neben frischem Brot und Butter."
+ },
+ "stifado": {
+  "n": "Kaninchen-Stifado",
+  "ing": [
+   "Kaninchen 1 kg, in Stücke geschnitten",
+   "Perlzwiebeln 500 g",
+   "Rotwein 200 ml",
+   "Geriebene Tomate 200 g",
+   "Knoblauch 5 Zehen",
+   "Zimt, Nelken, Piment",
+   "Essig 2 EL"
+  ],
+  "steps": [
+   "Fleisch trocknen und anbraten: Die 1 kg Kaninchenstücke mit Küchenpapier gründlich trocken tupfen und in Olivenöl bei starker Hitze rundum anbraten. Wichtig: Die Stücke nicht dicht in den Topf packen — zu eng gedrängt geben sie Flüssigkeit ab und dämpfen statt zu bräunen. Das Anbraten karamellisiert die Oberfläche und gibt Tiefe.",
+   "Mit Wein und Essig ablöschen: Mit den 200 ml Rotwein und 2 EL Essig ablöschen und den Bratensatz vom Boden lösen. Den Alkohol 2-3 Minuten verdampfen lassen, damit der Geschmack ohne Bitterkeit bleibt.",
+   "Tomate und Gewürze: Die 200 g geriebene Tomate, die 5 Knoblauchzehen, Zimt, Nelken und Piment zugeben. Etwas heißes Wasser angießen, sodass das Fleisch knapp bedeckt ist, und zugedeckt 45 Minuten schmoren. Die warmen Gewürze sind die Seele des Stifado und brauchen Zeit, um einzuziehen.",
+   "Zwiebeln zugeben: Die 500 g Perlzwiebeln ganz in die Sauce geben. Wichtig: Sie ganz lassen und erst in der zweiten Hälfte der Garzeit zugeben, damit sie weich werden, ohne zu zerfallen, und süß und intakt bleiben.",
+   "Abschluss: Weitere 30 Minuten sanft schmoren, bis das Kaninchen butterzart ist und die Zwiebeln süß geworden sind. Die Sauce soll andicken und glänzen — ist sie zu dünn, in den letzten Minuten den Deckel abnehmen und einkochen lassen.",
+   "Servieren: Das Stifado heiß servieren, idealerweise mit Hilopites, Kartoffelpüree oder Brot, das die kräftige Sauce aufnimmt."
+  ],
+  "wine": "Trockener Rotwein.",
+  "plate": "Tiefer Teller, Perlzwiebeln, Thymian."
+ },
+ "stir_fry_kotopoulo": {
+  "n": "Hähnchen-Stir-Fry",
+  "ing": [
+   "Hähnchenbrust 600 g",
+   "Rote und grüne Paprika 2",
+   "Brokkoli 200 g",
+   "Karotte 1",
+   "Frühlingszwiebeln 4",
+   "Knoblauch 3 Zehen",
+   "Frischer Ingwer 2 cm",
+   "Sojasauce 4 EL",
+   "Honig 1 EL",
+   "Speisestärke 1 EL",
+   "Sesamöl 1 EL",
+   "Sonnenblumenöl 3 EL",
+   "Sesam"
+  ],
+  "steps": [
+   "Hähnchen schneiden: Die Hähnchenbrust quer zur Faser in dünne Streifen schneiden, alle gleich groß, damit sie gleich schnell garen.",
+   "Marinieren: Das Hähnchen mit 2 EL Sojasauce und der Speisestärke vermengen und 15 Minuten ziehen lassen. Die Stärke bildet eine Hülle, die das Fleisch bei großer Hitze saftig hält.",
+   "Alles vorher vorbereiten: Wichtig: Das gesamte Gemüse schneiden und bereitstellen, bevor die Hitze angeht. Ein Stir-Fry dauert insgesamt 8 Minuten, für Schneiden zwischendurch bleibt keine Zeit.",
+   "Sauce anrühren: Die restliche Sojasauce, den Honig, den geriebenen Ingwer und 3 EL Wasser in einer kleinen Schüssel mischen.",
+   "Pfanne erhitzen: Einen Wok oder eine weite Pfanne erhitzen, bis sie wirklich raucht. Wichtig: Eine lauwarme Pfanne schmort das Essen, statt es anzubraten, und das Gemüse wird labberig.",
+   "Hähnchen garen: Öl und das Hähnchen in einer Lage zugeben, 1 Minute unberührt Farbe nehmen lassen, dann 3 Minuten unter Rühren braten und herausnehmen.",
+   "Gemüse garen: Etwas mehr Öl zugeben und das härtere Gemüse — Brokkoli und Karotte — 2 Minuten braten, dann die Paprika weitere 2 Minuten.",
+   "Vereinen: Das Hähnchen zurückgeben, den Knoblauch und die Sauce zugeben und alles 1-2 Minuten schwenken, bis die Sauce andickt und die Zutaten glasiert.",
+   "Abschluss: Vom Herd genommen das Sesamöl, die Frühlingszwiebeln und den Sesam zugeben und sofort servieren."
+  ],
+  "wine": "Ein aromatischer Weißwein — Riesling oder Malagousia — oder ein kaltes Bier.",
+  "plate": "Über gedämpftem Reis in einer tiefen Schale servieren, mit Sesam und Frühlingszwiebel darüber gestreut."
+ },
+ "strapatsada": {
+  "n": "Strapatsada",
+  "ing": [
+   "3 Eier",
+   "2 reife Tomaten",
+   "2 EL Olivenöl",
+   "Salz & Pfeffer",
+   "50 g Feta (optional)"
+  ],
+  "steps": [
+   "Tomaten vorbereiten: Die 2 reifen Tomaten reiben oder sehr fein hacken. Reife Tomaten haben mehr Süße und Saft, die die Basis des Gerichts bilden.",
+   "Tomate anbraten: Die Tomate in den 2 EL Olivenöl 3-4 Minuten braten, bis die Flüssigkeit verdampft ist. Wichtig: Die Tomate muss gut abtrocknen und zu einer Sauce einkochen, bevor die Eier dazukommen — sonst wird das Gericht wässrig und die Eier stocken nicht richtig.",
+   "Eier verquirlen: Die 3 Eier mit Salz und Pfeffer verquirlen. Leichtes Schlagen bringt Luft ein und macht das Ergebnis fluffiger.",
+   "Eier garen: Die Hitze reduzieren, die Eier über die Tomate gießen und vorsichtig rühren, bis sie leicht stocken, aber saftig bleiben. Wichtig: Kurz vor dem völligen Austrocknen vom Herd nehmen, da sie durch die Restwärme der Pfanne weitergaren.",
+   "Servieren: Nach Belieben 50 g Feta darüber bröseln und sofort heiß mit frischem Brot servieren. Der Feta gibt einen salzigen Kontrast zur Süße der Tomate."
+  ],
+  "wine": "Rosé oder ein leichter Weißwein.",
+  "plate": "Auf Toast oder Bauernbrot."
+ },
+ "stratsiatela": {
+  "n": "Stracciatella-Torte",
+  "ing": [
+   "Fertiger oder selbst gebackener Biskuitboden, 1 (22 cm)",
+   "Sahne 35 % 500 ml",
+   "Puderzucker 100 g",
+   "Mascarpone 250 g",
+   "Geraspelte Zartbitterschokolade 150 g",
+   "Milch 100 ml",
+   "Amaretto- oder Vanillelikör 2 EL",
+   "Vanille 1 Päckchen"
+  ],
+  "steps": [
+   "Biskuit teilen: Den Biskuitboden waagerecht in zwei oder drei gleich dicke Schichten schneiden.",
+   "Tränken: Die Milch mit dem Likör mischen und jede Schicht leicht beträufeln, sodass sie weich wird, ohne zu durchweichen.",
+   "Sahne schlagen: Die gekühlte Sahne mit dem Puderzucker und der Vanille zu steifer Schlagsahne aufschlagen.",
+   "Mascarpone einarbeiten: Den Mascarpone zur Schlagsahne geben und mit dem Teigschaber behutsam glatt unterheben.",
+   "Wichtig: Die geraspelte Schokolade muss sehr kalt und trocken sein, bevor sie unter die Creme gehoben wird, damit sie die typischen kleinen Sprenkel der Stracciatella bildet, statt zu schmelzen und die Creme zu verfärben.",
+   "Schokolade zugeben: Zwei Drittel der geraspelten Schokolade mit leichten Bewegungen vorsichtig unter die Mascarponecreme heben.",
+   "Zusammensetzen: Zwischen jede Biskuitschicht Creme streichen und die ganze Torte mit dem Rest überziehen.",
+   "Abschluss: Oberfläche und Seiten mit der restlichen geraspelten Schokolade bestreuen und vor dem Servieren mindestens 3 Stunden kalt stellen."
+  ],
+  "wine": "Süßer Schaumwein oder Cappuccino",
+  "plate": "In Stücken mit zusätzlicher geraspelter Schokolade obenauf servieren."
+ }
+}

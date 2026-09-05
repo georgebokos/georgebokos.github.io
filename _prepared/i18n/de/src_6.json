@@ -1,0 +1,606 @@
+{
+ "kotopoulo_manitaria": {
+  "n": "Chicken with Mushrooms",
+  "ing": [
+   "Chicken breast 600g",
+   "Mixed mushrooms 400g",
+   "Heavy cream 200ml",
+   "Onion 1",
+   "Garlic 2 cloves",
+   "White wine 100ml",
+   "Butter 30g",
+   "Thyme",
+   "Salt & pepper"
+  ],
+  "steps": [
+   "Preparing the chicken: Cut the 600g chicken breast into strips and season with salt and pepper. Even strips cook quickly and evenly.",
+   "Browning the chicken: Brown the chicken in part of the 30g butter for 4-5 minutes per side, then remove. Important: don't overcrowd the pan, or the chicken will steam instead of browning — cook in batches if needed.",
+   "Sautéing the mushrooms: In the same pan, sauté the 400g mushrooms over high heat until browned and their moisture has evaporated. This develops flavor and keeps the sauce from becoming watery.",
+   "Aromatics: Add 1 finely chopped onion, 2 garlic cloves and thyme, and sauté until softened.",
+   "Deglazing with wine: Deglaze with the 100ml white wine and let the alcohol evaporate, scraping up the bottom of the pan. The caramelized bits left behind add depth to the sauce.",
+   "Finishing the sauce: Pour in the 200ml cream, return the chicken to the pan and simmer for 10 minutes until the sauce thickens. Important: keep the heat low after adding the cream, as a hard boil can cause it to split.",
+   "Serving: Taste, adjust salt and pepper, and serve hot."
+  ],
+  "wine": "Dry white.",
+  "plate": "With rice or mashed potatoes, mushrooms on top."
+ },
+ "kotopoulo_pane": {
+  "n": "Chicken Schnitzel",
+  "ing": [
+   "Chicken breast fillets 4 (about 600g)",
+   "All-purpose flour 1 cup",
+   "Eggs 2",
+   "Breadcrumbs 1½ cups",
+   "Grated parmesan 3 tbsp (optional)",
+   "Garlic powder 1 tsp",
+   "Salt and pepper",
+   "Sunflower oil for frying 1 cup",
+   "Lemon 1 (for serving)"
+  ],
+  "steps": [
+   "Preparing the meat: Slice each chicken fillet horizontally through the middle to make it thinner. Place the pieces between two sheets of parchment paper and pound them with a meat mallet until about 1 cm thick. Important: an even, thin thickness is the secret to a schnitzel that cooks quickly and stays juicy without the coating burning.",
+   "Seasoning: Season the cutlets well with salt and pepper on both sides. Let them come to room temperature for 10 minutes.",
+   "Setting up the breading station: Prepare three plates. Put the flour in the first, the beaten eggs with a little salt in the second, and the breadcrumbs mixed with the parmesan and garlic powder in the third.",
+   "Breading: Coat each fillet first in flour (shaking off the excess), then in egg, and finally in breadcrumbs, pressing well so the coating sticks all over. Important: press the breadcrumbs on firmly by hand for an even, crisp crust.",
+   "Heating the oil: Heat the sunflower oil in a wide skillet over medium-high heat. It's ready when a pinch of breadcrumbs sizzles immediately on contact (about 170-180°C).",
+   "Frying: Fry the cutlets for 3-4 minutes per side, until golden and crisp. Don't overcrowd the pan, or the temperature will drop.",
+   "Draining: Transfer to a plate lined with paper towels to drain off excess oil.",
+   "Serving: Serve hot with lemon wedges for squeezing over."
+  ],
+  "wine": "A crisp dry white or ice-cold beer.",
+  "plate": "Serve with french fries and a refreshing green salad."
+ },
+ "kotopoulo_paprika": {
+  "n": "Chicken Paprika",
+  "ing": [
+   "Chicken thighs 4 (800g)",
+   "Onion 1 large",
+   "Garlic 3 cloves",
+   "Sweet paprika 3 tbsp",
+   "Smoked paprika 1 tbsp",
+   "Grated tomato 200g",
+   "Heavy cream or slow-simmered milk 150ml",
+   "Olive oil 3 tbsp",
+   "Salt, pepper, thyme"
+  ],
+  "steps": [
+   "Browning the chicken: Season the thighs with salt and pepper and brown them in olive oil on all sides for 4-5 minutes. Remove and set aside. This locks in the juices.",
+   "Base: In the same pan, sauté the onion for 3 minutes. Add the garlic and both paprikas. Stir for 1 minute over low heat. Important: paprika burns easily over high heat and turns bitter.",
+   "Simmering: Add the tomato, thyme and ½ cup water. Return the chicken to the pan. Simmer covered for 25 minutes.",
+   "Finishing: Remove the chicken. Stir the cream into the sauce and let it thicken for 2 minutes. Serve the chicken topped with the sauce, with rice or mashed potatoes."
+  ],
+  "wine": "Red or rosé.",
+  "plate": "With a rich paprika sauce and rice."
+ },
+ "kotopoulo_rizi": {
+  "n": "Chicken with Rice",
+  "ing": [
+   "Chicken pieces 800g",
+   "Rice 1.5 cups",
+   "Onion 1",
+   "Garlic 2 cloves",
+   "Grated tomato 200g",
+   "Cinnamon 1/2 tsp",
+   "Allspice 2 berries",
+   "Chicken stock 800ml",
+   "Olive oil",
+   "Salt & pepper"
+  ],
+  "steps": [
+   "Browning the chicken: Season the chicken pieces with salt and pepper and brown them on all sides in hot oil, 3-4 minutes per side. Browning seals in the juices and adds depth of flavor.",
+   "Sautéing: Remove the chicken, sauté the onion and garlic in the same oil for 5 minutes.",
+   "Sauce: Add the tomato, cinnamon, allspice and salt. Return the chicken to the pot. Simmer covered for 20 minutes until cooked through.",
+   "Adding the rice: Remove the chicken, measure the liquid in the pot and add stock so you have 3 cups total. Add the rice and stir.",
+   "Cooking the rice: Simmer covered for 18 minutes over low heat. IMPORTANT: do not stir while it cooks.",
+   "Serving: Place the chicken on top of the rice, cover and let stand for 5 minutes."
+  ],
+  "wine": "Dry white.",
+  "plate": "Rice as the base with chicken on top."
+ },
+ "kotopoulo_souvlaki": {
+  "n": "Chicken Souvlaki",
+  "ing": [
+   "Chicken breast 600g",
+   "Olive oil 3 tbsp",
+   "Juice of 1 lemon",
+   "Garlic 2 cloves",
+   "Oregano 1 tsp",
+   "Sweet paprika 1/2 tsp",
+   "Yogurt 2 tbsp",
+   "Salt & pepper"
+  ],
+  "steps": [
+   "Cutting: Cut the breast into 2.5cm cubes. Even size means even cooking.",
+   "Marinade: Mix olive oil, lemon, garlic, oregano, paprika and yogurt. The yogurt tenderizes the meat and helps keep it juicy.",
+   "Marinating: Let the cubes sit in the marinade for at least 30 minutes (2-3 hours is better). IMPORTANT: salt only lightly, just before grilling.",
+   "Skewering: Thread 5-6 cubes onto each skewer without packing them too tightly.",
+   "Grilling: Grill over a very hot grill for 8-10 minutes, turning every 2-3 minutes for even browning. Chicken breast cooks fast — don't overcook it.",
+   "Serving: Serve in pita or on a plate with tzatziki, tomato and onion."
+  ],
+  "wine": "Rosé.",
+  "plate": "Pita with tzatziki and vegetables."
+ },
+ "kotopoulo_sxara": {
+  "n": "Grilled Chicken",
+  "ing": [
+   "Chicken thighs 800g",
+   "Olive oil 4 tbsp",
+   "Juice of 1 lemon",
+   "Garlic 3 cloves",
+   "Oregano 1 tsp",
+   "Thyme 1/2 tsp",
+   "Sweet paprika 1 tsp",
+   "Salt & pepper"
+  ],
+  "steps": [
+   "Marinade: Mix the olive oil, lemon, grated garlic, oregano, thyme and paprika. Score the thighs with a knife so the marinade penetrates deeply.",
+   "Marinating: Coat the thighs with the marinade and let them sit at least 1 hour in the refrigerator — ideally overnight. IMPORTANT: salt only 30 minutes before grilling so the meat doesn't dry out.",
+   "Preheating: Preheat the grill or griddle to a high temperature. Clean it and brush with oil so the chicken doesn't stick.",
+   "Grilling: Grill the thighs over medium-high heat for 12-15 minutes per side. Start skin-side down (\"butterflied\") for crispy skin.",
+   "Checking doneness: Use a meat thermometer — 75°C internal, or the juices should run clear. IMPORTANT: don't cut into it to check, as you'll lose the juices.",
+   "Resting: Let it rest for 5 minutes covered with foil before serving so the juices redistribute."
+  ],
+  "wine": "Dry rosé.",
+  "plate": "With lemon, oregano and lemon potatoes."
+ },
+ "kotopoulo_tigania": {
+  "n": "Pan-Fried Chicken Cretan Style",
+  "ing": [
+   "Chicken thigh fillet 700 g, cut into bite-sized pieces",
+   "Olive oil 4 tbsp",
+   "Red and green peppers, 3, cut into strips",
+   "1 large onion, sliced",
+   "Garlic, 2 cloves, finely chopped",
+   "Grated tomato or tomato juice 3 tbsp",
+   "Dry white wine 1/2 glass",
+   "Oregano 1 tsp",
+   "Salt and freshly ground pepper to taste",
+   "Lemon, 1 piece, for serving"
+  ],
+  "steps": [
+   "Preparing the chicken: Cut the thigh fillet into 3-4 cm pieces and pat dry well with paper towels so it browns properly.",
+   "Frying the chicken: Heat the olive oil in a wide pan or wok over high heat and add the chicken pieces. Important: Don't overcrowd the pan - fry in batches if needed, so the meat sears and browns instead of stewing in its own juices.",
+   "Browning: Let the chicken brown well on all sides, about 7-8 minutes, stirring occasionally.",
+   "Adding the vegetables: Add the onion and peppers to the pan and sauté for 4-5 minutes until slightly softened while still keeping some crunch.",
+   "Garlic and deglazing with wine: Add the garlic, stir for 30 seconds and deglaze with the white wine, letting the alcohol evaporate.",
+   "Tomato and cooking: Add the grated tomato, oregano, salt and pepper. Lower the heat and simmer uncovered for 10-12 minutes until the sauce thickens slightly.",
+   "Final check: Taste and adjust the salt, making sure the chicken is cooked through without drying out.",
+   "Serving: Serve piping hot with a squeeze of fresh lemon juice on top, accompanied by fried potatoes or pilaf rice."
+  ],
+  "wine": "Dry white wine from Crete, such as Vidiano, cool and aromatic",
+  "plate": "Served on a plate with fried potatoes or pilaf rice, accompanied by a Greek village salad"
+ },
+ "kotopoulo_vigeroua": {
+  "n": "Chicken Villeroy",
+  "ing": [
+   "Chicken breast fillet 600 g",
+   "Butter 60 g",
+   "All-purpose flour 60 g",
+   "Fresh milk 500 ml",
+   "Gruyère or Emmental cheese, grated, 100 g",
+   "Ham, sliced, 100 g",
+   "Eggs, 2",
+   "Breadcrumbs 150 g",
+   "Grated nutmeg, a little",
+   "Salt, freshly ground pepper",
+   "Vegetable oil, for frying"
+  ],
+  "steps": [
+   "Boiling the chicken: Boil the chicken fillets in lightly salted water for 15-18 minutes until softened, drain and let cool.",
+   "Making the béchamel: Melt the butter in a pot, add the flour and stir constantly for 2 minutes over low heat so the raw flour taste cooks off. Gradually pour in the hot milk, whisking.",
+   "Important: The béchamel must be very thick, almost paste-like, so it holds its shape when cold and doesn't melt during frying. Simmer over low heat, stirring constantly, until well thickened, about 10 minutes.",
+   "Enriching the sauce: Remove from the heat, add the grated cheese, nutmeg, salt and pepper, stir to incorporate, and let the béchamel cool completely, preferably in the fridge for 1-2 hours.",
+   "Assembling: Slice the chicken, place a slice of ham between two chicken slices and spread the cold, thick béchamel generously over the whole surface as a coating.",
+   "Coating: Dip each piece first in the beaten egg and then in the breadcrumbs, pressing well so they stick all over. Repeat the egg-and-breadcrumb process for a double coating, so the crust doesn't break during frying.",
+   "Frying: Heat plenty of oil over medium-high heat and fry the pieces until evenly browned on all sides, about 3-4 minutes per side, so the béchamel inside warms through without melting and leaking out.",
+   "Serving: Drain on paper towels and serve immediately, hot, while the crust is still crispy."
+  ],
+  "wine": "Dry white wine, Assyrtiko from Santorini or a light Roditis",
+  "plate": "Serve with mashed potatoes or cabbage-and-carrot salad and a little lemony mayonnaise on the side"
+ },
+ "kotosopa": {
+  "n": "Chicken Avgolemono",
+  "ing": [
+   "Whole chicken 1",
+   "Rice 100g",
+   "Eggs 2",
+   "Lemon 1",
+   "Carrots 2",
+   "Celery"
+  ],
+  "steps": [
+   "Making the broth: Place the whole chicken in a pot with cold water along with the 2 carrots and celery, and boil for 45 minutes. Important: skim off the foam that rises at the start with a slotted spoon, so the broth stays clear and clean-tasting.",
+   "Boning: Remove the chicken, let it cool slightly, and bone it into bite-sized pieces. Strain the broth to remove any small bones.",
+   "Cooking the rice: Bring the broth back to a boil and add the 100g rice. Boil for 15 minutes until tender. Taste and adjust the salt.",
+   "Whisking the avgolemono: Whisk the 2 eggs with the juice of 1 lemon until frothy. Whisking well makes the avgolemono light and prevents it from curdling.",
+   "Tempering: Gradually add ladlefuls of hot broth to the egg-lemon mixture, whisking constantly. Important: this step is crucial for gradually raising the temperature of the mixture, because if the eggs go straight into the hot broth they will curdle and form lumps.",
+   "Combining off the heat: Remove the pot from the heat and pour in the avgolemono, stirring. Do not return it to a strong boil, or it will curdle.",
+   "Serving: Add the boned chicken, sprinkle with fresh dill, and serve hot."
+  ],
+  "wine": "Dry white wine.",
+  "plate": "In a deep bowl, with chicken and dill."
+ },
+ "kotosoupa": {
+  "n": "Chicken Soup",
+  "ing": [
+   "Chicken 1 whole",
+   "Carrots 2",
+   "Celery 2 stalks",
+   "Onion 1",
+   "Rice 1/2 cup",
+   "Eggs 2 (for avgolemono — optional)",
+   "Juice of 1 lemon (for avgolemono — optional)",
+   "Salt & pepper"
+  ],
+  "steps": [
+   "Boiling: Place the chicken in cold water (2.5 liters) with carrots, celery, onion, and salt. Simmer over low heat for 45-50 minutes, skimming off the foam during the first few minutes.",
+   "Soup base: Remove the chicken and strain the stock. Cut the meat into pieces.",
+   "Rice: Return the stock to the pot, bring to a boil, and add the rice. Cook for 15-18 minutes.",
+   "Adding the meat: Return the chicken pieces to the pot. Taste and adjust salt and pepper.",
+   "Serving without avgolemono: Serve immediately in deep bowls.",
+   "Avgolemono (optional): If making avgolemono, whisk 2 eggs with the juice of 1 lemon until frothy. Gradually add 2-3 ladles of hot soup while whisking constantly (tempering). Pour back into the pot and stir in a circular motion. Important: DO NOT let it boil afterward, or the egg will curdle."
+  ],
+  "wine": "-",
+  "plate": "In a deep bowl, served hot."
+ },
+ "koulourakia_amygdalou": {
+  "n": "Almond Koulourakia",
+  "ing": [
+   "Flour 400 g",
+   "Ground almonds 100 g",
+   "Sugar 130 g",
+   "Butter 160 g",
+   "Egg 1",
+   "Almond extract 1 tsp",
+   "Baking powder 1 tsp",
+   "Whole almonds 40 (for decoration)",
+   "Egg white 1 (for brushing)"
+  ],
+  "steps": [
+   "Toasting the almonds: Toast the ground almonds in a dry pan for 3 minutes until they smell fragrant, then let them cool completely. Important: raw ground almond tastes flat, and toasting is what wakes the flavour.",
+   "Beating the butter: Beat the butter with the sugar for 5 minutes.",
+   "Adding the egg: Add the egg and the almond extract and beat until smooth.",
+   "Combining: Mix in the flour, the cooled ground almonds and the baking powder to a soft dough.",
+   "Important: Ground almond carries fat but no gluten, so this dough is more fragile than usual. Handle it gently and do not knead it.",
+   "Chilling: Chill the dough for 30 minutes so the butter firms up and it holds its shape.",
+   "Shaping: Roll into balls and flatten them slightly, or form the traditional crescent shape.",
+   "Decorating: Press a whole almond into the centre of each and brush with lightly beaten egg white.",
+   "Baking: Bake at 170°C for 20-22 minutes. Important: keep the temperature low — ground almond burns far faster than flour and turns bitter.",
+   "Cooling: Leave them on the tray for 5 minutes before moving them, because they are very fragile while hot."
+  ],
+  "wine": "Amaretto or a sweet white wine.",
+  "plate": "Serve on a platter with whole almonds scattered between them."
+ },
+ "koulourakia_kakao": {
+  "n": "Cocoa Koulourakia",
+  "ing": [
+   "Flour 460 g",
+   "Cocoa powder 40 g",
+   "Sugar 150 g",
+   "Butter 180 g",
+   "Eggs 2",
+   "Milk 3 tbsp",
+   "Baking powder 2 tsp",
+   "Vanilla extract 1 tsp",
+   "Icing sugar for dusting"
+  ],
+  "steps": [
+   "Sifting the cocoa: Sift the cocoa together with the flour twice. Important: cocoa clumps stubbornly and unsifted lumps leave dry bitter pockets in the dough.",
+   "Beating the butter: Beat the butter with the sugar for 5 minutes until light.",
+   "Adding the eggs: Add the eggs one at a time, then the vanilla.",
+   "Making the dough: Add the sifted dry ingredients gradually with the milk, mixing to a soft dough.",
+   "Important: Cocoa absorbs more liquid than flour. If the dough feels dry and cracks, add milk a spoonful at a time — never all at once.",
+   "Resting: Rest the dough for 30 minutes so it hydrates fully.",
+   "Shaping: Roll into ropes and form twists or rings, all the same size.",
+   "Important: Do not brush these with egg. On a dark dough the glaze is invisible, and the sugar in the yolk burns before the biscuit is done.",
+   "Baking: Bake at 175°C for 18-20 minutes — slightly lower than usual, because the dark colour hides burning until it is too late.",
+   "Testing: They are ready when the base is firm and they lift cleanly off the tray. Dust with icing sugar once cold."
+  ],
+  "wine": "Hot chocolate or coffee.",
+  "plate": "Serve on a platter dusted with icing sugar for contrast with the dark colour."
+ },
+ "koulourakia_meliou": {
+  "n": "Honey Koulourakia",
+  "ing": [
+   "Flour 450 g",
+   "Honey 100 ml",
+   "Sugar 80 g",
+   "Olive oil 120 ml",
+   "Cinnamon 1 tsp",
+   "Ground cloves 1/4 tsp",
+   "Orange juice 60 ml",
+   "Baking powder 2 tsp",
+   "Sesame seeds",
+   "Extra honey for drizzling"
+  ],
+  "steps": [
+   "Warming the honey: Warm the honey gently until it flows freely. Important: never let it boil — high heat destroys its aroma and leaves only sweetness behind.",
+   "Mixing the liquids: Whisk the warm honey with the olive oil, the orange juice and the sugar until combined.",
+   "Adding the spices: Stir in the cinnamon and cloves, which need the liquid to distribute evenly.",
+   "Making the dough: Add the sifted flour with the baking powder gradually, mixing to a soft, slightly sticky dough.",
+   "Important: Honey dough is always stickier than butter dough. Do not add extra flour to fix it — oil your hands instead.",
+   "Resting: Rest the dough for 20 minutes.",
+   "Shaping: Shape into small ropes or ovals with oiled hands and press sesame seeds onto the surface.",
+   "Baking: Bake at 180°C for 20 minutes.",
+   "Important: Watch them closely from minute 15. Honey caramelises and burns much faster than sugar, and they go from golden to black quickly.",
+   "Finishing: Drizzle with a little extra warm honey while still hot, so it soaks in rather than sitting on the surface."
+  ],
+  "wine": "Mountain tea or Greek coffee.",
+  "plate": "Serve drizzled with a little honey and sprinkled with sesame seeds."
+ },
+ "koulourakia_portokaliou": {
+  "n": "Orange Koulourakia",
+  "ing": [
+   "Flour 500 g",
+   "Sugar 150 g",
+   "Butter 150 g",
+   "Eggs 2",
+   "Orange juice 80 ml",
+   "Orange zest 2 oranges",
+   "Baking powder 2 tsp",
+   "Vanilla extract 1 tsp",
+   "Egg yolk 1 (for brushing)",
+   "Sesame seeds"
+  ],
+  "steps": [
+   "Preparing the oranges: Zest the oranges before juicing them, taking only the coloured layer.",
+   "Beating the butter: Beat the soft butter with the sugar for 5 minutes, until pale and creamy.",
+   "Adding the eggs: Add the eggs one at a time, then the orange juice, zest and vanilla.",
+   "Important: The mixture will look split at this point. This is normal — the flour brings it back together.",
+   "Adding the flour: Sift the flour with the baking powder and add it gradually, mixing until a soft dough forms.",
+   "Important: Stop kneading the moment the dough comes together. Over-kneaded dough makes hard koulourakia instead of crumbly ones.",
+   "Resting: Cover the dough and rest it for 30 minutes at room temperature — not in the fridge, or it becomes too stiff to shape.",
+   "Shaping: Roll pieces into ropes and form twists, plaits or rings, keeping them all the same thickness so they bake evenly.",
+   "Brushing: Brush with beaten egg yolk and sprinkle with sesame seeds.",
+   "Baking: Bake at 180°C for 20-25 minutes until golden. Important: they firm up as they cool, so take them out while still slightly soft or they turn rock hard."
+  ],
+  "wine": "Greek coffee.",
+  "plate": "Serve on a platter or in a glass jar, with coffee alongside."
+ },
+ "koulourakia_vanilias": {
+  "n": "Vanilla Koulourakia",
+  "ing": [
+   "Flour 480 g",
+   "Sugar 130 g",
+   "Butter 180 g",
+   "Eggs 2",
+   "Vanilla pods 2 or extract 2 tsp",
+   "Baking powder 2 tsp",
+   "Milk 2 tbsp",
+   "Icing sugar 100 g",
+   "Salt 1 pinch"
+  ],
+  "steps": [
+   "Preparing the vanilla: Split the pods lengthwise and scrape out the seeds with a knife tip. Important: real pods give a depth and speckled look that no extract can match.",
+   "Infusing the sugar: Rub the vanilla seeds into the sugar with your fingertips, so the aroma spreads through every grain.",
+   "Beating: Beat the butter with the vanilla sugar for 6 minutes until white and airy.",
+   "Adding the eggs: Add the eggs one at a time, then the milk.",
+   "Making the dough: Sift in the flour with the baking powder and salt and mix to a soft dough.",
+   "Resting: Rest for 30 minutes.",
+   "Shaping: Roll into ropes and form small rings or S-shapes, keeping them small — these are meant to be delicate.",
+   "Baking: Bake at 175°C for 18 minutes. Important: they must stay pale. Browning masks the vanilla, which is the whole point of the biscuit.",
+   "Dusting while warm: Roll them in icing sugar while still warm, so the first coat sticks and melts into the surface.",
+   "Second coat: Once cold, roll them a second time so they end up properly white."
+  ],
+  "wine": "Milk or vanilla tea.",
+  "plate": "Serve on a platter with plenty of icing sugar on top."
+ },
+ "koulourakia_voutyrou": {
+  "n": "Butter Koulourakia",
+  "ing": [
+   "Flour 500 g",
+   "Sugar 150 g",
+   "Butter 200 g",
+   "Eggs 2",
+   "Milk 2 tbsp",
+   "Vanilla extract 2 tsp",
+   "Baking powder 2 tsp",
+   "Egg yolk 1 (for brushing)",
+   "Salt 1 pinch"
+  ],
+  "steps": [
+   "Choosing the butter: Use real butter, not margarine. Important: in a recipe this plain, the butter is the entire flavour — there is nothing to hide behind.",
+   "Softening: Leave the butter out until it yields to finger pressure but is not melted or oily.",
+   "Beating: Beat it with the sugar for 6 minutes, until genuinely white and doubled in volume.",
+   "Adding the eggs: Add the eggs one at a time, then the vanilla, milk and salt.",
+   "Adding the flour: Sift in the flour with the baking powder and mix until a soft, non-sticky dough forms.",
+   "Resting: Rest the dough for 20 minutes so the flour hydrates and it becomes easier to shape.",
+   "Shaping: Roll into ropes about 1.5 cm thick and shape into S-forms, rings or twists.",
+   "Important: Do not make them too thick. Butter koulourakia spread as they bake, and thick ones stay raw in the middle.",
+   "Brushing: Brush with egg yolk thinned with a little milk, for an even golden shine.",
+   "Baking: Bake at 180°C for 20 minutes, and cool them on a rack so the bottoms do not soften from trapped steam."
+  ],
+  "wine": "Milk or tea.",
+  "plate": "Arrange fanned out on a platter, dusted with icing sugar."
+ },
+ "kounoupidi_fournou": {
+  "n": "Baked Cauliflower with Cheese",
+  "ing": [
+   "1 large cauliflower",
+   "Béchamel sauce 400ml",
+   "Gouda or graviera cheese 150g",
+   "Olive oil 3 tbsp",
+   "Salt, pepper",
+   "Nutmeg",
+   "Breadcrumbs"
+  ],
+  "steps": [
+   "Cut the cauliflower into florets and boil for 8 minutes. Drain.",
+   "Spread in a baking pan, drizzle with oil, and season with salt and pepper.",
+   "Bake at 200°C for 15 minutes, until lightly golden.",
+   "Pour the béchamel over the top and sprinkle with cheese.",
+   "Bake for another 15 minutes until golden and gratinéed."
+  ]
+ },
+ "kourabiedes": {
+  "n": "Kourabiedes",
+  "ing": [
+   "Flour 500g",
+   "Clarified butter 250g",
+   "Powdered sugar 100g",
+   "Egg yolk 1",
+   "Almonds 100g, toasted",
+   "Vanilla",
+   "Powdered sugar for dusting 200g"
+  ],
+  "steps": [
+   "Beating the butter: With the 250g clarified butter at room temperature, beat in the mixer for about 15 minutes until it turns pale and fluffy like a cream. The long beating incorporates air and gives the kourabiedes their light texture.",
+   "Adding the liquids: Add the 1 egg yolk, the vanilla and the 100g powdered sugar and keep beating until combined.",
+   "Toasting the almonds: If not already toasted, lightly toast the 100g almonds and chop them into small pieces. Toasting makes them crunchy and aromatic.",
+   "Kneading: Sift the 500g flour and fold it in gradually together with the almonds, kneading lightly. IMPORTANT: don't overknead and don't let the dough warm from your hands, as this melts the butter and toughens the kourabiedes.",
+   "Shaping: Shape into half-moons or stars and place on a parchment-lined baking sheet, leaving gaps between them as they puff up slightly.",
+   "Baking: Bake at 170°C for 18-22 minutes, until set without taking on much color — kourabiedes should stay pale.",
+   "Finishing: While still warm, generously dust them with the 200g powdered sugar. The warm surface makes the sugar stick and form the characteristic white coating."
+  ],
+  "wine": "-",
+  "plate": "On a platter, dusted all over like snow with powdered sugar."
+ },
+ "kreatopita": {
+  "n": "Greek Meat Pie",
+  "ing": [
+   "Phyllo pastry 500g",
+   "Ground beef 600g",
+   "Onion 2",
+   "Grated tomato 200g",
+   "Kefalotyri cheese 150g",
+   "Eggs 2",
+   "Cinnamon & allspice",
+   "Butter 80g"
+  ],
+  "steps": [
+   "Sautéing: In a pot, sauté 2 chopped onions until softened, then add the 600g ground beef and brown it well, breaking it up, so it caramelizes rather than stewing in its own liquid.",
+   "Meat sauce: Add the 200g grated tomato, cinnamon, allspice and salt. Simmer for 20 minutes until almost dry. Important: the filling must be dry, otherwise it will make the phyllo soggy.",
+   "Cooling: Let the meat cool slightly, so the eggs don't cook as soon as you add them.",
+   "Finishing the filling: Mix the meat with 150g grated kefalotyri and 2 eggs. The eggs bind the filling so it doesn't fall apart when sliced.",
+   "Layering the sheets: Butter the baking pan and layer half the phyllo sheets, brushing each one with melted butter (from the 80g) to make them crisp and puffed.",
+   "Filling and sealing: Spread the filling, cover with the remaining buttered sheets and seal by folding the edges inward. Score the surface into pieces, so it can be cut easily after baking.",
+   "Baking: Bake at 180°C for 55-60 minutes until golden and crispy. Let it rest for 10 minutes before cutting."
+  ],
+  "wine": "Dry red wine.",
+  "plate": "Warm pieces, village salad."
+ },
+ "kreatosopa": {
+  "n": "Meat Soup",
+  "ing": [
+   "Beef with bone 800g",
+   "Potatoes 3, cut",
+   "Carrots 3",
+   "Celery 2 stalks",
+   "Onion 1",
+   "Grated tomato 200g",
+   "Rice 1/2 cup",
+   "Juice of 1 lemon",
+   "Salt & pepper"
+  ],
+  "steps": [
+   "Boiling the meat: Place the meat in cold water (3 liters). Boil, skimming off the foam for the first 10 minutes — the foam contains impurities and clouds the stock.",
+   "Vegetables: Add carrots, celery, onion, tomato, and salt. Simmer covered for 60-70 minutes until the meat is very tender.",
+   "Potatoes: Add the potatoes and cook for another 20 minutes.",
+   "Rice: Add the rice and cook for 15-18 minutes.",
+   "Finishing: Add lemon juice for freshness. Taste and adjust salt. Important: this soup tastes even better the next day."
+  ],
+  "wine": "-",
+  "plate": "In a deep bowl with a squeeze of lemon juice."
+ },
+ "krema_brokolou": {
+  "n": "Cream of Broccoli Soup",
+  "ing": [
+   "Fresh broccoli 700 g",
+   "Potato 1 medium",
+   "Onion 1 piece",
+   "Garlic 1 clove",
+   "Vegetable stock 1 liter",
+   "Heavy cream 100 ml",
+   "Butter 2 tbsp",
+   "Olive oil 2 tbsp",
+   "Bread croutons 1 cup",
+   "Salt, pepper 1 tsp"
+  ],
+  "steps": [
+   "Preparation: Cut the broccoli into florets and the potato into small cubes, and finely chop the onion and garlic.",
+   "Sautéing the base: In a pot, melt the butter with the olive oil and sauté the onion and garlic until glossy, without browning.",
+   "Adding the vegetables: Add the potato and broccoli and stir for 2-3 minutes so they absorb the aromas.",
+   "Boiling: Add the vegetable stock, salt, and pepper, cover, and simmer for 18-20 minutes until the vegetables are completely tender.",
+   "Important: Do not cook longer than necessary, as prolonged boiling darkens the broccoli and it loses its bright green color.",
+   "Blending: Remove from the heat and blend with an immersion blender until smooth and velvety, with no lumps.",
+   "Heavy cream: Return to low heat, add the heavy cream, and stir for 2 minutes until incorporated, without letting it boil.",
+   "Tasting and adjusting: Taste and adjust the salt and pepper; if too thick, add a little hot stock.",
+   "Serving: Serve hot in bowls with a swirl of cream on top and a few croutons."
+  ],
+  "wine": "Dry white Assyrtiko wine or tsipouro",
+  "plate": "Serve in a deep bowl with a spiral of cream and croutons in the center."
+ },
+ "krema_karamel": {
+  "n": "Crème Caramel",
+  "ing": [
+   "Milk 600ml",
+   "Eggs 4",
+   "Sugar for the custard 120g",
+   "Vanilla",
+   "Sugar for the caramel 150g",
+   "Water 2 tbsp"
+  ],
+  "steps": [
+   "Caramel: Put the 150g sugar with the 2 tbsp water in a pot and heat without stirring until it turns a red-brown color. IMPORTANT: don't stir the caramel with a spoon, as it will crystallize — just swirl the pot gently.",
+   "Lining the molds: As soon as the caramel is ready, quickly divide it among the molds before it sets, coating the bottom of each.",
+   "Custard mixture: Beat the 4 eggs with the 120g sugar and slowly pour in the warm milk (600ml) while stirring, so the eggs don't cook. Add vanilla.",
+   "Straining: Strain the mixture and divide it among the caramel-lined molds, so the custard comes out perfectly smooth without any egg clumps.",
+   "Baking in a bain-marie: Place the molds in a pan with hot water (bain-marie) and bake at 160°C for 45-50 minutes. The bain-marie ensures gentle, even baking without curdling the custard.",
+   "Chilling and unmolding: Refrigerate for 4 hours or more to set, then invert the mold onto a plate so the caramel runs over the top."
+  ],
+  "wine": "-",
+  "plate": "Inverted, with caramel running down."
+ },
+ "krema_karotou": {
+  "n": "Cream of Carrot Soup",
+  "ing": [
+   "Carrots 1 kg, sliced into rounds",
+   "1 large onion, finely chopped",
+   "1 leek, white part only",
+   "1 medium potato, for thickening",
+   "Vegetable or chicken broth 1 liter",
+   "Olive oil 4 tbsp",
+   "Heavy cream 100 ml (or almond milk for a fasting/vegan version)",
+   "Fresh ginger, 1 tsp grated (optional)",
+   "Salt, freshly ground pepper",
+   "Breadcrumbs or dried dill, for garnish"
+  ],
+  "steps": [
+   "Preparing the vegetables: Peel and slice the carrots into rounds, finely chop the onion and leek, and cut the potato into cubes.",
+   "Sautéing: In a pot, heat the olive oil over medium heat and sauté the onion and leek for 4-5 minutes until softened, without coloring.",
+   "Adding the carrots: Add the carrots and potato to the pot and stir for 2-3 minutes so they pick up flavor from the oil.",
+   "Boiling: Pour in the broth until the vegetables are covered, add salt and pepper, and simmer over low heat for 25-30 minutes until the carrots are very soft.",
+   "Important: The long, slow simmering is essential so the carrots break down easily when puréed and the soup comes out velvety with no lumps; check with a fork before proceeding.",
+   "Puréeing: Remove from the heat and purée with an immersion blender until smooth and creamy, adding a little broth if it's too thick.",
+   "Enriching with cream: Return the pot to low heat, add the cream and ginger, stir well and simmer for 5 minutes without letting it boil.",
+   "Serving: Serve hot in deep plates, garnishing with a drizzle of olive oil and toasted breadcrumbs or dill."
+  ],
+  "wine": "A fresh white Assyrtiko or a light Moschofilero pairs ideally with the sweetness of the carrot.",
+  "plate": "Serve in deep plates with a swirl of olive oil and a little fresh village bread on the side."
+ },
+ "krema_zaxaroplastikis": {
+  "n": "Pastry Cream",
+  "ing": [
+   "Milk 500 ml",
+   "Egg yolks 4",
+   "Sugar 120 g",
+   "Cornflour 40 g",
+   "Butter 30 g",
+   "Vanilla pod 1 or extract 1 tsp"
+  ],
+  "steps": [
+   "Heat the milk with the vanilla until just below boiling, then take it off the heat and let it infuse for 10 minutes.",
+   "Beat the yolks with the sugar and the cornflour until pale and completely smooth.",
+   "Important: Pour the hot milk over the yolks slowly, in a thin stream, whisking without stopping. This tempering is the only thing standing between you and scrambled eggs.",
+   "Return the mixture to the pan and cook over medium heat, whisking constantly and reaching into the corners of the pan.",
+   "Important: Keep whisking especially where the base meets the sides — this is where cream always catches and burns first.",
+   "When it thickens, let it bubble for exactly 1 minute more. This cooks out the raw starch taste, which otherwise stays.",
+   "Take it off the heat and beat in the butter, which gives it shine and a silkier texture.",
+   "Pass it through a sieve if any lumps have formed — this rescues almost any cream.",
+   "Cover the surface directly with cling film so no skin forms, and refrigerate for at least 3 hours.",
+   "Before using, beat it briefly with a whisk to loosen it back to a smooth cream."
+  ],
+  "wine": "Not applicable — a base for other desserts.",
+  "plate": "Use as a filling, or serve in small glasses with fruit and a biscuit."
+ }
+}

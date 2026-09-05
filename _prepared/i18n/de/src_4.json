@@ -1,0 +1,652 @@
+{
+ "kalamaria_sxaras": {
+  "n": "Grilled Calamari",
+  "ing": [
+   "Fresh or frozen cleaned squid 1 kg",
+   "Extra virgin olive oil 100 ml",
+   "Lemon juice 2 lemons",
+   "Garlic 2 cloves, grated",
+   "Dried oregano 1 tsp",
+   "Ground black pepper 1/2 tsp",
+   "Coarse salt 1 tsp",
+   "Fresh chopped parsley 2 tbsp"
+  ],
+  "steps": [
+   "Cleaning: If the squid aren't already cleaned, remove the quill, innards and ink sac, rinse well under cold water and pat dry with paper towels.",
+   "Scoring: Lightly score the squid bodies in a diamond pattern with a knife, without cutting all the way through, so they cook evenly and become more tender.",
+   "Marinating: In a bowl, mix half the olive oil, the juice of one lemon, the garlic, oregano and pepper, pour it over the squid and let them marinate for 20-30 minutes at room temperature.",
+   "Important: Squid should be cooked either over very high heat for a very short time (2-3 minutes per side), or very slowly for a long time; the in-between cooking time makes them rubbery, so the grill must be scorching hot before you add the squid.",
+   "Grilling: Pat the squid lightly dry of marinade and place them on a very hot grill or griddle, cooking for 2-3 minutes per side until golden with light char marks, without drying out.",
+   "Salting: Salt the squid only after grilling, never before, because salt draws out moisture and toughens it during cooking.",
+   "Oiling: As soon as they come off the grill, drizzle them with the remaining olive oil and the juice of the second lemon while still hot, so they absorb the flavors.",
+   "Serving: Sprinkle with fresh parsley and serve immediately, hot, with lemon on the side."
+  ],
+  "wine": "White Assyrtiko wine from Santorini, crisp and dry, or ouzo on ice.",
+  "plate": "Serve on a plate with lemon slices and sprigs of parsley, accompanied by Greek village salad and fresh bread."
+ },
+ "kalitsounia": {
+  "n": "Cretan Kalitsounia",
+  "ing": [
+   "Flour 500 g",
+   "Olive oil 100 ml",
+   "Raki or tsikoudia 50 ml",
+   "Lukewarm water 150 ml",
+   "Mizithra or anthotyro 600 g",
+   "Eggs 2",
+   "Fresh mint 2 tbsp",
+   "Honey for serving",
+   "Cinnamon, salt"
+  ],
+  "steps": [
+   "Making the dough: Mix the flour with a pinch of salt, the olive oil and the raki, then add the water gradually while kneading.",
+   "Kneading: Knead for 8-10 minutes until the dough is soft, smooth and no longer sticks to your hands. Important: the raki is what makes the pastry crisp and blistered when fried.",
+   "Resting the dough: Cover it and let it rest for 30 minutes. Rested dough rolls out thin without springing back.",
+   "Draining the cheese: Important: If the mizithra is wet, drain it in a cloth for an hour. Wet filling tears the dough and leaks out during cooking.",
+   "Making the filling: Mash the mizithra with the eggs and the chopped mint until evenly combined.",
+   "Rolling out: Roll the dough out thin — about 2 mm — on a floured surface and cut discs about 10 cm across.",
+   "Filling: Place a spoonful of filling in the centre of each disc, without overfilling — the classic mistake that bursts them open.",
+   "Shaping: Fold them into half-moons and press the edges firmly with a fork, or pleat them by hand into the traditional round open shape.",
+   "Cooking: Fry them in hot oil for 2 minutes per side until golden, or bake them at 180°C for 25 minutes brushed with egg.",
+   "Serving: Serve warm, drizzled with honey and dusted with cinnamon."
+  ],
+  "wine": "A sweet Cretan wine or a small glass of raki.",
+  "plate": "Arrange overlapping on a platter, drizzled with honey and dusted with cinnamon, warm."
+ },
+ "karbonara": {
+  "n": "Carbonara",
+  "ing": [
+   "Spaghetti 200g",
+   "Bacon 150g",
+   "Eggs 3",
+   "Egg yolks 2",
+   "Kefalotyri or Pecorino cheese 80g",
+   "Freshly ground pepper"
+  ],
+  "steps": [
+   "Boiling the pasta: Boil the 200g spaghetti in salted water until al dente, slightly firm. Reserve a cup of the cooking water before draining, as it will help the sauce come together.",
+   "Browning the bacon: Cut the 150g bacon into strips and brown it in a dry pan (no oil) over medium heat until crisp, so its fat renders and flavors the dish.",
+   "Egg mixture: In a bowl, whisk the 3 eggs together with the 2 yolks, the 80g grated kefalotyri or pecorino, and plenty of freshly ground pepper, until smooth and creamy.",
+   "Combining off the heat: IMPORTANT: remove the pan from the heat before adding the egg. Add the hot spaghetti to the bacon, then the egg mixture and a little cooking water, stirring quickly and constantly.",
+   "Forming the cream: Stir vigorously so the residual heat turns the egg into a smooth, velvety cream. If it starts to set like scrambled egg, the heat was too high.",
+   "Serving: Serve immediately with extra grated cheese and fresh pepper on top, as carbonara is eaten hot and loses its creamy texture if it cools."
+  ],
+  "wine": "Dry white wine.",
+  "plate": "On a warm plate, pepper, grated kefalotyri."
+ },
+ "kare_arniou": {
+  "n": "Herb-Crusted Rack of Lamb",
+  "ing": [
+   "Rack of lamb 2 (about 8 ribs each)",
+   "Breadcrumbs 100 g",
+   "Fresh parsley 1 bunch",
+   "Fresh rosemary 2 sprigs",
+   "Fresh thyme 4 sprigs",
+   "Garlic 3 cloves",
+   "Dijon mustard 3 tbsp",
+   "Butter 50 g",
+   "Olive oil 3 tbsp",
+   "Salt, pepper"
+  ],
+  "steps": [
+   "Preparing the racks: Trim the fat cap down to a thin layer and scrape the rib bones clean, so they stay white and presentable after roasting.",
+   "Seasoning: Season the racks generously with salt and pepper and let them come to room temperature for 30 minutes. Important: cold meat straight from the fridge cooks unevenly — the outside overcooks before the centre warms.",
+   "Searing: Sear them in a very hot pan, fat side down first, for 2-3 minutes per side until golden. Do not cook them through — the oven will finish them.",
+   "Making the crust: Blitz the breadcrumbs with the parsley, rosemary, thyme and garlic in a food processor until bright green and fine.",
+   "Binding the crust: Melt the butter and mix it into the crumbs so the crust holds together and browns instead of burning dry.",
+   "Brushing with mustard: Brush the fat side of each rack with a thick layer of mustard — this is the glue that holds the crust on.",
+   "Coating: Press the herb crust firmly onto the mustard so it adheres in an even layer.",
+   "Roasting: Roast at 200°C for 20-22 minutes for pink meat, or 25-28 minutes for medium.",
+   "Resting: Important: Rest for 10 minutes under loose foil. Lamb especially needs this — carved straight from the oven it bleeds out and goes grey.",
+   "Carving: Cut between the bones into individual chops with a sharp knife."
+  ],
+  "wine": "An elegant red — Bordeaux blend, aged Agiorgitiko or a Syrah with soft tannins.",
+  "plate": "Arrange the chops leaning against one another with the bones upward, on a purée or roasted vegetables, with pan juices around."
+ },
+ "karioka": {
+  "n": "Karioka",
+  "ing": [
+   "Biscuits (petit beurre) 400 g",
+   "Walnuts 200 g",
+   "Sugar 150 g",
+   "Water 100 ml",
+   "Cocoa powder 60 g",
+   "Butter 100 g",
+   "Brandy 3 tbsp",
+   "Dark chocolate 300 g (for coating)",
+   "Sunflower oil 1 tbsp"
+  ],
+  "steps": [
+   "Grind the biscuits and the walnuts together to a coarse crumb, keeping a little texture.",
+   "Boil the sugar with the water for 3 minutes into a light syrup and let it cool slightly.",
+   "Mix the cocoa and the melted butter into the syrup until smooth.",
+   "Combine with the biscuit and walnut mixture and the brandy, working it into a firm paste.",
+   "Important: If it is too soft to shape, refrigerate it for 30 minutes rather than adding more biscuit, which would make it dry.",
+   "Shape into small cylinders about 5 cm long and chill them for 1 hour until solid.",
+   "Melt the chocolate over a bain-marie with the spoonful of oil, which gives the coating its shine and stops it cracking.",
+   "Important: Never let a drop of water reach the melting chocolate. Even a splash seizes it into a stiff grainy mass that cannot be saved.",
+   "Dip each cylinder with a fork, let the excess drip off and set them on parchment.",
+   "Refrigerate for 1 hour until the coating is firm and snaps when bitten."
+  ],
+  "wine": "Brandy or a sweet red wine.",
+  "plate": "Serve in paper cases, chilled, with the chocolate snapping as you bite."
+ },
+ "karotosoupa_tzitzer": {
+  "n": "Carrot & Ginger Soup",
+  "ing": [
+   "Carrots 700 g",
+   "Onion 1 large",
+   "Fresh ginger, a 3 cm piece",
+   "Vegetable stock 1 liter",
+   "Olive oil 3 tbsp",
+   "Heavy cream 100 ml",
+   "Salt, pepper",
+   "Fresh spring onion for garnish"
+  ],
+  "steps": [
+   "Preparation: Peel and slice the carrots into rounds, finely chop the onion, and grate the ginger.",
+   "Sautéing: Sauté the onion in the olive oil over low heat until softened, without browning.",
+   "Adding the ginger: Add the ginger and sauté for 1-2 minutes until its aroma comes through.",
+   "Cooking the carrots: Add the carrots and vegetable stock and simmer over medium heat for 20-25 minutes until completely tender.",
+   "Important: The carrots need to be very soft so the pureed soup comes out perfectly velvety with no lumps.",
+   "Blending: Blend the soup with an immersion blender until it becomes a smooth cream.",
+   "Cream: Add the heavy cream and stir over low heat for 2-3 minutes without letting it boil.",
+   "Seasoning: Season with salt and pepper and taste, adding a little extra ginger if you want a more intense flavor.",
+   "Serving: Serve hot, garnished with fresh spring onion and a drizzle of olive oil."
+  ],
+  "wine": "Off-dry white wine or ginger tea",
+  "plate": "Serve hot in a deep bowl with a drizzle of olive oil on top."
+ },
+ "karydopita": {
+  "n": "Walnut Cake",
+  "ing": [
+   "Coarsely chopped walnuts 300 g",
+   "Fine breadcrumbs (rusk crumbs) 150 g",
+   "Eggs 6",
+   "Sugar 200 g (for the batter)",
+   "Butter or olive oil 120 ml",
+   "Cinnamon 1 tsp & ground cloves 1/2 tsp",
+   "Baking powder 2 tsp",
+   "For the syrup: sugar 400 g, water 400 ml, 1 lemon (juice & peel), 1 cinnamon stick"
+  ],
+  "steps": [
+   "Preparation: Separate the egg whites from the yolks. Beat the yolks with the sugar and the butter (or olive oil) until fluffy and pale.",
+   "Mixing the dry ingredients: In a separate bowl, mix the breadcrumbs, chopped walnuts, baking powder, cinnamon and cloves. Gradually fold them into the yolk mixture, stirring gently.",
+   "Meringue: Whisk the egg whites into a stiff meringue and fold them into the mixture with gentle motions from the bottom up, so they don't lose volume. Important: A well-whipped meringue and gentle folding are the secret to a light walnut cake that doesn't become heavy from the syrup.",
+   "Baking: Butter a baking pan, pour in the mixture and bake in a preheated fan oven at 170°C for about 35-40 minutes, until golden and a toothpick comes out clean.",
+   "Syrup: While it bakes, boil the sugar with the water, lemon peel and cinnamon stick in a saucepan for 5-6 minutes. Add the lemon juice at the end and remove from heat. The syrup should be medium-thick.",
+   "Syruping: As soon as the walnut cake comes out of the oven, slowly pour the syrup over it. Important: The cake must be hot and the syrup lukewarm (or vice versa) so it soaks in evenly without becoming soggy.",
+   "Resting: Let the walnut cake cool completely and absorb all the syrup, ideally for 3-4 hours, before cutting it into diamond shapes.",
+   "Serving: Cut into pieces and serve on a small plate, garnishing each portion with half a walnut."
+  ],
+  "wine": "Sweet Mavrodafni wine or Greek coffee.",
+  "plate": "In diamond-shaped pieces with a scoop of vanilla ice cream or whipped cream."
+ },
+ "kataifi": {
+  "n": "Kataifi",
+  "ing": [
+   "Kataifi pastry (shredded filo) 500 g",
+   "Melted butter 250 g",
+   "Coarsely chopped walnuts 300 g",
+   "Sugar 2 tbsp (for the filling)",
+   "Cinnamon 1 tsp",
+   "Ground cloves 1/4 tsp",
+   "Sugar 700 g (for the syrup)",
+   "Water 600 ml",
+   "Juice of 1 lemon",
+   "1 cinnamon stick & 3 cloves"
+  ],
+  "steps": [
+   "Preparing the pastry: Unroll the kataifi on a clean surface and gently separate the strands by hand so it's fluffy and easy to roll. Cover with a slightly damp towel so it doesn't dry out.",
+   "Filling: In a bowl, mix the chopped walnuts with the sugar, cinnamon and ground cloves. This is the aromatic filling that goes into each roll.",
+   "Rolling: Take a strip of kataifi about 10 cm wide, place a spoonful of the filling at one end and roll it up tightly into a log. Repeat until the ingredients are used up.",
+   "Buttering: Arrange the rolls side by side in a buttered baking pan, seam-side down. Pour all the melted butter evenly over them, making sure every roll is soaked. Important: The butter should be hot and melted (ideally clarified) so it soaks deep into the strands and the kataifi turns out crisp and golden, not greasy.",
+   "Baking: Bake in a preheated oven at 170°C for about 50-60 minutes, until well browned and a deep golden color all over.",
+   "Syrup: While it bakes, boil the sugar with the water, cinnamon stick and cloves in a saucepan for 8-10 minutes. Add the lemon juice at the end and remove from heat. Important: The rule of hot into cold or cold into hot applies: pour the cold syrup over the hot kataifi (or vice versa) so it absorbs it properly and stays crisp.",
+   "Syruping: As soon as the kataifi comes out of the oven, slowly pour the lukewarm syrup over it spoonful by spoonful, so it absorbs evenly.",
+   "Resting: Let it rest and absorb all the syrup for at least 3-4 hours before cutting and serving."
+  ],
+  "wine": "Sweet Muscat wine or Greek coffee.",
+  "plate": "Serve at room temperature with a scoop of kaimaki ice cream."
+ },
+ "katsikaki_fournou": {
+  "n": "Roast Kid Goat with Potatoes",
+  "ing": [
+   "Kid goat (shoulder or leg) 1.5 kg",
+   "Potatoes 1.5 kg",
+   "Olive oil 1/2 cup",
+   "Lemon juice 2 lemons",
+   "Garlic 5 cloves",
+   "Mustard 1 tbsp",
+   "Oregano 2 tbsp",
+   "Bay leaves 2",
+   "Water 1.5 cups",
+   "Salt, pepper"
+  ],
+  "steps": [
+   "Preparing the meat: Rinse the kid goat and pat it dry thoroughly with paper towels, then cut it into portion pieces. Kid goat is leaner than lamb, so it needs fat and moisture to stay tender.",
+   "Studding with garlic: Pierce the meat in several spots with a sharp knife and push a sliver of garlic into each hole, so the aroma reaches the inside.",
+   "Marinating: Whisk olive oil, lemon juice, mustard, oregano, salt and pepper and rub the mixture over the meat on all sides. Let it stand for 30 minutes.",
+   "Preparing the potatoes: Peel the potatoes and cut them into thick wedges, season with salt, pepper, oregano and a little oil and spread them in the roasting pan.",
+   "Assembling the pan: Place the meat among the potatoes, add the bay leaves and pour in the water so it comes about a finger deep in the pan.",
+   "Covered roasting: Important: Cover the pan tightly with foil and roast at 180°C for 1 hour and 30 minutes. The trapped steam is what makes kid goat fall off the bone instead of drying out.",
+   "Browning: Remove the foil, raise the heat to 200°C and roast for another 30-40 minutes until the meat and potatoes are golden, basting twice with the pan juices.",
+   "Resting: Let the meat rest for 10 minutes out of the oven before serving, so the juices settle back into it."
+  ],
+  "wine": "An aged red Xinomavro or a robust Agiorgitiko stands up to the intense flavour of the goat.",
+  "plate": "Serve on a large platter with the potatoes around the meat, lemon wedges and a sprinkle of fresh oregano."
+ },
+ "katsikaki_frikase": {
+  "n": "Kid Goat Fricassee with Lettuce & Dill",
+  "ing": [
+   "Kid goat 1.2 kg",
+   "Lettuce 2 heads",
+   "Spring onions 6",
+   "Fresh dill 1 bunch",
+   "Olive oil 1/2 cup",
+   "Eggs 2",
+   "Lemon juice 2 lemons",
+   "Hot water 3 cups",
+   "Salt, pepper"
+  ],
+  "steps": [
+   "Preparing the meat: Cut the kid goat into serving pieces, rinse and dry it well and season with salt and pepper.",
+   "Searing: Sauté the meat in a pot with the oil over medium-high heat until lightly golden — you want colour, not a hard crust.",
+   "Adding the spring onions: Add the chopped spring onions and sauté for 3-4 minutes until they wilt and sweeten.",
+   "Simmering: Pour in the hot water, cover and simmer over low heat for about 1 hour, until the meat is almost tender.",
+   "Adding the greens: Add the shredded lettuce and most of the dill and cook for another 20 minutes, until the lettuce collapses into the sauce.",
+   "Reducing: Uncover and let the liquid reduce until only about 1.5 cups remain — the avgolemono needs a concentrated broth to cling to.",
+   "Making the avgolemono: Important: Beat the eggs well, add the lemon juice, then ladle in hot broth a spoonful at a time while beating constantly. Tempering slowly is the only way to stop the eggs from scrambling.",
+   "Finishing: Pour the avgolemono back into the pot, swirl the pot gently — never boil it again — and let it sit off the heat for 5 minutes to thicken.",
+   "Serving: Scatter the remaining fresh dill over the top just before serving."
+  ],
+  "wine": "A Moschofilero or a barrel-aged Assyrtiko keeps up with the avgolemono.",
+  "plate": "Serve in a deep bowl with plenty of avgolemono, fresh dill on top and crusty bread on the side."
+ },
+ "katsikaki_giouvetsi": {
+  "n": "Kid Goat Giouvetsi with Orzo",
+  "ing": [
+   "Kid goat 1.2 kg",
+   "Orzo 500 g",
+   "Grated tomato 500 g",
+   "Tomato paste 1 tbsp",
+   "Onion 1",
+   "Garlic 3 cloves",
+   "Olive oil 1/2 cup",
+   "Cinnamon stick 1",
+   "Bay leaf 1",
+   "Hot water or stock 1 litre",
+   "Grated kefalotyri 150 g",
+   "Salt, pepper"
+  ],
+  "steps": [
+   "Preparing the meat: Cut the kid goat into serving pieces, dry them well and season with salt and pepper.",
+   "Searing: Sear the meat in a pot with the oil over high heat until deeply browned on all sides, then remove and set aside.",
+   "Sautéing the aromatics: In the same oil sauté the chopped onion and garlic for 4 minutes, then add the tomato paste and cook it for 1 minute so it loses its raw edge.",
+   "Building the sauce: Return the meat, add the grated tomato, cinnamon and bay leaf, cover and simmer over low heat for about 1 hour and 15 minutes until the meat is tender.",
+   "Transferring to the pan: Move the meat and its sauce into a wide baking dish and pour in the hot water or stock. Important: the liquid must be about double the volume of the orzo, or it will come out dry.",
+   "Adding the orzo: Stir in the orzo, spread it evenly around the meat and check the seasoning — the orzo absorbs a lot of salt.",
+   "Baking: Bake at 200°C for about 30 minutes, stirring once halfway through so the orzo cooks evenly and does not stick to the edges.",
+   "Finishing with cheese: Scatter the grated kefalotyri over the top and return it for 5-8 minutes until it melts and lightly browns.",
+   "Resting: Let it stand for 10 minutes before serving, so the orzo absorbs the last of the sauce."
+  ],
+  "wine": "A red Agiorgitiko from Nemea, whose soft tannins suit the tomato.",
+  "plate": "Serve straight from the baking dish with extra grated cheese on the table and a spoon for the sauce."
+ },
+ "katsikaki_ladorigani": {
+  "n": "Kid Goat with Oregano in Parchment",
+  "ing": [
+   "Kid goat 1.5 kg",
+   "Olive oil 3/4 cup",
+   "Lemon juice 2 lemons",
+   "Dried oregano 4 tbsp",
+   "Garlic 4 cloves",
+   "Graviera or feta 200 g (optional)",
+   "Salt, pepper"
+  ],
+  "steps": [
+   "Cutting the meat: Cut the kid goat into fairly large pieces — small pieces dry out during the long slow bake.",
+   "Making the ladolemono: Whisk the olive oil, lemon juice, crushed garlic, oregano, salt and pepper into a thick emulsion.",
+   "Marinating: Coat the meat in the mixture and leave it for at least 1 hour in the fridge, ideally overnight.",
+   "Preparing the parchment: Lay two large sheets of parchment paper crosswise in a roasting pan, leaving plenty of overhang to fold over the top.",
+   "Wrapping: Place the meat in the centre with all the marinade, tuck in the cheese if using, and fold the parchment into a sealed parcel. Important: the seal must be tight — the steam trapped inside is what cooks the goat in its own juices.",
+   "Slow baking: Bake at 160°C for 2 hours and 30 minutes. Low and slow is what breaks down the connective tissue of goat meat.",
+   "Opening the parcel: Open the parchment carefully — the escaping steam is scalding — and return it uncovered for 15 minutes at 200°C to colour the surface.",
+   "Serving: Serve straight in the opened parcel so none of the aromatic juices are lost."
+  ],
+  "wine": "A rustic Cretan Kotsifali or Liatiko echoes the oregano and olive oil.",
+  "plate": "Bring the opened parchment parcel to the table on a wooden board, with lemon halves and fresh bread for the juices."
+ },
+ "katsikaki_lemonato": {
+  "n": "Lemon Kid Goat with Oregano",
+  "ing": [
+   "Kid goat 1.5 kg",
+   "Olive oil 1/2 cup",
+   "Lemon juice 3 lemons",
+   "Dried oregano 3 tbsp",
+   "Garlic 4 cloves",
+   "Onion 1",
+   "Hot water 2 cups",
+   "Salt, pepper"
+  ],
+  "steps": [
+   "Cutting the meat: Cut the kid goat into serving pieces and pat them completely dry, so they can brown rather than boil in the pot.",
+   "Searing: Heat the oil in a wide pot over high heat and sear the pieces in batches until golden on all sides. Do not crowd the pot or the meat will steam.",
+   "Aromatics: Lower the heat, add the chopped onion and the crushed garlic and sauté for 3-4 minutes until softened and fragrant.",
+   "Deglazing: Pour in the hot water, scraping the bottom of the pot with a wooden spoon so the caramelised bits dissolve into the sauce — this is where most of the flavour lives.",
+   "Slow cooking: Season with salt and pepper, cover and simmer over low heat for about 1 hour and 15 minutes, until the meat is nearly tender.",
+   "Adding the lemon: Important: Add the lemon juice and the oregano only in the last 20 minutes. Lemon added early toughens the meat fibres and turns bitter.",
+   "Reducing the sauce: Uncover and let the sauce reduce for 10 minutes over medium heat until it thickens and glazes the meat.",
+   "Resting: Turn off the heat and let it sit covered for 10 minutes so the lemon settles into the meat."
+  ],
+  "wine": "A crisp Assyrtiko or Robola matches the lemon without fighting it.",
+  "plate": "Serve in a deep dish with plenty of the lemon sauce spooned over, alongside rice or crusty bread."
+ },
+ "kebab_spitiko": {
+  "n": "Homemade Kebab",
+  "ing": [
+   "Ground lamb or beef 800 g",
+   "Onion 1",
+   "Garlic 3 cloves",
+   "Fresh parsley 1/2 bunch",
+   "Ground cumin 1 tsp",
+   "Sweet paprika 1 tsp",
+   "Ground coriander 1/2 tsp",
+   "Breadcrumbs 3 tbsp",
+   "Olive oil 2 tbsp",
+   "Salt, pepper"
+  ],
+  "steps": [
+   "Choosing the mince: Use mince with about 20% fat. Lean mince gives dry, crumbly kebabs that fall off the skewer.",
+   "Draining the onion: Important: Grate the onion and squeeze it hard in a cloth to remove all its juice. Onion water is the main reason kebabs fall apart on the grill.",
+   "Mixing: Combine the mince with the drained onion, the crushed garlic, the parsley, the spices, the breadcrumbs, salt and pepper.",
+   "Kneading: Knead the mixture firmly for 5 full minutes, until it turns sticky and pulls together as one mass. This kneading develops the protein that binds the kebab.",
+   "Resting: Cover and chill for at least 1 hour, so the fat sets and the flavours penetrate.",
+   "Shaping: Shape the mixture around flat skewers with wet hands, pressing tightly and leaving no air pockets — air is where they split.",
+   "Chilling again: Chill the shaped kebabs for another 20 minutes before they meet the heat.",
+   "Grilling: Grill over high heat for 4-5 minutes per side, turning only once so the crust forms properly.",
+   "Resting: Let them rest for 5 minutes off the heat before serving, so the juices settle back in."
+  ],
+  "wine": "A red Agiorgitiko without oak, or a cold beer.",
+  "plate": "Serve on flatbread with grilled tomato and onion, yoghurt sauce and a sprinkle of sumac or paprika."
+ },
+ "keftedakia_saltsas": {
+  "n": "Meatballs in Tomato Sauce",
+  "ing": [
+   "Ground beef 500 g",
+   "Ground pork 200 g",
+   "Bread crumb, soaked in milk, 2 slices",
+   "1 large onion, grated",
+   "Garlic, 1 clove",
+   "1 egg",
+   "Dried mint 1 tsp",
+   "Grated tomato or tomato juice 800 g",
+   "Olive oil 1/2 cup",
+   "Flour, for coating, 1 cup",
+   "Sugar, 1 pinch",
+   "Salt, pepper"
+  ],
+  "steps": [
+   "Preparing the mince: In a bowl, mix the two ground meats with the onion, garlic, egg, the soaked and squeezed bread crumb, mint, salt and pepper until well combined.",
+   "Resting: Cover the mixture with plastic wrap and refrigerate for 30 minutes, so the flavors meld and the mixture firms up.",
+   "Shaping: Shape small round meatballs with wet hands and lightly coat them with flour, shaking off the excess.",
+   "Important: Frying must be done in well-heated oil so the surface of the meatballs seals immediately; this way they don't absorb oil and keep their juices inside, staying moist.",
+   "Frying: Fry the meatballs in batches over medium-high heat until browned on all sides, about 4-5 minutes, then drain on paper towels.",
+   "Sauce: In another pot, heat a little olive oil, add the grated tomato, a pinch of sugar to cut the acidity, salt and pepper, and simmer for 10 minutes.",
+   "Combining: Add the fried meatballs to the sauce and let them simmer together for 15-20 minutes over low heat, so they take on the flavor of the sauce.",
+   "Serving: Remove from the heat and let stand a few minutes before serving hot."
+  ],
+  "wine": "Dry red Agiorgitiko from Nemea",
+  "plate": "Serve the meatballs with plenty of sauce over mashed potatoes or with fried potato slices and a piece of feta on the side"
+ },
+ "keftedes": {
+  "n": "Greek Meatballs",
+  "ing": [
+   "Ground beef 500g",
+   "Grated onion 1",
+   "Stale bread 2 slices",
+   "Egg 1",
+   "Parsley",
+   "Mint 1 tsp",
+   "Salt & pepper"
+  ],
+  "steps": [
+   "Soaking the bread: Put the 2 slices of stale bread in a little water for 2-3 minutes, then squeeze them very well with your hands. Stale bread absorbs the meat's juices and yields fluffy meatballs, while thorough squeezing prevents the mixture from becoming watery and falling apart in the pan.",
+   "Mixing the ingredients: In a large bowl, combine the 500g ground beef, the grated onion, the squeezed bread, 1 egg, finely chopped parsley, 1 tsp mint, salt, and pepper. Mint gives Greek meatballs their characteristic aroma.",
+   "Kneading: Knead the mixture by hand for 2-3 minutes until it's homogeneous and holds together. IMPORTANT: don't overwork it, as the meat tightens up and the meatballs turn out tough instead of juicy.",
+   "Resting in the fridge: Cover the bowl and let the mixture rest in the fridge for 30 minutes. Resting firms up the mixture, lets the flavors meld, and makes the meatballs easier to shape without sticking.",
+   "Shaping: With wet or lightly oiled hands, shape small meatballs of equal size so they cook evenly. You can roll them lightly in flour for a crispier crust.",
+   "Frying: Heat olive oil well in a pan and fry the meatballs over medium-high heat for 3-4 minutes per side, until golden and crisp all over. Don't overcrowd the pan, as the temperature drops and they'll stew instead of browning.",
+   "Draining and serving: Transfer the meatballs to a plate lined with paper towels to absorb excess oil. Serve them hot with tzatziki, potatoes, or fresh lemon."
+  ],
+  "wine": "Dry red wine.",
+  "plate": "Platter, lemon, parsley, tzatziki on the side."
+ },
+ "keik_ananas": {
+  "n": "Pineapple Upside-Down Cake",
+  "ing": [
+   "Canned pineapple rings 1 tin",
+   "Brown sugar 100 g",
+   "Butter 60 g (for the caramel)",
+   "Flour 250 g",
+   "Sugar 180 g",
+   "Eggs 3",
+   "Butter 150 g",
+   "Milk 100 ml",
+   "Baking powder 2 tsp",
+   "Maraschino cherries"
+  ],
+  "steps": [
+   "Drain the pineapple rings thoroughly and pat them dry on kitchen paper. Important: wet fruit dilutes the caramel and it never sets.",
+   "Melt the 60 g of butter with the brown sugar in the tin over low heat until bubbling and syrupy.",
+   "Arrange the pineapple rings on the caramel, with a cherry in the centre of each — remember the whole thing gets turned over, so this is your final surface.",
+   "Beat the butter with the sugar until light, then add the eggs one at a time.",
+   "Fold in the sifted flour and baking powder alternately with the milk, finishing with flour.",
+   "Pour the batter gently over the fruit, spreading it without disturbing the arrangement underneath.",
+   "Bake at 175°C for 45 minutes, until a skewer in the centre comes out clean.",
+   "Important: Turn it out after exactly 5-10 minutes. Sooner and it falls apart; later and the caramel sets like glue and the fruit stays in the tin.",
+   "Place the serving plate over the tin, turn it over in one confident movement and lift the tin away."
+  ],
+  "wine": "A sweet white wine or rum.",
+  "plate": "Serve caramel-side up, slightly warm, with whipped cream."
+ },
+ "keik_bananas": {
+  "n": "Banana Cake",
+  "ing": [
+   "Flour 230 g",
+   "Sugar 150 g",
+   "Eggs 2",
+   "Butter 100 g",
+   "Very ripe bananas 3",
+   "Baking soda 1 tsp",
+   "Baking powder 1 tsp",
+   "Cinnamon 1 tsp",
+   "Walnuts 80 g (optional)",
+   "Salt 1 pinch"
+  ],
+  "steps": [
+   "Choosing the bananas: Use bananas whose skins have turned brown and spotted. Important: underripe bananas have no aroma and not enough sugar — this is the single thing that decides the cake.",
+   "Mashing: Mash them with a fork, leaving a few small lumps for texture rather than pureeing them smooth.",
+   "Beating the butter: Beat the soft butter with the sugar for 4 minutes until light.",
+   "Adding the eggs: Add the eggs one at a time, then fold in the mashed bananas.",
+   "Sifting: Sift the flour with the baking soda, baking powder, cinnamon and salt.",
+   "Important: The soda reacts with the acidity of the bananas and starts working immediately. From this point on, work fast and get it into the oven.",
+   "Combining: Fold the dry ingredients in with a spatula in a few turns only, then add the walnuts.",
+   "Baking: Pour into a lined loaf tin and bake at 175°C for 50-55 minutes.",
+   "Checking: If the top browns too early, cover it loosely with foil and carry on baking.",
+   "Cooling: Let it cool completely before slicing — banana cake is fragile while warm and tears apart."
+  ],
+  "wine": "Filter coffee or a glass of milk.",
+  "plate": "Serve in thick slices, slightly warm, with butter or peanut butter."
+ },
+ "keik_fraoulas": {
+  "n": "Strawberry Cake",
+  "ing": [
+   "Flour 230 g",
+   "Sugar 160 g",
+   "Eggs 2",
+   "Butter 100 g",
+   "Yogurt 120 g",
+   "Strawberries 200 g",
+   "Baking powder 2 tsp",
+   "Vanilla extract 1 tsp",
+   "Salt 1 pinch"
+  ],
+  "steps": [
+   "Preparing the strawberries: Wash and hull the strawberries and cut them into small pieces.",
+   "Drying: Spread them on kitchen paper and dry them thoroughly. Important: wet strawberries release juice into the batter and leave a raw, gummy streak through the cake.",
+   "Flouring the fruit: Toss the pieces in a tablespoon of the measured flour. This coating stops them sinking to the bottom during baking.",
+   "Beating the butter: Beat the butter with the sugar for 4 minutes, then add the eggs one at a time.",
+   "Adding the yogurt: Fold in the yogurt and the vanilla.",
+   "Sifting: Sift the remaining flour with the baking powder and salt and fold it in with a spatula.",
+   "Adding the fruit: Fold in the floured strawberries with two or three turns only, so they do not break up and colour the whole batter pink.",
+   "Baking: Pour into a lined tin and bake at 175°C for 45-50 minutes.",
+   "Important: Test with a skewer between the fruit, not through a strawberry, or the moist fruit will make you think the cake is underbaked.",
+   "Cooling: Cool completely in the tin — this cake is very moist and breaks apart if turned out warm."
+  ],
+  "wine": "A sparkling rosé or champagne.",
+  "plate": "Serve with fresh strawberries and whipped cream on the side."
+ },
+ "keik_giaourtiou": {
+  "n": "Yogurt Cake",
+  "ing": [
+   "Strained yogurt 300 g",
+   "Flour 300 g",
+   "Sugar 250 g",
+   "Eggs 3",
+   "Sunflower oil 150 ml",
+   "Baking powder 2 tsp",
+   "Baking soda 1/2 tsp",
+   "Vanilla extract 1 tsp",
+   "Lemon zest 1"
+  ],
+  "steps": [
+   "Take everything out of the fridge 30 minutes ahead. Important: cold yogurt and eggs make the batter split, and a split batter bakes heavy and dense.",
+   "Beat the eggs with the sugar for 5 minutes, until pale and tripled in volume.",
+   "Add the oil in a slow stream while beating, so it emulsifies rather than sitting on the surface.",
+   "Fold in the yogurt, the vanilla and the lemon zest.",
+   "Sift the flour with the baking powder and soda, and fold it in with a spatula in three additions.",
+   "Important: Stop mixing the moment no dry flour remains. Beating flour develops gluten, and gluten makes cake rubbery.",
+   "Pour into a buttered and floured tin and bake at 175°C for 45-50 minutes.",
+   "Test with a skewer in the centre — it should come out with a few moist crumbs, not wet batter.",
+   "Cool in the tin for 10 minutes, then turn out onto a rack so the base does not steam and go soggy."
+  ],
+  "wine": "Greek coffee or tea.",
+  "plate": "Serve in slices with icing sugar and a little honeyed yogurt alongside."
+ },
+ "keik_karotou": {
+  "n": "Carrot Cake",
+  "ing": [
+   "Flour 250 g",
+   "Sugar 200 g",
+   "Eggs 3",
+   "Olive oil 150 ml",
+   "Grated carrots 300 g",
+   "Cinnamon 2 tsp",
+   "Nutmeg 1/2 tsp",
+   "Baking powder 2 tsp",
+   "Baking soda 1/2 tsp",
+   "Walnuts 100 g",
+   "Cream cheese 200 g (for the frosting)",
+   "Icing sugar 100 g"
+  ],
+  "steps": [
+   "Grating the carrots: Grate the carrots finely, not coarsely. Important: thick shreds stay hard and crunchy in the finished cake instead of melting into it.",
+   "Draining: Squeeze the grated carrot lightly in your hands to remove excess juice, without drying it out completely.",
+   "Beating the eggs: Beat the eggs with the sugar for 5 minutes until pale and thickened.",
+   "Adding the oil: Pour in the olive oil in a thin stream while beating.",
+   "Adding the carrots: Fold in the carrots and the chopped walnuts.",
+   "Sifting the spices: Sift the flour with the baking powder, soda, cinnamon and nutmeg, so the spices spread evenly rather than clumping.",
+   "Combining: Fold the dry ingredients in with a spatula until just incorporated.",
+   "Baking: Bake at 175°C for 50-55 minutes.",
+   "Important: Let the cake cool completely before frosting. Cream cheese frosting melts on contact with a warm surface and slides straight off.",
+   "Frosting: Beat the cream cheese with the icing sugar until smooth, spread it over the cold cake and scatter walnuts on top."
+  ],
+  "wine": "Earl Grey tea or a sweet wine.",
+  "plate": "Serve with cream cheese frosting spread over and chopped walnuts."
+ },
+ "keik_lemoniou": {
+  "n": "Lemon Cake",
+  "ing": [
+   "Flour 250 g",
+   "Sugar 180 g",
+   "Eggs 3",
+   "Olive oil 100 ml",
+   "Yogurt 150 g",
+   "Lemon zest 2 lemons",
+   "Lemon juice 80 ml",
+   "Baking powder 2 tsp",
+   "Icing sugar 100 g (for the glaze)"
+  ],
+  "steps": [
+   "Zesting the lemons: Zest the lemons before juicing them, taking only the yellow layer. Important: the white pith underneath is bitter and that bitterness carries right through the cake.",
+   "Beating the eggs: Beat the eggs with the sugar for 5 minutes, until pale and tripled in volume.",
+   "Adding the oil: Pour the olive oil in a thin steady stream while beating, so it emulsifies instead of floating on top.",
+   "Adding the yogurt: Fold in the yogurt, the zest and half the lemon juice.",
+   "Sifting: Sift the flour with the baking powder and fold it in with a spatula in three additions.",
+   "Important: Fold, do not beat. Once flour meets liquid, every extra turn makes the crumb tougher.",
+   "Baking: Pour into a buttered and floured tin and bake at 175°C for 40-45 minutes.",
+   "Piercing: Straight out of the oven, pierce the hot cake all over with a skewer.",
+   "Important: Pour the remaining lemon juice over while the cake is still hot. A hot crumb drinks the juice; a cold one lets it run off the sides.",
+   "Glazing: Mix the icing sugar with a little lemon juice into a thick glaze and pour it over the cooled cake so it runs down the sides."
+  ],
+  "wine": "A Muscat or a sweet sparkling wine.",
+  "plate": "Serve in slices with the lemon glaze running down the sides and zest on top."
+ },
+ "keik_milou_me_kanela": {
+  "n": "Apple Cinnamon Cake",
+  "ing": [
+   "Flour 260 g",
+   "Sugar 180 g",
+   "Eggs 3",
+   "Olive oil 100 ml",
+   "Yogurt 130 g",
+   "Apples 2",
+   "Cinnamon 2 tsp",
+   "Baking powder 2 tsp",
+   "Lemon juice 1 tbsp",
+   "Brown sugar 2 tbsp (for the top)"
+  ],
+  "steps": [
+   "Preparing the apples: Peel one apple and grate it, and cut the other into small cubes. The grated one adds moisture, the cubes add texture.",
+   "Preventing browning: Toss both at once with the lemon juice, or they will oxidise and turn grey within minutes.",
+   "Beating the eggs: Beat the eggs with the sugar for 5 minutes until pale and thick.",
+   "Adding the oil: Add the olive oil in a thin stream, then fold in the yogurt.",
+   "Sifting: Sift the flour with the baking powder and the cinnamon.",
+   "Combining: Fold the dry ingredients in with a spatula, then add the apples.",
+   "Important: The batter is thick — do not add liquid to loosen it. The apples release plenty of juice as they bake and the cake ends up very moist.",
+   "Topping: Pour into the tin and scatter the brown sugar mixed with a little cinnamon over the surface, which forms a light crust.",
+   "Baking: Bake at 175°C for 50 minutes.",
+   "Important: Test at the centre, avoiding a piece of apple. Moist fruit reads as raw batter on the skewer and leads to overbaking."
+  ],
+  "wine": "Mulled wine or cinnamon tea.",
+  "plate": "Serve warm, dusted with cinnamon and a spoonful of cream."
+ },
+ "keik_portokaliou": {
+  "n": "Orange Cake",
+  "ing": [
+   "Flour 280 g",
+   "Sugar 200 g",
+   "Eggs 4",
+   "Olive oil 120 ml",
+   "Orange juice 150 ml",
+   "Orange zest 2 oranges",
+   "Baking powder 2 tsp",
+   "Vanilla extract 1 tsp",
+   "Salt 1 pinch"
+  ],
+  "steps": [
+   "Preparing the oranges: Zest the oranges first, then juice them. Important: use freshly squeezed juice — bottled juice is pasteurised and has lost the aromatics that make this cake.",
+   "Beating the eggs: Beat the eggs with the sugar for 6 minutes, until very pale and thick enough to leave a ribbon trail.",
+   "Adding the oil: Add the olive oil slowly while beating continuously.",
+   "Adding the juice: Fold in the orange juice and the zest gently.",
+   "Sifting: Sift the flour with the baking powder and salt and fold it in with a spatula.",
+   "Important: The batter will look thinner than usual — this is correct. The extra juice is what makes the cake so moist.",
+   "Baking: Pour into a buttered tin and bake at 180°C for 45 minutes.",
+   "Important: Do not open the oven door during the first 30 minutes. The sudden temperature drop makes the risen centre collapse.",
+   "Testing: Test with a skewer in the centre, which should come out clean.",
+   "Cooling: Cool for 10 minutes in the tin, then turn out and dust with icing sugar once completely cold."
+  ],
+  "wine": "Vin santo or an orange liqueur.",
+  "plate": "Serve with fresh orange slices alongside and a little zest on top."
+ }
+}

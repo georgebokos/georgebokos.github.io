@@ -590,6 +590,22 @@ body{font-family:'Inter',-apple-system,sans-serif;background:var(--bg);color:var
 .mpicker-head{padding:14px 18px 10px;border-bottom:1px solid var(--bd);display:flex;align-items:center;gap:10px;flex-shrink:0;}
 .mpicker-title{font-size:15px;font-weight:700;color:var(--txt);flex:1;}
 .mpicker-close{background:var(--lt);border:none;border-radius:50%;width:30px;height:30px;font-size:15px;cursor:pointer;color:var(--t3);}
+/* ── Επιλογή γλώσσας ── ένα κουμπί, φύλλο από κάτω. Κλιμακώνεται σε
+   όσες γλώσσες κι αν προστεθούν, χωρίς να μεγαλώνει η κεφαλίδα. */
+.hero-btn-langsel{width:auto;min-width:auto;padding:0 12px;border-radius:17px;font-size:12px;font-weight:800;letter-spacing:.02em;display:inline-flex;align-items:center;gap:6px;}
+.lsheet{display:none;position:fixed;inset:0;z-index:2400;background:rgba(0,0,0,.55);align-items:flex-end;justify-content:center;}
+.lsheet.show{display:flex;}
+.lsheet-in{background:var(--bg);border-radius:24px 24px 0 0;width:100%;max-width:560px;max-height:80vh;overflow-y:auto;padding:8px 0 calc(14px + env(safe-area-inset-bottom));animation:lsUp .22s ease;}
+@keyframes lsUp{from{transform:translateY(30px);opacity:.4}to{transform:none;opacity:1}}
+.lsheet-grab{width:38px;height:4px;border-radius:2px;background:var(--bd);margin:8px auto 6px;}
+.lsheet-t{font-size:15px;font-weight:700;color:var(--tx);padding:6px 20px 10px;}
+.lrow{display:flex;align-items:center;gap:13px;width:100%;background:none;border:none;padding:14px 20px;font-size:16px;color:var(--tx);cursor:pointer;font-family:inherit;text-align:left;}
+.lrow:active{background:var(--lt);}
+.lrow-code{min-width:38px;height:30px;border-radius:9px;background:var(--lt);color:var(--t2);font-size:11px;font-weight:800;display:flex;align-items:center;justify-content:center;flex:none;}
+.lrow.on .lrow-code{background:var(--pri);color:#fff;}
+.lrow-n{flex:1;font-weight:600;}
+.lrow-s{font-size:12px;color:var(--t3);font-weight:500;}
+.lrow-ok{color:var(--pri);font-size:17px;font-weight:800;}
 .mpicker-search{margin:10px 18px 6px;padding:10px 14px;border:1.5px solid var(--bd);border-radius:12px;font-size:14px;color:var(--txt);background:var(--bg);flex-shrink:0;}
 .mpicker-search:focus{outline:none;border-color:var(--pri);}
 .mpicker-list{overflow-y:auto;flex:1;padding:4px 0 20px;}
@@ -719,8 +735,7 @@ body{font-family:'Inter',-apple-system,sans-serif;background:var(--bg);color:var
       </div>
     </div>
     <div class="hero-btns hero-lang-row">
-      <button id="lb-el" class="hero-btn hero-btn-lang" onclick="setLang('el')" title="Ελληνικά">ΕΛ</button>
-      <button id="lb-en" class="hero-btn hero-btn-lang" onclick="setLang('en')" title="English">EN</button>
+      <!-- τα κουμπιά παράγονται από το μητρώο LANGS, βλ. buildLangButtons() -->
     </div>
     <div class="hero-spacer"></div>
     <div class="hero-greeting" id="hero-greeting"></div>
@@ -1377,10 +1392,10 @@ function getCurrentSeason(){
 function buildSeasonalGuide(){
   const s=getCurrentSeason();
   const g=SEASONAL_GUIDE[s]||SEASONAL_GUIDE.winter;
-  const en=curLang==='en';
+  const en=curLang!=='el';
   const ings=en?g.ings_en:g.ings;
   return`<div class="sea-guide">
-    <div class="sea-guide-lbl">${en?'In season now':'Τώρα στην εποχή τους'}</div>
+    <div class="sea-guide-lbl">${t('x83')}</div>
     <div class="sea-guide-title">${g.ico} ${en?g.name_en:g.name}</div>
     <div class="sea-ing-list">${ings.map(i=>`<span class="sea-ing-chip">${i}</span>`).join('')}</div>
   </div>`;
@@ -1395,7 +1410,7 @@ function submitNewsletter(){
   inp.style.borderColor='';
   localStorage.setItem('fd_nl_email',email);
   const wrap=document.getElementById('nl-form-wrap');
-  if(wrap){const _safe=email.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');wrap.innerHTML=curLang==='en'?`<div class="nl-done">✅ You're on the list! You'll receive news at ${_safe} soon</div>`:`<div class="nl-done">✅ Σε βάλαμε στη λίστα! Σύντομα θα λαμβάνεις νέα στο ${_safe}</div>`;}
+  if(wrap){const _safe=email.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');wrap.innerHTML=`<div class="nl-done">${tf('y_nl_ok',_safe)}</div>`;}
 }
 
 function applyTheme(c){
@@ -1403,7 +1418,180 @@ function applyTheme(c){
 }
 
 const TR={
-  el:{sub:'Μεσογειακές Συνταγές',
+  el:{sub:'Μεσογειακές Συνταγές',lang_title:'Γλώσσα',lang_el:'Ελληνικά',lang_en:'Αγγλικά',lang_de:'Γερμανικά',tb_last:'Τελευταία ημέρα <span>δωρεάν πρόσβασης</span>',tb_left:'Απομένουν <span>{0} ημέρες</span> δωρεάν πρόσβασης',tb_tlast:'Τελευταία ημέρα <span>δωρεάν δοκιμής</span>',tb_tleft:'Απομένουν <span>{0} ημέρες</span> δωρεάν δοκιμής',web_get_app:'📲 Κατέβασε την εφαρμογή',web_get_note:'Το Premium είναι διαθέσιμο μόνο στην εφαρμογή Android.',
+    y_nl_ok:'✅ Σε βάλαμε στη λίστα! Σύντομα θα λαμβάνεις νέα στο {0}',
+    y_badge_quick:'⚡ Γρήγορη ιδέα',
+    y_badge_day:'⭐ Πρόταση ημέρας',
+    y_fav_none:'Δεν έχεις αγαπημένα ακόμα.',
+    y_fav_hint:'Πάτα ❤️ σε οποιαδήποτε συνταγή ή γλυκό!',
+    y_q_recipe:'συνταγή',
+    y_shop_for:'🛒 Λίστα αγορών για {0}:',
+    y_days:['Κυρ','Δευ','Τρι','Τετ','Πεμ','Παρ','Σαβ'],
+    y_months:['Ιαν','Φεβ','Μαρ','Απρ','Μαΐ','Ιουν','Ιουλ','Αυγ','Σεπ','Οκτ','Νοε','Δεκ'],
+    y_pick_meal:'{0} — Επίλεξε φαγητό',
+    y_fridge_none:'Δεν βρέθηκαν συνταγές. Δοκίμασε: κρεμμύδι, ντομάτα, ελαιόλαδο...',
+    y_store_blocked:'⚠️ Ο browser σου μπλοκάρει την αποθήκευση δεδομένων — το εβδομαδιαίο πρόγραμμα μπορεί να μη διατηρηθεί. Έλεγξε τις ρυθμίσεις απορρήτου/shields του browser για αυτόν τον ιστότοπο.',
+    y_guest_query:'μεσογειακό μενού για {0} άτομα {1} συνταγές',
+    y_days_long:['Κυριακή','Δευτέρα','Τρίτη','Τετάρτη','Πέμπτη','Παρασκευή','Σάββατο'],
+    y_gr_night:'🌙 Καλό βράδυ',
+    y_gr_morning:'☀️ Καλημέρα',
+    y_gr_noon:'🌤 Καλημέρα',
+    y_gr_evening:'🌆 Καλησπέρα',
+    y_hero_sub:'🍽️ {0} προτάσεις σήμερα · {1}+ συνταγές',
+    y_search_none:'😕 Δεν βρέθηκαν αποτελέσματα για {0}',
+    y_grp2:'🍽️ Για ρομαντικό δείπνο ή μικρή παρέα',
+    y_grp4:'🥘 Ιδανικά για οικογενειακό τραπέζι',
+    y_grp6:'🎉 Για παρέα φίλων — σερβίρει καλά σε μεγάλα τεμάχια',
+    y_grp8:'🍖 Για μεγάλο τραπέζι — φαγητά που κάνουν εντύπωση',
+    y_fav_limit:'Το δωρεάν κρατά έως {0} αγαπημένα. Με το Premium είναι απεριόριστα.',
+    y_timer_snd:'Ήχος χρονομέτρου: {0} δευτερόλεπτα',
+    y_nl_reg:'✅ Εγγεγραμμένος ως {0}',
+
+    x79:'✅ Είσαι Premium!',
+    x80:'✅ Είσαι ήδη Premium!',
+    x81:'Τι μαγειρεύουμε σήμερα; Δες την πρότασή σου!',
+    x82:'Κράτα τα δικά σου μυστικά για κάθε συνταγή — προσθήκες, αλλαγές, βαθμολογίες.',
+    x83:'Τώρα στην εποχή τους',
+    x84:'Η <span>δωρεάν δοκιμή</span> σου είναι ενεργή',
+    x85:'Δοκίμασε <span>Premium</span> δωρεάν 7 ημέρες',
+    x86:'Δωρεάν →',
+    x87:'🎁 Πλήρης πρόσβαση — δωρεάν',
+    x88:'⚠️ Trial έληξε',
+    x89:'🎁 7 ημέρες δωρεάν',
+    x90:'/μήνα',
+    x91:'Ακύρωση οποιαδήποτε στιγμή · + ΦΠΑ, τελική τιμή στην αγορά',
+    x92:'ετησίως',
+    x93:'κερδίζεις 37% έναντι μηνιαίου',
+    x94:'el-GR',
+    x95:'Ακύρωση οποιαδήποτε στιγμή · Με ΦΠΑ',
+    x96:'🎁 Δωρεάν δοκιμή σε ισχύ',
+    x97:'Η δωρεάν δοκιμή σου είναι ενεργή.',
+    x98:'Η συνδρομή σου είναι ενεργή.',
+    x99:'🎁 Ξεκίνα 7 ημέρες δωρεάν',
+    x100:'💎 Απόκτησε Premium',
+    x101:'Δωρεάν για 7 ημέρες · Ακύρωση οποιαδήποτε στιγμή πριν την ανανέωση',
+    x102:'Ακύρωση οποιαδήποτε στιγμή',
+    x103:'🍽️ FoodDaily — Πρόταση Μέρας',
+    x104:'Ο χρόνος τελείωσε! Δες το επόμενο βήμα.',
+    x105:'🍽️ Αύριο: ',
+    x106:'⚠️ Τα πακέτα συνδρομής δεν είναι διαθέσιμα αυτή τη στιγμή.',
+    x107:'🎁 Ξεκίνησε η δωρεάν δοκιμή 7 ημερών!',
+    x108:'🎉 Καλώς ήρθες στο Premium!',
+    x109:'⚠️ Η αγορά δεν επαληθεύτηκε.',
+    x110:'⚠️ Η αγορά απέτυχε. Δοκίμασε ξανά.',
+    x111:'💎 Οι αγορές είναι διαθέσιμες μόνο μέσα από την εφαρμογή FoodDaily για Android.',
+    x112:'⚠️ Το προϊόν δεν βρέθηκε. Δοκίμασε ξανά αργότερα.',
+    x113:'⏳ Έλεγχος συνδρομής...',
+    x114:'✅ Το Premium αποκαταστάθηκε!',
+    x115:'Δεν βρέθηκε ενεργή συνδρομή.',
+    x116:'Αξιολόγηση:',
+    x117:'αστέρια',
+    x118:'Αποθηκεύτηκε',
+    x119:'Σημειώσεις συνταγής',
+    x120:'Τα Σημειώσεις είναι διαθέσιμα στο Premium.',
+    x121:'Ξεκλείδωμα Premium',
+    x122:'Γράψε τις δικές σου σημειώσεις για αυτή τη συνταγή...',
+    x123:'📝 Αποθηκεύτηκε!',
+    x124:'Αποθήκευση',
+    x125:'⚠️ Ενεργό — αλλά οι ειδοποιήσεις είναι μπλοκαρισμένες στις ρυθμίσεις της συσκευής',
+    x126:'⚠️ Δεν προγραμματίστηκε η υπενθύμιση. Έλεγξε την άδεια «ξυπνητήρια & υπενθυμίσεις» της εφαρμογής.',
+    x127:'Νέα έκδοση διαθέσιμη!',
+    x128:'Ενημέρωσε τώρα για τις νεότερες συνταγές και διορθώσεις.',
+    x129:'Ενημέρωση',
+    x130:'Αργότερα',
+    x131:'✅ Λίστα αντιγράφηκε!',
+    x132:'⚠️ Σφάλμα αντιγραφής',
+    x133:'⚠️ Σφάλμα',
+    x134:'Ο κωδικός δεν είναι διαθέσιμος ακόμα.',
+    x135:'📋 Ο κωδικός αντιγράφηκε!',
+    x136:'⚠️ Δεν αντιγράφηκε. Επίλεξε τον κωδικό χειροκίνητα.',
+    x137:'✅ Σύνδεση — το Premium ενεργοποιήθηκε',
+    x138:'Επαναφορά σε ανώνυμο',
+    x139:'⚠️ Δεν άλλαξε ο κωδικός.',
+    x140:'📋 Αντιγράφηκε ο σύνδεσμος!',
+    x141:'Αντίγραψε τον σύνδεσμο:',
+    x142:'🍳 Ώρα να ξεκινήσεις!',
+
+    // ── κείμενα που ήταν ενσωματωμένα στον κώδικα (στάδιο 2) ──
+    x1:'Θα το φτιάξω σήμερα!',
+    x2:'Θα το φτιάξω!',
+    x3:'🔔 Θα λάβεις υπενθύμιση στις ',
+    x4:'Μαγειρεύτηκε σήμερα',
+    x5:' μέρ. πριν',
+    x6:'Το έφτιαξα',
+    x7:'μερ.',
+    x8:'Επόμενη πρόταση',
+    x9:'Περισσότερες προτάσεις',
+    x10:'θερμ./μερ.',
+    x11:'Κοινοποίηση',
+    x12:'γ',
+    x13:'Πρωτεΐνη',
+    x14:'Υδατάνθρακες',
+    x15:'Λιπαρά',
+    x16:'Σφάλμα: ',
+    x17:'Κοινοποίηση υλικών',
+    x18:'Ολοκλήρωση βήμα βήμα',
+    x19:'Λιγότερος χρόνος',
+    x20:'Περισσότερος χρόνος',
+    x21:'Επαναφορά στον χρόνο της συνταγής',
+    x22:'Επαναφορά',
+    x23:'Ταιριαστή σαλάτα',
+    x24:'Ταιριαστό ντιπ',
+    x25:'🙏 Σε ευχαριστούμε!',
+    x26:'el',
+    x27:'Αργότερα',
+    x28:'Υλικά. ',
+    x29:'Εκτέλεση. ',
+    x30:'Βήμα ',
+    x31:'el-GR',
+    x32:'Πάτησε ξανά «πίσω» για έξοδο',
+    x33:'↺ Επαναφορά στον χρόνο της συνταγής',
+    x34:'✓ Έτοιμο!',
+    x35:'Ο χρόνος τελείωσε! Δες το επόμενο βήμα.',
+    x36:'📋 Αντιγράφηκε!',
+    x37:'Δεν υποστηρίζεται',
+    x38:'⚠️ Συμπλήρωσε τουλάχιστον όνομα, υλικά και βήματα',
+    x39:'📤 Ευχαριστούμε για τη συνταγή!',
+    x40:'📋 Αντιγράφηκε! Άνοιξε το email σου και κόλλα το κείμενο',
+    x41:'📤 Ανοίγει το email σου...',
+    x42:'ΣΗΜΕΡΑ',
+    x43:'Αλλαγή',
+    x44:'Αφαίρεση',
+    x45:'Δεν έχει επιλεγεί',
+    x46:'+ Επίλεξε',
+    x47:'Τυχαία επιλογή',
+    x48:'Χρειάζεται προετοιμασία',
+    x49:'🍽️ Αύριο: ',
+    x50:'Αγαπημένο',
+    x51:'υλικά',
+    x52:'Εγγεγραμμένος ως',
+    x53:'Chrome/Edge μόνο',
+    x54:'🎤 Ακούω...',
+    x55:'Ειδοποιήσεις απενεργοποιήθηκαν',
+    x56:'⚠️ Ο browser δεν υποστηρίζει ειδοποιήσεις',
+    x57:'⚠️ Ενεργό — αλλά οι ειδοποιήσεις είναι μπλοκαρισμένες στις ρυθμίσεις της συσκευής',
+    x58:'✅ Ειδοποιήσεις ενεργοποιήθηκαν!',
+    x59:'⚠️ Οι ειδοποιήσεις είναι μπλοκαρισμένες. Ενεργοποίησέ τες στις ρυθμίσεις της συσκευής.',
+    x60:'🔔 Ειδοποίηση εστάλη!',
+    x61:'⚠️ Οι ειδοποιήσεις είναι μπλοκαρισμένες. Ενεργοποίησέ τες στις ρυθμίσεις της συσκευής για το FoodDaily.',
+    x62:'⚠️ Δεν δόθηκε άδεια για ειδοποιήσεις',
+    x63:'🍽️ FoodDaily — Πρόταση Μέρας',
+    x64:'✓ Καταχωρήθηκε!',
+    x65:'👍 Ωραία επιλογή!',
+    x66:'👎 Αλλάζω πρόταση...',
+    x67:'❤️ Αγαπημένο!',
+    x68:'🤍 Αφαιρέθηκε',
+    x69:'Αγαπημένα',
+    x70:'Οι αντιπάθειες είναι διαθέσιμες στο Premium.',
+    x71:'Οι αντιπάθειες φιλτράρουν τις καθημερινές προτάσεις.',
+    x72:'💎 Οι αντιπάθειες είναι Premium — Δοκίμασε 7 ημέρες δωρεάν.',
+    x73:'Επόμενο →',
+    x74:'✓ Τέλος!',
+    x75:' λεπτά',
+    x76:'🔔 Υπενθύμιση ορίστηκε!',
+    x77:'🍳 Απόψε: ',
+    x78:' στις ',
+lang_fail:'⚠️ Η γλώσσα δεν φορτώθηκε. Έλεγξε τη σύνδεσή σου.',
     n0:'☀️ Σήμερα',n1:'⭐ Εορτές',n2:'🍯 Γλυκά',n3:'🧊 Ψυγείο',n4:'👥 Καλεσμένοι',n5:'🌿 Εποχιακά',
     c0:'🌿 Όλα',c1:'🍝 Ζυμαρικά',c2:'🐟 Θαλασσινά',c3:'🥩 Κρεατικά',
     c4:'🫘 Όσπρια',c5:'🥦 Λαχανικά',c6:'🥗 Σαλάτες',c7:'🍲 Σούπες',
@@ -1490,7 +1678,180 @@ const TR={
     prof_title:'👤 Προφίλ & Προτιμήσεις',prof_dislikes:'Δεν μου αρέσει / Αποφεύγω',
     sweets_lbl:'Γλυκό',
   },
-  en:{sub:'Mediterranean Recipes',
+  en:{sub:'Mediterranean Recipes',lang_title:'Language',lang_el:'Greek',lang_en:'English',lang_de:'German',tb_last:'Last day of <span>full free access</span>',tb_left:'<span>{0} days</span> of full free access left',tb_tlast:'Last day of your <span>free trial</span>',tb_tleft:'<span>{0} days</span> left in your free trial',web_get_app:'📲 Get the app',web_get_note:'Premium is available only in the Android app.',
+    y_nl_ok:'✅ You\'re on the list! You\'ll receive news at {0} soon',
+    y_badge_quick:'⚡ Quick idea',
+    y_badge_day:'⭐ Today\'s pick',
+    y_fav_none:'No favorites yet.',
+    y_fav_hint:'Tap ❤️ on any recipe or sweet!',
+    y_q_recipe:'recipe',
+    y_shop_for:'🛒 Shopping list for {0}:',
+    y_days:['Sun','Mon','Tue','Wed','Thu','Fri','Sat'],
+    y_months:['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'],
+    y_pick_meal:'{0} — Pick a meal',
+    y_fridge_none:'No recipes found. Try: onion, tomato, olive oil...',
+    y_store_blocked:'⚠️ Your browser is blocking saved data — the weekly plan may not persist. Check your browser\'s privacy/shield settings for this site.',
+    y_guest_query:'mediterranean menu for {0} people {1} recipes',
+    y_days_long:['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'],
+    y_gr_night:'🌙 Good evening',
+    y_gr_morning:'☀️ Good morning',
+    y_gr_noon:'🌤 Good morning',
+    y_gr_evening:'🌆 Good evening',
+    y_hero_sub:'🍽️ {0} suggestions today · {1}+ recipes',
+    y_search_none:'😕 No results found for {0}',
+    y_grp2:'🍽️ For a romantic dinner or small get-together',
+    y_grp4:'🥘 Ideal for a family table',
+    y_grp6:'🎉 For a group of friends — serves well in large portions',
+    y_grp8:'🍖 For a big table — dishes that make an impression',
+    y_fav_limit:'Free plan keeps up to {0} favourites. Premium is unlimited.',
+    y_timer_snd:'Timer sound: {0} seconds',
+    y_nl_reg:'✅ Registered as {0}',
+
+    x79:'✅ You\'re Premium!',
+    x80:'✅ You\'re already Premium!',
+    x81:'What are we cooking today? See your suggestion!',
+    x82:'Keep your own secrets for each recipe — tweaks, substitutions, ratings.',
+    x83:'In season now',
+    x84:'Your <span>free trial</span> is active',
+    x85:'Try <span>Premium</span> free for 7 days',
+    x86:'Free →',
+    x87:'🎁 Full access — free',
+    x88:'⚠️ Trial expired',
+    x89:'🎁 7 days free',
+    x90:'/month',
+    x91:'Cancel anytime · + VAT, final price at checkout',
+    x92:'billed yearly',
+    x93:'save 37% vs monthly',
+    x94:'en-US',
+    x95:'Cancel anytime · VAT included',
+    x96:'🎁 Free trial active',
+    x97:'Your free trial is active.',
+    x98:'Your subscription is active.',
+    x99:'🎁 Start 7 days free',
+    x100:'💎 Get Premium',
+    x101:'Free for 7 days · Cancel anytime before it renews',
+    x102:'Cancel anytime',
+    x103:'🍽️ FoodDaily — Daily Pick',
+    x104:'Time is up! Check the next step.',
+    x105:'🍽️ Tomorrow: ',
+    x106:'⚠️ Subscription plans are not available right now.',
+    x107:'🎁 Your 7-day free trial has started!',
+    x108:'🎉 Welcome to Premium!',
+    x109:'⚠️ Purchase could not be verified.',
+    x110:'⚠️ Purchase failed. Please try again.',
+    x111:'💎 Purchases are only available in the FoodDaily Android app.',
+    x112:'⚠️ Product not found. Please try again later.',
+    x113:'⏳ Checking subscription...',
+    x114:'✅ Premium restored!',
+    x115:'No active subscription found.',
+    x116:'Rating:',
+    x117:'stars',
+    x118:'Saved',
+    x119:'Recipe notes',
+    x120:'Notes are available on Premium.',
+    x121:'Unlock Premium',
+    x122:'Write your own notes for this recipe...',
+    x123:'📝 Saved!',
+    x124:'Save',
+    x125:'⚠️ Enabled — but notifications are blocked in device settings',
+    x126:'⚠️ Could not schedule the reminder. Check the app\'s alarm permission.',
+    x127:'New version available!',
+    x128:'Update now to get the latest recipes and fixes.',
+    x129:'Update',
+    x130:'Later',
+    x131:'✅ List copied!',
+    x132:'⚠️ Copy error',
+    x133:'⚠️ Error',
+    x134:'Code not available yet.',
+    x135:'📋 Code copied!',
+    x136:'⚠️ Could not copy. Select the code manually.',
+    x137:'✅ Signed in — Premium active',
+    x138:'Reset to anonymous',
+    x139:'⚠️ Could not change the code.',
+    x140:'📋 Link copied!',
+    x141:'Copy the link:',
+    x142:'🍳 Time to start!',
+
+    // ── κείμενα που ήταν ενσωματωμένα στον κώδικα (στάδιο 2) ──
+    x1:'I\'ll make this today!',
+    x2:'I\'ll make this!',
+    x3:'🔔 You\'ll get a reminder at ',
+    x4:'Cooked today',
+    x5:' days ago',
+    x6:'Made it',
+    x7:'serv.',
+    x8:'Next suggestion',
+    x9:'More suggestions',
+    x10:'cal/serv.',
+    x11:'Share',
+    x12:'g',
+    x13:'Protein',
+    x14:'Carbs',
+    x15:'Fat',
+    x16:'Error: ',
+    x17:'Share ingredients',
+    x18:'Step by step',
+    x19:'Less time',
+    x20:'More time',
+    x21:'Reset to recipe time',
+    x22:'Reset',
+    x23:'Matching salad',
+    x24:'Matching dip',
+    x25:'🙏 Thank you!',
+    x26:'en',
+    x27:'Later',
+    x28:'Ingredients. ',
+    x29:'Instructions. ',
+    x30:'Step ',
+    x31:'en-US',
+    x32:'Press back again to exit',
+    x33:'↺ Restored to the recipe time',
+    x34:'✓ Done!',
+    x35:'Time is up! Check the next step.',
+    x36:'📋 Copied!',
+    x37:'Not supported',
+    x38:'⚠️ Fill in at least the name, ingredients, and steps',
+    x39:'📤 Thanks for the recipe!',
+    x40:'📋 Copied! Open your email and paste the text',
+    x41:'📤 Opening your email...',
+    x42:'TODAY',
+    x43:'Change',
+    x44:'Remove',
+    x45:'Not selected',
+    x46:'+ Pick',
+    x47:'Random pick',
+    x48:'Needs prep',
+    x49:'🍽️ Tomorrow: ',
+    x50:'Favorite',
+    x51:'ingredients',
+    x52:'Registered as',
+    x53:'Chrome/Edge only',
+    x54:'🎤 Listening...',
+    x55:'Notifications disabled',
+    x56:'⚠️ Your browser does not support notifications',
+    x57:'⚠️ Enabled — but notifications are blocked in device settings',
+    x58:'✅ Notifications enabled!',
+    x59:'⚠️ Notifications are blocked. Enable them in device settings.',
+    x60:'🔔 Notification sent!',
+    x61:'⚠️ Notifications are blocked. Enable them in your device settings for FoodDaily.',
+    x62:'⚠️ Notification permission not granted',
+    x63:'🍽️ FoodDaily — Daily Pick',
+    x64:'✓ Logged!',
+    x65:'👍 Great choice!',
+    x66:'👎 Changing suggestion...',
+    x67:'❤️ Favorited!',
+    x68:'🤍 Removed',
+    x69:'Favorites',
+    x70:'Dislikes are available on Premium.',
+    x71:'Dislikes filter your daily suggestions.',
+    x72:'💎 Dislikes are Premium — Try 7 days free.',
+    x73:'Next →',
+    x74:'✓ Done!',
+    x75:' min',
+    x76:'🔔 Reminder set!',
+    x77:'🍳 Tonight: ',
+    x78:' at ',
+lang_fail:'⚠️ Language pack failed to load. Check your connection.',
     n0:'☀️ Today',n1:'⭐ Feasts',n2:'🍯 Sweets',n3:'🧊 Fridge',n4:'👥 Guests',n5:'🌿 Seasonal',
     c0:'🌿 All',c1:'🍝 Pasta',c2:'🐟 Seafood',c3:'🥩 Meat',
     c4:'🫘 Legumes',c5:'🥦 Vegetables',c6:'🥗 Salads',c7:'🍲 Soups',
@@ -1578,28 +1939,86 @@ const TR={
     sweets_lbl:'Sweet',
   }
 };
-function t(k){return TR[curLang]?.[k]||TR.el[k]||k;}
+// ── Μητρώο γλωσσών ───────────────────────────────────────────────
+// pack:false → τα κείμενα βρίσκονται μέσα στο index.html (ελληνικά + _en πεδία)
+// pack:true  → κατεβαίνει το lang/<κωδικός>.json την πρώτη φορά που θα επιλεγεί
+// nat = το όνομα στη ΔΙΚΗ της γλώσσα (δεν μεταφράζεται ποτέ)
+// Το όνομα στη γλώσσα του χρήστη έρχεται από τον TR, με κλειδί «lang_<κωδικός>»
+const LANGS={
+  el:{lbl:'ΕΛ',nat:'Ελληνικά',name:'Ελληνικά',pack:false},
+  en:{lbl:'EN',nat:'English',name:'English',pack:false},
+  de:{lbl:'DE',nat:'Deutsch',name:'Deutsch',pack:true},
+};
+let LP=null;        // ενεργό πακέτο μετάφρασης (null για el/en)
+let _idsStamped=false;
+// Κάθε συνταγή χρειάζεται σταθερό κλειδί για να τη βρει το πακέτο.
+function _stampIds(){
+  if(_idsStamped)return; _idsStamped=true;
+  try{
+    for(const k in MEALS){MEALS[k]._id=k;MEALS[k]._ns='meals';}
+    for(const k in MEAL_PREP){MEAL_PREP[k]._id=k;MEAL_PREP[k]._ns='prep';}
+    for(const c in SWEETS)SWEETS[c].forEach((o,i)=>{o._id=c+':'+i;o._ns='sweets';});
+    FESTIVE.forEach((f,i)=>{f._id='f'+i;f._ns='fest';});
+  }catch(e){}
+}
+// Φορτώνει το πακέτο μιας γλώσσας. Επιστρέφει false αν αποτύχει, ώστε ο
+// καλών να μείνει στην προηγούμενη γλώσσα αντί να δείξει μισοάδεια οθόνη.
+async function loadLangPack(code){
+  const cfg=LANGS[code];
+  if(!cfg)return false;
+  if(!cfg.pack){LP=null;return true;}
+  if(LP&&LP.lang===code)return true;
+  _stampIds();
+  try{
+    const r=await fetch('lang/'+code+'.json');
+    if(!r.ok)throw new Error(r.status);
+    const p=await r.json();
+    if(!p||p.lang!==code)throw new Error('λάθος πακέτο');
+    LP=p;
+    if(p.ui)TR[code]=Object.assign({},TR[code]||{},p.ui);
+    return true;
+  }catch(e){return false;}
+}
+// Σειρά υποχώρησης: ενεργή γλώσσα → αγγλικά → ελληνικά → το ίδιο το κλειδί.
+// Έτσι μια ημιτελής μετάφραση δείχνει αγγλικά, ποτέ ελληνικά σε ξένο χρήστη.
+function tf(k,...a){return String(t(k)).replace(/\{(\d+)\}/g,(m,i)=>a[i]!==undefined?a[i]:m);}
+function t(k){
+  const a=TR[curLang]; if(a&&a[k]!==undefined&&a[k]!=='')return a[k];
+  if(curLang!=='el'&&TR.en&&TR.en[k]!==undefined&&TR.en[k]!=='')return TR.en[k];
+  return TR.el[k]||k;
+}
+// Πεδίο συνταγής από το ενεργό πακέτο, αλλιώς undefined.
+function _pk(o,f){
+  if(!LP||curLang==='el'||!o||!o._id)return undefined;
+  const src=LP[o._ns||'meals'];
+  const g=src&&src[o._id];
+  const v=g&&g[f];
+  return (v===undefined||v==='')?undefined:v;
+}
+// Πίνακας από το πακέτο, μόνο αν έχει ακριβώς το ίδιο πλήθος με το ελληνικό.
+function _pkArr(o,f,base){const v=_pk(o,f);return (Array.isArray(v)&&v.length===base.length)?v:undefined;}
 // Μεταφρασμένη επικεφαλίδα κατηγορίας (Αγαπημένα/Κατάλογος)
 const _CAT_I18N={pasta:'cPasta',seafood:'cSeafood',meat:'cMeat',legumes:'cLegumes',vegetables:'cVeg',salads:'cSalads',soups:'cSoups',sauces:'cSauces',pites:'cPites',pizza:'cPizza',desserts:'cDesserts'};
 function catHdr(c){const k=_CAT_I18N[c];return k?t(k):catLabel(c);}
-function mealName(m){return curLang==='en'&&(m.en||m.n_en)?(m.en||m.n_en):m.n;}
-function mIng(m){return curLang==='en'&&m.ing_en&&m.ing_en.length===m.ing.length?m.ing_en:m.ing;}
-function mSteps(m){return curLang==='en'&&m.steps_en&&m.steps_en.length===m.steps.length?m.steps_en:m.steps;}
-function mWine(m){return curLang==='en'&&m.wine_en!==undefined?m.wine_en:m.wine;}
-function mPlate(m){return curLang==='en'&&m.plate_en!==undefined?m.plate_en:m.plate;}
-function mPrepMsg(prep){return curLang==='en'&&prep.msg_en?prep.msg_en:prep.msg;}
-function sweetName(s){return curLang==='en'&&s.n_en?s.n_en:s.n;}
-function sweetIng(s){return curLang==='en'&&s.ing_en&&s.ing_en.length===s.ing.length?s.ing_en:s.ing;}
-function sweetSteps(s){return curLang==='en'&&s.steps_en&&s.steps_en.length===s.steps.length?s.steps_en:s.steps;}
-function fN(f){return curLang==='en'&&f.n_en?f.n_en:f.n;}
-function fD(f){return curLang==='en'&&f.d_en?f.d_en:f.d;}
-function fTl(f){return curLang==='en'&&f.tl_en?f.tl_en:f.tl;}
-function fSub(f){return curLang==='en'&&f.sub_en?f.sub_en:f.sub;}
-function fFn(f){return curLang==='en'&&f.fn_en!==undefined?f.fn_en:f.fn;}
-function fMenu(f){return curLang==='en'&&f.menu_en&&f.menu_en.length===f.menu.length?f.menu_en:f.menu;}
-function fWine(f){return curLang==='en'&&f.wine_en?f.wine_en:f.wine;}
-function fWt(f){return curLang==='en'&&f.wt_en?f.wt_en:f.wt;}
-function fTl2(f){return curLang==='en'&&f.tl2_en&&f.tl2_en.length===f.tl2.length?f.tl2_en:f.tl2;}
+const _xl=()=>curLang!=='el';
+function mealName(m){return _pk(m,'n')||(_xl()&&(m.en||m.n_en)?(m.en||m.n_en):m.n);}
+function mIng(m){return _pkArr(m,'ing',m.ing)||(_xl()&&m.ing_en&&m.ing_en.length===m.ing.length?m.ing_en:m.ing);}
+function mSteps(m){return _pkArr(m,'steps',m.steps)||(_xl()&&m.steps_en&&m.steps_en.length===m.steps.length?m.steps_en:m.steps);}
+function mWine(m){const p=_pk(m,'wine');return p!==undefined?p:(_xl()&&m.wine_en!==undefined?m.wine_en:m.wine);}
+function mPlate(m){const p=_pk(m,'plate');return p!==undefined?p:(_xl()&&m.plate_en!==undefined?m.plate_en:m.plate);}
+function mPrepMsg(prep){return _pk(prep,'msg')||(_xl()&&prep.msg_en?prep.msg_en:prep.msg);}
+function sweetName(s){return _pk(s,'n')||(_xl()&&s.n_en?s.n_en:s.n);}
+function sweetIng(s){return _pkArr(s,'ing',s.ing)||(_xl()&&s.ing_en&&s.ing_en.length===s.ing.length?s.ing_en:s.ing);}
+function sweetSteps(s){return _pkArr(s,'steps',s.steps)||(_xl()&&s.steps_en&&s.steps_en.length===s.steps.length?s.steps_en:s.steps);}
+function fN(f){return _pk(f,'n')||(_xl()&&f.n_en?f.n_en:f.n);}
+function fD(f){return _pk(f,'d')||(_xl()&&f.d_en?f.d_en:f.d);}
+function fTl(f){return _pk(f,'tl')||(_xl()&&f.tl_en?f.tl_en:f.tl);}
+function fSub(f){return _pk(f,'sub')||(_xl()&&f.sub_en?f.sub_en:f.sub);}
+function fFn(f){const p=_pk(f,'fn');return p!==undefined?p:(_xl()&&f.fn_en!==undefined?f.fn_en:f.fn);}
+function fMenu(f){return _pkArr(f,'menu',f.menu)||(_xl()&&f.menu_en&&f.menu_en.length===f.menu.length?f.menu_en:f.menu);}
+function fWine(f){return _pk(f,'wine')||(_xl()&&f.wine_en?f.wine_en:f.wine);}
+function fWt(f){return _pk(f,'wt')||(_xl()&&f.wt_en?f.wt_en:f.wt);}
+function fTl2(f){return _pkArr(f,'tl2',f.tl2)||(_xl()&&f.tl2_en&&f.tl2_en.length===f.tl2.length?f.tl2_en:f.tl2);}
 function catLabel(cat){return t('cl_'+cat)||cat;}
 
 
@@ -4856,16 +5275,16 @@ function renderFeatured(show,cat,todayPlan){
   const fbg=CAT_GRAD[fm.cats[0]]||CAT_GRAD.legumes;
   const ffav=isFav(fm.id);
   const fplan=todayPlan[fm.id];
-  const badge=curLang==='en'?(cat==='quick'?'⚡ Quick idea':"⭐ Today's pick"):(cat==='quick'?'⚡ Γρήγορη ιδέα':'⭐ Πρόταση ημέρας');
+  const badge=cat==='quick'?t('y_badge_quick'):t('y_badge_day');
   const _fclog=getCookedLog();
   const _fcd=_fclog[fm.id]?Math.floor((Date.now()-_fclog[fm.id])/86400000):null;
   const factHtml=_fcd!==null&&_fcd<4
-    ?`<span class="feat-cooked-badge">✓ ${_fcd===0?(curLang==='en'?'Cooked today':'Μαγειρεύτηκε σήμερα'):_fcd+(curLang==='en'?' days ago':' μέρ. πριν')}</span>`
+    ?`<span class="feat-cooked-badge">✓ ${_fcd===0?(t('x4')):_fcd+(t('x5'))}</span>`
     :fplan==='plan'
-    ?`<div class="feat-go-btn" style="background:rgba(34,197,94,.9);color:#fff">✓ ${curLang==='en'?"I'll make this today!":'Θα το φτιάξω σήμερα!'}</div>`
+    ?`<div class="feat-go-btn" style="background:rgba(34,197,94,.9);color:#fff">✓ ${t('x1')}</div>`
     :`<div class="feat-act-row">
-        <button class="feat-act-btn feat-act-up" onclick="thumbUp('${fm.id}',event)">👍 ${curLang==='en'?"I'll make this!":'Θα το φτιάξω!'}</button>
-        <button class="feat-act-btn feat-act-cook" onclick="markCooked('${fm.id}',event)">✓ ${curLang==='en'?'Made it':'Το έφτιαξα'}</button>
+        <button class="feat-act-btn feat-act-up" onclick="thumbUp('${fm.id}',event)">👍 ${t('x2')}</button>
+        <button class="feat-act-btn feat-act-cook" onclick="markCooked('${fm.id}',event)">✓ ${t('x6')}</button>
       </div>`;
   fw.innerHTML=`<div class="feat-meal-wrap" style="padding:12px 1.1rem 0;position:relative;">
     <div class="feat-meal" onclick="openR('${fm.id}')">
@@ -4875,14 +5294,14 @@ function renderFeatured(show,cat,todayPlan){
       <div class="feat-meal-body">
         <div class="feat-badge-pill">${badge}</div>
         <div class="feat-meal-name">${mealName(fm)}</div>
-        <div class="feat-meal-meta"><span>⏱ ${fm.time}'</span><span>💰 ${fm.cost||'~5€'}</span><span>👥 ${fm.srv} ${curLang==='en'?'serv.':'μερ.'}</span></div>
+        <div class="feat-meal-meta"><span>⏱ ${fm.time}'</span><span>💰 ${fm.cost||'~5€'}</span><span>👥 ${fm.srv} ${t('x7')}</span></div>
         <div class="feat-actions" id="ca-${fm.id}">${factHtml}</div>
       </div>
       <button class="feat-fav" data-id="${fm.id}" onclick="toggleFav('${fm.id}',event)">${ffav?'❤️':'🤍'}</button>
-      <button class="feat-next-btn" title="${curLang==='en'?'Next suggestion':'Επόμενη πρόταση'}" onclick="event.stopPropagation();featNext()">👎</button>
+      <button class="feat-next-btn" title="${t('x8')}" onclick="event.stopPropagation();featNext()">👎</button>
     </div>
   </div>
-  <div class="more-hdr"><h3>🌞 ${curLang==='en'?'More suggestions':'Περισσότερες προτάσεις'}</h3></div>`;
+  <div class="more-hdr"><h3>🌞 ${t('x9')}</h3></div>`;
 }
 
 function featNext(){
@@ -4906,8 +5325,8 @@ function featNext(){
       const fav=isFav(m.id);
       const planStatus=todayPlan[m.id];
       const actHtml=planStatus==='plan'
-        ?`<span class="thumb-planned">✓ ${curLang==='en'?"I'll make this today!":'Θα το φτιάξω σήμερα!'}</span>`
-        :`<button class="thumb-up" onclick="thumbUp('${m.id}',event)">👍 ${curLang==='en'?"I'll make this!":'Θα το φτιάξω!'}</button><button class="thumb-dn" onclick="thumbDown('${m.id}',event)">👎</button>`;
+        ?`<span class="thumb-planned">✓ ${t('x1')}</span>`
+        :`<button class="thumb-up" onclick="thumbUp('${m.id}',event)">👍 ${t('x2')}</button><button class="thumb-dn" onclick="thumbDown('${m.id}',event)">👎</button>`;
       return `<div class="mcard" data-mid="${m.id}" onclick="openR('${m.id}')">
         <div class="mtop" style="background:${bg}">
           <img id="mi-${m.id}" alt="${mealName(m)}" src="${MEAL_IMAGES[m.id]||''}" onload="this.classList.add('loaded');var e=document.getElementById('me-${m.id}');if(e)e.style.opacity=0" onerror="this.style.display='none'">
@@ -4952,7 +5371,10 @@ function renderMeals(cat){
   } else if(cat==='gf'){
     pool=pool.filter(m=>DIET_GF.has(m.id)&&!m.quickOnly);
   } else if(cat==='all'||cat==='favs'){
-    pool=pool.filter(m=>!m.quickOnly&&!m.noDaily&&!m.cats.includes('salads')&&!m.cats.includes('desserts'));
+    // Οι καθημερινές προτάσεις είναι ΜΟΝΟ κυρίως πιάτα.
+    // Οι σάλτσες/συνοδευτικά αποκλείονταν ως τώρα μόνο μέσω της σήμανσης noDaily
+    // κάθε συνταγής — που κρατά, αλλά σπάει με την πρώτη νέα σάλτσα που θα την ξεχάσει.
+    pool=pool.filter(m=>!m.quickOnly&&!m.noDaily&&!m.cats.includes('salads')&&!m.cats.includes('desserts')&&!m.cats.includes('sauces'));
     // Καλοκαίρι (Ιούν–Αύγ): αφαιρούνται σούπες από τις καθημερινές προτάσεις
     const _mo=new Date().getMonth();
     if(_mo>=5&&_mo<=7) pool=pool.filter(m=>!m.cats.includes('soups'));
@@ -4990,9 +5412,7 @@ function renderMeals(cat){
     const sweetFavIds=allFavIds.filter(id=>id.startsWith('sw:'));
     const rw=document.getElementById('remind-wrap');if(rw)rw.innerHTML='';
     if(!allFavIds.length){
-      grid.innerHTML=curLang==='en'
-        ?`<div class="fav-empty"><div style="font-size:38px">🤍</div><div style="font-size:15px;margin-top:.5rem">No favorites yet.</div><div style="font-size:13px;margin-top:4px">Tap ❤️ on any recipe or sweet!</div></div>`
-        :`<div class="fav-empty"><div style="font-size:38px">🤍</div><div style="font-size:15px;margin-top:.5rem">Δεν έχεις αγαπημένα ακόμα.</div><div style="font-size:13px;margin-top:4px">Πάτα ❤️ σε οποιαδήποτε συνταγή ή γλυκό!</div></div>`;
+      grid.innerHTML=`<div class="fav-empty"><div style="font-size:38px">🤍</div><div style="font-size:15px;margin-top:.5rem">${t('y_fav_none')}</div><div style="font-size:13px;margin-top:4px">${t('y_fav_hint')}</div></div>`;
       return;
     }
     const CATLBLS={pasta:'🍝 Ζυμαρικά',seafood:'🐟 Θαλασσινά',meat:'🥩 Κρεατικά',
@@ -5014,7 +5434,7 @@ function renderMeals(cat){
         const bg=CAT_GRAD[m.cats[0]]||CAT_GRAD.legumes;
         const cl=CAT_CL[m.cats[0]]||'b-legumes';
         const planStatus=todayPlan[m.id];
-        const actHtml=planStatus==='plan'?`<span class="thumb-planned">✓ ${curLang==='en'?"I'll make this!":'Θα το φτιάξω!'}</span>`:`<button class="thumb-up" onclick="thumbUp('${m.id}',event)">👍 ${curLang==='en'?"I'll make this!":'Θα το φτιάξω!'}</button><button class="thumb-dn" onclick="thumbDown('${m.id}',event)">👎</button>`;
+        const actHtml=planStatus==='plan'?`<span class="thumb-planned">✓ ${t('x2')}</span>`:`<button class="thumb-up" onclick="thumbUp('${m.id}',event)">👍 ${t('x2')}</button><button class="thumb-dn" onclick="thumbDown('${m.id}',event)">👎</button>`;
         const fimgSrc=MEAL_IMAGES[m.id]||'';
         return `<div class="mcard" data-mid="${m.id}" onclick="openR('${m.id}')">
           <div class="mtop" style="background:${bg}">${fimgSrc?`<img alt="${mealName(m)}" src="${fimgSrc}" onload="this.classList.add('loaded');var e=document.getElementById('fvme-${m.id}');if(e)e.style.opacity=0" onerror="this.style.display='none'">`:''}<div class="memoji" id="fvme-${m.id}">${m.e}</div><div class="mtop-grad"></div><div class="mtop-badge"><span class="badge ${cl}">${catLabel(m.cats[0])}</span></div>${m.vegan?'<div class="mc-vegan">🌱 Vegan</div>':''}</div>
@@ -5031,7 +5451,7 @@ function renderMeals(cat){
         return `<div class="mcard" onclick="openSW('${s._swc}',${s._swi})">
         <div class="mtop" style="background:linear-gradient(145deg,#FFF8E7,#FFE082)">${swImgSrc?`<img alt="${sweetName(s)}" src="${swImgSrc}" onload="this.classList.add('loaded');var e=document.getElementById('fvsw-${swUid}');if(e)e.style.opacity=0" onerror="this.style.display='none'">`:''}<div class="memoji" id="fvsw-${swUid}">${s.e}</div><div class="mtop-grad"></div><div class="mtop-badge"><span class="badge b-sweets">${t('sweets_lbl')}</span></div></div>
         <div class="mbtm"><div class="mname-row"><div class="mname">${sweetName(s)}</div><button class="fav-btn-sm" data-id="${s._fid}" onclick="toggleFav('${s._fid}',event)">❤️</button></div>
-        <div class="mmeta">🔥 ${s.cal} ${curLang==='en'?'cal/serv.':'θερμ./μερ.'} &nbsp;🍽 ${s.srv} ${curLang==='en'?'serv.':'μερ.'}</div></div></div>`;
+        <div class="mmeta">🔥 ${s.cal} ${t('x10')} &nbsp;🍽 ${s.srv} ${t('x7')}</div></div></div>`;
       }).join('');
     }
     grid.innerHTML=html;
@@ -5066,8 +5486,8 @@ function renderMeals(cat){
         const planStatus=todayPlanB[m.id];
         // Στον κατάλογο δεν υπάρχει 👎 — δεν είναι «πρόταση» για αλλαγή
         const actHtml=planStatus==='plan'
-          ?`<span class="thumb-planned">✓ ${curLang==='en'?"I'll make this!":'Θα το φτιάξω!'}</span>`
-          :`<button class="thumb-up" onclick="thumbUp('${m.id}',event)">👍 ${curLang==='en'?"I'll make this!":'Θα το φτιάξω!'}</button><button class="thumb-cook" onclick="markCooked('${m.id}',event)">✓ ${curLang==='en'?'Made it':'Το έφτιαξα'}</button>`;
+          ?`<span class="thumb-planned">✓ ${t('x2')}</span>`
+          :`<button class="thumb-up" onclick="thumbUp('${m.id}',event)">👍 ${t('x2')}</button><button class="thumb-cook" onclick="markCooked('${m.id}',event)">✓ ${t('x6')}</button>`;
         return `<div class="mcard" data-mid="${m.id}" onclick="openR('${m.id}')">
           <div class="mtop" style="background:${bg}">
             <img id="mi-${m.id}" alt="${mealName(m)}" src="${MEAL_IMAGES[m.id]||''}" onload="this.classList.add('loaded');var e=document.getElementById('me-${m.id}');if(e)e.style.opacity=0" onerror="this.style.display='none'">
@@ -5221,10 +5641,10 @@ function renderMeals(cat){
     const _clog=getCookedLog();
     const _cd=_clog[m.id]?Math.floor((Date.now()-_clog[m.id])/86400000):null;
     const actHtml=_cd!==null&&_cd<4
-      ?`<span class="cooked-badge">✓ ${_cd===0?(curLang==='en'?'Cooked today':'Μαγειρεύτηκε σήμερα'):_cd+(curLang==='en'?' days ago':' μέρ. πριν')}</span>`
+      ?`<span class="cooked-badge">✓ ${_cd===0?(t('x4')):_cd+(t('x5'))}</span>`
       :planStatus==='plan'
-      ?`<span class="thumb-planned">✓ ${curLang==='en'?"I'll make this today!":'Θα το φτιάξω σήμερα!'}</span>`
-      :`<button class="thumb-up" onclick="thumbUp('${m.id}',event)">👍 ${curLang==='en'?"I'll make this!":'Θα το φτιάξω!'}</button><button class="thumb-cook" onclick="markCooked('${m.id}',event)">✓ ${curLang==='en'?'Made it':'Το έφτιαξα'}</button><button class="thumb-dn" onclick="thumbDown('${m.id}',event)">👎</button>`;
+      ?`<span class="thumb-planned">✓ ${t('x1')}</span>`
+      :`<button class="thumb-up" onclick="thumbUp('${m.id}',event)">👍 ${t('x2')}</button><button class="thumb-cook" onclick="markCooked('${m.id}',event)">✓ ${t('x6')}</button><button class="thumb-dn" onclick="thumbDown('${m.id}',event)">👎</button>`;
     return `<div class="mcard" data-mid="${m.id}" onclick="openR('${m.id}')">
       <div class="mtop" style="background:${bg}">
         <img id="mi-${m.id}" alt="${mealName(m)}" src="${MEAL_IMAGES[m.id]||''}" onload="this.classList.add('loaded');var e=document.getElementById('me-${m.id}');if(e)e.style.opacity=0" onerror="this.style.display='none'">
@@ -5281,7 +5701,7 @@ function openR(id){
   hero.innerHTML=`
     <button class="ovcls" onclick="closeOv()">✕</button>
     <button id="ov-fav" onclick="toggleFav('${id}',event)" style="position:absolute;top:12px;left:12px;z-index:10;background:rgba(0,0,0,.3);border:none;border-radius:50%;width:36px;height:36px;font-size:18px;cursor:pointer;display:flex;align-items:center;justify-content:center;transition:all .2s;">${isFav(id)?'❤️':'🤍'}</button>
-    <button class="ov-share-btn" onclick="shareRecipe('${id}')" title="${curLang==='en'?'Share':'Κοινοποίηση'}">📤</button>
+    <button class="ov-share-btn" onclick="shareRecipe('${id}')" title="${t('x11')}">📤</button>
     <div class="ovhero-fb" style="background:${bg}"><span style="font-size:78px;filter:drop-shadow(0 6px 20px rgba(0,0,0,.15))">${m.e}</span></div>
     <img id="ov-img" alt="${mealName(m)}" src="${MEAL_IMAGES[id]||''}" onload="this.style.opacity='1';this.classList.add('loaded');document.querySelector('#ov-hero .ovhero-fb').style.opacity=0" onerror="this.style.display='none'" style="position:absolute;inset:0;width:100%;height:100%;object-fit:cover;opacity:0;transition:opacity .6s;">
     <div class="ovhero-grad"></div>
@@ -5304,9 +5724,9 @@ function openR(id){
     nutrEl.innerHTML=(m.vegan?`<div class="ov-vegan">🌱 Vegan</div>`:'')
       +`<div class="nutr-panel">
         <div class="nutr-item"><div class="nutr-ico">🔥</div><span>${m.cal}</span><small>kcal</small></div>
-        <div class="nutr-item"><div class="nutr-ico">🥩</div><span>${mac.prot}${curLang==='en'?'g':'γ'}</span><small>${curLang==='en'?'Protein':'Πρωτεΐνη'}</small></div>
-        <div class="nutr-item"><div class="nutr-ico">🍚</div><span>${mac.carbs}${curLang==='en'?'g':'γ'}</span><small>${curLang==='en'?'Carbs':'Υδατάνθρακες'}</small></div>
-        <div class="nutr-item"><div class="nutr-ico">🫒</div><span>${mac.fat}${curLang==='en'?'g':'γ'}</span><small>${curLang==='en'?'Fat':'Λιπαρά'}</small></div>
+        <div class="nutr-item"><div class="nutr-ico">🥩</div><span>${mac.prot}${t('x12')}</span><small>${t('x13')}</small></div>
+        <div class="nutr-item"><div class="nutr-ico">🍚</div><span>${mac.carbs}${t('x12')}</span><small>${t('x14')}</small></div>
+        <div class="nutr-item"><div class="nutr-ico">🫒</div><span>${mac.fat}${t('x12')}</span><small>${t('x15')}</small></div>
       </div>`;
   }
   // Cook Tonight button
@@ -5337,7 +5757,7 @@ function openR(id){
   _ovEl.classList.add('show');
   const _sh=_ovEl.querySelector('.ovsh');if(_sh)_sh.scrollTop=0;
   document.body.style.overflow='hidden';
-  }catch(e){console.error('openR:',id,e);alert((curLang==='en'?'Error: ':'Σφάλμα: ')+e.message);}
+  }catch(e){console.error('openR:',id,e);alert((t('x16'))+e.message);}
 }
 
 function openSW(cat,idx){
@@ -5354,9 +5774,9 @@ function openSW(cat,idx){
     <div class="ovtitle"><h2>${sweetName(s)}</h2></div>`;
   _guestScale=1;_curSrv=0;
   const nutrSW=document.getElementById('ov-nutr');if(nutrSW)nutrSW.innerHTML='';
-  document.getElementById('ov-stats').innerHTML=`<div class="ovstat"><label>${t('cal')}</label><span>${s.cal} / ${curLang==='en'?'serv.':'μερ.'}</span></div><div class="ovstat"><label>${t('srv')}</label><span>${s.srv}</span></div>`;
+  document.getElementById('ov-stats').innerHTML=`<div class="ovstat"><label>${t('cal')}</label><span>${s.cal} / ${t('x7')}</span></div><div class="ovstat"><label>${t('srv')}</label><span>${s.srv}</span></div>`;
   buildIngTab(s);buildStepsTab(s);
-  document.getElementById('ot-pair').innerHTML=`<a class="ext-btn" href="https://www.google.com/search?q=${encodeURIComponent(curLang==='en'?sweetName(s)+' recipe':s.q+' συνταγή')}" target="_blank">${t('ext')}</a>`;
+  document.getElementById('ot-pair').innerHTML=`<a class="ext-btn" href="https://www.google.com/search?q=${encodeURIComponent(curLang==='el'?s.q+' συνταγή':sweetName(s)+' '+t('y_q_recipe'))}" target="_blank">${t('ext')}</a>`;
   const swTtsBtn=document.getElementById('ov-tts-btn');if(swTtsBtn)swTtsBtn.textContent=t('tts_p');
   const swTtsLbl=document.getElementById('ov-tts-lbl');if(swTtsLbl)swTtsLbl.textContent=sweetName(s);
   ovTab('ing');
@@ -5373,21 +5793,21 @@ function buildIngTab(m){
   const scaledCost=sc!==1?scalePrice(m.cost,sc):m.cost;
   const scaleNote=sc!==1?`<div class="scale-note">📊 ${t('qty_for')} <b>${srv} ${t('people')}</b></div>`:'';
   const note=m.cost?`<div class="cost-note">💰 ${scaledCost} ${t('total_cost')} · ${m.cps||''} ${t('per_srv_lbl')} &nbsp;<span style="color:var(--t3)">(${t('cost_yr')})</span></div>`:'';
-  const shareBtn=canShare()?`<button class="share-ing-btn" onclick="shareIngredients()">📤 ${curLang==='en'?'Share ingredients':'Κοινοποίηση υλικών'}</button>`:'';
+  const shareBtn=canShare()?`<button class="share-ing-btn" onclick="shareIngredients()">📤 ${t('x17')}</button>`:'';
   document.getElementById('ot-ing').innerHTML=`${scaleNote}<div class="ing-grid">${items}</div><button class="copy-list-btn" onclick="copyShoppingList()">${t('copy_list')}</button>${shareBtn}${note}`;
 }
 
 function buildStepsTab(m){
-  const cookBtn=`<button class="cook-mode-btn" onclick="enterCookMode()">🍳 Cook Mode — ${curLang==='en'?'Step by step':'Ολοκλήρωση βήμα βήμα'}</button>`;
+  const cookBtn=`<button class="cook-mode-btn" onclick="enterCookMode()">🍳 Cook Mode — ${t('x18')}</button>`;
   document.getElementById('ot-steps').innerHTML=cookBtn+`<div class="step-list">${mSteps(m).map((s,i)=>{
     const det=parseStepSeconds(s);
     const mid=_timerMealId_page||'';
     const secs=det>0?getStepSecs(mid,i,det):0;
     const timerBtn=secs>0?`<span class="step-timer-wrap">`
-      +`<button class="step-timer-adj" onclick="adjStepTimer(event,-1)" aria-label="${curLang==='en'?'Less time':'Λιγότερος χρόνος'}">−</button>`
+      +`<button class="step-timer-adj" onclick="adjStepTimer(event,-1)" aria-label="${t('x19')}">−</button>`
       +`<button class="step-timer-btn" data-timer="${secs}" data-def="${det}" data-step="${i}" data-meal="${mid}" onclick="startStepTimer(this)">⏱ ${fmtDur(secs)}</button>`
-      +`<button class="step-timer-adj" onclick="adjStepTimer(event,1)" aria-label="${curLang==='en'?'More time':'Περισσότερος χρόνος'}">+</button>`
-      +`<button class="step-timer-rst" onclick="resetStepTimer(event)" title="${curLang==='en'?'Reset to recipe time':'Επαναφορά στον χρόνο της συνταγής'}" aria-label="${curLang==='en'?'Reset':'Επαναφορά'}" style="display:${secs!==det?'flex':'none'}">↺</button>`
+      +`<button class="step-timer-adj" onclick="adjStepTimer(event,1)" aria-label="${t('x20')}">+</button>`
+      +`<button class="step-timer-rst" onclick="resetStepTimer(event)" title="${t('x21')}" aria-label="${t('x22')}" style="display:${secs!==det?'flex':'none'}">↺</button>`
       +`</span>`:'';
     return `<div class="step-item" onclick="if(event.target.tagName!=='BUTTON'){this.classList.toggle('done');this.querySelector('.step-num').textContent=this.classList.contains('done')?'✓':'${i+1}'}"><div class="step-num">${i+1}</div><div class="step-txt">${s}${timerBtn}</div></div>`;
   }).join('')}</div>`;
@@ -5399,13 +5819,13 @@ function buildPairTab(m){
   if(!wine&&!m.beer&&!plate&&!dipIds.length&&!m.salad){document.getElementById('ot-pair').innerHTML='';return;}
   const dipHtml=dipIds.map(id=>{const d=MEALS[id];if(!d)return '';return `<div class="pair-dip" onclick="openR('${id}',event)">${d.e||''} ${mealName(d)||id}<span class="pair-dip-arr">→</span></div>`;}).join('');
   const saladM=m.salad?MEALS[m.salad]:null;
-  const saladHtml=saladM?`<div class="pair-box"><div class="pair-t">🥗 ${curLang==='en'?'Matching salad':'Ταιριαστή σαλάτα'}</div><div class="pair-dip" onclick="openR('${m.salad}',event)">${saladM.e||''} ${mealName(saladM)}<span class="pair-dip-arr">→</span></div></div>`:'';
+  const saladHtml=saladM?`<div class="pair-box"><div class="pair-t">🥗 ${t('x23')}</div><div class="pair-dip" onclick="openR('${m.salad}',event)">${saladM.e||''} ${mealName(saladM)}<span class="pair-dip-arr">→</span></div></div>`:'';
   document.getElementById('ot-pair').innerHTML=`
     ${wine?`<div class="pair-box"><div class="pair-t">${t('wine')}</div><div class="pair-d">${wine}</div></div>`:''}
     ${m.beer?`<div class="pair-box"><div class="pair-t">${t('beer')}</div><div class="pair-d">${m.beer}</div></div>`:''}
     ${saladHtml}
     ${plate?`<div class="pair-box"><div class="pair-t">${t('plate')}</div><div class="pair-d">${plate}</div></div>`:''}
-    ${dipHtml?`<div class="pair-box"><div class="pair-t">🥣 ${curLang==='en'?'Matching dip':'Ταιριαστό ντιπ'}</div>${dipHtml}</div>`:''}
+    ${dipHtml?`<div class="pair-box"><div class="pair-t">🥣 ${t('x24')}</div>${dipHtml}</div>`:''}
     <a class="ext-btn" href="https://www.google.com/search?q=${encodeURIComponent((mealName(m)||m.id)+' recipe')}" target="_blank">${t('ext')}</a>`;
 }
 
@@ -5452,17 +5872,20 @@ function doRate(){
   // ΠΡΟΣΟΧΗ: το https άνοιγμα κατέληγε στη ΣΕΛΙΔΑ του Play μέσα σε browser, όπου
   // τα αστέρια συχνά δεν είναι διαθέσιμα. Το market:// ανοίγει την ΕΦΑΡΜΟΓΗ Play,
   // όπου η αξιολόγηση γίνεται με ένα πάτημα.
+  const market='market://details?id=com.fooddaily.app';
   const web=PLAY_URL;
-  if(/Android/i.test(navigator.userAgent)){
+  const isAndroid=/Android/i.test(navigator.userAgent);
+  if(isAndroid){
     const t0=Date.now();
+    // Αν δεν υπάρχει η εφαρμογή Play, επιστρέφουμε στη σελίδα.
     setTimeout(()=>{if(Date.now()-t0<1600)location.href=web;},700);
-    location.href='market://details?id=com.fooddaily.app';
+    location.href=market;
   }else{
     let w=null;
     try{w=window.open(web,'_blank','noopener');}catch(e){}
     if(!w)location.href=web;
   }
-  showToast(curLang==='en'?'🙏 Thank you!':'🙏 Σε ευχαριστούμε!');
+  showToast(t('x25'));
 }
 function rateLater(){
   // Δεν κρατάμε ημερολογιακή αναβολή — το επόμενο κατώφλι συνταγών έχει ήδη διπλασιαστεί
@@ -5525,12 +5948,12 @@ function maybeOfferPremium(trigger){
     if(busy||(nm&&nm.style.display&&nm.style.display!=='none'))return;
     const m=document.getElementById('offer-mod');
     if(!m)return;
-    const cfg=OFFER_TXT[trigger], tx=cfg[curLang==='en'?'en':'el'];
+    const cfg=OFFER_TXT[trigger], tx=cfg[t('x26')];
     document.getElementById('offer-ico').textContent=cfg.ico;
     document.getElementById('offer-t').textContent=tx.t;
     document.getElementById('offer-s').textContent=tx.s;
     document.getElementById('offer-yes').textContent='✨ '+tx.y;
-    document.getElementById('offer-later').textContent=curLang==='en'?'Later':'Αργότερα';
+    document.getElementById('offer-later').textContent=t('x27');
     _offerTrigger=trigger;
     try{localStorage.setItem('fd_offer_shows',String(_oNum('fd_offer_shows')+1));localStorage.setItem('fd_offer_last',String(Date.now()));}catch(e){}
     m.classList.add('show');
@@ -5583,16 +6006,16 @@ function ovBgClick(e){if(e.target===document.getElementById('overlay'))closeOv()
 function buildTTSText(m){
   const name=mealName(m)||'';
   const ingArr=mIng(m),stepArr=mSteps(m);
-  const ingLbl=curLang==='en'?'Ingredients. ':'Υλικά. ';
-  const stepLbl=curLang==='en'?'Instructions. ':'Εκτέλεση. ';
-  const stepWord=curLang==='en'?'Step ':'Βήμα ';
+  const ingLbl=t('x28');
+  const stepLbl=t('x29');
+  const stepWord=t('x30');
   const ings=ingArr?ingLbl+ingArr.join('. ')+'.':'';
   const steps=stepArr?stepLbl+stepArr.map((s,i)=>stepWord+(i+1)+'. '+s).join('. '):'';
   return [name,ings,steps].filter(Boolean).join(' ');
 }
 function pickVoice(){
   const vv=speechSynthesis.getVoices();
-  const lang=curLang==='en'?'en':'el';
+  const lang=t('x26');
   return vv.find(v=>v.lang.startsWith(lang)&&v.name.toLowerCase().includes('google'))
     ||vv.find(v=>v.lang.startsWith(lang)&&!v.localService)
     ||vv.find(v=>v.lang===(lang==='en'?'en-US':'el-GR'))
@@ -5617,7 +6040,7 @@ async function nativeStartTTS(){
   try{
     const opt={
       text:buildTTSText(_meal),
-      lang:curLang==='en'?'en-US':'el-GR',
+      lang:t('x31'),
       rate:ttsRate(), pitch:1.05, volume:1.0
     };
     await TTS.speak(opt);
@@ -5640,7 +6063,7 @@ function startTTS(){
   stopTTS();
   const doSpeak=()=>{
     const u=new SpeechSynthesisUtterance(buildTTSText(_meal));
-    u.lang=curLang==='en'?'en-US':'el-GR';u.rate=ttsRate();u.pitch=1.05;
+    u.lang=t('x31');u.rate=ttsRate();u.pitch=1.05;
     const gv=pickVoice();if(gv)u.voice=gv;
     u.onstart=()=>{isTTS=true;document.getElementById('ov-tts-btn').textContent=t('tts_s');};
     u.onend=u.onerror=()=>{isTTS=false;document.getElementById('ov-tts-btn').textContent=t('tts_p');};
@@ -5667,7 +6090,7 @@ async function fdShare({title,text,url}){
   const S=sharePlugin();
   if(S){
     try{
-      await S.share({title,text,url,dialogTitle:curLang==='en'?'Share':'Κοινοποίηση'});
+      await S.share({title,text,url,dialogTitle:t('x11')});
       return true;
     }catch(e){
       // Ο χρήστης έκλεισε το παράθυρο — δεν θέλουμε fallback σε αντιγραφή
@@ -5695,9 +6118,10 @@ function hasNativeBilling(){
 }
 // Είναι η παλιά TWA εφαρμογή Android;
 // Η TWA ανοίγει τη σελίδα με referrer «android-app://<package>». Ο referrer
-// χάνεται στις επόμενες πλοηγήσεις, γι' αυτό αποθηκεύεται μία φορά.
-// ΠΡΟΣΟΧΗ: χωρίς αυτόν τον διαχωρισμό, TWA και σκέτος browser φαίνονται ίδιοι
-// (καμία δεν έχει Capacitor) — και ο κανόνας της μιας ίσχυε άθελά μας στην άλλη.
+// χάνεται στις επόμενες πλοηγήσεις, γι' αυτό η ανίχνευση αποθηκεύεται μία φορά.
+// ΠΡΟΣΟΧΗ: χωρίς αυτόν τον διαχωρισμό, ο σκέτος browser και η TWA φαίνονται
+// ίδιοι (καμία από τις δύο δεν έχει Capacitor) — και όποιος κανόνας ισχύει για
+// τη μία, ίσχυε άθελά μας και για την άλλη.
 function isTwa(){
   try{
     if(localStorage.getItem('fd_twa')==='1')return true;
@@ -5729,9 +6153,9 @@ function previewDaysLeft(){
 function getPremiumState(){
   if(localStorage.getItem('fd_premium')==='true')return 'premium';
   // ΜΟΝΟ η TWA παραμένει ξεκλείδωτη: εκεί η αγορά εξαρτάται από τον browser και
-  // συχνά αποτυγχάνει, οπότε το paywall θα ήταν αδιέξοδο.
+  // συχνά αποτυγχάνει, οπότε paywall θα ήταν αδιέξοδο για τον χρήστη.
   // Ο σκέτος browser ΔΕΝ εξαιρείται πλέον — αλλιώς η εφαρμογή δινόταν ολόκληρη
-  // δωρεάν σε όποιον άνοιγε απλώς το site.
+  // δωρεάν σε όποιον άνοιγε το site.
   if(isTwa())return 'premium';
   if(previewDaysLeft()>0)return 'preview';
   return 'free';
@@ -5767,14 +6191,12 @@ function applyEntitlement(customerInfo){
 // Trial banner in hero
 function renderTrialBanner(){
   const el=document.getElementById('trial-banner');if(!el)return;
-  const en=curLang==='en';
+  const en=curLang!=='el';
   // Μόνο στην TWA δεν εμφανίζεται προτροπή — εκεί δεν ολοκληρώνεται αγορά.
   if(isTwa()&&localStorage.getItem('fd_premium')!=='true'){el.innerHTML='';return;}
   if(getPremiumState()==='preview'){
     const d=previewDaysLeft();
-    const txt=en
-      ?(d===1?'Last day of <span>full free access</span>':`<span>${d} days</span> of full free access left`)
-      :(d===1?'Τελευταία ημέρα <span>δωρεάν πρόσβασης</span>':`Απομένουν <span>${d} ημέρες</span> δωρεάν πρόσβασης`);
+    const txt=d===1?t('tb_last'):tf('tb_left',d);
     el.innerHTML=`<div class="trial-banner" onclick="openPremiumScreen()"><div class="trial-banner-l"><span class="trial-banner-icon">🎁</span><span class="trial-banner-txt">${txt}</span></div><span class="trial-banner-cta">Premium →</span></div>`;
     return;
   }
@@ -5782,16 +6204,13 @@ function renderTrialBanner(){
     // Σε δωρεάν δοκιμή του Play: δείξε πόσες ημέρες απομένουν
     if(isPlayTrial()){
       const d=trialDaysLeft();
-      const txt=d>0
-        ?(en?(d===1?'Last day of your <span>free trial</span>':`<span>${d} days</span> left in your free trial`)
-             :(d===1?'Τελευταία ημέρα <span>δωρεάν δοκιμής</span>':`Απομένουν <span>${d} ημέρες</span> δωρεάν δοκιμής`))
-        :(en?'Your <span>free trial</span> is active':'Η <span>δωρεάν δοκιμή</span> σου είναι ενεργή');
+      const txt=d>0?(d===1?t('tb_tlast'):tf('tb_tleft',d)):(t('x84'));
       el.innerHTML=`<div class="trial-banner" onclick="openPremiumScreen()"><div class="trial-banner-l"><span class="trial-banner-icon">🎁</span><span class="trial-banner-txt">${txt}</span></div><span class="trial-banner-cta">Premium →</span></div>`;
       return;
     }
     el.innerHTML='';return;
   }
-  el.innerHTML=`<div class="trial-banner" onclick="openPremiumScreen()"><div class="trial-banner-l"><span class="trial-banner-icon">💎</span><span class="trial-banner-txt">${en?'Try <span>Premium</span> free for 7 days':'Δοκίμασε <span>Premium</span> δωρεάν 7 ημέρες'}</span></div><span class="trial-banner-cta">${en?'Free →':'Δωρεάν →'}</span></div>`;
+  el.innerHTML=`<div class="trial-banner" onclick="openPremiumScreen()"><div class="trial-banner-l"><span class="trial-banner-icon">💎</span><span class="trial-banner-txt">${t('x85')}</span></div><span class="trial-banner-cta">${t('x86')}</span></div>`;
 }
 
 // Premium screen
@@ -5803,11 +6222,11 @@ function openPremiumScreen(){
   // Update header badge
   const badge=document.getElementById('pscreen-trial-badge');
   if(badge){
-    const en=curLang==='en';
-    if(state==='trial'){badge.textContent=en?'🎁 Full access — free':'🎁 Πλήρης πρόσβαση — δωρεάν';}
-    else if(state==='expired'){badge.textContent=en?'⚠️ Trial expired':'⚠️ Trial έληξε';}
-    else if(state==='premium'){badge.textContent=en?"✅ You're Premium!":'✅ Είσαι Premium!';}
-    else{badge.textContent=en?'🎁 7 days free':'🎁 7 ημέρες δωρεάν';}
+    const en=curLang!=='el';
+    if(state==='trial'){badge.textContent=t('x87');}
+    else if(state==='expired'){badge.textContent=t('x88');}
+    else if(state==='premium'){badge.textContent=t('x79');}
+    else{badge.textContent=t('x89');}
   }
   setPlan('annual');
   document.getElementById('pscreen').classList.add('show');
@@ -5822,14 +6241,14 @@ function setPlan(plan){
   document.getElementById('pplan-monthly').classList.toggle('on',plan==='monthly');
   document.getElementById('pplan-annual').classList.toggle('on',plan==='annual');
   const priceEl=document.getElementById('pscreen-price');
-  const en=curLang==='en';
+  const en=curLang!=='el';
   if(plan==='monthly'){
-    priceEl.innerHTML=`<div class="pscreen-price-main">1,99€<span style="font-size:18px;font-weight:400">${en?'/month':'/μήνα'}</span></div>`
-      +`<div class="pscreen-price-sub">${en?'Cancel anytime · + VAT, final price at checkout':'Ακύρωση οποιαδήποτε στιγμή · + ΦΠΑ, τελική τιμή στην αγορά'}</div>`;
+    priceEl.innerHTML=`<div class="pscreen-price-main">1,99€<span style="font-size:18px;font-weight:400">${t('x90')}</span></div>`
+      +`<div class="pscreen-price-sub">${t('x91')}</div>`;
   }else{
     // Το ετήσιο παρουσιάζεται ως μηνιαίο κόστος — ίδιο ποσό, τελείως άλλη αντίληψη
-    priceEl.innerHTML=`<div class="pscreen-price-main">1,25€<span style="font-size:18px;font-weight:400">${en?'/month':'/μήνα'}</span></div>`
-      +`<div class="pscreen-price-sub"><b>14,99€ ${en?'billed yearly':'ετησίως'}</b> · ${en?'save 37% vs monthly':'κερδίζεις 37% έναντι μηνιαίου'}<br>${en?'Cancel anytime · + VAT, final price at checkout':'Ακύρωση οποιαδήποτε στιγμή · + ΦΠΑ, τελική τιμή στην αγορά'}</div>`;
+    priceEl.innerHTML=`<div class="pscreen-price-main">1,25€<span style="font-size:18px;font-weight:400">${t('x90')}</span></div>`
+      +`<div class="pscreen-price-sub"><b>14,99€ ${t('x92')}</b> · ${t('x93')}<br>${t('x91')}</div>`;
   }
   updatePremiumCTA(getPremiumState());
   fetchRealPlanPrice(plan);
@@ -5843,14 +6262,14 @@ async function fetchRealPlanPrice(plan){
     const details=await service.getDetails([itemId]);
     if(!details.length||_curPlan!==plan)return; // user switched plan while we were fetching
     const d=details[0];
-    const en=curLang==='en';
+    const en=curLang!=='el';
     const cur=d.price.currency, val=parseFloat(d.price.value);
-    const fmt=x=>new Intl.NumberFormat(en?'en-US':'el-GR',{style:'currency',currency:cur}).format(x);
+    const fmt=x=>new Intl.NumberFormat(t('x94'),{style:'currency',currency:cur}).format(x);
     const priceEl=document.getElementById('pscreen-price');
     if(!priceEl)return;
     if(plan==='monthly'){
-      priceEl.innerHTML=`<div class="pscreen-price-main">${fmt(val)}<span style="font-size:18px;font-weight:400">${en?'/month':'/μήνα'}</span></div>`
-        +`<div class="pscreen-price-sub">${en?'Cancel anytime · VAT included':'Ακύρωση οποιαδήποτε στιγμή · Με ΦΠΑ'}</div>`;
+      priceEl.innerHTML=`<div class="pscreen-price-main">${fmt(val)}<span style="font-size:18px;font-weight:400">${t('x90')}</span></div>`
+        +`<div class="pscreen-price-sub">${t('x95')}</div>`;
     }else{
       // Ίδια λογική με τη στατική ένδειξη: το ετήσιο παρουσιάζεται ως μηνιαίο κόστος
       const perMonth=val/12;
@@ -5863,8 +6282,8 @@ async function fetchRealPlanPrice(plan){
             if(pct>0)savings=' · '+(en?`save ${pct}% vs monthly`:`κερδίζεις ${pct}% έναντι μηνιαίου`);}
         }
       }catch(e){}
-      priceEl.innerHTML=`<div class="pscreen-price-main">${fmt(perMonth)}<span style="font-size:18px;font-weight:400">${en?'/month':'/μήνα'}</span></div>`
-        +`<div class="pscreen-price-sub"><b>${fmt(val)} ${en?'billed yearly':'ετησίως'}</b>${savings}<br>${en?'Cancel anytime · VAT included':'Ακύρωση οποιαδήποτε στιγμή · Με ΦΠΑ'}</div>`;
+      priceEl.innerHTML=`<div class="pscreen-price-main">${fmt(perMonth)}<span style="font-size:18px;font-weight:400">${t('x90')}</span></div>`
+        +`<div class="pscreen-price-sub"><b>${fmt(val)} ${t('x92')}</b>${savings}<br>${t('x95')}</div>`;
     }
   }catch(e){/* keep the fallback price shown */}
 }
@@ -5872,33 +6291,32 @@ function updatePremiumCTA(state){
   const btn=document.getElementById('pscreen-cta');
   const note=document.getElementById('pscreen-cta-note');
   if(!btn)return;
-  const en=curLang==='en';
+  const en=curLang!=='el';
   if(state==='premium'){
     btn.disabled=true;btn.style.opacity='.7';
     if(isPlayTrial()){
       const d=trialDaysLeft();
-      btn.textContent=en?'🎁 Free trial active':'🎁 Δωρεάν δοκιμή σε ισχύ';
+      btn.textContent=t('x96');
       if(note)note.textContent=d>0
         ?(en?(d===1?'Last day — renews tomorrow unless you cancel.':`${d} days left — renews automatically unless you cancel.`)
              :(d===1?'Τελευταία ημέρα — ανανεώνεται αύριο αν δεν ακυρώσεις.':`Απομένουν ${d} ημέρες — ανανεώνεται αυτόματα αν δεν ακυρώσεις.`))
-        :(en?'Your free trial is active.':'Η δωρεάν δοκιμή σου είναι ενεργή.');
+        :(t('x97'));
     }else{
-      btn.textContent=en?"✅ You're already Premium!":'✅ Είσαι ήδη Premium!';
-      if(note)note.textContent=en?'Your subscription is active.':'Η συνδρομή σου είναι ενεργή.';
+      btn.textContent=t('x80');
+      if(note)note.textContent=t('x98');
     }
   }else if(isWebOnly()){
     // Σκέτος browser: η συνδρομή δεν αγοράζεται εδώ. Το κουμπί κατεβάζει την
-    // εφαρμογή, που είναι ο μόνος τρόπος να αποκτηθεί Premium.
+    // εφαρμογή, που είναι και ο μόνος τρόπος να αποκτήσει κανείς Premium.
     btn.disabled=false;btn.style.opacity='1';
-    btn.textContent=en?'📲 Get the app':'📲 Κατέβασε την εφαρμογή';
-    if(note)note.textContent=en?'Premium is available only in the Android app.'
-                               :'Το Premium είναι διαθέσιμο μόνο στην εφαρμογή Android.';
+    btn.textContent=t('web_get_app');
+    if(note)note.textContent=t('web_get_note');
   }else{
     btn.disabled=false;btn.style.opacity='1';
     const hasTrial=_planTrial[_curPlan]!==false; // αν δεν ξέρουμε ακόμα, υποθέτουμε ναι
     btn.textContent=hasTrial
-      ?(en?'🎁 Start 7 days free':'🎁 Ξεκίνα 7 ημέρες δωρεάν')
-      :(en?'💎 Get Premium':'💎 Απόκτησε Premium');
+      ?(t('x99'))
+      :(t('x100'));
     if(note){
       if(state==='preview'){
         const d=previewDaysLeft();
@@ -5909,8 +6327,8 @@ function updatePremiumCTA(state){
                     :`Η δωρεάν πρόσβαση λήγει σε ${d} ${d===1?'ημέρα':'ημέρες'}`);
       }else{
         note.textContent=hasTrial
-          ?(en?'Free for 7 days · Cancel anytime before it renews':'Δωρεάν για 7 ημέρες · Ακύρωση οποιαδήποτε στιγμή πριν την ανανέωση')
-          :(en?'Cancel anytime':'Ακύρωση οποιαδήποτε στιγμή');
+          ?(t('x101'))
+          :(t('x102'));
       }
     }
   }
@@ -5944,6 +6362,7 @@ async function refreshTrialFlags(){
   }catch(e){}
 }
 function handlePremiumCTA(){
+  // Από τον browser δεν υπάρχει ροή αγοράς — στέλνουμε στο Google Play.
   if(isWebOnly()){
     // ΠΡΟΣΟΧΗ: με μπλοκαρισμένα αναδυόμενα, το window.open επιστρέφει null ΧΩΡΙΣ
     // να πετάξει σφάλμα — οπότε το try/catch δεν αρκεί και το κουμπί έμενε νεκρό.
@@ -6069,11 +6488,11 @@ async function lnScheduleDaily(){
   if(localStorage.getItem('notif_on')!=='true')return;
   if(!await lnEnsurePerm())return;
   const [h,m]=(localStorage.getItem('notif_time')||'09:00').split(':').map(Number);
-  const en=curLang==='en';
+  const en=curLang!=='el';
   return await lnSchedule([{
     id:LN_ID_DAILY,
-    title:en?'🍽️ FoodDaily — Daily Pick':'🍽️ FoodDaily — Πρόταση Μέρας',
-    body:en?"What are we cooking today? See your suggestion!":'Τι μαγειρεύουμε σήμερα; Δες την πρότασή σου!',
+    title:t('x103'),
+    body:t('x81'),
     schedule:{on:{hour:h,minute:m},allowWhileIdle:true}
   }]);
 }
@@ -6092,11 +6511,11 @@ async function lnScheduleTimer(ms){
   const LN=lnPlugin();if(!LN)return;
   await lnCancel(LN_ID_TIMER);
   if(!await lnEnsurePerm())return;
-  const en=curLang==='en';
+  const en=curLang!=='el';
   return await lnSchedule([{
     id:LN_ID_TIMER,
     title:'⏱️ FoodDaily — Timer',
-    body:en?'Time is up! Check the next step.':'Ο χρόνος τελείωσε! Δες το επόμενο βήμα.',
+    body:t('x104'),
     schedule:{at:new Date(Date.now()+ms),allowWhileIdle:true}
   }]);
 }
@@ -6114,10 +6533,10 @@ async function lnSchedulePrep(plan){
     if(!prep||!meal)return;
     const at=new Date();at.setHours(18,0,0,0);
     if(at<=new Date())return; // η ώρα πέρασε για σήμερα
-    const en=curLang==='en';
+    const en=curLang!=='el';
     await lnSchedule([{
       id:LN_ID_PREP,
-      title:(en?'🍽️ Tomorrow: ':'🍽️ Αύριο: ')+mealName(meal),
+      title:(t('x105'))+mealName(meal),
       body:mPrepMsg(prep),
       schedule:{at,allowWhileIdle:true}
     }]);
@@ -6128,6 +6547,7 @@ async function lnSchedulePrep(plan){
 // Κλείνει με τη σειρά ό,τι είναι ανοιχτό, αντί να βγαίνει από την εφαρμογή.
 // Η σειρά ακολουθεί το z-index: ό,τι είναι πιο «πάνω» κλείνει πρώτο.
 const FD_BACK_LAYERS=[
+  {id:'lsheet',          close:()=>closeLangSheet()},
   {id:'rate-mod',        close:()=>rateLater()},
   {id:'offer-mod',       close:()=>offerLater()},
   {id:'cook-mode',       close:()=>exitCookMode()},
@@ -6173,7 +6593,7 @@ async function initBackButton(){
         try{App.exitApp();}catch(e){}
       }else{
         _lastBack=now;
-        showToast(curLang==='en'?'Press back again to exit':'Πάτησε ξανά «πίσω» για έξοδο');
+        showToast(t('x32'));
       }
     });
   }catch(e){}
@@ -6188,7 +6608,7 @@ async function rcSyncOnStart(){
   }catch(e){/* χωρίς δίκτυο: διατηρούμε την τρέχουσα κατάσταση */}
 }
 async function rcPurchase(plan){
-  const en=curLang==='en';
+  const en=curLang!=='el';
   const P=await rcInit();
   if(!P)return false;
   const wanted=RC_PKG[plan]||RC_PKG.monthly;
@@ -6198,7 +6618,7 @@ async function rcPurchase(plan){
     const list=(cur&&cur.availablePackages)||[];
     const pkg=list.find(p=>p.identifier===wanted)||list[0];
     if(!pkg){
-      showToast(en?'⚠️ Subscription plans are not available right now.':'⚠️ Τα πακέτα συνδρομής δεν είναι διαθέσιμα αυτή τη στιγμή.');
+      showToast(t('x106'));
       return true;
     }
     const res=await P.purchasePackage({aPackage:pkg});
@@ -6206,28 +6626,28 @@ async function rcPurchase(plan){
       localStorage.setItem('fd_premium_plan',plan);
       closePremiumScreen();
       showToast(isPlayTrial()
-        ?(en?'🎁 Your 7-day free trial has started!':'🎁 Ξεκίνησε η δωρεάν δοκιμή 7 ημερών!')
-        :(en?'🎉 Welcome to Premium!':'🎉 Καλώς ήρθες στο Premium!'));
+        ?(t('x107'))
+        :(t('x108')));
     }else{
-      showToast(en?'⚠️ Purchase could not be verified.':'⚠️ Η αγορά δεν επαληθεύτηκε.');
+      showToast(t('x109'));
     }
   }catch(e){
     // Ο χρήστης ακύρωσε το παράθυρο αγοράς — δεν είναι σφάλμα
     const msg=(e&&(e.message||e.code)||'')+'';
     if(/cancel/i.test(msg)||(e&&e.code==='1'))return true;
     console.error('RevenueCat purchase failed',e);
-    showToast(en?'⚠️ Purchase failed. Please try again.':'⚠️ Η αγορά απέτυχε. Δοκίμασε ξανά.');
+    showToast(t('x110'));
   }
   return true;
 }
 async function purchasePremium(plan){
-  const en=curLang==='en';
+  const en=curLang!=='el';
   const itemId=PREMIUM_SKUS[plan]||PREMIUM_SKUS.monthly;
   // 1η επιλογή: native αγορά μέσω RevenueCat (Capacitor) — ανεξάρτητη από browser
   if(await rcPurchase(plan))return;
   // 2η επιλογή: Digital Goods API (TWA μέσω Chrome)
   if(!window.PaymentRequest){
-    showToast(en?'💎 Purchases are only available in the FoodDaily Android app.':'💎 Οι αγορές είναι διαθέσιμες μόνο μέσα από την εφαρμογή FoodDaily για Android.');
+    showToast(t('x111'));
     return;
   }
   const service=await getDigitalGoodsService();
@@ -6239,7 +6659,7 @@ async function purchasePremium(plan){
   try{
     const details=await service.getDetails([itemId]);
     if(!details.length){
-      showToast(en?'⚠️ Product not found. Please try again later.':'⚠️ Το προϊόν δεν βρέθηκε. Δοκίμασε ξανά αργότερα.');
+      showToast(t('x112'));
       return;
     }
     const request=new PaymentRequest(
@@ -6252,42 +6672,42 @@ async function purchasePremium(plan){
     localStorage.setItem('fd_premium_plan',plan);
     closePremiumScreen();
     renderTrialBanner();
-    showToast(en?'🎉 Welcome to Premium!':'🎉 Καλώς ήρθες στο Premium!');
+    showToast(t('x108'));
   }catch(e){
     if(e&&e.name==='AbortError')return; // user cancelled the purchase sheet
     console.error('Purchase failed',e);
-    showToast(en?'⚠️ Purchase failed. Please try again.':'⚠️ Η αγορά απέτυχε. Δοκίμασε ξανά.');
+    showToast(t('x110'));
   }
 }
 // Σαφής εξήγηση όταν ο browser που φιλοξενεί την εφαρμογή δεν υποστηρίζει Google Play Billing
 function showPremiumBrowserNotice(){
-  const en=curLang==='en';
+  const en=curLang!=='el';
   alert(en
     ?'Purchases are not available right now.\n\nThis app is currently running through a browser that does not support Google Play purchases (e.g. Brave).\n\nTo subscribe:\n1. Open Settings → Apps → Default apps → Browser app\n2. Select Chrome\n3. Reopen FoodDaily and try again'
     :'Οι αγορές δεν είναι διαθέσιμες αυτή τη στιγμή.\n\nΗ εφαρμογή τρέχει μέσω browser που δεν υποστηρίζει τις αγορές Google Play (π.χ. Brave).\n\nΓια να κάνεις συνδρομή:\n1. Ρυθμίσεις → Εφαρμογές → Προεπιλεγμένες εφαρμογές → Εφαρμογή browser\n2. Επίλεξε Chrome\n3. Άνοιξε ξανά το FoodDaily και δοκίμασε πάλι');
 }
 async function restorePurchase(){
-  const en=curLang==='en';
-  showToast(en?'⏳ Checking subscription...':'⏳ Έλεγχος συνδρομής...');
+  const en=curLang!=='el';
+  showToast(t('x113'));
   // 1η επιλογή: RevenueCat (native)
   const P=await rcInit();
   if(P){
     try{
       const {customerInfo}=await P.restorePurchases();
       if(applyEntitlement(customerInfo)){
-        showToast(en?'✅ Premium restored!':'✅ Το Premium αποκαταστάθηκε!');
+        showToast(t('x114'));
       }else{
-        showToast(en?'No active subscription found.':'Δεν βρέθηκε ενεργή συνδρομή.');
+        showToast(t('x115'));
       }
     }catch(e){
-      showToast(en?'No active subscription found.':'Δεν βρέθηκε ενεργή συνδρομή.');
+      showToast(t('x115'));
     }
     return;
   }
   // 2η επιλογή: Digital Goods API
   const service=await getDigitalGoodsService();
   if(!service){
-    setTimeout(()=>showToast(en?'No active subscription found.':'Δεν βρέθηκε ενεργή συνδρομή.'),1000);
+    setTimeout(()=>showToast(t('x115')),1000);
     return;
   }
   try{
@@ -6297,12 +6717,12 @@ async function restorePurchase(){
       localStorage.setItem('fd_premium','true');
       renderTrialBanner();
       updatePremiumCTA(getPremiumState());
-      showToast(en?'✅ Premium restored!':'✅ Το Premium αποκαταστάθηκε!');
+      showToast(t('x114'));
     }else{
-      showToast(en?'No active subscription found.':'Δεν βρέθηκε ενεργή συνδρομή.');
+      showToast(t('x115'));
     }
   }catch(e){
-    showToast(en?'No active subscription found.':'Δεν βρέθηκε ενεργή συνδρομή.');
+    showToast(t('x115'));
   }
 }
 
@@ -6329,10 +6749,10 @@ function renderOvRating(id){
   if(!wrap)return;
   const r=getRatings();
   const cur=r[id]||0;
-  const en=curLang==='en';
-  wrap.innerHTML=`<label>${en?'Rating:':'Αξιολόγηση:'}</label><div class="star-row" id="star-row">${
-    [1,2,3,4,5].map(n=>`<span class="star${cur>=n?' on':''}" onclick="rateRecipe('${id}',${n})" role="button" aria-label="${n} ${en?'stars':'αστέρια'}">★</span>`).join('')
-  }</div><span class="ov-rating-saved" id="rating-saved">✓ ${en?'Saved':'Αποθηκεύτηκε'}</span>`;
+  const en=curLang!=='el';
+  wrap.innerHTML=`<label>${t('x116')}</label><div class="star-row" id="star-row">${
+    [1,2,3,4,5].map(n=>`<span class="star${cur>=n?' on':''}" onclick="rateRecipe('${id}',${n})" role="button" aria-label="${n} ${t('x117')}">★</span>`).join('')
+  }</div><span class="ov-rating-saved" id="rating-saved">✓ ${t('x118')}</span>`;
 }
 function rateRecipe(id,stars){
   setRating(id,stars);
@@ -6478,7 +6898,7 @@ function resetStepTimer(ev){
   const mid=btn.dataset.meal||'';
   if(mid)clearStepSecs(mid,parseInt(btn.dataset.step));
   _syncResetBtn(wrap,btn);
-  showToast(curLang==='en'?'↺ Restored to the recipe time':'↺ Επαναφορά στον χρόνο της συνταγής');
+  showToast(t('x33'));
 }
 // ── ΗΧΟΣ ΧΡΟΝΟΜΕΤΡΟΥ ───────────────────────────────────────────
 // Αφορά ΜΟΝΟ το χρονόμετρο μαγειρικής — η καθημερινή ειδοποίηση δεν επηρεάζεται.
@@ -6544,9 +6964,9 @@ function _timerFireDone(btn){
   clearInterval(_timerInterval);_timerInterval=null;_timerEndTime=null;_timerBtn=null;
   _activeTimerMealId='';_timerStepIdx_page=-1;
   _stopTimerKeepalive();
-  btn.classList.remove('running');btn.classList.add('done');btn.textContent=curLang==='en'?'✓ Done!':'✓ Έτοιμο!';
+  btn.classList.remove('running');btn.classList.add('done');btn.textContent=t('x34');
   playTimerAlarm();
-  _swSend({type:'SHOW_NOTIFICATION',title:'⏱️ FoodDaily — Timer',body:curLang==='en'?'Time is up! Check the next step.':'Ο χρόνος τελείωσε! Δες το επόμενο βήμα.',tag:'fd-timer'});
+  _swSend({type:'SHOW_NOTIFICATION',title:'⏱️ FoodDaily — Timer',body:t('x35'),tag:'fd-timer'});
 }
 function startStepTimer(btn){
   const setSecs=parseInt(btn.dataset.timer)||60;
@@ -6590,11 +7010,11 @@ function shareIngredients(){
   const items=checked.length>0?checked:all;
   const list=[...items].map(s=>s.textContent.trim()).filter(Boolean);
   if(!list.length)return;
-  const label=curLang==='en'?`🛒 Shopping list for ${mealName(_meal)}:`:`🛒 Λίστα αγορών για ${mealName(_meal)}:`;
+  const label=tf('y_shop_for',mealName(_meal));
   const text=`${label}\n${list.map(i=>`• ${i}`).join('\n')}\n\n📱 FoodDaily`;
   fdShare({text}).then(ok=>{
     if(ok)return;
-    navigator.clipboard?.writeText(text).then(()=>showToast(curLang==='en'?'📋 Copied!':'📋 Αντιγράφηκε!')).catch(()=>showToast(curLang==='en'?'Not supported':'Δεν υποστηρίζεται'));
+    navigator.clipboard?.writeText(text).then(()=>showToast(t('x36'))).catch(()=>showToast(t('x37')));
   });
 }
 
@@ -6603,13 +7023,13 @@ function getNotes(id){try{const n=JSON.parse(localStorage.getItem('fd_notes')||'
 function saveNote(id,text){try{const n=JSON.parse(localStorage.getItem('fd_notes')||'{}');n[id]=text;localStorage.setItem('fd_notes',JSON.stringify(n));}catch(e){}}
 function buildNotesTab(m){
   const wrap=document.getElementById('ot-notes');if(!wrap)return;
-  const en=curLang==='en';
+  const en=curLang!=='el';
   if(!isPremium()){
-    wrap.innerHTML=`<div class="notes-locked"><div class="pgate-icon">📝</div><div class="notes-locked-t">${en?'Recipe notes':'Σημειώσεις συνταγής'}</div><div class="notes-locked-s">${en?"Keep your own secrets for each recipe — tweaks, substitutions, ratings.":'Κράτα τα δικά σου μυστικά για κάθε συνταγή — προσθήκες, αλλαγές, βαθμολογίες.'}</div><button class="notes-unlock-btn" onclick="showPremiumGate('${en?'Notes are available on Premium.':'Τα Σημειώσεις είναι διαθέσιμα στο Premium.'}')">💎 ${en?'Unlock Premium':'Ξεκλείδωμα Premium'}</button></div>`;
+    wrap.innerHTML=`<div class="notes-locked"><div class="pgate-icon">📝</div><div class="notes-locked-t">${t('x119')}</div><div class="notes-locked-s">${t('x82')}</div><button class="notes-unlock-btn" onclick="showPremiumGate('${t('x120')}')">💎 ${t('x121')}</button></div>`;
     return;
   }
   const txt=getNotes(m.id);
-  wrap.innerHTML=`<div class="notes-wrap"><textarea class="notes-area" id="notes-ta" placeholder="${en?'Write your own notes for this recipe...':'Γράψε τις δικές σου σημειώσεις για αυτή τη συνταγή...'}">${txt}</textarea><button class="notes-save-btn" onclick="saveNote('${m.id}',document.getElementById('notes-ta').value);showToast('${en?'📝 Saved!':'📝 Αποθηκεύτηκε!'}')">💾 ${en?'Save':'Αποθήκευση'}</button></div>`;
+  wrap.innerHTML=`<div class="notes-wrap"><textarea class="notes-area" id="notes-ta" placeholder="${t('x122')}">${txt}</textarea><button class="notes-save-btn" onclick="saveNote('${m.id}',document.getElementById('notes-ta').value);showToast('${t('x123')}')">💾 ${t('x124')}</button></div>`;
 }
 
 // ── USER RECIPE FORM ────────────────────────────────────────────
@@ -6659,7 +7079,7 @@ async function submitUserRecipe(){
   const name=document.getElementById('ur-name').value.trim();
   const ing=document.getElementById('ur-ing').value.trim();
   const steps=document.getElementById('ur-steps').value.trim();
-  if(!name||!ing||!steps){showToast(curLang==='en'?'⚠️ Fill in at least the name, ingredients, and steps':'⚠️ Συμπλήρωσε τουλάχιστον όνομα, υλικά και βήματα');return;}
+  if(!name||!ing||!steps){showToast(t('x38'));return;}
   const cat=document.getElementById('ur-cat').value.trim();
   const author=document.getElementById('ur-author').value.trim();
   const isTrad=document.getElementById('ur-trad').checked;
@@ -6679,7 +7099,7 @@ async function submitUserRecipe(){
   // Primary: native κοινοποίηση (Capacitor) ή Web Share API
   if(sharePlugin()){
     const ok=await fdShare({title:subject,text:`Αποστολή σε: fooddaily.app@gmail.com\n\n${body}`});
-    if(ok){clearForm();closeUrform();showToast(curLang==='en'?'📤 Thanks for the recipe!':'📤 Ευχαριστούμε για τη συνταγή!');return;}
+    if(ok){clearForm();closeUrform();showToast(t('x39'));return;}
   }else if(navigator.share){
     try{
       const shareData={title:subject,text:`Αποστολή σε: fooddaily.app@gmail.com\n\n${body}`};
@@ -6687,7 +7107,7 @@ async function submitUserRecipe(){
         shareData.files=[_urPhoto];
       }
       await navigator.share(shareData);
-      clearForm();closeUrform();showToast(curLang==='en'?'📤 Thanks for the recipe!':'📤 Ευχαριστούμε για τη συνταγή!');
+      clearForm();closeUrform();showToast(t('x39'));
       return;
     }catch(err){
       if(err.name==='AbortError')return;
@@ -6699,11 +7119,11 @@ async function submitUserRecipe(){
   try{
     await navigator.clipboard.writeText(fullText);
     clearForm();closeUrform();
-    showToast(curLang==='en'?'📋 Copied! Open your email and paste the text':'📋 Αντιγράφηκε! Άνοιξε το email σου και κόλλα το κείμενο');
+    showToast(t('x40'));
   }catch(e){
     // Last resort: mailto
     window.location.href=`mailto:fooddaily.app@gmail.com?subject=${encodeURIComponent(subject)}&body=${encodeURIComponent(body)}`;
-    clearForm();closeUrform();showToast(curLang==='en'?'📤 Opening your email...':'📤 Ανοίγει το email σου...');
+    clearForm();closeUrform();showToast(t('x41'));
   }
 }
 
@@ -6731,9 +7151,7 @@ function setMealForDay(dateStr,mealId){
     saved=!!verify&&JSON.stringify(verify)===JSON.stringify(p);
   }catch(e){saved=false;}
   if(!saved){
-    showToast(curLang==='en'
-      ?'⚠️ Your browser is blocking saved data — the weekly plan may not persist. Check your browser\'s privacy/shield settings for this site.'
-      :'⚠️ Ο browser σου μπλοκάρει την αποθήκευση δεδομένων — το εβδομαδιαίο πρόγραμμα μπορεί να μη διατηρηθεί. Έλεγξε τις ρυθμίσεις απορρήτου/shields του browser για αυτόν τον ιστότοπο.');
+    showToast(t('y_store_blocked'));
   }
   storeWeekPlanForSW(p);
   // Η υπενθύμιση προετοιμασίας («Αύριο: ...») χρειάζεται periodic sync ΑΝΕΞΑΡΤΗΤΑ από το αν είναι ενεργό το 🔔 ημερήσιων προτάσεων
@@ -6776,8 +7194,8 @@ const DAY_NAMES_EL=['Κυρ','Δευ','Τρι','Τετ','Πεμ','Παρ','Σα�
 const DAY_NAMES_EN=['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
 const MONTHS_SHORT_EL=['Ιαν','Φεβ','Μαρ','Απρ','Μαΐ','Ιουν','Ιουλ','Αυγ','Σεπ','Οκτ','Νοε','Δεκ'];
 const MONTHS_SHORT_EN=['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec'];
-function DAY_NAMES(){return curLang==='en'?DAY_NAMES_EN:DAY_NAMES_EL;}
-function MONTHS_SHORT(){return curLang==='en'?MONTHS_SHORT_EN:MONTHS_SHORT_EL;}
+function DAY_NAMES(){const v=t('y_days');return Array.isArray(v)&&v.length===7?v:(curLang==='el'?DAY_NAMES_EL:DAY_NAMES_EN);}
+function MONTHS_SHORT(){const v=t('y_months');return Array.isArray(v)&&v.length===12?v:(curLang==='el'?MONTHS_SHORT_EL:MONTHS_SHORT_EN);}
 
 function openWeekPlanGated(){
   if(!isPremium()){openPremiumScreen();return;}
@@ -6805,16 +7223,16 @@ function renderWeekPlanDays(){
     const prep=mealId?MEAL_PREP[mealId]:null;
     const dayName=DAY_NAMES()[d.getDay()];
     const dateTxt=`${d.getDate()} ${MONTHS_SHORT()[d.getMonth()]}`;
-    const todayBadge=isToday?`<span class="wplan-today-badge">${curLang==='en'?'TODAY':'ΣΗΜΕΡΑ'}</span>`:'';
+    const todayBadge=isToday?`<span class="wplan-today-badge">${t('x42')}</span>`:'';
     const mealHtml=m
       ?`<div class="wplan-day-meal" onclick="event.stopPropagation();closeWeekPlan();openR('${mealId}')" style="cursor:pointer">
           <span class="wplan-day-meal-ico">${m.e}</span>
           <div><div class="wplan-day-meal-txt">${mealName(m)}</div>${prep?`<div class="wplan-day-meal-prep">${prep.ico} ${mPrepMsg(prep).split('—')[0].trim()}</div>`:''}</div>
         </div>
-        <button class="wplan-day-shuffle" onclick="event.stopPropagation();randomizeDayMeal('${dk}');renderWeekPlanDays();" title="${curLang==='en'?'Change':'Αλλαγή'}">🔀</button>
-        <button class="wplan-day-clr" onclick="event.stopPropagation();setMealForDay('${dk}',null);renderWeekPlanDays();" title="${curLang==='en'?'Remove':'Αφαίρεση'}">✕</button>`
-      :`<span class="wplan-day-empty">${curLang==='en'?'Not selected':'Δεν έχει επιλεγεί'}</span><button class="wplan-day-add" onclick="event.stopPropagation();openMealPicker('${dk}','${dayName} ${dateTxt}')">${curLang==='en'?'+ Pick':'+ Επίλεξε'}</button>
-        <button class="wplan-day-shuffle" onclick="event.stopPropagation();randomizeDayMeal('${dk}');renderWeekPlanDays();" title="${curLang==='en'?'Random pick':'Τυχαία επιλογή'}">🎲</button>`;
+        <button class="wplan-day-shuffle" onclick="event.stopPropagation();randomizeDayMeal('${dk}');renderWeekPlanDays();" title="${t('x43')}">🔀</button>
+        <button class="wplan-day-clr" onclick="event.stopPropagation();setMealForDay('${dk}',null);renderWeekPlanDays();" title="${t('x44')}">✕</button>`
+      :`<span class="wplan-day-empty">${t('x45')}</span><button class="wplan-day-add" onclick="event.stopPropagation();openMealPicker('${dk}','${dayName} ${dateTxt}')">${t('x46')}</button>
+        <button class="wplan-day-shuffle" onclick="event.stopPropagation();randomizeDayMeal('${dk}');renderWeekPlanDays();" title="${t('x47')}">🎲</button>`;
     return `<div class="wplan-day${isToday?' today':''}" onclick="openMealPicker('${dk}','${dayName} ${dateTxt}')">
       <div class="wplan-day-lbl"><div class="wplan-day-name">${dayName}${todayBadge}</div><div class="wplan-day-date">${dateTxt}</div></div>
       ${mealHtml}
@@ -6829,7 +7247,7 @@ let _pickerDateKey='',_pickerAllMeals=[];
 const NOT_A_MEAL=new Set(['krema_zaxaroplastikis','spitiki_marmelada']);
 function openMealPicker(dateKey,dayLabel){
   _pickerDateKey=dateKey;
-  document.getElementById('mpicker-title').textContent=curLang==='en'?`${dayLabel} — Pick a meal`:`${dayLabel} — Επίλεξε φαγητό`;
+  document.getElementById('mpicker-title').textContent=tf('y_pick_meal',dayLabel);
   document.getElementById('mpicker-search').value='';
   _pickerAllMeals=Object.entries(MEALS)
     .filter(([id,m])=>!m.quickOnly
@@ -6858,7 +7276,7 @@ function filterMealPicker(q){
       <div class="mpicker-item-txt">
         <div class="mpicker-item-name">${mealName(m)}</div>
         <div class="mpicker-item-meta">⏱ ${m.time}' · 🔥 ${m.cal} kcal</div>
-        ${p?`<div class="mpicker-item-prep">${p.ico} ${curLang==='en'?'Needs prep':'Χρειάζεται προετοιμασία'}</div>`:''}
+        ${p?`<div class="mpicker-item-prep">${p.ico} ${t('x48')}</div>`:''}
       </div>
     </div>`;
   }).join('');
@@ -6900,7 +7318,7 @@ async function storeWeekPlanForSW(plan){
     const mealId=plan[dk];
     const prep=mealId?MEAL_PREP[mealId]:null;
     const meal=mealId?MEALS[mealId]:null;
-    const data={mealId,mealName:meal?mealName(meal):'',prepMsg:prep?mPrepMsg(prep):null,prepIco:prep?.ico||'',date:dk,titlePrefix:curLang==='en'?'🍽️ Tomorrow: ':'🍽️ Αύριο: '};
+    const data={mealId,mealName:meal?mealName(meal):'',prepMsg:prep?mPrepMsg(prep):null,prepIco:prep?.ico||'',date:dk,titlePrefix:t('x49')};
     const cache=await caches.open('fd-prefs');
     await cache.put('/fd-tomorrow-prep',new Response(JSON.stringify(data),{headers:{'Content-Type':'application/json'}}));
   }catch(e){}
@@ -6925,7 +7343,7 @@ function checkPrepNotif(){
   const prep=MEAL_PREP[mealId];
   if(!prep)return;
   const meal=MEALS[mealId];
-  const title=(curLang==='en'?'🍽️ Tomorrow: ':'🍽️ Αύριο: ')+(meal?mealName(meal):mealId);
+  const title=(t('x49'))+(meal?mealName(meal):mealId);
   const body=mPrepMsg(prep);
   // Send via SW if available, else direct
   if(navigator.serviceWorker?.controller){
@@ -7017,7 +7435,7 @@ function showFD(id){
       if(sw)return `<div class="fmenu-item clickable" onclick="openSW('${recipe.cat}',${recipe.idx})">
         <div class="fmdot" style="background:#B87818"></div>
         <div class="fmname">${label}</div>
-        <div class="fmbadge">🍰 ${sw.cal} ${curLang==='en'?'cal/serv.':'θερμ./μερ.'}</div>
+        <div class="fmbadge">🍰 ${sw.cal} ${t('x10')}</div>
         <div class="fmarrow">📖</div>
       </div>`;
     }
@@ -7052,8 +7470,8 @@ function filtSw(cat,btn){
         ${swImg?`<img src="${swImg}" alt="${sweetName(s)}" onload="this.classList.add('loaded');this.nextElementSibling.style.opacity=0" onerror="this.style.display='none'">`:''}
         <span class="swebox-e">${s.e}</span>
       </div>
-      <div class="swinfo"><div class="swname">${sweetName(s)}</div><div class="swcal">${s.cal} ${curLang==='en'?'cal/serv.':'θερμ./μερ.'}</div></div>
-      <button class="fav-btn-sm" data-id="${fid}" onclick="toggleFav('${fid}',event)" title="${curLang==='en'?'Favorite':'Αγαπημένο'}" style="position:absolute;top:6px;right:6px;background:rgba(255,255,255,.75);border-radius:50%;width:26px;height:26px;display:flex;align-items:center;justify-content:center;font-size:14px;">${isFav(fid)?'❤️':'🤍'}</button>
+      <div class="swinfo"><div class="swname">${sweetName(s)}</div><div class="swcal">${s.cal} ${t('x10')}</div></div>
+      <button class="fav-btn-sm" data-id="${fid}" onclick="toggleFav('${fid}',event)" title="${t('x50')}" style="position:absolute;top:6px;right:6px;background:rgba(255,255,255,.75);border-radius:50%;width:26px;height:26px;display:flex;align-items:center;justify-content:center;font-size:14px;">${isFav(fid)?'❤️':'🤍'}</button>
     </div>`;
   }).join('');
 }
@@ -7086,7 +7504,7 @@ function smartFridge(){
     .sort((a,b)=>b.score-a.score||(a.m.pop||2)-(b.m.pop||2))
     .slice(0,5);
   if(!scored.length){
-    res.innerHTML=curLang==='en'?`<div class="fridge-empty"><div style="font-size:38px">🤔</div>No recipes found. Try: onion, tomato, olive oil...</div>`:`<div class="fridge-empty"><div style="font-size:38px">🤔</div>Δεν βρέθηκαν συνταγές. Δοκίμασε: κρεμμύδι, ντομάτα, ελαιόλαδο...</div>`;
+    res.innerHTML=`<div class="fridge-empty"><div style="font-size:38px">🤔</div>${t('y_fridge_none')}</div>`;
     return;
   }
   res.innerHTML=`<div style="font-size:13px;font-weight:600;color:var(--t2);margin:1rem 0 .75rem">🎯 ${scored.length} ${t('f_found')}</div>`+
@@ -7103,7 +7521,7 @@ function smartFridge(){
           <div class="fres-info">
             <div class="fres-name">${mealName(m)}</div>
             <div class="fres-meta">⏱ ${m.time}' &nbsp;🔥 ${m.cal} &nbsp;💰 ${m.cost||'~5€'} &nbsp;<span class="badge ${cl}">${catLabel(m.cats[0])}</span></div>
-            <span class="fscore ${sc}">🎯 ${score}/${tags.length} ${curLang==='en'?'ingredients':'υλικά'} · ${sl}</span>
+            <span class="fscore ${sc}">🎯 ${score}/${tags.length} ${t('x51')} · ${sl}</span>
           </div>
         </div>
         ${missBox}
@@ -7117,9 +7535,7 @@ function genGuests(){
   const n=document.getElementById('g-num').value;
   const o=document.getElementById('g-occ').value;
   const d=Array.from(document.querySelectorAll('.dpill.on')).map(p=>p.textContent);
-  const query=curLang==='en'
-    ?'mediterranean menu for '+n+' people '+o+(d.length?' '+d.join(' '):'')+' recipes'
-    :'μεσογειακό μενού για '+n+' άτομα '+o+(d.length?' '+d.join(' '):'')+' συνταγές';
+  const query=tf('y_guest_query',n,o+(d.length?' '+d.join(' '):''));
   window.open('https://www.google.com/search?q='+encodeURIComponent(query),'_blank');
 }
 
@@ -7127,12 +7543,10 @@ function genGuests(){
 // Συγχρονίζει όλα τα στατικά κείμενα του UI με την τρέχουσα curLang — χρησιμοποιείται
 // τόσο από setLang() (αλλαγή γλώσσας από τον χρήστη) όσο και στο αρχικό load (restore προτίμησης).
 function updateHeroTexts(){
-  const days=curLang==='en'?['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday']:['Κυριακή','Δευτέρα','Τρίτη','Τετάρτη','Πέμπτη','Παρασκευή','Σάββατο'];
-  const months=curLang==='en'?['Jan','Feb','Mar','Apr','May','Jun','Jul','Aug','Sep','Oct','Nov','Dec']:['Ιαν','Φεβ','Μαρ','Απρ','Μαΐ','Ιουν','Ιουλ','Αυγ','Σεπ','Οκτ','Νοε','Δεκ'];
+  const _dl=t('y_days_long');const days=Array.isArray(_dl)&&_dl.length===7?_dl:['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'];
+  const months=MONTHS_SHORT();
   const nd=new Date();const hr=nd.getHours();
-  const greet=curLang==='en'
-    ?(hr<6?'🌙 Good evening':hr<12?'☀️ Good morning':hr<17?'🌤 Good morning':hr<21?'🌆 Good evening':'🌙 Good evening')
-    :(hr<6?'🌙 Καλό βράδυ':hr<12?'☀️ Καλημέρα':hr<17?'🌤 Καλημέρα':hr<21?'🌆 Καλησπέρα':'🌙 Καλό βράδυ');
+  const greet=hr<6?t('y_gr_night'):hr<12?t('y_gr_morning'):hr<17?t('y_gr_noon'):hr<21?t('y_gr_evening'):t('y_gr_night');
   const gl=document.getElementById('hero-greeting');
   if(gl)gl.textContent=`${greet} · ${days[nd.getDay()]}, ${nd.getDate()} ${months[nd.getMonth()]}`;
   const sl=document.getElementById('hero-sub');
@@ -7140,16 +7554,56 @@ function updateHeroTexts(){
   const excl2=['anginaresPolita','tartaFragola','halvas','lagana','eliestoursi','salata_rodi'];
   const dailyPool=Object.keys(MEALS).filter(id=>!excl2.includes(id)&&!MEALS[id]?.noDaily&&!MEALS[id]?.quickOnly);
   const dailyCount=Math.min(dailyPool.length,12);
-  if(sl)sl.textContent=curLang==='en'?`🍽️ ${dailyCount} suggestions today · ${mealCount}+ recipes`:`🍽️ ${dailyCount} προτάσεις σήμερα · ${mealCount}+ συνταγές`;
+  if(sl)sl.textContent=tf('y_hero_sub',dailyCount,mealCount);
+}
+function buildLangButtons(){
+  const row=document.querySelector('.hero-lang-row');
+  if(!row)return;
+  const cur=LANGS[curLang]||LANGS.el;
+  row.innerHTML=`<button class="hero-btn hero-btn-langsel" onclick="openLangSheet()" title="${t('lang_title')}">🌐 ${cur.lbl} ▾</button>`;
+}
+function openLangSheet(){
+  let sh=document.getElementById('lsheet');
+  if(!sh){
+    sh=document.createElement('div');
+    sh.id='lsheet'; sh.className='lsheet';
+    sh.addEventListener('click',e=>{if(e.target===sh)closeLangSheet();});
+    document.body.appendChild(sh);
+  }
+  const rows=Object.keys(LANGS).map(c=>{
+    const L=LANGS[c], on=c===curLang;
+    // Το όνομα στη γλώσσα του χρήστη· αν λείπει, δείχνουμε μόνο το μητρικό.
+    const sub=t('lang_'+c);
+    const subHtml=(sub&&sub!=='lang_'+c&&sub!==L.nat)?`<div class="lrow-s">${sub}</div>`:'';
+    return `<button class="lrow${on?' on':''}" onclick="pickLang('${c}')">
+      <span class="lrow-code">${L.lbl}</span>
+      <span class="lrow-n">${L.nat}${subHtml}</span>
+      ${on?'<span class="lrow-ok">✓</span>':''}
+    </button>`;
+  }).join('');
+  sh.innerHTML=`<div class="lsheet-in"><div class="lsheet-grab"></div>
+    <div class="lsheet-t">${t('lang_title')}</div>${rows}</div>`;
+  sh.classList.add('show');
+}
+function closeLangSheet(){
+  const sh=document.getElementById('lsheet');
+  if(sh)sh.classList.remove('show');
+}
+async function pickLang(c){
+  closeLangSheet();
+  if(c===curLang)return;
+  await setLang(c);
 }
 function applyLangTexts(lang){
+  buildLangButtons();
+  try{document.documentElement.setAttribute('lang',lang);}catch(e){}
   document.querySelectorAll('.hero-btn-lang').forEach(b=>b.classList.remove('on'));
   const lb=document.getElementById('lb-'+lang);if(lb)lb.classList.add('on');
   // Nav
-  document.querySelectorAll('.ntab').forEach((b,i)=>{const k='n'+i;if(TR[lang][k])b.textContent=TR[lang][k];});
+  document.querySelectorAll('.ntab').forEach((b,i)=>{const v=t('n'+i);if(v)b.textContent=v;});
   // Cats: όλα τα pills του νέου μενού μεταφράζονται μέσω [data-i18n] παρακάτω
   // Sweets cats
-  const swc=TR[lang].sw||TR.el.sw;
+  const swc=t('sw')||TR.el.sw;
   document.querySelectorAll('#sw-cats .cpill').forEach((b,i)=>{if(swc[i])b.textContent=swc[i];});
   // Fest filter
   const ffl=[t('ff_all'),t('ff_fasting'),t('ff_fish'),t('ff_major'),t('ff_national'),t('ff_folk')];
@@ -7167,17 +7621,22 @@ function applyLangTexts(lang){
   document.querySelectorAll('[data-i18n-title]').forEach(el=>{const k=el.getAttribute('data-i18n-title');const v=t(k);if(v&&v!==k)el.title=v;});
   document.querySelectorAll('[data-i18n-alt]').forEach(el=>{const k=el.getAttribute('data-i18n-alt');const v=t(k);if(v&&v!==k)el.alt=v;});
 }
-function setLang(lang){
+async function setLang(lang){
+  if(!LANGS[lang])return;
+  const ok=await loadLangPack(lang);
+  if(!ok){try{showToast(t('lang_fail'));}catch(e){}return;}
   curLang=lang;localStorage.setItem('fd_lang',lang);
   applyLangTexts(lang);
   updateHeroTexts();
+  // ΠΡΟΣΟΧΗ: χωρίς αυτό το μπάνερ έμενε στην προηγούμενη γλώσσα.
+  try{renderTrialBanner();}catch(e){}
   // Re-render
   renderMeals(curCat);
   filtSw(curSwCat);
   rendFest(curFestF);
   const sgw=document.getElementById('sea-guide-wrap');if(sgw)sgw.innerHTML=buildSeasonalGuide();
   const nlEmail=localStorage.getItem('fd_nl_email');
-  if(nlEmail){const w=document.getElementById('nl-form-wrap');if(w)w.innerHTML=`<div class="nl-done">✅ ${curLang==='en'?'Registered as':'Εγγεγραμμένος ως'} ${nlEmail}</div>`;}
+  if(nlEmail){const w=document.getElementById('nl-form-wrap');if(w)w.innerHTML=`<div class="nl-done">✅ ${t('x52')} ${nlEmail}</div>`;}
   // If overlay is open, rebuild its translated content
   rebuildOverlayTexts();
 }
@@ -7224,9 +7683,9 @@ function procVoice(txt){const l=txt.toLowerCase();for(const c of VCMDS){if(c.kw.
 function toggleVoice(){isLis?stopVoice():startVoice();}
 function startVoice(){
   const SR=window.SpeechRecognition||window.webkitSpeechRecognition;
-  if(!SR){setVS(curLang==='en'?'Chrome/Edge only':'Chrome/Edge μόνο');return;}
+  if(!SR){setVS(t('x53'));return;}
   recog=new SR();recog.lang='el-GR';recog.interimResults=false;
-  recog.onstart=()=>{isLis=true;const _mc=document.getElementById('mic');if(_mc)_mc.classList.add('on');setVS(curLang==='en'?'🎤 Listening...':'🎤 Ακούω...');};
+  recog.onstart=()=>{isLis=true;const _mc=document.getElementById('mic');if(_mc)_mc.classList.add('on');setVS(t('x54'));};
   recog.onresult=e=>{procVoice(e.results[0][0].transcript);stopVoice();};
   recog.onerror=recog.onend=()=>stopVoice();
   recog.start();
@@ -7266,23 +7725,23 @@ async function saveNotif(){
       const sched=await lnScheduleDaily();
       await lnSchedulePrep();
       const pending=await lnPendingCount();
-      const en=curLang==='en';
+      const en=curLang!=='el';
       if(!ok){
-        showToast(en?'⚠️ Enabled — but notifications are blocked in device settings':'⚠️ Ενεργό — αλλά οι ειδοποιήσεις είναι μπλοκαρισμένες στις ρυθμίσεις της συσκευής');
+        showToast(t('x125'));
       }else if(!sched||pending===0){
-        showToast(en?'⚠️ Could not schedule the reminder. Check the app\'s alarm permission.':'⚠️ Δεν προγραμματίστηκε η υπενθύμιση. Έλεγξε την άδεια «ξυπνητήρια & υπενθυμίσεις» της εφαρμογής.');
+        showToast(t('x126'));
       }else{
         showToast(en?`✅ Notifications enabled (${pending} scheduled)`:`✅ Ειδοποιήσεις ενεργές (${pending} προγραμματισμένες)`);
       }
     }else{
       await lnCancel(LN_ID_DAILY);
       await lnCancel(LN_ID_PREP);
-      showToast(curLang==='en'?'Notifications disabled':'Ειδοποιήσεις απενεργοποιήθηκαν');
+      showToast(t('x55'));
     }
     closeNmod();
     return;
   }
-  if(!('Notification' in window)){showToast(curLang==='en'?'⚠️ Your browser does not support notifications':'⚠️ Ο browser δεν υποστηρίζει ειδοποιήσεις');return;}
+  if(!('Notification' in window)){showToast(t('x56'));return;}
   if(checked){
     // Κράτα την επιλογή του χρήστη ΑΜΕΣΩΣ (το τικ παραμένει ακόμη κι αν η άδεια εκκρεμεί)
     localStorage.setItem('notif_on','true');
@@ -7295,9 +7754,9 @@ async function saveNotif(){
     registerPeriodicSync();
     scheduleDailyNotifInSW();
     if(Notification.permission==='denied'){
-      showToast(curLang==='en'?'⚠️ Enabled — but notifications are blocked in device settings':'⚠️ Ενεργό — αλλά οι ειδοποιήσεις είναι μπλοκαρισμένες στις ρυθμίσεις της συσκευής');
+      showToast(t('x57'));
     }else{
-      showToast(curLang==='en'?'✅ Notifications enabled!':'✅ Ειδοποιήσεις ενεργοποιήθηκαν!');
+      showToast(t('x58'));
     }
   } else {
     localStorage.setItem('notif_on','false');
@@ -7305,7 +7764,7 @@ async function saveNotif(){
     storeNotifPrefsForSW(time,'false');
     _swSend({type:'CANCEL_DAILY_NOTIF'});
     if(_notifInt){clearInterval(_notifInt);_notifInt=null;}
-    showToast(curLang==='en'?'Notifications disabled':'Ειδοποιήσεις απενεργοποιήθηκαν');
+    showToast(t('x55'));
   }
   closeNmod();
 }
@@ -7314,18 +7773,18 @@ async function testNotif(){
   if(isNativeApp()){
     const ok=await sendNotif();
     showToast(ok===false
-      ?(curLang==='en'?'⚠️ Notifications are blocked. Enable them in device settings.':'⚠️ Οι ειδοποιήσεις είναι μπλοκαρισμένες. Ενεργοποίησέ τες στις ρυθμίσεις της συσκευής.')
-      :(curLang==='en'?'🔔 Notification sent!':'🔔 Ειδοποίηση εστάλη!'));
+      ?(t('x59'))
+      :(t('x60')));
     return;
   }
-  if(!('Notification' in window)){showToast(curLang==='en'?'⚠️ Your browser does not support notifications':'⚠️ Ο browser δεν υποστηρίζει ειδοποιήσεις');return;}
+  if(!('Notification' in window)){showToast(t('x56'));return;}
   if(Notification.permission!=='granted'){
     try{const p=await Notification.requestPermission();}catch(e){}
-    if(Notification.permission==='denied'){showToast(curLang==='en'?'⚠️ Notifications are blocked. Enable them in your device settings for FoodDaily.':'⚠️ Οι ειδοποιήσεις είναι μπλοκαρισμένες. Ενεργοποίησέ τες στις ρυθμίσεις της συσκευής για το FoodDaily.');return;}
-    if(Notification.permission!=='granted'){showToast(curLang==='en'?'⚠️ Notification permission not granted':'⚠️ Δεν δόθηκε άδεια για ειδοποιήσεις');return;}
+    if(Notification.permission==='denied'){showToast(t('x61'));return;}
+    if(Notification.permission!=='granted'){showToast(t('x62'));return;}
   }
   await sendNotif();
-  showToast(curLang==='en'?'🔔 Notification sent!':'🔔 Ειδοποίηση εστάλη!');
+  showToast(t('x60'));
 }
 async function sendNotif(){
   // Use today's featured meal if available, otherwise pick a non-recently-cooked meal
@@ -7338,7 +7797,7 @@ async function sendNotif(){
     m=(pool.length?pool:Object.values(MEALS))[Math.floor(Math.random()*(pool.length||Object.keys(MEALS).length))];
   }
   if(!m)return;
-  const title=curLang==='en'?'🍽️ FoodDaily — Daily Pick':'🍽️ FoodDaily — Πρόταση Μέρας';
+  const title=t('x63');
   const body=`${m.e} ${mealName(m)}  |  ⏱ ${m.time}'  |  🔥 ${m.cal}  |  💰 ${m.cost||'~5€'}`;
   // 0. Native (Capacitor)
   if(isNativeApp())return await lnShowNow(title,body);
@@ -7468,19 +7927,19 @@ function storeFeaturedMealForSW(meal){
 // (used from SW_UPDATED message, _checkPendingSwUpdate, and the SW registration listeners)
 function _showUpdateToast(){
   if(document.getElementById('sw-update-toast'))return;
-  const en=curLang==='en';
+  const en=curLang!=='el';
   const toast=document.createElement('div');
   toast.id='sw-update-toast';
   toast.style.cssText='position:fixed;left:14px;right:14px;bottom:calc(78px + env(safe-area-inset-bottom,0px));background:var(--w);color:var(--tx);padding:18px 20px;border-radius:18px;font-size:15px;z-index:99999;display:flex;align-items:center;gap:14px;box-shadow:0 10px 40px rgba(0,0,0,.35);border:1.5px solid var(--bd);max-width:480px;margin:0 auto;animation:updToastIn .35s cubic-bezier(.2,.9,.3,1.3);';
   toast.innerHTML=`
     <div style="font-size:30px;line-height:1;flex-shrink:0;">🔄</div>
     <div style="flex:1;min-width:0;">
-      <div style="font-weight:800;font-size:15.5px;margin-bottom:2px;">${en?'New version available!':'Νέα έκδοση διαθέσιμη!'}</div>
-      <div style="font-size:12.5px;color:var(--t2);line-height:1.4;">${en?'Update now to get the latest recipes and fixes.':'Ενημέρωσε τώρα για τις νεότερες συνταγές και διορθώσεις.'}</div>
+      <div style="font-weight:800;font-size:15.5px;margin-bottom:2px;">${t('x127')}</div>
+      <div style="font-size:12.5px;color:var(--t2);line-height:1.4;">${t('x128')}</div>
     </div>
     <div style="display:flex;flex-direction:column;gap:6px;flex-shrink:0;">
-      <button onclick="window.location.reload()" style="background:var(--pri);color:#fff;border:none;border-radius:10px;padding:9px 16px;cursor:pointer;font-size:13.5px;font-weight:700;white-space:nowrap;">${en?'Update':'Ενημέρωση'}</button>
-      <button onclick="document.getElementById('sw-update-toast').remove()" style="background:transparent;color:var(--t3);border:none;padding:2px;cursor:pointer;font-size:11.5px;">${en?'Later':'Αργότερα'}</button>
+      <button onclick="window.location.reload()" style="background:var(--pri);color:#fff;border:none;border-radius:10px;padding:9px 16px;cursor:pointer;font-size:13.5px;font-weight:700;white-space:nowrap;">${t('x129')}</button>
+      <button onclick="document.getElementById('sw-update-toast').remove()" style="background:transparent;color:var(--t3);border:none;padding:2px;cursor:pointer;font-size:11.5px;">${t('x130')}</button>
     </div>`;
   document.body.appendChild(toast);
 }
@@ -7582,7 +8041,7 @@ function doSearch(q){
   // πλέον στο MEALS, και η διπλή σάρωση έδινε διπλά αποτελέσματα.
   mg.style.display='none';
   if(results.length===0){
-    const _sq=q.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');res.innerHTML=curLang==='en'?`<div class="search-empty">😕 No results found for "<b>${_sq}</b>"</div>`:`<div class="search-empty">😕 Δεν βρέθηκαν αποτελέσματα για "<b>${_sq}</b>"</div>`;
+    const _sq=q.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');res.innerHTML=`<div class="search-empty">${tf('y_search_none','"<b>'+_sq+'</b>"')}</div>`;
   } else {
     res.innerHTML=results.map(r=>`
       <div class="search-res-item" onclick="${r.onclick}">
@@ -7675,15 +8134,7 @@ function selGuest(n,btn){
   if(suvIdx>-1){pool.splice(suvIdx,1);pool.push('arni_souvia');}
 
   // Section hints based on group size
-  const hint= curLang==='en'
-            ? (n<=2 ? '🍽️ For a romantic dinner or small get-together'
-              : n<=4 ? '🥘 Ideal for a family table'
-              : n<=6 ? '🎉 For a group of friends — serves well in large portions'
-              : '🍖 For a big table — dishes that make an impression')
-            : (n<=2 ? '🍽️ Για ρομαντικό δείπνο ή μικρή παρέα'
-              : n<=4 ? '🥘 Ιδανικά για οικογενειακό τραπέζι'
-              : n<=6 ? '🎉 Για παρέα φίλων — σερβίρει καλά σε μεγάλα τεμάχια'
-              : '🍖 Για μεγάλο τραπέζι — φαγητά που κάνουν εντύπωση');
+  const hint= n<=2?t('y_grp2'):n<=4?t('y_grp4'):n<=6?t('y_grp6'):t('y_grp8');
 
   const res=document.getElementById('guest-res');
   if(!res)return;
@@ -7703,7 +8154,7 @@ function selGuest(n,btn){
         <div class="memoji">${m.e}</div>
         <div class="mtop-grad"></div>
         <div class="mtop-badge"><span class="badge ${cl}">${catLabel(mc)}</span></div>
-        ${scale>1?`<div class="mtop-fresh" style="background:rgba(200,80,26,.9)">×${scale} ${curLang==='en'?'serv.':'μερ.'}</div>`:''}
+        ${scale>1?`<div class="mtop-fresh" style="background:rgba(200,80,26,.9)">×${scale} ${t('x7')}</div>`:''}
       </div>
       <div class="mbtm">
         <div class="mname-row">
@@ -7738,8 +8189,8 @@ function markCooked(id,ev){
   localStorage.setItem('fd_cooked_log',JSON.stringify(log));
   saveH(id); // ενημέρωσε και το ιστορικό, ώστε η υπενθύμιση «Έχεις καιρό χωρίς...» να το καταλάβει
   const ca=document.getElementById('ca-'+id);
-  if(ca)ca.innerHTML=`<span class="cooked-badge">✓ ${curLang==='en'?'Cooked today':'Μαγειρεύτηκε σήμερα'}</span>`;
-  showToast(curLang==='en'?'✓ Logged!':'✓ Καταχωρήθηκε!');
+  if(ca)ca.innerHTML=`<span class="cooked-badge">✓ ${t('x4')}</span>`;
+  showToast(t('x64'));
   // 3η καταχώρηση «το έφτιαξα» → ο χρήστης μαγειρεύει σταθερά
   try{
     const n=_oNum('fd_cooked_count')+1;
@@ -7755,8 +8206,8 @@ function thumbUp(id,e){
   const log=getCookedLog();log[id]=Date.now();
   localStorage.setItem('fd_cooked_log',JSON.stringify(log));
   const ca=document.getElementById('ca-'+id);
-  if(ca)ca.innerHTML=`<span class="thumb-planned">✓ ${curLang==='en'?"I'll make this today!":'Θα το φτιάξω σήμερα!'}</span>`;
-  showToast(curLang==='en'?'👍 Great choice!':'👍 Ωραία επιλογή!');
+  if(ca)ca.innerHTML=`<span class="thumb-planned">✓ ${t('x1')}</span>`;
+  showToast(t('x65'));
 }
 function thumbDown(id,e){
   if(e){e.stopPropagation();e.preventDefault();}
@@ -7769,7 +8220,7 @@ function thumbDown(id,e){
   } else {
     renderMeals(curCat);
   }
-  showToast(curLang==='en'?'👎 Changing suggestion...':'👎 Αλλάζω πρόταση...');
+  showToast(t('x66'));
 }
 
 // ── DARK MODE ────────────────────────────────────────────────
@@ -7814,9 +8265,7 @@ function toggleFav(id,e){
   // Η ΑΦΑΙΡΕΣΗ επιτρέπεται πάντα. Μόνο η προσθήκη πέρα από το όριο μπλοκάρεται,
   // ώστε όποιος έχει ήδη περισσότερα να μην τα χάσει.
   if(i<0 && favLimitReached()){
-    showPremiumGate(curLang==='en'
-      ?`Free plan keeps up to ${FREE_FAV_LIMIT} favourites. Premium is unlimited.`
-      :`Το δωρεάν κρατά έως ${FREE_FAV_LIMIT} αγαπημένα. Με το Premium είναι απεριόριστα.`);
+    showPremiumGate(tf('y_fav_limit',FREE_FAV_LIMIT));
     return;
   }
   if(i>=0)favs.splice(i,1);else favs.push(id);
@@ -7832,13 +8281,13 @@ function toggleFav(id,e){
   ['ov-fav','ov-fav-sw'].forEach(k=>{const ob=document.getElementById(k);if(ob)ob.textContent=isNowFav?'❤️':'🤍';});
   // Update favorites pill count
   updateFavPill();
-  showToast(isNowFav?(curLang==='en'?'❤️ Favorited!':'❤️ Αγαπημένο!'):(curLang==='en'?'🤍 Removed':'🤍 Αφαιρέθηκε'));
+  showToast(isNowFav?(t('x67')):(t('x68')));
 }
 function updateFavPill(){
   const pill=document.getElementById('fav-pill');
   if(!pill)return;
   const n=getFavs().length;
-  const lbl=curLang==='en'?'Favorites':'Αγαπημένα';
+  const lbl=t('x69');
   pill.textContent=n>0?`❤️ ${lbl} (${n})`:`❤️ ${lbl}`;
 }
 
@@ -7873,12 +8322,12 @@ function copyShoppingList(){
     lines=mIng(_meal);
   }
   const list=`📋 ${name}\n\n${lines.map(i=>'• '+i).join('\n')}`;
-  const en=curLang==='en';
+  const en=curLang!=='el';
   if(navigator.clipboard&&navigator.clipboard.writeText){
-    navigator.clipboard.writeText(list).then(()=>showToast(en?'✅ List copied!':'✅ Λίστα αντιγράφηκε!')).catch(()=>showToast(en?'⚠️ Copy error':'⚠️ Σφάλμα αντιγραφής'));
+    navigator.clipboard.writeText(list).then(()=>showToast(t('x131'))).catch(()=>showToast(t('x132')));
   } else {
     const ta=document.createElement('textarea');ta.value=list;document.body.appendChild(ta);ta.select();
-    try{document.execCommand('copy');showToast(en?'✅ List copied!':'✅ Λίστα αντιγράφηκε!');}catch(e){showToast(en?'⚠️ Error':'⚠️ Σφάλμα');}
+    try{document.execCommand('copy');showToast(t('x131'));}catch(e){showToast(t('x133'));}
     document.body.removeChild(ta);
   }
   // Η συνταγή είναι ακόμα ανοιχτή — η προτροπή περιμένει να κλείσει
@@ -7901,7 +8350,7 @@ const DISLIKE_OPTS=[
 function getDislikes(){try{return JSON.parse(localStorage.getItem('fd_dislikes')||'[]');}catch(e){return [];}}
 function saveDislikes(arr){localStorage.setItem('fd_dislikes',JSON.stringify(arr));}
 function toggleDislike(id){
-  if(!isPremium()){showPremiumGate(curLang==='en'?'Dislikes are available on Premium.':'Οι αντιπάθειες είναι διαθέσιμες στο Premium.');return;}
+  if(!isPremium()){showPremiumGate(t('x70'));return;}
   const d=getDislikes();
   const idx=d.indexOf(id);
   if(idx>=0)d.splice(idx,1);else d.push(id);
@@ -7913,14 +8362,14 @@ function renderDislikeGrid(){
   const d=getDislikes();
   document.getElementById('dislike-grid').innerHTML=DISLIKE_OPTS.map(o=>`
     <div class="dislike-chip${d.includes(o.id)?' on':''}" onclick="toggleDislike('${o.id}')">
-      <span class="dislike-chip-ico">${o.ico}</span>${curLang==='en'?o.lbl_en:o.lbl}
+      <span class="dislike-chip-ico">${o.ico}</span>${_xl()&&o.lbl_en?o.lbl_en:o.lbl}
     </div>`).join('');
   const note=document.getElementById('prof-prem-note');
-  if(note)note.textContent=isPremium()?(curLang==='en'?'Dislikes filter your daily suggestions.':'Οι αντιπάθειες φιλτράρουν τις καθημερινές προτάσεις.'):(curLang==='en'?'💎 Dislikes are Premium — Try 7 days free.':'💎 Οι αντιπάθειες είναι Premium — Δοκίμασε 7 ημέρες δωρεάν.');
+  if(note)note.textContent=isPremium()?(t('x71')):(t('x72'));
 }
 // Επιλογή ήχου και διάρκειας χρονομέτρου
 function renderTimerSound(){
-  const en=curLang==='en';
+  const en=curLang!=='el';
   const NAMES=en
     ?{bell:'🔔 Bell',alarm:'⏰ Alarm',chime:'🎐 Chime',beep:'📟 Beep'}
     :{bell:'🔔 Καμπανάκι',alarm:'⏰ Ξυπνητήρι',chime:'🎐 Απαλό',beep:'📟 Μπιπ'};
@@ -7940,7 +8389,7 @@ function pickTimerSound(k){
 function pickTimerDur(n){
   localStorage.setItem('fd_timer_dur',n);
   renderTimerSound();
-  showToast(curLang==='en'?`Timer sound: ${n} seconds`:`Ήχος χρονομέτρου: ${n} δευτερόλεπτα`);
+  showToast(tf('y_timer_snd',n));
 }
 
 function openProfile(){
@@ -7970,14 +8419,14 @@ async function showUserId(){
   }catch(e){if(el)el.textContent='—';}
 }
 async function copyUserId(){
-  const en=curLang==='en';
-  if(!_uidCache){showToast(en?'Code not available yet.':'Ο κωδικός δεν είναι διαθέσιμος ακόμα.');return;}
+  const en=curLang!=='el';
+  if(!_uidCache){showToast(t('x134'));return;}
   try{
     await navigator.clipboard.writeText(_uidCache);
-    showToast(en?'📋 Code copied!':'📋 Ο κωδικός αντιγράφηκε!');
+    showToast(t('x135'));
   }catch(e){
     const ok=await fdShare({title:'FoodDaily',text:_uidCache});
-    if(!ok)showToast(en?'⚠️ Could not copy. Select the code manually.':'⚠️ Δεν αντιγράφηκε. Επίλεξε τον κωδικό χειροκίνητα.');
+    if(!ok)showToast(t('x136'));
   }
 }
 // ── ΣΤΑΘΕΡΗ ΤΑΥΤΟΤΗΤΑ ΧΡΗΣΤΗ ──────────────────────────────────
@@ -7992,7 +8441,7 @@ function _brandTap(){
   if(_brandTaps>=5){_brandTaps=0;clearTimeout(_brandTimer);askCustomUserId();}
 }
 async function askCustomUserId(){
-  const en=curLang==='en';
+  const en=curLang!=='el';
   const cur=(_uidCache&&_uidCache.indexOf('$RCAnonymousID')===0)?'':_uidCache;
   const val=prompt(en
     ?'Permanent user code (leave empty to reset to anonymous):'
@@ -8007,11 +8456,11 @@ async function askCustomUserId(){
     await showUserId();
     const unlocked=applyEntitlement(r&&r.customerInfo);
     showToast(id
-      ?(unlocked?(en?'✅ Signed in — Premium active':'✅ Σύνδεση — το Premium ενεργοποιήθηκε')
+      ?(unlocked?(t('x137'))
                 :(en?`Signed in as ${id}`:`Σύνδεση ως ${id}`))
-      :(en?'Reset to anonymous':'Επαναφορά σε ανώνυμο'));
+      :(t('x138')));
   }catch(e){
-    showToast(en?'⚠️ Could not change the code.':'⚠️ Δεν άλλαξε ο κωδικός.');
+    showToast(t('x139'));
   }
 }
 
@@ -8062,10 +8511,10 @@ function _renderCookStep(){
   const total=_cmSteps.length;
   document.getElementById('cm-fill').style.width=((_cmIdx+1)/total*100)+'%';
   document.getElementById('cm-cnt').textContent=(_cmIdx+1)+'/'+total;
-  document.getElementById('cm-snum').textContent=(curLang==='en'?'Step ':'Βήμα ')+(_cmIdx+1);
+  document.getElementById('cm-snum').textContent=(t('x30'))+(_cmIdx+1);
   document.getElementById('cm-stxt').textContent=_cmSteps[_cmIdx];
   document.getElementById('cm-prev').style.visibility=_cmIdx>0?'visible':'hidden';
-  document.getElementById('cm-next').textContent=_cmIdx<total-1?(curLang==='en'?'Next →':'Επόμενο →'):(curLang==='en'?'✓ Done!':'✓ Τέλος!');
+  document.getElementById('cm-next').textContent=_cmIdx<total-1?(t('x73')):(t('x74'));
 }
 
 function cookNext(){if(_cmIdx<_cmSteps.length-1){_cmIdx++;_renderCookStep();}else exitCookMode(true);}
@@ -8088,18 +8537,101 @@ async function exitCookMode(completed){
 })();
 
 // ── SHARE RECIPE ───────────────────────────────────────────────
-function shareRecipe(id){
+// ── ΚΑΡΤΑ ΚΟΙΝΟΠΟΙΗΣΗΣ ─────────────────────────────────────────
+// Γυμνό κείμενο δεν το κοιτάει κανείς. Μια εικόνα με το πιάτο, το κόστος ανά
+// μερίδα και τη διεύθυνση δουλεύει σαν διαφήμιση σε κάθε συνομιλία.
+const SHARE_URL='fooddaily.github.io';
+function _wrapCanvas(ctx,text,maxW){
+  const out=[];let cur='';
+  for(const w of String(text).split(' ')){
+    const t=(cur+' '+w).trim();
+    if(ctx.measureText(t).width<=maxW||!cur)cur=t;else{out.push(cur);cur=w;}
+  }
+  if(cur)out.push(cur);
+  return out;
+}
+// Επιστρέφει Blob PNG, ή null αν κάτι δεν πάει καλά (π.χ. δεν φορτώνει η εικόνα).
+function buildShareCard(m,id){
+  return new Promise(resolve=>{
+    const W=1080,H=1350;                 // 4:5 — το μέγεθος που δείχνουν καλύτερα οι εφαρμογές
+    const cv=document.createElement('canvas');cv.width=W;cv.height=H;
+    const c=cv.getContext('2d');
+    // JPEG, όχι PNG: το PNG έβγαινε 2 MB και οι εφαρμογές μηνυμάτων το συμπιέζουν
+    // ή το απορρίπτουν. Στο 0.88 η κάρτα μένει γύρω στα 250 KB.
+    const done=()=>{try{cv.toBlob(b=>resolve(b),'image/jpeg',0.88);}catch(e){resolve(null);}};
+    const draw=img=>{
+      if(img){
+        const r=Math.max(W/img.width,H/img.height);
+        const w=img.width*r,h=img.height*r;
+        c.drawImage(img,(W-w)/2,(H-h)/2,w,h);
+      }else{c.fillStyle='#8E5A04';c.fillRect(0,0,W,H);}
+      // Σκίαστρο από κάτω, ώστε να διαβάζεται το κείμενο
+      const g=c.createLinearGradient(0,H*0.30,0,H);
+      g.addColorStop(0,'rgba(20,11,2,0)');g.addColorStop(0.55,'rgba(20,11,2,.80)');g.addColorStop(1,'rgba(20,11,2,.96)');
+      c.fillStyle=g;c.fillRect(0,0,W,H);
+      const pad=72;
+      c.textBaseline='top';
+      const cps=(m.cps||m.cost||'').trim();
+      // Το ύψος υπολογίζεται από κάτω προς τα πάνω, ώστε καμία γραμμή να μην
+      // πέφτει πάνω σε άλλη όσο μεγάλο κι αν είναι το όνομα του πιάτου.
+      const H_FOOT=44, H_COST=cps?54:0, H_META=44, H_NAME=92;
+      c.font='700 78px Inter, sans-serif';
+      const lines=_wrapCanvas(c,mealName(m),W-2*pad).slice(0,2);
+      const footY=H-pad-H_FOOT;
+      const costY=footY-38-H_COST;
+      const metaY=costY-(cps?14:0)-H_META;
+      let y=metaY-26-lines.length*H_NAME;
+
+      c.fillStyle='#FFFDF8';
+      for(const ln of lines){c.fillText(ln,pad,y);y+=H_NAME;}
+
+      c.font='500 40px Inter, sans-serif';c.fillStyle='#F0D6A6';
+      c.fillText('⏱ '+m.time+"'   🔥 "+m.cal+'   👥 '+m.srv,pad,metaY);
+
+      if(cps){
+        c.font='700 46px Inter, sans-serif';c.fillStyle='#E9B24A';
+        c.fillText('💰 '+cps+' '+(curLang==='el'?'η μερίδα':'per serving'),pad,costY);
+      }
+
+      c.font='700 38px Inter, sans-serif';c.fillStyle='#FFFFFF';
+      c.fillText('FoodDaily',pad,footY);
+      c.font='500 34px Inter, sans-serif';c.fillStyle='#E9B24A';
+      const t2=SHARE_URL,wd=c.measureText(t2).width;
+      c.fillText(t2,W-pad-wd,footY+3);
+      done();
+    };
+    const src=MEAL_IMAGES[id];
+    if(!src){draw(null);return;}
+    const img=new Image();
+    img.onload=()=>draw(img);
+    img.onerror=()=>draw(null);
+    img.src=src;                        // ίδιο origin — ο canvas δεν μολύνεται
+  });
+}
+async function shareRecipe(id){
   const m=MEALS[id];if(!m)return;
   const url=location.origin+location.pathname+'?r='+id;
   const text=m.e+' '+mealName(m)+'  |  ⏱ '+m.time+"'  |  🔥 "+m.cal+' kcal';
+  // Πρώτα η εικόνα. Αν η συσκευή δεν μπορεί να μοιραστεί αρχεία, συνεχίζουμε
+  // με το παλιό κείμενο — καμία λειτουργία δεν χάνεται.
+  try{
+    const blob=await buildShareCard(m,id);
+    if(blob&&navigator.canShare){
+      const file=new File([blob],'fooddaily-'+id+'.jpg',{type:'image/jpeg'});
+      if(navigator.canShare({files:[file]})){
+        await navigator.share({files:[file],title:mealName(m),text:text+'\n📲 '+SHARE_URL});
+        return;
+      }
+    }
+  }catch(e){if(e&&e.name==='AbortError')return;}
   function _copyFallback(){
-    const en=curLang==='en';
+    const en=curLang!=='el';
     if(navigator.clipboard){
       navigator.clipboard.writeText(url)
-        .then(()=>showToast(en?'📋 Link copied!':'📋 Αντιγράφηκε ο σύνδεσμος!'))
-        .catch(()=>prompt(en?'Copy the link:':'Αντίγραψε τον σύνδεσμο:',url));
+        .then(()=>showToast(t('x140')))
+        .catch(()=>prompt(t('x141'),url));
     }else{
-      prompt(en?'Copy the link:':'Αντίγραψε τον σύνδεσμο:',url);
+      prompt(t('x141'),url);
     }
   }
   fdShare({title:mealName(m),text,url}).then(ok=>{if(!ok)_copyFallback();});
@@ -8112,7 +8644,7 @@ function openCookTonight(id,e){
   if(e){e.stopPropagation();e.preventDefault();}
   _ctMealId=id;
   const m=MEALS[id];if(!m)return;
-  document.getElementById('ct-meal-name').textContent=m.e+' '+mealName(m)+'  ·  ⏱ '+m.time+(curLang==='en'?' min':' λεπτά');
+  document.getElementById('ct-meal-name').textContent=m.e+' '+mealName(m)+'  ·  ⏱ '+m.time+(t('x75'));
   document.getElementById('ct-time').value='20:00';
   _ctUpdateHint();
   document.getElementById('cook-tonight-modal').classList.add('show');
@@ -8125,7 +8657,7 @@ function _ctUpdateHint(){
   const notifAt=new Date();notifAt.setHours(h,min,0,0);
   notifAt.setTime(notifAt.getTime()-(m.time+10)*60000);
   const hh=notifAt.getHours(),mm=String(notifAt.getMinutes()).padStart(2,'0');
-  document.getElementById('ct-hint').textContent=(curLang==='en'?"🔔 You'll get a reminder at ":'🔔 Θα λάβεις υπενθύμιση στις ')+hh+':'+mm;
+  document.getElementById('ct-hint').textContent=(t('x3'))+hh+':'+mm;
 }
 
 function closeCookTonight(){document.getElementById('cook-tonight-modal').classList.remove('show');}
@@ -8144,17 +8676,17 @@ function saveCookTonight(){
   localStorage.setItem('fd_tonight',JSON.stringify({id,cookAt:cookAt.getTime()}));
   _showTonightBanner(id,cookAt);
   if(delay>0&&Notification.permission==='granted'){
-    const en=curLang==='en';
-    _swSend({type:'SCHEDULE_ONE_SHOT_NOTIF',delay,title:en?'🍳 Time to start!':'🍳 Ώρα να ξεκινήσεις!',body:en?(m.e+' '+mealName(m)+' needs '+m.time+' minutes. Start now!'):(m.e+' '+mealName(m)+' χρειάζεται '+m.time+" λεπτά. Ξεκίνα τώρα!"),tag:'fd-tonight'});
+    const en=curLang!=='el';
+    _swSend({type:'SCHEDULE_ONE_SHOT_NOTIF',delay,title:t('x142'),body:en?(m.e+' '+mealName(m)+' needs '+m.time+' minutes. Start now!'):(m.e+' '+mealName(m)+' χρειάζεται '+m.time+" λεπτά. Ξεκίνα τώρα!"),tag:'fd-tonight'});
   }
   closeCookTonight();
-  showToast(curLang==='en'?'🔔 Reminder set!':'🔔 Υπενθύμιση ορίστηκε!');
+  showToast(t('x76'));
 }
 
 function _showTonightBanner(id,cookAt){
   const m=MEALS[id];if(!m)return;
   const hh=cookAt.getHours(),mm=String(cookAt.getMinutes()).padStart(2,'0');
-  document.getElementById('tonight-txt').textContent=(curLang==='en'?'🍳 Tonight: ':'🍳 Απόψε: ')+mealName(m)+(curLang==='en'?' at ':' στις ')+hh+':'+mm;
+  document.getElementById('tonight-txt').textContent=(t('x77'))+mealName(m)+(t('x78'))+hh+':'+mm;
   document.getElementById('tonight-open-btn').onclick=()=>{openR(id);};
   document.getElementById('tonight-banner').classList.add('show');
 }
@@ -8171,8 +8703,8 @@ function dismissTonightBanner(){
     const db=document.getElementById('dark-btn');if(db)db.textContent='☀️';
   }
   // Restore language preference
-  const _sl=localStorage.getItem('fd_lang');if(_sl==='en'||_sl==='el')curLang=_sl;
-  applyLangTexts(curLang);
+  const _sl=localStorage.getItem('fd_lang');
+  if(_sl&&LANGS[_sl]&&_sl!==curLang){setLang(_sl);}else{applyLangTexts(curLang);}
   // Hero greeting + date
   updateHeroTexts();
   // Premium: ξεκίνα την 3ήμερη δωρεάν γνωριμία (μόνο σε native) και δείξε banner
@@ -8191,7 +8723,7 @@ function dismissTonightBanner(){
   if(sgw)sgw.innerHTML=buildSeasonalGuide();
   // #24 Newsletter — restore subscribed state
   const nlEmail=localStorage.getItem('fd_nl_email');
-  if(nlEmail){const w=document.getElementById('nl-form-wrap');if(w)w.innerHTML=curLang==='en'?`<div class="nl-done">✅ Registered as ${nlEmail}</div>`:`<div class="nl-done">✅ Εγγεγραμμένος ως ${nlEmail}</div>`;}
+  if(nlEmail){const w=document.getElementById('nl-form-wrap');if(w)w.innerHTML=`<div class="nl-done">${tf('y_nl_reg',nlEmail)}</div>`;}
   applyTheme('all');
   renderMeals('all');
   rendFest('all');

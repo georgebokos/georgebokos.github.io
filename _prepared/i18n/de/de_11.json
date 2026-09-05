@@ -1,0 +1,600 @@
+{
+ "poures_patatas": {
+  "n": "Kartoffelpüree",
+  "ing": [
+   "Mehligkochende Kartoffeln 1 kg",
+   "Warme Milch 200 ml",
+   "Butter 80 g",
+   "Muskatnuss 1 Prise",
+   "Salz, weißer Pfeffer"
+  ],
+  "steps": [
+   "Kartoffeln wählen: Mehligkochende Kartoffeln verwenden, keine festkochenden. Festkochende behalten ihre Form und ergeben ein klebriges statt ein lockeres Püree.",
+   "Schneiden: Die Kartoffeln schälen und in gleich große Stücke schneiden, damit sie alle gleichzeitig gar sind.",
+   "Kochen: In kaltem Salzwasser aufsetzen und zum Kochen bringen. Wichtig: Der kalte Start gart sie gleichmäßig von außen nach innen — ins kochende Wasser geworfen bleibt die Mitte roh.",
+   "Prüfen: Etwa 20 Minuten köcheln, bis ein Messer in ein Stück gleitet und es von selbst abfällt.",
+   "Abgießen: Gut abgießen und 1 Minute im heißen leeren Topf bei niedriger Hitze unter Schwenken abdampfen lassen.",
+   "Stampfen: Noch heiß mit dem Stampfer zerdrücken oder durch eine Presse drücken. Wichtig: Niemals Mixer oder Küchenmaschine verwenden — die Klingen zerstören die Stärke und machen aus dem Püree Kleister.",
+   "Butter zugeben: Zuerst die kalte Butter in Stücken einarbeiten, vor jeder Flüssigkeit, damit das Fett die Stärke umhüllt und die Textur seidig bleibt.",
+   "Milch zugeben: Die warme Milch nach und nach zugießen und mit dem Löffel schlagen, bis die gewünschte Konsistenz erreicht ist. Kalte Milch würde das Püree zusammenziehen.",
+   "Würzen: Mit Salz, weißem Pfeffer und einer Prise Muskat würzen und sofort heiß und luftig servieren."
+  ],
+  "wine": "Nicht zutreffend — es begleitet das Hauptgericht und folgt dessen Wein.",
+  "plate": "In einer warmen Schale servieren, die Oberfläche mit dem Löffelrücken glätten und ein Stück Butter in die Mulde legen."
+ },
+ "poutinga_psomiou": {
+  "n": "Brotpudding",
+  "ing": [
+   "Altbackenes Brot 400 g",
+   "Milch 700 ml",
+   "Eier 4",
+   "Zucker 150 g",
+   "Butter 60 g",
+   "Rosinen 80 g",
+   "Zimt 1 TL",
+   "Vanilleextrakt 1 TL",
+   "Muskatnuss 1 Prise"
+  ],
+  "steps": [
+   "Wirklich altbackenes Brot verwenden, zwei bis drei Tage alt. Wichtig: Frisches Brot wird zu Brei — altbackenes ist ausgetrocknet und trinkt stattdessen die Eimilch.",
+   "In dicke Würfel schneiden und in einer gebutterten Form verteilen.",
+   "Die Milch mit der Butter erwärmen, bis die Butter geschmolzen ist, ohne aufzukochen.",
+   "Die Eier mit Zucker, Vanille, Zimt und Muskat verquirlen.",
+   "Wichtig: Die warme Milch langsam unter Rühren in die Eier gießen. Alles auf einmal zugegeben stocken die Eier zu Fäden.",
+   "Die Eimilch über das Brot gießen und die Rosinen zwischen die Würfel streuen.",
+   "Das Brot sanft andrücken und 30 Minuten durchziehen lassen.",
+   "Bei 175 °C 45 Minuten im Wasserbad backen — eine Fettpfanne mit heißem Wasser —, das verhindert, dass die Eimasse gerinnt.",
+   "Mit einem Messer nahe der Mitte prüfen: Es soll sauber herauskommen und die Oberfläche goldbraun sein.",
+   "15 Minuten ruhen lassen und warm servieren, pur oder mit einem Löffel Sahne."
+  ],
+  "wine": "Ein süßer Wein oder warme Milch.",
+  "plate": "Warm in einer tiefen Schale mit einem Löffel Sahne servieren."
+ },
+ "prasopita": {
+  "n": "Lauch-Feta-Pita",
+  "ing": [
+   "Filoteig 500 g",
+   "Lauch 1 kg",
+   "Feta 400 g",
+   "Eier 3",
+   "Olivenöl 4 EL",
+   "Butter 80 g",
+   "Salz & Pfeffer",
+   "Muskatnuss"
+  ],
+  "steps": [
+   "Lauch waschen: Den 1 kg Lauch sehr gut waschen und fein schneiden. Wichtig: Lauch verbirgt Erde zwischen den Schichten, daher aufschneiden und Blatt für Blatt abspülen, sonst knirscht die Pita.",
+   "Anbraten: Den Lauch in 4 EL Olivenöl 8-10 Minuten dünsten, bis er weich ist und sein Volumen abnimmt. Das treibt Feuchtigkeit aus und macht den Geschmack süßer.",
+   "Abkühlen: Den Lauch vollständig abkühlen lassen. Wichtig: Gibt man die Eier zu warmem Lauch, stocken sie und gerinnen, also die Füllung erst abkühlen lassen.",
+   "Füllung: Den Lauch mit 400 g zerbröseltem Feta, 3 Eiern, geriebener Muskatnuss und Pfeffer mischen. Mit Salz vorsichtig sein, da der Feta bereits salzig ist.",
+   "Blätter schichten: Die Hälfte der Filoblätter in eine gebutterte Form legen und jedes Blatt mit geschmolzener Butter (von den 80 g) bestreichen. Die Butter in jeder Schicht macht die Pita knusprig und leicht.",
+   "Schließen und vorschneiden: Die Füllung verteilen, mit den restlichen gebutterten Blättern abdecken und die Oberfläche in Stücke vorschneiden. Das Vorschneiden erleichtert das Teilen nach dem Backen und lässt Dampf entweichen.",
+   "Backen: Bei 180 °C 50-55 Minuten backen, bis alles goldbraun und knusprig ist. Vor dem Schneiden 10 Minuten ruhen lassen, damit die Füllung fest wird."
+  ],
+  "wine": "Trockener Weißwein oder Rosé.",
+  "plate": "Stücke, Salat, zusätzlicher Feta."
+ },
+ "prasorizo": {
+  "n": "Lauchreis",
+  "ing": [
+   "Lauch 1 kg",
+   "Carolina-Reis 1 Tasse",
+   "Zwiebel 1 große",
+   "Olivenöl 1/2 Tasse",
+   "Saft von 1 Zitrone",
+   "Dill 1 Bund",
+   "Heißes Wasser oder Brühe 2-3 Tassen",
+   "Salz und Pfeffer"
+  ],
+  "steps": [
+   "Putzen: Den Lauch putzen, harte Wurzeln und äußere Blätter entfernen und in Ringe schneiden. In einer Schüssel Wasser sehr gut abspülen, um allen Sand zwischen den Schichten zu entfernen.",
+   "Zwiebel anbraten: In einem weiten Topf das Olivenöl erhitzen und die gehackte Zwiebel bei mittlerer Hitze weich und glasig dünsten, ohne sie zu bräunen.",
+   "Lauch zusammenfallen lassen: Den Lauch zugeben und umrühren. Zugedeckt bei niedriger Hitze 10-15 Minuten schmoren, bis er zusammenfällt und seine Flüssigkeit abgibt, gelegentlich umrühren.",
+   "Wasser zugeben: Das heiße Wasser oder die Brühe angießen, mit Salz und Pfeffer würzen und den Lauch weitere 5 Minuten kochen lassen.",
+   "Reis zugeben: Den Reis zugeben und umrühren. Wichtig: Das Verhältnis Flüssigkeit zu Reis sollte etwa 2 zu 1 sein. Auf ausreichend Flüssigkeit achten, damit das Gericht saftig bleibt und nicht trocken wird, denn Prasorizo wird wie ein saftiger Pilaw serviert.",
+   "Köcheln: Die Hitze reduzieren, zudecken und 15-18 Minuten köcheln, bis der Reis aufquillt und die Flüssigkeit aufnimmt, ohne zu oft zu rühren.",
+   "Abschluss: Kurz bevor der Topf vom Herd kommt, den gehackten Dill und den Zitronensaft zugeben. Vorsichtig umrühren und mit Salz abschmecken.",
+   "Ruhen lassen: Die Hitze abschalten und mit einem Tuch abgedeckt 10 Minuten stehen lassen, damit es vor dem Servieren fest wird."
+  ],
+  "wine": "Trockener Weißwein wie Assyrtiko.",
+  "plate": "Heiß mit frischer Zitrone, Feta und einer kalten Olive servieren."
+ },
+ "profiterol": {
+  "n": "Profiteroles",
+  "ing": [
+   "Wasser 250 ml",
+   "Butter 100 g",
+   "Weizenmehl 150 g",
+   "Mittelgroße Eier 4",
+   "Salz 1 Prise",
+   "Frische Milch 500 ml (für die Creme)",
+   "Zucker 120 g",
+   "Speisestärke 40 g",
+   "Vanille 1 Päckchen",
+   "Zartbitterschokolade 200 g (für die Sauce)"
+  ],
+  "steps": [
+   "Brandteig: Wasser, gewürfelte Butter und Salz in einen Topf geben und aufkochen, sodass die Butter vollständig schmilzt, bevor die Flüssigkeit kocht.",
+   "Teig abbrennen: Das gesamte gesiebte Mehl auf einmal zugeben und bei niedriger Hitze mit einem Holzlöffel kräftig rühren, bis sich der Teig zu einer Kugel zusammenballt und vom Rand löst (etwa 2-3 Minuten). Wichtig: Der Teig muss über der Hitze gut abtrocknen, sonst gehen die Windbeutel nicht auf und bleiben schwer.",
+   "Eier einarbeiten: Den Teig 5 Minuten abkühlen lassen, dann die Eier einzeln zugeben und jeweils gut unterschlagen, bis ein glatter, glänzender Teig entsteht, der eine weiche Spitze bildet.",
+   "Windbeutel backen: Mit einem Spritzbeutel kleine Häufchen auf ein mit Backpapier belegtes Blech spritzen und im vorgeheizten Ofen bei 200 °C 25-30 Minuten backen, ohne die Tür zu öffnen, bis sie aufgegangen und goldbraun sind. Vollständig auskühlen lassen.",
+   "Konditorcreme: Die Milch mit der Vanille erhitzen. Den Zucker mit der Speisestärke und etwas Milch verquirlen, in die heiße Milch gießen und bei mittlerer Hitze rühren, bis die Creme andickt. Mit direkt aufgelegter Frischhaltefolie abkühlen lassen.",
+   "Schokoladensauce: Die Schokolade im Wasserbad oder mit etwas Sahne schmelzen und rühren, bis eine glatte, glänzende Sauce entsteht.",
+   "Füllen: Die Windbeutel seitlich aufschneiden oder den Boden anstechen und mit einem Spritzbeutel mit der kalten Creme füllen.",
+   "Anrichten: Die gefüllten Windbeutel in einer Schale oder Servierform stapeln, reichlich heiße Schokoladensauce darüber gießen und sofort servieren."
+  ],
+  "wine": "Süßer Samos-Wein oder Vin Santo.",
+  "plate": "In einer tiefen Schale mit reichlich Schokoladensauce und etwas geraspelter Zartbitterschokolade obenauf servieren."
+ },
+ "psari_plaki": {
+  "n": "Fisch Plaki aus dem Ofen",
+  "ing": [
+   "Fisch (Wolfsbarsch oder Kabeljau) 800 g",
+   "Tomaten 3",
+   "Zwiebeln 2",
+   "Knoblauch 4 Zehen",
+   "Olivenöl 5 EL",
+   "Sellerie",
+   "Petersilie"
+  ],
+  "steps": [
+   "Basis anbraten: Die 2 gehackten Zwiebeln, 4 Knoblauchzehen und den gehackten Sellerie in einem Teil der 5 EL Olivenöl weich dünsten. Diese aromatische Basis gibt der Sauce Tiefe.",
+   "Tomatensauce: Die 3 geriebenen Tomaten und Salz zugeben und 10 Minuten köcheln, bis die Sauce leicht andickt und ihre Säure verliert.",
+   "Fisch anrichten: Den 800 g Fisch (Wolfsbarsch oder Kabeljau) in eine Form legen. Mit Salz und Pfeffer würzen. Wichtig: Den Fisch vor dem Einlegen gründlich trocken tupfen, damit er die Sauce nicht verwässert.",
+   "Übergießen: Die Sauce über den Fisch verteilen, mit dem restlichen Olivenöl und etwas Zitronensaft beträufeln.",
+   "Backen: Im vorgeheizten Ofen bei 180 °C 35-40 Minuten backen. Wichtig: Nicht übergaren, denn Fisch trocknet leicht aus — er ist fertig, wenn das Fleisch undurchsichtig wird und sich leicht löst.",
+   "Servieren: Mit frischer Petersilie bestreuen und warm oder bei Zimmertemperatur servieren, wie es für Fisch Plaki traditionell ist."
+  ],
+  "wine": "Trockener Weißwein.",
+  "plate": "In der Form, reichlich Sauce, Petersilie."
+ },
+ "psaronefri_fournou": {
+  "n": "Schweinefilet aus dem Ofen",
+  "ing": [
+   "Schweinefilet 1 kg",
+   "Dijonsenf 2 EL",
+   "Honig 1 EL",
+   "Knoblauch 4 Zehen",
+   "Olivenöl 4 EL",
+   "Saft von 2 Zitronen",
+   "Trockener Senf/Oregano 1 TL",
+   "Frischer Thymian einige Zweige",
+   "Salz, Pfeffer nach Geschmack",
+   "Trockener Weißwein 1/2 Glas"
+  ],
+  "steps": [
+   "Fleisch vorbereiten: Die Silberhaut vom Schweinefilet entfernen und es vor dem Garen 20-30 Minuten Zimmertemperatur annehmen lassen.",
+   "Marinade: In einer Schüssel Olivenöl, Senf, Honig, Zitrone, fein gehackten Knoblauch, Thymian, Salz und Pfeffer mischen.",
+   "Einreiben: Das Fleisch rundum gut mit der Marinade einreiben und mindestens 30 Minuten, idealerweise 2 Stunden im Kühlschrank ziehen lassen.",
+   "Wichtig: Das Fleisch zuerst in einer beschichteten oder gusseisernen Pfanne bei starker Hitze 1-2 Minuten pro Seite anbraten, damit sich die Poren schließen und es saftig bleibt, bevor es in den Ofen kommt.",
+   "Braten: Das Fleisch in eine Form legen, den Wein und die restliche Marinade angießen und im vorgeheizten Ofen bei 200 °C 20-25 Minuten braten.",
+   "Garprobe: Die Kerntemperatur mit einem Fleischthermometer prüfen — sie sollte 63-65 °C erreichen, damit das Fleisch zart und saftig bleibt, ohne auszutrocknen.",
+   "Ruhen lassen: Das Filet aus dem Ofen nehmen, locker mit Folie abdecken und vor dem Aufschneiden 8-10 Minuten ruhen lassen, damit sich die Säfte verteilen.",
+   "Servieren: Das Fleisch schräg aufschneiden und mit der Sauce aus der Form beträufeln."
+  ],
+  "wine": "Trockener weißer Assyrtiko aus Santorini oder ein leichter roter Agiorgitiko.",
+  "plate": "Mit Kartoffelpüree oder Oreganokartoffeln und einem frischen griechischen Bauernsalat servieren."
+ },
+ "psarosoupa": {
+  "n": "Griechische Fischsuppe",
+  "ing": [
+   "Zackenbarsch (Sfyrida) 1 kg",
+   "Kartoffeln 4",
+   "Karotten 2",
+   "Zwiebel 1",
+   "Sellerie",
+   "Eier 2",
+   "Zitronen 2"
+  ],
+  "steps": [
+   "Fisch und Gemüse kochen: In einem großen Topf den 1 kg Zackenbarsch ganz zusammen mit 4 Kartoffeln, 2 Karotten, 1 Zwiebel und Sellerie mit kaltem Wasser bedecken und salzen. Bei mittlerer Hitze 30 Minuten kochen. Wichtig: Mit kaltem Wasser beginnen und den Schaum abschöpfen, damit die Brühe klar und rein wird.",
+   "Entgräten: Fisch und Gemüse vorsichtig herausnehmen. Den Zackenbarsch vollständig entgräten und das Fleisch beiseitestellen, damit es nicht ganz auskühlt.",
+   "Brühe abseihen: Die Brühe durch ein feines Sieb gießen, um kleine Gräten zu entfernen. Die klare Brühe ist die Basis der Suppe.",
+   "Reis garen: Die Brühe wieder aufkochen und Reis oder Hilopites zugeben. 15 Minuten weich kochen und darauf achten, dass genug Flüssigkeit für das Avgolemono bleibt.",
+   "Avgolemono vorbereiten: In einer Schüssel 2 Eier mit dem Saft von 2 Zitronen schaumig schlagen. Nach und nach unter ständigem Schlagen eine Kelle heiße Brühe zugeben. Wichtig: Das langsame Verdünnen hebt die Temperatur der Eier allmählich an und verhindert das Gerinnen.",
+   "Suppe binden: Den Topf vom Herd nehmen und das Avgolemono unter vorsichtigem Rühren zugießen. Nicht wieder aufkochen, sonst gerinnen die Eier und die Suppe flockt aus.",
+   "Servieren: Das Fischfleisch zurück in die Suppe geben, abschmecken und sofort heiß servieren, nach Belieben mit zusätzlicher Zitrone."
+  ],
+  "wine": "Trockener Weißwein.",
+  "plate": "In einer tiefen Schale, mit dem Fisch darin und Zitrone."
+ },
+ "red_velvet": {
+  "n": "Red Velvet Cake",
+  "ing": [
+   "Weizenmehl 280 g",
+   "Zucker 300 g",
+   "Kakaopulver 15 g",
+   "Natron 1 TL",
+   "Salz 1 Prise",
+   "Pflanzenöl 240 ml",
+   "Buttermilch 240 ml",
+   "Eier 2",
+   "Rote Gel-Lebensmittelfarbe 15 ml",
+   "Weißweinessig 1 EL",
+   "Vanilleextrakt 1 EL",
+   "Frischkäse 450 g",
+   "Ungesalzene Butter 115 g",
+   "Puderzucker 500 g"
+  ],
+  "steps": [
+   "Vorheizen: Den Ofen auf 175 °C erhitzen und zwei 20-cm-Formen ausbuttern, die Böden mit Backpapier auslegen.",
+   "Trockene Zutaten: In einer Schüssel Mehl, Kakao, Natron und Salz mischen.",
+   "Flüssige Zutaten: In einer zweiten Schüssel das Öl mit dem Zucker verquirlen, die Eier einzeln zugeben, dann Buttermilch, rote Farbe, Essig und Vanille.",
+   "Vermengen: Die trockenen Zutaten nach und nach unter die flüssigen heben und nur so lange rühren, bis alles verbunden ist, ohne den Teig zu überarbeiten.",
+   "Wichtig: Den Teig nicht überrühren; zu langes Rühren entwickelt das Gluten und der Kuchen wird kompakt statt leicht und samtig.",
+   "Backen: Den Teig auf die beiden Formen verteilen und 25-30 Minuten backen, bis ein Zahnstocher sauber herauskommt.",
+   "Abkühlen: Die Böden 10 Minuten in den Formen abkühlen lassen, dann auf ein Gitter stürzen und vor dem Füllen vollständig auskühlen lassen.",
+   "Frosting: Den Frischkäse mit der Butter luftig aufschlagen, nach und nach den Puderzucker und die Vanille zugeben, bis das Frosting glatt ist.",
+   "Zusammensetzen: Die Böden in gleichmäßige Schichten schneiden, dazwischen Frosting streichen und die ganze Torte damit überziehen, die Oberfläche mit Kuchenbröseln dekorieren.",
+   "Servieren: Die Torte vor dem Schneiden 30 Minuten kalt stellen, damit das Frosting fest wird und sich sauber schneiden lässt."
+  ],
+  "wine": "Süßer Samos-Wein",
+  "plate": "Auf einem weißen Teller mit einem Löffel Sahne und ein paar roten Kuchenbröseln obenauf servieren"
+ },
+ "revani": {
+  "n": "Revani (Grießkuchen mit Sirup)",
+  "ing": [
+   "Grober Grieß 200 g",
+   "Mehl 100 g",
+   "Zucker 150 g",
+   "Eier 4",
+   "Butter 100 g",
+   "Joghurt 200 g",
+   "Backpulver 1 TL",
+   "Zitronenschale",
+   "Sirup: Zucker 300 g, Wasser 300 ml, Zitronensaft"
+  ],
+  "steps": [
+   "Zuerst der Sirup: Zucker, Wasser und Zitrone 5 Minuten kochen, bis der Sirup leicht andickt. Vollständig abkühlen lassen. Wichtig: Kalter Sirup auf heißem Kuchen sorgt für gute Aufnahme.",
+   "Aufschlagen: Butter und Zucker hell aufschlagen. Die Eier einzeln zugeben. Joghurt und Zitronenschale zugeben.",
+   "Trockene Zutaten: Grieß, Mehl und Backpulver mischen. Vorsichtig unter die feuchte Masse heben.",
+   "Backen: In einer gefetteten Form bei 175 °C 30-35 Minuten goldbraun backen.",
+   "Tränken: Sofort nach dem Ofen den kalten Sirup darüber gießen. Vor dem Schneiden vollständig aufsaugen lassen."
+  ],
+  "wine": "-",
+  "plate": "In Rauten geschnitten, mit Mandeln obenauf."
+ },
+ "revithoryzo": {
+  "n": "Kichererbsen mit Reis",
+  "ing": [
+   "Getrocknete Kichererbsen 400 g (über Nacht eingeweicht)",
+   "Glasse-Reis 1 Tasse",
+   "Zwiebeln, 2 große, fein gehackt",
+   "Olivenöl 1/2 Tasse",
+   "Geriebene Tomate, 2 mittelgroße oder 1 Dose",
+   "Saft von 1-2 Zitronen",
+   "Knoblauch, 2 Zehen",
+   "Lorbeerblatt, 1",
+   "Salz, Pfeffer nach Geschmack",
+   "Wasser oder Gemüsebrühe nach Bedarf"
+  ],
+  "steps": [
+   "Einweichen: Die Kichererbsen über Nacht in reichlich Wasser einweichen, damit sie aufquellen und vor dem Kochen weicher werden.",
+   "Kichererbsen kochen: Die Kichererbsen abgießen und in frischem Wasser mit dem Lorbeerblatt etwa 45-60 Minuten kochen, bis sie weich sind, aber noch Form haben. Den Kochsud aufbewahren.",
+   "Wichtig: Das Kochwasser nicht von Anfang an salzen, denn Salz macht die Schalen hart und verzögert das Weichwerden; erst gegen Ende der Garzeit salzen.",
+   "Soffritto: In einem Topf das Olivenöl erhitzen und die Zwiebel glasig dünsten, den Knoblauch eine Minute zugeben und dann die geriebene Tomate, 5-6 Minuten köcheln.",
+   "Vereinen: Die gegarten Kichererbsen mit etwas Kochsud zum Soffritto geben und alles zusammen aufkochen lassen, damit sich die Aromen verbinden.",
+   "Reis zugeben: Den Reis zugeben und mit Brühe oder Wasser im Verhältnis von etwa der doppelten Reismenge auffüllen, mit Salz und Pfeffer würzen und bei niedriger Hitze mit halb geöffnetem Deckel etwa 18-20 Minuten köcheln, bis die Flüssigkeit aufgenommen ist.",
+   "Ruhen lassen: Die Hitze abschalten, den Topf zudecken und das Gericht 10 Minuten ruhen lassen, damit der Reis im Dampf fertig gart.",
+   "Servieren: Vor dem heißen Servieren großzügig mit frischem Zitronensaft und rohem Olivenöl beträufeln."
+  ],
+  "wine": "Trockener Weißwein von Rhodos oder Assyrtiko aus Santorini",
+  "plate": "In einem tiefen Teller mit einer Zitronenspalte dazu und etwas frischem Oregano obenauf servieren"
+ },
+ "revithosoupa_lemoni": {
+  "n": "Zitronige Kichererbsensuppe",
+  "ing": [
+   "Getrocknete Kichererbsen 400 g",
+   "Zwiebel 1 große",
+   "Karotte 1",
+   "Olivenöl 100 ml",
+   "Natron 1 TL (zum Einweichen)",
+   "Saft von 2-3 Zitronen",
+   "Lorbeerblätter 2",
+   "Salz, Pfeffer",
+   "Wasser 1,5 Liter"
+  ],
+  "steps": [
+   "Einweichen: Die Kichererbsen 10-12 Stunden oder über Nacht in reichlich Wasser mit dem Natron einweichen.",
+   "Wichtig: Das Natron hilft, die Kichererbsenschalen weich zu machen, sodass sie schneller garen und die Suppe cremig wird, ohne lange kochen zu müssen.",
+   "Abspülen: Die Kichererbsen vor dem Kochen abgießen und gut abspülen.",
+   "Anbraten: Die fein gehackte Zwiebel und die Karotte in Olivenöl weich dünsten.",
+   "Kochen: Kichererbsen, Lorbeerblätter und Wasser zugeben, aufkochen und dann bei niedriger Hitze 1,5-2 Stunden garen, bis alles ganz weich ist.",
+   "Binden: Einige Kichererbsen herausnehmen, mit der Gabel zerdrücken und zurück in den Topf geben, um die Suppe zu binden.",
+   "Zitrone: Am Ende der Garzeit den Zitronensaft zugeben und mit Salz und Pfeffer würzen.",
+   "Servieren: Heiß mit einem Schuss rohem Olivenöl obenauf servieren."
+  ],
+  "wine": "Weißer Assyrtiko",
+  "plate": "In einer tiefen Tonschale mit Olivenöl und geröstetem Brot dazu."
+ },
+ "revythada": {
+  "n": "Kichererbsen aus dem Ofen",
+  "ing": [
+   "Kichererbsen 500 g",
+   "Zwiebeln 2",
+   "Olivenöl 6 EL",
+   "Rosmarin",
+   "Zitrone 1"
+  ],
+  "steps": [
+   "Einweichen: Die 500 g Kichererbsen über Nacht (8-12 Stunden) in reichlich Wasser einweichen. Wichtig: Das Einweichen macht die Schalen weicher, verkürzt die Garzeit und macht sie bekömmlicher.",
+   "Vorkochen: Die Kichererbsen abgießen, in frisches Wasser geben und 10 Minuten kochen, dabei den aufsteigenden Schaum abschöpfen, da er blähend wirken kann.",
+   "Form vorbereiten: Abgießen und die Kichererbsen mit den 2 grob gehackten Zwiebeln, den 6 EL Olivenöl und dem Rosmarin in einen Tontopf geben.",
+   "Wasser zugeben: Heißes Wasser angießen, bis die Kichererbsen 2-3 Fingerbreit bedeckt sind, damit sie langsam garen können, ohne auszutrocknen.",
+   "Langsam backen: Bei 160 °C 2,5-3 Stunden backen, anfangs zugedeckt, gegen Ende offen. Wichtig: Langsames Backen bei niedriger Temperatur macht sie butterweich und cremig.",
+   "Abschluss: Sofort nach dem Ofen den Saft von 1 Zitrone zugeben, der den Geschmack auffrischt und die Süße der Zwiebel ausgleicht. Heiß servieren."
+  ],
+  "wine": "Trockener Weißwein.",
+  "plate": "In einer tiefen Schale mit rohem Olivenöl und Rosmarin."
+ },
+ "revythokeftedes": {
+  "n": "Kichererbsenpuffer",
+  "ing": [
+   "Kichererbsen, gekocht oder aus der Dose, 400 g",
+   "Zwiebel 1",
+   "Knoblauch 2 Zehen",
+   "Kreuzkümmel 1 TL",
+   "Koriander 1/2 TL",
+   "Mehl 3 EL",
+   "Petersilie",
+   "Olivenöl zum Braten",
+   "Salz & Pfeffer"
+  ],
+  "steps": [
+   "Zerkleinern: Die Kichererbsen mit Zwiebel und Knoblauch in der Küchenmaschine kurz zerkleinern oder mit der Gabel zerdrücken. Keine glatte Paste — kleine Stücke sorgen für Textur.",
+   "Masse: Kreuzkümmel, Koriander, Petersilie, Mehl, Salz und Pfeffer untermischen. 15 Minuten kalt stellen, damit die Masse fester wird.",
+   "Formen: Kleine Bällchen oder Taler formen.",
+   "Braten: In heißem Öl 3 Minuten pro Seite braten. Wichtig: Das Öl muss recht heiß sein, da Kichererbsenpuffer dazu neigen, Öl aufzusaugen.",
+   "Servieren: Mit Tahini, Zitrone oder Tzatziki."
+  ],
+  "wine": "-",
+  "plate": "Mit Tahini oder Joghurt."
+ },
+ "risotto_manitarion": {
+  "n": "Pilzrisotto",
+  "ing": [
+   "Arborio-Reis 250 g",
+   "Gemischte Pilze 300 g",
+   "Zwiebel 1",
+   "Knoblauch 2 Zehen",
+   "Weißwein 100 ml",
+   "Gemüsebrühe 800 ml (heiß)",
+   "Butter 40 g",
+   "Parmesan 50 g",
+   "Olivenöl 2 EL",
+   "Salz, Pfeffer, Thymian"
+  ],
+  "steps": [
+   "Pilze anbraten: In einer Pfanne mit Olivenöl die Pilze bei starker Hitze 5-6 Minuten goldbraun braten. Wichtig: Nicht ständig rühren — sie sollen zuerst eine goldene Kruste bilden. Mit Salz und Pfeffer würzen und beiseitestellen.",
+   "Basis: Im selben Topf die Zwiebel 3 Minuten anbraten, dann den Knoblauch 1 Minute. Den Reis zugeben und 2 Minuten unter Rühren anrösten — er soll glänzen und nach geröstetem Brot duften.",
+   "Wein: 100 ml Weißwein zugeben und rühren, bis er vollständig verdampft ist — 1-2 Minuten.",
+   "Brühe zugeben: Die heiße Brühe kellenweise zugeben (1-2 Kellen auf einmal), ständig rühren und jede Zugabe aufsaugen lassen, bevor die nächste folgt. Wichtig: Das ständige Rühren löst die Stärke und macht das Risotto cremig. Dieser Vorgang dauert 18-20 Minuten.",
+   "Mantecatura: Vom Herd nehmen. Butter und Parmesan zugeben und kräftig rühren. 2 Minuten ruhen lassen. Mit den Pilzen und frischem Thymian obenauf servieren."
+  ],
+  "wine": "Weißer Pinot Grigio oder Chardonnay.",
+  "plate": "Cremig, mit Pilzen und Parmesan obenauf."
+ },
+ "rizoto_spanaki_feta": {
+  "n": "Spinat-Feta-Risotto",
+  "ing": [
+   "Risottoreis (Carnaroli oder Arborio) 320 g",
+   "Frischer Spinat 400 g",
+   "Feta 200 g",
+   "1 mittelgroße Zwiebel, fein gehackt",
+   "Knoblauch, 2 Zehen, fein gehackt",
+   "Trockener Weißwein 100 ml",
+   "Gemüsebrühe 1,2 Liter, heiß",
+   "Butter 40 g",
+   "Olivenöl 3 EL",
+   "Geriebener Parmesan 50 g"
+  ],
+  "steps": [
+   "Spinat vorbereiten: Den Spinat gut waschen, in etwas Olivenöl 2-3 Minuten zusammenfallen lassen, abtropfen lassen und fein hacken.",
+   "Basis anbraten: In einem weiten Topf das Olivenöl mit etwas Butter erhitzen und die Zwiebel bei niedriger Hitze glasig dünsten, ohne Farbe nehmen zu lassen. Den Knoblauch 1 Minute zugeben.",
+   "Reis anrösten: Den Reis zugeben und 1-2 Minuten rühren, bis die Körner glänzen und am Rand glasig werden. Wichtig: Dieser Schritt versiegelt das Korn und hilft dem Reis, die richtige Al-dente-Textur zu halten, ohne beim Garen matschig zu werden.",
+   "Mit Wein ablöschen: Den Weißwein zugeben und rühren, bis der Alkohol verdampft und vom Reis aufgenommen ist.",
+   "Brühe nach und nach zugeben: Die heiße Brühe kellenweise zugeben, ständig rühren und jede Zugabe aufsaugen lassen, bevor die nächste folgt. Wichtig: Das ständige Rühren löst die Stärke des Reises und erzeugt die cremige Textur, die ein Risotto ausmacht — also nicht hetzen und nicht unbeaufsichtigt lassen.",
+   "Spinat einarbeiten: In den letzten 5 Minuten der Garzeit den gehackten Spinat zugeben und unterrühren, damit er gleichmäßig im Risotto verteilt ist.",
+   "Mantecatura: Ist der Reis al dente, vom Herd nehmen und die restliche Butter, den Parmesan und den zerbröselten Feta zugeben, kräftig rühren, bis alles cremig ist. Vor dem Servieren 2 Minuten zugedeckt stehen lassen.",
+   "Servieren: Sofort auf warmen Tellern servieren, mit etwas zusätzlichem geriebenem Feta und Olivenöl obenauf."
+  ],
+  "wine": "Weißer Assyrtiko aus Santorini, kühl und mit lebendiger Säure, die die cremige Textur des Risottos ausgleicht.",
+  "plate": "In einem tiefen Teller servieren, das Risotto mit dem Löffelrücken leicht ausbreiten, mit geriebenem Feta, etwas frisch gemahlenem Pfeffer und einem Schuss Olivenöl in der Mitte."
+ },
+ "rizoto_thalassinon": {
+  "n": "Meeresfrüchte-Risotto",
+  "ing": [
+   "Carolina- oder Arborio-Reis 350 g",
+   "Frische geschälte Garnelen 300 g",
+   "Frische Miesmuscheln in der Schale 500 g",
+   "Geputzte Kalmare 200 g",
+   "Fisch- oder Meeresfrüchtebrühe 1,2 Liter",
+   "Fein gehackte Zwiebel 1",
+   "Knoblauch 2 Zehen",
+   "Trockener Weißwein 150 ml",
+   "Olivenöl 5 EL",
+   "Frisch geriebene Tomaten 2",
+   "Gehackte Petersilie 1 kleines Bund",
+   "Saft von 1 Zitrone"
+  ],
+  "steps": [
+   "Meeresfrüchte putzen: Die Garnelen schälen, einige mit Schale zum Garnieren behalten, die Muscheln gut abbürsten und die Kalmare in Ringe schneiden.",
+   "Brühe: Heiße Fisch- oder Meeresfrüchtebrühe zubereiten und bei niedriger Hitze warm halten, damit man dem Reis nach und nach heiße Flüssigkeit zugeben kann.",
+   "Meeresfrüchte anbraten: In einem weiten Topf das Olivenöl erhitzen und Kalmare, Garnelen und Muscheln 2-3 Minuten kurz anbraten, bis sich die Muscheln öffnen, dann herausnehmen und beiseitestellen.",
+   "Reis anrösten: Im selben Öl Zwiebel und Knoblauch weich dünsten, den Reis zugeben und 1-2 Minuten rühren, bis er glänzt.",
+   "Wichtig: Mit dem Weißwein ablöschen und den Alkohol verdampfen lassen, dann die heiße Brühe nach und nach kellenweise zugeben, ständig rühren und jede Zugabe aufsaugen lassen, bevor die nächste folgt — das ist das Geheimnis eines cremigen Risottos.",
+   "Tomate: Nach der halben Garzeit die geriebene Tomate für Farbe und Geschmack zugeben und weiter sanft köcheln.",
+   "Abschluss: Ist der Reis al dente (insgesamt etwa 17-18 Minuten), die Meeresfrüchte zurück in den Topf geben, Zitronensaft und Petersilie zugeben, vorsichtig umrühren und vom Herd nehmen.",
+   "Servieren: Das Risotto vor dem Servieren 2 Minuten zugedeckt ruhen lassen, damit es die richtige cremige Konsistenz annimmt."
+  ],
+  "wine": "Trockener weißer Assyrtiko aus Santorini, frisch und mineralisch.",
+  "plate": "In einem tiefen Teller servieren, garniert mit einer ganzen Garnele, frischer Petersilie und einer Zitronenspalte dazu."
+ },
+ "rola_laxanou": {
+  "n": "Gefüllte Kohlrouladen",
+  "ing": [
+   "1 großer Weißkohl",
+   "Reis 200 g",
+   "1 Zwiebel",
+   "1 Karotte",
+   "Petersilie",
+   "Tomaten aus der Dose 400 g",
+   "Olivenöl 5 EL",
+   "Salz, Pfeffer",
+   "Zitrone"
+  ],
+  "steps": [
+   "Die Kohlblätter ablösen und 3-4 Minuten kochen. Abtropfen lassen.",
+   "Zwiebel und Karotte anbraten. Reis, Petersilie, Salz und Pfeffer zugeben.",
+   "1-2 EL Füllung in jedes Kohlblatt einrollen.",
+   "In einem Topf anordnen, Tomaten, Öl, Zitrone und Wasser zugeben.",
+   "Zugedeckt 40-45 Minuten köcheln."
+  ]
+ },
+ "rolo_kima_avga": {
+  "n": "Griechischer Hackbraten mit Eiern",
+  "ing": [
+   "Rinderhackfleisch 500 g",
+   "Schweinehackfleisch 300 g",
+   "Hartgekochte Eier, 5 (4 für die Füllung, 1 für die Hackmasse)",
+   "Brotkrume, in Milch eingeweicht, 2 Scheiben",
+   "1 große Zwiebel, gerieben",
+   "Knoblauch, 2 Zehen",
+   "Geriebener Parmesan oder Kefalotyri 60 g",
+   "Petersilie, gehackt, 1 kleines Bund",
+   "Olivenöl 4 EL",
+   "Salz, Pfeffer, Oregano"
+  ],
+  "steps": [
+   "Hackmasse vorbereiten: In einer großen Schüssel Rinder- und Schweinehack mit der geriebenen Zwiebel, dem Knoblauch, der gut ausgedrückten Brotkrume, Käse, Petersilie, einem Ei, Salz, Pfeffer und Oregano vermengen, bis alle Zutaten verbunden sind.",
+   "Eier kochen: Die 4 Eier 9-10 Minuten in Salzwasser kochen, sofort in Eiswasser geben und vorsichtig schälen, damit sie ganz und glatt bleiben.",
+   "Hackmasse ausbreiten: Auf einem Bogen Backpapier die Hackmasse zu einer etwa 1,5 cm dicken rechteckigen Schicht ausbreiten.",
+   "Wichtig: Die gekochten Eier an einer Kante in einer Reihe nebeneinander legen und das Fleisch mit Hilfe des Backpapiers fest wie eine Roulade darum rollen, dabei gut andrücken, damit keine Hohlräume bleiben und die Eier beim Backen nicht brechen.",
+   "Verschließen: Nähte und Enden der Rolle mit den Händen fest verschließen, damit beim Backen keine Füllung austritt, und sie vorsichtig in eine Form legen.",
+   "Backen: Die Rolle mit Olivenöl beträufeln, etwas Wasser in die Form geben und im vorgeheizten Ofen bei 180 °C 50-60 Minuten backen, dabei einmal wenden, bis sie gleichmäßig gebräunt ist.",
+   "Ruhen und schneiden: Die Rolle vor dem Aufschneiden 10-15 Minuten ruhen lassen, damit sie fest wird und sauber schneidet und die Eier in der Mitte zeigt.",
+   "Servieren: Die Scheiben heiß mit dem Bratensaft servieren, dazu Kartoffelpüree oder Risotto."
+  ],
+  "wine": "Trockener roter Agiorgitiko oder Xinomavro",
+  "plate": "In Scheiben über Kartoffelpüree mit dem Bratensaft servieren, dazu ein Saisonsalat"
+ },
+ "rosiki_salata": {
+  "n": "Russischer Salat",
+  "ing": [
+   "Kartoffeln 4 mittelgroße",
+   "Karotten 2",
+   "Gekochte Erbsen 1 Tasse",
+   "Essiggurken 4-5",
+   "Eier 4",
+   "Mayonnaise 250 g",
+   "Saft von 1 Zitrone",
+   "Senf 1 EL",
+   "Salz und Pfeffer",
+   "Petersilie, fein gehackt (optional)"
+  ],
+  "steps": [
+   "Gemüse kochen: Kartoffeln und Karotten ganz und ungeschält in Salzwasser etwa 20-25 Minuten kochen, bis sie weich, aber noch fest sind. Abgießen und vollständig abkühlen lassen.",
+   "Eier kochen: Inzwischen die Eier 9-10 Minuten hart kochen. In Eiswasser abschrecken, schälen und abkühlen lassen.",
+   "Schneiden: Die abgekühlten Kartoffeln und Karotten schälen und in kleine, gleichmäßige Würfel schneiden. Auch die Essiggurken und drei der Eier würfeln.",
+   "Wichtig: Das Gemüse erst nach vollständigem Abkühlen schneiden. Heiß geschnitten zerfällt es und gibt Feuchtigkeit ab, wodurch der Salat wässrig wird und die Mayonnaise ausflockt.",
+   "Sauce: In einer Schüssel die Mayonnaise mit Senf, Zitronensaft, Salz und Pfeffer glatt und cremig verrühren.",
+   "Mischen: In einer großen Schüssel Kartoffeln, Karotten, abgetropfte Erbsen, Gurken und Eierwürfel vereinen. Die Sauce nach und nach zugeben und mit dem Teigschaber vorsichtig unterheben, sodass alles überzogen ist, ohne zu zerfallen.",
+   "Kühlen: Abschmecken und salzen. Die Schüssel mit Frischhaltefolie abdecken und mindestens 2 Stunden kalt stellen, damit sich die Aromen verbinden und alles gut durchkühlt.",
+   "Servieren: Auf eine Platte geben, die Oberfläche glatt streichen und mit Scheiben des letzten Eis und gehackter Petersilie garnieren."
+  ],
+  "wine": "Trockener Weißwein oder ein gut gekühltes Lagerbier.",
+  "plate": "Kalt auf einer Platte servieren, mit Eischeiben und Oliven garniert, als Vorspeise oder Beilage für ein Festessen."
+ },
+ "rosiki_saltsa": {
+  "n": "Russische Sauce",
+  "ing": [
+   "Mayonnaise 200 g",
+   "Ketchup 3 EL",
+   "Zitronensaft 1 EL",
+   "Essiggurke, fein gehackt, 2 EL",
+   "Zwiebel, fein gehackt, 1 EL",
+   "Edelsüßes Paprikapulver 1 TL",
+   "Worcestershiresauce, einige Tropfen",
+   "Salz, Pfeffer"
+  ],
+  "steps": [
+   "Basis: Die Mayonnaise in eine Schüssel geben, den Ketchup zugeben und gut verrühren, bis sich die Farben verbinden.",
+   "Säure: Den Zitronensaft zugeben, um die Süße des Ketchups auszugleichen.",
+   "Wichtig: Gurke und Zwiebel sehr fein hacken, damit die Sauce glatt bleibt und ihre Textur beim Servieren nicht bricht.",
+   "Aroma: Das Paprikapulver und die Tropfen Worcestershiresauce für Geschmackstiefe zugeben.",
+   "Mischen: Alle Zutaten verrühren, bis die Sauce gleichmäßig und zart rosa ist.",
+   "Abschmecken: Probieren und nach Belieben mit Salz und Pfeffer anpassen.",
+   "Ruhen lassen: Abgedeckt mindestens 1 Stunde kalt stellen, damit sich die Aromen verbinden.",
+   "Servieren: Kalt als Dip oder Sauce zu Meeresfrüchten und Gemüse servieren."
+  ],
+  "plate": "In einer kleinen Schale als Dip servieren."
+ },
+ "ryzi_voutirou": {
+  "n": "Butterreis",
+  "ing": [
+   "150 g Reis",
+   "20 g Butter",
+   "40 g geriebener Käse oder Kefalotyri",
+   "Salz",
+   "300 ml Wasser"
+  ],
+  "steps": [
+   "Reis spülen: Die 150 g Reis unter fließendem Wasser abspülen, bis es klar bleibt, um überschüssige Stärke zu entfernen, damit die Körner nicht zusammenkleben.",
+   "Kochen: Den Reis mit den 300 ml Wasser (Verhältnis 1:2) und etwas Salz in einen Topf geben. Sobald es kocht, die Hitze reduzieren und zudecken. Wichtig: Den Deckel während des Garens nicht heben, damit der Dampf den Reis gleichmäßig gart.",
+   "Garzeit: Bei niedriger Hitze 15-18 Minuten köcheln, bis das ganze Wasser aufgenommen und der Reis weich ist.",
+   "Ruhen lassen: Vom Herd nehmen und den Reis zugedeckt 5 Minuten ruhen lassen. Diese Ruhezeit macht ihn locker und trennt die Körner.",
+   "Butter zugeben: Noch heiß die 20 g Butter unter den Reis rühren. Die Hitze des Reises schmilzt die Butter und verteilt sie gleichmäßig, was vollen Geschmack gibt.",
+   "Servieren: Sofort mit reichlich von den 40 g geriebenem Käse oder Kefalotyri obenauf servieren, der auf dem heißen Reis leicht schmilzt."
+  ],
+  "wine": "Ein leichter Weißwein.",
+  "plate": "Heiß, mit zusätzlicher Butter und Käse."
+ },
+ "ryzosgalo": {
+  "n": "Milchreis",
+  "ing": [
+   "Reis 100 g",
+   "Milch 1 Liter",
+   "Zucker 80 g",
+   "Vanille 1",
+   "Zimt zum Servieren"
+  ],
+  "steps": [
+   "Reis vorgaren: Die 100 g Reis mit 200 ml Wasser in einen Topf geben und 10 Minuten sanft köcheln, bis fast das ganze Wasser aufgenommen und der Reis leicht weich ist. Das Vorgaren in Wasser lässt den Reis gleichmäßig garen, bevor die Milch dazukommt.",
+   "Milch erwärmen: Separat 1 Liter Milch mit den 80 g Zucker und 1 Vanille erwärmen und rühren, bis der Zucker gelöst ist. Warme Milch verhindert einen Temperaturschock des Reises.",
+   "Vereinen: Die warme Milch zum Reis geben und die Hitze reduzieren. WICHTIG: Fast ständig rühren, damit nichts am Boden ansetzt und anbrennt, was dem ganzen Milchreis einen brandigen Geschmack geben würde.",
+   "Andicken: 20-25 Minuten unter Rühren weiterköcheln, bis eine cremige Konsistenz entsteht. WICHTIG: Etwas flüssiger lassen als gewünscht, denn er wird beim Abkühlen deutlich fester.",
+   "Portionieren: Noch heiß und flüssig in einzelne Schalen füllen, damit sich die Oberfläche glatt setzt.",
+   "Abkühlen und servieren: Bei Zimmertemperatur abkühlen und fest werden lassen, dann im Kühlschrank. Kurz vor dem Servieren mit Zimt bestreuen."
+  ],
+  "wine": "-",
+  "plate": "Kleine Schalen, reichlich Zimt obenauf."
+ },
+ "sacher_torte": {
+  "n": "Sachertorte",
+  "ing": [
+   "Zartbitter-Kuvertüre 200 g",
+   "Butter 150 g",
+   "Puderzucker 150 g",
+   "Eier 6 (getrennt)",
+   "Weizenmehl 140 g",
+   "Aprikosenmarmelade 200 g",
+   "Zartbitter-Kuvertüre (für die Glasur) 150 g",
+   "Sahne 120 ml",
+   "Zucker 30 g (für das Baiser)",
+   "Salz 1 Prise",
+   "Vanille 1 TL"
+  ],
+  "steps": [
+   "Vorbereitung: Den Ofen auf 170 °C vorheizen und eine 24-cm-Form ausbuttern.",
+   "Schokolade schmelzen: Die Kuvertüre zusammen mit der Butter im Wasserbad schmelzen, bis alles verbunden ist.",
+   "Eigelb aufschlagen: Das Eigelb mit der Hälfte des Zuckers hell aufschlagen, dann die geschmolzene Schokolade unterheben.",
+   "Baiser: Das Eiweiß mit dem Salz schaumig schlagen und dabei nach und nach den restlichen Zucker zugeben, bis eine Meringue entsteht.",
+   "Wichtig: Die Meringue mit sanften Bewegungen von unten nach oben abwechselnd mit dem gesiebten Mehl unter die Schokoladenmasse heben, damit keine Luft verloren geht und die Torte locker bleibt.",
+   "Backen: Den Teig in die Form füllen und 40-45 Minuten backen, bis ein Zahnstocher sauber herauskommt. Vollständig auskühlen lassen.",
+   "Füllen: Die Torte in zwei Böden schneiden, eine Fläche mit erwärmter Aprikosenmarmelade bestreichen, die Böden zusammensetzen und auch außen eine dünne Schicht Marmelade auftragen.",
+   "Glasur: Die Glasurschokolade mit der Sahne im Wasserbad zu einer glatten Ganache schmelzen und die ganze Torte in einem Guss überziehen, an einem kühlen Ort fest werden lassen, bevor sie serviert wird."
+  ],
+  "wine": "Süßer Samos-Wein",
+  "plate": "Auf einem Teller mit einem Löffel Schlagsahne daneben und einem leichten Zimtstaub am Rand servieren"
+ }
+}

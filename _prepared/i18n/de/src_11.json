@@ -1,0 +1,600 @@
+{
+ "poures_patatas": {
+  "n": "Mashed Potatoes",
+  "ing": [
+   "Floury potatoes 1 kg",
+   "Warm milk 200 ml",
+   "Butter 80 g",
+   "Nutmeg 1 pinch",
+   "Salt, white pepper"
+  ],
+  "steps": [
+   "Choosing the potatoes: Use floury potatoes, not waxy ones. Waxy varieties hold their shape and give a gluey purée instead of a fluffy one.",
+   "Cutting: Peel the potatoes and cut them into evenly sized chunks, so they all finish cooking at the same moment.",
+   "Boiling: Start them in cold salted water and bring to the boil. Important: starting in cold water cooks them evenly from the outside in — dropping them into boiling water leaves raw centres.",
+   "Testing: Simmer for about 20 minutes, until a knife slides into a chunk and it falls off on its own.",
+   "Draining: Drain them well and return them to the hot empty pot for 1 minute over low heat, shaking it, so the surface moisture steams off.",
+   "Mashing: Mash them while still hot with a potato masher or pass them through a ricer. Important: never use a blender or food processor — the blades break the starch and turn the purée into glue.",
+   "Adding the butter: Work in the cold butter in pieces first, before any liquid, so the fat coats the starch and keeps the texture silky.",
+   "Adding the milk: Pour in the warm milk gradually, beating with a spoon until you reach the consistency you want. Cold milk would seize the purée.",
+   "Seasoning: Season with salt, white pepper and a pinch of nutmeg, and serve immediately while hot and airy."
+  ],
+  "wine": "Not applicable — it accompanies the main dish and follows its wine.",
+  "plate": "Serve in a warm bowl, smooth the surface with the back of a spoon and drop a knob of butter in the hollow."
+ },
+ "poutinga_psomiou": {
+  "n": "Bread Pudding",
+  "ing": [
+   "Stale bread 400 g",
+   "Milk 700 ml",
+   "Eggs 4",
+   "Sugar 150 g",
+   "Butter 60 g",
+   "Raisins 80 g",
+   "Cinnamon 1 tsp",
+   "Vanilla extract 1 tsp",
+   "Nutmeg 1 pinch"
+  ],
+  "steps": [
+   "Use genuinely stale bread, two or three days old. Important: fresh bread turns to paste — stale bread has dried out and drinks the custard instead.",
+   "Cut it into thick cubes and spread them in a buttered dish.",
+   "Warm the milk with the butter until the butter has melted, without letting it boil.",
+   "Beat the eggs with the sugar, the vanilla, the cinnamon and the nutmeg.",
+   "Important: Pour the warm milk into the eggs slowly while whisking. Tipping it in at once cooks the eggs into strands.",
+   "Pour the custard over the bread and scatter the raisins between the cubes.",
+   "Press the bread down gently and leave it for 30 minutes to soak right through.",
+   "Bake at 175°C for 45 minutes in a bain-marie — a roasting tin with hot water — which keeps the custard from splitting.",
+   "Check by inserting a knife near the centre: it should come out clean, with the surface golden.",
+   "Rest for 15 minutes and serve warm, on its own or with a spoonful of cream."
+  ],
+  "wine": "A sweet wine or warm milk.",
+  "plate": "Serve warm in a deep dish with a spoonful of cream."
+ },
+ "prasopita": {
+  "n": "Leek & Feta Pie",
+  "ing": [
+   "Phyllo pastry 500g",
+   "Leeks 1kg",
+   "Feta cheese 400g",
+   "Eggs 3",
+   "Olive oil 4 tbsp",
+   "Butter 80g",
+   "Salt & pepper",
+   "Nutmeg"
+  ],
+  "steps": [
+   "Washing the leeks: Wash the 1kg leeks very well and chop them finely. Important: leeks hide dirt between their layers, so split them open and rinse leaf by leaf, otherwise the pie will be gritty.",
+   "Sautéing: Sauté the leeks in 4 tbsp olive oil for 8-10 minutes until softened and reduced in volume. This drives off moisture and makes the flavor sweeter.",
+   "Cooling: Let the leeks cool completely. Important: if you add the eggs to warm leeks they will cook and curdle, so wait for the filling to cool.",
+   "Filling: Mix the leeks with 400g crumbled feta, 3 eggs, grated nutmeg and pepper. Be careful with the salt, since the feta is already salty.",
+   "Layering the sheets: Layer half the phyllo sheets in a buttered baking pan, brushing each sheet with melted butter (from the 80g). The butter in each layer makes the pie crispy and light.",
+   "Sealing and scoring: Spread the filling, cover with the remaining buttered sheets and score the surface into pieces. Scoring makes it easy to cut after baking and lets steam escape.",
+   "Baking: Bake at 180°C for 50-55 minutes until golden brown and crispy. Let it rest for 10 minutes before cutting so the filling sets."
+  ],
+  "wine": "Dry white wine or rosé.",
+  "plate": "Pieces, salad, extra feta."
+ },
+ "prasorizo": {
+  "n": "Leek Rice",
+  "ing": [
+   "Leeks 1 kg",
+   "Carolina rice 1 cup",
+   "Dry onion 1 large",
+   "Olive oil 1/2 cup",
+   "Lemon juice of 1",
+   "Dill 1 bunch",
+   "Hot water or stock 2-3 cups",
+   "Salt and pepper"
+  ],
+  "steps": [
+   "Cleaning: Trim the leeks, remove the tough roots and outer leaves, and cut into rounds. Rinse very well in a basin of water to remove all the grit trapped between the layers.",
+   "Sautéing the onion: In a wide pot, heat the olive oil and sauté the chopped onion over medium heat until softened and glossy, without browning.",
+   "Wilting the leeks: Add the leeks and stir. Simmer covered over low heat for 10-15 minutes, until wilted and they release their liquid, stirring occasionally.",
+   "Adding water: Pour in the hot water or stock, season with salt and pepper, and let the leeks come to a boil for another 5 minutes.",
+   "Adding the rice: Add the rice and stir. Important: the liquid-to-rice ratio should be about 2 to 1. Make sure there's enough liquid so the dish stays moist rather than dry, since prasorizo is served like a saucy pilaf.",
+   "Simmering: Lower the heat, cover, and simmer for 15-18 minutes, until the rice swells and absorbs the liquid, without stirring too often.",
+   "Finishing: Just before taking the pot off the heat, add the chopped dill and lemon juice. Stir gently and taste for salt.",
+   "Resting: Turn off the heat and let it stand covered with a towel for 10 minutes to set before serving."
+  ],
+  "wine": "Dry white, such as Assyrtiko.",
+  "plate": "Serve hot with fresh lemon, feta cheese, and a cold olive."
+ },
+ "profiterol": {
+  "n": "Profiteroles",
+  "ing": [
+   "Water 250 ml",
+   "Butter 100 g",
+   "All-purpose flour 150 g",
+   "Medium eggs 4",
+   "Salt 1 pinch",
+   "Fresh milk 500 ml (for the custard)",
+   "Sugar 120 g",
+   "Cornstarch 40 g",
+   "Vanilla 1 sachet",
+   "Dark chocolate 200 g (for the sauce)"
+  ],
+  "steps": [
+   "Choux pastry: Put the water, butter cut into cubes and salt in a saucepan and bring to a boil, so the butter melts completely before the liquid boils.",
+   "Cooking the dough: Add all the sifted flour at once and stir vigorously with a wooden spoon over low heat, until the dough comes together into a ball and pulls away from the sides (about 2-3 minutes). Important: The dough must dry out well over the heat, otherwise the choux won't puff up and will stay heavy.",
+   "Incorporating the eggs: Let the dough cool for 5 minutes, then add the eggs one at a time, beating well after each addition, until you get a smooth, glossy dough that forms a soft peak.",
+   "Baking the choux: Using a piping bag, pipe small mounds onto a parchment-lined baking sheet and bake in a preheated oven at 200°C for 25-30 minutes, without opening the oven door, until puffed and golden. Let them cool completely.",
+   "Pastry cream: Heat the milk with the vanilla. Whisk the sugar with the cornstarch and a little milk, pour into the hot milk and stir over medium heat until the custard thickens. Let it cool with plastic wrap pressed onto the surface.",
+   "Chocolate sauce: Melt the chocolate in a bain-marie or with a little heavy cream, stirring until it becomes a smooth, glossy sauce.",
+   "Filling: Cut the choux buns open on the side or pierce the base and fill them with the cold pastry cream using a piping bag.",
+   "Assembly: Stack the filled choux buns in a bowl or serving dish, pour over plenty of hot chocolate sauce and serve immediately."
+  ],
+  "wine": "Sweet Samos wine or Vin Santo.",
+  "plate": "Serve in a deep bowl with plenty of chocolate sauce and a little grated dark chocolate on top."
+ },
+ "psari_plaki": {
+  "n": "Baked Fish Plaki",
+  "ing": [
+   "Fish (sea bass or cod) 800g",
+   "Tomatoes 3",
+   "Onion 2",
+   "Garlic 4 cloves",
+   "Olive oil 5 tbsp",
+   "Celery",
+   "Parsley"
+  ],
+  "steps": [
+   "Sautéing the base: Sauté the 2 chopped onions, 4 garlic cloves and chopped celery in part of the 5 tbsp olive oil until softened. This aromatic base gives depth of flavor to the sauce.",
+   "Tomato sauce: Add the 3 grated tomatoes and salt, and let it simmer for 10 minutes until it thickens slightly and loses its acidity.",
+   "Arranging the fish: Place the 800g fish (sea bass or cod) in a roasting pan. Season with salt and pepper. Important: pat the fish thoroughly dry before placing it in the pan, so it doesn't dilute the sauce with water.",
+   "Pouring over: Spread the sauce over the fish, drizzle with the remaining olive oil and a little lemon juice.",
+   "Roasting: Roast in a preheated oven at 180°C for 35-40 minutes. Important: don't overcook it, as fish dries out easily — it's done when the flesh turns opaque and flakes easily.",
+   "Serving: Sprinkle with fresh parsley and serve warm or at room temperature, as is traditional for plaki-style fish."
+  ],
+  "wine": "Dry white wine.",
+  "plate": "In the roasting pan, plenty of sauce, parsley."
+ },
+ "psaronefri_fournou": {
+  "n": "Roast Pork Tenderloin",
+  "ing": [
+   "Pork tenderloin 1 kg",
+   "Dijon mustard 2 tbsp",
+   "Honey 1 tbsp",
+   "Garlic 4 cloves",
+   "Olive oil 4 tbsp",
+   "Juice of 2 lemons",
+   "Dry mustard/oregano 1 tsp",
+   "Fresh thyme a few sprigs",
+   "Salt, pepper to taste",
+   "Dry white wine 1/2 glass"
+  ],
+  "steps": [
+   "Preparing the meat: Trim any silver skin from the pork tenderloin and let it come to room temperature for 20-30 minutes before cooking.",
+   "Marinade: In a bowl, mix the olive oil, mustard, honey, lemon, finely chopped garlic, thyme, salt and pepper.",
+   "Coating: Rub the meat well with the marinade on all sides and let it marinate for at least 30 minutes, ideally 2 hours in the refrigerator.",
+   "Important: First sear the meat over high heat in a non-stick or cast-iron pan for 1-2 minutes per side, so the pores close and it stays juicy, before putting it in the oven.",
+   "Roasting: Place the meat in a baking pan, pour over the wine and any remaining marinade, and roast in a preheated oven at 200°C for 20-25 minutes.",
+   "Checking doneness: Check the internal temperature with a meat thermometer — it should reach 63-65°C to stay tender and juicy without drying out.",
+   "Resting: Remove the tenderloin from the oven, cover it loosely with foil and let it rest for 8-10 minutes before slicing, so the juices redistribute.",
+   "Serving: Slice the meat on the diagonal and drizzle with the pan sauce."
+  ],
+  "wine": "Dry white wine from Assyrtiko of Santorini or a light red Agiorgitiko.",
+  "plate": "Serve with mashed potatoes or oregano-roasted potatoes and a fresh Greek village salad."
+ },
+ "psarosoupa": {
+  "n": "Greek Fish Soup",
+  "ing": [
+   "Grouper (sfyrida) 1kg",
+   "Potatoes 4",
+   "Carrots 2",
+   "Onion 1",
+   "Celery",
+   "Eggs 2",
+   "Lemon 2"
+  ],
+  "steps": [
+   "Boiling the fish and vegetables: In a large pot, place the whole 1kg grouper together with 4 potatoes, 2 carrots, 1 onion, and celery, cover with cold water, and season with salt. Boil over medium heat for 30 minutes. Important: start from cold water and skim off the foam, so the broth comes out clear and clean.",
+   "Boning: Carefully remove the fish and vegetables. Bone the grouper, removing all the bones, and set the flesh aside so it doesn't cool completely.",
+   "Straining the broth: Strain the broth through a fine sieve to remove any small bones. The clean broth is the base of the soup.",
+   "Cooking the rice: Bring the broth back to a boil and add rice or hilopites pasta. Boil for 15 minutes until tender, making sure enough liquid remains for the avgolemono.",
+   "Preparing the avgolemono: In a bowl, whisk 2 eggs with the juice of 2 lemons until frothy. Gradually add a ladleful of hot broth while whisking constantly. Important: slowly diluting the mixture gradually raises the temperature of the eggs and keeps them from curdling.",
+   "Thickening the soup: Remove the pot from the heat and pour in the avgolemono, stirring gently. Do not bring back to a boil, or the eggs will curdle and split.",
+   "Serving: Return the fish flesh to the soup, check the seasoning, and serve immediately while hot, with extra lemon if desired."
+  ],
+  "wine": "Dry white wine.",
+  "plate": "In a deep bowl, with the fish inside and lemon."
+ },
+ "red_velvet": {
+  "n": "Red Velvet Cake",
+  "ing": [
+   "All-purpose flour 280 g",
+   "Sugar 300 g",
+   "Cocoa powder 15 g",
+   "Baking soda 1 tsp",
+   "Salt 1 pinch",
+   "Vegetable oil 240 ml",
+   "Buttermilk 240 ml",
+   "Eggs 2",
+   "Red gel food coloring 15 ml",
+   "White vinegar 1 tbsp",
+   "Vanilla extract 1 tbsp",
+   "Cream cheese 450 g",
+   "Unsalted butter 115 g",
+   "Powdered sugar 500 g"
+  ],
+  "steps": [
+   "Preheating: Heat the oven to 175°C and butter two 20 cm pans, lining the bottoms with parchment paper.",
+   "Dry ingredients: In a bowl, mix the flour, cocoa, baking soda and salt.",
+   "Wet ingredients: In another bowl, whisk the oil with the sugar, add the eggs one at a time, then the buttermilk, red coloring, vinegar and vanilla.",
+   "Mixing: Gradually fold the dry ingredients into the wet ones, mixing gently until combined, without overworking the batter.",
+   "Important: Do not overmix the batter; overmixing develops the gluten and the cake will come out dense instead of light and velvety.",
+   "Baking: Divide the batter between the two pans and bake for 25-30 minutes, until a toothpick comes out clean.",
+   "Cooling: Let the cakes cool in the pans for 10 minutes, then turn them out onto a rack to cool completely before filling.",
+   "Frosting: Beat the cream cheese with the butter until fluffy, gradually add the powdered sugar and vanilla until the frosting is smooth.",
+   "Assembly: Cut the cakes into even layers, spread frosting between them and cover the whole cake, decorating the top with cake crumbs.",
+   "Serving: Chill the cake for 30 minutes before cutting so the frosting sets and it slices cleanly."
+  ],
+  "wine": "Sweet Samos wine",
+  "plate": "Serve on a white plate with a spoonful of cream and a few red cake crumbs on top"
+ },
+ "revani": {
+  "n": "Semolina Syrup Cake",
+  "ing": [
+   "Coarse semolina 200g",
+   "Flour 100g",
+   "Sugar 150g",
+   "Eggs 4",
+   "Butter 100g",
+   "Yogurt 200g",
+   "Baking powder 1 tsp",
+   "Lemon zest",
+   "Syrup: Sugar 300g, Water 300ml, Lemon juice"
+  ],
+  "steps": [
+   "Syrup first: Boil the sugar, water, and lemon for 5 minutes until it thickens slightly. Let it cool completely. Important: cold syrup on a hot cake ensures good absorption.",
+   "Whisking: Beat the butter and sugar until pale. Add the eggs one at a time. Add the yogurt and zest.",
+   "Dry ingredients: Combine the semolina, flour, and baking powder. Gently fold into the wet mixture.",
+   "Baking: Bake in a greased pan at 175°C for 30-35 minutes until golden.",
+   "Soaking: As soon as it comes out of the oven, pour the cold syrup over it. Let it absorb completely before slicing."
+  ],
+  "wine": "-",
+  "plate": "Cut into diamonds with almonds on top."
+ },
+ "revithoryzo": {
+  "n": "Chickpeas with Rice",
+  "ing": [
+   "Dried chickpeas 400 g (soaked overnight)",
+   "Glasse rice 1 cup",
+   "Onion, 2 large, finely chopped",
+   "Olive oil 1/2 cup",
+   "Grated tomato, 2 medium or 1 can",
+   "Lemon juice, 1-2 lemons",
+   "Garlic, 2 cloves",
+   "Bay leaf, 1",
+   "Salt, pepper to taste",
+   "Water or vegetable broth as needed"
+  ],
+  "steps": [
+   "Soaking: Place the chickpeas in plenty of water overnight so they swell and soften before boiling.",
+   "Boiling the chickpeas: Drain the chickpeas and boil them in fresh water with the bay leaf for about 45-60 minutes, until softened but still holding their shape. Reserve the cooking broth.",
+   "Important: Do not add salt to the boiling water from the start, as it toughens the chickpea skins and delays softening; season with salt only toward the end of cooking.",
+   "Sofrito: In a pot, heat the olive oil and sauté the onion until glossy, add the garlic for a minute and then the grated tomato, simmering for 5-6 minutes.",
+   "Combining: Add the cooked chickpeas to the sofrito along with a little of the cooking broth and let everything come to a boil together so the flavors meld.",
+   "Adding the rice: Add the rice and top up with broth or water in a ratio of roughly double the rice, season with salt and pepper, and simmer over low heat with the lid half-open until the liquid is absorbed, about 18-20 minutes.",
+   "Resting: Turn off the heat, cover the pot and let the dish rest for 10 minutes so the rice finishes cooking in the steam.",
+   "Serving: Drizzle generously with fresh lemon juice and raw olive oil before serving hot."
+  ],
+  "wine": "Dry white wine from Rhodes or Assyrtiko from Santorini",
+  "plate": "Serve in a deep plate with a lemon wedge on the side and a little fresh oregano sprinkled on top"
+ },
+ "revithosoupa_lemoni": {
+  "n": "Lemony Chickpea Soup",
+  "ing": [
+   "Dried chickpeas 400 g",
+   "Onion 1 large",
+   "Carrot 1",
+   "Olive oil 100 ml",
+   "Baking soda 1 tsp (for soaking)",
+   "Lemon juice from 2-3 lemons",
+   "Bay leaves 2",
+   "Salt, pepper",
+   "Water 1.5 liters"
+  ],
+  "steps": [
+   "Soaking: Soak the chickpeas in plenty of water with the baking soda for 10-12 hours or overnight.",
+   "Important: The baking soda helps soften the chickpea skins so they cook faster and the soup becomes creamy without needing a long boiling time.",
+   "Rinsing: Drain and rinse the chickpeas well before cooking.",
+   "Sautéing: Sauté the finely chopped onion and carrot in olive oil until softened.",
+   "Boiling: Add the chickpeas, bay leaves, and water, bring to a boil, then cook over low heat for 1.5-2 hours until completely tender.",
+   "Thickening: Remove a few chickpeas, mash them with a fork, and return them to the pot to thicken the soup.",
+   "Lemon: At the end of cooking, add the lemon juice and season with salt and pepper.",
+   "Serving: Serve hot with a drizzle of raw olive oil on top."
+  ],
+  "wine": "White Assyrtiko wine",
+  "plate": "In a deep clay bowl with olive oil and toasted bread on the side."
+ },
+ "revythada": {
+  "n": "Chickpea Stew",
+  "ing": [
+   "Chickpeas 500g",
+   "Onion 2",
+   "Olive oil 6 tbsp",
+   "Rosemary",
+   "Lemon 1"
+  ],
+  "steps": [
+   "Soaking: Soak the 500g chickpeas in plenty of water overnight (8-12 hours). Important: soaking softens the skins, reduces the cooking time, and makes them more digestible.",
+   "Par-boiling: Drain the chickpeas, place them in fresh water, and boil for 10 minutes, skimming off the foam that rises to the surface, as it can cause the dish to become bloated.",
+   "Preparing the baking dish: Drain and transfer the chickpeas to an earthenware dish along with the 2 coarsely chopped onions, the 6 tbsp olive oil, and the rosemary.",
+   "Adding water: Pour in hot water to cover the chickpeas by 2-3 finger-widths, so they have room to cook slowly without drying out.",
+   "Slow baking: Bake at 160°C for 2.5-3 hours, covered at first and uncovered toward the end. Important: slow baking at a low temperature makes them buttery and creamy.",
+   "Finishing: As soon as they come out of the oven, add the juice of 1 lemon, which freshens the flavor and balances the sweetness of the onion. Serve hot."
+  ],
+  "wine": "Dry white wine.",
+  "plate": "In a deep bowl with raw olive oil and rosemary."
+ },
+ "revythokeftedes": {
+  "n": "Chickpea Fritters",
+  "ing": [
+   "Chickpeas, boiled or canned, 400g",
+   "Onion 1",
+   "Garlic 2 cloves",
+   "Cumin 1 tsp",
+   "Coriander 1/2 tsp",
+   "Flour 3 tbsp",
+   "Parsley",
+   "Olive oil for frying",
+   "Salt & pepper"
+  ],
+  "steps": [
+   "Pureeing: Pulse the chickpeas with onion and garlic in a food processor or mash with a fork. You don't want a smooth paste — leave small pieces for texture.",
+   "Mixture: Mix in cumin, coriander, parsley, flour, salt, and pepper. Chill in the refrigerator for 15 minutes to firm up.",
+   "Shaping: Form small balls or patties.",
+   "Frying: Fry in hot oil for 3 minutes per side. Important: the oil needs to be quite hot, as chickpea fritters tend to soak up oil.",
+   "Serving: With tahini, lemon, or tzatziki."
+  ],
+  "wine": "-",
+  "plate": "With tahini or yogurt."
+ },
+ "risotto_manitarion": {
+  "n": "Mushroom Risotto",
+  "ing": [
+   "Arborio rice 250g",
+   "Mixed mushrooms 300g",
+   "Onion 1",
+   "Garlic 2 cloves",
+   "White wine 100ml",
+   "Vegetable stock 800ml (hot)",
+   "Butter 40g",
+   "Parmesan 50g",
+   "Olive oil 2 tbsp",
+   "Salt, pepper, thyme"
+  ],
+  "steps": [
+   "Sautéing the mushrooms: In a pan with olive oil, sauté the mushrooms over high heat for 5-6 minutes until golden. Important: don't stir constantly — let them form a golden crust first. Season with salt and pepper and set aside.",
+   "Base: In the same pot, sauté the onion for 3 minutes, then the garlic for 1 minute. Add the rice and sauté for 2 minutes, stirring — it should turn glossy and smell like toasted bread.",
+   "Wine: Add 100ml white wine and stir until it evaporates completely — 1-2 minutes.",
+   "Adding the stock: Add the hot stock a ladleful at a time (1-2 ladles each time), stirring constantly and letting each addition absorb before adding the next. Important: constant stirring releases the starch and makes the risotto creamy. This process takes 18-20 minutes.",
+   "Mantecatura: Remove from the heat. Add the butter and Parmesan and stir vigorously. Let rest for 2 minutes. Serve topped with the mushrooms and fresh thyme."
+  ],
+  "wine": "White Pinot Grigio or Chardonnay.",
+  "plate": "Creamy, topped with mushrooms and Parmesan."
+ },
+ "rizoto_spanaki_feta": {
+  "n": "Spinach & Feta Risotto",
+  "ing": [
+   "Risotto rice (carnaroli or arborio) 320 g",
+   "Fresh spinach 400 g",
+   "Feta 200 g",
+   "1 medium onion, finely chopped",
+   "Garlic, 2 cloves, finely chopped",
+   "Dry white wine 100 ml",
+   "Vegetable broth 1.2 liters, hot",
+   "Butter 40 g",
+   "Olive oil 3 tbsp",
+   "Grated Parmesan 50 g"
+  ],
+  "steps": [
+   "Preparing the spinach: Wash the spinach well, sauté it in a little olive oil for 2-3 minutes until wilted, drain and chop it finely.",
+   "Sautéing the base: In a wide pot, heat the olive oil with a little butter and sauté the onion over low heat until translucent, without coloring. Add the garlic for 1 minute.",
+   "Toasting the rice: Add the rice to the pot and stir for 1-2 minutes until the grains turn glossy and become translucent at the edges. Important: This step seals the grain and helps the rice keep the right al dente texture without turning mushy during cooking.",
+   "Deglazing with wine: Add the white wine and stir until the alcohol evaporates and is absorbed by the rice.",
+   "Gradually adding the broth: Add the hot broth one ladle at a time, stirring constantly and waiting for each addition to be absorbed before adding the next. Important: Constant stirring releases the rice's starch and creates the creamy texture that defines risotto, so don't rush it or leave it unattended.",
+   "Incorporating the spinach: In the last 5 minutes of cooking, add the chopped spinach and stir so it's evenly incorporated into the risotto.",
+   "Mantecatura: When the rice is al dente, remove from the heat and add the remaining butter, the Parmesan and the crumbled feta, stirring vigorously until creamy. Let it stand covered for 2 minutes before serving.",
+   "Serving: Serve immediately in warm plates with a little extra grated feta and olive oil on top."
+  ],
+  "wine": "White Assyrtiko from Santorini, cool with bright acidity that balances the creamy texture of the risotto.",
+  "plate": "Serve in a deep plate, spreading the risotto lightly with the back of a spoon, with grated feta, a little freshly ground pepper and a drizzle of olive oil in the center."
+ },
+ "rizoto_thalassinon": {
+  "n": "Seafood Risotto",
+  "ing": [
+   "Carolina or Arborio rice 350 g",
+   "Fresh peeled shrimp 300 g",
+   "Fresh mussels in the shell 500 g",
+   "Cleaned squid 200 g",
+   "Fish or seafood stock 1.2 liters",
+   "Finely chopped onion 1",
+   "Garlic 2 cloves",
+   "Dry white wine 150 ml",
+   "Olive oil 5 tbsp",
+   "Fresh grated tomato 2",
+   "Chopped parsley 1 small bunch",
+   "Lemon juice 1 lemon"
+  ],
+  "steps": [
+   "Cleaning the seafood: Peel the shrimp, keeping a few in the shell for garnish, scrub the mussels well and cut the squid into rings.",
+   "Stock: Prepare hot fish or seafood stock and keep it over low heat so you can gradually add hot liquid to the rice.",
+   "Sautéing the seafood: In a wide pot, heat the olive oil and quickly sauté the squid, shrimp and mussels for 2-3 minutes until the mussels open, then remove them and set aside.",
+   "Sautéing the rice: In the same oil, sauté the onion and garlic until softened, add the rice and stir for 1-2 minutes until it turns glossy.",
+   "Important: Deglaze with the white wine and wait for the alcohol to evaporate, then add the hot stock gradually, one ladleful at a time, stirring constantly and waiting for each addition to be absorbed before adding the next — this is the secret to a creamy risotto.",
+   "Tomato: Halfway through cooking, add the grated tomato for color and flavor, and continue the slow simmer.",
+   "Finishing: When the rice is al dente (about 17-18 minutes total), return the seafood to the pot, add the lemon juice and parsley, stir gently and remove from heat.",
+   "Serving: Let the risotto rest covered for 2 minutes before serving, so it sets to a better creamy consistency."
+  ],
+  "wine": "Dry white Assyrtiko wine from Santorini, crisp and mineral.",
+  "plate": "Serve in a deep plate, garnished with a whole shrimp, fresh parsley and a lemon wedge on the side."
+ },
+ "rola_laxanou": {
+  "n": "Stuffed Cabbage Rolls",
+  "ing": [
+   "1 large cabbage",
+   "Rice 200g",
+   "1 onion",
+   "1 carrot",
+   "Parsley",
+   "Canned tomatoes 400g",
+   "Olive oil 5 tbsp",
+   "Salt, pepper",
+   "Lemon"
+  ],
+  "steps": [
+   "Separate the cabbage leaves and boil them for 3-4 minutes. Drain.",
+   "Sauté the onion and carrot. Add the rice, parsley, salt, and pepper.",
+   "Wrap 1-2 tbsp of filling in each cabbage leaf.",
+   "Arrange in a pot, add the tomatoes, oil, lemon, and water.",
+   "Simmer, covered, for 40-45 minutes."
+  ]
+ },
+ "rolo_kima_avga": {
+  "n": "Greek Meatloaf with Eggs",
+  "ing": [
+   "Ground beef 500 g",
+   "Ground pork 300 g",
+   "Hard-boiled eggs, 5 (4 for the filling, 1 for the meat mixture)",
+   "Bread crumb, soaked in milk, 2 slices",
+   "1 large onion, grated",
+   "Garlic, 2 cloves",
+   "Grated Parmesan or kefalotyri 60 g",
+   "Parsley, chopped, 1 small bunch",
+   "Olive oil 4 tbsp",
+   "Salt, pepper, oregano"
+  ],
+  "steps": [
+   "Preparing the mince: In a large bowl, mix the ground beef and pork with the grated onion, garlic, bread crumb (well squeezed), cheese, parsley, one egg, salt, pepper and oregano until all ingredients are combined.",
+   "Boiling the eggs: Boil the 4 eggs in salted water for 9-10 minutes, transfer them immediately into ice water and peel carefully so they stay whole and smooth.",
+   "Spreading the mince: On a sheet of parchment paper, spread the meat mixture into a rectangular layer about 1.5 cm thick.",
+   "Important: Place the boiled eggs at one edge, in a row, side by side, and roll the meat tightly around them using the parchment paper, like a roulade, pressing well so there are no gaps and the eggs don't break during baking.",
+   "Sealing: Firmly close the seams and ends of the roll with your hands, so the filling doesn't leak out during baking, and carefully transfer it to a baking pan.",
+   "Baking: Drizzle the roll with olive oil, add a little water to the pan and bake in a preheated oven at 180°C for 50-60 minutes, turning it once, until evenly browned.",
+   "Resting and slicing: Let the roll rest for 10-15 minutes before slicing, so it firms up and cuts cleanly, revealing the eggs in the center.",
+   "Serving: Serve the slices hot with the pan juices on top, accompanied by mashed potatoes or risotto."
+  ],
+  "wine": "Dry red Agiorgitiko or Xinomavro",
+  "plate": "Serve sliced over mashed potatoes with the pan juices, accompanied by a seasonal salad"
+ },
+ "rosiki_salata": {
+  "n": "Russian Salad",
+  "ing": [
+   "Potatoes 4 medium",
+   "Carrots 2",
+   "Boiled peas 1 cup",
+   "Pickled gherkins 4-5",
+   "Eggs 4",
+   "Mayonnaise 250g",
+   "Lemon juice of 1",
+   "Mustard 1 tbsp",
+   "Salt and pepper",
+   "Parsley, finely chopped (optional)"
+  ],
+  "steps": [
+   "Boiling the vegetables: Boil the potatoes and carrots whole, unpeeled, in salted water until tender but still firm, about 20-25 minutes. Drain and let them cool completely.",
+   "Boiling the eggs: Meanwhile, boil the eggs for 9-10 minutes until hard-boiled. Plunge them into ice water, peel, and let them cool.",
+   "Cutting: Peel the cooled potatoes and carrots and cut them into small, even cubes. Also dice the gherkins and three of the eggs.",
+   "Important: boil and cut the vegetables only after they have cooled completely. If cut while hot, they will fall apart and release moisture, making the salad watery and causing the mayonnaise to split.",
+   "Sauce: In a bowl, mix the mayonnaise with the mustard, lemon juice, salt, and pepper until smooth and creamy.",
+   "Mixing: In a large bowl, combine the potatoes, carrots, drained peas, gherkins, and diced eggs. Gradually add the sauce and fold gently with a spatula so everything is coated without falling apart.",
+   "Chilling: Taste and adjust the salt. Cover the bowl with plastic wrap and refrigerate for at least 2 hours so the flavors combine and it chills through.",
+   "Serving: Transfer to a serving platter, smooth the surface, and garnish with slices of the last egg and chopped parsley."
+  ],
+  "wine": "Dry white or a lager beer, well chilled.",
+  "plate": "Serve cold on a platter, garnished with egg slices and olives, as an appetizer or side for a festive spread."
+ },
+ "rosiki_saltsa": {
+  "n": "Russian Dressing",
+  "ing": [
+   "Mayonnaise 200 g",
+   "Ketchup 3 tbsp",
+   "Lemon juice 1 tbsp",
+   "Pickled cucumber, finely chopped, 2 tbsp",
+   "Dry onion, finely chopped, 1 tbsp",
+   "Sweet paprika 1 tsp",
+   "Worcestershire sauce, a few drops",
+   "Salt, pepper"
+  ],
+  "steps": [
+   "Base: Put the mayonnaise in a bowl and add the ketchup, mixing well until the colors combine.",
+   "Acidity: Add the lemon juice to balance the sweetness of the ketchup.",
+   "Important: Finely chop the pickle and onion very small so the sauce stays smooth and its texture doesn't break when serving.",
+   "Aroma: Add the paprika and the drops of Worcestershire sauce for depth of flavor.",
+   "Mixing: Whisk all the ingredients together until the sauce is uniform and a soft pink color.",
+   "Tasting: Taste and adjust with salt and pepper to your liking.",
+   "Resting: Cover and refrigerate for at least 1 hour so the flavors meld.",
+   "Serving: Serve cold as a dip or sauce for seafood and vegetables."
+  ],
+  "plate": "Serve in a small bowl as a dip."
+ },
+ "ryzi_voutirou": {
+  "n": "Buttered Rice",
+  "ing": [
+   "150g rice",
+   "20g butter",
+   "40g grated cheese or kefalotyri",
+   "Salt",
+   "300ml water"
+  ],
+  "steps": [
+   "Rinsing the rice: Rinse the 150g rice under running water until it runs clear, to remove excess starch so the grains don't clump together.",
+   "Boiling: In a pot, combine the rice with the 300ml water (a 1:2 ratio) and a little salt. Once it comes to a boil, lower the heat and cover. Important: don't lift the lid while it's cooking, so the steam cooks the rice evenly.",
+   "Cooking time: Simmer over low heat for 15-18 minutes, until all the water is absorbed and the rice is tender.",
+   "Resting: Remove from the heat and let the rice rest covered for 5 minutes. This resting period makes it fluffy and separates the grains.",
+   "Adding the butter: While it's still hot, stir the 20g butter into the rice. The heat of the rice melts the butter and coats it evenly, giving a rich flavor.",
+   "Serving: Serve immediately with plenty of the 40g grated cheese or kefalotyri on top, which melts slightly over the hot rice."
+  ],
+  "wine": "A light white.",
+  "plate": "Hot, with extra butter and cheese."
+ },
+ "ryzosgalo": {
+  "n": "Rice Pudding",
+  "ing": [
+   "Rice 100g",
+   "Milk 1 liter",
+   "Sugar 80g",
+   "Vanilla 1",
+   "Cinnamon for serving"
+  ],
+  "steps": [
+   "Cooking the rice: Put the 100g rice with 200ml water in a pot and simmer gently for 10 minutes, until it has absorbed almost all the water and softened slightly. Pre-cooking in water helps the rice cook evenly before the milk goes in.",
+   "Heating the milk: Separately warm 1 liter of milk together with the 80g sugar and 1 vanilla, stirring until the sugar dissolves. Warm milk prevents thermal shock to the rice.",
+   "Combining: Add the warm milk to the rice and lower the heat. IMPORTANT: stir almost constantly so it doesn't stick to the bottom and scorch, which would give the whole rice pudding a burnt taste.",
+   "Thickening: Continue simmering for 20-25 minutes, stirring, until it thickens into a creamy texture. IMPORTANT: keep it looser than you want it, as it firms up considerably as it cools.",
+   "Portioning: Pour into individual bowls while still hot and fluid, so the surface settles smoothly.",
+   "Cooling and serving: Let it cool and set at room temperature, then in the refrigerator. Sprinkle with cinnamon just before serving."
+  ],
+  "wine": "-",
+  "plate": "Small bowls, plenty of cinnamon on top."
+ },
+ "sacher_torte": {
+  "n": "Sacher Torte",
+  "ing": [
+   "Dark chocolate couverture 200 g",
+   "Butter 150 g",
+   "Powdered sugar 150 g",
+   "Eggs 6 (separated)",
+   "All-purpose flour 140 g",
+   "Apricot jam 200 g",
+   "Dark chocolate couverture (for the glaze) 150 g",
+   "Heavy cream 120 ml",
+   "Sugar 30 g (for the meringue)",
+   "Salt 1 pinch",
+   "Vanilla 1 tsp"
+  ],
+  "steps": [
+   "Preparation: Preheat the oven to 170°C and butter a 24 cm cake pan.",
+   "Melting the chocolate: Melt the couverture together with the butter over a bain-marie until combined.",
+   "Whisking the yolks: Whisk the egg yolks with half the sugar until pale, then fold in the melted chocolate.",
+   "Meringue: Whisk the egg whites with the salt until frothy, gradually adding the remaining sugar until a meringue forms.",
+   "Important: Fold the meringue into the chocolate mixture with gentle bottom-to-top motions, alternating with the sifted flour, so as not to lose air and to keep the cake light.",
+   "Baking: Pour the batter into the pan and bake for 40-45 minutes, until a toothpick comes out clean. Let it cool completely.",
+   "Filling: Cut the cake into two layers and spread warmed apricot jam on one surface, join the layers together, and brush a thin layer of jam over the outside as well.",
+   "Glaze: Melt the glaze chocolate with the cream over a bain-marie until it becomes a smooth ganache, and cover the entire cake in one pour, letting it set in a cool place before serving."
+  ],
+  "wine": "Sweet Samos wine",
+  "plate": "Serve on a plate with a spoonful of whipped cream alongside and a light dusting of cinnamon around the edge"
+ }
+}

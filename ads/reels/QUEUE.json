@@ -1,0 +1,182 @@
+[
+ {
+  "id": "moussaka",
+  "n": "Μουσακάς",
+  "img": "moussaka.jpg",
+  "steps": 8
+ },
+ {
+  "id": "pastitsio",
+  "n": "Παστίτσιο",
+  "img": "pastitsio.jpg",
+  "steps": 6
+ },
+ {
+  "id": "gemista",
+  "n": "Γεμιστά",
+  "img": "gemista.jpg",
+  "steps": 6
+ },
+ {
+  "id": "souvlakia",
+  "n": "Σουβλάκια χοιρινά",
+  "img": "souvlakia_xoirina.jpg",
+  "steps": 7
+ },
+ {
+  "id": "giouvetsi",
+  "n": "Γιουβέτσι αρνί",
+  "img": "giouvetsi_arni.jpg",
+  "steps": 7
+ },
+ {
+  "id": "paidakia",
+  "n": "Παϊδάκια αρνίσια",
+  "img": "paidakia.jpg",
+  "steps": 6
+ },
+ {
+  "id": "arni_kleftiko",
+  "n": "Αρνί κλέφτικο",
+  "img": "arni_kleftiko.jpg",
+  "steps": 7
+ },
+ {
+  "id": "fasolada",
+  "n": "Φασολάδα",
+  "img": "fasolada.jpg",
+  "steps": 6
+ },
+ {
+  "id": "gigantes",
+  "n": "Γίγαντες πλακί",
+  "img": "gigantes_plaki.jpg",
+  "steps": 7
+ },
+ {
+  "id": "spanakopita",
+  "n": "Σπανακόπιτα",
+  "img": "spanakopita.jpg",
+  "steps": 7
+ },
+ {
+  "id": "tyropita",
+  "n": "Τυρόπιτα",
+  "img": "tyropita.jpg",
+  "steps": 7
+ },
+ {
+  "id": "kotopoulo",
+  "n": "Κοτόπουλο λεμονάτο",
+  "img": "kotopoulo_lemonato.jpg",
+  "steps": 7
+ },
+ {
+  "id": "bakaliaro",
+  "n": "Μπακαλιάρος σκορδαλιά",
+  "img": "bakaliaros_skordalia.jpg",
+  "steps": 6
+ },
+ {
+  "id": "garides",
+  "n": "Γαρίδες σαγανάκι",
+  "img": "garides_saganaki.jpg",
+  "steps": 7
+ },
+ {
+  "id": "astakomakaronada",
+  "n": "Αστακομακαρονάδα",
+  "img": "astakomakaronada.jpg",
+  "steps": 8
+ },
+ {
+  "id": "kokkinisto",
+  "n": "Κοκκινιστό αρνί",
+  "img": "kokkinisto_arni.jpg",
+  "steps": 6
+ },
+ {
+  "id": "briami",
+  "n": "Μπριάμ",
+  "img": "briam.jpg",
+  "steps": 6
+ },
+ {
+  "id": "papoutsakia",
+  "n": "Παπουτσάκια",
+  "img": "papoutsakia.jpg",
+  "steps": 6
+ },
+ {
+  "id": "kolokythopita",
+  "n": "Κολοκυθόπιτα",
+  "img": "kolokythopita.jpg",
+  "steps": 7
+ },
+ {
+  "id": "galaktoboureko",
+  "n": "Γαλακτομπούρεκο",
+  "img": "galaktoboureko.jpg",
+  "steps": 7
+ },
+ {
+  "id": "baklava",
+  "n": "Μπακλαβάς",
+  "img": "baklava.jpg",
+  "steps": 8
+ },
+ {
+  "id": "loukoumades",
+  "n": "Λουκουμάδες",
+  "img": "loukoumades.jpg",
+  "steps": 5
+ },
+ {
+  "id": "portokalopita",
+  "n": "Πορτοκαλόπιτα",
+  "img": "portokalopita.jpg",
+  "steps": 8
+ },
+ {
+  "id": "horiatiki",
+  "n": "Χωριάτικη σαλάτα",
+  "img": "xoriatiki_salata.jpg",
+  "steps": 7
+ },
+ {
+  "id": "tzatziki_dish",
+  "n": "Τζατζίκι σπιτικό",
+  "img": "tzatziki_spitiko.jpg",
+  "steps": 5
+ },
+ {
+  "id": "dolmades",
+  "n": "Ντολμαδάκια γιαλαντζί",
+  "img": "ntolmadakia_gialantzi.jpg",
+  "steps": 7
+ },
+ {
+  "id": "soutzoukakia",
+  "n": "Σουτζουκάκια σμυρνέικα",
+  "img": "soutzoukakia.jpg",
+  "steps": 7
+ },
+ {
+  "id": "keftedakia_saltsas",
+  "n": "Κεφτεδάκια σάλτσας",
+  "img": "keftedakia_saltsas.jpg",
+  "steps": 8
+ },
+ {
+  "id": "biftekia",
+  "n": "Μπιφτέκια σχάρας",
+  "img": "biftekia_sxaras.jpg",
+  "steps": 6
+ },
+ {
+  "id": "pilafi_laxanikon",
+  "n": "Πιλάφι με λαχανικά",
+  "img": "pilafi_laxanikon.jpg",
+  "steps": 4
+ }
+]

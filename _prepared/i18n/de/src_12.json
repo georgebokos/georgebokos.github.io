@@ -1,0 +1,528 @@
+{
+ "saganaki": {
+  "n": "Fried Cheese Saganaki",
+  "ing": [
+   "Kefalotyri or Graviera cheese 200g (sliced 1 cm thick)",
+   "Flour",
+   "Olive oil 3 tbsp",
+   "Juice of 1/2 lemon",
+   "Oregano"
+  ],
+  "steps": [
+   "Dipping: Dip the cheese slice in cold water for 1 minute — this helps the flour adhere better.",
+   "Flouring: Lightly flour both sides. Shake off the excess.",
+   "Frying: Heat oil in a hot pan (ideally a small saganaki pan). Fry for 1.5-2 minutes per side until golden and just beginning to melt slightly inside. Important: very hot oil gives a crisp exterior.",
+   "Serving: Serve immediately in the pan, drizzled with lemon and oregano. Eat while hot."
+  ],
+  "wine": "Dry white wine.",
+  "plate": "In the pan or on a warm plate with lemon."
+ },
+ "salata_avokanto": {
+  "n": "Avocado & Cherry Tomato Salad",
+  "ing": [
+   "Avocado 1 ripe",
+   "Cherry tomatoes 200g",
+   "Cucumber ½",
+   "Spring onions 2",
+   "Lemon 1",
+   "Olive oil 2 tbsp",
+   "Salt & pepper",
+   "Fresh basil or cilantro"
+  ],
+  "steps": [
+   "Cutting the avocado: Halve the avocado, remove the pit and cut into cubes or slices. Important: drizzle immediately with lemon juice to prevent browning.",
+   "Preparation: Halve the cherry tomatoes, cut the cucumber into half-moons, and finely chop the spring onions.",
+   "Serving: Toss everything together or arrange on a platter. Drizzle with olive oil and lemon. Season with salt, pepper and fresh herbs. Serve immediately."
+  ],
+  "wine": "White Sauvignon Blanc.",
+  "plate": "On a platter with fresh basil."
+ },
+ "salata_caesar": {
+  "n": "Caesar Salad",
+  "ing": [
+   "Romaine lettuce 1",
+   "Croutons 80g",
+   "Parmesan 40g",
+   "Mayonnaise 3 tbsp",
+   "Lemon 1/2",
+   "Garlic 1 clove",
+   "Worcestershire sauce 1 tsp",
+   "Anchovies 3 (optional)",
+   "Salt, pepper"
+  ],
+  "steps": [
+   "Make the Caesar dressing: mayonnaise, lemon juice, grated garlic, Worcestershire sauce, salt and pepper.",
+   "Cut the romaine lettuce into pieces and wash thoroughly.",
+   "Toss the lettuce with the dressing.",
+   "Add the croutons and grated parmesan.",
+   "Serve immediately."
+  ]
+ },
+ "salata_kinoa": {
+  "n": "Quinoa Salad",
+  "ing": [
+   "Quinoa 200g",
+   "1 cucumber",
+   "Cherry tomatoes 200g",
+   "1 avocado",
+   "Red onion 1/2",
+   "Cilantro or parsley",
+   "Olive oil 3 tbsp",
+   "Lemon juice 2 tbsp",
+   "Salt, pepper"
+  ],
+  "steps": [
+   "Rinse the quinoa and cook according to package instructions (about 15 minutes). Let cool.",
+   "Dice the cucumber, cherry tomatoes, avocado, and red onion.",
+   "Combine the quinoa with the vegetables and cilantro.",
+   "Add the oil, lemon juice, salt, and pepper.",
+   "Serve immediately or chilled from the refrigerator."
+  ]
+ },
+ "salata_nisoaz": {
+  "n": "Salade Niçoise",
+  "ing": [
+   "Canned tuna 200g",
+   "Eggs 3",
+   "Green beans 150g",
+   "Tomatoes 2",
+   "Black olives 60g",
+   "Small potatoes 200g",
+   "Capers 2 tbsp",
+   "Olive oil 4 tbsp",
+   "Vinegar 2 tbsp",
+   "Mustard 1 tsp"
+  ],
+  "steps": [
+   "Hard-boil the eggs (10 minutes), and boil the potatoes and green beans separately.",
+   "Slice the tomatoes and cut the eggs into quarters.",
+   "Make a dressing with olive oil, vinegar, mustard, salt and pepper.",
+   "Arrange all the ingredients neatly and separately on the plate.",
+   "Drizzle with the dressing and serve."
+  ]
+ },
+ "salata_pantzarion": {
+  "n": "Beetroot & Feta Salad",
+  "ing": [
+   "Beets 4 large",
+   "Feta 150g",
+   "Walnuts 50g",
+   "Arugula 1 handful",
+   "Olive oil 3 tbsp",
+   "Balsamic vinegar 2 tbsp",
+   "Salt, pepper",
+   "Honey 1 tsp"
+  ],
+  "steps": [
+   "Boil the beets with their skins on for 45-50 minutes. Peel and cut into small cubes.",
+   "Make a dressing with olive oil, balsamic vinegar, honey, salt and pepper.",
+   "Spread the arugula on the base of the plate and top with the beets.",
+   "Crumble feta on top along with the walnuts and dressing.",
+   "Serve immediately."
+  ]
+ },
+ "salata_rodi": {
+  "n": "Pomegranate Salad",
+  "ing": [
+   "Baby spinach 100g",
+   "Pomegranate 1",
+   "Walnuts 60g",
+   "Feta cheese 80g",
+   "Balsamic vinegar 2 tbsp",
+   "Honey 1 tsp",
+   "Olive oil 2 tbsp"
+  ],
+  "steps": [
+   "Preparing the spinach: Wash the 100g baby spinach in cold water and dry it very well, ideally with a salad spinner. Important: the leaves must be completely dry, otherwise the water will dilute the dressing and it won't cling to the leaves.",
+   "Cleaning the pomegranate: Cut 1 pomegranate in half and release the seeds by tapping the skin from above with a spoon over a bowl. To avoid staining, do this with the pomegranate submerged in water, where the membrane floats up and the seeds sink.",
+   "Toasting the walnuts: Toast the 60g walnuts in a dry skillet (no oil) over medium heat for about 5 minutes, stirring. Toasting releases their oils and intensifies both aroma and crunch.",
+   "Dressing: In a bowl, whisk the 2 tbsp balsamic vinegar, 1 tsp honey and 2 tbsp olive oil with a pinch of salt until emulsified and well combined. The honey balances the acidity of the balsamic.",
+   "Assembling: On a platter, arrange the spinach, scatter the pomegranate seeds, the toasted walnuts and 80g crumbled feta on top.",
+   "Serving: Drizzle with the dressing just before serving and toss gently. Important: add the dressing at the last moment, otherwise the spinach will wilt and lose its freshness."
+  ],
+  "wine": "Rosé wine.",
+  "plate": "Pomegranate seeds, feta, walnuts."
+ },
+ "salata_roka_syko": {
+  "n": "Rocket, Fig & Prosciutto Salad",
+  "ing": [
+   "Arugula 100g",
+   "Fresh figs 4",
+   "Prosciutto 80g",
+   "Grated parmesan 30g",
+   "Walnuts 30g",
+   "Olive oil 3 tbsp",
+   "Balsamic cream 2 tbsp",
+   "Salt, pepper"
+  ],
+  "steps": [
+   "Spread the arugula on the base of the plate.",
+   "Cut the figs into quarters and arrange them over the arugula.",
+   "Add slices of prosciutto and chopped walnuts.",
+   "Grate parmesan on top.",
+   "Drizzle with olive oil and balsamic cream, and season with salt and pepper."
+  ]
+ },
+ "salata_rokka": {
+  "n": "Rocket & Parmesan Salad",
+  "ing": [
+   "Arugula 100g",
+   "Parmesan 60g",
+   "Cherry tomatoes 100g",
+   "Balsamic vinegar 2 tbsp",
+   "Olive oil 2 tbsp"
+  ],
+  "steps": [
+   "Washing: Wash the 100g arugula thoroughly and drain or pat dry with paper towels, so the dressing clings to the leaves and the salad doesn't turn watery.",
+   "Cutting the cherry tomatoes: Halve the 100g cherry tomatoes and arrange them with the arugula on a serving platter.",
+   "Parmesan: Shave the 60g Parmesan into thin curls with a vegetable peeler. Important: never grated, as thin shavings give a better texture and a more pronounced presence of flavor in every bite.",
+   "Dressing: Drizzle the salad with the 2 tbsp balsamic vinegar and the 2 tbsp olive oil, so the acidity balances with the oil.",
+   "Serving: Grind fresh pepper on top and serve immediately, as arugula wilts quickly once the dressing is added."
+  ],
+  "wine": "Dry white wine.",
+  "plate": "Parmesan shaved into curls — that's what makes the difference!"
+ },
+ "salata_tonou": {
+  "n": "Tuna Salad",
+  "ing": [
+   "Canned tuna in oil 3 tins",
+   "Boiled eggs 3",
+   "Corn 200 g",
+   "Red onion 1",
+   "Cherry tomatoes 200 g",
+   "Lettuce 1 head",
+   "Capers 2 tbsp",
+   "Mayonnaise 3 tbsp or olive oil 4 tbsp",
+   "Lemon juice 1 lemon",
+   "Fresh dill, salt, pepper"
+  ],
+  "steps": [
+   "Draining the tuna: Drain the tuna well and flake it with a fork into large pieces. Important: draining matters — the tin oil is neutral and would dilute the dressing.",
+   "Boiling the eggs: Boil the eggs for 9 minutes for a firm but not chalky yolk, then cool them at once in iced water so they peel cleanly.",
+   "Taming the onion: Slice the red onion thinly and soak it in cold water with a little lemon for 10 minutes, to take the harsh bite out of it.",
+   "Preparing the greens: Wash the lettuce, dry it thoroughly and tear it by hand into bite-sized pieces. Wet leaves repel the dressing.",
+   "Making the dressing: Whisk the mayonnaise or oil with the lemon juice, chopped dill, salt and pepper into a smooth emulsion.",
+   "Assembling: Layer the lettuce in a wide bowl, then the tuna, the corn, the halved cherry tomatoes, the drained onion and the capers.",
+   "Adding the eggs: Cut the eggs into quarters and arrange them around the edge instead of mixing them in, so they stay whole and presentable.",
+   "Dressing: Pour the dressing over only at the moment of serving. Dressed early, the lettuce wilts within minutes."
+  ],
+  "wine": "A dry white Sauvignon Blanc or a Greek Assyrtiko.",
+  "plate": "Serve in a wide shallow bowl with the egg quarters around the rim and dill scattered over the top."
+ },
+ "salata_zymarikon": {
+  "n": "Pasta Salad",
+  "ing": [
+   "Short pasta (fusilli or penne) 400 g",
+   "Cherry tomatoes 250 g",
+   "Cucumber 1",
+   "Feta 200 g",
+   "Black olives 100 g",
+   "Red pepper 1",
+   "Red onion 1/2",
+   "Olive oil 6 tbsp",
+   "Red wine vinegar 2 tbsp",
+   "Dried oregano 1 tsp",
+   "Fresh basil, salt, pepper"
+  ],
+  "steps": [
+   "Boiling the pasta: Cook the pasta in well-salted water until just al dente — it firms up further as it cools, so do not overcook it.",
+   "Cooling: Important: Drain and rinse it under cold water to stop the cooking, then toss it with a spoonful of oil so it does not clump into a block.",
+   "Chopping the vegetables: Cut the cucumber and pepper into small even dice and halve the cherry tomatoes.",
+   "Draining the tomatoes: Let the halved tomatoes sit in a sieve with a pinch of salt for 10 minutes, so their juice does not water down the salad later.",
+   "Making the dressing: Whisk the oil, vinegar, oregano, salt and pepper until emulsified and slightly thickened.",
+   "Combining: Toss the cooled pasta with the vegetables, the olives and half the dressing, and mix gently.",
+   "Chilling: Refrigerate for at least 30 minutes. Pasta salad needs this time — the pasta absorbs the dressing and the flavours settle together.",
+   "Finishing: Just before serving, add the crumbled feta, the fresh basil and the rest of the dressing, and check the seasoning — cold food always needs more salt than it seems."
+  ],
+  "wine": "A chilled rosé or a light white Roditis.",
+  "plate": "Serve in a wide bowl at cool room temperature, with feta crumbled over the top and basil leaves."
+ },
+ "saligkaria_boubouristi": {
+  "n": "Boubouristi Snails",
+  "ing": [
+   "Snails (chochlioi) 1 kg",
+   "Flour for coating",
+   "Olive oil 1/2 cup",
+   "Red wine vinegar 100 ml",
+   "Fresh rosemary 3 sprigs",
+   "Coarse salt",
+   "Pepper"
+  ],
+  "steps": [
+   "Purging the snails: Important: Keep the live snails for 5-7 days in a covered ventilated container with flour or bran, so they empty themselves. This step is not optional for safety.",
+   "Washing: Wash them repeatedly in plenty of water with a little vinegar, until the water runs completely clear.",
+   "Blanching: Boil them for 5 minutes in salted water, then drain them well.",
+   "Drying: Dry them very well and dry the shell openings too. Important: any water left inside will spit violently the moment it hits the hot oil.",
+   "Coating with flour: Dip the open face of each snail in flour, tapping off the excess. The flour seals the opening and forms the crust.",
+   "Heating the oil: Heat the oil in a wide pan until it is very hot — this dish only works at high heat.",
+   "Frying: Place the snails opening-side down into the oil — this is what boubouristi means — and fry them for 2-3 minutes without moving them.",
+   "Adding the vinegar: Stand back and pour in the vinegar. It will spit and steam violently. Let it evaporate for 1-2 minutes.",
+   "Finishing: Add the rosemary and coarse salt, swirl the pan once and serve immediately while sizzling."
+  ],
+  "wine": "Cretan raki or a robust white wine with acidity.",
+  "plate": "Serve straight from the pan, opening-side up, with the vinegar sauce and bread to mop it up."
+ },
+ "saltsa_kotopoulo": {
+  "n": "Lemon-Herb Chicken Sauce",
+  "ing": [
+   "60g butter",
+   "3 cloves garlic",
+   "2 tbsp lemon juice",
+   "1 tsp lemon zest",
+   "1 tsp Dijon mustard",
+   "Fresh thyme or oregano",
+   "Salt & pepper",
+   "Parsley"
+  ],
+  "steps": [
+   "Melting the butter: Melt the 60g butter in a small saucepan over low heat, so it doesn't burn and turn bitter.",
+   "Sautéing the garlic: Add 3 cloves of chopped garlic and sauté for 1-2 minutes, just until fragrant. Important: don't let it brown, as burnt garlic turns bitter and ruins the sauce.",
+   "Adding the lemon: Add the 2 tbsp lemon juice, 1 tsp zest, 1 tsp Dijon mustard, and thyme or oregano. The zest adds intense aroma without extra acidity.",
+   "Thickening the sauce: Stir and simmer for 2-3 minutes until it thickens slightly and the flavors come together. The mustard helps emulsify the sauce.",
+   "Seasoning: Taste and add salt and pepper as needed, keeping the lemon's acidity in mind.",
+   "Finishing and serving: Remove from the heat, add chopped parsley, and pour immediately over the hot chicken. Important: serve it hot, since the heat releases the aromas and brings the dish to life."
+  ],
+  "wine": "Dry white or a light rosé.",
+  "plate": "Pour over fillet or thigh, garnish with lemon peel and thyme."
+ },
+ "saltsa_tomatas": {
+  "n": "Homemade Tomato Sauce",
+  "ing": [
+   "Canned tomatoes 800g",
+   "Onion 1",
+   "Garlic 3 cloves",
+   "Olive oil 4 tbsp",
+   "Fresh basil",
+   "Oregano 1 tsp",
+   "Sugar 1 tsp",
+   "Salt, pepper"
+  ],
+  "steps": [
+   "Sauté the onion and garlic in the oil for 5 minutes.",
+   "Add the tomatoes, sugar, oregano, salt and pepper.",
+   "Simmer for 20-25 minutes, stirring occasionally.",
+   "Stir in fresh basil at the end.",
+   "Use for pasta, pizza, or as a base for other recipes."
+  ]
+ },
+ "samali": {
+  "n": "Semolina Coconut Cake",
+  "ing": [
+   "Fine semolina 250g",
+   "Shredded coconut 100g",
+   "Sugar 150g",
+   "Yogurt 250g",
+   "Eggs 2",
+   "Baking powder 1 tsp",
+   "Butter 80g",
+   "Almonds for garnish",
+   "Syrup: Sugar 250g, Water 250ml, Orange blossom water 2 tbsp"
+  ],
+  "steps": [
+   "Syrup: Boil the sugar, water, and orange blossom water for 5 minutes. Let cool.",
+   "Batter: Combine the semolina, coconut, sugar, yogurt, eggs, melted butter, and baking powder.",
+   "Baking: Spread the batter evenly in a greased pan. Sprinkle almonds on top. Bake at 180°C for 25-30 minutes.",
+   "Scoring: As soon as it comes out of the oven, score into diamonds or squares.",
+   "Soaking: Pour the cold syrup over it immediately. Let it absorb completely — at least 30 minutes. Important: cold syrup on a hot cake ensures perfect absorption without becoming overly soggy."
+  ],
+  "wine": "-",
+  "plate": "Cut into diamonds with almonds on top."
+ },
+ "sardeles_lemonates": {
+  "n": "Lemon Sardines",
+  "ing": [
+   "Fresh sardines 500g",
+   "Olive oil 3 tbsp",
+   "Lemon 2",
+   "Oregano",
+   "Salt & pepper",
+   "Flour (optional)"
+  ],
+  "steps": [
+   "Cleaning: Clean the 500g fresh sardines, removing the innards and, if you like, the heads, and rinse very well under cold water. Important: dry them very thoroughly with paper towels, since moisture prevents browning and causes the oil to spatter in the pan.",
+   "Salting: Salt the sardines just before cooking. Salting too early draws out their moisture and dries them out.",
+   "Flouring (optional): For a crispier crust, dust them lightly with flour and shake off the excess, so they don't pick up too much flour and become heavy.",
+   "Cooking: Cook on a hot grill or in a pan with 3 tbsp olive oil for 3-4 minutes per side, until browned and the flesh turns opaque. Avoid turning them repeatedly so they don't fall apart.",
+   "Lemon-oil dressing: Mix the juice of 2 lemons with a little olive oil and oregano for a fresh dressing that cuts through the fish's richness.",
+   "Serving: Serve immediately while hot, drizzled with the lemon-oil dressing, oregano and coarse salt."
+  ],
+  "wine": "Dry white.",
+  "plate": "With lemon, olives and fresh bread. The essence of Greek summer."
+ },
+ "semifredo": {
+  "n": "Semifreddo",
+  "ing": [
+   "Egg yolks 5",
+   "Sugar 120 g",
+   "Heavy cream 500 ml",
+   "Vanilla extract 1 tsp",
+   "Toasted hazelnuts 100 g",
+   "Dark chocolate 80 g"
+  ],
+  "steps": [
+   "Beat the yolks with the sugar over a bain-marie for about 8 minutes, until pale, thick and warm to the touch.",
+   "Important: The bowl must never touch the water and the heat must stay low, or the yolks scramble and the mixture is ruined.",
+   "Take it off the heat and keep beating until it has cooled completely to room temperature.",
+   "Whip the cream separately to soft peaks — softer than for a cake, because it stiffens further in the freezer.",
+   "Fold the cream into the cooled yolk mixture in three additions, gently, keeping as much air as possible.",
+   "Fold in the chopped hazelnuts and grated chocolate.",
+   "Line a loaf tin with cling film, leaving a generous overhang, and pour in the mixture.",
+   "Freeze for at least 6 hours. Unlike ice cream, semifreddo needs no churning — the whipped air is what keeps it soft.",
+   "Turn it out using the cling film and slice while still frozen, then let the slices stand for 5 minutes before serving."
+  ],
+  "wine": "Vin santo or Mavrodaphne.",
+  "plate": "Cut into slices and serve with toasted hazelnuts and chocolate sauce."
+ },
+ "seskula": {
+  "n": "Boiled Swiss Chard",
+  "ing": [
+   "Swiss chard 1kg",
+   "Olive oil 4 tbsp",
+   "Lemon juice 2 tbsp",
+   "Garlic 2 cloves (optional)",
+   "Salt, pepper"
+  ],
+  "steps": [
+   "Wash the chard well and cut the stems into pieces.",
+   "Bring salted water to a boil.",
+   "Boil the stems first for 5 minutes, then add the leaves for another 5-8 minutes.",
+   "Drain well.",
+   "Serve warm with a generous drizzle of olive oil, lemon juice, salt, and pepper."
+  ]
+ },
+ "sfoliatopitakia": {
+  "n": "Puff Pastry Feta Triangles",
+  "ing": [
+   "Puff pastry 2 sheets",
+   "Feta 250g",
+   "Egg 1 (for egg wash)",
+   "Sesame seeds",
+   "Pepper"
+  ],
+  "steps": [
+   "Cut the puff pastry into squares.",
+   "Place feta on each square and season with pepper.",
+   "Fold into a triangle and press the edges to seal.",
+   "Brush with beaten egg and sprinkle with sesame seeds.",
+   "Bake at 200°C for 20-25 minutes until golden."
+  ]
+ },
+ "skordalia": {
+  "n": "Garlic Potato Dip",
+  "ing": [
+   "Potatoes 4 large",
+   "Garlic 6-8 cloves",
+   "Olive oil 150ml",
+   "Vinegar 2 tbsp",
+   "Salt"
+  ],
+  "steps": [
+   "Boiling the potatoes: Boil the 4 large potatoes whole, skin-on, in salted water until tender. The skin keeps the potatoes from absorbing too much water and becoming watery.",
+   "Peeling: Peel the potatoes while still hot. Important: hot potato mashes evenly and binds better with the oil, while cold potato becomes gluey.",
+   "Crushing the garlic: Crush the 6-8 garlic cloves with a little salt in a mortar until it becomes a paste. The salt helps grind the garlic and releases its aromatics.",
+   "Combining: Add the hot potatoes and mash them together with the garlic in the mortar, or briefly in a blender, until you have a smooth base.",
+   "Emulsifying: Add the 150ml olive oil and the 2 tbsp vinegar alternately, in small amounts, beating continuously until the skordalia becomes creamy and fluffy.",
+   "Finishing: Taste and adjust the salt and vinegar. Important: don't overwork the potato in the blender, as it releases starch and turns gluey like paste."
+  ],
+  "wine": "Ouzo!",
+  "plate": "Bowl, olive oil, olives. With salt cod."
+ },
+ "snitsel_xoirino": {
+  "n": "Pork Schnitzel",
+  "ing": [
+   "Pork loin 4 slices (about 150 g each)",
+   "Flour 100 g",
+   "Eggs 2",
+   "Breadcrumbs 200 g",
+   "Lemon 1",
+   "Sunflower oil for frying",
+   "Salt, pepper"
+  ],
+  "steps": [
+   "Flattening the meat: Place each slice between two sheets of cling film and beat it with a mallet or rolling pin to an even 5 mm thickness. Important: even thickness is everything — thin edges burn while thick centres stay raw.",
+   "Seasoning: Season both sides with salt and pepper and let the slices sit for 10 minutes.",
+   "Setting up the coating: Line up three shallow dishes: flour, beaten eggs, breadcrumbs.",
+   "Coating: Dip each slice in flour and shake off the excess, then in egg letting the surplus drip away, then press it firmly into the breadcrumbs.",
+   "Resting the coating: Let the coated schnitzels rest for 10 minutes. This lets the crumb bind to the egg, so the crust does not slide off in the pan.",
+   "Heating the oil: Heat plenty of oil to 175°C in a wide pan — a crumb dropped in should sizzle immediately without browning instantly.",
+   "Frying: Fry for 3-4 minutes per side until deep golden, turning only once. Turning repeatedly breaks the crust.",
+   "Not crowding: Fry two at a time at most. Important: a crowded pan drops the oil temperature and the coating soaks up fat instead of crisping.",
+   "Draining: Drain on a rack, not on paper — paper traps steam underneath and the bottom crust goes soft.",
+   "Serving: Serve immediately with lemon wedges."
+  ],
+  "wine": "A cold beer, or a crisp white such as Moschofilero.",
+  "plate": "Serve one schnitzel per plate covering most of it, with a lemon half and fries or mashed potato on the side."
+ },
+ "sofrito": {
+  "n": "Corfu Sofrito",
+  "ing": [
+   "Veal, top round or shoulder, sliced 800g",
+   "Garlic 6-8 cloves, finely chopped",
+   "Parsley 1 large bunch, finely chopped",
+   "White vinegar 1 cup",
+   "Dry white wine 1/2 cup",
+   "Flour for light dusting 3-4 tbsp",
+   "Olive oil 1/2 cup",
+   "Salt and freshly ground pepper"
+  ],
+  "steps": [
+   "Preparation: Lightly pound the veal slices to tenderize them and season with salt and pepper. Dust with flour on both sides, shaking off the excess.",
+   "Searing: Heat the olive oil well in a deep skillet and sear the slices over high heat until nicely browned on both sides. Transfer to a pot.",
+   "The secret of the sauce: In the same oil, add the chopped garlic and parsley and sauté for half a minute, just until fragrant, without letting them burn.",
+   "Deglazing: Deglaze with the vinegar and wine, let the alcohol evaporate for 1-2 minutes, and pour the sauce over the meat.",
+   "Important: authentic Sofrito contains no tomato. Its characteristic white color and tangy flavor come solely from the vinegar, garlic, and parsley, so don't be tempted to add tomato paste.",
+   "Simmering: Add a little hot water so the meat is almost covered, cover with the lid, and simmer over low heat for 1 to 1.5 hours.",
+   "Thickening: The meat is ready when it becomes very tender and the sauce reduces to a velvety consistency. If needed, uncover toward the end to let the sauce thicken.",
+   "Serving: Taste for salt and serve hot, spooning the sauce generously over the top."
+  ],
+  "wine": "Dry white wine, ideally a Corfiot Kakotrygis.",
+  "plate": "Serve with mashed potatoes or fluffy rice to soak up the white sauce."
+ },
+ "sokolatopita": {
+  "n": "Chocolate Pie",
+  "ing": [
+   "All-purpose flour 2 cups",
+   "Sugar 1.5 cups",
+   "Unsweetened cocoa 3/4 cup",
+   "Eggs 3",
+   "Sunflower or seed oil 1 cup",
+   "Milk 1 cup",
+   "Baking powder 2 tsp",
+   "Vanilla 1 sachet",
+   "Boiling water 1 cup (for the syrup)",
+   "Sugar 1.5 cups with 2 tbsp cocoa (for the syrup)"
+  ],
+  "steps": [
+   "Preparation: Preheat the oven to 180°C fan and butter or line with parchment paper a baking pan about 25x35 cm.",
+   "Mixing the dry ingredients: In a large bowl, sift together the flour, cocoa, baking powder, and add the sugar, mixing well.",
+   "Mixing the wet ingredients: In a second bowl, whisk the eggs with the oil, milk and vanilla until smooth.",
+   "Combining: Pour the wet ingredients into the dry and whisk until the batter is smooth. Important: Don't overmix the batter, as this develops the gluten and the cake turns out dense and chewy instead of light.",
+   "Baking: Pour the mixture into the pan and bake for 30-35 minutes, until risen and a toothpick inserted in the center comes out clean.",
+   "Syrup: While it bakes, boil the water with the sugar and cocoa in a saucepan for 4-5 minutes until it thickens slightly.",
+   "Syruping: As soon as the cake comes out, score it into pieces and slowly pour the hot syrup over the hot cake so it soaks in evenly.",
+   "Resting: Let the chocolate cake cool and absorb the syrup for at least 2 hours before serving."
+  ],
+  "wine": "Sweet Mavrodafni wine or a hot coffee.",
+  "plate": "Serve in pieces with a scoop of vanilla ice cream or whipped cream."
+ },
+ "solomos_fournou": {
+  "n": "Baked Salmon",
+  "ing": [
+   "Salmon fillets 2 (300g total)",
+   "Lemon 1",
+   "Garlic 2 cloves",
+   "Olive oil 2 tbsp",
+   "Fresh dill",
+   "Salt & pepper",
+   "Honey 1 tsp (optional)",
+   "Soy sauce 1 tsp (optional)"
+  ],
+  "steps": [
+   "Marinade: Mix the olive oil, juice of half a lemon, thinly sliced garlic, salt, pepper and dill. For a sweet-and-sour touch, add honey and soy sauce. Coat the fillets and let rest for 15 minutes.",
+   "Baking: Place the fillets on a baking sheet lined with parchment paper. Bake at 200°C for 12-15 minutes, depending on thickness. Important: the salmon is done when it flakes easily with a fork and the center is still slightly pink.",
+   "Serving: Serve immediately with lemon slices, fresh dill, and rice or roasted vegetables on the side."
+  ],
+  "wine": "White Assyrtiko or Sauvignon Blanc.",
+  "plate": "With lemon slices and fresh dill."
+ }
+}
