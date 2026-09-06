@@ -132,7 +132,9 @@ def build(rid, lang='el'):
          'more':'Όλη η συνταγή στην εφαρμογή' if el else 'Full recipe in the app',
          'get':'Σύνδεσμος στο προφίλ' if el else 'Link in bio',
          'url':'fooddaily.github.io',
-         'free':'Δωρεάν στο Google Play' if el else 'Free on Google Play'}
+         'free':'Δωρεάν στο Google Play' if el else 'Free on Google Play',
+         'langs':'376 συνταγές · 376 recipes · 376 Rezepte',
+         'langs2':'Διαθέσιμη σε: Ελληνικά · English · Deutsch'}
 
     var = sum(ord(c) for c in rid)
     zoom_in = (var // 5) % 2 == 0
@@ -167,6 +169,8 @@ def build(rid, lang='el'):
     f_num  = ImageFont.truetype(FB, 60)
     f_cta  = ImageFont.truetype(FB, 62)
     f_sub  = ImageFont.truetype(FR, 38)
+    f_lang  = ImageFont.truetype(FB, 34)
+    f_lang2 = ImageFont.truetype(FR, 32)
 
     D = 118
     logo = Image.open(os.path.join(ROOT,'icon-512.png')).convert('RGB').crop((118,88,394,364)).resize((D,D), Image.LANCZOS)
@@ -242,7 +246,7 @@ def build(rid, lang='el'):
                 f_h2 = ImageFont.truetype(FR, 52)
                 f_nm = ImageFont.truetype(FB, 64)
                 nlines = wrap(d, name, f_nm, colw)[:2]
-                blk = f_h1.size + 16 + f_h2.size + 46 + len(nlines)*76 + 54
+                blk = f_h1.size + 16 + f_h2.size + 46 + len(nlines)*76 + 54 + 60 + 46
                 y = H - SAFE_B - blk
                 # Άλλοτε κεντραρισμένο, άλλοτε στοιχισμένο αριστερά. Στο κέντρο
                 # λαμβάνεται υπόψη μόνο η ωφέλιμη στήλη, όχι όλο το πλάτος:
@@ -258,7 +262,12 @@ def build(rid, lang='el'):
                 # Χωρίς emoji: η DejaVuSans δεν τα περιέχει και βγαίνουν κενά
                 # κουτάκια — φαίνεται σαν ελάττωμα, όχι σαν εικονίδιο.
                 meta = f"{m['time']}′  ·  {m['cal']} kcal  ·  {m.get('srv','')} {L['serv']}"
-                put(meta, f_meta, y, (240,206,150))
+                put(meta, f_meta, y, (240,206,150)); y += 60
+                # Η εφαρμογή είναι πλέον τρίγλωσση, και ο θεατής δεν έχει πώς να
+                # το μάθει αλλιώς: κάθε γλώσσα γράφεται στη δική της γραφή, ώστε
+                # να την αναγνωρίσει αμέσως όποιος τη μιλά.
+                put(L['langs'], f_lang, y, (233,178,74)); y += 46
+                put(L['langs2'], f_lang2, y, (226,196,152))
             elif kind == 'ing':
                 # Το μπλοκ κεντράρεται κάθετα στον ελεύθερο χώρο: αν ξεκινά
                 # ψηλά, τα δύο τρίτα της οθόνης μένουν άδεια και το βίντεο
