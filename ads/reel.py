@@ -177,6 +177,13 @@ def build(rid, lang='el'):
     mk = Image.new('L',(D*4,D*4),0); ImageDraw.Draw(mk).ellipse([0,0,D*4,D*4],fill=255)
     logo.putalpha(mk.resize((D,D), Image.LANCZOS))
 
+    # Επίσημο badge της Google. Το κενό περιθώριο του αρχείου κόβεται, ώστε να
+    # ελέγχουμε εμείς την απόσταση από τα υπόλοιπα στοιχεία.
+    gp = Image.open(os.path.join(ROOT, 'ads', 'google-play-badge.png')).convert('RGBA')
+    gp = gp.crop(gp.split()[3].getbbox())
+    GPW = 268
+    gp = gp.resize((GPW, round(gp.height * GPW / gp.width)), Image.LANCZOS)
+
     # Μικρό λογότυπο για τη μόνιμη υπογραφή
     DS = 62
     logo_s = logo.resize((DS,DS), Image.LANCZOS)
@@ -252,6 +259,9 @@ def build(rid, lang='el'):
             d = ImageDraw.Draw(fr)
 
             if kind == 'hit':
+                # Το σήμα του Google Play κάτω από τις γλώσσες: αναγνωρίζεται
+                # χωρίς διάβασμα και λέει αμέσως πού βρίσκεται η εφαρμογή.
+                fr.paste(gp, (26, 240), gp)
                 # Ένα μεγάλο νούμερο και μία λέξη. Το μάτι το πιάνει χωρίς
                 # ανάγνωση — γι' αυτό δουλεύει μέσα στο πρώτο δευτερόλεπτο.
                 f_h1 = ImageFont.truetype(FB, 148 if len(hook_big) <= 6 else 96)
