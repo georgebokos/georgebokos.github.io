@@ -70,40 +70,182 @@ Play Console → **Δοκιμή** → *(κανάλι)* → καρτέλα **Εκ
 
 ## ΒΗΜΑ 3 — Εγκατάστησε το plugin
 
+### 3.1 Άνοιξε τερματικό στον σωστό φάκελο
+
 ```bash
 cd fooddaily-app
+```
+
+Επιβεβαίωσε ότι είσαι στο σωστό σημείο — πρέπει να υπάρχουν και τα τρία:
+
+```bash
+ls package.json capacitor.config.* android
+```
+
+Αν σου πει «No such file or directory», είσαι σε λάθος φάκελο. Ο σωστός είναι
+αυτός που περιέχει το `package.json` του Capacitor project, **όχι** ο φάκελος
+του site.
+
+### 3.2 Εγκατάσταση
+
+```bash
 npm install @capacitor-community/in-app-review
+```
+
+Τι πρέπει να δεις στο τέλος:
+
+```
+added 1 package, and audited NNN packages in Xs
+```
+
+Προειδοποιήσεις `npm warn deprecated` ή `N vulnerabilities` **αγνοούνται** —
+δεν είναι σφάλματα. Σφάλμα είναι μόνο το `npm ERR!`.
+
+Έλεγχος ότι μπήκε:
+
+```bash
+grep in-app-review package.json
+```
+
+Πρέπει να τυπώσει μια γραμμή σαν
+`"@capacitor-community/in-app-review": "^X.Y.Z",`. Αν δεν τυπώσει τίποτα,
+η εγκατάσταση απέτυχε — μην προχωρήσεις.
+
+### 3.3 Συγχρονισμός με το Android project
+
+```bash
 npx cap sync android
 ```
 
-Το `sync` καταχωρεί μόνο του το plugin — δεν αγγίζεις Java/Kotlin.
-Στο τέλος πρέπει να δεις κάτι σαν `✔ update android` και το plugin στη λίστα.
+Αυτό κάνει δύο πράγματα: αντιγράφει τα web assets και **καταχωρεί το plugin**
+στο native project. Χωρίς αυτό, το plugin είναι εγκατεστημένο στο npm αλλά
+δεν υπάρχει μέσα στην εφαρμογή.
+
+Τι πρέπει να δεις:
+
+```
+✔ Copying web assets ...
+✔ Updating Android plugins ...
+[info] Found 6 Capacitor plugins for android:
+       @capacitor-community/in-app-review@X.Y.Z
+       @capacitor/app@...
+       ...
+✔ update android ...
+✔ Sync finished
+```
+
+**Το κρίσιμο είναι να δεις το `in-app-review` μέσα σε αυτή τη λίστα.** Αν δεν
+είναι εκεί, το build θα βγει μια χαρά αλλά η αξιολόγηση μέσα από την εφαρμογή
+δεν θα δουλέψει (θα πέφτει στο Play Store, όπως σήμερα).
+
+Δεν αγγίζεις **καθόλου** Java ή Kotlin — το Capacitor το κάνει μόνο του.
+
+Αν το `npx cap sync` παραπονεθεί ότι δεν βρίσκει το `webDir`: το project
+φορτώνει το live site, οπότε ο φάκελος αυτός μπορεί να είναι σχεδόν άδειος.
+Φτιάχνεται με `mkdir -p <webDir>` (το όνομά του το λέει το
+`capacitor.config.*`) και ξανατρέχεις το sync.
 
 ## ΒΗΜΑ 4 — Ανέβασε τον versionCode
 
-Άνοιξε `android/app/build.gradle`:
+### 4.1 Δες τι έχεις τώρα
 
-```gradle
-defaultConfig {
-    applicationId "com.fooddaily.app"
-    versionCode 21          // ← ο αριθμός του ΒΗΜΑΤΟΣ 1, +1
-    versionName "2.0.3"     // ← το βλέπει ο χρήστης στη σελίδα του Play
-    ...
-}
+```bash
+grep -n "versionCode\|versionName" android/app/build.gradle
 ```
 
-- `versionCode` — ακέραιος, **πάντα αυξάνεται**, δεν τον βλέπει ο χρήστης.
-- `versionName` — κείμενο, τώρα είναι `2.0.2`.
+Παράδειγμα εξόδου:
+
+```
+14:        versionCode 20
+15:        versionName "2.0.2"
+```
+
+### 4.2 Άνοιξε το αρχείο και άλλαξε δύο γραμμές
+
+Αρχείο: `fooddaily-app/android/app/build.gradle`
+(**όχι** το `android/build.gradle` — αυτό είναι άλλο αρχείο, ένα επίπεδο πάνω,
+και δεν έχει `versionCode`.)
+
+Βρες το μπλοκ `defaultConfig`:
+
+```gradle
+android {
+    namespace "com.fooddaily.app"
+    compileSdk rootProject.ext.compileSdkVersion
+    defaultConfig {
+        applicationId "com.fooddaily.app"
+        minSdkVersion rootProject.ext.minSdkVersion
+        targetSdkVersion rootProject.ext.targetSdkVersion
+        versionCode 20            // ← ΑΛΛΑΞΕ ΑΥΤΟ
+        versionName "2.0.2"       // ← ΚΑΙ ΑΥΤΟ
+        ...
+    }
+```
+
+Γίνεται:
+
+```gradle
+        versionCode 21
+        versionName "2.0.3"
+```
+
+**Ποιον αριθμό βάζεις:** τον **μεγαλύτερο** από τον πίνακα του ΒΗΜΑΤΟΣ 1, +1.
+Αν παραγωγή = 20 και κλειστή δοκιμή = 20 → βάζεις **21**.
+Αν παραγωγή = 20 αλλά κάποιο κανάλι δοκιμής έχει 22 → βάζεις **23**.
+
+| | Τι είναι | Κανόνας |
+|---|---|---|
+| `versionCode` | ακέραιος, χωρίς εισαγωγικά | πάντα **μεγαλύτερος** από κάθε προηγούμενο· δεν τον βλέπει ο χρήστης |
+| `versionName` | κείμενο, **με** εισαγωγικά | το βλέπει ο χρήστης στη σελίδα του Play· δεν επηρεάζει τίποτα τεχνικά |
+
+⚠️ `applicationId "com.fooddaily.app"` — **δεν το αγγίζεις ποτέ.**
+
+### 4.3 Επιβεβαίωσε την αλλαγή
+
+```bash
+grep -n "versionCode\|versionName" android/app/build.gradle
+```
+
+Πρέπει τώρα να δείχνει τους νέους αριθμούς. Αν δείχνει ακόμα τους παλιούς,
+δεν αποθηκεύτηκε το αρχείο.
 
 ## ΒΗΜΑ 5 — Χτίσε το .aab
 
+### 5.1 Πήγαινε στον φάκελο android
+
 ```bash
-cd fooddaily-app/android
+cd android
+```
+
+Πλήρης διαδρομή: `fooddaily-app/android`. Εκεί υπάρχει το `gradlew`:
+
+```bash
+ls gradlew
+```
+
+Το `./gradlew` τρέχει **μέσα από αυτόν** τον φάκελο. Από αλλού δεν δουλεύει.
+
+### 5.2 Καθάρισμα
+
+```bash
 ./gradlew clean
+```
+
+Σε Windows: `gradlew.bat clean`.
+
+Αυτό σβήνει τα προηγούμενα build. **Μην το παραλείψεις** — χωρίς αυτό το
+Gradle μπορεί να επαναχρησιμοποιήσει παλιό αποτέλεσμα και να ανεβάσεις
+κατά λάθος το build με τον **παλιό** `versionCode`.
+
+Διαρκεί λίγα δευτερόλεπτα. Τέλος: `BUILD SUCCESSFUL`.
+
+### 5.3 Το build
+
+```bash
 ./gradlew bundleRelease
 ```
 
-Σε Windows: `gradlew.bat clean` και `gradlew.bat bundleRelease`.
+Σε Windows: `gradlew.bat bundleRelease`.
 
 **Η σωστή εντολή είναι `bundleRelease`.** Προσοχή:
 
@@ -113,13 +255,49 @@ cd fooddaily-app/android
 | `assembleRelease` | `.apk` | ❌ δεν γίνεται δεκτό |
 | `assembleDebug` | `.apk` debug | ❌ ποτέ |
 
-Όταν τελειώσει, θα δεις `BUILD SUCCESSFUL`. Βρες το αρχείο:
+Την **πρώτη** φορά μπορεί να πάρει 3–10 λεπτά (κατεβάζει εξαρτήσεις). Μετά
+1–2 λεπτά. Θα δεις πολλές γραμμές `> Task :app:...` — είναι φυσιολογικό.
+
+Το ζητούμενο στο τέλος:
+
+```
+BUILD SUCCESSFUL in 2m 14s
+```
+
+Αν δεις `BUILD FAILED`, **σταμάτα** — μη συνεχίσεις στο βήμα 6. Δες την
+ενότητα «Αν κάτι πάει στραβά» παρακάτω.
+
+### 5.4 Βρες και έλεγξε το αρχείο
 
 ```bash
 ls -lh app/build/outputs/bundle/release/
 ```
 
-Πρέπει να δεις το `app-release.aab` με σημερινή ημερομηνία.
+Πρέπει να δεις:
+
+```
+-rw-r--r--  1 user  staff   8.4M Sep 10 14:32 app-release.aab
+```
+
+Τρεις έλεγχοι πριν το ανεβάσεις:
+
+1. **Η ημερομηνία είναι σημερινή** — αλλιώς κοιτάς παλιό αρχείο
+2. **Το μέγεθος είναι MB, όχι KB** — μερικά KB σημαίνει αποτυχημένο build
+3. **Ο `versionCode` μέσα του είναι ο νέος:**
+
+```bash
+unzip -p app-release.aab BUNDLE-METADATA/*/*.properties 2>/dev/null | head
+```
+
+Πιο αξιόπιστα, αν έχεις το `bundletool` ή το Android SDK:
+
+```bash
+aapt2 dump badging app-release.aab 2>/dev/null | grep versionCode
+```
+
+Αν καμία εντολή δεν δουλεύει, μην ανησυχείς: ο ίδιος έλεγχος γίνεται
+οπωσδήποτε στο **ΒΗΜΑ 6, σημείο 2**, όπου το Play Console δείχνει τον αριθμό μετά
+το ανέβασμα.
 
 ### Υπογραφή
 
