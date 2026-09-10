@@ -37,8 +37,9 @@ def caption(rid):
     # επαναλαμβάνει το hook του βίντεο: αν η λεζάντα λέει άλλο πράγμα από την
     # εικόνα, το μήνυμα διχάζεται.
     from reel import pick_hook
-    big, small = pick_hook(m, m['ing'], m['steps'], rid, True)
-    return f"""{big} {small} — {m['n']} 🍽️
+    lbl, big, small = pick_hook(m, m['ing'], m['steps'], rid, True)
+    head = f'{lbl}: {big} {small}' if lbl else f'{big} {small}'
+    return f"""{head} — {m['n']} 🍽️
 
 ⏱ {m['time']}′  ·  🔥 {m['cal']} θερμίδες  ·  👥 {m['srv']} μερίδες  ·  💰 {cps} τα υλικά/μερίδα
 

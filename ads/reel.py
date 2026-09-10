@@ -64,11 +64,12 @@ def hook_words(el=True):
     # φαγητού διαβάζεται ως τιμοκατάλογος delivery, όχι ως κόστος συνταγής —
     # και οι πλατφόρμες κόβουν οργανική εμβέλεια σε ό,τι μοιάζει εμπορικό.
     # Η λέξη «υλικά» το ξεκαθαρίζει: κανείς δεν πουλά υλικά ανά μερίδα.
-    return {'cost':'τα υλικά, ανά μερίδα' if el else 'of ingredients, per serving',
+    return {'lbl' :'ΚΟΣΤΟΣ ΥΛΙΚΩΝ' if el else 'INGREDIENT COST',
+            'cost':'ανά μερίδα' if el else 'per serving',
             'time':'και έτοιμο' if el else "and it's ready",
             'ing' :'υλικά. Τίποτα άλλο.' if el else "ingredients. That's all.",
             'cal' :'θερμίδες η μερίδα' if el else 'calories per serving',
-            'tbl' :'υλικά για {n} άτομα' if el else 'of ingredients, for {n}',
+            'tbl' :'για {n} άτομα' if el else 'for {n} people',
             'step':'βήματα. Τόσο απλά.' if el else 'steps. That simple.',
             'occ' :'Κυριακή' if el else 'Sunday',
             'occ2':'Το πιάτο της ημέρας' if el else 'The dish of the day'}
@@ -81,7 +82,13 @@ def pick_hook(m, ings, steps, rid, el=True):
     Παλιότερα η επιλογή γινόταν με `var % 3` και κάθε εξαίρεση κατέληγε στο
     κόστος: 21 από τα 30 βίντεο έβγαζαν το ίδιο hook. Τώρα φτιάχνεται πρώτα η
     λίστα των έγκυρων και ο δείκτης πέφτει πάνω της, ώστε η κατανομή να μένει
-    ισορροπημένη και τα βίντεο να μη μοιάζουν μεταξύ τους."""
+    ισορροπημένη και τα βίντεο να μη μοιάζουν μεταξύ τους.
+
+    Επιστρέφει (ετικέτα, νούμερο, επεξήγηση). Η ετικέτα μπαίνει ΠΑΝΩ από το
+    νούμερο και υπάρχει μόνο στα hooks τιμής: το νούμερο είναι 148px και η
+    επεξήγηση 52px, οπότε το βλέμμα πέφτει πρώτα στην τιμή — αν η λέξη
+    «ΚΟΣΤΟΣ ΥΛΙΚΩΝ» έρθει μετά, το βίντεο έχει ήδη διαβαστεί ως τιμοκατάλογος
+    καταστήματος."""
     W_ = hook_words(el)
     var = sum(ord(c) for c in rid)
     num = lambda v: re.sub(r'[~\s]', '', str(v or '')).strip()
@@ -95,29 +102,29 @@ def pick_hook(m, ings, steps, rid, el=True):
     # γλυκό, διώχνουν τον θεατή αντί να τον κρατήσουν.
     cps = eur(m.get('cps'))
     if cps is not None and cps <= 2.50:
-        opts.append((num(m['cps']), W_['cost']))            # φθηνή μερίδα
+        opts.append((W_['lbl'], num(m['cps']), W_['cost']))   # φθηνή μερίδα
     # Ο χρόνος πουλά μόνο όταν είναι μικρός: «100′ και έτοιμο» διώχνει.
     if m.get('time') and m['time'] <= 40:
-        opts.append((f"{m['time']}′", W_['time']))
+        opts.append((None, f"{m['time']}′", W_['time']))
     # Λίγα υλικά = υπόσχεση απλότητας, και είναι νούμερο: διαβάζεται ακαριαία.
     # Ο τίτλος βήματος δοκιμάστηκε και δεν λειτουργεί ως hook — «Γέμισμα
     # λαχανικών» δεν σταματά κανέναν.
     if len(ings) <= 7:
-        opts.append((str(len(ings)), W_['ing']))
+        opts.append((None, str(len(ings)), W_['ing']))
     # Οι θερμίδες πουλάνε φαγητό, όχι γλυκό.
     if m.get('cal') and m['cal'] <= 400 and not sweet:
-        opts.append((str(m['cal']), W_['cal']))
+        opts.append((None, str(m['cal']), W_['cal']))
     # Το συνολικό κόστος για παρέα — αλλά μόνο αν βγαίνει φθηνά κατ' άτομο.
     tot = eur(m.get('cost'))
     if tot is not None and m.get('srv') and m['srv'] >= 4 and tot/m['srv'] <= 2.50:
-        opts.append((num(m['cost']), W_['tbl'].format(n=m['srv'])))
+        opts.append((W_['lbl'], num(m['cost']), W_['tbl'].format(n=m['srv'])))
     if opts:
         return opts[var % len(opts)]
     # Ακριβά, αργά ή πλούσια πιάτα: κανένας αριθμός δεν τα ευνοεί. Εκεί το
     # επιχείρημα δεν είναι το νούμερο αλλά η περίσταση.
     if len(steps) <= 7:
-        return str(len(steps)), W_['step']
-    return W_['occ'], W_['occ2']
+        return None, str(len(steps)), W_['step']
+    return None, W_['occ'], W_['occ2']
 
 
 def build(rid, lang='el'):
@@ -143,7 +150,7 @@ def build(rid, lang='el'):
     var = sum(ord(c) for c in rid)
     zoom_in = (var // 5) % 2 == 0
 
-    hook_big, hook_small = pick_hook(m, ings, steps, rid, el)
+    hook_lbl, hook_big, hook_small = pick_hook(m, ings, steps, rid, el)
 
     # Δύο ακόμη άξονες διαφοροποίησης, ώστε 30 βίντεο στη σειρά να μη δείχνουν
     # πανομοιότυπα: ο τόνος του μεγάλου νούμερου και η στοίχιση του hook.
@@ -273,8 +280,10 @@ def build(rid, lang='el'):
                 f_h1 = ImageFont.truetype(FB, 148 if len(hook_big) <= 6 else 96)
                 f_h2 = ImageFont.truetype(FR, 52)
                 f_nm = ImageFont.truetype(FB, 64)
+                f_lb = ImageFont.truetype(FB, 46)
                 nlines = wrap(d, name, f_nm, colw)[:2]
-                blk = f_h1.size + 16 + f_h2.size + 46 + len(nlines)*76 + 54
+                blk = ((f_lb.size + 14) if hook_lbl else 0) \
+                      + f_h1.size + 16 + f_h2.size + 46 + len(nlines)*76 + 54
                 y = H - SAFE_B - blk
                 # Άλλοτε κεντραρισμένο, άλλοτε στοιχισμένο αριστερά. Στο κέντρο
                 # λαμβάνεται υπόψη μόνο η ωφέλιμη στήλη, όχι όλο το πλάτος:
@@ -282,6 +291,10 @@ def build(rid, lang='el'):
                 def put(t, f, yy, col):
                     x = pad + (colw - d.textlength(t, font=f))/2 if hook_centered else pad
                     d.text((x, yy), t, font=f, fill=col)
+                # Η ετικέτα ΠΡΙΝ το νούμερο: αλλιώς το βλέμμα πέφτει στην τιμή
+                # και το βίντεο διαβάζεται ως προώθηση καταστήματος.
+                if hook_lbl:
+                    put(hook_lbl, f_lb, y, (255,255,255)); y += f_lb.size + 14
                 put(hook_big, f_h1, y, tone);            y += f_h1.size + 16
                 put(hook_small, f_h2, y, (255,250,240));  y += f_h2.size + 46
                 for ln in nlines:
