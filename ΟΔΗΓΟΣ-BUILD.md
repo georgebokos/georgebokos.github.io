@@ -44,19 +44,68 @@ fooddaily-app/android/app/build/outputs/bundle/release/app-release.aab
 κάνει** — χαλάει το αρχείο. Αν δεν έχεις τίποτα άλλο, στα Windows χρησιμοποίησε
 το Σημειωματάριο (Notepad), στο Mac το TextEdit σε λειτουργία απλού κειμένου.
 
-**Android Studio δεν χρειάζεται.** Χρειάζεται όμως να υπάρχει **Java (JDK 17+)**
-στο μηχάνημα, αλλιώς το `./gradlew` δεν τρέχει. Έλεγχος στο τερματικό:
+### ⚠️ Windows: οι εντολές του PowerShell διαφέρουν
+
+Οι εντολές αυτού του οδηγού είναι σε bash (Mac/Linux). Στο PowerShell τρεις
+από αυτές γράφονται αλλιώς:
+
+| Στον οδηγό (bash) | Στο PowerShell |
+|---|---|
+| `grep <λέξη> <αρχείο>` | `Select-String <λέξη> <αρχείο>` |
+| `./gradlew clean` | `.\gradlew.bat clean` |
+| `./gradlew bundleRelease` | `.\gradlew.bat bundleRelease` |
+| `ls -lh <φάκελος>` | `ls <φάκελος>` |
+| `ls α β γ` | `ls α, β, γ` (με **κόμματα**) |
+
+Τα `cd`, `npm install` και `npx cap sync android` δουλεύουν ίδια παντού.
+Επικόλληση στο τερματικό: **Ctrl+Shift+V** (Windows/Linux), **⌘V** (Mac).
+
+### Java — JDK 21, όχι η πιο πρόσφατη
+
+**Android Studio δεν χρειάζεται** για το build. Χρειάζεται όμως **JDK 21**.
 
 ```bash
 java -version
 ```
 
-Αν τυπώσει έκδοση (π.χ. `openjdk version "17.0.x"`), είσαι εντάξει. Αν πει
-«command not found», εγκατέστησε το **Temurin JDK 17** από το
-`adoptium.net`. (Αν έχεις ξαναχτίσει την εφαρμογή σε αυτό το μηχάνημα, το
-έχεις ήδη.)
+⚠️ **Η πιο καινούργια Java ΔΕΝ κάνει.** Το Gradle 8.14 δέχεται μέχρι Java 24·
+με Java 25 το build σκάει αμέσως με:
 
-Χρειάζεται επίσης **Node.js** για το `npm`:
+```
+BUG! exception in phase 'semantic analysis' ...
+Unsupported class file major version 69
+```
+
+Το «major version 69» σημαίνει Java 25. **Η ενσωματωμένη Java του Android
+Studio (`...\Android Studio\jbr`) είναι πλέον 25 — μην τη χρησιμοποιήσεις.**
+
+Εγκατάσταση JDK 21: `adoptium.net/temurin/releases/?version=21` →
+**JDK**, όχι JRE. Στα Windows προτίμησε το `.msi` και στην οθόνη *Custom Setup*
+ενεργοποίησε **«Set JAVA_HOME variable»** και **«Add to PATH»** (είναι σβηστά
+από προεπιλογή). Μετά **κλείσε και ξανάνοιξε** το τερματικό.
+
+Αν κατέβασες το `.zip` ή δεν πρόσθεσε τίποτα στο PATH, το ρυθμίζεις για το
+τρέχον παράθυρο. PowerShell — αντικατέστησε τη διαδρομή με τη δική σου:
+
+```powershell
+$env:JAVA_HOME = "C:\...\jdk-21.0.12+1"
+$env:Path = "$env:JAVA_HOME\bin;$env:Path"
+java -version
+```
+
+Αν δεν ξέρεις πού είναι, ψάξ' το με το `javac.exe` (έτσι βρίσκεις **JDK**, όχι
+JRE):
+
+```powershell
+Get-ChildItem -Path "C:\Program Files","$env:USERPROFILE\Downloads" -Filter javac.exe -Recurse -ErrorAction SilentlyContinue | Select-Object FullName
+```
+
+Το `JAVA_HOME` είναι η διαδρομή **χωρίς** το `\bin\javac.exe`.
+
+⚠️ Έτσι ρυθμισμένο ισχύει **μόνο σε αυτό το παράθυρο**. Μην το κλείσεις μέχρι
+να τελειώσει το build, αλλιώς τα ξαναγράφεις.
+
+### Node.js
 
 ```bash
 node -v
@@ -344,6 +393,20 @@ unzip -p app-release.aab BUNDLE-METADATA/*/*.properties 2>/dev/null | head
 aapt2 dump badging app-release.aab 2>/dev/null | grep versionCode
 ```
 
+Ο πιο απλός έλεγχος, που δουλεύει παντού — δείχνει τον αριθμό με τον οποίο
+χτίστηκε:
+
+```bash
+grep versionCode app/build.gradle
+```
+
+```powershell
+Select-String versionCode app\build.gradle
+```
+
+(Πρόσεξε: εδώ είσαι μέσα στο `android/`, οπότε η διαδρομή είναι
+`app/build.gradle`.)
+
 Αν καμία εντολή δεν δουλεύει, μην ανησυχείς: ο ίδιος έλεγχος γίνεται
 οπωσδήποτε στο **ΒΗΜΑ 6, σημείο 2**, όπου το Play Console δείχνει τον αριθμό μετά
 το ανέβασμα.
@@ -431,6 +494,17 @@ https://play.google.com/store/apps/details?id=com.fooddaily.app
 
 **«Το πακέτο δεν είναι υπογεγραμμένο σωστά»**
 Λάθος keystore. Μην το αντικαταστήσεις — βρες το αρχικό.
+
+**«Unsupported class file major version 69»**
+Λάθος έκδοση Java (25). Χρειάζεται **JDK 21** — δες την ενότητα «Java» πιο
+πάνω. Το major version 69 = Java 25, το 68 = Java 24, το 65 = Java 21.
+
+**«JAVA_HOME is not set and no 'java' command could be found»**
+Δεν υπάρχει Java στο PATH. Ίδια ενότητα.
+
+**Το `java -version` δείχνει άλλη έκδοση από αυτή που εγκατέστησες**
+Είσαι σε παλιό παράθυρο τερματικού, ή έχεις ορίσει χειροκίνητα `JAVA_HOME`
+σε άλλη Java. Κλείσε το παράθυρο και άνοιξε καινούργιο.
 
 **Το `bundleRelease` αποτυγχάνει**
 Τρέξε `./gradlew bundleRelease --stacktrace` και διάβασε την πρώτη γραμμή
