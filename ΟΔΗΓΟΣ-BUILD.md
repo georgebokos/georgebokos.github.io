@@ -18,6 +18,9 @@ app-release.aab
 fooddaily-app/android/app/build/outputs/bundle/release/app-release.aab
 ```
 
+⚠️ Πρέπει να **υπογραφεί χειροκίνητα** μετά το build (βήμα 5.5) — αλλιώς το
+Play Console το απορρίπτει.
+
 **Είναι `.aab`, όχι `.apk`.** Το Play Console δέχεται μόνο `.aab` για νέες
 εκδόσεις από το 2021. Αν σου βγάλει `.apk`, έτρεξες λάθος εντολή (βλ. ΒΗΜΑ 5).
 
@@ -411,13 +414,56 @@ Select-String versionCode app\build.gradle
 οπωσδήποτε στο **ΒΗΜΑ 6, σημείο 2**, όπου το Play Console δείχνει τον αριθμό μετά
 το ανέβασμα.
 
-### Υπογραφή
+### 5.5 Υπογραφή — γίνεται ΧΕΙΡΟΚΙΝΗΤΑ κάθε φορά
 
-Το `.aab` πρέπει να υπογραφεί με το **ίδιο `signing.keystore`** των
-προηγούμενων εκδόσεων. Συνήθως είναι ήδη ρυθμισμένο σε `signingConfigs`
-μέσα στο `build.gradle`, ή σε `keystore.properties`.
+⚠️ **Μην το παραλείψεις.** Το `build.gradle` **δεν** έχει `signingConfigs`, οπότε
+το `bundleRelease` βγάζει **ανυπόγραφο** πακέτο. Το Play Console το απορρίπτει
+με το μήνυμα:
 
-Αν το Play απορρίψει το ανέβασμα λέγοντας ότι το πιστοποιητικό δεν ταιριάζει,
+```
+Όλα τα μεταφορτωμένα πακέτα πρέπει να είναι υπογεγραμμένα.
+```
+
+Αυτό είναι **επιλογή, όχι παράλειψη**: προτιμάμε τη χειροκίνητη υπογραφή, ώστε
+να μη γράφονται πουθενά σε αρχείο οι κωδικοί του keystore.
+
+Το `signing.keystore` βρίσκεται στη ρίζα του `fooddaily-app`, δηλαδή ένα
+επίπεδο πάνω από το `android/`. Μέσα από το `android/`:
+
+```powershell
+jarsigner -keystore ..\signing.keystore app\build\outputs\bundle\release\app-release.aab my-key-alias
+```
+
+```bash
+jarsigner -keystore ../signing.keystore app/build/outputs/bundle/release/app-release.aab my-key-alias
+```
+
+Ζητάει τον κωδικό του keystore — **δεν εμφανίζεται τίποτα** καθώς πληκτρολογείς,
+ούτε αστεράκια. Αν ζητήσει και δεύτερο κωδικό για το κλειδί και είναι ο ίδιος,
+πάτα σκέτο Enter. Τέλος: `jar signed.`
+
+Επαλήθευση:
+
+```bash
+jarsigner -verify app/build/outputs/bundle/release/app-release.aab
+```
+
+Ζητούμενο: **`jar verified.`**
+
+Τα προειδοποιητικά που ακολουθούν είναι **φυσιολογικά** και αγνοούνται:
+αυτο-υπογεγραμμένο πιστοποιητικό (έτσι είναι όλα τα Android keystore) και
+απουσία χρονοσφραγίδας (το πιστοποιητικό λήγει το 2081).
+
+Το alias είναι `my-key-alias`. Αν χρειαστεί να το επιβεβαιώσεις:
+
+```bash
+keytool -list -keystore ../signing.keystore
+```
+
+Το `jarsigner` και το `keytool` είναι μέσα στο JDK, οπότε πρέπει να τρέχουν
+στο **ίδιο παράθυρο** όπου ορίστηκε το `JAVA_HOME`.
+
+Αν το Play απορρίψει το ανέβασμα λέγοντας ότι το **πιστοποιητικό δεν ταιριάζει**,
 **μην αλλάξεις keystore** — βρες το σωστό. Χωρίς αυτό η εφαρμογή δεν
 ενημερώνεται ποτέ ξανά.
 
@@ -494,6 +540,11 @@ https://play.google.com/store/apps/details?id=com.fooddaily.app
 
 **«Το πακέτο δεν είναι υπογεγραμμένο σωστά»**
 Λάθος keystore. Μην το αντικαταστήσεις — βρες το αρχικό.
+
+**«Όλα τα μεταφορτωμένα πακέτα πρέπει να είναι υπογεγραμμένα»**
+Ξέχασες το βήμα 5.5. Δεν χρειάζεται νέο build — υπόγραψε το ίδιο αρχείο με
+`jarsigner`, αφαίρεσε το κόκκινο πακέτο από το Play Console με το **✗** και
+ανέβασέ το ξανά.
 
 **«Unsupported class file major version 69»**
 Λάθος έκδοση Java (25). Χρειάζεται **JDK 21** — δες την ενότητα «Java» πιο
