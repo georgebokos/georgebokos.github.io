@@ -60,11 +60,15 @@ def hook_words(el=True):
     """Οι λέξεις του hook, χωριστά από τη build(), ώστε να τις χρησιμοποιεί
     και το captions.py: η πρώτη γραμμή της λεζάντας πρέπει να επαναλαμβάνει
     αυτό που λέει το βίντεο, αλλιώς το μήνυμα διχάζεται."""
-    return {'cost':'η μερίδα' if el else 'per serving',
+    # ΠΡΟΣΟΧΗ στη διατύπωση των τιμών: «2.25€ η μερίδα» πάνω σε φωτογραφία
+    # φαγητού διαβάζεται ως τιμοκατάλογος delivery, όχι ως κόστος συνταγής —
+    # και οι πλατφόρμες κόβουν οργανική εμβέλεια σε ό,τι μοιάζει εμπορικό.
+    # Η λέξη «υλικά» το ξεκαθαρίζει: κανείς δεν πουλά υλικά ανά μερίδα.
+    return {'cost':'τα υλικά, ανά μερίδα' if el else 'of ingredients, per serving',
             'time':'και έτοιμο' if el else "and it's ready",
             'ing' :'υλικά. Τίποτα άλλο.' if el else "ingredients. That's all.",
             'cal' :'θερμίδες η μερίδα' if el else 'calories per serving',
-            'tbl' :'για {n} άτομα' if el else 'for {n} people',
+            'tbl' :'υλικά για {n} άτομα' if el else 'of ingredients, for {n}',
             'step':'βήματα. Τόσο απλά.' if el else 'steps. That simple.',
             'occ' :'Κυριακή' if el else 'Sunday',
             'occ2':'Το πιάτο της ημέρας' if el else 'The dish of the day'}
