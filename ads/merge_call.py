@@ -51,8 +51,34 @@ def panel_top(gray, h):
             return int(h*0.42) + y
     return None
 
+def scan_tops(src, w, h):
+    """Πρώτο πέρασμα: η κορυφή του σκούρου φύλλου σε κάθε καρέ.
+
+    Σκούρο φύλλο δεν σημαίνει φύλλο κοινοποίησης — το ίδιο ανιχνεύεται και στο
+    πληκτρολόγιο, που εμφανίζεται νωρίτερα στην εγγραφή. Το φύλλο κοινοποίησης
+    σταθεροποιείται γύρω στο 0.46·h· μόνο εκεί θολώνουμε, και στα λίγα καρέ
+    της κίνησης που γειτονεύουν χρονικά με αυτά.
+    """
+    p = subprocess.Popen([FFMPEG,'-i',src,'-f','rawvideo','-pix_fmt','gray','-'],
+                         stdout=subprocess.PIPE, stderr=subprocess.DEVNULL)
+    tops = []
+    while True:
+        raw = p.stdout.read(w*h)
+        if len(raw) < w*h: break
+        tops.append(panel_top(np.frombuffer(raw, dtype=np.uint8).reshape(h, w), h))
+    p.stdout.close(); p.wait()
+    lo, hi = round(h*0.44), round(h*0.50)
+    core = [t is not None and lo <= t <= hi for t in tops]
+    use  = list(core)
+    for i, c in enumerate(core):                # επέκταση στα καρέ της κίνησης
+        if c:
+            for j in range(max(0,i-8), min(len(core), i+9)):
+                if tops[j] is not None: use[j] = True
+    return tops, use
+
 def blur_contacts(src, dst):
     w, h, fps, dur = probe(src)
+    tops, use = scan_tops(src, w, h)
     dec = subprocess.Popen([FFMPEG,'-i',src,'-f','rawvideo','-pix_fmt','rgb24','-'],
                            stdout=subprocess.PIPE, stderr=subprocess.DEVNULL)
     enc = subprocess.Popen([FFMPEG,'-y','-f','rawvideo','-pix_fmt','rgb24','-s',f'{w}x{h}',
@@ -64,8 +90,7 @@ def blur_contacts(src, dst):
         raw = dec.stdout.read(size)
         if len(raw) < size: break
         a = np.frombuffer(raw, dtype=np.uint8).reshape(h, w, 3)
-        gray = a[:, :, :3].mean(axis=2)
-        top = panel_top(gray, h)
+        top = tops[n] if n < len(tops) and use[n] else None
         if top is not None:
             y0, y1 = min(h, top+DY0), min(h, top+DY1)
             if y1 > y0:
