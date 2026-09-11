@@ -33,6 +33,15 @@ W, H   = 1080, 1920
 DY0, DY1 = 275, 478
 BG = (18, 12, 8)          # ίδιο φόντο με το πρώτο μέρος
 
+# Ποια κομμάτια της εγγραφής κρατιούνται (δευτερόλεπτα). Κόβονται οι νεκροί
+# χρόνοι — πληκτρολόγηση και επαναλαμβανόμενο κύλισμα — ώστε το βίντεο να μένει
+# κάτω από τα 40΄΄. Οι ΔΥΟ σκηνές κοινοποίησης μένουν ακέραιες: αυτές είναι το
+# αποδεικτικό, όχι διακοσμητικό.
+SEGMENTS = [(0.0, 2.6),      # αρχική οθόνη, γραμμένη αναζήτηση, το αποτέλεσμα
+            (7.4, 9.4),      # άνοιγμα της συνταγής
+            (10.6, 16.1),    # υλικά → «Κοινοποίηση υλικών» → φύλλο κοινοποίησης
+            (18.2, 22.7)]    # κοινοποίηση της ίδιας της συνταγής
+
 def probe(path):
     p = subprocess.run([FFMPEG,'-i',path], stderr=subprocess.PIPE, text=True)
     import re
@@ -109,6 +118,19 @@ def blur_contacts(src, dst):
     print(f'  ✓ θολώθηκαν {hit} από {n} καρέ')
     return dst
 
+def cut(src, dst, segs):
+    """Κρατά μόνο τα κομμάτια της λίστας, ενωμένα σε ένα αρχείο."""
+    parts = []
+    for k, (a, b) in enumerate(segs):
+        parts.append(f"[0:v]trim={a}:{b},setpts=PTS-STARTPTS[v{k}];"
+                     f"[0:a]atrim={a}:{b},asetpts=PTS-STARTPTS[a{k}];")
+    tags = ''.join(f'[v{k}][a{k}]' for k in range(len(segs)))
+    fc = ''.join(parts) + f'{tags}concat=n={len(segs)}:v=1:a=1[v][a]'
+    subprocess.run([FFMPEG,'-y','-i',src,'-filter_complex',fc,'-map','[v]','-map','[a]',
+        '-c:v','libx264','-preset','medium','-crf','20','-pix_fmt','yuv420p','-c:a','aac',dst],
+        stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+    return dst
+
 def join(blurred, out):
     """Ενιαίο 1080×1920: το πρώτο μέρος όπως είναι, το δεύτερο με γέμισμα."""
     hx = f'{BG[0]:02x}{BG[1]:02x}{BG[2]:02x}'
@@ -133,7 +155,17 @@ if __name__ == '__main__':
     src = sys.argv[1]
     out = sys.argv[2] if len(sys.argv) > 2 else os.path.join(OUT, 'call-full-el.mp4')
     tmp = os.path.join(OUT, '_blurred.mp4')
-    blur_contacts(src, tmp)
-    join(tmp, out)
-    os.remove(tmp)
+    # Η θόλωση είναι το ακριβό βήμα (καρέ-καρέ): αν υπάρχει ήδη αποτέλεσμα πιο
+    # πρόσφατο από την εγγραφή, δεν ξαναγίνεται.
+    if not (os.path.exists(tmp) and os.path.getmtime(tmp) > os.path.getmtime(src)):
+        blur_contacts(src, tmp)
+    else:
+        print('  · χρήση υπάρχουσας θόλωσης')
+    if SEGMENTS:
+        short = os.path.join(OUT, '_short.mp4')
+        cut(tmp, short, SEGMENTS)
+        join(short, out)
+        os.remove(short)
+    else:
+        join(tmp, out)
     print(f'  ✓ {os.path.basename(out)}  {os.path.getsize(out)//1024} KB')
