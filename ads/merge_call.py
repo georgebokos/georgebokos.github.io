@@ -87,10 +87,15 @@ def blur_contacts(src, dst):
 def join(blurred, out):
     """Ενιαίο 1080×1920: το πρώτο μέρος όπως είναι, το δεύτερο με γέμισμα."""
     hx = f'{BG[0]:02x}{BG[1]:02x}{BG[2]:02x}'
+    # Το πρώτο μέρος δεν έχει ήχο. Η σιωπή πρέπει να έχει ΡΗΤΗ διάρκεια: το
+    # anullsrc είναι ατέρμονο και το concat περιμένει για πάντα να τελειώσει,
+    # συνεχίζοντας να γράφει αρχείο μέχρι να γεμίσει ο δίσκος.
+    d1 = probe(PART1)[3]
     fc = (f"[0:v]scale={W}:{H},setsar=1,fps=30[v0];"
           f"[1:v]scale={W}:{H}:force_original_aspect_ratio=decrease,"
           f"pad={W}:{H}:(ow-iw)/2:(oh-ih)/2:color=0x{hx},setsar=1,fps=30[v1];"
-          f"anullsrc=channel_layout=stereo:sample_rate=48000[s0];"
+          f"anullsrc=channel_layout=stereo:sample_rate=48000,"
+          f"atrim=0:{d1:.3f},asetpts=N/SR/TB[s0];"
           f"[s0][1:a]concat=n=2:v=0:a=1[a];"
           f"[v0][v1]concat=n=2:v=1:a=0[v]")
     subprocess.run([FFMPEG,'-y','-i',PART1,'-i',blurred,'-filter_complex',fc,
