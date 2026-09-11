@@ -20,6 +20,7 @@ FFMPEG = imageio_ffmpeg.get_ffmpeg_exe()
 FB = '/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf'
 FR = '/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf'
 W, H, FPS = 1080, 1920, 25
+PACE = 1.22      # πιο αργός ρυθμός: το κείμενο πρέπει να διαβάζεται άνετα
 
 SAFE_B = 380     # το κάτω μέρος το σκεπάζει η λεζάντα
 SAFE_R = 170     # τα δεξιά τα σκεπάζουν τα κουμπιά
@@ -107,11 +108,18 @@ def build(lang='el'):
 
     # --- Προετοιμασία των μηνυμάτων -----------------------------------------
     probe = ImageDraw.Draw(Image.new('RGB',(10,10)))
+    prev_txt = ''
     PAD_X, PAD_Y, LH = 34, 26, 62
     MAXW  = W - 74 - SAFE_R - 120          # πλάτος φούσκας εκτός των κουμπιών
-    msgs, t = [], 0.6
+    msgs, t = [], 0.8
     for who, txt, gap in script(el):
-        t += gap
+        # Ρυθμός ανάγνωσης: η παύση πριν από κάθε μήνυμα δεν είναι μόνο
+        # σκηνοθετική — είναι ο χρόνος που έχει ο θεατής για να διαβάσει το
+        # ΠΡΟΗΓΟΥΜΕΝΟ. Γι' αυτό δεν αρκεί σταθερός συντελεστής: μια μεγάλη
+        # φράση χρειάζεται περισσότερο από μια δίλεξη, οπότε μπαίνει και
+        # κατώφλι ανάλογο με το μήκος της.
+        t += max(gap*PACE, len(prev_txt)*0.043 + 0.40) if msgs else gap*PACE
+        prev_txt = txt
         lines = wrap(probe, txt, f_msg, MAXW - 2*PAD_X)
         bw = max(probe.textlength(l, font=f_msg) for l in lines) + 2*PAD_X
         bh = len(lines)*LH + 2*PAD_Y
