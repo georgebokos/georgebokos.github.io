@@ -161,7 +161,7 @@ if __name__ == '__main__':
         blur_contacts(src, tmp)
     else:
         print('  · χρήση υπάρχουσας θόλωσης')
-    if SEGMENTS:
+    if SEGMENTS and os.environ.get('FD_NOCUT') != '1':
         short = os.path.join(OUT, '_short.mp4')
         cut(tmp, short, SEGMENTS)
         join(short, out)

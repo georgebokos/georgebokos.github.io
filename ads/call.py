@@ -35,7 +35,6 @@ def script(el=True):
         return [
             (A, 'Τι έφτιαξες σήμερα;', 0.9),
             (B, 'Κόκορα κρασάτο.', 1.5),
-            (B, 'Και μιλφέιγ.', 0.9),
             (A, 'Πλάκα κάνεις.', 1.4),
             (A, 'Πώς πρόλαβες;', 1.1),
             (A, 'Είχες τα υλικά;', 1.2),
@@ -52,7 +51,6 @@ def script(el=True):
     return [
         (A, 'What did you cook today?', 0.9),
         (B, 'Coq au vin.', 1.5),
-        (B, 'And a mille-feuille.', 0.9),
         (A, "You're kidding.", 1.4),
         (A, 'How did you find the time?', 1.1),
         (A, 'Did you have the ingredients?', 1.2),
