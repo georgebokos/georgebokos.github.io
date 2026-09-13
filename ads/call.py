@@ -21,6 +21,10 @@ FB = '/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf'
 FR = '/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf'
 W, H, FPS = 1080, 1920, 25
 PACE = 1.22      # πιο αργός ρυθμός: το κείμενο πρέπει να διαβάζεται άνετα
+# Η αρχή τρέχει πιο γρήγορα. Οι πρώτες ατάκες είναι κοντές και προφανείς
+# («Τι έφτιαξες σήμερα;»), οπότε δεν χρειάζονται χρόνο ανάγνωσης — χρειάζονται
+# ρυθμό, για να μη φύγει ο θεατής πριν φτάσει στο ενδιαφέρον σημείο.
+FAST_N, FAST = 5, 0.68
 
 SAFE_B = 380     # το κάτω μέρος το σκεπάζει η λεζάντα
 SAFE_R = 170     # τα δεξιά τα σκεπάζουν τα κουμπιά
@@ -121,7 +125,8 @@ def build(lang='el'):
         # ΠΡΟΗΓΟΥΜΕΝΟ. Γι' αυτό δεν αρκεί σταθερός συντελεστής: μια μεγάλη
         # φράση χρειάζεται περισσότερο από μια δίλεξη, οπότε μπαίνει και
         # κατώφλι ανάλογο με το μήκος της.
-        t += max(gap*PACE, len(prev_txt)*0.043 + 0.40) if msgs else 0.25
+        k = FAST if len(msgs) < FAST_N else 1.0
+        t += max(gap*PACE*k, (len(prev_txt)*0.043 + 0.40)*k) if msgs else 0.25
         prev_txt = txt
         lines = wrap(probe, txt, f_msg, MAXW - 2*PAD_X)
         bw = max(probe.textlength(l, font=f_msg) for l in lines) + 2*PAD_X
