@@ -83,7 +83,7 @@ def wrap(d, txt, f, maxw):
 
 def build(lang='el'):
     el = lang == 'el'
-    L = {'url':'fooddaily.github.io',
+    L = {'url':'Google Play',
          'langs':'376 συνταγές · recipes · Rezepte',
          'langs2':'Ελληνικά · English · Deutsch',
          'call':'Σε κλήση' if el else 'On a call'}

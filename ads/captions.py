@@ -5,7 +5,9 @@ import json, os, subprocess, sys
 sys.path.insert(0, os.path.dirname(os.path.abspath(__file__)))
 
 ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
-LINK = 'fooddaily.github.io'
+# Απευθείας η σελίδα του Google Play, όχι το site: ο θεατής πρέπει να
+# καταλήγει στην εγκατάσταση με ένα βήμα, όχι σε ενδιάμεση σελίδα.
+LINK = 'play.google.com/store/apps/details?id=com.fooddaily.app'
 
 BASE = ['#συνταγες','#ελληνικηκουζινα','#μαγειρικη','#φαγητο','#greekfood',
         '#σπιτικοφαγητο','#τιμαγειρευουμεσημερα','#fooddaily']

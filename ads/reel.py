@@ -143,7 +143,13 @@ def build(rid, lang='el'):
          'b3':'376 ελληνικές συνταγές' if el else '376 Greek recipes',
          'more':'Όλη η συνταγή στην εφαρμογή' if el else 'Full recipe in the app',
          'get':'Σύνδεσμος στο προφίλ' if el else 'Link in bio',
-         'url':'fooddaily.github.io',
+         'url':'Google Play',
+         # Στο τελικό καρέ μπαίνει ολόκληρη η διεύθυνση του Play, ώστε να
+         # οδηγεί κατευθείαν στην εγκατάσταση χωρίς ενδιάμεση σελίδα.
+         'store':'play.google.com/store/apps/details?id=com.fooddaily.app',
+         # Στο τελικό καρέ μπαίνει ολόκληρη η διεύθυνση του Play, ώστε να
+         # αντιγράφεται με το μάτι χωρίς ενδιάμεση σελίδα.
+         'store':'play.google.com/store/apps/details?id=com.fooddaily.app',
          'free':'Δωρεάν στο Google Play' if el else 'Free on Google Play',
          'langs':'376 συνταγές · recipes · Rezepte',
          'langs2':'Ελληνικά · English · Deutsch'}
@@ -372,7 +378,8 @@ def build(rid, lang='el'):
                 d.text((bx+108, y+(bh-38)//2-4), L['get'], font=f_sub, fill=(255,255,255))
                 y += bh + 26
                 ctr(L['free'], f_sub, y, (232,204,162)); y += f_sub.size + 16
-                ctr(L['url'], f_url, y, (233,178,74))
+                f_st = ImageFont.truetype(FR, 26)
+                ctr(L['store'], f_st, y+8, (233,178,74))
 
             stamp(fr, d)
 
