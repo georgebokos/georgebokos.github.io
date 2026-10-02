@@ -8,7 +8,7 @@
 Δέχονται **μόνο** άδειες που επιτρέπουν εμπορική χρήση και παραγώγων:
 public domain, CC0, CC BY, CC BY-SA. Οτιδήποτε NC, ND ή «fair use» κόβεται.
 """
-import json, sys, urllib.parse, urllib.request
+import json, sys, time, urllib.parse, urllib.request
 
 API = 'https://commons.wikimedia.org/w/api.php'
 UA  = 'FoodDailyRecipeImageCheck/1.0 (https://georgebokos.github.io)'
@@ -17,12 +17,29 @@ OK_PREFIX = ('cc0', 'cc-zero', 'public domain', 'pd-', 'cc-by-1', 'cc-by-2',
              'cc-by-3', 'cc-by-4', 'cc-by-sa')
 BAD_PART  = ('-nc', 'nc-', 'noncommercial', '-nd', 'nd-', 'noderiv', 'fair use')
 
-def api(params):
+_last = [0.0]
+
+def api(params, tries=5):
+    """Το Commons κόβει με 429 όταν οι κλήσεις πυκνώνουν. Κρατάμε απόσταση
+    ενάμισι δευτερολέπτου και επαναλαμβάνουμε με αυξανόμενη αναμονή —
+    αλλιώς το αποτέλεσμα «καμία εικόνα» είναι ψευδές."""
     params.update({'action': 'query', 'format': 'json'})
     url = API + '?' + urllib.parse.urlencode(params)
     req = urllib.request.Request(url, headers={'User-Agent': UA})
-    with urllib.request.urlopen(req, timeout=40) as r:
-        return json.load(r)
+    for k in range(tries):
+        gap = 1.5 - (time.time() - _last[0])
+        if gap > 0:
+            time.sleep(gap)
+        try:
+            with urllib.request.urlopen(req, timeout=40) as r:
+                _last[0] = time.time()
+                return json.load(r)
+        except urllib.error.HTTPError as e:
+            _last[0] = time.time()
+            if e.code != 429 or k == tries - 1:
+                raise
+            time.sleep(4 * (k + 1))
+    raise RuntimeError('unreachable')
 
 def licence_ok(lic):
     l = (lic or '').lower()
