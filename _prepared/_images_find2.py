@@ -25,12 +25,12 @@ OK_PREFIX = ('cc0', 'cc-zero', 'public domain', 'pd-', 'cc-by-1', 'cc-by-2',
 BAD_PART  = ('-nc', 'nc-', 'noncommercial', '-nd', 'nd-', 'noderiv', 'fair use')
 _last = [0.0]
 
-def api(host, params, tries=5):
+def api(host, params, tries=6):
     params.update({'action': 'query', 'format': 'json'})
     url = f'https://{host}/w/api.php?' + urllib.parse.urlencode(params)
     req = urllib.request.Request(url, headers={'User-Agent': UA})
     for k in range(tries):
-        gap = 1.6 - (time.time() - _last[0])
+        gap = 4.0 - (time.time() - _last[0])
         if gap > 0: time.sleep(gap)
         try:
             with urllib.request.urlopen(req, timeout=40) as r:
@@ -39,20 +39,31 @@ def api(host, params, tries=5):
         except urllib.error.HTTPError as e:
             _last[0] = time.time()
             if e.code != 429 or k == tries-1: raise
-            time.sleep(5*(k+1))
+            time.sleep(12*(k+1))
 
 def licence_ok(l):
     l = (l or '').lower()
     return not any(b in l for b in BAD_PART) and any(l.startswith(p) for p in OK_PREFIX)
 
+def safe(fn, *a, **kw):
+    """Ένα 429 σε ένα πιάτο δεν πρέπει να ακυρώνει τα υπόλοιπα 21."""
+    try:
+        return fn(*a, **kw)
+    except Exception as e:
+        print(f'   ! {fn.__name__}: {e}')
+        return []
+
 def info(titles):
     """Άδεια και διαστάσεις για αρχεία του Commons."""
     out = []
     for i in range(0, len(titles), 20):
-        d = api('commons.wikimedia.org',
-                {'titles': '|'.join(titles[i:i+20]), 'prop': 'imageinfo',
-                 'iiprop': 'url|size|extmetadata',
-                 'iiextmetadatafilter': 'LicenseShortName'})
+        try:
+            d = api('commons.wikimedia.org',
+                    {'titles': '|'.join(titles[i:i+20]), 'prop': 'imageinfo',
+                     'iiprop': 'url|size|extmetadata',
+                     'iiextmetadatafilter': 'LicenseShortName'})
+        except Exception as e:
+            print(f'   ! imageinfo: {e}'); continue
         for p in (d.get('query', {}).get('pages') or {}).values():
             ii = (p.get('imageinfo') or [{}])[0]
             lic = ((ii.get('extmetadata') or {}).get('LicenseShortName') or {}).get('value', '')
@@ -95,16 +106,10 @@ def find(queries, keys):
                 seen.add(f); cand.append((f, src))
     for q in queries:
         for host in ('el.wikipedia.org', 'en.wikipedia.org'):
-            try:
-                for t in wiki_search(host, q)[:2]:
-                    add(from_wikipedia(host, t), f'wiki:{host}:{t}')
-            except Exception as e:
-                print(f'   ! {host} {q}: {e}')
-        try:
-            for c in cat_search(q):
-                add(from_category(c), f'cat:{c}')
-        except Exception as e:
-            print(f'   ! category {q}: {e}')
+            for t in safe(wiki_search, host, q)[:2]:
+                add(safe(from_wikipedia, host, t), f'wiki:{host}:{t}')
+        for c in safe(cat_search, q):
+            add(safe(from_category, c), f'cat:{c}')
     # Φίλτρο ονόματος: κόβει τα ψευδώς θετικά της αναζήτησης
     kl = [k.lower() for k in keys]
     named = [c for c in cand if any(k in c[0].lower() for k in kl)]
@@ -119,8 +124,10 @@ if __name__ == '__main__':
     out = {}
     for key, cfg in spec.items():
         print(f'\n=== {key}')
-        r = find(cfg['q'], cfg['keys'])
+        r = safe(find, cfg['q'], cfg['keys'])
         out[key] = r
+        json.dump(out, open(sys.argv[2], 'w', encoding='utf-8'),
+                  ensure_ascii=False, indent=1)
         if not r: print('  ✗ καμία')
         for x in r[:6]:
             print(f"  ✓ {x['lic']:<16} {x['w']}×{x['h']}  {x['title']}  [{x['src']}]")
