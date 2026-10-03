@@ -31,6 +31,22 @@ console.log(JSON.stringify(M[process.argv[2]]));'''
     if p.returncode: sys.exit('Δεν βρέθηκε: '+rid)
     return json.loads(p.stdout)
 
+def total_meals():
+    """Πόσες συνταγές έχει η εφαρμογή αυτή τη στιγμή.
+
+    Ο αριθμός ΔΕΝ γράφεται με το χέρι: η λεζάντα λέει «άλλες N», δηλαδή όλες
+    εκτός από αυτή του βίντεο, και ένα χειρόγραφο νούμερο ξεχνιέται και μένει
+    λάθος κατά ένα για πάντα."""
+    js = (r'const fs=require("fs"),vm=require("vm");'
+          r'const b=fs.readFileSync(process.argv[1],"utf8")'
+          r'.match(/<script(?![^>]*src=)[^>]*>([\s\S]*?)<\/script>/)[1];'
+          r'const i=b.indexOf("const MEALS={"),j=b.indexOf("\n};",i);'
+          r'const c={};vm.createContext(c);new vm.Script(b.slice(i,j+3)).runInContext(c);'
+          r'console.log(Object.keys(vm.runInContext("MEALS",c)).length);')
+    p = subprocess.run(['node','-e',js,os.path.join(ROOT,'index.html')],
+                       capture_output=True, text=True)
+    return int(p.stdout.strip()) if p.returncode == 0 else 0
+
 def caption(rid):
     m = load(rid)
     tags = BASE + CAT.get(m['cats'][0], [])
@@ -41,12 +57,13 @@ def caption(rid):
     from reel import pick_hook
     lbl, big, small = pick_hook(m, m['ing'], m['steps'], rid, True)
     head = f'{lbl}: {big} {small}' if lbl else f'{big} {small}'
+    rest = max(0, total_meals() - 1)
     return f"""{head} — {m['n']} 🍽️
 
 ⏱ {m['time']}′  ·  🔥 {m['cal']} θερμίδες  ·  👥 {m['srv']} μερίδες  ·  💰 κόστος υλικών {cps}/μερίδα
 
 Το φτιάχνεις μόνος σου — τα υλικά και όλα τα βήματα είναι στην εφαρμογή.
-Μαζί με άλλες 375 ελληνικές συνταγές — και μία πρόταση φαγητού κάθε μέρα.
+Μαζί με άλλες {rest} ελληνικές συνταγές — και μία πρόταση φαγητού κάθε μέρα.
 
 📲 {LINK}
 (σύνδεσμος και στο προφίλ)
