@@ -13,7 +13,7 @@ SIZES = {'landscape': (1200, 628), 'square': (1200, 1200), 'portrait': (1200, 15
 # Στο οριζόντιο πλαίσιο δεν χωρά δίστιχος τίτλος χωρίς να πέσει πάνω στο λογότυπο.
 TXT = {
  'el': {'h': 'Τι μαγειρεύουμε\nσήμερα;', 'h1': 'Τι μαγειρεύουμε σήμερα;',
-        's': '376 ελληνικές συνταγές', 'c': 'Δωρεάν στο Google Play'},
+        's': '397 ελληνικές συνταγές', 'c': 'Δωρεάν στο Google Play'},
  'en': {'h': 'What are we\ncooking today?', 'h1': 'What are we cooking today?',
         's': '376 Greek recipes', 'c': 'Free on Google Play'},
 }

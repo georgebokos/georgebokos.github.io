@@ -12,7 +12,7 @@ FB = '/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf'
 FR = '/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf'
 W, H = 1200, 630
 
-T = {'el': {'tag': 'Τι μαγειρεύουμε σήμερα;', 'sub': '376 ελληνικές συνταγές · μία πρόταση κάθε μέρα',
+T = {'el': {'tag': 'Τι μαγειρεύουμε σήμερα;', 'sub': '397 ελληνικές συνταγές · μία πρόταση κάθε μέρα',
             'cta': 'Εγκατάσταση τώρα', 'free': 'Δωρεάν στο Google Play'},
      'en': {'tag': 'What are we cooking today?', 'sub': '376 Greek recipes · one idea every day',
             'cta': 'Install now', 'free': 'Free on Google Play'}}

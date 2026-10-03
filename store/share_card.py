@@ -13,7 +13,7 @@ FR = '/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf'
 URL = 'fooddaily.github.io'
 
 T = {'el': {'tag': 'Τι μαγειρεύουμε σήμερα;',
-            'sub': '376 ελληνικές συνταγές · μία πρόταση κάθε μέρα',
+            'sub': '397 ελληνικές συνταγές · μία πρόταση κάθε μέρα',
             'act': 'Σκάναρε τον κωδικό',
             'free': 'Δωρεάν στο Google Play'},
      'en': {'tag': 'What are we cooking today?',

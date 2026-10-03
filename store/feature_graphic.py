@@ -13,7 +13,7 @@ FR = '/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf'
 
 TXT = {
  'el': {'tag':'Τι μαγειρεύουμε σήμερα;',
-        'sub':'376 ελληνικές συνταγές',
+        'sub':'397 ελληνικές συνταγές',
         'b':['Πρόταση φαγητού κάθε μέρα','Μαγείρεψε ό,τι έχεις στο ψυγείο','Κόστος ανά μερίδα & λίστα αγορών']},
  'en': {'tag':'What are we cooking today?',
         'sub':'376 authentic Greek recipes',

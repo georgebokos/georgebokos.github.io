@@ -45,7 +45,7 @@
 
 ```
 FoodDaily · Google Play
-376 συνταγές · recipes · Rezepte
+397 συνταγές · recipes · Rezepte
 Ελληνικά · English · Deutsch
 ▶ GET IT ON Google Play
 ```
