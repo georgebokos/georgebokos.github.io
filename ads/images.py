@@ -15,7 +15,7 @@ TXT = {
  'el': {'h': 'Τι μαγειρεύουμε\nσήμερα;', 'h1': 'Τι μαγειρεύουμε σήμερα;',
         's': '397 ελληνικές συνταγές', 'c': 'Δωρεάν στο Google Play'},
  'en': {'h': 'What are we\ncooking today?', 'h1': 'What are we cooking today?',
-        's': '376 Greek recipes', 'c': 'Free on Google Play'},
+        's': '397 Greek recipes', 'c': 'Free on Google Play'},
 }
 HERO = 'giouvetsi'
 

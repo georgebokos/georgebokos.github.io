@@ -30,7 +30,7 @@ def scenes(lang):
             ('Δωρεάν στο Google Play', 'Χωρίς διαφημίσεις · δουλεύει και εκτός δικτύου')],
      'en': [('What are we cooking today?', 'The decision that tires you more than the cooking'),
             ('One suggestion every day', 'With a photo, the time and the cost'),
-            ('376 Greek recipes', 'Moussaka, pastitsio, giouvetsi, bean soup'),
+            ('397 Greek recipes', 'Moussaka, pastitsio, giouvetsi, bean soup'),
             ("What's in your fridge?", 'It finds what you can cook right now'),
             ('Cost per serving', 'Know what you spend before you shop'),
             ('Free on Google Play', 'No ads · works offline')],

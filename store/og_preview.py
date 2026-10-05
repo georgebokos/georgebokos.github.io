@@ -14,7 +14,7 @@ W, H = 1200, 630
 
 T = {'el': {'tag': 'Τι μαγειρεύουμε σήμερα;', 'sub': '397 ελληνικές συνταγές · μία πρόταση κάθε μέρα',
             'cta': 'Εγκατάσταση τώρα', 'free': 'Δωρεάν στο Google Play'},
-     'en': {'tag': 'What are we cooking today?', 'sub': '376 Greek recipes · one idea every day',
+     'en': {'tag': 'What are we cooking today?', 'sub': '397 Greek recipes · one idea every day',
             'cta': 'Install now', 'free': 'Free on Google Play'}}
 
 html = open(os.path.join(ROOT, 'index.html'), encoding='utf-8').read()

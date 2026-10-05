@@ -140,7 +140,7 @@ def build(rid, lang='el'):
          'q':'Τι μαγειρεύουμε σήμερα;' if el else 'What are we cooking today?',
          'b1':'Πρόταση φαγητού κάθε μέρα' if el else 'A meal suggestion every day',
          'b2':'Υπενθύμιση τι να ετοιμάσεις' if el else 'Reminders of what to prep',
-         'b3':'397 ελληνικές συνταγές' if el else '376 Greek recipes',
+         'b3':'397 ελληνικές συνταγές' if el else '397 Greek recipes',
          'more':'Όλη η συνταγή στην εφαρμογή' if el else 'Full recipe in the app',
          'get':'Σύνδεσμος στο προφίλ' if el else 'Link in bio',
          'url':'Google Play',

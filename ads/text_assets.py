@@ -22,7 +22,7 @@ A = {
 'en': {
  'headlines': [
    'What to cook tonight?',
-   '376 Greek recipes',
+   '397 Greek recipes',
    'Cook what you have',
    'See the cost per serving',
    'One idea, every day',
