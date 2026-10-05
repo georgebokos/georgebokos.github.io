@@ -10,20 +10,24 @@ ROOT = os.path.dirname(os.path.dirname(os.path.abspath(__file__)))
 OUT  = os.path.join(ROOT, 'store')
 FB = '/usr/share/fonts/truetype/dejavu/DejaVuSans-Bold.ttf'
 FR = '/usr/share/fonts/truetype/dejavu/DejaVuSans.ttf'
-URL = 'fooddaily.github.io'
+# Το QR οδηγεί ΑΠΕΥΘΕΙΑΣ στο Google Play, όχι στο site: όποιος σκανάρει θέλει
+# να εγκαταστήσει, και μια ενδιάμεση σελίδα χάνει τους μισούς. Η διεύθυνση του
+# site είχε και το επώνυμο του δημιουργού μέσα της.
+QR_URL = 'https://play.google.com/store/apps/details?id=com.fooddaily.app'
+URL    = 'play.google.com/store/apps/details?id=com.fooddaily.app'
 
 T = {'el': {'tag': 'Τι μαγειρεύουμε σήμερα;',
             'sub': '397 ελληνικές συνταγές · μία πρόταση κάθε μέρα',
             'act': 'Σκάναρε τον κωδικό',
             'free': 'Δωρεάν στο Google Play'},
      'en': {'tag': 'What are we cooking today?',
-            'sub': '376 Greek recipes · one idea every day',
+            'sub': '397 Greek recipes · one idea every day',
             'act': 'Scan the code',
             'free': 'Free on Google Play'}}
 
 def qr_img(px):
     q = qrcode.QRCode(error_correction=qrcode.constants.ERROR_CORRECT_M, box_size=10, border=2)
-    q.add_data('https://' + URL); q.make(fit=True)
+    q.add_data(QR_URL); q.make(fit=True)
     return q.make_image(fill_color=(42, 27, 6), back_color='white').convert('RGB').resize((px, px), Image.NEAREST)
 
 def build(lang, W, H, name):
@@ -44,7 +48,7 @@ def build(lang, W, H, name):
     def layout(k):
         F = lambda f, r: ImageFont.truetype(f, max(10, round(S * r * k)))
         fn = {'name': F(FB, .095), 'tag': F(FB, .050), 'sub': F(FR, .032),
-              'act': F(FB, .036), 'url': F(FB, .030)}
+              'act': F(FB, .036), 'url': F(FR, .019)}
         D = round(S * .20 * k)
         Q = round(S * .30 * k)
         pad = round(S * .045 * k)
