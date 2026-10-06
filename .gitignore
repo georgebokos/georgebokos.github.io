@@ -11,4 +11,7 @@ node_modules/
 ads/reels/*.mp4
 ads/reels/numbered/
 
+# Το ίδιο και για τα βίντεο λειτουργιών — ads/feature_video.py τα ξαναφτιάχνει
+ads/feature-ads/*.mp4
+
 __pycache__/
