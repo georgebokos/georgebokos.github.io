@@ -7439,9 +7439,10 @@ function openMealPicker(dateKey,dayLabel){
 }
 function closeMealPicker(){document.getElementById('mpicker').classList.remove('show');}
 function filterMealPicker(q){
-  const dq=q.toLowerCase().trim();
-  const items=dq
-    ?_pickerAllMeals.filter(m=>m.n.toLowerCase().includes(dq)||m.en?.toLowerCase().includes(dq))
+  // Ίδια λογική με την κεντρική αναζήτηση: λέξεις, όχι ολόκληρη φράση.
+  const terms=searchTerms(q);
+  const items=terms.length
+    ?_pickerAllMeals.filter(m=>termsHit(terms,deaccent(m.n)+' '+deaccent(m.en||'')))
     :_pickerAllMeals;
   const prep=MEAL_PREP;
   document.getElementById('mpicker-list').innerHTML=items.map(m=>{
@@ -8177,7 +8178,27 @@ function deaccent(s){
     .replace(/[αάΑΆ]/g,'α').replace(/[εέΕΈ]/g,'ε')
     .replace(/[ηήΗΉ]/g,'η').replace(/[ιίΙΊϊΐ]/g,'ι')
     .replace(/[οόΟΌ]/g,'ο').replace(/[υύΥΎϋΰ]/g,'υ')
-    .replace(/[ωώΩΏ]/g,'ω');
+    .replace(/[ωώΩΏ]/g,'ω')
+    .replace(/ς/g,'σ');
+}
+// Η αναζήτηση έψαχνε ολόκληρη τη φράση ως υποσυμβολοσειρά, οπότε έσπαγε σε
+// οτιδήποτε μεσολαβούσε: το «πιπεριές γεμιστές» δεν έβρισκε τις «Πιπεριές
+// Φλωρίνης γεμιστές», επειδή ανάμεσα στις δύο λέξεις κάθεται τρίτη. Πλέον η
+// φράση σπάει σε λέξεις και ζητείται να υπάρχουν ΟΛΕΣ, σε όποια σειρά.
+function searchTerms(q){
+  return deaccent(q).split(/[^a-zα-ω0-9]+/).filter(w=>w.length>1);
+}
+// Τα ελληνικά αλλάζουν κατάληξη κατά γένος και αριθμό — «γεμιστές», «γεμιστά»,
+// «γεμιστό» — οπότε κάθε λέξη δοκιμάζεται και κουτσουρεμένη κατά ένα και δύο
+// γράμματα. Κάτω από πέντε γράμματα δεν κόβεται τίποτα: εκεί το κόψιμο φέρνει
+// άσχετα πιάτα («ρύζι» θα γινόταν «ρυ»).
+function termHit(term,text){
+  if(text.includes(term))return true;
+  if(term.length>=5&&text.includes(term.slice(0,-1)))return true;
+  return term.length>=6&&text.includes(term.slice(0,-2));
+}
+function termsHit(terms,text){
+  return terms.length>0&&terms.every(w=>termHit(w,text));
 }
 function openSearch(){
   closeOvInstant();
@@ -8203,15 +8224,22 @@ function doSearch(q){
     return;
   }
   const dq=deaccent(q.trim());
+  const terms=searchTerms(q);
   const results=[];
   // Search MEALS — by name or ingredient
   for(const[id,m] of Object.entries(MEALS)){
-    const nameMatch=deaccent(m.n).includes(dq)||deaccent(m.en||'').includes(dq);
-    const ingMatch=m.ing&&deaccent(m.ing.join(' ')).includes(dq);
+    const nm=deaccent(m.n)+' '+deaccent(m.en||'');
+    const nameMatch=termsHit(terms,nm);
+    const ingMatch=m.ing&&termsHit(terms,nm+' '+deaccent(m.ing.join(' ')));
     if(nameMatch||ingMatch){
-      results.push({type:'meal',id,name:mealName(m),emoji:m.e,cat:catLabel(m.cats[0]),onclick:`openR('${id}')`});
+      // Σειρά: πρώτα όποιο πιάτο λέγεται έτσι, μετά όποιο απλώς το περιέχει
+      // στα υλικά. Χωρίς αυτό η «φέτα» έβγαζε πρώτα δέκα πιάτα που απλώς
+      // έχουν φέτα μέσα, και τελευταία τη σαγανάκι.
+      const score=nameMatch?(nm.includes(dq)?2:1):0;
+      results.push({type:'meal',id,score,name:mealName(m),emoji:m.e,cat:catLabel(m.cats[0]),onclick:`openR('${id}')`});
     }
   }
+  results.sort((a,b)=>b.score-a.score);
   // Η αναζήτηση δεν σαρώνει πια το SWEETS: όλα τα γλυκά του βρίσκονται
   // πλέον στο MEALS, και η διπλή σάρωση έδινε διπλά αποτελέσματα.
   mg.style.display='none';
