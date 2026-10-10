@@ -58,7 +58,7 @@ N = n_meals()
 # λέγεται η λειτουργία.
 HERO = {
  'el': [
-  ('🔔', 'Καθημερινή ειδοποίηση', 'Μια πρόταση φαγητού κάθε μέρα', 'Καθημερινή πρόταση'),
+  ('🔔', '12 προτάσεις κάθε μέρα', 'Μία ξεχωρίζει για σήμερα — και με ένα κλικ, 12 νέες', '12 προτάσεις τη μέρα'),
   ('🛒', 'Λίστα αγορών με ένα κλικ', 'Τσεκάρεις τα υλικά και τα στέλνεις', 'Λίστα αγορών'),
   ('🍳', 'Cook Mode', 'Βήμα-βήμα, χωρίς να σβήνει η οθόνη', 'Cook Mode'),
   ('⏱️', 'Χρονόμετρο σε κάθε βήμα', 'Χτυπάει μόνο του στην ώρα του', 'Χρονόμετρο στο βήμα'),
@@ -66,7 +66,7 @@ HERO = {
   ('🧊', 'Τι έχεις στο ψυγείο;', 'Βάζεις ό,τι περίσσεψε, βρίσκει πιάτο', 'Τι έχεις στο ψυγείο'),
  ],
  'en': [
-  ('🔔', 'A reminder every day', 'One meal idea, every single day', 'A daily idea'),
+  ('🔔', '12 ideas every day', 'One stands out for today — one tap, 12 new ones', '12 ideas a day'),
   ('🛒', 'Shopping list in one tap', 'Tick the items and send them off', 'Shopping list'),
   ('🍳', 'Cook Mode', 'Step by step, screen never sleeps', 'Cook Mode'),
   ('⏱️', 'A timer on every step', 'It rings by itself, right on time', 'Timer on each step'),
@@ -110,7 +110,7 @@ T = {
         'rest_hdr': 'Και όλα αυτά μαζί',
         'langline': 'Σε τρεις γλώσσες',
         'day': ['07:30', '18:00', '19:15', '20:00'],
-        'daytxt': [('Η ειδοποίηση', 'Σήμερα: Γιουβέτσι αρνί'),
+        'daytxt': [('Οι 12 προτάσεις', 'Σήμερα ξεχωρίζει: Γιουβέτσι αρνί'),
                    ('Το σούπερ μάρκετ', 'Η λίστα αγορών, έτοιμη στο κινητό'),
                    ('Η κουζίνα', 'Cook Mode — η οθόνη δεν σβήνει'),
                    ('Το τραπέζι', 'Και η συνταγή φεύγει στην παρέα')],
@@ -123,7 +123,7 @@ T = {
         'rest_hdr': 'And all of this too',
         'langline': 'In three languages',
         'day': ['07:30', '18:00', '19:15', '20:00'],
-        'daytxt': [('The reminder', 'Today: Lamb giouvetsi'),
+        'daytxt': [('The 12 ideas', 'Today it picks: Lamb giouvetsi'),
                    ('The supermarket', 'The shopping list, ready on your phone'),
                    ('The kitchen', 'Cook Mode — the screen stays on'),
                    ('The table', 'And the recipe goes to your friends')],

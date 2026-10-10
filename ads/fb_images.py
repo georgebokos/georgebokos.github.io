@@ -82,7 +82,7 @@ def cover(path=os.path.join(OUT, 'fb-cover.png')):
     f2 = ImageFont.truetype(FR, 40)
     f3 = ImageFont.truetype(FB, 32)
     ctr(d, 'Τι μαγειρεύουμε σήμερα;', f1, 282, W, CREAM)
-    ctr(d, '397 ελληνικές συνταγές — μία πρόταση κάθε μέρα', f2, 394, W, WARM)
+    ctr(d, '397 ελληνικές συνταγές — 12 προτάσεις κάθε μέρα', f2, 394, W, WARM)
     ctr(d, 'Ελληνικά  ·  English  ·  Deutsch', f3, 468, W, GOLD)
 
     gp = badge(320)
