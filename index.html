@@ -8332,13 +8332,17 @@ function selGuest(n,btn){
 
   const pick=ids=>ids.filter(id=>MEALS[id]&&!EXCL_GUEST.includes(id));
 
-  // Shuffle within each tier for variety
-  const shuffle=a=>[...a].sort(()=>Math.random()-.5);
-  const take=(arr,k)=>shuffle(pick(arr)).slice(0,k);
-  // Αναλογική επιλογή από κάθε επίπεδο. Με απλή σειρά P4→P3→P2 και όριο 20,
-  // τα 13 πιάτα του P4 και 7 του P3 γέμιζαν όλες τις θέσεις — ο P2 δεν
-  // εμφανιζόταν ΠΟΤΕ, και από τον P3 φαινόταν μόνο το ένα όγδοο.
-  const pool=[...take(P4,6),...take(P3,9),...take(P2,5)];
+  // ΟΛΑ τα πιάτα, σε σταθερή σειρά: πρώτα τα εντυπωσιακά, μετά τα εκλεκτά,
+  // μετά τα οικογενειακά.
+  //
+  // Πριν έδειχνε 20 στην τύχη από τα 108. Δύο προβλήματα: δεκάδες πολύ καλά
+  // πιάτα δεν τα έβλεπε ΠΟΤΕ κανείς, και —χειρότερο— η λίστα άλλαζε σε κάθε
+  // πάτημα του αριθμού ατόμων. Ο χρήστης δεν καταλάβαινε γιατί χάθηκε το
+  // πιάτο που μόλις είδε και το διάβαζε ως βλάβη.
+  //
+  // Ο αριθμός ατόμων πλέον αλλάζει ΜΟΝΟ τις μερίδες (η ένδειξη ×N παρακάτω),
+  // όχι το ποια πιάτα φαίνονται.
+  const pool=[...pick(P4),...pick(P3),...pick(P2)];
   // Αρνί στη σούβλα — ειδική περίσταση, εμφανίζεται πάντα τελευταίο
   const suvIdx=pool.indexOf('arni_souvia');
   if(suvIdx>-1){pool.splice(suvIdx,1);pool.push('arni_souvia');}
@@ -8360,7 +8364,7 @@ function selGuest(n,btn){
     const fav=isFav(id);
     return `<div class="mcard" onclick="openRWithScale('${id}',${n})">
       <div class="mtop" style="background:${bg}">
-        ${img?`<img alt="${mealName(m)}" src="${img}" onload="this.classList.add('loaded');this.nextElementSibling.style.opacity=0" onerror="this.style.display='none'">`:''}
+        ${img?`<img alt="${mealName(m)}" src="${img}" loading="lazy" onload="this.classList.add('loaded');this.nextElementSibling.style.opacity=0" onerror="this.style.display='none'">`:''}
         <div class="memoji">${m.e}</div>
         <div class="mtop-grad"></div>
         <div class="mtop-badge"><span class="badge ${cl}">${catLabel(mc)}</span></div>
