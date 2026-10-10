@@ -152,8 +152,15 @@ body{font-family:'Inter',-apple-system,sans-serif;background:var(--bg);color:var
 .balance{background:var(--w);border:1.5px solid #EDE8DE;border-radius:var(--rs);padding:12px 15px;margin-bottom:.5rem;display:flex;justify-content:space-between;align-items:center;box-shadow:var(--sh);}
 .bal-t{font-size:13.5px;font-weight:500;color:var(--tx);}
 .bal-s{font-size:12px;color:var(--t3);}
-.reshuffle{width:100%;padding:12px;margin-top:.75rem;border-radius:var(--rs);border:1.5px solid var(--bd);background:transparent;color:var(--pri);font-size:13.5px;font-weight:500;font-family:'Inter',sans-serif;cursor:pointer;transition:all .2s;}
-.reshuffle:hover{background:var(--lt);}
+/* Ήταν διάφανο, με μπεζ περίγραμμα πάνω σε μπεζ φόντο και γράμματα 13.5px σε
+   κανονικό βάρος: διαβαζόταν ως λεζάντα και όχι ως κουμπί, και το μάτι δεν
+   πήγαινε ποτέ εκεί. Το width:100% ήταν κατάλοιπο από τότε που το κουμπί
+   έπιανε δική του γραμμή — μέσα στη flex σειρά της .daily-meta δεν ανήκει.
+   Η σκιά είναι στο χρώμα της μάρκας, όχι μαύρη, ώστε να δουλεύει και στα δύο
+   θέματα. */
+.reshuffle{flex:0 0 auto;padding:0 16px;height:44px;border-radius:22px;border:0;background:var(--pri2);color:#fff;font-size:15px;font-weight:600;font-family:'Inter',sans-serif;cursor:pointer;white-space:nowrap;box-shadow:0 3px 10px rgba(200,80,26,.30);transition:transform .12s,box-shadow .2s,background .2s;}
+.reshuffle:hover{background:var(--pri);box-shadow:0 4px 14px rgba(200,80,26,.38);}
+.reshuffle:active{transform:translateY(1px);box-shadow:0 2px 6px rgba(200,80,26,.30);}
 /* OVERLAY */
 .ov{position:fixed;inset:0;z-index:200;display:flex;align-items:flex-end;background:transparent;pointer-events:none;max-width:700px;margin:0 auto;}
 .ov.show{background:rgba(0,0,0,.5);pointer-events:all;transition:background .35s;}
