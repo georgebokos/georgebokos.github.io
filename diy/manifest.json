@@ -1,0 +1,21 @@
+{
+  "name": "Φτιάξ’ το μόνος σου — Οδηγοί DIY",
+  "short_name": "Φτιάξ’ το",
+  "description": "Αναλυτικοί δίγλωσσοι οδηγοί DIY: βήματα, εργαλεία, υλικά και σχεδιαγράμματα για κάθε εργασία του σπιτιού.",
+  "id": "/diy/",
+  "start_url": "/diy/",
+  "scope": "/diy/",
+  "display": "standalone",
+  "orientation": "portrait",
+  "background_color": "#F1F3F6",
+  "theme_color": "#0F5C8C",
+  "lang": "el",
+  "dir": "ltr",
+  "categories": ["utilities", "education", "productivity"],
+  "icons": [
+    { "src": "icon-192.png",          "sizes": "192x192", "type": "image/png", "purpose": "any" },
+    { "src": "icon-512.png",          "sizes": "512x512", "type": "image/png", "purpose": "any" },
+    { "src": "icon-maskable-512.png", "sizes": "512x512", "type": "image/png", "purpose": "maskable" },
+    { "src": "icon.svg",              "sizes": "any",     "type": "image/svg+xml", "purpose": "any" }
+  ]
+}
