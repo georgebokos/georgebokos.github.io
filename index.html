@@ -6098,8 +6098,28 @@ const OFFER_TXT={
     ico:'🔥',
     el:{t:'Μαγειρεύεις σταθερά!',s:'Με το Premium οργανώνεις όλη την εβδομάδα από πριν και δεν ξανασκέφτεσαι «τι να φάω».',y:'Δες το Premium'},
     en:{t:"You're on a roll!",s:'With Premium you plan the whole week ahead and never wonder what to cook.',y:'See Premium'}
+  },
+  // Η στιγμή της λήξης: ο χρήστης μόλις έχασε κάτι που είχε. Είναι η πιο
+  // δυνατή στιγμή πώλησης όλης της διαδρομής, και μέχρι τώρα περνούσε
+  // σιωπηλά — άλλαζε μόνο μια μπάρα που δεν την πρόσεχε κανείς.
+  lapse_sub:{
+    ico:'⌛',
+    el:{t:'Η δοκιμή σου τελείωσε',s:'Κλείδωσαν το εβδομαδιαίο πλάνο, οι σημειώσεις, τα απεριόριστα αγαπημένα και ο αποκλεισμός υλικών. Οι συνταγές μένουν όλες δικές σου.',y:'Συνέχισε με Premium'},
+    en:{t:'Your trial has ended',s:'The weekly plan, notes, unlimited favourites and ingredient blocking are now locked. All the recipes stay yours.',y:'Continue with Premium'}
+  },
+  lapse_prev:{
+    ico:'⌛',
+    el:{t:'Οι ημέρες γνωριμίας τελείωσαν',s:'Κλείδωσαν το εβδομαδιαίο πλάνο, οι σημειώσεις, τα απεριόριστα αγαπημένα και ο αποκλεισμός υλικών. Οι συνταγές μένουν όλες δικές σου.',y:'Δες το Premium'},
+    en:{t:'Your free days are over',s:'The weekly plan, notes, unlimited favourites and ingredient blocking are now locked. All the recipes stay yours.',y:'See Premium'}
+  },
+  remind:{
+    ico:'💎',
+    el:{t:'Ξεκλείδωσε όλη την εφαρμογή',s:'Εβδομαδιαίο πλάνο, σημειώσεις ανά συνταγή, απεριόριστα αγαπημένα και νέες συνταγές 7 ημέρες πριν βγουν σε όλους.',y:'Δες το Premium'},
+    en:{t:'Unlock the whole app',s:'Weekly plan, notes on every recipe, unlimited favourites and new recipes 7 days before everyone else.',y:'See Premium'}
   }
 };
+// Κάθε πόσες εκκινήσεις ξαναθυμίζουμε, αφού έχει λήξει η πρόσβαση.
+const LAPSE_REMIND_EVERY=3;
 let _offerTrigger=null;
 // Αφορμή σε αναμονή: κρατιέται όσο είναι ανοιχτή η συνταγή και εμφανίζεται μόλις κλείσει
 let _offerPending=null;
@@ -6124,21 +6144,61 @@ function maybeOfferPremium(trigger){
     const inst=_oNum('fd_preview_start');
     if(inst&&Date.now()-inst<OFFER_MIN_AGE_MIN*60000)return;
     // Ποτέ πάνω από άλλο ανοιχτό παράθυρο
-    const busy=['overlay','pscreen','pgate','wplan-sheet','mpicker','prof-sheet','urform','cook-mode','cook-tonight-modal','rate-mod']
-      .some(id=>{const el=document.getElementById(id);return el&&el.classList.contains('show');});
-    const nm=document.getElementById('nmod');
-    if(busy||(nm&&nm.style.display&&nm.style.display!=='none'))return;
-    const m=document.getElementById('offer-mod');
-    if(!m)return;
-    const cfg=OFFER_TXT[trigger], tx=cfg[t('x26')];
-    document.getElementById('offer-ico').textContent=cfg.ico;
-    document.getElementById('offer-t').textContent=tx.t;
-    document.getElementById('offer-s').textContent=tx.s;
-    document.getElementById('offer-yes').textContent='✨ '+tx.y;
-    document.getElementById('offer-later').textContent=t('x27');
-    _offerTrigger=trigger;
+    if(_uiBusy())return;
+    if(!_fillOffer(trigger))return;
     try{localStorage.setItem('fd_offer_shows',String(_oNum('fd_offer_shows')+1));localStorage.setItem('fd_offer_last',String(Date.now()));}catch(e){}
-    m.classList.add('show');
+  }catch(e){}
+}
+// Γέμισμα και εμφάνιση του παραθύρου. Χωριστά από τη maybeOfferPremium, ώστε
+// να το χρησιμοποιεί και η λήξη πρόσβασης, που έχει δικούς της κανόνες.
+function _fillOffer(trigger){
+  const cfg=OFFER_TXT[trigger];
+  const m=document.getElementById('offer-mod');
+  if(!cfg||!m)return false;
+  const tx=cfg[t('x26')]||cfg.el;
+  document.getElementById('offer-ico').textContent=cfg.ico;
+  document.getElementById('offer-t').textContent=tx.t;
+  document.getElementById('offer-s').textContent=tx.s;
+  document.getElementById('offer-yes').textContent='✨ '+tx.y;
+  document.getElementById('offer-later').textContent=t('x27');
+  _offerTrigger=trigger;
+  m.classList.add('show');
+  return true;
+}
+// Είναι ανοιχτό κάποιο άλλο παράθυρο; Ποτέ προτροπή από πάνω του.
+function _uiBusy(){
+  const busy=['overlay','pscreen','pgate','wplan-sheet','mpicker','prof-sheet','urform','cook-mode','cook-tonight-modal','rate-mod','offer-mod']
+    .some(id=>{const el=document.getElementById(id);return el&&el.classList.contains('show');});
+  const nm=document.getElementById('nmod');
+  return busy||!!(nm&&nm.style.display&&nm.style.display!=='none');
+}
+// ── ΛΗΞΗ ΠΡΟΣΒΑΣΗΣ ────────────────────────────────────────────
+// Όταν τελειώνει η δοκιμή ή η γνωριμία, η εφαρμογή άλλαζε σιωπηλά μια μπάρα.
+// Ο χρήστης δεν καταλάβαινε ότι έχασε κάτι — και η πιο δυνατή στιγμή πώλησης
+// περνούσε χωρίς να ειπωθεί τίποτα. Τώρα λέγεται μία φορά καθαρά, και ύστερα
+// υπενθυμίζεται κάθε LAPSE_REMIND_EVERY εκκινήσεις.
+function checkAccessLapse(){
+  try{
+    if(typeof isTwa==='function'&&isTwa())return;   // εκεί είναι ήδη ξεκλείδωτη
+    const st=getPremiumState();
+    if(st!=='free'){
+      // Έχει πρόσβαση: κρατάμε ΤΙ είχε, για να ξέρουμε τι να του πούμε όταν λήξει
+      localStorage.setItem('fd_had_access',st==='premium'?'sub':'prev');
+      localStorage.setItem('fd_free_starts','0');
+      return;
+    }
+    if(_uiBusy())return;
+    // Πρώτη φορά μετά τη λήξη — και μόνο σε όποιον ΟΝΤΩΣ είχε πρόσβαση
+    const had=localStorage.getItem('fd_had_access');
+    if(had&&localStorage.getItem('fd_lapse_shown')!=='1'){
+      localStorage.setItem('fd_lapse_shown','1');
+      localStorage.setItem('fd_free_starts','0');
+      _fillOffer(had==='sub'?'lapse_sub':'lapse_prev');
+      return;
+    }
+    const n=(parseInt(localStorage.getItem('fd_free_starts')||'0')||0)+1;
+    localStorage.setItem('fd_free_starts',String(n));
+    if(n%LAPSE_REMIND_EVERY===0)_fillOffer('remind');
   }catch(e){}
 }
 function _closeOffer(){const m=document.getElementById('offer-mod');if(m)m.classList.remove('show');}
@@ -6788,6 +6848,7 @@ async function rcSyncOnStart(){
     const {customerInfo}=await P.getCustomerInfo();
     applyEntitlement(customerInfo);
   }catch(e){/* χωρίς δίκτυο: διατηρούμε την τρέχουσα κατάσταση */}
+  try{checkAccessLapse();}catch(e){}
 }
 async function rcPurchase(plan){
   const en=curLang!=='el';
@@ -8926,6 +8987,10 @@ function dismissTonightBanner(){
   renderTrialBanner();
   // Native (Capacitor): επανάκτησε την κατάσταση συνδρομής από το RevenueCat
   try{rcSyncOnStart();}catch(e){}
+  // Χωρίς Capacitor το rcSyncOnStart γυρίζει αμέσως χωρίς να ελέγξει τίποτα,
+  // οπότε η λήξη ελέγχεται και εδώ. Με καθυστέρηση, ώστε να μην πέσει πάνω
+  // στην πρώτη ζωγραφιά της οθόνης.
+  try{if(!hasNativeBilling())setTimeout(checkAccessLapse,1800);}catch(e){}
   // Native (Capacitor): χειρισμός του κουμπιού «πίσω» του Android
   try{initBackButton();}catch(e){}
   // Native (Capacitor): επαναπρογραμμάτισε τις τοπικές ειδοποιήσεις
