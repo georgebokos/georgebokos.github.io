@@ -5529,7 +5529,7 @@ function renderMeals(cat){
     // Οι καθημερινές προτάσεις είναι ΜΟΝΟ κυρίως πιάτα.
     // Οι σάλτσες/συνοδευτικά αποκλείονταν ως τώρα μόνο μέσω της σήμανσης noDaily
     // κάθε συνταγής — που κρατά, αλλά σπάει με την πρώτη νέα σάλτσα που θα την ξεχάσει.
-    pool=pool.filter(m=>!m.quickOnly&&!m.noDaily&&!m.cats.includes('salads')&&!m.cats.includes('desserts')&&!m.cats.includes('sauces'));
+    pool=pool.filter(m=>isMainDish(m));
     // Καλοκαίρι (Ιούν–Αύγ): αφαιρούνται σούπες από τις καθημερινές προτάσεις
     const _mo=new Date().getMonth();
     if(_mo>=5&&_mo<=7) pool=pool.filter(m=>!m.cats.includes('soups'));
@@ -7531,9 +7531,12 @@ function selectMealForDay(mealId){
   renderWeekPlanDays();
 }
 function _randomMealPool(){
+  // Η τυχαία επιλογή της εβδομάδας έβγαζε κέικ σοκολάτας και pancakes ως
+  // φαγητό ημέρας: δεν φίλτραρε καθόλου κατηγορία, οπότε 50 γλυκά — το 19%
+  // της δεξαμενής — μπορούσαν να πέσουν σε οποιαδήποτε μέρα. Οι καθημερινές
+  // προτάσεις είχαν ήδη σωστό φίλτρο· το πλάνο δεν το πήρε ποτέ.
   return Object.entries(MEALS)
-    .filter(([,m])=>!m.quickOnly&&!m.noDaily!==false)
-    .filter(([,m])=>!m.quickOnly)
+    .filter(([,m])=>isMainDish(m))
     .map(([id])=>id);
 }
 function randomizeDayMeal(dk){
@@ -8240,6 +8243,21 @@ function showSec(id,btn){
 }
 
 // ── SEARCH with accent-insensitive ──
+// Είναι κυρίως πιάτο, δηλαδή κάτι που στέκει ως γεύμα ημέρας;
+//
+// Ο ορισμός ήταν γραμμένος δύο φορές, σε δύο σημεία, και μόνο το ένα από τα
+// δύο ήταν σωστό: οι καθημερινές προτάσεις απέκλειαν γλυκά και σάλτσες, το
+// εβδομαδιαίο πλάνο όχι — και έβγαζε κέικ σοκολάτας για δείπνο. Τώρα ο
+// ορισμός είναι ΕΝΑΣ, και όποιο σημείο τον χρειάζεται τον καλεί.
+//
+// noDaily  = η ίδια η συνταγή δηλώνει «μη με προτείνεις τυχαία»
+// quickOnly= εμφανίζεται μόνο στις «Γρήγορες»
+const NOT_MAIN_CATS=['desserts','sauces','salads'];
+function isMainDish(m){
+  if(!m||m.quickOnly||m.noDaily)return false;
+  const cats=m.cats||[];
+  return !NOT_MAIN_CATS.some(c=>cats.includes(c));
+}
 function deaccent(s){
   return (s||'').toLowerCase()
     .normalize('NFD').replace(/[\u0300-\u036f]/g,'')
