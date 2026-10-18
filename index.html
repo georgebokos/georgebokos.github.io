@@ -1613,6 +1613,7 @@ lang_fail:'⚠️ Η γλώσσα δεν φορτώθηκε. Έλεγξε τη �
     cal:'Θερμίδες',time:'Χρόνος',srv:'Μερίδες',cost:'Κόστος υλικών',per_srv:'/μερ.',cost_yr:'τιμές 2026',
     t_ing:'Υλικά',t_steps:'Εκτέλεση',t_pair:'Ταίριασμα',tts_p:'▶ Άκου',tts_s:'⏸ Παύση',
     ext:'🔍 Αναλυτική συνταγή ↗',wine:'🍷 Κρασί',beer:'🍺 Μπύρα',plate:'🍽️ Στήσιμο πιάτου',
+    pr_spirit:'🥃 Ούζο / τσίπουρο',pr_coffee:'☕ Καφές',pr_tea:'🍵 Τσάι',pr_milk:'🥛 Γάλα',pr_liq:'🥃 Λικέρ / κονιάκ',pr_choc:'🍫 Ζεστή σοκολάτα',pr_water:'💧 Νερό / χυμός',pr_any:'🥂 Συνοδεύεται με',
     copy_list:'📋 Αντιγραφή λίστας αγορών',all_have:'✅ Τα έχεις όλα!',
     qty_for:'Ποσότητες για',people:'άτομα',total_cost:'σύνολο',per_srv_lbl:'ανά μερίδα',
     fridge_t:'🧊 Τι έχεις στο ψυγείο;',fridge_s:'Βάλε υλικά και θα βρω τι να μαγειρέψεις!',
@@ -1873,6 +1874,7 @@ lang_fail:'⚠️ Language pack failed to load. Check your connection.',
     cal:'Calories',time:'Time',srv:'Servings',cost:'Ingredient cost',per_srv:'/serv.',cost_yr:'prices 2026',
     t_ing:'Ingredients',t_steps:'Instructions',t_pair:'Pairing',tts_p:'▶ Listen',tts_s:'⏸ Pause',
     ext:'🔍 Full recipe ↗',wine:'🍷 Wine',beer:'🍺 Beer',plate:'🍽️ Plating',
+    pr_spirit:'🥃 Ouzo / tsipouro',pr_coffee:'☕ Coffee',pr_tea:'🍵 Tea',pr_milk:'🥛 Milk',pr_liq:'🥃 Liqueur / brandy',pr_choc:'🍫 Hot chocolate',pr_water:'💧 Water / juice',pr_any:'🥂 Serve with',
     copy_list:'📋 Copy shopping list',all_have:'✅ You have everything!',
     qty_for:'Quantities for',people:'people',total_cost:'total',per_srv_lbl:'per serving',
     fridge_t:"🧊 What's in your fridge?",fridge_s:"Add ingredients and I'll find recipes!",
@@ -5976,7 +5978,7 @@ function buildPairTab(m){
   const saladM=m.salad?MEALS[m.salad]:null;
   const saladHtml=saladM?`<div class="pair-box"><div class="pair-t">🥗 ${t('x23')}</div><div class="pair-dip" onclick="openR('${m.salad}',event)">${saladM.e||''} ${mealName(saladM)}<span class="pair-dip-arr">→</span></div></div>`:'';
   document.getElementById('ot-pair').innerHTML=`
-    ${wine?`<div class="pair-box"><div class="pair-t">${t('wine')}</div><div class="pair-d">${wine}</div></div>`:''}
+    ${pairLabel(wine)?`<div class="pair-box"><div class="pair-t">${pairLabel(wine)}</div><div class="pair-d">${wine}</div></div>`:''}
     ${m.beer?`<div class="pair-box"><div class="pair-t">${t('beer')}</div><div class="pair-d">${m.beer}</div></div>`:''}
     ${saladHtml}
     ${plate?`<div class="pair-box"><div class="pair-t">${t('plate')}</div><div class="pair-d">${plate}</div></div>`:''}
@@ -8257,6 +8259,40 @@ function isMainDish(m){
   if(!m||m.quickOnly||m.noDaily)return false;
   const cats=m.cats||[];
   return !NOT_MAIN_CATS.some(c=>cats.includes(c));
+}
+// ── ΕΤΙΚΕΤΑ ΤΑΙΡΙΑΣΜΑΤΟΣ ──────────────────────────────────────
+// Η ετικέτα ήταν ΠΑΝΤΑ «🍷 Κρασί», ό,τι κι αν έλεγε το κείμενο: στα μπισκότα
+// σοκολάτας έγραφε «Κρασί: Κρύο γάλα». Και όπου το πεδίο ήταν «-», εμφάνιζε
+// κουτί με μια παύλα μέσα.
+//
+// Τώρα διαβάζεται το κείμενο και μπαίνει η ετικέτα του ποτού που αναφέρεται
+// ΠΡΩΤΟ — «Γάλα ή καφές» γίνεται Γάλα, «Γλυκό κρασί ή καφές» γίνεται Κρασί.
+// Οι λέξεις καλύπτουν και τις τρεις γλώσσες, γιατί το κείμενο μεταφράζεται.
+const PAIR_KINDS=[
+  {k:'wine',   re:/κρασ|οίν|ερυθρ|κόκκιν|λευκ[όοήη]|ροζ[έε]|ρόδιν|ρετσίν|μοσχάτ|μαυροδάφν|λιαστ|σαμπάν|αφρώδ|προσ[έε]κο|βιν σάντο|ξινόμαυρ|αγιωργίτικ|ασύρτικ|μοσχοφίλερ|μαλαγουζι|ρομπόλα|κοτσιφάλ|λιάτικ|μανδηλαρ|βιλάνα|βιδιαν|κακοτρύγ|ραψάν|νεμέα|σαββατιαν|ροδίτ|μερλό|μπορντό|vinsanto|wine|wein|rosé|prosecco|champagne|sekt|retsina|chardonnay|pinot|syrah|merlot|chianti|barolo|barbaresco|riesling|sauvignon/i},
+  {k:'beer',   re:/μπ[ύι]ρ|beer|bier|lager|ale\b|pilsner/i},
+  {k:'pr_spirit', re:/ούζο|ουζ[οά]|τσίπουρ|ρακ[ήηί]|τσικουδ|ouzo|tsipouro|raki|schnaps/i},
+  {k:'pr_liq',    re:/κονιάκ|λικ[έε]ρ|brandy|cognac|liqueur|likör/i},
+  {k:'pr_coffee', re:/καφ[έεεη]|καπουτσ[ίι]ν|εσπρ[έε]σ|coffee|kaffee|espresso|cappuccino/i},
+  {k:'pr_tea',    re:/τσάι|τσαγ[ιί]|\btea\b|\btee\b/i},
+  {k:'pr_milk',   re:/γάλα|γάλακτ|milk|milch/i},
+  {k:'pr_choc',   re:/ζεστή σοκολάτα|σοκολάτα ρόφ|hot chocolate|heiße schokolade/i},
+  {k:'pr_water',  re:/νερ[όοά]|χυμ[όοός]|water|wasser|juice|saft/i}
+];
+// Κείμενα που σημαίνουν «τίποτα»: το κουτί δεν πρέπει να εμφανίζεται καθόλου.
+const PAIR_NONE=/^\s*(-|—|–|\.|τίποτα|κανένα|δεν εφαρμόζεται|nothing|none|n\/a|nichts)\s*\.?\s*$/i;
+function pairLabel(txt){
+  const w=String(txt||'').trim();
+  if(!w||PAIR_NONE.test(w))return null;
+  let best=null,at=Infinity;
+  for(const kind of PAIR_KINDS){
+    const m=w.match(kind.re);
+    if(m&&m.index<at){at=m.index;best=kind.k;}
+  }
+  // «Δεν εφαρμόζεται — βάση για άλλα γλυκά»: εξηγεί γιατί δεν υπάρχει
+  // ταίριασμα, δεν προτείνει κάτι. Το κουτί δεν έχει λόγο να υπάρχει.
+  if(!best&&/^\s*(δεν εφαρμόζεται|παραδοσιακά κανένα|not applicable|traditionally none|trifft nicht zu)/i.test(w))return null;
+  return t(best||'pr_any');
 }
 function deaccent(s){
   return (s||'').toLowerCase()
