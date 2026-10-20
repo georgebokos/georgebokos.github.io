@@ -59,6 +59,24 @@ FIX = {
 }
 L = {'bad': 'ΤΟ ΛΑΘΟΣ', 'why': 'ΓΙΑΤΙ', 'fix': 'ΚΑΝΕ ΑΥΤΟ'}
 
+def total_meals():
+    """Το πλήθος συνταγών δεν γράφεται ποτέ με το χέρι — διαβάζεται από το
+    index.html, αλλιώς μένει πίσω με την πρώτη προσθήκη."""
+    js = (r'const fs=require("fs"),vm=require("vm");'
+          r'const b=fs.readFileSync(process.argv[1],"utf8")'
+          r'.match(/<script(?![^>]*src=)[^>]*>([\s\S]*?)<\/script>/)[1];'
+          r'const i=b.indexOf("const MEALS={"),j=b.indexOf("\n};",i);'
+          r'const c={};vm.createContext(c);new vm.Script(b.slice(i,j+3)).runInContext(c);'
+          r'console.log(Object.keys(vm.runInContext("MEALS",c)).length);')
+    r = subprocess.run(['node', '-e', js, os.path.join(ROOT, 'index.html')],
+                       capture_output=True, text=True)
+    return int(r.stdout.strip()) if r.returncode == 0 else 0
+
+N_MEALS = total_meals()
+PLAY = 'play.google.com/store/apps/details?id=com.fooddaily.app'
+CTA_LINES = ['Μάθε όλα τα μυστικά',
+             'και την εκτέλεση στην εφαρμογή']
+
 def tip_parts(m):
     """Σπάει τη σημείωση σε (ενέργεια, γιατί). Επιστρέφει '' όπου λείπει."""
     step = next((s for s in m.get('steps', []) if 'ΣΗΜΑΝΤΙΚΟ' in s), '')
@@ -135,7 +153,9 @@ def build(rid):
     bg   = cover(photo, W, H)
     blur = bg.filter(ImageFilter.GaussianBlur(22))
 
-    scenes = [('bad', 3.0), ('why', 3.4), ('fix', 2.4), ('cta', 1.9)]
+    # Η τελευταία σκηνή κρατά 4 δευτερόλεπτα: έχει πλέον στοιχεία που
+    # πρέπει να προλάβει να διαβάσει κάποιος, όχι μόνο ένα σήμα.
+    scenes = [('bad', 3.0), ('why', 3.4), ('fix', 2.4), ('cta', 4.0)]
     out = os.path.join(OUT, f'lathos-{rid}-el.mp4')
     proc = subprocess.Popen(
         [FFMPEG, '-y', '-f', 'rawvideo', '-pix_fmt', 'rgb24', '-s', f'{W}x{H}', '-r', str(FPS),
@@ -191,18 +211,28 @@ def build(rid):
                 od.text((PAD, y + 250), m['n'], font=ImageFont.truetype(FR, 40), fill=(206, 186, 158))
                 fr = Image.alpha_composite(fr.convert('RGBA'), _fade(ov, a)).convert('RGB')
             else:
-                a = ease(p / .22)
+                # Το κείμενο μπαίνει σε δύο δόσεις: πρώτα η μάρκα και η
+                # προτροπή, μετά τα στοιχεία. Όλα μαζί δεν διαβάζονται.
                 ov = Image.new('RGBA', (W, H), (0, 0, 0, 0))
                 od = ImageDraw.Draw(ov)
-                D_ = 128; L_ = logo(D_)
-                ov.paste(L_, ((W - D_) // 2, 560), L_)
-                f1 = ImageFont.truetype(FB, 64)
-                od.text(((W - od.textlength('FoodDaily', font=f1)) / 2, 712), 'FoodDaily', font=f1, fill=CREAM)
-                f2 = ImageFont.truetype(FR, 38)
-                sub = 'Όλη η συνταγή στην εφαρμογή'
-                od.text(((W - od.textlength(sub, font=f2)) / 2, 792), sub, font=f2, fill=GOLD)
-                gp = badge(300); ov.paste(gp, ((W - 300) // 2, 866), gp)
-                fr = Image.alpha_composite(fr.convert('RGBA'), _fade(ov, a)).convert('RGB')
+                ctr = lambda txt, f, yy, col: od.text(((W - od.textlength(txt, font=f)) / 2, yy), txt, font=f, fill=col)
+                D_ = 126; L_ = logo(D_)
+                ov.paste(L_, ((W - D_) // 2, 430), L_)
+                ctr('FoodDaily', ImageFont.truetype(FB, 66), 578, CREAM)
+                f_cta = ImageFont.truetype(FB, 46)
+                for k, ln in enumerate(CTA_LINES):
+                    ctr(ln, f_cta, 672 + k * 60, GOLD)
+                fr = Image.alpha_composite(fr.convert('RGBA'), _fade(ov, ease(p / .16))).convert('RGB')
+
+                ov2 = Image.new('RGBA', (W, H), (0, 0, 0, 0))
+                od2 = ImageDraw.Draw(ov2)
+                ctr2 = lambda txt, f, yy, col: od2.text(((W - od2.textlength(txt, font=f)) / 2, yy), txt, font=f, fill=col)
+                f_i = ImageFont.truetype(FR, 36)
+                ctr2(f'{N_MEALS} ελληνικές συνταγές · δωρεάν', f_i, 812, CREAM)
+                ctr2('Ελληνικά · English · Deutsch', ImageFont.truetype(FB, 34), 866, (214, 192, 166))
+                gp = badge(304); ov2.paste(gp, ((W - 304) // 2, 934), gp)
+                ctr2(PLAY, ImageFont.truetype(FR, 25), 1050, (190, 168, 140))
+                fr = Image.alpha_composite(fr.convert('RGBA'), _fade(ov2, ease((p - .28) / .18))).convert('RGB')
 
             proc.stdin.write(fr.tobytes())
 
