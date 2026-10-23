@@ -205,6 +205,10 @@ body{font-family:'Inter',-apple-system,sans-serif;background:var(--bg);color:var
 .ext-btn{display:flex;align-items:center;justify-content:center;gap:6px;width:100%;padding:12px;margin-top:1rem;border-radius:var(--rs);border:1.5px solid var(--bd);background:var(--lt);color:var(--pri);font-size:13.5px;font-weight:500;cursor:pointer;text-decoration:none;transition:all .2s;font-family:'Inter',sans-serif;}
 .ext-btn:hover{background:var(--pri);color:#fff;}
 .cost-note{margin-top:10px;padding:10px 12px;background:var(--lt);border:1.5px solid var(--bd);border-radius:var(--rs);font-size:12.5px;color:var(--pri);}
+.mcard-lock{position:relative;}
+.mcard-lock .mtop img,.mcard-lock .mtop,.mcard-lock .mbtm{filter:blur(7px) saturate(.6);}
+.mcard-lock-ico{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:34px;z-index:3;}
+.guest-lock-note{margin:1rem 1.25rem 0;padding:14px;border-radius:var(--rs);background:var(--lt);color:var(--pri);font-weight:700;font-size:14px;text-align:center;cursor:pointer;}
 /* FESTIVE */
 .fgrid{display:grid;grid-template-columns:1fr 1fr;gap:10px;}
 @media(max-width:440px){.fgrid{grid-template-columns:1fr;}}
@@ -1058,7 +1062,7 @@ body{font-family:'Inter',-apple-system,sans-serif;background:var(--bg);color:var
         <div class="pscreen-feat"><div class="pscreen-feat-ico">📝</div><div class="pscreen-feat-txt"><div class="pscreen-feat-name" data-i18n="ps_f1_n">Σημειώσεις ανά συνταγή</div><div class="pscreen-feat-desc" data-i18n="ps_f1_d">Κράτα τις δικές σου παραλλαγές, μυστικά και αλλαγές σε κάθε συνταγή.</div></div></div>
         <div class="pscreen-feat"><div class="pscreen-feat-ico">📅</div><div class="pscreen-feat-txt"><div class="pscreen-feat-name" data-i18n="ps_f2_n">Εβδομαδιαίο meal plan</div><div class="pscreen-feat-desc" data-i18n="ps_f2_d">Προγραμμάτισε τα φαγητά της εβδομάδας με αυτόματη λίστα αγορών.</div></div></div>
         <div class="pscreen-feat"><div class="pscreen-feat-ico">🔔</div><div class="pscreen-feat-txt"><div class="pscreen-feat-name" data-i18n="ps_f3_n">Έξυπνες ειδοποιήσεις</div><div class="pscreen-feat-desc" data-i18n="ps_f3_d">Εξατομικευμένες υπενθυμίσεις βάσει των προτιμήσεών σου.</div></div></div>
-        <div class="pscreen-feat"><div class="pscreen-feat-ico">❤️</div><div class="pscreen-feat-txt"><div class="pscreen-feat-name" data-i18n="ps_f4_n">Απεριόριστα αγαπημένα</div><div class="pscreen-feat-desc" data-i18n="ps_f4_d">Πάνω από 10 αγαπημένα — χωρίς κανένα όριο.</div></div></div>
+        <div class="pscreen-feat"><div class="pscreen-feat-ico">❤️</div><div class="pscreen-feat-txt"><div class="pscreen-feat-name" data-i18n="ps_f4_n">Απεριόριστα αγαπημένα</div><div class="pscreen-feat-desc" data-i18n="ps_f4_d">Πάνω από 3 αγαπημένα — χωρίς κανένα όριο.</div></div></div>
         <div class="pscreen-feat"><div class="pscreen-feat-ico">🙅</div><div class="pscreen-feat-txt"><div class="pscreen-feat-name" data-i18n="ps_f5_n">Αποκλεισμός υλικών</div><div class="pscreen-feat-desc" data-i18n="ps_f5_d">Κρύψε συνταγές με υλικά που δεν σου αρέσουν.</div></div></div>
         <div class="pscreen-feat"><div class="pscreen-feat-ico">⭐</div><div class="pscreen-feat-txt"><div class="pscreen-feat-name" data-i18n="ps_f6_n">Νέες συνταγές πρώτος</div><div class="pscreen-feat-desc" data-i18n="ps_f6_d">Κάθε νέα συνταγή, 7 ημέρες πριν βγει σε όλους.</div></div></div>
       </div>
@@ -1451,6 +1455,7 @@ const TR={
     y_grp6:'🎉 Για παρέα φίλων — σερβίρει καλά σε μεγάλα τεμάχια',
     y_grp8:'🍖 Για μεγάλο τραπέζι — φαγητά που κάνουν εντύπωση',
     y_fav_limit:'Το δωρεάν κρατά έως {0} αγαπημένα. Με το Premium είναι απεριόριστα.',
+    y_guest_lock:'Άλλα {0} πιάτα για καλεσμένους με το Premium',
     y_timer_snd:'Ήχος χρονομέτρου: {0} δευτερόλεπτα',
     y_nl_reg:'✅ Εγγεγραμμένος ως {0}',
 
@@ -1644,7 +1649,7 @@ lang_fail:'⚠️ Η γλώσσα δεν φορτώθηκε. Έλεγξε τη �
     ps_f1_n:'Σημειώσεις ανά συνταγή',ps_f1_d:'Κράτα τις δικές σου παραλλαγές, μυστικά και αλλαγές σε κάθε συνταγή.',
     ps_f2_n:'Εβδομαδιαίο meal plan',ps_f2_d:'Προγραμμάτισε τα φαγητά της εβδομάδας με αυτόματη λίστα αγορών.',
     ps_f3_n:'Έξυπνες ειδοποιήσεις',ps_f3_d:'Εξατομικευμένες υπενθυμίσεις βάσει των προτιμήσεών σου.',
-    ps_f4_n:'Απεριόριστα αγαπημένα',ps_f4_d:'Πάνω από 10 αγαπημένα — χωρίς κανένα όριο.',
+    ps_f4_n:'Απεριόριστα αγαπημένα',ps_f4_d:'Πάνω από 3 αγαπημένα — χωρίς κανένα όριο.',
     ps_f5_n:'Αποκλεισμός υλικών',ps_f5_d:'Κρύψε συνταγές με υλικά που δεν σου αρέσουν.',
     ps_f6_n:'Νέες συνταγές πρώτος',ps_f6_d:'Κάθε νέα συνταγή, 7 ημέρες πριν βγει σε όλους.',
     ps_monthly:'Μηνιαία',ps_annual:'Ετήσια',ps_restore:'Επαναφορά αγοράς',
@@ -1712,6 +1717,7 @@ lang_fail:'⚠️ Η γλώσσα δεν φορτώθηκε. Έλεγξε τη �
     y_grp6:'🎉 For a group of friends — serves well in large portions',
     y_grp8:'🍖 For a big table — dishes that make an impression',
     y_fav_limit:'Free plan keeps up to {0} favourites. Premium is unlimited.',
+    y_guest_lock:'{0} more dishes for guests with Premium',
     y_timer_snd:'Timer sound: {0} seconds',
     y_nl_reg:'✅ Registered as {0}',
 
@@ -1905,7 +1911,7 @@ lang_fail:'⚠️ Language pack failed to load. Check your connection.',
     ps_f1_n:'Notes per recipe',ps_f1_d:'Keep your own variations, secrets, and tweaks for every recipe.',
     ps_f2_n:'Weekly meal plan',ps_f2_d:'Plan your week\'s meals with an automatic shopping list.',
     ps_f3_n:'Smart notifications',ps_f3_d:'Personalized reminders based on your preferences.',
-    ps_f4_n:'Unlimited favorites',ps_f4_d:'More than 10 favourites — with no limit at all.',
+    ps_f4_n:'Unlimited favorites',ps_f4_d:'More than 3 favourites — with no limit at all.',
     ps_f5_n:'Hide ingredients',ps_f5_d:'Hide recipes with ingredients you dislike.',
     ps_f6_n:'New recipes first',ps_f6_d:'Every new recipe, 7 days before everyone else.',
     ps_monthly:'Monthly',ps_annual:'Annual',ps_restore:'Restore purchase',
@@ -5416,6 +5422,10 @@ function selCat(cat,btn){
 }
 
 function newDailyMeals(){
+  // Μία ανανέωση την ημέρα δωρεάν. Είναι το μόνο σημείο που αγγίζουν ΟΛΟΙ οι
+  // καθημερινοί χρήστες, άρα και το μόνο όπου ένα όριο το νιώθει κάποιος που
+  // ήδη αγαπά την εφαρμογή — που είναι ο μόνος που πληρώνει ποτέ.
+  if(!limUse('shuffle')){openPremiumScreen();return;}
   // Σημείωσε τα τωρινά ως «ήδη εμφανισμένα» ώστε η επόμενη κλήση να φέρει εντελώς νέα
   _featPool.forEach(m=>_dailyShownIds.add(m.id));
   // Εκκαθάριση του αποθηκευμένου featured ώστε να αλλάξει κι αυτό
@@ -7740,6 +7750,10 @@ function smartFridge(){
   const tags=Array.from(document.querySelectorAll('#tags .tag')).map(x=>deaccent(x.textContent.replace('×','').trim()));
   const res=document.getElementById('fridge-res');
   if(!tags.length){res.innerHTML='';return;}
+  // Μία αναζήτηση ψυγείου την ημέρα δωρεάν. Ο έλεγχος μπαίνει ΜΕΤΑ τον έλεγχο
+  // για άδεια υλικά, ώστε ένα κατά λάθος πάτημα σε άδειο πλαίσιο να μην
+  // καταναλώνει τη μοναδική χρήση της ημέρας.
+  if(!limUse('fridge')){openPremiumScreen();return;}
   const scored=Object.entries(MEALS)
     .map(([id,m])=>{
       const ingAll=deaccent(m.ing.join(' '));
@@ -8260,6 +8274,37 @@ function isMainDish(m){
   const cats=m.cats||[];
   return !NOT_MAIN_CATS.some(c=>cats.includes(c));
 }
+// ── ΗΜΕΡΗΣΙΑ ΟΡΙΑ ΔΩΡΕΑΝ ΕΚΔΟΣΗΣ ──────────────────────────────
+// Οι δωρεάν χρήστες δεν σκόνταφταν ποτέ πουθενά: όλος ο καθημερινός πυρήνας
+// ήταν ανοιχτός για πάντα, οπότε δεν υπήρχε λόγος να πληρώσει κανείς. Εδώ
+// μπαίνουν τα όρια που αγγίζουν την καθημερινή χρήση.
+//
+// Ο μετρητής κρατιέται ανά ημερομηνία, ώστε να μηδενίζεται μόνος του τα
+// μεσάνυχτα χωρίς χρονοδιακόπτη.
+const FREE_LIMITS={shuffle:1,fridge:1};
+const FREE_GUEST_SHOWN=12;   // πόσα πιάτα καλεσμένων φαίνονται δωρεάν
+function _limKey(k){return 'fd_lim_'+k;}
+function limLeft(k){
+  if(isPremium())return Infinity;
+  const max=FREE_LIMITS[k]||0;
+  try{
+    const raw=JSON.parse(localStorage.getItem(_limKey(k))||'{}');
+    if(raw.d!==new Date().toDateString())return max;
+    return Math.max(0,max-(raw.n||0));
+  }catch(e){return max;}
+}
+// Καταναλώνει μία χρήση. true = επιτρέπεται, false = εξαντλήθηκε.
+function limUse(k){
+  if(isPremium())return true;
+  if(limLeft(k)<=0)return false;
+  try{
+    const today=new Date().toDateString();
+    const raw=JSON.parse(localStorage.getItem(_limKey(k))||'{}');
+    const n=(raw.d===today?(raw.n||0):0)+1;
+    localStorage.setItem(_limKey(k),JSON.stringify({d:today,n}));
+  }catch(e){}
+  return true;
+}
 // ── ΕΤΙΚΕΤΑ ΤΑΙΡΙΑΣΜΑΤΟΣ ──────────────────────────────────────
 // Η ετικέτα ήταν ΠΑΝΤΑ «🍷 Κρασί», ό,τι κι αν έλεγε το κείμενο: στα μπισκότα
 // σοκολάτας έγραφε «Κρασί: Κρύο γάλα». Και όπου το πεδίο ήταν «-», εμφάνιζε
@@ -8469,15 +8514,21 @@ function selGuest(n,btn){
   if(!res)return;
   res.innerHTML=`<div class="guest-info">${hint}</div>
   <div class="meal-grid" style="padding:0 1.25rem;">
-  ${pool.map(id=>{
+  ${pool.map((id,gi)=>{
     const m=MEALS[id];
+    // Τα πρώτα FREE_GUEST_SHOWN φαίνονται κανονικά· τα υπόλοιπα θολωμένα.
+    // Θολά και όχι κρυμμένα επίτηδες: ο χρήστης ΒΛΕΠΕΙ τι χάνει, και μια
+    // θολή λίστα με δεκάδες πιάτα πείθει πολύ περισσότερο από ένα κλειδωμένο
+    // κουμπί που δεν λέει τίποτα.
+    const locked=!isPremium()&&gi>=FREE_GUEST_SHOWN;
     const scale=Math.ceil(n/m.srv);
     const mc=m.cats[0];
     const bg=CAT_GRAD[mc]||CAT_GRAD.legumes;
     const cl=CAT_CL[mc]||'b-legumes';
     const img=MEAL_IMAGES[id]||'';
     const fav=isFav(id);
-    return `<div class="mcard" onclick="openRWithScale('${id}',${n})">
+    return `<div class="mcard${locked?' mcard-lock':''}" onclick="${locked?'openPremiumScreen()':`openRWithScale('${id}',${n})`}">
+      ${locked?'<div class="mcard-lock-ico">🔒</div>':''}
       <div class="mtop" style="background:${bg}">
         ${img?`<img alt="${mealName(m)}" src="${img}" loading="lazy" onload="this.classList.add('loaded');this.nextElementSibling.style.opacity=0" onerror="this.style.display='none'">`:''}
         <div class="memoji">${m.e}</div>
@@ -8494,7 +8545,8 @@ function selGuest(n,btn){
       </div>
     </div>`;
   }).join('')}
-  </div>`;
+  </div>
+  ${!isPremium()&&pool.length>FREE_GUEST_SHOWN?`<div class="guest-lock-note" onclick="openPremiumScreen()">🔒 ${tf('y_guest_lock',pool.length-FREE_GUEST_SHOWN)}</div>`:''}`;
 }
 // ── TODAY PLAN (επαναφορά κάθε μέρα) ─────────────────────────
 function getTodayPlan(){
@@ -8585,7 +8637,7 @@ function earlyDaysLeft(id){
 function getFavs(){return JSON.parse(localStorage.getItem('fd_favs')||'[]');}
 function isFav(id){return getFavs().includes(id);}
 // Όριο αγαπημένων για τους δωρεάν χρήστες — απεριόριστα στο Premium.
-const FREE_FAV_LIMIT=10;
+const FREE_FAV_LIMIT=3;
 function favLimitReached(){return !isPremium() && getFavs().length>=FREE_FAV_LIMIT;}
 function toggleFav(id,e){
   if(e){e.stopPropagation();e.preventDefault();}
