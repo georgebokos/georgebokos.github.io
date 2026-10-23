@@ -1466,6 +1466,7 @@ const TR={
     x83:'Τώρα στην εποχή τους',
     x84:'Η <span>δωρεάν δοκιμή</span> σου είναι ενεργή',
     x85:'Δοκίμασε <span>Premium</span> δωρεάν 7 ημέρες',
+    x85b:'Ξεκλείδωσε ξανά το <span>Premium</span>',x86b:'Δες το →',
     x86:'Δωρεάν →',
     x87:'🎁 Πλήρης πρόσβαση — δωρεάν',
     x88:'⚠️ Trial έληξε',
@@ -1728,6 +1729,7 @@ lang_fail:'⚠️ Η γλώσσα δεν φορτώθηκε. Έλεγξε τη �
     x83:'In season now',
     x84:'Your <span>free trial</span> is active',
     x85:'Try <span>Premium</span> free for 7 days',
+    x85b:'Unlock <span>Premium</span> again',x86b:'See it →',
     x86:'Free →',
     x87:'🎁 Full access — free',
     x88:'⚠️ Trial expired',
@@ -6406,6 +6408,10 @@ function previewDaysLeft(){
 // Καταστάσεις: 'premium' (συνδρομή/δοκιμή Play) · 'preview' (δωρεάν γνωριμία) · 'free'
 function getPremiumState(){
   if(localStorage.getItem('fd_premium')==='true')return 'premium';
+  // Όποιος είχε ήδη συνδρομή ή δοκιμή δεν ξαναπαίρνει τη γνωριμία. Χωρίς
+  // αυτό, κάθε ακύρωση χάριζε άλλες 3 ημέρες — και μαζί με τη δοκιμή του
+  // Play, ο κύκλος «δοκιμή, ακύρωση, γνωριμία» επαναλαμβανόταν.
+  if(hasEverHadPremium()&&!isTwa())return 'free';
   // ΜΟΝΟ η TWA παραμένει ξεκλείδωτη: εκεί η αγορά εξαρτάται από τον browser και
   // συχνά αποτυγχάνει, οπότε paywall θα ήταν αδιέξοδο για τον χρήστη.
   // Ο σκέτος browser ΔΕΝ εξαιρείται πλέον — αλλιώς η εφαρμογή δινόταν ολόκληρη
@@ -6428,8 +6434,13 @@ function startTrial(){/* δεν χρησιμοποιείται πλέον — η
 function isPremium(){const st=getPremiumState();return st==='premium'||st==='preview';}
 // Καταγραφή της κατάστασης συνδρομής όπως την επιστρέφει το RevenueCat
 function applyEntitlement(customerInfo){
+  try{
+    const all=(customerInfo&&customerInfo.entitlements&&customerInfo.entitlements.all)||{};
+    if(Object.keys(all).length)markPremiumEver();
+  }catch(e){}
   const ent=activeEntitlement(customerInfo);
   if(ent){
+    markPremiumEver();
     localStorage.setItem('fd_premium','true');
     localStorage.setItem('fd_premium_period',ent.periodType||'');
     localStorage.setItem('fd_premium_exp',ent.expirationDate||'');
@@ -6464,7 +6475,8 @@ function renderTrialBanner(){
     }
     el.innerHTML='';return;
   }
-  el.innerHTML=`<div class="trial-banner" onclick="openPremiumScreen()"><div class="trial-banner-l"><span class="trial-banner-icon">💎</span><span class="trial-banner-txt">${t('x85')}</span></div><span class="trial-banner-cta">${t('x86')}</span></div>`;
+  const back=hasEverHadPremium();
+  el.innerHTML=`<div class="trial-banner" onclick="openPremiumScreen()"><div class="trial-banner-l"><span class="trial-banner-icon">💎</span><span class="trial-banner-txt">${back?t('x85b'):t('x85')}</span></div><span class="trial-banner-cta">${back?t('x86b'):t('x86')}</span></div>`;
 }
 
 // Premium screen
@@ -6480,7 +6492,8 @@ function openPremiumScreen(){
     if(state==='trial'){badge.textContent=t('x87');}
     else if(state==='expired'){badge.textContent=t('x88');}
     else if(state==='premium'){badge.textContent=t('x79');}
-    else{badge.textContent=t('x89');}
+    else if(hasEverHadPremium()){badge.style.display='none';}
+    else{badge.style.display='';badge.textContent=t('x89');}
   }
   setPlan('annual');
   document.getElementById('pscreen').classList.add('show');
@@ -6567,7 +6580,11 @@ function updatePremiumCTA(state){
     if(note)note.textContent=t('web_get_note');
   }else{
     btn.disabled=false;btn.style.opacity='1';
-    const hasTrial=_planTrial[_curPlan]!==false; // αν δεν ξέρουμε ακόμα, υποθέτουμε ναι
+    // Μόνο όταν το Play ΕΠΙΒΕΒΑΙΩΝΕΙ δοκιμή, και ποτέ σε όποιον είχε ήδη
+    // Premium. Η παλιά αισιόδοξη προεπιλογή («αν δεν ξέρουμε, υποθέτουμε
+    // ναι») υποσχόταν 7 δωρεάν ημέρες και μετά πετούσε τον χρήστη σε
+    // πληρωμή — καλύτερα να υποσχεθείς λιγότερα και να δώσεις περισσότερα.
+    const hasTrial=_planTrial[_curPlan]===true&&!hasEverHadPremium();
     btn.textContent=hasTrial
       ?(t('x99'))
       :(t('x100'));
@@ -6666,6 +6683,16 @@ async function rcInit(){
 }
 // Εντοπισμός ενεργού δικαιώματος — ανθεκτικός σε διαφορές κενών/πεζών-κεφαλαίων
 // στο αναγνωριστικό του entitlement.
+// Είχε ΠΟΤΕ Premium αυτός ο χρήστης — συνδρομή ή δοκιμή του Play;
+//
+// Χρειάζεται για δύο λόγους: η 3ήμερη γνωριμία δεν πρέπει να ξαναδίνεται σε
+// όποιον είχε ήδη πρόσβαση, και η εφαρμογή δεν πρέπει να του υπόσχεται «7
+// ημέρες δωρεάν» — το Google Play δίνει μία δοκιμή ανά λογαριασμό, οπότε τη
+// δεύτερη φορά πάει κατευθείαν σε πληρωμή και ο χρήστης νιώθει εξαπατημένος.
+function hasEverHadPremium(){
+  try{return localStorage.getItem('fd_premium_ever')==='1';}catch(e){return false;}
+}
+function markPremiumEver(){try{localStorage.setItem('fd_premium_ever','1');}catch(e){}}
 function activeEntitlement(customerInfo){
   try{
     const act=(customerInfo&&customerInfo.entitlements&&customerInfo.entitlements.active)||{};
