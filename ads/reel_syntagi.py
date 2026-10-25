@@ -41,10 +41,15 @@ LANGS2 = 'Ελληνικά · English · Deutsch'
 
 # Η σκηνή «τι παίρνεις»: τέσσερα οφέλη, όχι λίστα λειτουργιών. Κάθε γραμμή
 # απαντά στο «και τι με νοιάζει;» — γι' αυτό καμία δεν λέει όνομα λειτουργίας.
-PERKS = [('🍽️', '{N} συνταγές με φωτογραφία'),
-         ('🔔', '12 προτάσεις κάθε πρωί'),
-         ('🛒', 'Λίστα αγορών με ένα κλικ'),
-         ('🍳', 'Η οθόνη δεν σβήνει όσο μαγειρεύεις')]
+PERKS = [('🍽️', '{N} συνταγές με πραγματική φωτογραφία'),
+         ('🔔', '12 προτάσεις κάθε πρωί, με ειδοποίηση'),
+         ('🧊', 'Βρες φαγητό από ό,τι έχεις στο ψυγείο'),
+         ('🛒', 'Διάλεξε υλικά και στείλ’ τα με ένα κλικ'),
+         ('🍳', 'Η οθόνη δεν σβήνει όσο μαγειρεύεις'),
+         ('⏱️', 'Χρονόμετρο σε κάθε βήμα'),
+         ('👥', 'Έτοιμο μενού όταν έχεις καλεσμένους'),
+         ('✍️', 'Ανέβασε τη δική σου παραδοσιακή συνταγή'),
+         ('📴', 'Δουλεύει και χωρίς ίντερνετ')]
 
 def total_meals():
     js = (r'const fs=require("fs"),vm=require("vm");'
@@ -159,7 +164,7 @@ def build(rid):
     bg    = cover(photo, W, H)
     blur  = bg.filter(ImageFilter.GaussianBlur(20))
 
-    scenes = [('hook', 2.6), ('ing', 3.0), ('steps', 3.0), ('perks', 3.6), ('cta', 3.0)]
+    scenes = [('hook', 2.4), ('ing', 2.8), ('steps', 3.0), ('perks', 5.2), ('cta', 2.8)]
     out = os.path.join(OUT, f'syntagi-{rid}-el.mp4')
     proc = subprocess.Popen(
         [FFMPEG, '-y', '-f', 'rawvideo', '-pix_fmt', 'rgb24', '-s', f'{W}x{H}', '-r', str(FPS),
@@ -253,16 +258,23 @@ def build(rid):
             elif kind == 'perks':
                 def dp(ov, d):
                     d.text((PAD, 540), 'ΤΙ ΠΑΙΡΝΕΙΣ', font=ImageFont.truetype(FB, 36), fill=GOLD)
-                    y = 620
+                    y = 606
                     for k, (e, txt) in enumerate(PERKS):
-                        a = ease((p * secs - .1 - k * .38) / .36)
+                        a = ease((p * secs - .1 - k * .34) / .30)
                         if a <= .02: break
-                        row = Image.new('RGBA', (W, 104), (0, 0, 0, 0))
+                        row = Image.new('RGBA', (W, 84), (0, 0, 0, 0))
                         rd = ImageDraw.Draw(row)
-                        ic = emoji(e, 50); row.paste(ic, (0, 10), ic)
-                        for j, ln in enumerate(wrap(rd, txt.replace('{N}', str(N_MEALS)), f_perk, COLW - 80)[:2]):
-                            rd.text((76, 4 + j * 48), ln, font=f_perk, fill=CREAM)
-                        ov.alpha_composite(fade(row, a), (PAD, y + k * 104))
+                        ic = emoji(e, 44); row.paste(ic, (0, 6), ic)
+                        t_ = txt.replace('{N}', str(N_MEALS))
+                        # Η γραμματοσειρά μικραίνει όσο χρειάζεται: καμία
+                        # παροχή δεν σπάει σε δεύτερη σειρά, αλλιώς οι εννιά
+                        # δεν χωρούν στην ασφαλή περιοχή.
+                        fp = f_perk
+                        for sz in range(38, 25, -1):
+                            fp = ImageFont.truetype(FB, sz)
+                            if rd.textlength(t_, font=fp) <= COLW - 72: break
+                        rd.text((68, 8), t_, font=fp, fill=CREAM)
+                        ov.alpha_composite(fade(row, a), (PAD, y + k * 78))
                 fr = over(fr, dp, 1.0)
             else:
                 def dc(ov, d):
