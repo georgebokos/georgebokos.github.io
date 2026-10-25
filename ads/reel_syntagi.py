@@ -33,6 +33,11 @@ BRICK = (214, 74, 32)
 INK   = (18, 10, 2)
 
 PLAY = 'play.google.com/store/apps/details?id=com.fooddaily.app'
+SHOW_ING, SHOW_STEPS = 4, 3   # πόσα δείχνουμε — τα υπόλοιπα είναι το δόλωμα
+TEASE  = 'Όλη η συνταγή στην εφαρμογή'
+TEASE2 = 'Κατέβασέ την δωρεάν από το Google Play'
+LANGS1 = '{N} συνταγές · recipes · Rezepte'
+LANGS2 = 'Ελληνικά · English · Deutsch'
 
 # Η σκηνή «τι παίρνεις»: τέσσερα οφέλη, όχι λίστα λειτουργιών. Κάθε γραμμή
 # απαντά στο «και τι με νοιάζει;» — γι' αυτό καμία δεν λέει όνομα λειτουργίας.
@@ -81,6 +86,11 @@ def fade(layer, a):
     l.putalpha(l.split()[3].point(lambda v: round(v * a)))
     return l
 
+def _mk(draw_fn):
+    ov = Image.new('RGBA', (W, H), (0, 0, 0, 0))
+    draw_fn(ov, ImageDraw.Draw(ov))
+    return ov
+
 def over(fr, draw_fn, a):
     """Ζωγραφίζει σε διάφανο στρώμα και το περνά με διαφάνεια a."""
     if a <= .02: return fr
@@ -101,6 +111,33 @@ def logo(d_):
     ic.putalpha(m.resize((d_, d_), Image.LANCZOS))
     return ic
 
+def stamp(fr, d, _c={}):
+    """Μόνιμη υπογραφή πάνω αριστερά, σε ΚΑΘΕ καρέ.
+
+    Ο μέσος θεατής φεύγει πριν φτάσει στο τέλος. Αν η επωνυμία, οι γλώσσες
+    και το σήμα του Play υπάρχουν μόνο στην τελευταία σκηνή, δεν τα βλέπει
+    κανείς — γι' αυτό μπαίνουν από το πρώτο καρέ και δεν φεύγουν ποτέ.
+    """
+    if not _c:
+        _c['logo'] = logo(62)
+        _c['gp']   = badge(188)
+        _c['f1'] = ImageFont.truetype(FB, 34)
+        _c['f2'] = ImageFont.truetype(FR, 26)
+        _c['f3'] = ImageFont.truetype(FB, 27)
+        _c['f4'] = ImageFont.truetype(FR, 24)
+    x, y, DS = 40, 40, 62
+    d.rounded_rectangle([x - 14, y - 12, x + DS + 272, y + DS + 12], radius=42, fill=(24, 14, 4))
+    fr.paste(_c['logo'], (x, y), _c['logo'])
+    d.text((x + DS + 18, y + 4),  'FoodDaily', font=_c['f1'], fill=CREAM)
+    d.text((x + DS + 18, y + 40), 'Google Play', font=_c['f2'], fill=(233, 178, 74))
+    by = y + DS + 24
+    l1 = LANGS1.replace('{N}', str(N_MEALS))
+    bw = max(d.textlength(l1, font=_c['f3']), d.textlength(LANGS2, font=_c['f4'])) + 40
+    d.rounded_rectangle([x - 14, by, x - 14 + bw, by + 88], radius=26, fill=(24, 14, 4))
+    d.text((x + 6, by + 10), l1,     font=_c['f3'], fill=(233, 178, 74))
+    d.text((x + 6, by + 50), LANGS2, font=_c['f4'], fill=(238, 222, 196))
+    fr.paste(_c['gp'], (x - 14, by + 88 + 14), _c['gp'])
+
 def tag(d, x, y, txt, fill, size=34):
     f = ImageFont.truetype(FB, size)
     tw = d.textlength(txt, font=f)
@@ -115,13 +152,14 @@ def short_step(s):
 
 def build(rid):
     data = load(rid); m = data['m']
-    ings  = m['ing'][:8]
-    steps = [short_step(s) for s in m['steps']][:7]
+    ings_all, steps_all = m['ing'], [short_step(s) for s in m['steps']]
+    ings, steps = ings_all[:SHOW_ING], steps_all[:SHOW_STEPS]
+    rest_i, rest_s = len(ings_all) - len(ings), len(steps_all) - len(steps)
     photo = Image.open(os.path.join(ROOT, data['img'])).convert('RGB')
     bg    = cover(photo, W, H)
     blur  = bg.filter(ImageFilter.GaussianBlur(20))
 
-    scenes = [('hook', 2.6), ('ing', 3.4), ('steps', 3.8), ('perks', 3.0), ('cta', 3.2)]
+    scenes = [('hook', 2.6), ('ing', 3.0), ('steps', 3.0), ('perks', 3.6), ('cta', 3.0)]
     out = os.path.join(OUT, f'syntagi-{rid}-el.mp4')
     proc = subprocess.Popen(
         [FFMPEG, '-y', '-f', 'rawvideo', '-pix_fmt', 'rgb24', '-s', f'{W}x{H}', '-r', str(FPS),
@@ -168,34 +206,56 @@ def build(rid):
                 fr = over(fr, dh, ease(p / .18))
             elif kind == 'ing':
                 def di(ov, d):
-                    y = tag(d, PAD, 420, 'ΥΛΙΚΑ', BRICK) + 34
+                    y = tag(d, PAD, 540, 'ΥΛΙΚΑ', BRICK) + 32
                     for k, it in enumerate(ings):
-                        a = ease((p * secs - .25 - k * .22) / .30)
+                        a = ease((p * secs - .20 - k * .22) / .28)
                         if a <= .02: break
-                        row = Image.new('RGBA', (W, 70), (0, 0, 0, 0))
+                        row = Image.new('RGBA', (W, 72), (0, 0, 0, 0))
                         rd = ImageDraw.Draw(row)
-                        rd.ellipse([0, 26, 14, 40], fill=GOLD)
+                        rd.ellipse([0, 28, 14, 42], fill=GOLD)
                         rd.text((34, 8), it, font=f_item, fill=CREAM)
-                        ov.alpha_composite(fade(row, a), (PAD + round(26 * (1 - a)), y + k * 70))
+                        ov.alpha_composite(fade(row, a), (PAD + round(26 * (1 - a)), y + k * 72))
+                    # Το δόλωμα: ο θεατής ΒΛΕΠΕΙ ότι λείπουν υλικά
+                    if rest_i:
+                        a = ease((p * secs - 1.25) / .30)
+                        if a > .02:
+                            def dr(ov2, d2):
+                                d2.text((PAD, y + len(ings) * 72 + 10), f'… και άλλα {rest_i} υλικά',
+                                        font=ImageFont.truetype(FR, 40), fill=(206, 186, 158))
+                            ov.alpha_composite(fade(_mk(dr), a))
                 fr = over(fr, di, 1.0)
             elif kind == 'steps':
                 def ds(ov, d):
-                    y = tag(d, PAD, 400, 'ΕΚΤΕΛΕΣΗ', (36, 122, 54)) + 34
+                    y = tag(d, PAD, 540, 'ΕΚΤΕΛΕΣΗ', (36, 122, 54)) + 32
                     for k, st in enumerate(steps):
-                        a = ease((p * secs - .15 - k * .24) / .26)
+                        a = ease((p * secs - .12 - k * .24) / .26)
                         if a <= .02: break
-                        row = Image.new('RGBA', (W, 76), (0, 0, 0, 0))
+                        row = Image.new('RGBA', (W, 78), (0, 0, 0, 0))
                         rd = ImageDraw.Draw(row)
                         rd.text((0, 8), f'{k+1}', font=f_num, fill=GOLD)
                         rd.text((58, 4), st, font=f_step, fill=CREAM)
-                        ov.alpha_composite(fade(row, a), (PAD + round(22 * (1 - a)), y + k * 76))
+                        ov.alpha_composite(fade(row, a), (PAD + round(22 * (1 - a)), y + k * 78))
+                    yy = y + len(steps) * 78 + 10
+                    if rest_s:
+                        a = ease((p * secs - 1.05) / .28)
+                        if a > .02:
+                            def dr(ov2, d2):
+                                d2.text((PAD, yy), f'… και άλλα {rest_s} βήματα',
+                                        font=ImageFont.truetype(FR, 40), fill=(206, 186, 158))
+                            ov.alpha_composite(fade(_mk(dr), a))
+                    a2 = ease((p * secs - 1.45) / .30)
+                    if a2 > .02:
+                        def dt(ov2, d2):
+                            d2.text((PAD, yy + 86), TEASE,  font=ImageFont.truetype(FB, 46), fill=GOLD)
+                            d2.text((PAD, yy + 150), TEASE2, font=ImageFont.truetype(FR, 34), fill=CREAM)
+                        ov.alpha_composite(fade(_mk(dt), a2))
                 fr = over(fr, ds, 1.0)
             elif kind == 'perks':
                 def dp(ov, d):
-                    d.text((PAD, 400), 'ΤΙ ΠΑΙΡΝΕΙΣ', font=ImageFont.truetype(FB, 36), fill=GOLD)
-                    y = 480
+                    d.text((PAD, 540), 'ΤΙ ΠΑΙΡΝΕΙΣ', font=ImageFont.truetype(FB, 36), fill=GOLD)
+                    y = 620
                     for k, (e, txt) in enumerate(PERKS):
-                        a = ease((p * secs - .1 - k * .30) / .34)
+                        a = ease((p * secs - .1 - k * .38) / .36)
                         if a <= .02: break
                         row = Image.new('RGBA', (W, 104), (0, 0, 0, 0))
                         rd = ImageDraw.Draw(row)
@@ -216,6 +276,7 @@ def build(rid):
                     ctr(PLAY, ImageFont.truetype(FR, 25), 944, (190, 168, 140))
                 fr = over(fr, dc, ease(p / .18))
 
+            stamp(fr, ImageDraw.Draw(fr))
             proc.stdin.write(fr.tobytes())
         el_t += secs
 
