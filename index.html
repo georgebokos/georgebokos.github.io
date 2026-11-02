@@ -213,8 +213,11 @@ body{padding-left:env(safe-area-inset-left,0px);padding-right:env(safe-area-inse
 .mcard-lock .mtop img,.mcard-lock .mtop,.mcard-lock .mbtm{filter:blur(7px) saturate(.6);}
 .mcard-lock-ico{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:34px;z-index:3;}
 .guest-lock-note{margin:1rem 1.25rem 0;padding:14px;border-radius:var(--rs);background:var(--lt);color:var(--pri);font-weight:700;font-size:14px;text-align:center;cursor:pointer;}
-.macro-bar{display:flex;height:12px;border-radius:6px;overflow:hidden;margin:12px 1.25rem 0;}
-.macro-bar i{display:block;}
+.macro-bar{display:flex;height:26px;border-radius:13px;overflow:hidden;margin:12px 1.25rem 0;}
+.macro-bar i{display:flex;align-items:center;justify-content:center;font-style:normal;font-size:11.5px;font-weight:700;color:#fff;white-space:nowrap;overflow:hidden;letter-spacing:.2px;}
+.macro-key{display:flex;flex-wrap:wrap;gap:4px 16px;margin:8px 1.25rem 0;font-size:12px;color:var(--t2);}
+.macro-key b{display:inline-flex;align-items:center;gap:6px;font-weight:600;}
+.macro-key s{width:10px;height:10px;border-radius:3px;display:inline-block;}
 .diet-tags{display:flex;flex-wrap:wrap;gap:8px;margin:12px 1.25rem 0;}
 .diet-tag{background:var(--lt);color:var(--pri);font-size:13px;font-weight:700;padding:7px 14px;border-radius:16px;}
 /* FESTIVE */
@@ -5978,7 +5981,21 @@ function openR(id){
         <div class="nutr-item"><div class="nutr-ico">🍚</div><span>${mac.carbs}${t('x12')}</span><small>${t('x14')}</small></div>
         <div class="nutr-item"><div class="nutr-ico">🫒</div><span>${mac.fat}${t('x12')}</span><small>${t('x15')}</small></div>
       </div>
-      <div class="macro-bar"><i style="width:${pc(kp)}%;background:#C03E3E"></i><i style="width:${pc(kc)}%;background:#D99A2B"></i><i style="flex:1;background:#4F8A3C"></i></div>
+      ${(()=>{
+        // Το χρώμα δεν λέει από μόνο του τίποτα: το όνομα μπαίνει ΜΕΣΑ στο
+        // κομμάτι όταν χωράει, αλλιώς πάει στο υπόμνημα από κάτω.
+        const SEG=[[pc(kp),'#C03E3E',t('x13')],[pc(kc),'#D99A2B',t('x14')],[pc(kf),'#4F8A3C',t('x15')]];
+        // Το κατώφλι εξαρτάται από το ΜΗΚΟΣ της λέξης: «Λιπαρά» χωράει σε
+        // λωρίδα που η «Υδατάνθρακες» δεν χωράει. ~360px πλάτος μπάρας.
+        const fits=(w,lbl)=>w/100*360>=lbl.length*6.4+12;
+        const bar=SEG.map(([w,c,lbl],i)=>{
+          const st=i===2?`flex:1;background:${c}`:`width:${w}%;background:${c}`;
+          return `<i style="${st}">${fits(w,lbl)?lbl:''}</i>`;
+        }).join('');
+        const rest=SEG.filter(([w,,lbl])=>!fits(w,lbl));
+        return `<div class="macro-bar">${bar}</div>`+
+          (rest.length?`<div class="macro-key">${rest.map(([,c,lbl])=>`<b><s style="background:${c}"></s>${lbl}</b>`).join('')}</div>`:'');
+      })()}
       ${(()=>{const dt=dietTags(m,mac);return dt.length?`<div class="diet-tags">${dt.map(x=>`<span class="diet-tag">${x[0]} ${x[1]}</span>`).join('')}</div>`:'';})()}`;
   }
   // Cook Tonight button
