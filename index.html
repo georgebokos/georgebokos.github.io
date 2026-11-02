@@ -1396,7 +1396,9 @@ const MEAL_MACROS={aglio:[10,59,24],aioli:[0,2,21],american_pancakes:[7,31,9],am
 // θερμίδων με 93% λιπαρά έχει 12 γραμμάρια λίπους, δηλαδή είναι ελαφρύ.
 const DIET_RULES=[
   {k:'vegan',  ico:'🌱', test:(m)=>!!m.vegan},
-  {k:'fast',   ico:'🌿', test:(m)=>(m.cats||[]).includes('fast')||m.fasting},
+  // Η νηστεία ορίζεται από το DIET_FAST (γρ. ~9006), όχι από cats: καμία
+  // συνταγή δεν έχει cats:['fast'], οπότε ο παλιός έλεγχος έπιανε 0 πιάτα.
+  {k:'fast',   ico:'🌿', test:(m)=>typeof DIET_FAST!=='undefined'&&DIET_FAST.has(m.id)},
   {k:'light',  ico:'🪶', test:(m,x)=>(m.cal||999)<=350},
   {k:'filling',ico:'🔥', test:(m,x)=>(m.cal||0)>=550},
   {k:'protein',ico:'💪', test:(m,x)=>x.prot>=25},
@@ -1523,6 +1525,7 @@ const TR={
     x84:'Η <span>δωρεάν δοκιμή</span> σου είναι ενεργή',
     x85:'Δοκίμασε <span>Premium</span> δωρεάν 7 ημέρες',
     x85b:'Ξεκλείδωσε ξανά το <span>Premium</span>',x86b:'Δες το →',
+    x85c:'Ξεκλείδωσε όλο το <span>FoodDaily</span>',
     x86:'Δωρεάν →',
     x87:'🎁 Πλήρης πρόσβαση — δωρεάν',
     x88:'⚠️ Trial έληξε',
@@ -1789,6 +1792,7 @@ lang_fail:'⚠️ Η γλώσσα δεν φορτώθηκε. Έλεγξε τη �
     x84:'Your <span>free trial</span> is active',
     x85:'Try <span>Premium</span> free for 7 days',
     x85b:'Unlock <span>Premium</span> again',x86b:'See it →',
+    x85c:'Unlock all of <span>FoodDaily</span>',
     x86:'Free →',
     x87:'🎁 Full access — free',
     x88:'⚠️ Trial expired',
@@ -5631,7 +5635,10 @@ function renderMeals(cat){
     });
   }
   // Διατροφικός στόχος προφίλ — όχι στα αγαπημένα, εκεί αποφασίζει ο χρήστης
-  if(cat!=='favs')pool=applyDietFilter(pool);
+  // Στα «Γρήγορα» το φίλτρο μπαίνει αφού χτιστεί το show: εκεί πετιούνται
+  // γλυκά/σάλτσες και όσα ξεπερνούν τα 20', οπότε φιλτράροντας πριν, ο
+  // έλεγχος επάρκειας μετρούσε πιάτα που δεν εμφανίζονται ποτέ.
+  if(cat!=='favs'&&cat!=='quick')pool=applyDietFilter(pool);
 
   const grid=document.getElementById('meals-grid');
 
@@ -5747,7 +5754,7 @@ function renderMeals(cat){
     pool=pool.filter(m=>!m.cats.includes('sauces')&&!m.cats.includes('desserts'));
     const qOnly=pool.filter(m=>m.quickOnly).sort((a,b)=>parseInt(a.time)-parseInt(b.time));
     const fast=pool.filter(m=>!m.quickOnly&&parseInt(m.time)<=20).sort(()=>Math.random()-.5);
-    show=[...qOnly,...fast];
+    show=applyDietFilter([...qOnly,...fast]);
   }else if(cat!=='all'){
     // Συγκεκριμένη κατηγορία (π.χ. Γλυκά, Ζυμαρικά, Vegan, Νηστεία...): δείξε ΟΛΕΣ τις συνταγές, όχι τυχαία υποσύνολο
     show=pool.slice().sort((a,b)=>mealName(a).localeCompare(mealName(b),'el'));
@@ -5887,7 +5894,7 @@ function renderMeals(cat){
       <div class="mbtm">
         <div class="mname-row">
           <div class="mname">${mealName(m)}</div>
-          <button class="fav-btn-sm" data-id="${m.id}" onclick="toggleFav('${m.id}',event)" title="${t('favs')}">${fav?'❤️':'🤍'}</button>
+          <button class="fav-btn-sm" data-id="${m.id}" onclick="toggleFav('${m.id}',event)" title="${t('mFav')}">${fav?'❤️':'🤍'}</button>
         </div>
         <div class="mmeta">⏱ ${m.time}' &nbsp;🔥 ${m.cal} &nbsp;💰 ${m.cps||'~2€'}${t('per_srv')}</div>
         <div class="card-actions" id="ca-${m.id}">${actHtml}</div>
@@ -6260,8 +6267,13 @@ function _uiBusy(){
 // Ο χρήστης δεν καταλάβαινε ότι έχασε κάτι — και η πιο δυνατή στιγμή πώλησης
 // περνούσε χωρίς να ειπωθεί τίποτα. Τώρα λέγεται μία φορά καθαρά, και ύστερα
 // υπενθυμίζεται κάθε LAPSE_REMIND_EVERY εκκινήσεις.
+let _lapseCheckedThisRun=false;
 function checkAccessLapse(){
   try{
+    // Στην Capacitor το rcSyncOnStart τρέχει σε ΚΑΘΕ επαναφορά από το
+    // παρασκήνιο. Χωρίς αυτό, το «κάθε 3 εκκινήσεις» γινόταν «κάθε 3
+    // ξεκλειδώματα οθόνης» — δηλαδή πολλές φορές την ίδια μέρα.
+    if(_lapseCheckedThisRun)return;
     if(typeof isTwa==='function'&&isTwa())return;   // εκεί είναι ήδη ξεκλείδωτη
     const st=getPremiumState();
     if(st!=='free'){
@@ -6279,9 +6291,15 @@ function checkAccessLapse(){
       _fillOffer(had==='sub'?'lapse_sub':'lapse_prev');
       return;
     }
+    _lapseCheckedThisRun=true;
     const n=(parseInt(localStorage.getItem('fd_free_starts')||'0')||0)+1;
     localStorage.setItem('fd_free_starts',String(n));
-    if(n%LAPSE_REMIND_EVERY===0)_fillOffer('remind');
+    // Μία υπενθύμιση την ημέρα κατ' ανώτατο όριο
+    const today=new Date().toDateString();
+    if(n%LAPSE_REMIND_EVERY===0&&localStorage.getItem('fd_remind_day')!==today){
+      localStorage.setItem('fd_remind_day',today);
+      _fillOffer('remind');
+    }
   }catch(e){}
 }
 function _closeOffer(){const m=document.getElementById('offer-mod');if(m)m.classList.remove('show');}
@@ -6449,7 +6467,14 @@ function hasNativeBilling(){
 // τη μία, ίσχυε άθελά μας και για την άλλη.
 function isTwa(){
   try{
-    if(localStorage.getItem('fd_twa')==='1')return true;
+    // Η TWA τρέχει ΜΕΣΑ στον Chrome του χρήστη, στο ίδιο origin: το fd_twa
+    // που γράφεται εκεί το διαβάζει και η σκέτη καρτέλα του browser, και της
+    // χάριζε Premium για πάντα. Η TWA όμως δεν είναι ποτέ σε display-mode
+    // browser — μόνο έτσι ξεχωρίζουν.
+    if(localStorage.getItem('fd_twa')==='1'){
+      try{if(window.matchMedia&&window.matchMedia('(display-mode: browser)').matches)return false;}catch(e){}
+      return true;
+    }
     const r=document.referrer||'';
     if(r.indexOf('android-app://com.fooddaily.app')===0){
       localStorage.setItem('fd_twa','1');
@@ -6470,13 +6495,22 @@ function previewStart(){
   return t;
 }
 function previewDaysLeft(){
-  const t=parseInt(localStorage.getItem('fd_preview_start')||'0')||0;
+  let t=0;try{t=parseInt(localStorage.getItem('fd_preview_start')||'0')||0;}catch(e){}
   if(!t)return 0;
   return Math.max(0,PREVIEW_DAYS-Math.floor((Date.now()-t)/86400000));
 }
+// Προσφέρεται όντως δωρεάν δοκιμή σε αυτόν τον χρήστη; Απαιτεί και πακέτο με
+// δοκιμαστική περίοδο από το κατάστημα, και να μην έχει ξαναϋπάρξει συνδρομή.
+function offersTrial(){
+  if(hasEverHadPremium())return false;
+  return _planTrial.annual===true||_planTrial.monthly===true;
+}
 // Καταστάσεις: 'premium' (συνδρομή/δοκιμή Play) · 'preview' (δωρεάν γνωριμία) · 'free'
 function getPremiumState(){
-  if(localStorage.getItem('fd_premium')==='true')return 'premium';
+  // Σε Safari private ή με μπλοκαρισμένα cookies το getItem πετάει εξαίρεση:
+  // χωρίς το try, έσπαγε το isPremium() και μαζί κάθε render της λίστας.
+  let _p=null;try{_p=localStorage.getItem('fd_premium');}catch(e){}
+  if(_p==='true')return 'premium';
   // Όποιος είχε ήδη συνδρομή ή δοκιμή δεν ξαναπαίρνει τη γνωριμία. Χωρίς
   // αυτό, κάθε ακύρωση χάριζε άλλες 3 ημέρες — και μαζί με τη δοκιμή του
   // Play, ο κύκλος «δοκιμή, ακύρωση, γνωριμία» επαναλαμβανόταν.
@@ -6544,8 +6578,12 @@ function renderTrialBanner(){
     }
     el.innerHTML='';return;
   }
-  const back=hasEverHadPremium();
-  el.innerHTML=`<div class="trial-banner" onclick="openPremiumScreen()"><div class="trial-banner-l"><span class="trial-banner-icon">💎</span><span class="trial-banner-txt">${back?t('x85b'):t('x85')}</span></div><span class="trial-banner-cta">${back?t('x86b'):t('x86')}</span></div>`;
+  // «7 ημέρες δωρεάν» λέγεται ΜΟΝΟ σε όποιον όντως του προσφέρονται: στον
+  // browser η αγορά γίνεται στο Play και η εφαρμογή δεν ξέρει αν υπάρχει
+  // δοκιμή, ενώ όποιος είχε ήδη Premium δεν τη δικαιούται.
+  const txt=offersTrial()?t('x85'):(hasEverHadPremium()?t('x85b'):t('x85c'));
+  const cta=offersTrial()?t('x86'):t('x86b');
+  el.innerHTML=`<div class="trial-banner" onclick="openPremiumScreen()"><div class="trial-banner-l"><span class="trial-banner-icon">💎</span><span class="trial-banner-txt">${txt}</span></div><span class="trial-banner-cta">${cta}</span></div>`;
 }
 
 // Premium screen
@@ -6561,7 +6599,7 @@ function openPremiumScreen(){
     if(state==='trial'){badge.textContent=t('x87');}
     else if(state==='expired'){badge.textContent=t('x88');}
     else if(state==='premium'){badge.textContent=t('x79');}
-    else if(hasEverHadPremium()){badge.style.display='none';}
+    else if(!offersTrial()){badge.style.display='none';}
     else{badge.style.display='';badge.textContent=t('x89');}
   }
   setPlan('annual');
@@ -6776,6 +6814,7 @@ function activeEntitlement(customerInfo){
 }
 function rcHasEntitlement(customerInfo){return !!activeEntitlement(customerInfo);}
 function applyPremiumUnlocked(){
+  markPremiumEver();
   localStorage.setItem('fd_premium','true');
   try{renderTrialBanner();updatePremiumCTA(getPremiumState());}catch(e){}
 }
@@ -7019,6 +7058,9 @@ async function purchasePremium(plan){
     );
     const response=await request.show();
     await response.complete('success');
+    // Και η διαδρομή Digital Goods (TWA) σημειώνει ότι υπήρξε συνδρομή —
+    // αλλιώς ο ίδιος χρήστης έπαιρνε ξανά τη γνωριμία αν περνούσε σε Capacitor.
+    markPremiumEver();
     localStorage.setItem('fd_premium','true');
     localStorage.setItem('fd_premium_plan',plan);
     closePremiumScreen();
@@ -7065,6 +7107,7 @@ async function restorePurchase(){
     const purchases=await service.listPurchases();
     const owned=purchases.find(p=>Object.values(PREMIUM_SKUS).includes(p.itemId));
     if(owned){
+      markPremiumEver();
       localStorage.setItem('fd_premium','true');
       renderTrialBanner();
       updatePremiumCTA(getPremiumState());
@@ -7849,7 +7892,7 @@ function smartFridge(){
   // Μία αναζήτηση ψυγείου την ημέρα δωρεάν. Ο έλεγχος μπαίνει ΜΕΤΑ τον έλεγχο
   // για άδεια υλικά, ώστε ένα κατά λάθος πάτημα σε άδειο πλαίσιο να μην
   // καταναλώνει τη μοναδική χρήση της ημέρας.
-  if(!limUse('fridge')){openPremiumScreen();return;}
+  if(!limLeft('fridge')){openPremiumScreen();return;}
   const scored=Object.entries(MEALS)
     .map(([id,m])=>{
       const ingAll=deaccent(m.ing.join(' '));
@@ -7863,9 +7906,11 @@ function smartFridge(){
     .sort((a,b)=>b.score-a.score||(a.m.pop||2)-(b.m.pop||2))
     .slice(0,5);
   if(!scored.length){
+    // Καμία συνταγή: δεν καταναλώνεται η μοναδική ημερήσια χρήση
     res.innerHTML=`<div class="fridge-empty"><div style="font-size:38px">🤔</div>${t('y_fridge_none')}</div>`;
     return;
   }
+  limUse('fridge');
   res.innerHTML=`<div style="font-size:13px;font-weight:600;color:var(--t2);margin:1rem 0 .75rem">🎯 ${scored.length} ${t('f_found')}</div>`+
     scored.map(({id,m,score,pct,matched,missing})=>{
       const sc=pct>=70?'hi':pct>=40?'mid':'lo';
@@ -8730,7 +8775,7 @@ function earlyDaysLeft(id){
   const until=new Date(d).getTime()+EARLY_DAYS*86400000;
   return Math.max(0,Math.ceil((until-Date.now())/86400000));
 }
-function getFavs(){return JSON.parse(localStorage.getItem('fd_favs')||'[]');}
+function getFavs(){try{const a=JSON.parse(localStorage.getItem('fd_favs')||'[]');return Array.isArray(a)?a:[];}catch(e){return [];}}
 function isFav(id){return getFavs().includes(id);}
 // Όριο αγαπημένων για τους δωρεάν χρήστες — απεριόριστα στο Premium.
 const FREE_FAV_LIMIT=3;
@@ -8854,16 +8899,26 @@ function saveDiets(a){localStorage.setItem('fd_diets',JSON.stringify(a));}
 function toggleDiet(k){
   if(!isPremium()){showPremiumGate(t('x70'));return;}
   const d=getDiets(),i=d.indexOf(k);
-  if(i>=0)d.splice(i,1);else d.push(k);
+  if(i>=0)d.splice(i,1);
+  else{
+    // Ελαφρύ και Χορταστικό αλληλοαναιρούνται (<=350 kcal vs >=550):
+    // μαζί έδιναν μηδέν και το φίλτρο χαλάρωνε σε «ό,τι να 'ναι».
+    const OPP={light:'filling',filling:'light'};
+    if(OPP[k]){const j=d.indexOf(OPP[k]);if(j>=0)d.splice(j,1);}
+    d.push(k);
+  }
   saveDiets(d);
   renderDietGrid();
   renderMeals(curCat);
 }
 function renderDietGrid(){
-  const d=getDiets(),g=document.getElementById('diet-grid');
+  // Χωρίς συνδρομή τα chips δείχνονται σβηστά: αλλιώς έμεναν αναμμένα
+  // ενώ το applyDietFilter τα αγνοούσε, και ο χρήστης δεν μπορούσε να τα σβήσει.
+  const d=isPremium()?getDiets():[],g=document.getElementById('diet-grid');
   if(!g)return;
   g.innerHTML=DIET_FILTERS.map(k=>{
     const r=DIET_RULES.find(x=>x.k===k);
+    if(!r)return '';
     return `<div class="dislike-chip${d.includes(k)?' on':''}" onclick="toggleDiet('${k}')">
       <span class="dislike-chip-ico">${r.ico}</span>${t('dt_'+k)}</div>`;
   }).join('');
