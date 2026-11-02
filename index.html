@@ -5611,6 +5611,10 @@ function renderMeals(cat){
     // Καλοκαίρι (Ιούν–Αύγ): αφαιρούνται σούπες από τις καθημερινές προτάσεις
     const _mo=new Date().getMonth();
     if(_mo>=5&&_mo<=7) pool=pool.filter(m=>!m.cats.includes('soups'));
+    // Ο διατροφικός στόχος μπαίνει ΠΡΙΝ την εξαίρεση των ήδη εμφανισμένων:
+    // αλλιώς το «απομένουν ≥4» μετρούσε πιάτα που το φίλτρο έκοβε αμέσως
+    // μετά, και στο τρίτο «Νέες προτάσεις» η οθόνη έμενε άδεια.
+    if(cat==='all')pool=applyDietFilter(pool);
     // Εξαίρεση ήδη-εμφανισμένων (από «Νέες»): αν απομένουν ≥4, χρησιμοποίησέ τα
     if(cat==='all'&&_dailyShownIds.size>0){
       const rem=pool.filter(m=>!_dailyShownIds.has(m.id));
@@ -5638,7 +5642,7 @@ function renderMeals(cat){
   // Στα «Γρήγορα» το φίλτρο μπαίνει αφού χτιστεί το show: εκεί πετιούνται
   // γλυκά/σάλτσες και όσα ξεπερνούν τα 20', οπότε φιλτράροντας πριν, ο
   // έλεγχος επάρκειας μετρούσε πιάτα που δεν εμφανίζονται ποτέ.
-  if(cat!=='favs'&&cat!=='quick')pool=applyDietFilter(pool);
+  if(cat!=='favs'&&cat!=='quick'&&cat!=='all')pool=applyDietFilter(pool);
 
   const grid=document.getElementById('meals-grid');
 
@@ -5972,7 +5976,7 @@ function openR(id){
         <div class="nutr-item"><div class="nutr-ico">🫒</div><span>${mac.fat}${t('x12')}</span><small>${t('x15')}</small></div>
       </div>
       <div class="macro-bar"><i style="width:${pc(kp)}%;background:#C03E3E"></i><i style="width:${pc(kc)}%;background:#D99A2B"></i><i style="flex:1;background:#4F8A3C"></i></div>
-      <div class="diet-tags">${dietTags(m,mac).map(x=>`<span class="diet-tag">${x[0]} ${x[1]}</span>`).join('')}</div>`;
+      ${(()=>{const dt=dietTags(m,mac);return dt.length?`<div class="diet-tags">${dt.map(x=>`<span class="diet-tag">${x[0]} ${x[1]}</span>`).join('')}</div>`:'';})()}`;
   }
   // Cook Tonight button
   const tonightEl=document.getElementById('ov-tonight');
