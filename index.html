@@ -213,11 +213,11 @@ body{padding-left:env(safe-area-inset-left,0px);padding-right:env(safe-area-inse
 .mcard-lock .mtop img,.mcard-lock .mtop,.mcard-lock .mbtm{filter:blur(7px) saturate(.6);}
 .mcard-lock-ico{position:absolute;inset:0;display:flex;align-items:center;justify-content:center;font-size:34px;z-index:3;}
 .guest-lock-note{margin:1rem 1.25rem 0;padding:14px;border-radius:var(--rs);background:var(--lt);color:var(--pri);font-weight:700;font-size:14px;text-align:center;cursor:pointer;}
-.macro-bar{display:flex;height:26px;border-radius:13px;overflow:hidden;margin:12px 1.25rem 0;}
-.macro-bar i{display:flex;align-items:center;justify-content:center;font-style:normal;font-size:11.5px;font-weight:700;color:#fff;white-space:nowrap;overflow:hidden;letter-spacing:.2px;}
-.macro-key{display:flex;flex-wrap:wrap;gap:4px 16px;margin:8px 1.25rem 0;font-size:12px;color:var(--t2);}
-.macro-key b{display:inline-flex;align-items:center;gap:6px;font-weight:600;}
-.macro-key s{width:10px;height:10px;border-radius:3px;display:inline-block;}
+.macro-bar{display:flex;height:14px;border-radius:7px;overflow:hidden;margin:12px 1.25rem 0;}
+.macro-bar i{display:block;}
+.macro-key{display:flex;flex-wrap:wrap;gap:6px 18px;margin:10px 1.25rem 0;font-size:12.5px;color:var(--t2);}
+.macro-key b{display:inline-flex;align-items:center;gap:7px;font-weight:600;}
+.macro-key s{width:11px;height:11px;border-radius:3px;display:inline-block;flex:none;}
 .diet-tags{display:flex;flex-wrap:wrap;gap:8px;margin:12px 1.25rem 0;}
 .diet-tag{background:var(--lt);color:var(--pri);font-size:13px;font-weight:700;padding:7px 14px;border-radius:16px;}
 /* FESTIVE */
@@ -5420,8 +5420,8 @@ function findRecipeForItem(text){
 // ── STATE ────────────────────────────────────────────────────
 
 // ── HISTORY ──────────────────────────────────────────────────
-function getH(){return JSON.parse(localStorage.getItem('fd_h')||'[]');}
-function saveH(id){const h=getH(),i=h.findIndex(x=>x.id===id);if(i>=0)h.splice(i,1);h.unshift({id,ts:Date.now()});localStorage.setItem('fd_h',JSON.stringify(h.slice(0,40)));}
+function getH(){try{const a=JSON.parse(localStorage.getItem('fd_h')||'[]');return Array.isArray(a)?a:[];}catch(e){return [];}}
+function saveH(id){const h=getH(),i=h.findIndex(x=>x.id===id);if(i>=0)h.splice(i,1);h.unshift({id,ts:Date.now()});try{localStorage.setItem('fd_h',JSON.stringify(h.slice(0,40)));}catch(e){}}
 function recIds(days){const c=Date.now()-days*86400000;return getH().filter(x=>x.ts>c).map(x=>x.id);}
 // ── Μνήμη καθημερινών προτάσεων: αποφυγή επανάληψης ίδιων συνταγών διαδοχικές μέρες ──
 function getDailyHist(){try{return JSON.parse(localStorage.getItem('fd_daily_hist')||'[]');}catch(e){return [];}}
@@ -5439,7 +5439,7 @@ function saveDailyShown(ids){
   // Συγχώνευση με ό,τι έχει ήδη εμφανιστεί σήμερα (π.χ. μετά από «Νέες προτάσεις»)
   const merged=[...new Set([...(todayEntry?.ids||[]),...ids])];
   prev.push({date:today,ids:merged});
-  localStorage.setItem('fd_daily_hist',JSON.stringify(prev.slice(-4))); // 3 προηγούμενες μέρες + σήμερα
+  try{localStorage.setItem('fd_daily_hist',JSON.stringify(prev.slice(-4)));}catch(e){} // 3 προηγούμενες μέρες + σήμερα
 }
 function dSince(id){const h=getH().find(x=>x.id===id);return h?Math.floor((Date.now()-h.ts)/86400000):999;}
 function getDefCat(){
@@ -5769,8 +5769,8 @@ function renderMeals(cat){
     const dow=new Date().getDay();
     const isSunday=dow===0;
     // Persistent per-device user token so daily order differs per user
-    let _uid=localStorage.getItem('fd_uid');
-    if(!_uid){_uid=Math.random().toString(36).slice(2)+Date.now().toString(36);localStorage.setItem('fd_uid',_uid);}
+    let _uid=null;try{_uid=localStorage.getItem('fd_uid');}catch(e){}
+    if(!_uid){_uid=Math.random().toString(36).slice(2)+Date.now().toString(36);try{localStorage.setItem('fd_uid',_uid);}catch(e){}}
     const _dSeed=(new Date().toDateString()+_uid).split('').reduce((h,c)=>(h*31+c.charCodeAt(0))|0,1);
     const _mHash=id=>id.split('').reduce((h,c)=>(h*37+c.charCodeAt(0))|0,_dSeed);
     // Weighted random: priority επηρεάζει 30%, τυχαιότητα 70% — ποικιλία κάθε μέρα
@@ -5953,7 +5953,7 @@ function openR(id){
     <div class="ovtitle"><h2>${mealName(m)}</h2></div>`;
   // Stats — init serving count
   if(_curSrv===0){
-    const _ds=parseInt(localStorage.getItem('fd_default_srv'))||0;
+    let _ds=0;try{_ds=parseInt(localStorage.getItem('fd_default_srv'))||0;}catch(e){}
     _curSrv=_ds>0&&_guestScale===1?_ds:Math.round(m.srv*(_guestScale||1));
   }
   const initCost=_curSrv!==m.srv?scalePrice(m.cost||'~5€',_curSrv/m.srv):m.cost||'~5€';
@@ -5982,19 +5982,14 @@ function openR(id){
         <div class="nutr-item"><div class="nutr-ico">🫒</div><span>${mac.fat}${t('x12')}</span><small>${t('x15')}</small></div>
       </div>
       ${(()=>{
-        // Το χρώμα δεν λέει από μόνο του τίποτα: το όνομα μπαίνει ΜΕΣΑ στο
-        // κομμάτι όταν χωράει, αλλιώς πάει στο υπόμνημα από κάτω.
+        // Το χρώμα δεν λέει από μόνο του τίποτα. Τα ονόματα μπαίνουν ΠΑΝΤΑ σε
+        // υπόμνημα από κάτω, με το χρώμα δίπλα — μέσα στη λωρίδα χωρούσαν
+        // άλλοτε δύο, άλλοτε ένα, και η εικόνα άλλαζε από συνταγή σε συνταγή.
         const SEG=[[pc(kp),'#C03E3E',t('x13')],[pc(kc),'#D99A2B',t('x14')],[pc(kf),'#4F8A3C',t('x15')]];
-        // Το κατώφλι εξαρτάται από το ΜΗΚΟΣ της λέξης: «Λιπαρά» χωράει σε
-        // λωρίδα που η «Υδατάνθρακες» δεν χωράει. ~360px πλάτος μπάρας.
-        const fits=(w,lbl)=>w/100*360>=lbl.length*6.4+12;
-        const bar=SEG.map(([w,c,lbl],i)=>{
-          const st=i===2?`flex:1;background:${c}`:`width:${w}%;background:${c}`;
-          return `<i style="${st}">${fits(w,lbl)?lbl:''}</i>`;
-        }).join('');
-        const rest=SEG.filter(([w,,lbl])=>!fits(w,lbl));
+        const bar=SEG.map(([w,c],i)=>
+          `<i style="${i===2?`flex:1`:`width:${w}%`};background:${c}"></i>`).join('');
         return `<div class="macro-bar">${bar}</div>`+
-          (rest.length?`<div class="macro-key">${rest.map(([,c,lbl])=>`<b><s style="background:${c}"></s>${lbl}</b>`).join('')}</div>`:'');
+          `<div class="macro-key">${SEG.map(([,c,lbl])=>`<b><s style="background:${c}"></s>${lbl}</b>`).join('')}</div>`;
       })()}
       ${(()=>{const dt=dietTags(m,mac);return dt.length?`<div class="diet-tags">${dt.map(x=>`<span class="diet-tag">${x[0]} ${x[1]}</span>`).join('')}</div>`:'';})()}`;
   }
@@ -6110,9 +6105,9 @@ function ovTab(tab){
 const RATE_MIN_OPENS=3;   // κατώφλι πρώτης εμφάνισης
 const RATE_MIN_GAP_H=24;  // ελάχιστη απόσταση σε ώρες μεταξύ δύο εμφανίσεων
 const RATE_MAX_STEP=24;   // ανώτατο κατώφλι — το «Αργότερα» να μη σημαίνει «ποτέ»
-function _rNum(k){return parseInt(localStorage.getItem(k)||'0')||0;}
+function _rNum(k){try{return parseInt(localStorage.getItem(k)||'0')||0;}catch(e){return 0;}}
 function bumpRecipeOpens(){
-  if(localStorage.getItem('fd_rated')==='true')return;
+  try{if(localStorage.getItem('fd_rated')==='true')return;}catch(e){return;}
   try{localStorage.setItem('fd_rate_opens',String(_rNum('fd_rate_opens')+1));}catch(e){}
 }
 // Πόσες συνταγές συνολικά χρειάζονται για την επόμενη εμφάνιση.
@@ -7909,6 +7904,12 @@ function addTag(){
 }
 document.getElementById('fridge-inp').addEventListener('keydown',e=>{if(e.key==='Enter')addTag();});
 
+// Μία αναζήτηση ψυγείου την ημέρα — ΑΝΑΖΗΤΗΣΗ, όχι υλικό. Η smartFridge
+// καλείται σε κάθε προσθήκη και αφαίρεση υλικού, οπότε με το όριο στη θέση
+// του μετρητή ο δωρεάν χρήστης κλειδωνόταν στο δεύτερο κιόλας υλικό και η
+// λειτουργία ήταν πρακτικά άχρηστη. Η χρήση χρεώνεται μία φορά ανά εκτέλεση
+// της εφαρμογής: όσο προσθέτει και αφαιρεί υλικά, η ίδια αναζήτηση συνεχίζεται.
+let _fridgePaid=false;
 function smartFridge(){
   const tags=Array.from(document.querySelectorAll('#tags .tag')).map(x=>deaccent(x.textContent.replace('×','').trim()));
   const res=document.getElementById('fridge-res');
@@ -7916,7 +7917,7 @@ function smartFridge(){
   // Μία αναζήτηση ψυγείου την ημέρα δωρεάν. Ο έλεγχος μπαίνει ΜΕΤΑ τον έλεγχο
   // για άδεια υλικά, ώστε ένα κατά λάθος πάτημα σε άδειο πλαίσιο να μην
   // καταναλώνει τη μοναδική χρήση της ημέρας.
-  if(!limLeft('fridge')){openPremiumScreen();return;}
+  if(!_fridgePaid&&!limLeft('fridge')){openPremiumScreen();return;}
   const scored=Object.entries(MEALS)
     .map(([id,m])=>{
       const ingAll=deaccent(m.ing.join(' '));
@@ -7934,7 +7935,7 @@ function smartFridge(){
     res.innerHTML=`<div class="fridge-empty"><div style="font-size:38px">🤔</div>${t('y_fridge_none')}</div>`;
     return;
   }
-  limUse('fridge');
+  if(!_fridgePaid){limUse('fridge');_fridgePaid=true;}
   res.innerHTML=`<div style="font-size:13px;font-weight:600;color:var(--t2);margin:1rem 0 .75rem">🎯 ${scored.length} ${t('f_found')}</div>`+
     scored.map(({id,m,score,pct,matched,missing})=>{
       const sc=pct>=70?'hi':pct>=40?'mid':'lo';
@@ -9288,13 +9289,17 @@ function dismissTonightBanner(){
 }
 
 (function init(){
+  // Με κλειστά cookies (Safari private) το getItem πετάει εξαίρεση. Χωρίς το
+  // try, πέθαινε ΟΛΟ το init στην πρώτη γραμμή και η εφαρμογή έμενε άδεια —
+  // κάθε try/catch παρακάτω ήταν άχρηστο.
+  const _ls=k=>{try{return localStorage.getItem(k);}catch(e){return null;}};
   // Dark mode
-  if(localStorage.getItem('fd_dark')==='1'){
+  if(_ls('fd_dark')==='1'){
     document.documentElement.setAttribute('data-theme','dark');
     const db=document.getElementById('dark-btn');if(db)db.textContent='☀️';
   }
   // Restore language preference
-  const _sl=localStorage.getItem('fd_lang');
+  const _sl=_ls('fd_lang');
   if(_sl&&LANGS[_sl]&&_sl!==curLang){setLang(_sl);}else{applyLangTexts(curLang);}
   // Hero greeting + date
   updateHeroTexts();
