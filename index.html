@@ -539,7 +539,11 @@ body{padding-left:env(safe-area-inset-left,0px);padding-right:env(safe-area-inse
 .ur-photo-preview img{width:100%;display:block;border-radius:10px;}
 .ur-photo-rm{position:absolute;top:6px;right:6px;background:rgba(0,0,0,.55);color:#fff;border:none;border-radius:50%;width:28px;height:28px;font-size:15px;cursor:pointer;line-height:1;}
 /* ── BOTTOM FAB BUTTON ── */
-.fab-recipe{position:fixed;bottom:80px;right:16px;z-index:900;background:var(--pri);color:#fff;border:none;border-radius:28px;padding:12px 18px;font-size:13px;font-weight:700;cursor:pointer;box-shadow:0 4px 18px rgba(58,117,88,.4);display:flex;align-items:center;gap:7px;-webkit-tap-highlight-color:transparent;}
+/* Το κουμπί είχε σταθερό bottom:80px, ενώ η κάτω μπάρα ψηλώνει κατά την
+   γραμμή χειρονομιών του κινητού (env(safe-area-inset-bottom)). Σε τέτοιες
+   συσκευές καθόταν πάνω στα «Καλεσμένοι» και «Πρόγραμμα». Ανεβαίνει τώρα
+   μαζί της: ύψος μπάρας 59px + το περιθώριο της συσκευής + 19px αέρας. */
+.fab-recipe{position:fixed;bottom:calc(78px + env(safe-area-inset-bottom));right:16px;z-index:900;background:var(--pri);color:#fff;border:none;border-radius:28px;padding:12px 18px;font-size:13px;font-weight:700;cursor:pointer;box-shadow:0 4px 18px rgba(58,117,88,.4);display:flex;align-items:center;gap:7px;-webkit-tap-highlight-color:transparent;}
 .ov.show ~ .fab-recipe{display:none;}
 /* ── TRIAL BANNER ── */
 .trial-banner{display:flex;align-items:center;justify-content:space-between;gap:8px;margin:10px 1.25rem 0;padding:10px 14px;background:linear-gradient(135deg,rgba(245,158,11,.12),rgba(217,119,6,.08));border:1.5px solid rgba(245,158,11,.35);border-radius:14px;cursor:pointer;-webkit-tap-highlight-color:transparent;}
