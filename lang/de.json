@@ -6,6 +6,10 @@
   "lang_el": "Griechisch",
   "lang_en": "Englisch",
   "lang_de": "Deutsch",
+  "tb_last": "Letzter Tag mit <span>vollem Gratis-Zugriff</span>",
+  "tb_left": "Noch <span>{0} Tage</span> voller Gratis-Zugriff",
+  "tb_tlast": "Letzter Tag deiner <span>Gratis-Testphase</span>",
+  "tb_tleft": "Noch <span>{0} Tage</span> in deiner Gratis-Testphase",
   "web_get_app": "📲 App herunterladen",
   "web_get_note": "Premium ist nur in der Android-App verfügbar.",
   "y_nl_ok": "✅ Du bist dabei! Neuigkeiten kommen bald an {0}",
@@ -62,6 +66,14 @@
   "y_grp6": "🎉 Für Freunde — ergiebig in großen Portionen",
   "y_grp8": "🍖 Für die große Tafel — Gerichte, die Eindruck machen",
   "y_fav_limit": "Gratis sind bis zu {0} Favoriten. Premium ist unbegrenzt.",
+  "dt_vegan": "Vegan",
+  "dt_fast": "Fastenspeise",
+  "dt_light": "Leicht",
+  "dt_filling": "Sättigend",
+  "dt_protein": "Proteinreich",
+  "dt_lowfat": "Fettarm",
+  "dt_lowcarb": "Wenig Kohlenhydrate",
+  "y_guest_lock": "{0} weitere Gerichte für Gäste mit Premium",
   "y_timer_snd": "Timer-Ton: {0} Sekunden",
   "y_nl_reg": "✅ Angemeldet als {0}",
   "x79": "✅ Du hast Premium!",
@@ -71,6 +83,9 @@
   "x83": "Jetzt Saison",
   "x84": "Deine <span>Gratis-Testphase</span> läuft",
   "x85": "<span>Premium</span> 7 Tage gratis testen",
+  "x85b": "Schalte <span>Premium</span> wieder frei",
+  "x86b": "Ansehen →",
+  "x85c": "Schalte ganz <span>FoodDaily</span> frei",
   "x86": "Gratis →",
   "x87": "🎁 Voller Zugriff — gratis",
   "x88": "⚠️ Testphase abgelaufen",
@@ -274,6 +289,14 @@
   "wine": "🍷 Wein",
   "beer": "🍺 Bier",
   "plate": "🍽️ Anrichten",
+  "pr_spirit": "🥃 Ouzo / Tsipouro",
+  "pr_coffee": "☕ Kaffee",
+  "pr_tea": "🍵 Tee",
+  "pr_milk": "🥛 Milch",
+  "pr_liq": "🥃 Likör / Weinbrand",
+  "pr_choc": "🍫 Heiße Schokolade",
+  "pr_water": "💧 Wasser / Saft",
+  "pr_any": "🥂 Dazu passt",
   "copy_list": "📋 Einkaufsliste kopieren",
   "all_have": "✅ Du hast alles!",
   "qty_for": "Mengen für",
@@ -424,11 +447,10 @@
   "mp_search_ph": "Suchen…",
   "prof_title": "👤 Profil & Vorlieben",
   "prof_dislikes": "Abneigungen / Vermeiden",
-  "sweets_lbl": "Süßes",
-  "tb_last": "Letzter Tag mit <span>vollem Gratis-Zugriff</span>",
-  "tb_left": "Noch <span>{0} Tage</span> voller Gratis-Zugriff",
-  "tb_tlast": "Letzter Tag deiner <span>Gratis-Testphase</span>",
-  "tb_tleft": "Noch <span>{0} Tage</span> in deiner Gratis-Testphase"
+  "y_diet_loose": "Nur wenige Gerichte passen zu allen Auswahlen — die Liste wurde gelockert.",
+  "prof_diet": "🥗 Ernährungsziel",
+  "prof_diet_sub": "Ohne Auswahl werden alle Rezepte angezeigt",
+  "sweets_lbl": "Süßes"
  },
  "meals": {
   "aglio": {
@@ -8319,9 +8341,9 @@
    "plate": "In Scheiben schneiden, sodass die Maserung sichtbar wird, und auf einem weißen Teller servieren."
   },
   "marides": {
-   "n": "Frittierte Sardellen",
+   "n": "Frittierte Marides (kleine Fische)",
    "ing": [
-    "Marides (kleine Sardellen) 600 g",
+    "Marides (kleine Fische) 600 g",
     "Mehl zum Frittieren 1 Tasse",
     "Salz",
     "Saft von 1 Zitrone",
@@ -10095,6 +10117,281 @@
    ],
    "wine": "Ein roter Agiorgitiko oder ein Merlot, keiner davon so schwer, dass er den Feta begräbt.",
    "plate": "Im Ganzen mit Ofenkartoffeln und einer Zitronenspalte servieren und bei Tisch aufschneiden"
+  }
+ },
+ "prep": {
+  "fasolada": {
+   "msg": "Die Bohnen über Nacht einweichen — sie brauchen 8+ Stunden im Wasser!"
+  },
+  "revythada": {
+   "msg": "Die Kichererbsen über Nacht einweichen — mindestens 12 Stunden."
+  },
+  "gigantes": {
+   "msg": "Die Riesenbohnen über Nacht einweichen — sie quellen stark auf!"
+  },
+  "bakaliaro": {
+   "msg": "Den Stockfisch 24-36 Stunden entsalzen und das Wasser 3-4 mal wechseln."
+  },
+  "kotopoulo": {
+   "msg": "Das Hähnchen aus dem Gefrierfach nehmen und im Kühlschrank auftauen lassen."
+  },
+  "kima": {
+   "msg": "Das Hackfleisch aus dem Gefrierfach nehmen und auftauen lassen."
+  },
+  "biftekia": {
+   "msg": "Das Hackfleisch aus dem Gefrierfach nehmen und auftauen lassen."
+  },
+  "moussaka": {
+   "msg": "Das Hackfleisch aus dem Gefrierfach nehmen und auftauen lassen."
+  },
+  "pastitsio": {
+   "msg": "Das Hackfleisch aus dem Gefrierfach nehmen und auftauen lassen."
+  },
+  "souvlakia": {
+   "msg": "Das Schweinefleisch auftauen lassen und über Nacht marinieren."
+  },
+  "arnaki_lemonato": {
+   "msg": "Das Lamm auftauen lassen und über Nacht marinieren."
+  },
+  "kokkinisto": {
+   "msg": "Das Lamm im Kühlschrank auftauen lassen."
+  },
+  "giouvetsi": {
+   "msg": "Das Lamm im Kühlschrank auftauen lassen."
+  },
+  "stifado": {
+   "msg": "Das Kaninchen auftauen lassen und in Wein marinieren."
+  },
+  "htapodi": {
+   "msg": "Den Oktopus auftauen lassen — er braucht 8-12 Stunden."
+  },
+  "psarosoupa": {
+   "msg": "Den Fisch im Kühlschrank auftauen lassen."
+  },
+  "psari_plaki": {
+   "msg": "Den Fisch im Kühlschrank auftauen lassen."
+  },
+  "tsipoura": {
+   "msg": "Die Dorade im Kühlschrank auftauen lassen."
+  },
+  "mageiritsa": {
+   "msg": "Die Innereien auftauen lassen."
+  },
+  "gourounopoulo": {
+   "msg": "Das Spanferkel über Nacht marinieren — Olivenöl, Zitrone, Knoblauch, Oregano."
+  },
+  "galopoula": {
+   "msg": "Die Füllung für den Truthahn vorbereiten und ihn über Nacht marinieren."
+  },
+  "arni_souvia": {
+   "msg": "Das Lamm salzen und über Nacht marinieren."
+  },
+  "kontosouvi": {
+   "msg": "Die Fleischstücke auftauen lassen und marinieren."
+  },
+  "lagana": {
+   "msg": "Den Teig vorbereiten — er braucht 1 Stunde zum Aufgehen, bevor er gebacken wird."
+  },
+  "giouvarlaakia": {
+   "msg": "Das Hackfleisch auftauen lassen."
+  }
+ },
+ "fest": {
+  "f0": {
+   "n": "Rosenmontag (Kathara Deftera)",
+   "d": "Feb/März",
+   "tl": "Strenges Fasten",
+   "sub": "Fastentafel zum Karnevalsausklang",
+   "fn": "Ohne Fleisch, Milchprodukte und Eier. Erlaubt sind: Oktopus, Tintenfisch, Garnelen, Miesmuscheln.",
+   "wine": "Ouzo oder Tsipouro!",
+   "wt": "Ouzo & Tsipouro",
+   "menu": [
+    "🥖 Lagana-Fladenbrot",
+    "🐙 Oktopus in Weinsauce",
+    "🫐 Taramosalata",
+    "🍬 Grieß-Halva",
+    "🫒 Oliven & eingelegtes Gemüse",
+    "🦑 Frittierte Kalamari"
+   ],
+   "tl2": [
+    "Morgens — Ausflug zum Drachensteigen",
+    "12:00 — Oktopus auf dem Holzkohlegrill",
+    "13:00 — Taramosalata, Oliven, Lagana",
+    "14:00 — Halva & Drachen steigen lassen!"
+   ]
+  },
+  "f1": {
+   "n": "25. März",
+   "d": "25. März",
+   "tl": "Fisch & Nationalfeiertag",
+   "sub": "Nationalfeiertag — Stockfisch mit Skordalia!",
+   "fn": "Fastenzeit, aber Fisch ist erlaubt. Traditionell: STOCKFISCH MIT KNOBLAUCHCREME!",
+   "wine": "Weißer Assyrtiko.",
+   "wt": "Weißwein zum Stockfisch",
+   "menu": [
+    "🐟 Stockfisch mit Skordalia",
+    "🧄 Skordalia (Knoblauchcreme)",
+    "🌿 Spinatreis",
+    "🥬 Krautsalat",
+    "🍬 Grieß-Halva"
+   ],
+   "tl2": [
+    "Vortag — Den Stockfisch 24 Stunden entsalzen!",
+    "25.3. 11:00 — Skordalia zubereiten",
+    "12:30 — Den Stockfisch frittieren",
+    "13:00 — Der Tisch ist gedeckt!"
+   ]
+  },
+  "f2": {
+   "n": "Karwoche",
+   "d": "Woche vor Ostern",
+   "tl": "Strenges Fasten",
+   "sub": "Die heiligste Woche — strenges Fasten",
+   "fn": "Ohne Fleisch, Fisch, Milchprodukte, Eier, Öl und Wein. Gründonnerstag: Wir färben rote Eier! Karfreitag: völlige Enthaltung — nur Brot und Wasser. Karsamstag um Mitternacht: Auferstehung & Mageiritsa.",
+   "wine": "Nur Wasser & Brühe.",
+   "wt": "Strenges Fasten",
+   "menu": [
+    "🫒 Oliven & eingelegtes Gemüse",
+    "🥗 Gemüsesalat",
+    "🍲 Linsen nach Fastenart",
+    "🐙 Oktopus (Mo–Mi)",
+    "🥚 Rote Eier (Gründonnerstag)",
+    "🍲 Mageiritsa (Karsamstag)"
+   ],
+   "tl2": [
+    "Gründonnerstag — Rote Eier färben!",
+    "Karfreitag — Fasten & Epitaphios-Prozession",
+    "Karsamstag 23:00 — Auferstehung!",
+    "Mitternacht — Mageiritsa & Tsoureki"
+   ]
+  },
+  "f3": {
+   "n": "Ostern",
+   "d": "Ostersonntag",
+   "tl": "Hochfest",
+   "sub": "Die wichtigste Tafel des Jahres",
+   "wine": "Trockener Rotwein.",
+   "wt": "Rotwein zum Lamm",
+   "menu": [
+    "🍲 Mageiritsa",
+    "🥚 Oster-Tsoureki",
+    "🥩 Lamm vom Spieß",
+    "🥩 Kontosouvli",
+    "🥗 Griechischer Bauernsalat",
+    "🧄 Tzatziki"
+   ],
+   "tl2": [
+    "Karsamstag 22:00 — Mageiritsa",
+    "Sonntag 08:00 — Den Spieß anfeuern",
+    "13:00 — Salate & Tzatziki",
+    "14:00 — Christus ist auferstanden!"
+   ]
+  },
+  "f4": {
+   "n": "Erster Mai",
+   "d": "1. Mai",
+   "tl": "Volksfest",
+   "sub": "Ausflug, Grill & Natur",
+   "wine": "Kaltes Bier & Ouzo!",
+   "wt": "Bier & Ouzo",
+   "menu": [
+    "🥩 Souvlaki-Spieße",
+    "🧆 Keftedes (Frikadellen)",
+    "🧄 Tzatziki",
+    "🥗 Griechischer Bauernsalat",
+    "🍺 Eiskaltes Bier"
+   ],
+   "tl2": [
+    "Morgens — Ausflug in die Natur",
+    "11:00 — Den Grill anfeuern",
+    "13:00 — Souvlaki & Keftedes",
+    "17:00 — Wassermelone!"
+   ]
+  },
+  "f5": {
+   "n": "Marienfest (15. August)",
+   "d": "15. August",
+   "tl": "Das Fest des Grillspießes",
+   "sub": "Entschlafung der Gottesmutter",
+   "fn": "Fastenzeit vom 1. bis 14. August. Am 15. endet das Fasten — die Tafeln füllen sich mit Lamm und Zicklein vom Spieß und Gegrilltem!",
+   "wine": "Trockener Rotwein oder Ouzo!",
+   "wt": "Rotwein zum Spießbraten",
+   "menu": [
+    "🥩 Lamm vom Spieß",
+    "🥩 Zicklein aus dem Ofen",
+    "🧆 Keftedes & Souvlaki",
+    "🥗 Griechischer Bauernsalat",
+    "🧄 Tzatziki",
+    "🍺 Kaltes Bier & Ouzo"
+   ],
+   "tl2": [
+    "Morgens — Kirche & Prozession",
+    "10:00 — Den Spieß anfeuern",
+    "13:00 — Dorffest & Tanz",
+    "14:00 — Festtafel mit Spießbraten!"
+   ]
+  },
+  "f6": {
+   "n": "28. Oktober (Ochi-Tag)",
+   "d": "28. Oktober",
+   "tl": "Nationalfeiertag",
+   "sub": "Ochi-Tag — traditionelle Festtafel",
+   "wine": "Trockener Rotwein.",
+   "wt": "Griechischer Rotwein",
+   "menu": [
+    "🥩 Lamm Kokkinisto",
+    "🍚 Lamm-Giouvetsi",
+    "🥘 Kaninchen-Stifado",
+    "🥗 Griechischer Bauernsalat",
+    "🍰 Galaktoboureko"
+   ],
+   "tl2": [
+    "Morgens — Parade",
+    "12:30 — Giouvetsi in den Ofen",
+    "14:00 — Der Tisch ist gedeckt!",
+    "16:00 — Galaktoboureko"
+   ]
+  },
+  "f7": {
+   "n": "Weihnachten",
+   "d": "25. Dezember",
+   "tl": "Hochfest",
+   "sub": "Spanferkel & weihnachtliche Süßigkeiten",
+   "wine": "Trockener Rotwein.",
+   "wt": "Rotwein zum Spanferkel",
+   "menu": [
+    "🦃 Gefüllter Truthahn",
+    "🥩 Spanferkel aus dem Ofen",
+    "🥗 Rucola-Parmesan-Salat",
+    "🍪 Melomakarona",
+    "⬜ Kourabiedes"
+   ],
+   "tl2": [
+    "24.12. morgens — Marinieren",
+    "24.12. abends — Füllung & Süßigkeiten",
+    "25.12. 09:00 — In den Ofen",
+    "14:00 — Frohe Weihnachten!"
+   ]
+  },
+  "f8": {
+   "n": "Silvester",
+   "d": "31. Dezember",
+   "tl": "Hochfest",
+   "sub": "Truthahn, Vasilopita & Champagner",
+   "wine": "Champagner & Chardonnay!",
+   "wt": "Champagner",
+   "menu": [
+    "🥗 Granatapfelsalat",
+    "🦃 Gefüllter Truthahn",
+    "🎂 Vasilopita (Neujahrskuchen)",
+    "🍪 Melomakarona"
+   ],
+   "tl2": [
+    "14:00 — Truthahn in den Ofen",
+    "20:00 — Hauptmahlzeit",
+    "23:55 — Vasilopita",
+    "00:00 — Frohes neues Jahr!"
+   ]
   }
  }
 }
