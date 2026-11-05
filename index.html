@@ -215,6 +215,8 @@ body{padding-left:env(safe-area-inset-left,0px);padding-right:env(safe-area-inse
 .guest-lock-note{margin:1rem 1.25rem 0;padding:14px;border-radius:var(--rs);background:var(--lt);color:var(--pri);font-weight:700;font-size:14px;text-align:center;cursor:pointer;}
 .macro-bar{display:flex;height:14px;border-radius:7px;overflow:hidden;margin:12px 1.25rem 0;}
 .macro-bar i{display:block;}
+.prof-legal{display:flex;justify-content:center;gap:8px;margin-top:14px;font-size:12.5px;color:var(--t3);}
+.prof-legal a{color:var(--t2);text-decoration:underline;}
 .macro-key{display:flex;flex-wrap:wrap;gap:6px 18px;margin:10px 1.25rem 0;font-size:12.5px;color:var(--t2);}
 .macro-key b{display:inline-flex;align-items:center;gap:7px;font-weight:600;}
 .macro-key s{width:11px;height:11px;border-radius:3px;display:inline-block;flex:none;}
@@ -1158,6 +1160,11 @@ body{padding-left:env(safe-area-inset-left,0px);padding-right:env(safe-area-inse
       <div class="prof-sect-sub" data-i18n="prof_timer_dur">Διάρκεια ήχου</div>
       <div class="tsnd-row" id="tdur-list"></div>
     </div>
+    <div class="prof-legal">
+      <a href="https://georgebokos.github.io/privacy.html" target="_blank" rel="noopener noreferrer" data-i18n="prof_privacy">Πολιτική απορρήτου</a>
+      <span>·</span>
+      <a href="https://georgebokos.github.io/terms.html" target="_blank" rel="noopener noreferrer" data-i18n="prof_terms">Όροι χρήσης</a>
+    </div>
     <div class="prof-prem-note" id="prof-prem-note"></div>
   </div>
 </div>
@@ -1791,6 +1798,7 @@ lang_fail:'⚠️ Η γλώσσα δεν φορτώθηκε. Έλεγξε τη �
     ur_photo_alt:'Φωτογραφία πιάτου',mp_search_ph:'Αναζήτηση...',
     prof_title:'👤 Προφίλ & Προτιμήσεις',prof_dislikes:'Δεν μου αρέσει / Αποφεύγω',
     y_diet_loose:'Λίγα πιάτα ταιριάζουν σε όλες τις επιλογές — η λίστα χαλάρωσε.',
+    prof_privacy:'Πολιτική απορρήτου',prof_terms:'Όροι χρήσης',
     prof_diet:'🥗 Διατροφικός στόχος',prof_diet_sub:'Χωρίς επιλογή εμφανίζονται όλες οι συνταγές',
     sweets_lbl:'Γλυκό',
   },
@@ -2059,6 +2067,7 @@ lang_fail:'⚠️ Language pack failed to load. Check your connection.',
     ur_photo_alt:'Dish photo',mp_search_ph:'Search...',
     prof_title:'👤 Profile & Preferences',prof_dislikes:"Dislikes / Avoid",
     y_diet_loose:'Few dishes match every choice — the list has been relaxed.',
+    prof_privacy:'Privacy policy',prof_terms:'Terms of service',
     prof_diet:'🥗 Nutrition goal',prof_diet_sub:'With nothing selected, every recipe is shown',
     sweets_lbl:'Sweet',
   }

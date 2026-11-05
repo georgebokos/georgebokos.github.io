@@ -65,8 +65,8 @@ def main():
     # ΡΗΤΗ ΛΙΣΤΑ, όχι λίστα εξαιρέσεων. Με τη λίστα εξαιρέσεων δημοσιευόταν στο
     # ζωντανό site ό,τι έμπαινε στη ρίζα — ανάμεσά τους το CLAUDE.md με εσωτερικές
     # σημειώσεις και τα logo_proposals.html. Ό,τι δεν είναι εδώ, δεν ανεβαίνει.
-    PUBLISH = {'manifest.json', 'privacy.html', 'icon.svg', 'install.html',
-               'og-preview-el.jpg', 'og-preview-en.jpg'}
+    PUBLISH = {'manifest.json', 'privacy.html', 'terms.html', 'icon.svg',
+               'install.html', 'og-preview-el.jpg', 'og-preview-en.jpg'}
     for f in sorted(os.listdir(SRC)):
         if os.path.isdir(os.path.join(SRC, f)):
             continue
