@@ -1,0 +1,2596 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>ΕΣΠΑ Βοηθός — Ανάλυση Πρόσκλησης & Αίτηση Στήριξης</title>
+<meta name="description" content="Ελέγχει σε ένα λεπτό αν η επιχείρηση είναι επιλέξιμη σε ένα πρόγραμμα ΕΣΠΑ — με βάση την περιοχή της και την πρόσκληση — και μετά συντάσσει αυτόματα τον φάκελο της αίτησης στήριξης.">
+<meta name="theme-color" content="#0b3d68">
+<link rel="manifest" href="manifest.json">
+<link rel="icon" href="icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="icon-192.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="ΕΣΠΑ Βοηθός">
+<style>
+:root{
+  --blue:#0b3d68; --blue2:#14568f; --acc:#1a73c7; --acc-soft:#e7f0fa;
+  --eu:#003399; --gold:#f2b705;
+  --ok:#0f7b46; --ok-bg:#e6f5ec;
+  --warn:#9a6400; --warn-bg:#fdf3dc;
+  --bad:#a52222; --bad-bg:#fbeaea;
+  --bg:#f2f5f8; --card:#ffffff; --ink:#17222e; --ink2:#5a6b7c;
+  --line:#dbe3ec; --line2:#eef2f6;
+  --r:14px; --sh:0 1px 2px rgba(16,38,60,.06),0 6px 18px rgba(16,38,60,.07);
+  --mono:ui-monospace,"SF Mono",Menlo,Consolas,monospace;
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --blue:#7fb4e6; --blue2:#5f9bd6; --acc:#63a9ec; --acc-soft:#12283d;
+    --ok:#5fd39a; --ok-bg:#0f2b1f; --warn:#f0c264; --warn-bg:#2e2513;
+    --bad:#f08a8a; --bad-bg:#331818;
+    --bg:#0f151c; --card:#161f29; --ink:#e6edf4; --ink2:#9dadbd;
+    --line:#28323e; --line2:#1e2731;
+    --sh:0 1px 2px rgba(0,0,0,.3),0 6px 18px rgba(0,0,0,.35);
+  }
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{
+  background:var(--bg); color:var(--ink);
+  font:15px/1.55 system-ui,-apple-system,"Segoe UI",Roboto,"Helvetica Neue",Arial,sans-serif;
+  -webkit-text-size-adjust:100%;
+}
+h1,h2,h3,h4{margin:0 0 .5em;line-height:1.25;font-weight:700}
+p{margin:0 0 .8em}
+a{color:var(--acc)}
+button,input,select,textarea{font:inherit;color:inherit}
+
+/* ── Κεφαλίδα ───────────────────────────────────────────── */
+header.top{
+  background:linear-gradient(135deg,var(--eu),#0b3d68 60%,#14568f);
+  color:#fff;padding:18px 16px 14px;position:relative;overflow:hidden;
+}
+header.top::after{
+  content:"";position:absolute;inset:auto -40px -60px auto;width:220px;height:220px;
+  border-radius:50%;background:rgba(255,204,0,.10);
+}
+.brand{display:flex;align-items:center;gap:12px;max-width:1180px;margin:0 auto;position:relative}
+.brand .logo{
+  width:44px;height:44px;border-radius:12px;background:rgba(255,255,255,.14);
+  display:grid;place-items:center;font-size:22px;flex:0 0 auto;
+  border:1px solid rgba(255,255,255,.25)
+}
+.brand h1{font-size:19px;margin:0;letter-spacing:-.2px}
+.brand .sub{font-size:12.5px;opacity:.85;margin-top:2px}
+
+/* ── Βήματα / καρτέλες ──────────────────────────────────── */
+nav.steps{
+  background:var(--card);border-bottom:1px solid var(--line);
+  position:sticky;top:0;z-index:40;box-shadow:0 1px 0 var(--line);
+}
+.steps-in{
+  max-width:1180px;margin:0 auto;display:flex;gap:4px;overflow-x:auto;
+  padding:8px 10px;scrollbar-width:none
+}
+.steps-in::-webkit-scrollbar{display:none}
+.step{
+  flex:0 0 auto;display:flex;align-items:center;gap:7px;
+  padding:8px 13px;border-radius:999px;border:1px solid transparent;
+  background:transparent;color:var(--ink2);cursor:pointer;white-space:nowrap;
+  font-size:13.5px;font-weight:600;transition:.15s
+}
+.step:hover{background:var(--line2);color:var(--ink)}
+.step.on{background:var(--acc-soft);color:var(--acc);border-color:color-mix(in srgb,var(--acc) 30%,transparent)}
+.step.lock{opacity:.45}
+.step.lock::after{content:"🔒";font-size:10px;margin-left:1px}
+.step .num{
+  width:20px;height:20px;border-radius:50%;display:grid;place-items:center;
+  font-size:11px;background:var(--line);color:var(--ink2);flex:0 0 auto
+}
+.step.on .num{background:var(--acc);color:#fff}
+.step.done .num{background:var(--ok);color:#fff}
+.step.done .num::after{content:"✓"}
+.step.done .num span{display:none}
+
+main{max-width:1180px;margin:0 auto;padding:18px 14px 90px}
+.pane{display:none;animation:fade .18s ease}
+.pane.on{display:block}
+@keyframes fade{from{opacity:0;transform:translateY(4px)}to{opacity:1;transform:none}}
+
+/* ── Κάρτες ─────────────────────────────────────────────── */
+.card{
+  background:var(--card);border:1px solid var(--line);border-radius:var(--r);
+  padding:16px;margin:0 0 14px;box-shadow:var(--sh)
+}
+.card>h2{font-size:16.5px;display:flex;align-items:center;gap:8px}
+.card>h3{font-size:14.5px;color:var(--ink2);text-transform:uppercase;letter-spacing:.4px;font-size:11.5px;margin-bottom:10px}
+.hint{font-size:12.5px;color:var(--ink2);margin:.2em 0 .9em}
+.grid{display:grid;gap:12px}
+@media(min-width:720px){
+  .g2{grid-template-columns:1fr 1fr}
+  .g3{grid-template-columns:repeat(3,1fr)}
+}
+.field{display:flex;flex-direction:column;gap:5px}
+.field label{font-size:12.5px;font-weight:600;color:var(--ink2)}
+.field .req{color:var(--bad)}
+input[type=text],input[type=number],input[type=date],input[type=email],input[type=tel],select,textarea{
+  width:100%;padding:9px 11px;border:1px solid var(--line);border-radius:9px;
+  background:var(--bg);color:var(--ink);transition:.15s
+}
+input:focus,select:focus,textarea:focus{
+  outline:none;border-color:var(--acc);background:var(--card);
+  box-shadow:0 0 0 3px color-mix(in srgb,var(--acc) 18%,transparent)
+}
+input.bad,select.bad{border-color:var(--bad);background:var(--bad-bg)}
+textarea{min-height:90px;resize:vertical;line-height:1.5}
+.fnote{font-size:11.5px;color:var(--ink2)}
+.fnote.err{color:var(--bad);font-weight:600}
+.fnote.ok{color:var(--ok);font-weight:600}
+
+/* ── Κουμπιά ────────────────────────────────────────────── */
+.btn{
+  display:inline-flex;align-items:center;justify-content:center;gap:7px;
+  padding:10px 16px;border-radius:10px;border:1px solid var(--line);
+  background:var(--card);color:var(--ink);font-weight:600;font-size:14px;
+  cursor:pointer;transition:.15s;text-decoration:none
+}
+.btn:hover{border-color:var(--acc);color:var(--acc)}
+.btn:active{transform:translateY(1px)}
+.btn.pri{background:var(--acc);border-color:var(--acc);color:#fff}
+.btn.pri:hover{background:var(--blue2);border-color:var(--blue2);color:#fff}
+.btn.sm{padding:6px 11px;font-size:12.5px;border-radius:8px}
+.btn.gh{background:transparent}
+.btn:disabled{opacity:.45;cursor:not-allowed}
+.btnrow{display:flex;flex-wrap:wrap;gap:9px;margin-top:12px}
+
+/* ── Ζώνη μεταφόρτωσης ──────────────────────────────────── */
+.drop{
+  border:2px dashed var(--line);border-radius:var(--r);padding:26px 16px;text-align:center;
+  background:var(--bg);cursor:pointer;transition:.15s
+}
+.drop:hover,.drop.over{border-color:var(--acc);background:var(--acc-soft)}
+.drop .big{font-size:34px;line-height:1}
+.drop b{display:block;margin:8px 0 3px;font-size:15px}
+.drop span{font-size:12.5px;color:var(--ink2)}
+
+/* ── Ετικέτες / εικονίδια κατάστασης ────────────────────── */
+.tag{
+  display:inline-flex;align-items:center;gap:5px;padding:3px 9px;border-radius:999px;
+  font-size:11.5px;font-weight:700;background:var(--line2);color:var(--ink2);
+  border:1px solid var(--line)
+}
+.tag.ok{background:var(--ok-bg);color:var(--ok);border-color:color-mix(in srgb,var(--ok) 30%,transparent)}
+.tag.warn{background:var(--warn-bg);color:var(--warn);border-color:color-mix(in srgb,var(--warn) 30%,transparent)}
+.tag.bad{background:var(--bad-bg);color:var(--bad);border-color:color-mix(in srgb,var(--bad) 30%,transparent)}
+.tag.acc{background:var(--acc-soft);color:var(--acc);border-color:color-mix(in srgb,var(--acc) 30%,transparent)}
+
+.note{
+  border-left:3px solid var(--acc);background:var(--acc-soft);
+  padding:11px 13px;border-radius:0 10px 10px 0;font-size:13px;margin:0 0 14px
+}
+.note.warn{border-color:var(--warn);background:var(--warn-bg)}
+.note.bad{border-color:var(--bad);background:var(--bad-bg)}
+.note.ok{border-color:var(--ok);background:var(--ok-bg)}
+.note b{display:block;margin-bottom:3px}
+
+/* ── Ευρήματα ανάλυσης ──────────────────────────────────── */
+.find{
+  border:1px solid var(--line);border-radius:12px;padding:12px;margin-bottom:10px;background:var(--bg)
+}
+.find-h{display:flex;align-items:center;gap:8px;margin-bottom:7px;flex-wrap:wrap}
+.find-h .t{font-weight:700;font-size:13.5px;flex:1}
+.find .val{font-size:14px}
+.find .src{
+  font-size:11.5px;color:var(--ink2);margin-top:7px;padding-top:7px;
+  border-top:1px dashed var(--line);font-style:italic;
+  display:-webkit-box;-webkit-line-clamp:2;-webkit-box-orient:vertical;overflow:hidden
+}
+.chips{display:flex;flex-wrap:wrap;gap:6px;margin-top:4px}
+.chip{
+  padding:3px 9px;border-radius:7px;background:var(--card);border:1px solid var(--line);
+  font-size:12px
+}
+#fKad .chip{font-family:var(--mono)}
+.chip.on{background:var(--ok-bg);border-color:var(--ok);color:var(--ok);font-weight:700}
+
+/* ── Πίνακες ────────────────────────────────────────────── */
+.tw{overflow-x:auto;-webkit-overflow-scrolling:touch;margin:0 -4px}
+table{width:100%;border-collapse:collapse;font-size:13.5px;min-width:520px}
+th,td{padding:9px 10px;text-align:left;border-bottom:1px solid var(--line)}
+th{
+  font-size:11.5px;text-transform:uppercase;letter-spacing:.4px;color:var(--ink2);
+  background:var(--line2);white-space:nowrap;font-weight:700
+}
+td.num,th.num{text-align:right;font-variant-numeric:tabular-nums;white-space:nowrap}
+tbody tr:last-child td{border-bottom:none}
+tfoot td{font-weight:700;border-top:2px solid var(--line);background:var(--line2)}
+table input{padding:6px 8px;border-radius:7px;font-size:13px}
+table input[type=number]{text-align:right;max-width:130px}
+
+/* ── Πρόοδος / μπάρες ───────────────────────────────────── */
+.bar{height:8px;border-radius:99px;background:var(--line);overflow:hidden}
+.bar>i{display:block;height:100%;background:var(--acc);border-radius:99px;transition:width .3s}
+.bar>i.ok{background:var(--ok)} .bar>i.warn{background:var(--warn)} .bar>i.bad{background:var(--bad)}
+
+.kpis{display:grid;gap:10px;grid-template-columns:repeat(auto-fit,minmax(150px,1fr))}
+.kpi{background:var(--bg);border:1px solid var(--line);border-radius:12px;padding:12px}
+.kpi .l{font-size:11.5px;color:var(--ink2);text-transform:uppercase;letter-spacing:.4px;font-weight:700}
+.kpi .v{font-size:20px;font-weight:800;margin-top:4px;font-variant-numeric:tabular-nums;overflow-wrap:anywhere}
+.kpi .v.sm{font-size:15px;line-height:1.35}
+.kpi .s{font-size:11.5px;color:var(--ink2);margin-top:2px}
+.kpi.ok .v{color:var(--ok)} .kpi.bad .v{color:var(--bad)} .kpi.warn .v{color:var(--warn)}
+
+/* ── Λίστα ελέγχου ──────────────────────────────────────── */
+.chk{display:flex;gap:11px;padding:11px 4px;border-bottom:1px solid var(--line2);align-items:flex-start}
+.chk:last-child{border-bottom:none}
+.chk input{width:19px;height:19px;margin-top:1px;flex:0 0 auto;accent-color:var(--ok);cursor:pointer}
+.chk .txt{flex:1;font-size:13.5px}
+.chk .txt small{display:block;color:var(--ink2);font-size:11.5px;margin-top:2px}
+.chk.done .txt{opacity:.55;text-decoration:line-through}
+
+details.acc{border:1px solid var(--line);border-radius:11px;margin-bottom:9px;background:var(--bg);overflow:hidden}
+details.acc>summary{
+  padding:11px 13px;cursor:pointer;font-weight:600;font-size:13.5px;list-style:none;
+  display:flex;align-items:center;gap:8px
+}
+details.acc>summary::-webkit-details-marker{display:none}
+details.acc>summary::before{content:"▸";color:var(--ink2);transition:.15s}
+details.acc[open]>summary::before{transform:rotate(90deg)}
+details.acc .body{padding:0 13px 13px;font-size:13px}
+
+/* ── Πόρισμα γρήγορου ελέγχου ───────────────────────────── */
+.verdict{
+  border-radius:14px;padding:18px;border:1px solid var(--line);background:var(--bg);
+  display:flex;gap:15px;align-items:flex-start
+}
+.verdict .ic{font-size:34px;line-height:1;flex:0 0 auto}
+.verdict .h{font-size:19px;font-weight:800;margin:0 0 4px}
+.verdict .d{font-size:13.5px;color:var(--ink2)}
+.verdict.ok  {background:var(--ok-bg);  border-color:color-mix(in srgb,var(--ok) 35%,transparent)}
+.verdict.ok .h{color:var(--ok)}
+.verdict.warn{background:var(--warn-bg);border-color:color-mix(in srgb,var(--warn) 35%,transparent)}
+.verdict.warn .h{color:var(--warn)}
+.verdict.bad {background:var(--bad-bg); border-color:color-mix(in srgb,var(--bad) 35%,transparent)}
+.verdict.bad .h{color:var(--bad)}
+.vgrid{display:grid;gap:8px;grid-template-columns:repeat(auto-fit,minmax(190px,1fr));margin-top:14px}
+.vrow{
+  display:flex;gap:9px;align-items:flex-start;padding:9px 11px;border-radius:10px;
+  background:var(--card);border:1px solid var(--line);font-size:13px
+}
+.vrow .i{flex:0 0 auto}
+.vrow b{display:block;font-size:12.5px;margin-bottom:2px}
+.vrow span{color:var(--ink2);font-size:12.5px}
+.vrow.bad{border-color:color-mix(in srgb,var(--bad) 40%,transparent)}
+.vrow.warn{border-color:color-mix(in srgb,var(--warn) 40%,transparent)}
+
+.empty{text-align:center;padding:34px 16px;color:var(--ink2)}
+.empty .big{font-size:40px;opacity:.5}
+
+/* ── Προεπισκόπηση εγγράφου ─────────────────────────────── */
+#docPrev{
+  background:#fff;color:#111;border:1px solid var(--line);border-radius:10px;
+  padding:26px 24px;font-family:"Times New Roman",Georgia,serif;font-size:14px;line-height:1.6;
+  max-height:70vh;overflow:auto
+}
+#docPrev h1{font-size:17px;text-align:center;text-transform:uppercase;letter-spacing:.5px}
+#docPrev h2{font-size:14px;background:#eef2f6;padding:6px 9px;border-left:4px solid #0b3d68;margin-top:22px}
+#docPrev h3{font-size:13.5px;margin-top:16px;color:#0b3d68}
+#docPrev table{font-family:system-ui,sans-serif;font-size:12.5px;min-width:0;width:100%}
+#docPrev th,#docPrev td{border:1px solid #c9d3dd;padding:6px 8px}
+#docPrev th{background:#eef2f6;color:#333;text-transform:none;letter-spacing:0;font-size:12.5px}
+#docPrev .cen{text-align:center}
+#docPrev .muted{color:#777;font-style:italic}
+#docPrev .sig{margin-top:38px;display:flex;justify-content:space-between;gap:30px;text-align:center;font-size:12.5px}
+#docPrev ol,#docPrev ul{margin:0 0 10px;padding-left:22px}
+#docPrev li{margin-bottom:4px}
+
+/* ── Ειδοποίηση ─────────────────────────────────────────── */
+#toast{
+  position:fixed;left:50%;bottom:22px;transform:translate(-50%,80px);
+  background:var(--ink);color:var(--bg);padding:11px 18px;border-radius:10px;
+  font-size:13.5px;font-weight:600;z-index:200;opacity:0;transition:.25s;pointer-events:none;
+  max-width:90vw;text-align:center;box-shadow:0 8px 24px rgba(0,0,0,.25)
+}
+#toast.on{transform:translate(-50%,0);opacity:1}
+
+/* ── Πλωτή γραμμή ενεργειών ─────────────────────────────── */
+.fab{
+  position:fixed;right:16px;bottom:16px;z-index:50;display:flex;flex-direction:column;gap:8px
+}
+.fab .btn{box-shadow:var(--sh)}
+
+footer.foot{
+  max-width:1180px;margin:0 auto;padding:20px 16px 40px;color:var(--ink2);font-size:12px;text-align:center
+}
+
+@media print{
+  body{background:#fff}
+  header.top,nav.steps,.fab,.btnrow,#toast,footer.foot,.noprint{display:none!important}
+  main{max-width:none;padding:0}
+  .pane{display:none!important}
+  .pane.on{display:block!important}
+  .card{border:none;box-shadow:none;padding:0;margin:0}
+  #docPrev{max-height:none;overflow:visible;border:none;padding:0;font-size:11.5pt}
+  #docPrev h2{break-after:avoid}
+  table{break-inside:auto} tr{break-inside:avoid}
+}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <div class="brand">
+    <div class="logo">🇪🇺</div>
+    <div>
+      <h1>ΕΣΠΑ Βοηθός</h1>
+      <div class="sub">Έλεγχος επιλεξιμότητας → έτοιμος φάκελος αίτησης στήριξης</div>
+    </div>
+  </div>
+</header>
+
+<nav class="steps">
+  <div class="steps-in" id="steps">
+    <button class="step on" data-p="p1"><span class="num"><span>1</span></span>🎯 Γρήγορος έλεγχος</button>
+    <button class="step"    data-p="p2"><span class="num"><span>2</span></span>🔎 Ανάλυση</button>
+    <button class="step"    data-p="p3"><span class="num"><span>3</span></span>🏢 Φορέας</button>
+    <button class="step"    data-p="p4"><span class="num"><span>4</span></span>✅ Επιλεξιμότητα</button>
+    <button class="step"    data-p="p5"><span class="num"><span>5</span></span>💶 Προϋπολογισμός</button>
+    <button class="step"    data-p="p6"><span class="num"><span>6</span></span>📝 Αίτηση</button>
+    <button class="step"    data-p="p7"><span class="num"><span>7</span></span>📎 Δικαιολογητικά</button>
+  </div>
+</nav>
+
+<main>
+
+<!-- ══════════════ 1. ΓΡΗΓΟΡΟΣ ΕΛΕΓΧΟΣ ══════════════ -->
+<section class="pane on" id="p1">
+  <div class="card">
+    <h2>🎯 Γρήγορος έλεγχος επιλεξιμότητας</h2>
+    <p class="hint">Πριν ασχοληθείς με τον φάκελο: δώσε την πρόσκληση, πες <b>πού βρίσκεται</b> η επιχείρηση και πέντε βασικά στοιχεία. Θα δεις αμέσως αν το επενδυτικό σχέδιο ενισχύεται — και με τι ποσοστό.</p>
+
+    <h3>Βήμα Α — η πρόσκληση</h3>
+    <div class="drop" id="drop">
+      <div class="big">📥</div>
+      <b>Σύρε εδώ το αρχείο ή πάτησε για επιλογή</b>
+      <span>PDF · DOCX · TXT · HTML — η ανάγνωση γίνεται στη συσκευή σου</span>
+      <input type="file" id="file" accept=".pdf,.docx,.doc,.txt,.text,.html,.htm,.rtf,.md" hidden>
+    </div>
+    <div class="btnrow">
+      <button class="btn gh sm" id="btnPaste">✏️ Επικόλληση κειμένου</button>
+      <button class="btn gh sm" id="btnDemo">🧪 Δοκιμαστική πρόσκληση</button>
+      <button class="btn gh sm" id="btnLoadPrj">📂 Άνοιγμα έργου (.json)</button>
+      <input type="file" id="filePrj" accept=".json" hidden>
+    </div>
+    <div id="pasteWrap" style="display:none;margin-top:14px">
+      <div class="field">
+        <label for="rawText">Κείμενο πρόσκλησης</label>
+        <textarea id="rawText" style="min-height:200px" placeholder="Επικόλλησε εδώ ολόκληρο το κείμενο της πρόσκλησης…"></textarea>
+      </div>
+      <div class="btnrow"><button class="btn pri" id="btnAnalyzeText">🔎 Ανάλυση</button></div>
+    </div>
+    <div id="fileInfo" style="display:none;margin-top:14px"></div>
+  </div>
+
+  <div class="card">
+    <h2>📍 Πού βρίσκεται η επιχείρηση</h2>
+    <p class="hint">Η περιοχή κρίνει δύο πράγματα: αν η δράση «πιάνει» εκεί, και με τι ποσοστό ενισχύεται το σχέδιο.</p>
+    <div class="grid g3">
+      <div class="field"><label for="q_cRegion">Περιφέρεια υλοποίησης <span class="req">*</span></label>
+        <select id="q_cRegion" data-k="cRegion"><option value="">— επιλογή —</option></select></div>
+      <div class="field"><label for="q_cUnitReg">Περιφερειακή ενότητα</label>
+        <select id="q_cUnitReg" data-k="cUnitReg"><option value="">— επιλογή —</option></select>
+        <div class="fnote" id="q_unitNote"></div></div>
+      <div class="field"><label for="q_cCity">Δήμος / πόλη</label>
+        <input type="text" id="q_cCity" data-k="cCity" placeholder="π.χ. Λάρισα"></div>
+    </div>
+    <div id="q_areaBox" style="margin-top:12px"></div>
+  </div>
+
+  <div class="card">
+    <h2>🏢 Τα βασικά της επιχείρησης</h2>
+    <div class="grid g3">
+      <div class="field"><label for="q_cKad">Κύριος ΚΑΔ <span class="req">*</span></label>
+        <input type="text" id="q_cKad" data-k="cKad" placeholder="π.χ. 56.10.11">
+        <div class="fnote" id="q_kadNote"></div></div>
+      <div class="field"><label for="q_cKad2">Δευτερεύοντες ΚΑΔ (με κόμμα)</label>
+        <input type="text" id="q_cKad2" data-k="cKad2" placeholder="47.11, 82.99"></div>
+      <div class="field"><label for="q_cStart">Ημερομηνία έναρξης εργασιών</label>
+        <input type="date" id="q_cStart" data-k="cStart">
+        <div class="fnote" id="q_ageNote"></div></div>
+      <div class="field"><label for="q_cEme">ΕΜΕ προηγούμενου έτους</label>
+        <input type="number" id="q_cEme" data-k="cEme" step="0.01" min="0" placeholder="π.χ. 3,5"></div>
+      <div class="field"><label for="q_cTurn1">Κύκλος εργασιών ν-1 (€)</label>
+        <input type="number" id="q_cTurn1" data-k="cTurn1" step="0.01" min="0">
+        <div class="fnote" id="q_sizeNote"></div></div>
+      <div class="field"><label for="q_qBudget">Εκτιμώμενο ύψος επένδυσης (€)</label>
+        <input type="number" id="q_qBudget" data-k="qBudget" step="100" min="0" placeholder="π.χ. 80.000"></div>
+    </div>
+  </div>
+
+  <div class="card" id="qResult">
+    <h2>📋 Πόρισμα</h2>
+    <div id="qVerdict"></div>
+    <div id="qChecks" style="margin-top:14px"></div>
+    <div class="btnrow" id="qActions"></div>
+  </div>
+
+  <div class="card">
+    <details class="acc" style="border:none;background:transparent;margin:0">
+      <summary style="padding:0">ℹ️ Τι κάνει αυτό το εργαλείο και τι δεν κάνει</summary>
+      <div class="body" style="padding:12px 0 0">
+        <div class="grid g2">
+          <div>
+            <p><b>1.</b> Διαβάζει την πρόσκληση και εντοπίζει: προθεσμίες, προϋπολογισμό, ένταση ενίσχυσης, καθεστώς, περιοχές εφαρμογής, επιλέξιμους ΚΑΔ, κατηγορίες δαπανών με τα όριά τους, κριτήρια βαθμολόγησης και δικαιολογητικά.</p>
+            <p><b>2.</b> Ζητάει <b>λίγα στοιχεία</b> για την επιχείρηση και κρίνει την επιλεξιμότητα.</p>
+          </div>
+          <div>
+            <p><b>3.</b> Χτίζει τον προϋπολογισμό μέσα στα όρια της πρόσκλησης και εκτιμά τη βαθμολογία.</p>
+            <p><b>4.</b> Συντάσσει την <b>αίτηση στήριξης</b>, την υπεύθυνη δήλωση και τη λίστα δικαιολογητικών — για εκτύπωση, Word ή αντιγραφή στο ΟΠΣΚΕ.</p>
+          </div>
+        </div>
+        <div class="note warn" style="margin:12px 0 0">
+          <b>Βοηθητικό εργαλείο, όχι υποβολή.</b>
+          Η αυτόματη ανάγνωση είναι <i>πρόταση</i>: κάθε πεδίο που εντοπίζεται μπορεί και <b>πρέπει</b> να ελεγχθεί από εσένα. Η επίσημη υποβολή γίνεται αποκλειστικά στο πληροφοριακό σύστημα της δράσης (ΟΠΣΚΕ/ΠΣΚΕ) και υπεύθυνος για την ακρίβεια των στοιχείων παραμένει ο δικαιούχος.
+        </div>
+      </div>
+    </details>
+  </div>
+</section>
+
+<!-- ══════════════ 2. ΑΝΑΛΥΣΗ ══════════════ -->
+<section class="pane" id="p2">
+  <div id="anaEmpty" class="card empty">
+    <div class="big">🔎</div>
+    <p>Δεν έχει αναλυθεί ακόμη πρόσκληση.<br>Πήγαινε στο βήμα 1.</p>
+  </div>
+  <div id="anaBody" style="display:none">
+    <div class="card">
+      <h2>🔎 Τι εντόπισε η ανάλυση</h2>
+      <p class="hint">Ό,τι βρέθηκε αυτόματα είναι <b>επεξεργάσιμο</b>. Διόρθωσε ή συμπλήρωσε — τα διορθωμένα στοιχεία τροφοδοτούν όλα τα επόμενα βήματα.</p>
+      <div class="kpis" id="anaKpis"></div>
+    </div>
+    <div class="card"><h2>🗂️ Ταυτότητα δράσης</h2><div class="grid g2" id="fIdent"></div></div>
+    <div class="card"><h2>💰 Χρηματοδοτικά στοιχεία</h2><div class="grid g3" id="fFin"></div></div>
+    <div class="card">
+      <h2>🗺️ Περιοχές εφαρμογής</h2>
+      <p class="hint">Πού «πιάνει» η δράση. Πάτησε μια περιφέρεια για να την προσθέσεις ή να την αφαιρέσεις.</p>
+      <div id="fAreas"></div>
+    </div>
+    <div class="card">
+      <h2>🏷️ Επιλέξιμοι ΚΑΔ</h2>
+      <p class="hint" id="kadHint"></p>
+      <div class="chips" id="fKad"></div>
+      <div class="field" style="margin-top:12px">
+        <label for="kadManual">Διόρθωση / προσθήκη ΚΑΔ (χωρισμένοι με κόμμα)</label>
+        <input type="text" id="kadManual" placeholder="π.χ. 10.71, 25.62.00, 62.01">
+      </div>
+    </div>
+    <div class="card">
+      <h2>🧾 Κατηγορίες επιλέξιμων δαπανών</h2>
+      <p class="hint">Αυτές οι κατηγορίες γίνονται οι γραμμές του προϋπολογισμού στο βήμα 5.</p>
+      <div class="tw"><table id="tCost"><thead><tr>
+        <th style="min-width:230px">Κατηγορία δαπάνης</th><th class="num">Όριο</th><th style="width:44px"></th>
+      </tr></thead><tbody></tbody></table></div>
+      <div class="btnrow"><button class="btn sm" id="btnAddCost">＋ Προσθήκη κατηγορίας</button></div>
+    </div>
+    <div class="card">
+      <h2>🏅 Κριτήρια βαθμολόγησης</h2>
+      <div id="fCrit"></div>
+      <div class="btnrow"><button class="btn sm" id="btnAddCrit">＋ Προσθήκη κριτηρίου</button></div>
+    </div>
+    <div class="card">
+      <h2>📑 Ενότητες του κειμένου</h2>
+      <p class="hint">Ό,τι αναγνωρίστηκε ως ενότητα — για γρήγορη επαλήθευση των ευρημάτων στο πρωτότυπο.</p>
+      <div id="fSecs"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ 3. ΦΟΡΕΑΣ ══════════════ -->
+<section class="pane" id="p3">
+  <div class="card">
+    <h2>🏢 Στοιχεία φορέα</h2>
+    <p class="hint">Μόνο τα βασικά. Ό,τι μπορεί να υπολογιστεί (μέγεθος επιχείρησης, κατηγορία περιφέρειας, ένταση ενίσχυσης) υπολογίζεται μόνο του.</p>
+    <div class="grid g2">
+      <div class="field"><label for="cName">Επωνυμία <span class="req">*</span></label><input type="text" id="cName" data-k="cName" placeholder="π.χ. ΠΑΡΑΔΕΙΓΜΑ ΜΟΝΟΠΡΟΣΩΠΗ ΙΚΕ"></div>
+      <div class="field"><label for="cBrand">Διακριτικός τίτλος</label><input type="text" id="cBrand" data-k="cBrand"></div>
+      <div class="field"><label for="cAfm">ΑΦΜ <span class="req">*</span></label><input type="text" id="cAfm" data-k="cAfm" inputmode="numeric" maxlength="9" placeholder="9 ψηφία"><div class="fnote" id="afmNote"></div></div>
+      <div class="field"><label for="cDoy">ΔΟΥ</label><input type="text" id="cDoy" data-k="cDoy"></div>
+      <div class="field"><label for="cGemi">Αρ. ΓΕΜΗ</label><input type="text" id="cGemi" data-k="cGemi"></div>
+      <div class="field"><label for="cForm">Νομική μορφή <span class="req">*</span></label>
+        <select id="cForm" data-k="cForm">
+          <option value="">— επιλογή —</option>
+          <option>Ατομική επιχείρηση</option><option>Ο.Ε.</option><option>Ε.Ε.</option>
+          <option>Ι.Κ.Ε.</option><option>Μονοπρόσωπη Ι.Κ.Ε.</option><option>Ε.Π.Ε.</option>
+          <option>Α.Ε.</option><option>Συνεταιρισμός / ΚοινΣΕπ</option><option>Αστική μη κερδοσκοπική</option>
+          <option>Υπό σύσταση</option>
+        </select></div>
+      <div class="field"><label for="cStart">Ημερομηνία έναρξης εργασιών</label><input type="date" id="cStart" data-k="cStart"><div class="fnote" id="ageNote"></div></div>
+      <div class="field"><label for="cKad">Κύριος ΚΑΔ <span class="req">*</span></label><input type="text" id="cKad" data-k="cKad" placeholder="π.χ. 56.10.11"><div class="fnote" id="kadNote"></div></div>
+      <div class="field"><label for="cKad2">Δευτερεύοντες ΚΑΔ (με κόμμα)</label><input type="text" id="cKad2" data-k="cKad2" placeholder="47.11, 82.99"></div>
+      <div class="field"><label for="cActivity">Αντικείμενο δραστηριότητας</label><input type="text" id="cActivity" data-k="cActivity" placeholder="π.χ. παραγωγή αρτοσκευασμάτων"></div>
+    </div>
+
+    <h3 style="margin-top:20px">Έδρα &amp; τόπος υλοποίησης</h3>
+    <div class="grid g3">
+      <div class="field"><label for="cAddr">Διεύθυνση έδρας</label><input type="text" id="cAddr" data-k="cAddr"></div>
+      <div class="field"><label for="cCity">Πόλη / ΤΚ</label><input type="text" id="cCity" data-k="cCity"></div>
+      <div class="field"><label for="cRegion">Περιφέρεια υλοποίησης <span class="req">*</span></label>
+        <select id="cRegion" data-k="cRegion"><option value="">— επιλογή —</option></select>
+        <div class="fnote" id="regNote"></div></div>
+      <div class="field"><label for="cUnitReg">Περιφερειακή ενότητα</label>
+        <select id="cUnitReg" data-k="cUnitReg"><option value="">— επιλογή —</option></select></div>
+      <div class="field"><label for="cUnit">Τόπος υλοποίησης (αν διαφέρει)</label><input type="text" id="cUnit" data-k="cUnit"></div>
+      <div class="field"><label for="cPhone">Τηλέφωνο</label><input type="tel" id="cPhone" data-k="cPhone"></div>
+      <div class="field"><label for="cMail">Email</label><input type="email" id="cMail" data-k="cMail"></div>
+    </div>
+
+    <h3 style="margin-top:20px">Μέγεθος &amp; οικονομικά στοιχεία</h3>
+    <div class="grid g3">
+      <div class="field"><label for="cEme">ΕΜΕ προηγούμενου έτους <span class="req">*</span></label><input type="number" id="cEme" data-k="cEme" step="0.01" min="0" placeholder="π.χ. 3,5"></div>
+      <div class="field"><label for="cTurn1">Κύκλος εργασιών ν-1 (€)</label><input type="number" id="cTurn1" data-k="cTurn1" step="0.01" min="0"></div>
+      <div class="field"><label for="cTurn2">Κύκλος εργασιών ν-2 (€)</label><input type="number" id="cTurn2" data-k="cTurn2" step="0.01" min="0"></div>
+      <div class="field"><label for="cTurn3">Κύκλος εργασιών ν-3 (€)</label><input type="number" id="cTurn3" data-k="cTurn3" step="0.01" min="0"></div>
+      <div class="field"><label for="cAssets">Σύνολο ενεργητικού (€)</label><input type="number" id="cAssets" data-k="cAssets" step="0.01" min="0"></div>
+      <div class="field"><label for="cProfit">Κέρδη προ φόρων ν-1 (€)</label><input type="number" id="cProfit" data-k="cProfit" step="0.01"></div>
+      <div class="field"><label for="cLinked">Συνδεδεμένες / συνεργαζόμενες</label>
+        <select id="cLinked" data-k="cLinked"><option value="no">Καμία — αυτόνομη</option><option value="yes">Ναι, υπάρχουν</option></select></div>
+      <div class="field"><label for="cDeMin">Ενισχύσεις de minimis τελευταίας 3ετίας (€)</label><input type="number" id="cDeMin" data-k="cDeMin" step="0.01" min="0" value="0"></div>
+      <div class="field"><label for="cSize">Μέγεθος επιχείρησης</label><input type="text" id="cSize" readonly style="font-weight:700"></div>
+    </div>
+
+    <h3 style="margin-top:20px">Νόμιμος εκπρόσωπος &amp; υπεύθυνος έργου</h3>
+    <div class="grid g3">
+      <div class="field"><label for="rName">Ονοματεπώνυμο <span class="req">*</span></label><input type="text" id="rName" data-k="rName"></div>
+      <div class="field"><label for="rFather">Πατρώνυμο</label><input type="text" id="rFather" data-k="rFather"></div>
+      <div class="field"><label for="rAdt">ΑΔΤ</label><input type="text" id="rAdt" data-k="rAdt"></div>
+      <div class="field"><label for="rAfm">ΑΦΜ εκπροσώπου</label><input type="text" id="rAfm" data-k="rAfm" inputmode="numeric" maxlength="9"></div>
+      <div class="field"><label for="rPhone">Τηλέφωνο επικοινωνίας</label><input type="tel" id="rPhone" data-k="rPhone"></div>
+      <div class="field"><label for="rMail">Email επικοινωνίας</label><input type="email" id="rMail" data-k="rMail"></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <h2>💡 Το επενδυτικό σχέδιο — με λίγα λόγια</h2>
+    <p class="hint">Γράψε απλά τι θέλεις να κάνεις. Το εργαλείο συνθέτει από αυτό το φυσικό αντικείμενο, τους στόχους και την αιτιολόγηση της αίτησης.</p>
+    <div class="field"><label for="pTitle">Τίτλος επενδυτικού σχεδίου</label><input type="text" id="pTitle" data-k="pTitle" placeholder="π.χ. Ψηφιακός και ενεργειακός εκσυγχρονισμός αρτοποιείου"></div>
+    <div class="grid g2" style="margin-top:12px">
+      <div class="field"><label for="pWhat">Τι θα κάνεις; <span class="req">*</span></label>
+        <textarea id="pWhat" data-k="pWhat" placeholder="π.χ. Θα αγοράσω νέο φούρνο και ζυμωτήριο, θα βάλω φωτοβολταϊκά στη στέγη και θα φτιάξω e-shop."></textarea></div>
+      <div class="field"><label for="pWhy">Γιατί το χρειάζεσαι;</label>
+        <textarea id="pWhy" data-k="pWhy" placeholder="π.χ. Ο υπάρχων εξοπλισμός είναι 18 ετών, το κόστος ρεύματος έχει τριπλασιαστεί και χάνω παραγγελίες εκτός νομού."></textarea></div>
+    </div>
+    <div class="grid g3" style="margin-top:12px">
+      <div class="field"><label for="pMonths">Διάρκεια υλοποίησης (μήνες)</label><input type="number" id="pMonths" data-k="pMonths" min="1" max="60" value="12"></div>
+      <div class="field"><label for="pJobs">Νέες θέσεις εργασίας (ΕΜΕ)</label><input type="number" id="pJobs" data-k="pJobs" step="0.5" min="0" value="0"></div>
+      <div class="field"><label for="pFund">Κάλυψη ιδιωτικής συμμετοχής</label>
+        <select id="pFund" data-k="pFund">
+          <option>Ίδια κεφάλαια</option><option>Τραπεζικός δανεισμός</option>
+          <option>Ίδια κεφάλαια &amp; δανεισμός</option><option>Αύξηση μετοχικού/εταιρικού κεφαλαίου</option>
+        </select></div>
+    </div>
+    <div class="grid g2" style="margin-top:12px">
+      <div class="field"><label>Στόχοι που εξυπηρετεί</label>
+        <div class="chips" id="goalChips"></div></div>
+      <div class="field"><label for="pExtra">Ό,τι άλλο αξίζει να αναφερθεί</label>
+        <textarea id="pExtra" data-k="pExtra" style="min-height:70px" placeholder="π.χ. πιστοποίηση ISO 22000, συνεργασία με τοπικούς παραγωγούς, εξαγωγές σε 2 χώρες"></textarea></div>
+    </div>
+  </div>
+</section>
+
+<!-- ══════════════ 4. ΕΠΙΛΕΞΙΜΟΤΗΤΑ ══════════════ -->
+<section class="pane" id="p4">
+  <div class="card">
+    <h2>✅ Έλεγχος επιλεξιμότητας</h2>
+    <p class="hint">Κάθε κανόνας ελέγχεται χωριστά, με βάση όσα εντοπίστηκαν στην πρόσκληση και όσα δήλωσες.</p>
+    <div class="kpis" id="elKpis"></div>
+    <div id="elList" style="margin-top:16px"></div>
+  </div>
+  <div class="card">
+    <h2>🏅 Εκτίμηση βαθμολογίας</h2>
+    <p class="hint">Ενδεικτική αυτοαξιολόγηση στα κριτήρια που εντοπίστηκαν. Δεν υποκαθιστά την αξιολόγηση του φορέα.</p>
+    <div id="scoreBox"></div>
+  </div>
+</section>
+
+<!-- ══════════════ 5. ΠΡΟΫΠΟΛΟΓΙΣΜΟΣ ══════════════ -->
+<section class="pane" id="p5">
+  <div class="card">
+    <h2>💶 Προϋπολογισμός επενδυτικού σχεδίου</h2>
+    <p class="hint">Συμπλήρωσε ποσά ανά κατηγορία. Τα όρια της πρόσκλησης ελέγχονται σε πραγματικό χρόνο.</p>
+    <div class="kpis" id="budKpis"></div>
+    <div class="tw" style="margin-top:14px"><table id="tBud"><thead><tr>
+      <th style="min-width:230px">Κατηγορία δαπάνης</th>
+      <th class="num">Ποσό (€)</th><th class="num">% Π/Υ</th><th class="num">Όριο</th><th>Κατάσταση</th>
+    </tr></thead><tbody></tbody>
+    <tfoot><tr><td>ΣΥΝΟΛΟ</td><td class="num" id="budTotal">0</td><td class="num">100%</td><td></td><td></td></tr></tfoot></table></div>
+    <div id="budMsgs" style="margin-top:14px"></div>
+    <div class="btnrow">
+      <button class="btn sm" id="btnAutoBud">✨ Αυτόματη κατανομή</button>
+      <button class="btn sm" id="btnClearBud">🧹 Μηδενισμός</button>
+      <button class="btn sm" id="btnCsv">📊 Εξαγωγή CSV</button>
+    </div>
+  </div>
+  <div class="card">
+    <h2>🧮 Χρηματοδοτικό σχήμα</h2>
+    <div class="tw"><table id="tFin"><tbody></tbody></table></div>
+  </div>
+</section>
+
+<!-- ══════════════ 6. ΑΙΤΗΣΗ ══════════════ -->
+<section class="pane" id="p6">
+  <div class="card noprint">
+    <h2>📝 Παραγωγή αίτησης στήριξης</h2>
+    <p class="hint">Το έγγραφο συντίθεται από όλα τα προηγούμενα βήματα. Διάλεξε τι θέλεις να περιλαμβάνει.</p>
+    <div class="chips" id="docOpts"></div>
+    <div class="btnrow">
+      <button class="btn pri" id="btnGenDoc">⚙️ Δημιουργία / ανανέωση</button>
+      <button class="btn" id="btnPrint">🖨️ Εκτύπωση / PDF</button>
+      <button class="btn" id="btnDocx">📄 Λήψη Word</button>
+      <button class="btn" id="btnCopy">📋 Αντιγραφή κειμένου</button>
+      <button class="btn" id="btnSavePrj">💾 Αποθήκευση έργου</button>
+    </div>
+    <div id="docWarn" style="margin-top:12px"></div>
+  </div>
+  <div class="card">
+    <div id="docPrev"><p class="muted">Πάτησε «Δημιουργία» για να συνταχθεί η αίτηση.</p></div>
+  </div>
+</section>
+
+<!-- ══════════════ 7. ΔΙΚΑΙΟΛΟΓΗΤΙΚΑ ══════════════ -->
+<section class="pane" id="p7">
+  <div class="card">
+    <h2>📎 Φάκελος δικαιολογητικών</h2>
+    <p class="hint">Όσα εντοπίστηκαν στην πρόσκληση, μαζί με τα τυπικά που ζητούνται σχεδόν πάντα. Τσέκαρε ό,τι έχεις έτοιμο.</p>
+    <div style="display:flex;align-items:center;gap:12px;margin-bottom:14px">
+      <div class="bar" style="flex:1"><i id="docBar" style="width:0%"></i></div>
+      <b id="docPct" style="font-size:13px;white-space:nowrap">0 / 0</b>
+    </div>
+    <div id="docsList"></div>
+    <div class="btnrow">
+      <button class="btn sm" id="btnAddDoc">＋ Προσθήκη δικαιολογητικού</button>
+      <button class="btn sm" id="btnPrintDocs">🖨️ Εκτύπωση λίστας</button>
+    </div>
+  </div>
+  <div class="card">
+    <h2>🗓️ Χρονοδιάγραμμα</h2>
+    <div id="timeline"></div>
+  </div>
+</section>
+
+</main>
+
+<footer class="foot">
+  ΕΣΠΑ Βοηθός — αυτόνομο εργαλείο υποστήριξης. Λειτουργεί εξ ολοκλήρου στη συσκευή σου· κανένα στοιχείο δεν αποστέλλεται σε διακομιστή.<br>
+  Δεν αποτελεί επίσημη υπηρεσία του ΕΣΠΑ και δεν υποκαθιστά την υποβολή στο ΟΠΣΚΕ/ΠΣΚΕ.
+</footer>
+
+<div class="fab noprint">
+  <button class="btn pri" id="fabNext" title="Επόμενο βήμα">Επόμενο ›</button>
+</div>
+<div id="toast"></div>
+
+<script>
+/* ══════════════════════════════════════════════════════════════════════════
+   ΕΣΠΑ Βοηθός — αυτόνομη εφαρμογή ανάλυσης πρόσκλησης & σύνταξης αίτησης.
+   Όλα τρέχουν τοπικά στον browser. Καμία αποστολή δεδομένων.
+   ══════════════════════════════════════════════════════════════════════════ */
+'use strict';
+
+/* ── 1. Βοηθητικά ─────────────────────────────────────────────────────── */
+const $  = (s,r)=> (r||document).querySelector(s);
+const $$ = (s,r)=> Array.from((r||document).querySelectorAll(s));
+const NF = new Intl.NumberFormat('el-GR',{maximumFractionDigits:0});
+const NF2= new Intl.NumberFormat('el-GR',{minimumFractionDigits:2,maximumFractionDigits:2});
+const eur = n => (isFinite(n)?NF.format(Math.round(n)):'—')+' €';
+const eur2= n => (isFinite(n)?NF2.format(n):'—')+' €';
+const pct = n => (isFinite(n)?String(Math.round(n*10)/10).replace('.',','):'—')+'%';
+const esc = s => String(s==null?'':s).replace(/[&<>"']/g,c=>({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+
+/** Κανονικοποίηση ελληνικού κειμένου: κεφαλαία, χωρίς τόνους, τελικό ς→σ. */
+function norm(s){
+  return String(s||'').normalize('NFD').replace(/[\u0300-\u036f]/g,'')
+    .toUpperCase().replace(/Ϊ/g,'Ι').replace(/Ϋ/g,'Υ').replace(/ς/gi,'Σ');
+}
+/** Ελληνικός αριθμός «1.234.567,89» → 1234567.89 */
+function grNum(s){
+  if(s==null) return NaN;
+  let t = String(s).trim().replace(/\s/g,'');
+  if(/,\d{1,2}$/.test(t)) t = t.replace(/\./g,'').replace(',','.');
+  else t = t.replace(/\.(?=\d{3}\b)/g,'').replace(',','.');
+  const v = parseFloat(t);
+  return isFinite(v)?v:NaN;
+}
+function toast(msg,ms){
+  const t=$('#toast'); t.textContent=msg; t.classList.add('on');
+  clearTimeout(t._t); t._t=setTimeout(()=>t.classList.remove('on'), ms||2600);
+}
+function dlBlob(name, blob){
+  const u=URL.createObjectURL(blob), a=document.createElement('a');
+  a.href=u; a.download=name; document.body.appendChild(a); a.click();
+  setTimeout(()=>{URL.revokeObjectURL(u); a.remove();},400);
+}
+const todayISO = ()=> new Date().toISOString().slice(0,10);
+const dec = (n,d)=> String(Number(n).toFixed(d==null?1:d)).replace('.',',');
+function grDate(iso){
+  if(!iso) return '';
+  const p = String(iso).split('-');
+  return p.length===3 ? `${p[2]}/${p[1]}/${p[0]}` : iso;
+}
+
+/* ── 2. Σταθερά δεδομένα ──────────────────────────────────────────────── */
+
+/* Περιφέρειες & ενδεικτικά ανώτατα ποσοστά του Χάρτη Περιφερειακών
+   Ενισχύσεων 2022–2027 για μεγάλες επιχειρήσεις. Οι μικρές παίρνουν +20 μ.β.
+   και οι μεσαίες +10 μ.β. Είναι ΕΝΔΕΙΚΤΙΚΑ: κάθε πρόσκληση ορίζει τα δικά της. */
+const REGIONS = [
+  ['Ανατολική Μακεδονία & Θράκη',50],['Κεντρική Μακεδονία',50],['Δυτική Μακεδονία',50],
+  ['Ήπειρος',50],['Θεσσαλία',50],['Ιόνια Νησιά',40],['Δυτική Ελλάδα',50],
+  ['Στερεά Ελλάδα',40],['Πελοπόννησος',40],['Αττική',0],
+  ['Βόρειο Αιγαίο',50],['Νότιο Αιγαίο',40],['Κρήτη',40]
+];
+
+/* Περιφερειακές ενότητες (Καλλικράτης). Καθορίζουν πού βρίσκεται η επιχείρηση
+   — και στην Αττική καθορίζουν και το αν η περιοχή ενισχύεται καθόλου. */
+const REGION_UNITS = {
+  'Ανατολική Μακεδονία & Θράκη':['Δράμας','Έβρου','Καβάλας','Θάσου','Ξάνθης','Ροδόπης'],
+  'Κεντρική Μακεδονία':['Ημαθίας','Θεσσαλονίκης','Κιλκίς','Πέλλας','Πιερίας','Σερρών','Χαλκιδικής'],
+  'Δυτική Μακεδονία':['Γρεβενών','Καστοριάς','Κοζάνης','Φλώρινας'],
+  'Ήπειρος':['Άρτας','Θεσπρωτίας','Ιωαννίνων','Πρέβεζας'],
+  'Θεσσαλία':['Καρδίτσας','Λάρισας','Μαγνησίας','Σποράδων','Τρικάλων'],
+  'Ιόνια Νησιά':['Ζακύνθου','Ιθάκης','Κέρκυρας','Κεφαλληνίας','Λευκάδας'],
+  'Δυτική Ελλάδα':['Αιτωλοακαρνανίας','Αχαΐας','Ηλείας'],
+  'Στερεά Ελλάδα':['Βοιωτίας','Ευβοίας','Ευρυτανίας','Φθιώτιδας','Φωκίδας'],
+  'Πελοπόννησος':['Αργολίδας','Αρκαδίας','Κορινθίας','Λακωνίας','Μεσσηνίας'],
+  'Αττική':['Κεντρικός Τομέας Αθηνών','Βόρειος Τομέας Αθηνών','Δυτικός Τομέας Αθηνών',
+            'Νότιος Τομέας Αθηνών','Ανατολική Αττική','Δυτική Αττική','Πειραιώς','Νήσων'],
+  'Βόρειο Αιγαίο':['Ικαρίας','Λέσβου','Λήμνου','Σάμου','Χίου'],
+  'Νότιο Αιγαίο':['Άνδρου','Θήρας','Καλύμνου','Καρπάθου','Κέας-Κύθνου','Κω','Μήλου',
+                  'Μυκόνου','Νάξου','Πάρου','Ρόδου','Σύρου','Τήνου'],
+  'Κρήτη':['Ηρακλείου','Λασιθίου','Ρεθύμνης','Χανίων']
+};
+
+/* Η Αττική δεν είναι ενιαία: μόνο μέρος της είναι ενισχυόμενη περιοχή.
+   Ό,τι δεν αναφέρεται εδώ έχει βασικό ποσοστό 0 (μη ενισχυόμενη). */
+const ATTIKI_RATES = {
+  'Δυτικός Τομέας Αθηνών':15,'Ανατολική Αττική':15,'Δυτική Αττική':15,
+  'Πειραιώς':15,'Νήσων':15
+};
+
+/* Λεκτικά με τα οποία αναφέρεται κάθε περιφέρεια μέσα σε μια πρόσκληση.
+   Χρησιμεύουν για να βρεθεί ΠΟΥ εφαρμόζεται η δράση και με ΤΙ ποσοστό. */
+const REGION_STEMS = {
+  'Ανατολική Μακεδονία & Θράκη':['ΜΑΚΕΔΟΝΙΑΣ ΚΑΙ ΘΡΑΚ','ΜΑΚΕΔΟΝΙΑΣ & ΘΡΑΚ','ΜΑΚΕΔΟΝΙΑ ΚΑΙ ΘΡΑΚ','ΜΑΚΕΔΟΝΙΑ & ΘΡΑΚ','ΑΝΑΤΟΛΙΚΗΣ ΜΑΚΕΔΟΝΙΑΣ'],
+  'Κεντρική Μακεδονία':['ΚΕΝΤΡΙΚΗΣ ΜΑΚΕΔΟΝΙΑ','ΚΕΝΤΡΙΚΗ ΜΑΚΕΔΟΝΙΑ'],
+  'Δυτική Μακεδονία':['ΔΥΤΙΚΗΣ ΜΑΚΕΔΟΝΙΑ','ΔΥΤΙΚΗ ΜΑΚΕΔΟΝΙΑ'],
+  'Ήπειρος':['ΗΠΕΙΡΟΥ','ΗΠΕΙΡΟΣ'],
+  'Θεσσαλία':['ΘΕΣΣΑΛΙΑΣ','ΘΕΣΣΑΛΙΑ'],
+  'Ιόνια Νησιά':['ΙΟΝΙΩΝ ΝΗΣΩΝ','ΙΟΝΙΑ ΝΗΣΙΑ','ΙΟΝΙΩΝ ΝΗΣΙΩΝ'],
+  'Δυτική Ελλάδα':['ΔΥΤΙΚΗΣ ΕΛΛΑΔΑ','ΔΥΤΙΚΗ ΕΛΛΑΔΑ'],
+  'Στερεά Ελλάδα':['ΣΤΕΡΕΑΣ ΕΛΛΑΔΑ','ΣΤΕΡΕΑ ΕΛΛΑΔΑ'],
+  'Πελοπόννησος':['ΠΕΛΟΠΟΝΝΗΣΟΥ','ΠΕΛΟΠΟΝΝΗΣΟΣ'],
+  'Αττική':['ΑΤΤΙΚΗΣ','ΑΤΤΙΚΗ'],
+  'Βόρειο Αιγαίο':['ΒΟΡΕΙΟΥ ΑΙΓΑΙΟ','ΒΟΡΕΙΟ ΑΙΓΑΙΟ'],
+  'Νότιο Αιγαίο':['ΝΟΤΙΟΥ ΑΙΓΑΙΟ','ΝΟΤΙΟ ΑΙΓΑΙΟ'],
+  'Κρήτη':['ΚΡΗΤΗΣ','ΚΡΗΤΗ']
+};
+
+/* Ονομασίες διψήφιων κλάδων ΚΑΔ (NACE Rev.2) — για να βλέπει ο χρήστης τι
+   σημαίνει κάθε κωδικός που εντοπίστηκε στην πρόσκληση. */
+const KADDIV = {
+'01':'Φυτική & ζωική παραγωγή','02':'Δασοκομία','03':'Αλιεία & υδατοκαλλιέργεια',
+'05':'Εξόρυξη άνθρακα','06':'Άντληση πετρελαίου/αερίου','07':'Εξόρυξη μεταλλευμάτων',
+'08':'Λοιπά ορυχεία & λατομεία','09':'Υποστηρικτικές δραστ. ορυχείων',
+'10':'Βιομηχανία τροφίμων','11':'Ποτοποιία','12':'Καπνός','13':'Κλωστοϋφαντουργία',
+'14':'Είδη ένδυσης','15':'Δέρμα & υποδήματα','16':'Ξύλο & προϊόντα ξύλου',
+'17':'Χαρτί','18':'Εκτυπώσεις & αναπαραγωγή','19':'Παράγωγα πετρελαίου',
+'20':'Χημικά προϊόντα','21':'Φαρμακευτικά','22':'Ελαστικό & πλαστικό',
+'23':'Μη μεταλλικά ορυκτά','24':'Βασικά μέταλλα','25':'Μεταλλικά προϊόντα',
+'26':'Ηλεκτρονικοί υπολογιστές & ηλεκτρονικά','27':'Ηλεκτρολογικός εξοπλισμός',
+'28':'Μηχανήματα & είδη εξοπλισμού','29':'Οχήματα','30':'Λοιπός εξοπλισμός μεταφορών',
+'31':'Έπιπλα','32':'Άλλες μεταποιητικές','33':'Επισκευή & εγκατάσταση μηχανημάτων',
+'35':'Ηλεκτρικό ρεύμα & αέριο','36':'Ύδρευση','37':'Επεξεργασία λυμάτων',
+'38':'Απόβλητα & ανακύκλωση','39':'Εξυγίανση','41':'Κατασκευές κτηρίων',
+'42':'Έργα πολιτικού μηχανικού','43':'Εξειδικευμένες κατασκευαστικές',
+'45':'Εμπόριο & επισκευή οχημάτων','46':'Χονδρικό εμπόριο','47':'Λιανικό εμπόριο',
+'49':'Χερσαίες μεταφορές','50':'Πλωτές μεταφορές','51':'Αεροπορικές μεταφορές',
+'52':'Αποθήκευση & υποστήριξη μεταφορών','53':'Ταχυδρομεία & courier',
+'55':'Καταλύματα','56':'Εστίαση','58':'Εκδοτικές δραστηριότητες',
+'59':'Κινηματογράφος & ήχος','60':'Ραδιοτηλεόραση','61':'Τηλεπικοινωνίες',
+'62':'Πληροφορική & προγραμματισμός','63':'Υπηρεσίες πληροφορίας',
+'64':'Χρηματοπιστωτικές','65':'Ασφαλιστικές','66':'Βοηθητικές χρηματοπιστωτικές',
+'68':'Διαχείριση ακίνητης περιουσίας','69':'Νομικές & λογιστικές',
+'70':'Δραστηριότητες κεντρικών γραφείων & συμβούλων','71':'Αρχιτέκτονες & μηχανικοί',
+'72':'Έρευνα & ανάπτυξη','73':'Διαφήμιση & έρευνα αγοράς',
+'74':'Άλλες επαγγελματικές & επιστημονικές','75':'Κτηνιατρικές',
+'77':'Ενοικίαση & εκμίσθωση','78':'Απασχόληση','79':'Ταξιδιωτικά πρακτορεία',
+'80':'Ασφάλεια & έρευνες','81':'Υπηρεσίες κτηρίων & τοπίου',
+'82':'Διοικητικές & υποστηρικτικές γραφείου','84':'Δημόσια διοίκηση',
+'85':'Εκπαίδευση','86':'Υγεία','87':'Φροντίδα με παροχή καταλύματος',
+'88':'Κοινωνική μέριμνα','90':'Τέχνες & θέαμα','91':'Βιβλιοθήκες & μουσεία',
+'92':'Τυχερά παιχνίδια','93':'Αθλητισμός & ψυχαγωγία','94':'Οργανώσεις',
+'95':'Επισκευή Η/Υ & ειδών','96':'Άλλες προσωπικές υπηρεσίες','97':'Νοικοκυριά ως εργοδότες',
+'99':'Ετερόδικοι οργανισμοί'
+};
+
+/* Τυπικά δικαιολογητικά που ζητούνται σχεδόν σε κάθε δράση. */
+const BASE_DOCS = [
+  ['Έντυπο υποβολής αίτησης στήριξης (ΟΠΣΚΕ/ΠΣΚΕ)','υπογεγραμμένο & σφραγισμένο'],
+  ['Καταστατικό / πιστοποιητικό ΓΕΜΗ','τελευταία κωδικοποιημένη μορφή & τυχόν τροποποιήσεις'],
+  ['Βεβαίωση έναρξης εργασιών & μεταβολών ΑΑΔΕ','με όλους τους ενεργούς ΚΑΔ'],
+  ['Στοιχεία μητρώου / επιχείρησης από το taxisnet','πρόσφατη εκτύπωση'],
+  ['Ε3 & δηλώσεις φορολογίας εισοδήματος','των τελευταίων κλεισμένων χρήσεων'],
+  ['Ισολογισμοί / οικονομικές καταστάσεις','όπου τηρούνται διπλογραφικά βιβλία'],
+  ['Ε4 (πίνακας προσωπικού) — ετήσιος & τυχόν συμπληρωματικοί','για τον υπολογισμό των ΕΜΕ'],
+  ['ΑΠΔ ΕΦΚΑ','περιόδου αναφοράς των ΕΜΕ'],
+  ['Υπεύθυνη δήλωση Ν.1599/1986 του νόμιμου εκπροσώπου','με το ακριβές κείμενο της πρόσκλησης'],
+  ['Δήλωση σώρευσης ενισχύσεων de minimis','αν η δράση είναι σε καθεστώς ήσσονος σημασίας'],
+  ['Δήλωση μεγέθους επιχείρησης (ΜΜΕ)','κατά τη σύσταση 2003/361/ΕΚ, με συνδεδεμένες/συνεργαζόμενες'],
+  ['Προσφορές / προτιμολόγια για τις δαπάνες','να καλύπτουν κάθε γραμμή του προϋπολογισμού'],
+  ['Τεχνική περιγραφή / προμετρήσεις για κτηριακά','από μηχανικό, όπου υπάρχουν δαπάνες κτηρίων'],
+  ['Τίτλος ιδιοκτησίας ή μισθωτήριο του τόπου υλοποίησης','σε ισχύ για την περίοδο δέσμευσης'],
+  ['Άδεια λειτουργίας / γνωστοποίηση έναρξης','ή απαλλακτικό, κατά περίπτωση'],
+  ['Αποδεικτικά ιδιωτικής συμμετοχής','βεβαίωση τραπεζικών υπολοίπων ή έγκριση δανείου'],
+  ['Φορολογική & ασφαλιστική ενημερότητα','σε ισχύ κατά την υποβολή']
+];
+
+/* Στόχοι που μπορεί να εξυπηρετεί ένα επενδυτικό σχέδιο. */
+const GOALS = [
+  'Ψηφιακός μετασχηματισμός','Εξοικονόμηση ενέργειας','Πράσινη μετάβαση',
+  'Αύξηση παραγωγικής δυναμικότητας','Βελτίωση ποιότητας & πιστοποιήσεις',
+  'Εξωστρέφεια / εξαγωγές','Νέα προϊόντα & υπηρεσίες','Δημιουργία θέσεων εργασίας',
+  'Βελτίωση συνθηκών υγιεινής & ασφάλειας','Κυκλική οικονομία',
+  'Προσβασιμότητα ΑμεΑ','Έρευνα & καινοτομία'
+];
+
+/* Ενότητες του παραγόμενου εγγράφου. */
+const DOC_PARTS = [
+  ['ident','Α. Ταυτότητα αίτησης',1],['company','Β. Στοιχεία φορέα',1],
+  ['size','Γ. Μέγεθος & οικονομικά στοιχεία',1],['project','Δ. Φυσικό αντικείμενο',1],
+  ['budget','Ε. Οικονομικό αντικείμενο',1],['fin','ΣΤ. Χρηματοδοτικό σχήμα',1],
+  ['crit','Ζ. Τεκμηρίωση κριτηρίων',1],['ind','Η. Δείκτες & αποτελέσματα',1],
+  ['docs','Θ. Συνημμένα δικαιολογητικά',1],['decl','Ι. Υπεύθυνη δήλωση',1]
+];
+
+/* ── 3. Κατάσταση εφαρμογής ───────────────────────────────────────────── */
+const S = {
+  raw:'', fileName:'',
+  call:{                       // ό,τι αφορά την πρόσκληση
+    title:'',code:'',authority:'',program:'',fund:'',
+    dateFrom:'',dateTo:'',totalBudget:'',minBudget:'',maxBudget:'',
+    intensity:'',regime:'',duration:'',system:'',
+    kad:[], costs:[], crits:[], docs:[], secs:[], reqs:{}, areas:[], regionRates:{}
+  },
+  co:{}, budget:{}, scores:{}, goals:[], docsDone:{}, docsExtra:[], unlocked:false,
+  parts:Object.fromEntries(DOC_PARTS.map(p=>[p[0],true]))
+};
+
+/* Παλαιότερα η Αττική ήταν σπασμένη σε τρεις ψευδο-περιφέρειες. Τώρα είναι
+   μία περιφέρεια με περιφερειακές ενότητες — μεταφέρουμε ό,τι είχε αποθηκευτεί. */
+function migrateRegion(){
+  const r = S.co && S.co.cRegion;
+  if(typeof r==='string' && r.indexOf('Αττική —')===0){
+    S.co.cRegion='Αττική';
+    if(!S.co.cUnitReg) S.co.cUnitReg = r.indexOf('Δυτικός Τομέας')>=0 ? 'Δυτικός Τομέας Αθηνών' : '';
+  }
+}
+
+const LS='espa_project_v1';
+function save(){ try{ localStorage.setItem(LS, JSON.stringify(S)); }catch(e){} }
+function load(){
+  try{
+    const j=JSON.parse(localStorage.getItem(LS)||'null');
+    if(!j) return false;
+    Object.assign(S,j);
+    S.call = Object.assign({kad:[],costs:[],crits:[],docs:[],secs:[],reqs:{},areas:[],regionRates:{}}, j.call||{});
+    migrateRegion();
+    return true;
+  }catch(e){ return false; }
+}
+
+/* ── 4. Ανάγνωση αρχείων ──────────────────────────────────────────────── */
+const CDN = {
+  pdf:'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.min.js',
+  pdfw:'https://cdnjs.cloudflare.com/ajax/libs/pdf.js/3.11.174/pdf.worker.min.js',
+  docx:'https://cdnjs.cloudflare.com/ajax/libs/mammoth/1.6.0/mammoth.browser.min.js'
+};
+function loadScript(src){
+  return new Promise((res,rej)=>{
+    if(document.querySelector(`script[src="${src}"]`)) return res();
+    const s=document.createElement('script');
+    s.src=src; s.onload=()=>res(); s.onerror=()=>rej(new Error('load '+src));
+    document.head.appendChild(s);
+  });
+}
+
+async function readPdf(file){
+  await loadScript(CDN.pdf);
+  const lib = window.pdfjsLib;
+  if(!lib) throw new Error('pdfjs');
+  lib.GlobalWorkerOptions.workerSrc = CDN.pdfw;
+  const buf = await file.arrayBuffer();
+  const pdf = await lib.getDocument({data:buf, useSystemFonts:true}).promise;
+  const out=[];
+  for(let p=1;p<=pdf.numPages;p++){
+    const page = await pdf.getPage(p);
+    const tc = await page.getTextContent();
+    let line='', lastY=null, txt='';
+    for(const it of tc.items){
+      const y = it.transform ? Math.round(it.transform[5]) : lastY;
+      if(lastY!==null && Math.abs(y-lastY)>3){ txt += line.trimEnd()+'\n'; line=''; }
+      line += it.str + (it.hasEOL?'\n':' ');
+      lastY = y;
+    }
+    txt += line;
+    out.push(txt);
+    if(p%10===0) toast(`Ανάγνωση PDF… σελίδα ${p}/${pdf.numPages}`,1200);
+  }
+  return out.join('\n\n');
+}
+async function readDocx(file){
+  await loadScript(CDN.docx);
+  if(!window.mammoth) throw new Error('mammoth');
+  const r = await window.mammoth.extractRawText({arrayBuffer: await file.arrayBuffer()});
+  return r.value||'';
+}
+async function readAny(file){
+  const n = file.name.toLowerCase();
+  if(n.endsWith('.pdf'))  return readPdf(file);
+  if(n.endsWith('.docx')) return readDocx(file);
+  const t = await file.text();
+  if(/\.html?$/.test(n)){
+    const d = new DOMParser().parseFromString(t,'text/html');
+    d.querySelectorAll('script,style').forEach(e=>e.remove());
+    return d.body ? d.body.innerText||d.body.textContent||'' : t;
+  }
+  return t;
+}
+
+/* ── 5. Μηχανή ανάλυσης πρόσκλησης ────────────────────────────────────── */
+
+/* Κανονικοποίηση που ΔΙΑΤΗΡΕΙ το μήκος, ώστε οι δείκτες θέσης του
+   κανονικοποιημένου κειμένου να δείχνουν στο ίδιο σημείο του πρωτοτύπου. */
+const ACC = {'ά':'Α','έ':'Ε','ή':'Η','ί':'Ι','ό':'Ο','ύ':'Υ','ώ':'Ω','ϊ':'Ι','ϋ':'Υ','ΐ':'Ι','ΰ':'Υ',
+             'Ά':'Α','Έ':'Ε','Ή':'Η','Ί':'Ι','Ό':'Ο','Ύ':'Υ','Ώ':'Ω','Ϊ':'Ι','Ϋ':'Υ','ς':'Σ'};
+function normKeep(s){
+  let o='';
+  for(let i=0;i<s.length;i++){
+    const c=s[i], m=ACC[c];
+    if(m!==undefined){ o+=m; continue; }
+    const u=c.toUpperCase();
+    o += (u.length===1 ? u : c);
+  }
+  return o;
+}
+
+const MONTHS = {'ΙΑΝΟΥΑΡΙΟΥ':1,'ΦΕΒΡΟΥΑΡΙΟΥ':2,'ΜΑΡΤΙΟΥ':3,'ΑΠΡΙΛΙΟΥ':4,'ΜΑΙΟΥ':5,'ΙΟΥΝΙΟΥ':6,
+  'ΙΟΥΛΙΟΥ':7,'ΑΥΓΟΥΣΤΟΥ':8,'ΣΕΠΤΕΜΒΡΙΟΥ':9,'ΟΚΤΩΒΡΙΟΥ':10,'ΝΟΕΜΒΡΙΟΥ':11,'ΔΕΚΕΜΒΡΙΟΥ':12};
+
+const RE_MONEY = /(\d{1,3}(?:\.\d{3})+(?:,\d{1,2})?|\d+(?:,\d{1,2})?)\s*(ΕΚΑΤ\.?|ΕΚΑΤΟΜΜΥΡΙΩΝ|ΕΚΑΤΟΜΜΥΡΙΑ|ΧΙΛ\.?)?\s*(?:€|ΕΥΡΩ)/g;
+const RE_PCT   = /(\d{1,3}(?:,\d{1,2})?)\s*%/g;
+const RE_DATE  = /(\d{1,2})[\/\.\-](\d{1,2})[\/\.\-](\d{4})/g;
+const RE_DATEGR= /(\d{1,2})\s*(?:ης|ΗΣ)?\s+([Α-Ω]{4,12})\s+(\d{4})/g;
+const RE_KAD   = /(?:^|[^\d.,])(\d{2})\.(\d{2})(?:\.(\d{2})(?:\.(\d{2}))?)?(?![\d.,%])/g;
+
+/** Ανασύνθεση γραμμών κειμένου που προήλθε από PDF.
+    Τα PDF δεν έχουν έννοια «παραγράφου»: κάθε κελί πίνακα και κάθε οπτική
+    γραμμή βγαίνει χωριστά. Ένα κριτήριο σαν
+        1 | Ωριμότητα και πληρότητα του επενδυτικού σχεδίου | 30%
+    φτάνει ως τέσσερις ξεχωριστές γραμμές («1», «Ωριμότητα…», «σχεδίου», «30%»)
+    και καμία τους δεν είναι αναγνωρίσιμη μόνη της. Εδώ ξαναενώνονται. */
+function reflow(R){
+  const src = R.split('\n').map(l=>l.replace(/[ \t\u00a0]+/g,' ').trim());
+  const out = [];
+  for(let i=0;i<src.length;i++){
+    const l = src[i];
+    if(l===''){ if(out.length && out[out.length-1]!=='') out.push(''); continue; }
+    // (α) σκέτος αριθμός = στήλη «Α/Α» πίνακα ⇒ γίνεται αρίθμηση της επόμενης γραμμής
+    if(/^\d{1,2}$/.test(l) && i+1<src.length && /^[Α-ΩΆ-Ώ]/.test(src[i+1]) && src[i+1].length>=8){
+      src[i+1] = l+'. '+src[i+1];
+      continue;
+    }
+    const prev = out.length? out[out.length-1] : '';
+    // (β) σκέτο ποσοστό = κελί ορίου ή βαρύτητας ⇒ στο τέλος της γραμμής του
+    if(prev && /^(?:έως|ΕΩΣ|μέχρι|ΜΕΧΡΙ)?\s*\d{1,3}(?:,\d{1,2})?\s*%$/.test(l)){
+      out[out.length-1] = prev+' '+l; continue;
+    }
+    // (γ) συνέχεια σπασμένης φράσης: αρχίζει με πεζό και η προηγούμενη δεν έκλεισε
+    if(prev.length>25 && /^[α-ωά-ώ]/.test(l) && !/[.:;%!·]$/.test(prev)){
+      out[out.length-1] = prev+' '+l; continue;
+    }
+    // (δ) μονολεκτικό ακρωνύμιο που ξέμεινε στην επόμενη γραμμή («…Δηλώσεις ΕΦΚΑ»)
+    if(prev.length>25 && /^[Α-ΩΆ-Ώ]{2,10}$/.test(l) && !/[.:;%!·]$/.test(prev)){
+      out[out.length-1] = prev+' '+l; continue;
+    }
+    out.push(l);
+  }
+  return out.join('\n');
+}
+
+/** Ανάλυση: γεμίζει το S.call από το ακατέργαστο κείμενο. */
+function analyze(raw){
+  const R = reflow(raw.replace(/\r\n/g,'\n'));
+  const N = normKeep(R);
+  S.raw = R;
+  const c = S.call;
+
+  /* — ενότητες — */
+  c.secs = splitSections(R,N);
+
+  const seek = (keys, from, to) => {           // θέση 1ης λέξης-κλειδιού
+    for(const k of keys){
+      const i = N.indexOf(k, from||0);
+      if(i>=0 && (to==null||i<to)) return {i, k};
+    }
+    return null;
+  };
+  /** Ψάχνει τιμή με regex μέσα σε παράθυρο γύρω από λέξεις-κλειδιά. */
+  function near(keys, re, win, pick){
+    win = win||280;
+    for(const k of keys){
+      let i=-1;
+      while((i = N.indexOf(k, i+1))>=0){
+        const a = i, b = Math.min(N.length, i+k.length+win);
+        const seg = N.slice(a,b);
+        re.lastIndex=0;
+        const all=[]; let m;
+        while((m=re.exec(seg))) all.push(m);
+        if(all.length){
+          const chosen = pick ? pick(all,seg) : all[0];
+          if(chosen) return {m:chosen, seg, at:a, key:k, raw:R.slice(a,b)};
+        }
+      }
+    }
+    return null;
+  }
+  const money = m => {
+    let v = grNum(m[1]);
+    const u = (m[2]||'').replace(/\./g,'');
+    if(/ΕΚΑΤ/.test(u)) v*=1e6; else if(/ΧΙΛ/.test(u)) v*=1e3;
+    return v;
+  };
+
+  /* — τίτλος δράσης — */
+  const head = R.slice(0, 6000);
+  const quoted = (head.match(/[«"][^«»"]{12,180}[»"]/g)||[])
+    .map(x=>x.slice(1,-1).replace(/\s+/g,' ').trim())
+    .filter(x=>x.length>=12);
+  if(quoted.length) c.title = quoted.sort((a,b)=>b.length-a.length)[0];
+  if(!c.title){
+    const ln = head.split('\n').map(s=>s.trim())
+      .filter(s=>s.length>18 && s.length<160 && /[Α-Ωα-ω]{6}/.test(s) && !/^\d/.test(s));
+    c.title = ln[0]||'';
+  }
+
+  /* — κωδικός / ΑΔΑ / πρόγραμμα / φορέας — */
+  let m;
+  if((m = R.match(/Κωδικ[όο]ς\s+(?:πρ[όο]σκλησης|δρ[άα]σης)\s*[:\-–]?\s*([A-ZΑ-Ω0-9\-\/\.]{2,24})/i))) c.code = m[1];
+  else if((m = R.match(/\bΑΔΑ\s*[:\-–]?\s*([A-ZΑ-Ω0-9]{5,}\-[A-ZΑ-Ω0-9]{2,})/i))) c.code = 'ΑΔΑ '+m[1];
+  const prog = [
+    ['ΑΝΤΑΓΩΝΙΣΤΙΚΟΤΗΤΑ','Πρόγραμμα «Ανταγωνιστικότητα» ΕΣΠΑ 2021-2027'],
+    ['ΨΗΦΙΑΚΟΣ ΜΕΤΑΣΧΗΜΑΤΙΣΜΟΣ','Πρόγραμμα «Ψηφιακός Μετασχηματισμός» ΕΣΠΑ 2021-2027'],
+    ['ΑΝΘΡΩΠΙΝΟ ΔΥΝΑΜΙΚΟ','Πρόγραμμα «Ανθρώπινο Δυναμικό & Κοινωνική Συνοχή»'],
+    ['ΤΑΜΕΙΟ ΑΝΑΚΑΜΨΗΣ','Ταμείο Ανάκαμψης & Ανθεκτικότητας (Ελλάδα 2.0)'],
+    ['ΑΓΡΟΤΙΚΗΣ ΑΝΑΠΤΥΞΗΣ','Πρόγραμμα Αγροτικής Ανάπτυξης / Στρατηγικό Σχέδιο ΚΑΠ'],
+    ['ΑΛΙΕΙΑΣ','Πρόγραμμα Αλιείας, Υδατοκαλλιέργειας & Θάλασσας'],
+    ['INTERREG','Πρόγραμμα Interreg']
+  ];
+  for(const [k,v] of prog) if(N.includes(k)){ c.program=v; break; }
+  if(!c.program && N.includes('ΕΣΠΑ')) c.program='ΕΣΠΑ 2021-2027';
+  const auth = R.match(/(Ειδικ[ήη]\s+Υπηρεσ[ίι]α\s+Διαχε[ίι]ρισης[^\n,\.]{0,70})/i)
+            || R.match(/(ΕΦΕΠΑΕ[^\n,\.]{0,50})/i)
+            || R.match(/(Υπουργε[ίι]ο\s+[Α-ΩΆ-Ώα-ωά-ώ\s]{4,60})/);
+  if(auth) c.authority = auth[1].replace(/\s+/g,' ').trim();
+  c.system = N.includes('ΟΠΣΚΕ') ? 'ΟΠΣΚΕ' : (N.includes('ΠΣΚΕ') ? 'ΠΣΚΕ' : (N.includes('ΟΠΣΑΑ')?'ΟΠΣΑΑ':''));
+
+  /* — ημερομηνίες υποβολής — */
+  const toDate = mm => {
+    if(mm.length===4 && MONTHS[mm[2]]!==undefined)
+      return `${mm[3]}-${String(MONTHS[mm[2]]).padStart(2,'0')}-${String(mm[1]).padStart(2,'0')}`;
+    const d=+mm[1], mo=+mm[2], y=+mm[3];
+    if(d>31||mo>12||y<2014||y>2040) return '';
+    return `${y}-${String(mo).padStart(2,'0')}-${String(d).padStart(2,'0')}`;
+  };
+  const dateNear = keys => {
+    for(const re of [RE_DATE, RE_DATEGR]){
+      const f = near(keys, re, 260);
+      if(f){
+        const mm = f.m;
+        if(re===RE_DATEGR){
+          const nm = normKeep(mm[2]);
+          if(MONTHS[nm]===undefined) continue;
+          return {v:`${mm[3]}-${String(MONTHS[nm]).padStart(2,'0')}-${String(mm[1]).padStart(2,'0')}`, src:f.raw};
+        }
+        const v = toDate(mm);
+        if(v) return {v, src:f.raw};
+      }
+    }
+    return null;
+  };
+  const df = dateNear(['ΕΝΑΡΞΗ ΥΠΟΒΟΛΗΣ','ΗΜΕΡΟΜΗΝΙΑ ΕΝΑΡΞΗΣ','ΕΝΑΡΞΗ ΗΛΕΚΤΡΟΝΙΚΗΣ ΥΠΟΒΟΛΗΣ',
+                      'ΑΡΧΙΖΕΙ ΤΗΝ','ΥΠΟΒΟΛΗ ΤΩΝ ΑΙΤΗΣΕΩΝ ΑΡΧΙΖΕΙ','ΗΜΕΡΟΜΗΝΙΑ ΕΝΑΡΞΗΣ ΥΠΟΒΟΛΗΣ']);
+  const dt = dateNear(['ΚΑΤΑΛΗΚΤΙΚΗ ΗΜΕΡΟΜΗΝΙΑ','ΛΗΞΗ ΥΠΟΒΟΛΗΣ','ΗΜΕΡΟΜΗΝΙΑ ΛΗΞΗΣ',
+                      'ΛΗΓΕΙ ΤΗΝ','ΕΩΣ ΚΑΙ ΤΗΝ','ΜΕΧΡΙ ΚΑΙ ΤΗΝ','ΚΑΤΑΛΗΚΤΙΚΗ ΗΜΕΡΟΜΗΝΙΑ ΥΠΟΒΟΛΗΣ']);
+  c.dateFrom = df? df.v : ''; c._srcFrom = df? df.src:'';
+  c.dateTo   = dt? dt.v : ''; c._srcTo   = dt? dt.src:'';
+
+  /* — προϋπολογισμός δράσης — */
+  const tb = near(['ΣΥΝΟΛΙΚΟΣ ΠΡΟΥΠΟΛΟΓΙΣΜΟΣ','ΠΡΟΥΠΟΛΟΓΙΣΜΟΣ ΤΗΣ ΔΡΑΣΗΣ','ΣΥΝΟΛΙΚΗ ΔΗΜΟΣΙΑ ΔΑΠΑΝΗ',
+                  'ΔΗΜΟΣΙΑ ΔΑΠΑΝΗ ΤΗΣ ΔΡΑΣΗΣ','ΠΡΟΥΠΟΛΟΓΙΣΜΟΣ ΤΗΣ ΠΡΟΣΚΛΗΣΗΣ'], RE_MONEY, 300,
+                 all=>all.sort((a,b)=>grNum(b[1])-grNum(a[1]))[0]);
+  if(tb){ c.totalBudget = String(money(tb.m)); c._srcTotal = tb.raw; }
+
+  /* — ελάχιστος/μέγιστος επιχορηγούμενος Π/Υ — */
+  const bb = near(['ΕΠΙΧΟΡΗΓΟΥΜΕΝΟΣ ΠΡΟΥΠΟΛΟΓΙΣΜΟΣ','ΕΠΙΛΕΞΙΜΟΣ ΠΡΟΥΠΟΛΟΓΙΣΜΟΣ',
+                   'ΠΡΟΥΠΟΛΟΓΙΣΜΟΣ ΕΠΕΝΔΥΤΙΚΟΥ ΣΧΕΔΙΟΥ','ΠΡΟΥΠΟΛΟΓΙΣΜΟΣ ΚΑΘΕ ΕΠΕΝΔΥΤΙΚΟΥ ΣΧΕΔΙΟΥ',
+                   'ΥΨΟΣ ΕΠΕΝΔΥΤΙΚΟΥ ΣΧΕΔΙΟΥ','ΠΡΟΥΠΟΛΟΓΙΣΜΟΣ ΑΙΤΗΣΗΣ'], RE_MONEY, 340);
+  if(bb){
+    RE_MONEY.lastIndex=0;
+    const vals=[]; let mm;
+    while((mm=RE_MONEY.exec(bb.seg))) vals.push(money(mm));
+    const uniq=[...new Set(vals.filter(v=>v>=1000))].sort((a,b)=>a-b);
+    if(uniq.length>=2){ c.minBudget=String(uniq[0]); c.maxBudget=String(uniq[uniq.length-1]); }
+    else if(uniq.length===1){ c.maxBudget=String(uniq[0]); }
+    c._srcBud = bb.raw;
+  }
+
+  /* — ένταση ενίσχυσης — */
+  const it = near(['ΕΝΤΑΣΗ ΕΝΙΣΧΥΣΗΣ','ΠΟΣΟΣΤΟ ΕΝΙΣΧΥΣΗΣ','ΠΟΣΟΣΤΟ ΕΠΙΧΟΡΗΓΗΣΗΣ',
+                   'ΔΗΜΟΣΙΑΣ ΧΡΗΜΑΤΟΔΟΤΗΣΗΣ','ΠΟΣΟΣΤΟ ΔΗΜΟΣΙΑΣ ΔΑΠΑΝΗΣ','ΕΠΙΧΟΡΗΓΕΙΤΑΙ ΣΕ ΠΟΣΟΣΤΟ',
+                   'ΙΔΙΩΤΙΚΗ ΣΥΜΜΕΤΟΧΗ'], RE_PCT, 260,
+                  all=>all.map(a=>({a,v:grNum(a[1])})).filter(o=>o.v>0&&o.v<=100)
+                          .sort((x,y)=>y.v-x.v).map(o=>o.a)[0]);
+  if(it){ c.intensity = String(grNum(it.m[1])); c._srcInt = it.raw; }
+
+  /* — καθεστώς ενίσχυσης — */
+  if(/DE\s*MINIMIS|ΗΣΣΟΝΟΣ ΣΗΜΑΣΙΑΣ|1407\/2013|2831\/2023/.test(N))
+    c.regime = 'Καν. de minimis (ήσσονος σημασίας)';
+  else if(/651\/2014|ΓΕΝΙΚΟΣ ΑΠΑΛΛΑΚΤΙΚΟΣ|(?:^|[^Α-Ω])ΓΑΚ(?![Α-Ω])/.test(N))
+    c.regime = 'Καν. 651/2014 (ΓΑΚ) — Χάρτης Περιφερειακών Ενισχύσεων';
+  else c.regime = '';
+
+  /* — διάρκεια υλοποίησης — */
+  const du = near(['ΔΙΑΡΚΕΙΑ ΥΛΟΠΟΙΗΣΗΣ','ΧΡΟΝΟΔΙΑΓΡΑΜΜΑ ΥΛΟΠΟΙΗΣΗΣ','ΔΙΑΡΚΕΙΑ ΕΡΓΟΥ',
+                   'ΠΡΟΘΕΣΜΙΑ ΟΛΟΚΛΗΡΩΣΗΣ'], /(\d{1,2})\s*(?:\(\d{1,2}\)\s*)?ΜΗΝ/g, 240);
+  if(du) c.duration = du.m[1];
+
+  /* — ΚΑΔ — */
+  c.kad = extractKad(R,N,c.secs);
+  /* — δαπάνες / κριτήρια / δικαιολογητικά — */
+  c.costs = extractCosts(R,N,c.secs);
+  c.crits = extractCrits(R,N,c.secs);
+  c.docs  = extractDocs(R,N,c.secs);
+  c.reqs  = extractReqs(R,N);
+  c.areas = extractAreas(R,N);
+  c.regionRates = extractRegionRates(R,N);
+  return c;
+}
+
+/* — περιοχές εφαρμογής: πού «πιάνει» η δράση ——————————————————————————
+   Μια περιφέρεια θεωρείται επιλέξιμη όταν αναφέρεται στο κείμενο και ΔΕΝ
+   αναφέρεται ως εξαίρεση («πλην Αττικής», «εκτός Νοτίου Αιγαίου»). Αν δεν
+   αναφέρεται καμία, η δράση αντιμετωπίζεται ως πανελλαδική. */
+function extractAreas(R,N){
+  const inc=[], exc=[];
+  for(const [reg,stems] of Object.entries(REGION_STEMS)){
+    let found=false, excluded=false;
+    for(const st of stems){
+      let i=-1;
+      while((i=N.indexOf(st,i+1))>=0){
+        found=true;
+        const before = N.slice(Math.max(0,i-34), i);
+        if(/(ΕΚΤΟΣ|ΠΛΗΝ|ΕΞΑΙΡ|ΔΕΝ ΠΕΡΙΛΑΜΒΑΝ)[^.]{0,26}$/.test(before)) excluded=true;
+      }
+    }
+    if(found){ (excluded?exc:inc).push(reg); }
+  }
+  // «όλη η χώρα»: καμία περιφέρεια δεν κατονομάζεται ⇒ πανελλαδική εμβέλεια
+  if(!inc.length && !exc.length) return [];
+  if(!inc.length && exc.length)  return REGIONS.map(r=>r[0]).filter(r=>!exc.includes(r));
+  return inc;
+}
+
+/* — ένταση ενίσχυσης ανά περιφέρεια ————————————————————————————————————
+   Πολλές προσκλήσεις έχουν πίνακα «Περιφέρεια → ποσοστό». Κρατάμε το ποσοστό
+   που βρίσκεται κοντά στο όνομα της περιφέρειας, μόνο όταν το συμφραζόμενο
+   μιλάει για ενίσχυση/επιχορήγηση. */
+const ALL_STEMS = Object.values(REGION_STEMS).flat();
+function extractRegionRates(R,N){
+  const out={};
+  for(const [reg,stems] of Object.entries(REGION_STEMS)){
+    for(const st of stems){
+      let i=-1;
+      while((i=N.indexOf(st,i+1))>=0){
+        const ctx = N.slice(Math.max(0,i-700), i+700);
+        if(!/ΕΝΤΑΣΗ|ΕΝΙΣΧΥΣ|ΕΠΙΧΟΡΗΓΗΣ|ΔΗΜΟΣΙΑΣ ΔΑΠΑΝΗΣ|ΧΡΗΜΑΤΟΔΟΤΗΣΗΣ/.test(ctx)) continue;
+        // Μόνο ό,τι ακολουθεί ΑΜΕΣΩΣ το όνομα, και πάντα πριν από την επόμενη
+        // περιφέρεια — αλλιώς η «Κρήτη» θα κληρονομούσε το ποσοστό της Θεσσαλίας.
+        let seg = N.slice(i+st.length, Math.min(N.length, i+st.length+42));
+        let cut = seg.length;
+        for(const other of ALL_STEMS){
+          const k = seg.indexOf(other);
+          if(k>=0 && k<cut) cut=k;
+        }
+        seg = seg.slice(0,cut);
+        const m = /(\d{1,3}(?:,\d{1,2})?)\s*%/.exec(seg);
+        if(m){
+          const v = grNum(m[1]);
+          if(v>0 && v<=100 && out[reg]==null) out[reg]=v;
+        }
+      }
+    }
+  }
+  return out;
+}
+
+/* — ενότητες — */
+function splitSections(R,N){
+  const lines = R.split('\n'), secs=[];
+  let pos=0;
+  for(const ln of lines){
+    const t = ln.trim(), n = normKeep(t);
+    // κεφαλαία (ή σχεδόν): οι τίτλοι των ελληνικών προσκλήσεων
+    const upper = (n.match(/[Α-Ω]/g)||[]).length>=6 && (t.match(/[α-ωά-ώ]/g)||[]).length<=2;
+    const numM  = /^(\d+(?:\.\d+){0,3})[\.\)]?\s+[Α-ΩΆ-Ώ]/.exec(t);
+    const isKad = /^\d{2}\.\d{2}(?:\.\d{2})?\s/.test(t);   // γραμμή πίνακα ΚΑΔ, όχι τίτλος
+    let level = null;
+    if(t.length>4 && t.length<140){
+      if(/^(ΚΕΦΑΛΑΙΟ|ΕΝΟΤΗΤΑ|ΑΡΘΡΟ|ΠΑΡΑΡΤΗΜΑ|ΜΕΡΟΣ)/.test(n)) level = 0;
+      else if(numM && !isKad){
+        const d = numM[1].split('.').length;
+        // Μονοψήφια αρίθμηση χωρίς κεφαλαία είναι συνήθως στοιχείο λίστας,
+        // όχι τίτλος ενότητας — αλλιώς κάθε «2. Μηχανήματα…» έκοβε την ενότητα.
+        if(d>=2 || upper) level = d;
+      }
+      else if(upper && /^[Α-Ω0-9\s\.\,\&\-–—\(\)\/:«»%]+$/.test(n)) level = 1;
+    }
+    if(level!=null) secs.push({title:t, start:pos, end:R.length, level});
+    pos += ln.length+1;
+  }
+  // Κάθε ενότητα τελειώνει στην επόμενη ισοδύναμη ή ανώτερη ιεραρχικά.
+  for(let i=0;i<secs.length;i++){
+    for(let j=i+1;j<secs.length;j++){
+      if(secs[j].level<=secs[i].level){ secs[i].end = secs[j].start; break; }
+    }
+  }
+  return secs.slice(0,400);
+}
+function secText(R,secs,keys,maxLen){
+  for(const s of secs){
+    const n = normKeep(s.title);
+    if(keys.some(k=>n.includes(k))){
+      let body = R.slice(s.start, Math.min(s.end, s.start+(maxLen||26000)));
+      const nl = body.indexOf('\n');            // ο ίδιος ο τίτλος δεν είναι περιεχόμενο
+      if(nl>=0) body = body.slice(nl+1);
+      if(body.trim().length>60) return {body, title:s.title};
+    }
+  }
+  return null;
+}
+
+/* — ΚΑΔ — */
+function extractKad(R,N,secs){
+  const zone = secText(R,secs,['ΕΠΙΛΕΞΙΜΟΙ ΚΑΔ','ΕΠΙΛΕΞΙΜΩΝ ΚΑΔ','ΚΑΔ ΕΠΕΝΔΥΣΗΣ','ΠΙΝΑΚΑΣ ΚΑΔ',
+                               'ΕΠΙΛΕΞΙΜΕΣ ΔΡΑΣΤΗΡΙΟΤΗΤΕΣ','ΕΠΙΛΕΞΙΜΟΤΗΤΑ ΚΑΔ'],60000);
+  const src = zone ? zone.body : R;
+  const seen = new Map();
+  RE_KAD.lastIndex = 0;
+  let m;
+  while((m = RE_KAD.exec(src))){
+    const div = m[1];
+    if(!KADDIV[div]) continue;                       // κόβει τυχαίους αριθμούς
+    const code = m[1]+'.'+m[2]+(m[3]?'.'+m[3]:'')+(m[4]?'.'+m[4]:'');
+    const around = src.slice(Math.max(0,m.index-14), m.index+m[0].length+14);
+    if(/€|ΕΥΡΩ|%|σελ|Σελ/.test(around)) continue;    // ποσά/ποσοστά, όχι ΚΑΔ
+    seen.set(code, (seen.get(code)||0)+1);
+  }
+  let list = [...seen.keys()];
+  // Αν έχει βρεθεί ρητή ενότητα ΚΑΔ, δέξου και τους διψήφιους κλάδους της.
+  if(zone){
+    const rx = /(?:^|\n)\s*(\d{2})\s+[Α-ΩΆ-Ώα-ωά-ώ]/g; let d;
+    while((d = rx.exec(zone.body))) if(KADDIV[d[1]] && !list.includes(d[1])) list.push(d[1]);
+  }
+  list.sort((a,b)=> a.localeCompare(b,'en',{numeric:true}));
+  return list.slice(0,1200);
+}
+
+/* — κατηγορίες δαπανών — */
+const DEFAULT_COSTS = [
+  ['Κτήρια, εγκαταστάσεις & περιβάλλων χώρος',null],
+  ['Μηχανήματα & λοιπός εξοπλισμός',null],
+  ['Ψηφιακός εξοπλισμός & λογισμικό',null],
+  ['Μεταφορικά μέσα',null],
+  ['Πιστοποίηση συστημάτων & προϊόντων',null],
+  ['Δαπάνες προβολής, προώθησης & δικτύωσης',null],
+  ['Συμβουλευτικές & τεχνικές υπηρεσίες',null],
+  ['Μισθολογικό κόστος νέου προσωπικού',null],
+  ['Έμμεσες / λειτουργικές δαπάνες',null]
+];
+function extractCosts(R,N,secs){
+  const zone = secText(R,secs,['ΕΠΙΛΕΞΙΜΕΣ ΔΑΠΑΝΕΣ','ΚΑΤΗΓΟΡΙΕΣ ΔΑΠΑΝΩΝ','ΕΠΙΛΕΞΙΜΟΤΗΤΑ ΔΑΠΑΝΩΝ',
+                               'ΕΙΔΗ ΕΝΙΣΧΥΣΗΣ','ΕΠΙΛΕΞΙΜΕΣ ΚΑΤΗΓΟΡΙΕΣ']);
+  const out=[];
+  if(zone){
+    const lines = zone.body.split('\n').map(s=>s.replace(/\s+/g,' ').trim());
+    for(let i=0;i<lines.length;i++){
+      const l = lines[i];
+      if(l.length<6 || l.length>150) continue;
+      const num = /^(?:\d{1,2}\.\d{1,2}\.?\s*|\d{1,2}[\.\)]\s*|\d{1,2}\s+|[Α-Ω]\d?[\.\)]\s*|[•▪◦\-–●]\s*)(.+)$/.exec(l);
+      let title = num ? num[1] : null;
+      if(!title){
+        // γραμμή πίνακα: «Τίτλος .... έως 40%»
+        if(/(ΕΩΣ|ΜΕΧΡΙ)\s+\d{1,3}\s*%/.test(normKeep(l)) && /[Α-Ωα-ω]{5}/.test(l)) title = l;
+        else continue;
+      }
+      title = title.replace(/[,·]?\s*(?:έως|Έως|ΕΩΣ|μέχρι|Μέχρι|ΜΕΧΡΙ|με ανώτατο|ανώτατο όριο)\s.*$/,'')
+                   .replace(/[\.\:\s]+$/,'').trim();
+      const nt = normKeep(title);
+      if(title.length<6 || title.length>140) continue;
+      if(/^(ΑΡΘΡΟ|ΠΑΡΑΡΤΗΜΑ|ΠΙΝΑΚΑΣ|ΣΕΛΙΔΑ|ΣΗΜΕΙΩΝΕΤΑΙ|ΕΠΙΣΗΜΑΙΝΕΤΑΙ|ΔΕΝ ΕΙΝΑΙ|ΟΙ ΔΑΠΑΝΕΣ|ΩΣ ΕΠΙΛΕΞΙΜΕΣ)/.test(nt)) continue;
+      if(!/[Α-Ωα-ωΆ-Ώά-ώ]{5}/.test(title)) continue;
+      // ανώτατο όριο στην ίδια ή στην επόμενη γραμμή
+      let cap=null;
+      const capRe = /(?:ΕΩΣ|ΜΕΧΡΙ|ΑΝΩΤΑΤΟ ΟΡΙΟ|ΔΕΝ ΥΠΕΡΒΑΙΝΕΙ ΤΟ|ΜΕΓΙΣΤΟ)\s*(?:ΤΟ|ΤΑ)?\s*(\d{1,3}(?:,\d{1,2})?)\s*%/;
+      const cm = capRe.exec(normKeep(l)) || capRe.exec(normKeep(lines[i+1]||''));
+      if(cm) cap = grNum(cm[1]);
+      const short = title.replace(/\s*\(.*?\)\s*$/,'').slice(0,110);
+      if(out.some(o=>normKeep(o.t).slice(0,26)===normKeep(short).slice(0,26))) continue;
+      out.push({t:short, cap});
+      if(out.length>=26) break;
+    }
+  }
+  if(out.length<3) return DEFAULT_COSTS.map(([t,cap])=>({t,cap}));
+  return out;
+}
+
+/* — κριτήρια βαθμολόγησης — */
+function extractCrits(R,N,secs){
+  const zone = secText(R,secs,['ΚΡΙΤΗΡΙΑ ΑΞΙΟΛΟΓΗΣΗΣ','ΚΡΙΤΗΡΙΑ ΒΑΘΜΟΛΟΓΗΣΗΣ','ΒΑΘΜΟΛΟΓΟΥΜΕΝΑ ΚΡΙΤΗΡΙΑ',
+                               'ΑΞΙΟΛΟΓΗΣΗ ΑΙΤΗΣΕΩΝ','ΚΡΙΤΗΡΙΑ ΕΠΙΛΟΓΗΣ']);
+  const out=[];
+  if(zone){
+    const lines = zone.body.split('\n').map(s=>s.replace(/\s+/g,' ').trim());
+    for(const l of lines){
+      if(l.length<8||l.length>170) continue;
+      const w = /(\d{1,3}(?:,\d{1,2})?)\s*%/.exec(l);
+      const nt = normKeep(l);
+      const looks = /^(?:\d{1,2}[\.\)]|[Α-Ω]\d?[\.\)]|[•▪●\-–])/.test(l) || w;
+      if(!looks) continue;
+      if(!/[Α-Ωα-ωΆ-Ώά-ώ]{6}/.test(l)) continue;
+      if(/^(ΠΙΝΑΚΑΣ|ΣΥΝΟΛΟ|ΑΡΘΡΟ|ΠΑΡΑΡΤΗΜΑ)/.test(nt)) continue;
+      let title = l.replace(/^(?:\d{1,2}[\.\)]\s*|\d{1,2}\s+|[Α-Ω]\d?[\.\)]\s*|[•▪●\-–]\s*)/,'')
+                   .replace(/\s*\d{1,3}(?:,\d{1,2})?\s*%\s*$/,'')
+                   .replace(/[\.\:\s]+$/,'').trim();
+      if(title.length<8||title.length>130) continue;
+      if(out.some(o=>normKeep(o.t).slice(0,24)===normKeep(title).slice(0,24))) continue;
+      out.push({t:title, w: w? grNum(w[1]) : null});
+      if(out.length>=18) break;
+    }
+  }
+  return out;
+}
+
+/* — δικαιολογητικά — */
+function extractDocs(R,N,secs){
+  const zone = secText(R,secs,['ΔΙΚΑΙΟΛΟΓΗΤΙΚΑ','ΑΠΑΙΤΟΥΜΕΝΑ ΔΙΚΑΙΟΛΟΓΗΤΙΚΑ','ΣΥΝΗΜΜΕΝΑ',
+                               'ΔΙΚΑΙΟΛΟΓΗΤΙΚΑ ΣΥΜΜΕΤΟΧΗΣ','ΔΙΚΑΙΟΛΟΓΗΤΙΚΑ ΥΠΟΒΟΛΗΣ']);
+  const out=[];
+  if(zone){
+    const lines = zone.body.split('\n').map(s=>s.replace(/\s+/g,' ').trim());
+    for(const l of lines){
+      if(l.length<10||l.length>190) continue;
+      if(!/^(?:\d{1,2}[\.\)]|[•▪●\-–]|[Α-Ω]\d?[\.\)])/.test(l)) continue;
+      const title = l.replace(/^(?:\d{1,2}[\.\)]|[•▪●\-–]|[Α-Ω]\d?[\.\)])\s*/,'').replace(/[\.\s]+$/,'').trim();
+      if(title.length<10||!/[Α-Ωα-ωΆ-Ώά-ώ]{6}/.test(title)) continue;
+      if(out.some(o=>normKeep(o).slice(0,26)===normKeep(title).slice(0,26))) continue;
+      out.push(title);
+      if(out.length>=40) break;
+    }
+  }
+  return out;
+}
+
+/* — προϋποθέσεις συμμετοχής — */
+function extractReqs(R,N){
+  const q={};
+  let m;
+  if((m = /(?:ΤΟΥΛΑΧΙΣΤΟΝ|ΕΛΑΧΙΣΤΟ)\s*(?:\w+\s*)?\(?(\d{1,3})(?:,(\d))?\)?\s*ΕΜΕ/.exec(N)))
+    q.minEme = grNum(m[1]+(m[2]?','+m[2]:''));
+  else if(/ΜΙΑ\s*\(1\)\s*ΕΜΕ|1\s*ΕΜΕ ΜΙΣΘΩΤΗΣ/.test(N)) q.minEme = 1;
+  if((m = /ΤΟΥΛΑΧΙΣΤΟΝ\s*\(?(\d{1,2})\)?\s*(?:ΠΛΗΡΕΙΣ\s*)?(?:ΚΛΕΙΣΜΕΝ[Α-Ω]+\s*)?(?:ΔΙΑΧΕΙΡΙΣΤΙΚ[Α-Ω]+\s*ΧΡΗΣ[Α-Ω]+|ΕΤΗ|ΕΤΩΝ)/.exec(N)))
+    q.minYears = +m[1];
+  else if(/ΜΙΑ\s*\(?1?\)?\s*(?:ΠΛΗΡΗ\s*)?ΚΛΕΙΣΜΕΝΗ\s*ΔΙΑΧΕΙΡΙΣΤΙΚΗ/.test(N)) q.minYears=1;
+  q.sizes = [];
+  if(/ΠΟΛΥ ΜΙΚΡ/.test(N)) q.sizes.push('Πολύ μικρή');
+  if(/(?:^|[^Α-Ω])ΜΙΚΡ(?:ΕΣ|ΩΝ|ΗΣ)(?![Α-Ω])/.test(N)) q.sizes.push('Μικρή');
+  if(/ΜΕΣΑΙ/.test(N)) q.sizes.push('Μεσαία');
+  if(/ΜΕΓΑΛ(ΕΣ|ΩΝ) ΕΠΙΧΕΙΡΗΣ/.test(N)) q.sizes.push('Μεγάλη');
+  q.newAllowed = /ΥΠΟ ΣΥΣΤΑΣΗ|ΝΕΟΣΥΣΤΑΤ|ΥΠΟ ΙΔΡΥΣΗ/.test(N);
+  q.deMinimis  = /DE\s*MINIMIS|ΗΣΣΟΝΟΣ ΣΗΜΑΣΙΑΣ/.test(N);
+  return q;
+}
+
+/* ── 6. Απόδοση: ανάλυση πρόσκλησης ───────────────────────────────────── */
+function fld(k,label,type,ph,src){
+  const v = S.call[k]==null?'':S.call[k];
+  const t = type||'text';
+  const inp = t==='ta'
+    ? `<textarea data-c="${k}" style="min-height:60px">${esc(v)}</textarea>`
+    : `<input type="${t}" data-c="${k}" value="${esc(v)}" placeholder="${esc(ph||'')}">`;
+  const tag = (v===''||v==null)
+    ? '<span class="tag warn">δεν βρέθηκε</span>'
+    : '<span class="tag ok">βρέθηκε</span>';
+  return `<div class="find">
+    <div class="find-h"><span class="t">${esc(label)}</span>${tag}</div>
+    ${inp}
+    ${src?`<div class="src">…${esc(String(src).replace(/\s+/g,' ').slice(0,240))}…</div>`:''}
+  </div>`;
+}
+
+function renderAnalysis(){
+  const c=S.call, has = !!S.raw;
+  $('#anaEmpty').style.display = has?'none':'';
+  $('#anaBody').style.display  = has?'':'none';
+  if(!has) return;
+
+  /* KPIs */
+  const days = c.dateTo ? Math.ceil((new Date(c.dateTo+'T23:59:59')-new Date())/864e5) : null;
+  const kp=[];
+  kp.push({l:'Προθεσμία', v: days==null?'—':(days<0?'έληξε':days+' ημ.'),
+           s: c.dateTo?grDate(c.dateTo):'δεν εντοπίστηκε', cls: days==null?'':(days<0?'bad':(days<=10?'warn':'ok'))});
+  kp.push({l:'Ένταση ενίσχυσης', v: c.intensity?pct(+c.intensity):'—', s:c.regime||'καθεστώς άγνωστο'});
+  kp.push({l:'Επιχορηγούμενος Π/Υ',
+           v: (c.minBudget||c.maxBudget) ? `${c.minBudget?eur(+c.minBudget):'—'} – ${c.maxBudget?eur(+c.maxBudget):'—'}` : '—',
+           s:'ανά επενδυτικό σχέδιο', sm:true});
+  kp.push({l:'Επιλέξιμοι ΚΑΔ', v:String(c.kad.length), s: c.kad.length?'εντοπίστηκαν στο κείμενο':'συμπλήρωσε χειροκίνητα'});
+  kp.push({l:'Κατηγορίες δαπανών', v:String(c.costs.length), s:'γραμμές προϋπολογισμού'});
+  kp.push({l:'Κριτήρια', v:String(c.crits.length), s: c.crits.length?'βαθμολογούμενα':'δεν εντοπίστηκαν'});
+  $('#anaKpis').innerHTML = kp.map(k=>
+    `<div class="kpi ${k.cls||''}"><div class="l">${esc(k.l)}</div><div class="v${k.sm?' sm':''}">${esc(k.v)}</div><div class="s">${esc(k.s)}</div></div>`).join('');
+
+  $('#fIdent').innerHTML =
+    fld('title','Τίτλος δράσης')+
+    fld('code','Κωδικός πρόσκλησης / ΑΔΑ')+
+    fld('program','Πρόγραμμα')+
+    fld('authority','Φορέας / Ειδική Υπηρεσία')+
+    fld('system','Σύστημα υποβολής','text','ΟΠΣΚΕ / ΠΣΚΕ')+
+    fld('duration','Διάρκεια υλοποίησης (μήνες)','number')+
+    fld('dateFrom','Έναρξη υποβολών','date',null,c._srcFrom)+
+    fld('dateTo','Λήξη υποβολών','date',null,c._srcTo);
+
+  $('#fFin').innerHTML =
+    fld('totalBudget','Συνολικός Π/Υ δράσης (€)','number',null,c._srcTotal)+
+    fld('minBudget','Ελάχιστος Π/Υ σχεδίου (€)','number',null,c._srcBud)+
+    fld('maxBudget','Μέγιστος Π/Υ σχεδίου (€)','number')+
+    fld('intensity','Ένταση ενίσχυσης (%)','number',null,c._srcInt)+
+    fld('regime','Καθεστώς ενίσχυσης')+
+    fld('fund','Ταμείο / συγχρηματοδότηση','text','π.χ. ΕΤΠΑ, ΕΚΤ+');
+
+  renderAreas();
+
+  /* ΚΑΔ */
+  const divs = {};
+  c.kad.forEach(k=>{ const d=k.slice(0,2); (divs[d]=divs[d]||[]).push(k); });
+  $('#kadHint').innerHTML = c.kad.length
+    ? `Εντοπίστηκαν <b>${c.kad.length}</b> κωδικοί σε <b>${Object.keys(divs).length}</b> κλάδους. Πράσινο = ταιριάζει με τους ΚΑΔ σου.`
+    : 'Δεν εντοπίστηκε λίστα ΚΑΔ — συχνά βρίσκεται σε ξεχωριστό αρχείο παραρτήματος. Συμπλήρωσέ την παρακάτω.';
+  const mine = myKads();
+  $('#fKad').innerHTML = Object.keys(divs).sort().map(d=>{
+    const list = divs[d];
+    const on = list.some(k=>kadHit(k,mine));
+    return `<details class="acc" style="width:100%">
+      <summary>${on?'✅ ':''}<b>${d}</b> — ${esc(KADDIV[d]||'')} <span class="tag">${list.length}</span></summary>
+      <div class="body"><div class="chips">${list.map(k=>
+        `<span class="chip ${kadHit(k,mine)?'on':''}">${esc(k)}</span>`).join('')}</div></div>
+    </details>`;
+  }).join('') || '<span class="tag warn">κενή λίστα</span>';
+  $('#kadManual').value = c._kadManual||'';
+
+  /* Δαπάνες */
+  const tb = $('#tCost tbody');
+  tb.innerHTML = c.costs.map((x,i)=>`<tr>
+    <td><input type="text" data-cost="${i}" data-f="t" value="${esc(x.t)}"></td>
+    <td class="num"><input type="number" data-cost="${i}" data-f="cap" value="${x.cap==null?'':x.cap}" placeholder="—" style="max-width:90px"> %</td>
+    <td><button class="btn sm gh" data-delcost="${i}" title="Διαγραφή">✕</button></td>
+  </tr>`).join('');
+
+  /* Κριτήρια */
+  $('#fCrit').innerHTML = c.crits.length ? c.crits.map((x,i)=>`
+    <div class="find"><div class="find-h">
+      <input type="text" data-crit="${i}" data-f="t" value="${esc(x.t)}" style="flex:1">
+      <input type="number" data-crit="${i}" data-f="w" value="${x.w==null?'':x.w}" placeholder="βάρος" style="max-width:100px"> %
+      <button class="btn sm gh" data-delcrit="${i}">✕</button>
+    </div></div>`).join('')
+    : '<div class="note warn"><b>Δεν εντοπίστηκαν κριτήρια βαθμολόγησης.</b>Συνήθως βρίσκονται σε παράρτημα. Πρόσθεσέ τα για να λειτουργήσει η αυτοαξιολόγηση.</div>';
+
+  /* Ενότητες */
+  $('#fSecs').innerHTML = c.secs.length
+    ? c.secs.slice(0,120).map(s=>`<details class="acc"><summary>${esc(s.title.slice(0,110))}</summary>
+        <div class="body"><pre style="white-space:pre-wrap;font-size:12px;margin:0;max-height:240px;overflow:auto">${esc(S.raw.slice(s.start,Math.min(s.end,s.start+2200)))}</pre></div></details>`).join('')
+    : '<p class="hint">Δεν αναγνωρίστηκαν ενότητες.</p>';
+}
+
+/* ── 6β. Περιοχές εφαρμογής & πόρισμα γρήγορου ελέγχου ────────────────── */
+function areaChips(clickable){
+  const areas=S.call.areas||[], rr=S.call.regionRates||{};
+  const all = areas.length? REGIONS.map(r=>r[0]) : [];
+  const list = clickable ? REGIONS.map(r=>r[0]) : areas;
+  return list.map(r=>{
+    const on = areas.includes(r), me = S.co.cRegion===r;
+    const rate = rr[r]!=null ? ` · ${pct(rr[r])}` : '';
+    return `<span class="chip ${on?'on':''}" ${clickable?`data-area="${esc(r)}" style="cursor:pointer"`:''}>`+
+           `${me?'📍 ':''}${esc(r)}${rate}</span>`;
+  }).join('');
+}
+function renderAreas(){
+  const el=$('#fAreas'); if(!el) return;
+  const areas=S.call.areas||[];
+  const head = areas.length
+    ? `<p class="hint">Εντοπίστηκαν <b>${areas.length}</b> περιφέρειες. Το 📍 δείχνει πού είναι η επιχείρησή σου.</p>`
+    : `<div class="note warn"><b>Δεν κατονομάστηκε καμία περιφέρεια.</b>Η δράση αντιμετωπίζεται ως πανελλαδική. Αν στην πρόσκληση υπάρχει περιορισμός περιοχών, διάλεξέ τες εδώ.</div>`;
+  el.innerHTML = head + `<div class="chips">${areaChips(true)}</div>`;
+}
+function renderAreaBox(){
+  const el=$('#q_areaBox'); if(!el) return;
+  if(!S.raw){ el.innerHTML=''; return; }
+  const areas=S.call.areas||[], reg=S.co.cRegion;
+  if(!areas.length){
+    el.innerHTML = `<div class="note"><b>Η πρόσκληση δεν όρισε ρητά περιοχές.</b>Θεωρείται πανελλαδική — μπορείς να το διορθώσεις στο βήμα 2.</div>`;
+    return;
+  }
+  const inside = reg && areas.includes(reg);
+  const cls = !reg ? '' : (inside?'ok':'bad');
+  el.innerHTML =
+    `<div class="note ${cls}"><b>Περιοχές εφαρμογής της δράσης</b>`+
+    (reg ? (inside ? `Η περιοχή «${esc(reg)}» περιλαμβάνεται. ` : `Η περιοχή «${esc(reg)}» <b>δεν</b> περιλαμβάνεται. `) : '')+
+    `</div><div class="chips">${areaChips(false)}</div>`;
+}
+
+/** Το πόρισμα του βήματος 1: επιλέξιμη, με εκκρεμότητες ή όχι. */
+function renderQuick(){
+  renderCompany();
+  renderAreaBox();
+  const V=$('#qVerdict'), C=$('#qChecks'), A=$('#qActions');
+  if(!V) return;
+  if(!S.raw){
+    V.innerHTML = `<div class="verdict"><div class="ic">📄</div><div>
+      <p class="h">Δώσε πρώτα την πρόσκληση</p>
+      <div class="d">Χωρίς αυτήν δεν υπάρχουν κανόνες να ελεγχθούν. Ανέβασε το αρχείο παραπάνω ή δοκίμασε τη δοκιμαστική πρόσκληση.</div></div></div>`;
+    C.innerHTML=''; A.innerHTML=''; return;
+  }
+  const rs = coreRules();
+  const n={ok:0,warn:0,bad:0}; rs.forEach(r=>n[r.st]++);
+  const st = n.bad? 'bad' : (n.warn? 'warn':'ok');
+  const head = {
+    ok:  ['✅','Η επιχείρηση είναι επιλέξιμη','Πληροί όλες τις προϋποθέσεις που εντοπίστηκαν στην πρόσκληση.'],
+    warn:['⚠️','Πιθανώς επιλέξιμη — με εκκρεμότητες',`${n.warn} σημείο(α) χρειάζονται στοιχεία ή επιβεβαίωση.`],
+    bad: ['⛔','Δεν πληροί τις προϋποθέσεις',`${n.bad} κώλυμα(τα). Δες παρακάτω τι φταίει — συχνά διορθώνεται αν η αυτόματη ανάγνωση αστόχησε.`]
+  }[st];
+
+  const areaBad = rs.some(r=>(r.t==='Περιοχή υλοποίησης'||r.t==='Ενισχυόμενη περιοχή') && r.st==='bad');
+  const int = intensityUsed(), est=+S.co.qBudget||budTotal()||0;
+  const money = areaBad
+    ? `<div class="vrow" style="margin-top:14px"><span class="i">📍</span><div>
+        <b>Δεν υπολογίζεται επιχορήγηση</b>
+        <span>Η περιοχή υλοποίησης δεν καλύπτεται από τη δράση. Αν η επιχείρηση υλοποιεί σε άλλη περιφέρεια, δήλωσε εκείνη.</span></div></div>`
+    : (int>0 && est>0)
+    ? `<div class="vrow" style="margin-top:14px;background:var(--card)"><span class="i">💶</span><div>
+        <b>Εκτιμώμενη επιχορήγηση ${eur(est*int/100)} από ${eur(est)}</b>
+        <span>ένταση ${pct(int)} — ${esc(intensitySource())}. Ιδιωτική συμμετοχή ${eur(est-est*int/100)}.</span></div></div>`
+    : (int>0
+        ? `<div class="vrow" style="margin-top:14px"><span class="i">💶</span><div><b>Ένταση ενίσχυσης ${pct(int)}</b>
+           <span>${esc(intensitySource())}. Συμπλήρωσε εκτιμώμενο ύψος επένδυσης για να δεις ποσά.</span></div></div>`
+        : '');
+
+  V.innerHTML = `<div class="verdict ${st}"><div class="ic">${head[0]}</div><div style="flex:1">
+    <p class="h">${esc(head[1])}</p><div class="d">${esc(head[2])}</div>${money}</div></div>`;
+
+  const ic={ok:'✅',warn:'⚠️',bad:'⛔'};
+  C.innerHTML = `<div class="vgrid">`+rs.map(r=>
+    `<div class="vrow ${r.st==='ok'?'':r.st}"><span class="i">${ic[r.st]}</span><div>
+      <b>${esc(r.t)}</b><span>${esc(r.msg)}${r.fix?' — '+esc(r.fix):''}</span></div></div>`).join('')+`</div>`;
+
+  A.innerHTML =
+    (st==='bad'
+      ? `<button class="btn" id="qGo">Συνέχεια παρά τα κωλύματα ›</button>`
+      : `<button class="btn pri" id="qGo">Συνέχεια στην πλήρη προετοιμασία ›</button>`)+
+    `<button class="btn gh" id="qFix">🔎 Διόρθωση ευρημάτων πρόσκλησης</button>`;
+}
+
+/* ── 7. ΚΑΔ: αντιστοίχιση ─────────────────────────────────────────────── */
+function myKads(){
+  return [S.co.cKad||'', ...(String(S.co.cKad2||'').split(/[,;]/))]
+    .map(s=>s.trim()).filter(Boolean);
+}
+function kadHit(callKad, mine){
+  return mine.some(k => k===callKad || k.startsWith(callKad+'.') || callKad.startsWith(k+'.') ||
+                        (callKad.length===2 && k.startsWith(callKad+'.')));
+}
+function callKads(){
+  const extra = String(S.call._kadManual||'').split(/[,;]/).map(s=>s.trim()).filter(Boolean);
+  return [...new Set([...(S.call.kad||[]), ...extra])];
+}
+
+/* ── 8. Φορέας ────────────────────────────────────────────────────────── */
+function afmValid(a){
+  if(!/^\d{9}$/.test(a) || /^0{9}$/.test(a)) return false;
+  let sum=0;
+  for(let i=0;i<8;i++) sum += (+a[i]) * Math.pow(2, 8-i);
+  return (sum % 11) % 10 === (+a[8]);
+}
+function sizeOf(){
+  const eme=+S.co.cEme||0, tn=+S.co.cTurn1||0, as=+S.co.cAssets||0;
+  if(!eme && !tn) return '';
+  if(eme<10  && (tn<=2e6  || as<=2e6 )) return 'Πολύ μικρή';
+  if(eme<50  && (tn<=10e6 || as<=10e6)) return 'Μικρή';
+  if(eme<250 && (tn<=50e6 || as<=43e6)) return 'Μεσαία';
+  return 'Μεγάλη';
+}
+function yearsRunning(){
+  if(!S.co.cStart) return null;
+  const d=new Date(S.co.cStart);
+  if(isNaN(d)) return null;
+  return (Date.now()-d.getTime())/(365.25*864e5);
+}
+/** Βασικό ποσοστό ΧΠΕ της περιοχής, πριν την προσαύξηση μεγέθους.
+    Στην Αττική εξαρτάται από την περιφερειακή ενότητα. */
+function areaBaseRate(){
+  const r = REGIONS.find(x=>x[0]===S.co.cRegion);
+  if(!r) return null;
+  if(S.co.cRegion==='Αττική'){
+    const u = S.co.cUnitReg;
+    if(!u) return null;                       // χωρίς ΠΕ δεν κρίνεται η Αττική
+    return ATTIKI_RATES[u]||0;
+  }
+  return r[1];
+}
+/** Ενδεικτικό ανώτατο ποσοστό ΧΠΕ για την επιχείρηση (μέγεθος + περιοχή). */
+function regionRate(){
+  const base = areaBaseRate();
+  if(base==null) return null;
+  const sz = sizeOf();
+  const bonus = sz==='Πολύ μικρή'||sz==='Μικρή' ? 20 : (sz==='Μεσαία'?10:0);
+  return base===0 ? 0 : Math.min(base+bonus, 70);
+}
+/** Ποσοστό που ορίζει η ΙΔΙΑ η πρόσκληση για την περιφέρεια της επιχείρησης. */
+function callRegionRate(){
+  const rr = S.call.regionRates||{};
+  const v = rr[S.co.cRegion];
+  return (v!=null && isFinite(v)) ? v : null;
+}
+/** Γεμίζει ΟΛΑ τα μενού περιφέρειας/ενότητας — υπάρχουν και στο βήμα 1 και στο 3. */
+function fillRegionSelects(){
+  $$('select[data-k="cRegion"]').forEach(sel=>{
+    if(sel.options.length>1) return;
+    sel.innerHTML = '<option value="">— επιλογή —</option>' +
+      REGIONS.map(r=>`<option>${esc(r[0])}</option>`).join('');
+  });
+  const units = REGION_UNITS[S.co.cRegion]||[];
+  if(S.co.cUnitReg && !units.includes(S.co.cUnitReg)) S.co.cUnitReg='';
+  $$('select[data-k="cUnitReg"]').forEach(sel=>{
+    const want = '<option value="">— επιλογή —</option>' +
+      units.map(u=>`<option>${esc(u)}</option>`).join('');
+    if(sel.innerHTML!==want) sel.innerHTML = want;
+    sel.disabled = !units.length;
+  });
+}
+/** Γράφει το ίδιο σχόλιο σε όσα σημεία υπάρχουν (βήμα 1 και βήμα 3). */
+function setNote(ids, text, cls){
+  ids.forEach(id=>{
+    const el=$('#'+id);
+    if(!el) return;
+    el.textContent = text||'';
+    el.className = 'fnote'+(cls?' '+cls:'');
+  });
+}
+function renderCompany(){
+  fillRegionSelects();
+  $$('[data-k]').forEach(el=>{
+    const k=el.dataset.k, v=S.co[k];
+    if(v!=null && el.value!==v) el.value=v;
+  });
+  const gc=$('#goalChips');
+  if(gc) gc.innerHTML = GOALS.map(g=>
+    `<span class="chip ${S.goals.includes(g)?'on':''}" data-goal="${esc(g)}" style="cursor:pointer">${esc(g)}</span>`).join('');
+
+  // ΑΦΜ
+  const a=String(S.co.cAfm||'').trim(), ai=$('#cAfm');
+  if(!a) setNote(['afmNote'],'');
+  else if(afmValid(a)) setNote(['afmNote'],'✓ Έγκυρο ΑΦΜ','ok');
+  else setNote(['afmNote'],'✗ Μη έγκυρο ΑΦΜ (έλεγχος ψηφίου)','err');
+  if(ai) ai.classList.toggle('bad', !!a && !afmValid(a));
+
+  // Χρόνος λειτουργίας
+  const y=yearsRunning();
+  setNote(['ageNote','q_ageNote'], y==null?'':`Λειτουργία ${dec(y)} έτη`);
+
+  // ΚΑΔ
+  const list=callKads(), mine=myKads();
+  if(!S.co.cKad || !list.length) setNote(['kadNote','q_kadNote'],'');
+  else if(list.some(k=>kadHit(k,mine))) setNote(['kadNote','q_kadNote'],'✓ Ταιριάζει με τους επιλέξιμους ΚΑΔ','ok');
+  else setNote(['kadNote','q_kadNote'],'✗ Δεν βρέθηκε στη λίστα επιλέξιμων ΚΑΔ','err');
+
+  // Μέγεθος
+  const sz=sizeOf();
+  const cs=$('#cSize'); if(cs) cs.value = sz||'—';
+  setNote(['q_sizeNote'], sz?`Μέγεθος: ${sz} επιχείρηση`:'');
+
+  // Περιοχή
+  const base=areaBaseRate(), rr=regionRate(), cr=callRegionRate();
+  let rtxt='', rcls='';
+  if(cr!=null){ rtxt=`Η πρόσκληση ορίζει ${pct(cr)} για ${S.co.cRegion}`; rcls='ok'; }
+  else if(base==null && S.co.cRegion==='Αττική') { rtxt='Διάλεξε περιφερειακή ενότητα — στην Αττική διαφέρει ανά περιοχή'; rcls='err'; }
+  else if(base===0) { rtxt='Μη ενισχυόμενη περιοχή στον ΧΠΕ 2022-2027 (ενδεικτικά)'; rcls='err'; }
+  else if(rr!=null) rtxt=`Ενδεικτικό ανώτατο ποσοστό ΧΠΕ: ${pct(rr)} — η πρόσκληση υπερισχύει`;
+  setNote(['regNote','q_unitNote'], rtxt, rcls);
+}
+
+/* ── 9. Επιλεξιμότητα ─────────────────────────────────────────────────── */
+/** Οι κανόνες που κρίνουν αν η επιχείρηση ΜΠΟΡΕΙ καν να συμμετάσχει.
+    Τους μοιράζονται ο γρήγορος έλεγχος (βήμα 1) και ο πλήρης (βήμα 4). */
+function coreRules(){
+  const c=S.call, co=S.co, out=[];
+  const add=(t,st,msg,fix)=>out.push({t,st,msg,fix});
+
+  // 1. Προθεσμία
+  if(c.dateTo){
+    const d=Math.ceil((new Date(c.dateTo+'T23:59:59')-new Date())/864e5);
+    if(d<0) add('Προθεσμία υποβολής','bad',`Η προθεσμία έληξε στις ${grDate(c.dateTo)}.`,'Έλεγξε αν έχει δοθεί παράταση.');
+    else if(d<=10) add('Προθεσμία υποβολής','warn',`Απομένουν ${d} ημέρες (λήξη ${grDate(c.dateTo)}).`,'Προτεραιότητα στα δικαιολογητικά με χρόνο έκδοσης.');
+    else add('Προθεσμία υποβολής','ok',`Απομένουν ${d} ημέρες — λήξη ${grDate(c.dateTo)}.`);
+  } else add('Προθεσμία υποβολής','warn','Δεν εντοπίστηκε καταληκτική ημερομηνία.','Συμπλήρωσέ τη στο βήμα 2.');
+
+  // 2. Περιοχή υλοποίησης — «πιάνει» εδώ η δράση;
+  const areas=c.areas||[], reg=co.cRegion, unit=co.cUnitReg;
+  if(!reg) add('Περιοχή υλοποίησης','warn','Δεν δήλωσες πού βρίσκεται η επιχείρηση.','Χωρίς αυτό δεν κρίνεται ούτε η περιοχή ούτε το ποσοστό ενίσχυσης.');
+  else if(!areas.length)
+    add('Περιοχή υλοποίησης','warn',`${reg}${unit?' — ΠΕ '+unit:''}. Η πρόσκληση δεν όρισε ρητά περιοχές, οπότε θεωρείται πανελλαδική.`,'Επιβεβαίωσε την περιοχή εφαρμογής στο βήμα 2.');
+  else if(areas.includes(reg))
+    add('Περιοχή υλοποίησης','ok',`${reg}${unit?' — ΠΕ '+unit:''}: περιλαμβάνεται στις περιοχές εφαρμογής της δράσης.`);
+  else
+    add('Περιοχή υλοποίησης','bad',`Η δράση εφαρμόζεται σε: ${areas.join(', ')}. Η περιοχή «${reg}» δεν περιλαμβάνεται.`,'Αν η επιχείρηση υλοποιεί σε άλλη περιφέρεια, δήλωσε εκείνη.');
+
+  // 3. Ενισχυόμενη περιοχή (μετράει μόνο σε καθεστώς ΓΑΚ/περιφερειακών ενισχύσεων)
+  const isGak = /651\/2014|ΓΑΚ|ΠΕΡΙΦΕΡΕΙΑΚ/.test(normKeep(c.regime||''));
+  const base = areaBaseRate();
+  if(reg && isGak){
+    if(base==null) add('Ενισχυόμενη περιοχή','warn','Δήλωσε περιφερειακή ενότητα — στην Αττική κρίνει το αν η περιοχή ενισχύεται καθόλου.');
+    else if(base===0) add('Ενισχυόμενη περιοχή','bad',`${reg}${unit?' — ΠΕ '+unit:''}: μη ενισχυόμενη περιοχή στον Χάρτη Περιφερειακών Ενισχύσεων 2022-2027, ενώ η δράση είναι σε καθεστώς περιφερειακών ενισχύσεων.`,'Σε καθεστώς de minimis δεν υπάρχει τέτοιος περιορισμός — επιβεβαίωσε το καθεστώς.');
+    else add('Ενισχυόμενη περιοχή','ok',`Ενισχυόμενη περιοχή — βασικό ποσοστό ΧΠΕ ${pct(base)}, με το μέγεθος της επιχείρησης έως ${pct(regionRate())}.`);
+  }
+
+  // 4. ΚΑΔ
+  const list=callKads(), mine=myKads();
+  if(!list.length) add('Επιλεξιμότητα ΚΑΔ','warn','Δεν υπάρχει λίστα επιλέξιμων ΚΑΔ.','Πρόσθεσε τους ΚΑΔ του παραρτήματος στο βήμα 2.');
+  else if(!mine.length) add('Επιλεξιμότητα ΚΑΔ','warn','Δεν έχεις δηλώσει ΚΑΔ.','Συμπλήρωσε τον κύριο ΚΑΔ.');
+  else {
+    const hits = list.filter(k=>kadHit(k,mine));
+    if(hits.length) add('Επιλεξιμότητα ΚΑΔ','ok',`Ταιριάζουν ${hits.length} κωδικοί: ${hits.slice(0,6).join(', ')}${hits.length>6?'…':''}`);
+    else add('Επιλεξιμότητα ΚΑΔ','bad','Κανένας από τους ΚΑΔ σου δεν βρίσκεται στη λίστα.','Έλεγξε δευτερεύοντες ΚΑΔ ή προσθήκη ΚΑΔ πριν την υποβολή.');
+  }
+
+  // 5. Μέγεθος
+  const sz=sizeOf(), want=(c.reqs&&c.reqs.sizes)||[];
+  if(!sz) add('Μέγεθος επιχείρησης','warn','Δεν υπολογίστηκε — λείπουν ΕΜΕ ή κύκλος εργασιών.','Συμπλήρωσε τα οικονομικά στοιχεία.');
+  else if(sz==='Μεγάλη' && want.length && !want.includes('Μεγάλη'))
+    add('Μέγεθος επιχείρησης','bad',`Η επιχείρηση χαρακτηρίζεται «${sz}», ενώ η δράση απευθύνεται σε ${want.join(', ')}.`);
+  else add('Μέγεθος επιχείρησης','ok',`Χαρακτηρισμός: ${sz} (σύσταση 2003/361/ΕΚ).`+(String(co.cLinked)==='yes'?' Προσοχή: με συνδεδεμένες/συνεργαζόμενες τα μεγέθη αθροίζονται.':''));
+
+  // 6. ΕΜΕ
+  if(c.reqs && c.reqs.minEme!=null){
+    const raw = String(co.cEme==null?'':co.cEme).trim();
+    const e=+co.cEme||0;
+    if(raw==='') add('Ελάχιστες ΕΜΕ','warn',`Η δράση απαιτεί ≥ ${c.reqs.minEme} ΕΜΕ — δεν δήλωσες ΕΜΕ.`,'Προκύπτουν από τα Ε4/ΑΠΔ της περιόδου αναφοράς.');
+    else if(e>=c.reqs.minEme) add('Ελάχιστες ΕΜΕ','ok',`${dec(e)} ΕΜΕ ≥ ${c.reqs.minEme} που απαιτούνται.`);
+    else add('Ελάχιστες ΕΜΕ','bad',`Δηλώθηκαν ${dec(e)} ΕΜΕ, απαιτούνται ${c.reqs.minEme}.`,'Έλεγξε τα Ε4/ΑΠΔ της περιόδου αναφοράς.');
+  }
+  // 7. Έτη λειτουργίας
+  if(c.reqs && c.reqs.minYears!=null){
+    const y=yearsRunning();
+    if(y==null) add('Χρόνος λειτουργίας','warn',`Απαιτούνται ≥ ${c.reqs.minYears} έτη/χρήσεις — δεν δήλωσες ημερομηνία έναρξης.`);
+    else if(y>=c.reqs.minYears) add('Χρόνος λειτουργίας','ok',`${dec(y)} έτη ≥ ${c.reqs.minYears}.`);
+    else add('Χρόνος λειτουργίας','bad',`${dec(y)} έτη < ${c.reqs.minYears} που απαιτούνται.`);
+  }
+  // 8. Ύψος επένδυσης (αναλυτικός Π/Υ αν υπάρχει, αλλιώς η εκτίμηση του βήματος 1)
+  const tot=budTotal() || (+co.qBudget||0);
+  const src=budTotal()? '' : ' (εκτίμηση)';
+  if(tot>0){
+    const mn=+c.minBudget||0, mx=+c.maxBudget||0;
+    if(mn && tot<mn) add('Ύψος επένδυσης','bad',`${eur(tot)}${src} < ελάχιστο ${eur(mn)}.`,'Πρόσθεσε επιλέξιμες δαπάνες ή δες αν συμφέρει άλλη δράση.');
+    else if(mx && tot>mx) add('Ύψος επένδυσης','warn',`${eur(tot)}${src} > μέγιστο ${eur(mx)}. Το υπερβάλλον δεν επιχορηγείται.`,'Το σχέδιο μπορεί να υποβληθεί, με μη επιχορηγούμενο το υπερβάλλον.');
+    else add('Ύψος επένδυσης','ok',`${eur(tot)}${src} εντός των ορίων της πρόσκλησης.`);
+  } else add('Ύψος επένδυσης','warn','Δεν έχει δηλωθεί ύψος επένδυσης.');
+
+  // 9. De minimis
+  if(c.reqs && c.reqs.deMinimis){
+    const used=+co.cDeMin||0, grant=(budTotal()||(+co.qBudget||0))*intensityUsed()/100, cap=300000;
+    if(used+grant>cap) add('Σώρευση de minimis','bad',`Σύνολο ${eur(used+grant)} > ${eur(cap)} της τριετίας (Καν. 2831/2023).`,'Μείωσε το αιτούμενο ποσό ή έλεγξε τη σώρευση με συνδεδεμένες.');
+    else add('Σώρευση de minimis','ok',`${eur(used+grant)} από ${eur(cap)} του ορίου τριετίας.`);
+  }
+  return out;
+}
+
+/** Ο πλήρης έλεγχος: οι βασικοί κανόνες συν ό,τι αφορά την ετοιμότητα φακέλου. */
+function rules(){
+  const out = coreRules();
+  const add=(t,st,msg,fix)=>out.push({t,st,msg,fix});
+
+  const need=[['cName','επωνυμία'],['cAfm','ΑΦΜ'],['cForm','νομική μορφή'],['cKad','κύριος ΚΑΔ'],['rName','νόμιμος εκπρόσωπος'],['pWhat','περιγραφή σχεδίου']];
+  const miss=need.filter(([k])=>!String(S.co[k]||'').trim()).map(x=>x[1]);
+  if(miss.length) add('Πληρότητα στοιχείων','warn',`Λείπουν: ${miss.join(', ')}.`,'Βήμα 3.');
+  else add('Πληρότητα στοιχείων','ok','Όλα τα υποχρεωτικά πεδία συμπληρώθηκαν.');
+  if(S.co.cAfm && !afmValid(String(S.co.cAfm))) add('Εγκυρότητα ΑΦΜ','bad','Το ΑΦΜ δεν περνά τον έλεγχο ψηφίου ελέγχου.');
+
+  const priv=budTotal()-budGrant();
+  if(priv>0) add('Ιδιωτική συμμετοχή','warn',`Απαιτείται τεκμηρίωση ${eur(priv)} (${S.co.pFund||'πηγή μη δηλωμένη'}).`,'Βεβαίωση τραπεζικών υπολοίπων ή έγκριση δανείου.');
+  return out;
+}
+function renderElig(){
+  const rs=rules();
+  const n={ok:0,warn:0,bad:0};
+  rs.forEach(r=>n[r.st]++);
+  const verdict = n.bad? 'Μη επιλέξιμο ως έχει' : (n.warn? 'Επιλέξιμο με εκκρεμότητες' : 'Επιλέξιμο');
+  $('#elKpis').innerHTML =
+    `<div class="kpi ${n.bad?'bad':(n.warn?'warn':'ok')}"><div class="l">Συμπέρασμα</div><div class="v" style="font-size:16px">${verdict}</div><div class="s">βάσει ${rs.length} ελέγχων</div></div>`+
+    `<div class="kpi ok"><div class="l">Εντάξει</div><div class="v">${n.ok}</div></div>`+
+    `<div class="kpi warn"><div class="l">Προσοχή</div><div class="v">${n.warn}</div></div>`+
+    `<div class="kpi bad"><div class="l">Κωλύματα</div><div class="v">${n.bad}</div></div>`;
+  const ic={ok:'✅',warn:'⚠️',bad:'⛔'};
+  $('#elList').innerHTML = rs.map(r=>`
+    <div class="find">
+      <div class="find-h"><span class="t">${ic[r.st]} ${esc(r.t)}</span><span class="tag ${r.st}">${r.st==='ok'?'ΟΚ':(r.st==='warn'?'προσοχή':'κώλυμα')}</span></div>
+      <div class="val">${esc(r.msg)}</div>
+      ${r.fix?`<div class="src">➜ ${esc(r.fix)}</div>`:''}
+    </div>`).join('');
+  renderScore();
+}
+function renderScore(){
+  const cr=S.call.crits||[];
+  if(!cr.length){ $('#scoreBox').innerHTML='<p class="hint">Δεν υπάρχουν κριτήρια. Πρόσθεσέ τα στο βήμα 2.</p>'; return; }
+  const wTot = cr.reduce((s,x)=>s+(+x.w||0),0);
+  const eq = wTot<=0;
+  let acc=0, wsum=0;
+  const rows = cr.map((x,i)=>{
+    const w = eq ? 100/cr.length : (+x.w||0);
+    const v = S.scores[i]==null?60:+S.scores[i];
+    acc += w*v/100; wsum += w;
+    return `<div class="find">
+      <div class="find-h"><span class="t">${esc(x.t)}</span><span class="tag acc">βάρος ${pct(w)}</span></div>
+      <div style="display:flex;align-items:center;gap:10px">
+        <input type="range" min="0" max="100" step="5" value="${v}" data-score="${i}" style="flex:1">
+        <b style="min-width:46px;text-align:right">${v}/100</b>
+      </div></div>`;
+  }).join('');
+  const total = wsum? acc*100/wsum : 0;
+  const cls = total>=70?'ok':(total>=50?'warn':'bad');
+  $('#scoreBox').innerHTML =
+    `<div class="kpi ${cls}" style="margin-bottom:14px"><div class="l">Εκτιμώμενη βαθμολογία</div>
+      <div class="v">${NF2.format(total)} / 100</div>
+      <div class="bar" style="margin-top:8px"><i class="${cls}" style="width:${Math.min(100,total)}%"></i></div>
+      <div class="s">${eq?'ισοβαρή κριτήρια (δεν βρέθηκαν συντελεστές)':'με τους συντελεστές της πρόσκλησης'}</div></div>`+rows;
+}
+
+/* ── 10. Προϋπολογισμός ───────────────────────────────────────────────── */
+function budTotal(){ return (S.call.costs||[]).reduce((s,_,i)=>s+(+S.budget[i]||0),0); }
+/* Σειρά προτεραιότητας: ποσοστό της πρόσκλησης για τη συγκεκριμένη περιφέρεια →
+   γενικό ποσοστό της πρόσκλησης → ενδεικτικό ποσοστό του Χάρτη Περιφερειακών
+   Ενισχύσεων. Ό,τι ορίζει η πρόσκληση υπερισχύει πάντα. */
+function intensityUsed(){
+  const cr = callRegionRate();
+  if(cr!=null && cr>0) return cr;
+  const i=+S.call.intensity;
+  if(isFinite(i)&&i>0) return i;
+  const r=regionRate();
+  return r!=null&&r>0 ? r : 0;
+}
+function intensitySource(){
+  if(callRegionRate()!=null) return 'ποσοστό της πρόσκλησης για '+S.co.cRegion;
+  const i=+S.call.intensity;
+  if(isFinite(i)&&i>0) return 'γενικό ποσοστό της πρόσκλησης';
+  const r=regionRate();
+  return r!=null&&r>0 ? 'ενδεικτικό ποσοστό ΧΠΕ — επιβεβαίωσε από την πρόσκληση' : 'δεν ορίστηκε';
+}
+function budGrant(){ return budTotal()*intensityUsed()/100; }
+
+function renderBudget(){
+  const cs=S.call.costs||[], tot=budTotal(), int=intensityUsed();
+  const grant=tot*int/100, priv=tot-grant;
+  const mn=+S.call.minBudget||0, mx=+S.call.maxBudget||0;
+  let cls='';
+  if(tot>0){ if((mn&&tot<mn)||(mx&&tot>mx)) cls='bad'; else cls='ok'; }
+  $('#budKpis').innerHTML =
+    `<div class="kpi ${cls}"><div class="l">Συνολικός Π/Υ</div><div class="v">${eur(tot)}</div><div class="s">${mn||mx?`όρια ${mn?eur(mn):'—'} – ${mx?eur(mx):'—'}`:'χωρίς όρια από την πρόσκληση'}</div></div>`+
+    `<div class="kpi ok"><div class="l">Δημόσια δαπάνη</div><div class="v">${eur(grant)}</div><div class="s">ένταση ${pct(int)}</div></div>`+
+    `<div class="kpi"><div class="l">Ιδιωτική συμμετοχή</div><div class="v">${eur(priv)}</div><div class="s">${esc(S.co.pFund||'—')}</div></div>`+
+    `<div class="kpi"><div class="l">Γραμμές</div><div class="v">${cs.filter((_,i)=>+S.budget[i]>0).length}/${cs.length}</div><div class="s">με ποσό</div></div>`;
+
+  $('#tBud tbody').innerHTML = cs.map((x,i)=>{
+    const v=+S.budget[i]||0, p= tot? v*100/tot : 0;
+    let st='<span class="tag">—</span>';
+    if(x.cap!=null && v>0){
+      st = p<=x.cap+0.001 ? `<span class="tag ok">εντός ορίου</span>`
+                          : `<span class="tag bad">υπέρβαση ${pct(p-x.cap)}</span>`;
+    } else if(v>0) st='<span class="tag ok">ΟΚ</span>';
+    return `<tr>
+      <td>${esc(x.t)}</td>
+      <td class="num"><input type="number" min="0" step="100" data-bud="${i}" value="${v||''}" placeholder="0"></td>
+      <td class="num">${tot?pct(p):'—'}</td>
+      <td class="num">${x.cap!=null?pct(x.cap):'—'}</td>
+      <td>${st}</td></tr>`;
+  }).join('');
+  $('#budTotal').textContent = eur(tot);
+
+  const msgs=[];
+  if(mn&&tot&&tot<mn) msgs.push(['bad',`Ο προϋπολογισμός υπολείπεται του ελάχιστου κατά ${eur(mn-tot)}.`]);
+  if(mx&&tot>mx)      msgs.push(['bad',`Ο προϋπολογισμός υπερβαίνει το μέγιστο κατά ${eur(tot-mx)}.`]);
+  cs.forEach((x,i)=>{
+    const v=+S.budget[i]||0;
+    if(x.cap!=null && tot && v*100/tot > x.cap+0.001)
+      msgs.push(['warn',`«${x.t}»: ${eur(v)} = ${pct(v*100/tot)} του Π/Υ, ενώ το όριο είναι ${pct(x.cap)} (μέγιστο επιλέξιμο ${eur(tot*x.cap/100)}).`]);
+  });
+  if(!int) msgs.push(['warn','Δεν έχει οριστεί ένταση ενίσχυσης — συμπλήρωσέ τη στο βήμα 2 για να υπολογιστεί η δημόσια δαπάνη.']);
+  $('#budMsgs').innerHTML = msgs.map(([c,t])=>`<div class="note ${c}">${esc(t)}</div>`).join('')
+    || '<div class="note ok">Καμία παρατήρηση — ο προϋπολογισμός τηρεί τα όρια που εντοπίστηκαν.</div>';
+
+  $('#tFin tbody').innerHTML = [
+    ['Συνολικός επιχορηγούμενος προϋπολογισμός', tot],
+    [`Δημόσια δαπάνη (επιχορήγηση ${pct(int)})`, grant],
+    ['Ιδιωτική συμμετοχή', priv],
+  ].map(([l,v])=>`<tr><td>${esc(l)}</td><td class="num"><b>${eur2(v)}</b></td></tr>`).join('')
+   + `<tr><td>Πηγή κάλυψης ιδιωτικής συμμετοχής</td><td class="num"><b>${esc(S.co.pFund||'—')}</b></td></tr>`
+   + `<tr><td>Διάρκεια υλοποίησης</td><td class="num"><b>${esc(String(S.co.pMonths||S.call.duration||12))} μήνες</b></td></tr>`;
+}
+function autoBudget(){
+  const cs=S.call.costs||[];
+  if(!cs.length) return;
+  const target = (+S.call.maxBudget) || (+S.call.minBudget) || 50000;
+  const goalsHit = t=>{
+    const n=normKeep(t);
+    let w=1;
+    if(S.goals.includes('Ψηφιακός μετασχηματισμός') && /ΨΗΦΙΑΚ|ΛΟΓΙΣΜΙΚ|ΠΛΗΡΟΦΟΡΙ|ΕΞΟΠΛΙΣΜΟΣ ΤΠΕ/.test(n)) w+=2;
+    if(S.goals.includes('Εξοικονόμηση ενέργειας') && /ΕΝΕΡΓΕΙ|ΚΤΗΡ|ΕΓΚΑΤΑΣΤΑΣ/.test(n)) w+=2;
+    if(S.goals.includes('Αύξηση παραγωγικής δυναμικότητας') && /ΜΗΧΑΝΗΜΑΤ|ΕΞΟΠΛΙΣΜ/.test(n)) w+=2;
+    if(S.goals.includes('Βελτίωση ποιότητας & πιστοποιήσεις') && /ΠΙΣΤΟΠΟΙ/.test(n)) w+=2;
+    if(S.goals.includes('Εξωστρέφεια / εξαγωγές') && /ΠΡΟΒΟΛ|ΠΡΟΩΘΗΣ|ΔΙΚΤΥΩΣ|ΕΚΘΕΣ/.test(n)) w+=2;
+    if(S.goals.includes('Δημιουργία θέσεων εργασίας') && /ΜΙΣΘΟΛΟΓ|ΠΡΟΣΩΠΙΚ/.test(n)) w+=2;
+    if(/ΜΕΤΑΦΟΡΙΚ|ΕΜΜΕΣ|ΛΕΙΤΟΥΡΓΙΚ/.test(n)) w-=0.6;
+    return Math.max(0.2,w);
+  };
+  const ws = cs.map(x=>goalsHit(x.t));
+  const sum = ws.reduce((a,b)=>a+b,0);
+  let left = target;
+  cs.forEach((x,i)=>{
+    let v = target*ws[i]/sum;
+    if(x.cap!=null){
+      // Προς τα κάτω, ώστε η στρογγυλοποίηση να μη δημιουργεί υπέρβαση ορίου.
+      v = Math.floor(Math.min(v, target*x.cap/100)/100)*100;
+    } else v = Math.round(v/100)*100;
+    S.budget[i]=v; left-=v;
+  });
+  // υπόλοιπο στην πρώτη κατηγορία χωρίς όριο
+  if(left>0){
+    const i = cs.findIndex(x=>x.cap==null);
+    if(i>=0) S.budget[i]=(+S.budget[i]||0)+Math.round(left/100)*100;
+  }
+  // Δεύτερο πέρασμα: το ποσοστό μετριέται στο ΤΕΛΙΚΟ σύνολο, όχι στον στόχο.
+  const fin = budTotal();
+  cs.forEach((x,i)=>{
+    if(x.cap==null || !fin) return;
+    const max = Math.floor(fin*x.cap/100/100)*100;
+    if((+S.budget[i]||0) > max) S.budget[i]=max;
+  });
+  renderBudget(); save();
+  toast('Έγινε ενδεικτική κατανομή — προσάρμοσέ την');
+}
+
+/* ── 11. Σύνθεση κειμένου φυσικού αντικειμένου ────────────────────────── */
+function narrative(){
+  const co=S.co, c=S.call, p=[];
+  const name = co.cName||'Η επιχείρηση';
+  const form = co.cForm? ` (${co.cForm})` : '';
+  const kad  = co.cKad? `με κύριο ΚΑΔ ${co.cKad}` : '';
+  const act  = co.cActivity? `, με αντικείμενο «${co.cActivity}»` : '';
+  const yrs  = yearsRunning();
+  const seat = co.cCity? `, με έδρα ${co.cCity}` : '';
+  let s1 = `${name}${form} ${kad}${act}${seat} δραστηριοποιείται`;
+  if(co.cStart) s1 += ` από τις ${grDate(co.cStart)}${yrs!=null?` (${dec(yrs)} έτη λειτουργίας)`:''}`;
+  s1 += '.';
+  if(co.cEme) s1 += ` Απασχολεί ${String(co.cEme).replace('.',',')} ΕΜΕ`;
+  if(co.cTurn1) s1 += `${co.cEme?' και εμφανίζει':' Εμφανίζει'} κύκλο εργασιών ${eur(+co.cTurn1)} κατά την τελευταία κλεισμένη χρήση`;
+  if(co.cEme||co.cTurn1) s1 += `. Κατατάσσεται ως ${sizeOf().toLowerCase()||'—'} επιχείρηση κατά τη σύσταση 2003/361/ΕΚ.`;
+  p.push(s1);
+
+  const title = co.pTitle || 'Το προτεινόμενο επενδυτικό σχέδιο';
+  let s2 = `Το επενδυτικό σχέδιο «${title}» αφορά ${co.pWhat? String(co.pWhat).replace(/^\s*[Θθ]α\s+/,'την υλοποίηση των εξής: θα ') : 'παρεμβάσεις εκσυγχρονισμού της επιχείρησης'}`;
+  if(!/[.!;]$/.test(s2)) s2+='.';
+  p.push(s2);
+
+  if(co.pWhy) p.push(`Η αναγκαιότητα του σχεδίου τεκμηριώνεται ως εξής: ${co.pWhy}${/[.!;]$/.test(co.pWhy)?'':'.'}`);
+
+  if(S.goals.length)
+    p.push(`Το σχέδιο εξυπηρετεί τους ακόλουθους στόχους: ${S.goals.join(', ').toLowerCase()}. `+
+           `Οι παρεμβάσεις είναι συμβατές με τους στόχους της δράσης${c.title?` «${c.title}»`:''}${c.program?` (${c.program})`:''}.`);
+
+  const cs=(c.costs||[]), lines=cs.map((x,i)=>({t:x.t,v:+S.budget[i]||0})).filter(x=>x.v>0);
+  if(lines.length){
+    p.push('Αναλυτικά, το φυσικό αντικείμενο περιλαμβάνει τις παρακάτω κατηγορίες ενεργειών: '+
+      lines.map(l=>`${l.t.toLowerCase()} (${eur(l.v)})`).join('· ')+'.');
+  }
+  const tot=budTotal();
+  if(tot>0){
+    p.push(`Ο συνολικός επιχορηγούμενος προϋπολογισμός ανέρχεται σε ${eur2(tot)}, με αιτούμενη δημόσια δαπάνη `+
+      `${eur2(budGrant())} (ένταση ενίσχυσης ${pct(intensityUsed())}) και ιδιωτική συμμετοχή ${eur2(tot-budGrant())}, `+
+      `η οποία θα καλυφθεί με ${(co.pFund||'ίδια κεφάλαια').toLowerCase()}.`);
+  }
+  p.push(`Η υλοποίηση προβλέπεται να ολοκληρωθεί εντός ${co.pMonths||c.duration||12} μηνών από την ημερομηνία της απόφασης ένταξης`+
+    ((+co.pJobs>0)? `, ενώ αναμένεται η δημιουργία ${String(co.pJobs).replace('.',',')} νέων θέσεων εργασίας (ΕΜΕ).`:'.'));
+
+  if(co.pExtra) p.push(String(co.pExtra)+(/[.!;]$/.test(co.pExtra)?'':'.'));
+  return p;
+}
+
+/* ── 12. Παραγωγή εγγράφου ────────────────────────────────────────────── */
+function tbl(rows){
+  return `<table><tbody>${rows.filter(Boolean).map(([a,b])=>
+    `<tr><th style="width:38%">${esc(a)}</th><td>${b==null||b===''?'<span class="muted">—</span>':esc(b)}</td></tr>`).join('')}</tbody></table>`;
+}
+function buildDoc(){
+  const c=S.call, co=S.co, P=S.parts, out=[];
+  out.push(`<h1>Αίτηση Στήριξης / Χρηματοδότησης</h1>`);
+  out.push(`<p class="cen"><b>${esc(c.title||'—')}</b><br>${esc(c.program||'')}${c.code?' · '+esc(c.code):''}</p>`);
+
+  if(P.ident) out.push(`<h2>Α. Ταυτότητα αίτησης</h2>`+tbl([
+    ['Τίτλος δράσης', c.title], ['Κωδικός πρόσκλησης', c.code],
+    ['Πρόγραμμα', c.program], ['Φορέας υλοποίησης πρόσκλησης', c.authority],
+    ['Σύστημα υποβολής', c.system||'ΟΠΣΚΕ'],
+    ['Περίοδος υποβολής', (c.dateFrom?grDate(c.dateFrom):'—')+' έως '+(c.dateTo?grDate(c.dateTo):'—')],
+    ['Καθεστώς ενίσχυσης', c.regime],
+    ['Τίτλος επενδυτικού σχεδίου', co.pTitle],
+    ['Ημερομηνία σύνταξης', grDate(todayISO())]
+  ]));
+
+  if(P.company) out.push(`<h2>Β. Στοιχεία φορέα της επένδυσης</h2>`+tbl([
+    ['Επωνυμία', co.cName], ['Διακριτικός τίτλος', co.cBrand],
+    ['ΑΦΜ / ΔΟΥ', [co.cAfm,co.cDoy].filter(Boolean).join(' / ')],
+    ['Αρ. ΓΕΜΗ', co.cGemi], ['Νομική μορφή', co.cForm],
+    ['Ημερομηνία έναρξης εργασιών', co.cStart?grDate(co.cStart):''],
+    ['Κύριος ΚΑΔ', co.cKad], ['Δευτερεύοντες ΚΑΔ', co.cKad2],
+    ['Αντικείμενο δραστηριότητας', co.cActivity],
+    ['Έδρα', [co.cAddr,co.cCity].filter(Boolean).join(', ')],
+    ['Περιφέρεια υλοποίησης', co.cRegion],
+    ['Τόπος υλοποίησης επένδυσης', co.cUnit||co.cAddr],
+    ['Στοιχεία επικοινωνίας', [co.cPhone,co.cMail].filter(Boolean).join(' · ')],
+    ['Νόμιμος εκπρόσωπος', [co.rName, co.rFather?'του '+co.rFather:''].filter(Boolean).join(' ')],
+    ['ΑΔΤ / ΑΦΜ εκπροσώπου', [co.rAdt,co.rAfm].filter(Boolean).join(' / ')],
+    ['Επικοινωνία εκπροσώπου', [co.rPhone,co.rMail].filter(Boolean).join(' · ')]
+  ]));
+
+  if(P.size) out.push(`<h2>Γ. Μέγεθος & οικονομικά στοιχεία</h2>`+tbl([
+    ['Χαρακτηρισμός μεγέθους', sizeOf()+' επιχείρηση (σύσταση 2003/361/ΕΚ)'],
+    ['ΕΜΕ προηγούμενου έτους', co.cEme],
+    ['Κύκλος εργασιών ν-1', co.cTurn1?eur2(+co.cTurn1):''],
+    ['Κύκλος εργασιών ν-2', co.cTurn2?eur2(+co.cTurn2):''],
+    ['Κύκλος εργασιών ν-3', co.cTurn3?eur2(+co.cTurn3):''],
+    ['Σύνολο ενεργητικού', co.cAssets?eur2(+co.cAssets):''],
+    ['Κέρδη προ φόρων ν-1', co.cProfit?eur2(+co.cProfit):''],
+    ['Συνδεδεμένες / συνεργαζόμενες', String(co.cLinked)==='yes'?'Ναι — υποβάλλεται δήλωση ΜΜΕ':'Όχι — αυτόνομη επιχείρηση'],
+    ['Ενισχύσεις de minimis τριετίας', eur2(+co.cDeMin||0)]
+  ]));
+
+  if(P.project){
+    out.push(`<h2>Δ. Φυσικό αντικείμενο του επενδυτικού σχεδίου</h2>`);
+    narrative().forEach(t=>out.push(`<p>${esc(t)}</p>`));
+    if(S.goals.length) out.push(`<h3>Στόχοι</h3><ul>${S.goals.map(g=>`<li>${esc(g)}</li>`).join('')}</ul>`);
+  }
+
+  if(P.budget){
+    const cs=c.costs||[], tot=budTotal();
+    out.push(`<h2>Ε. Οικονομικό αντικείμενο — ανάλυση προϋπολογισμού</h2>`);
+    out.push(`<table><thead><tr><th>Α/Α</th><th>Κατηγορία δαπάνης</th><th>Ποσό (€)</th><th>% Π/Υ</th><th>Όριο</th></tr></thead><tbody>`+
+      cs.map((x,i)=>{
+        const v=+S.budget[i]||0;
+        if(!v) return '';
+        return `<tr><td class="cen">${i+1}</td><td>${esc(x.t)}</td><td style="text-align:right">${NF2.format(v)}</td>`+
+               `<td class="cen">${tot?pct(v*100/tot):'—'}</td><td class="cen">${x.cap!=null?pct(x.cap):'—'}</td></tr>`;
+      }).join('')+
+      `<tr><th colspan="2">ΣΥΝΟΛΟ</th><th style="text-align:right">${NF2.format(tot)}</th><th class="cen">100%</th><th></th></tr>`+
+      `</tbody></table>`);
+  }
+
+  if(P.fin){
+    const tot=budTotal(), g=budGrant();
+    out.push(`<h2>ΣΤ. Χρηματοδοτικό σχήμα</h2>`+tbl([
+      ['Συνολικός επιχορηγούμενος προϋπολογισμός', eur2(tot)],
+      ['Αιτούμενη δημόσια δαπάνη', eur2(g)+' (ένταση '+pct(intensityUsed())+')'],
+      ['Ιδιωτική συμμετοχή', eur2(tot-g)],
+      ['Πηγή ιδιωτικής συμμετοχής', co.pFund],
+      ['Διάρκεια υλοποίησης', (co.pMonths||c.duration||12)+' μήνες']
+    ]));
+  }
+
+  if(P.crit && (c.crits||[]).length){
+    out.push(`<h2>Ζ. Τεκμηρίωση ως προς τα κριτήρια αξιολόγησης</h2>`);
+    out.push(`<table><thead><tr><th>Κριτήριο</th><th>Βάρος</th><th>Τεκμηρίωση</th></tr></thead><tbody>`+
+      c.crits.map((x,i)=>`<tr><td>${esc(x.t)}</td><td class="cen">${x.w!=null?pct(x.w):'—'}</td>`+
+        `<td>${esc(S.scores['t'+i]||'Συμπληρώνεται από τον δικαιούχο.')}</td></tr>`).join('')+
+      `</tbody></table>`);
+  }
+
+  if(P.ind) out.push(`<h2>Η. Δείκτες & αναμενόμενα αποτελέσματα</h2>`+tbl([
+    ['Νέες θέσεις εργασίας (ΕΜΕ)', co.pJobs||'0'],
+    ['ΕΜΕ πριν την επένδυση', co.cEme],
+    ['Ενισχυόμενες επιχειρήσεις', '1'],
+    ['Ύψος ιδιωτικής συμμετοχής', eur2(budTotal()-budGrant())],
+    ['Αναμενόμενη αύξηση κύκλου εργασιών', co.cTurn1?('εκτίμηση επί βάσης '+eur(+co.cTurn1)):''],
+    ['Διάρκεια δέσμευσης παγίων', 'κατά τα οριζόμενα στην πρόσκληση']
+  ]));
+
+  if(P.docs){
+    const list = allDocs();
+    out.push(`<h2>Θ. Συνημμένα δικαιολογητικά</h2><ol>`+
+      list.map(d=>`<li>${esc(d[0])}${d[1]?` <span class="muted">— ${esc(d[1])}</span>`:''}${S.docsDone[d[0]]?' ✔':''}</li>`).join('')+`</ol>`);
+  }
+
+  if(P.decl){
+    out.push(`<h2>Ι. Υπεύθυνη δήλωση (άρθρο 8 Ν.1599/1986)</h2>`);
+    out.push(`<p>Ο/Η κάτωθι υπογεγραμμένος/η <b>${esc(co.rName||'…')}</b>${co.rFather?' του '+esc(co.rFather):''}, `+
+      `με ΑΔΤ ${esc(co.rAdt||'…')}, νόμιμος εκπρόσωπος της επιχείρησης <b>${esc(co.cName||'…')}</b> με ΑΦΜ ${esc(co.cAfm||'…')}, `+
+      `δηλώνω υπεύθυνα και εν γνώσει των συνεπειών του νόμου για ψευδή δήλωση ότι:</p><ol>`+
+      [`Όλα τα στοιχεία της παρούσας αίτησης και των συνημμένων είναι αληθή και ακριβή.`,
+       `Η επιχείρηση λειτουργεί νόμιμα και διαθέτει τις απαιτούμενες άδειες για τη δραστηριότητά της.`,
+       `Δεν έχει γίνει έναρξη εργασιών του επενδυτικού σχεδίου πριν από την ημερομηνία που ορίζει η πρόσκληση.`,
+       `Το σχέδιο δεν έχει ενισχυθεί και δεν θα ενισχυθεί από άλλο εθνικό ή ενωσιακό πρόγραμμα για τις ίδιες δαπάνες.`,
+       `Οι ενισχύσεις ήσσονος σημασίας που έχει λάβει η επιχείρηση και οι συνδεδεμένες με αυτήν κατά την τελευταία τριετία ανέρχονται σε ${eur2(+co.cDeMin||0)}.`,
+       `Η επιχείρηση δεν είναι προβληματική κατά την έννοια του Καν. 651/2014 και είναι φορολογικά και ασφαλιστικά ενήμερη.`,
+       `Δεν εκκρεμεί εις βάρος της εντολή ανάκτησης ενίσχυσης κατόπιν απόφασης της Ευρωπαϊκής Επιτροπής.`,
+       `Θα τηρήσω τις υποχρεώσεις δημοσιότητας, διατήρησης παραστατικών και μακροχρόνιων δεσμεύσεων της πρόσκλησης.`,
+       `Αποδέχομαι τους όρους της πρόσκλησης και συναινώ στην επεξεργασία των δεδομένων για τους σκοπούς της δράσης.`
+      ].map(x=>`<li>${esc(x)}</li>`).join('')+`</ol>`);
+    out.push(`<div class="sig"><div>${esc(co.cCity||'Τόπος')}, ${grDate(todayISO())}<br><br>Ο/Η Δηλών/ούσα<br><br><br>__________________________<br>${esc(co.rName||'')}</div>
+      <div>Σφραγίδα επιχείρησης<br><br><br><br>__________________________<br>${esc(co.cName||'')}</div></div>`);
+  }
+
+  out.push(`<p class="muted" style="margin-top:26px;font-size:11px">Το παρόν συντάχθηκε με το βοηθητικό εργαλείο «ΕΣΠΑ Βοηθός» και αποτελεί σχέδιο προς έλεγχο. Η επίσημη υποβολή γίνεται στο ${esc(c.system||'ΟΠΣΚΕ')}.</p>`);
+  return out.join('\n');
+}
+function genDoc(){
+  $('#docPrev').innerHTML = buildDoc();
+  const rs=rules().filter(r=>r.st==='bad');
+  $('#docWarn').innerHTML = rs.length
+    ? `<div class="note bad"><b>${rs.length} κώλυμα(τα) από τον έλεγχο επιλεξιμότητας:</b>${esc(rs.map(r=>r.t).join(' · '))}</div>`
+    : `<div class="note ok">Δεν εντοπίστηκαν κωλύματα στον έλεγχο επιλεξιμότητας.</div>`;
+  save();
+}
+
+/* ── 13. Δικαιολογητικά & χρονοδιάγραμμα ──────────────────────────────── */
+function allDocs(){
+  const fromCall = (S.call.docs||[]).map(d=>[d,'από την πρόσκληση']);
+  const seen=new Set(), out=[];
+  [...fromCall, ...BASE_DOCS, ...(S.docsExtra||[]).map(d=>[d,'προστέθηκε'])].forEach(d=>{
+    const k=normKeep(d[0]).slice(0,30);
+    if(seen.has(k)) return;
+    seen.add(k); out.push(d);
+  });
+  return out;
+}
+function renderDocs(){
+  const list=allDocs();
+  const done=list.filter(d=>S.docsDone[d[0]]).length;
+  $('#docsList').innerHTML = list.map((d,i)=>`
+    <label class="chk ${S.docsDone[d[0]]?'done':''}">
+      <input type="checkbox" data-doc="${esc(d[0])}" ${S.docsDone[d[0]]?'checked':''}>
+      <span class="txt">${esc(d[0])}<small>${esc(d[1]||'')}</small></span>
+    </label>`).join('');
+  const p = list.length? done*100/list.length : 0;
+  $('#docBar').style.width = p+'%';
+  $('#docBar').className = p===100?'ok':(p>50?'':'warn');
+  $('#docPct').textContent = `${done} / ${list.length}`;
+
+  const c=S.call, ev=[];
+  if(c.dateFrom) ev.push([c.dateFrom,'Έναρξη ηλεκτρονικής υποβολής αιτήσεων']);
+  if(c.dateTo)   ev.push([c.dateTo,'Καταληκτική ημερομηνία υποβολής']);
+  if(c.dateTo){
+    const d=new Date(c.dateTo); d.setDate(d.getDate()-7);
+    ev.push([d.toISOString().slice(0,10),'Ορόσημο: ολοκλήρωση φακέλου δικαιολογητικών (−7 ημέρες)']);
+    const m=+((S.co.pMonths)||c.duration||12);
+    const e=new Date(c.dateTo); e.setMonth(e.getMonth()+3+m);
+    ev.push([e.toISOString().slice(0,10),`Εκτιμώμενη ολοκλήρωση υλοποίησης (${m} μήνες μετά την ένταξη)`]);
+  }
+  ev.sort((a,b)=>a[0]<b[0]?-1:1);
+  $('#timeline').innerHTML = ev.length
+    ? ev.map(([d,t])=>{
+        const past = new Date(d) < new Date();
+        return `<div class="chk"><span class="tag ${past?'':'acc'}" style="min-width:96px;justify-content:center">${grDate(d)}</span>
+          <span class="txt">${esc(t)}</span></div>`;
+      }).join('')
+    : '<p class="hint">Δεν εντοπίστηκαν ημερομηνίες στην πρόσκληση.</p>';
+}
+
+/* ── 14. Εξαγωγές ─────────────────────────────────────────────────────── */
+function exportDocx(){
+  const body = $('#docPrev').innerHTML;
+  if(!body || body.indexOf('Πάτησε')>-1){ toast('Δημιούργησε πρώτα την αίτηση'); return; }
+  const html = `<html xmlns:o="urn:schemas-microsoft-com:office:office" xmlns:w="urn:schemas-microsoft-com:office:word" xmlns="http://www.w3.org/TR/REC-html40">
+<head><meta charset="utf-8"><title>Αίτηση Στήριξης</title>
+<style>
+@page{size:A4;margin:2cm}
+body{font-family:"Times New Roman",serif;font-size:11pt;line-height:1.5}
+h1{font-size:15pt;text-align:center;text-transform:uppercase}
+h2{font-size:12pt;background:#eef2f6;padding:5px;border-left:4px solid #0b3d68}
+h3{font-size:11.5pt;color:#0b3d68}
+table{border-collapse:collapse;width:100%;font-family:Calibri,sans-serif;font-size:10pt}
+th,td{border:1px solid #999;padding:5px}
+th{background:#eef2f6}
+.cen{text-align:center}.muted{color:#777;font-style:italic}
+.sig{margin-top:36px}
+</style></head><body>${body}</body></html>`;
+  const fn = `Αίτηση_Στήριξης_${(S.co.cAfm||S.co.cName||'σχέδιο').toString().replace(/\s+/g,'_').slice(0,30)}.doc`;
+  dlBlob(fn, new Blob(['﻿'+html], {type:'application/msword;charset=utf-8'}));
+  toast('Το αρχείο Word κατέβηκε');
+}
+function exportCsv(){
+  const cs=S.call.costs||[], tot=budTotal();
+  const rows=[['Α/Α','Κατηγορία δαπάνης','Ποσό (€)','% Π/Υ','Όριο %']];
+  cs.forEach((x,i)=>{
+    const v=+S.budget[i]||0;
+    if(v) rows.push([i+1, x.t, NF2.format(v), tot?pct(v*100/tot):'', x.cap!=null?x.cap:'']);
+  });
+  rows.push(['','ΣΥΝΟΛΟ',NF2.format(tot),'100%','']);
+  rows.push(['','Δημόσια δαπάνη',NF2.format(budGrant()),pct(intensityUsed()),'']);
+  rows.push(['','Ιδιωτική συμμετοχή',NF2.format(budTotal()-budGrant()),'','']);
+  const csv='﻿'+rows.map(r=>r.map(x=>`"${String(x).replace(/"/g,'""')}"`).join(';')).join('\n');
+  dlBlob('Προϋπολογισμός.csv', new Blob([csv],{type:'text/csv;charset=utf-8'}));
+  toast('Το CSV κατέβηκε');
+}
+function saveProject(){
+  const j=JSON.stringify(S,null,1);
+  dlBlob(`espa-έργο-${(S.co.cAfm||'χωρίς-αφμ')}.json`, new Blob([j],{type:'application/json'}));
+  toast('Το έργο αποθηκεύτηκε');
+}
+
+/* ── 15. Πλοήγηση ─────────────────────────────────────────────────────── */
+const PANES=['p1','p2','p3','p4','p5','p6','p7'];
+/** Τα βήματα 2-7 ανοίγουν μόνο αφού γίνει ο γρήγορος έλεγχος του βήματος 1. */
+function locked(id){ return id!=='p1' && !S.unlocked; }
+function go(id){
+  if(locked(id)){
+    toast(S.raw ? 'Ολοκλήρωσε πρώτα τον γρήγορο έλεγχο' : 'Δώσε πρώτα την πρόσκληση στο βήμα 1', 3000);
+    const box=$('#qResult'); if(box) box.scrollIntoView({behavior:'smooth',block:'center'});
+    return;
+  }
+  PANES.forEach(p=>$('#'+p).classList.toggle('on', p===id));
+  $$('.step').forEach(b=>b.classList.toggle('on', b.dataset.p===id));
+  window.scrollTo({top:0,behavior:'smooth'});
+  if(id==='p1') renderQuick();
+  if(id==='p2') renderAnalysis();
+  if(id==='p3') renderCompany();
+  if(id==='p4') renderElig();
+  if(id==='p5') renderBudget();
+  if(id==='p6'){ renderDocOpts(); if($('#docPrev').innerHTML.indexOf('Πάτησε')>-1) genDoc(); }
+  if(id==='p7') renderDocs();
+  markSteps();
+  $('#fabNext').style.display = (id==='p7'||id==='p1') ? 'none':'';
+}
+function markSteps(){
+  const done = {
+    p1: !!S.raw && !!S.unlocked,
+    p2: !!(S.call.title||S.call.dateTo||callKads().length),
+    p3: !!(S.co.cName&&S.co.cAfm&&S.co.cKad),
+    p4: !!S.raw && !!S.co.cName,
+    p5: budTotal()>0,
+    p6: $('#docPrev') && $('#docPrev').innerHTML.indexOf('Πάτησε')<0,
+    p7: Object.values(S.docsDone||{}).some(Boolean)
+  };
+  $$('.step').forEach(b=>{
+    b.classList.toggle('done', !!done[b.dataset.p] && !locked(b.dataset.p) && !b.classList.contains('on'));
+    b.classList.toggle('lock', locked(b.dataset.p));
+  });
+}
+function renderDocOpts(){
+  $('#docOpts').innerHTML = DOC_PARTS.map(([k,l])=>
+    `<span class="chip ${S.parts[k]?'on':''}" data-part="${k}" style="cursor:pointer">${S.parts[k]?'✓ ':''}${esc(l)}</span>`).join('');
+}
+
+/* ── 16. Ροή ανάλυσης ─────────────────────────────────────────────────── */
+async function runAnalyze(text, name){
+  if(!text || text.trim().length<200){ toast('Το κείμενο είναι πολύ μικρό για ανάλυση'); return; }
+  S.fileName = name||'';
+  toast('Ανάλυση σε εξέλιξη…',1500);
+  await new Promise(r=>setTimeout(r,30));
+  try{
+    analyze(text);
+    S.budget = {};                       // νέα πρόσκληση ⇒ νέες γραμμές
+    save();
+    renderAnalysis(); renderCompany(); renderQuick(); markSteps();
+    const c=S.call;
+    const box=$('#qResult'); if(box) box.scrollIntoView({behavior:'smooth',block:'start'});
+    toast(`Έτοιμο: ${c.kad.length} ΚΑΔ, ${c.costs.length} κατηγορίες δαπανών, ${c.areas.length||'—'} περιοχές`,4200);
+  }catch(e){
+    console.error(e);
+    toast('Η ανάλυση απέτυχε: '+e.message,4000);
+  }
+}
+async function handleFile(f){
+  if(!f) return;
+  $('#fileInfo').style.display='';
+  $('#fileInfo').innerHTML = `<div class="note"><b>${esc(f.name)}</b>${Math.round(f.size/1024)} KB — ανάγνωση…</div>`;
+  try{
+    const txt = await readAny(f);
+    $('#fileInfo').innerHTML = `<div class="note ok"><b>${esc(f.name)}</b>${NF.format(txt.length)} χαρακτήρες αναγνώστηκαν.</div>`;
+    $('#rawText').value = txt;
+    await runAnalyze(txt, f.name);
+  }catch(e){
+    console.error(e);
+    $('#fileInfo').innerHTML = `<div class="note bad"><b>Δεν διαβάστηκε το αρχείο</b>${esc(e.message)}. Αν είναι σαρωμένο PDF (εικόνα) δεν περιέχει κείμενο — αντίγραψε το κείμενο χειροκίνητα.</div>`;
+    $('#pasteWrap').style.display='';
+  }
+}
+
+/* ── 17. Δοκιμαστική πρόσκληση ────────────────────────────────────────── */
+const DEMO = [
+'ΕΛΛΗΝΙΚΗ ΔΗΜΟΚΡΑΤΙΑ — ΥΠΟΥΡΓΕΙΟ ΕΘΝΙΚΗΣ ΟΙΚΟΝΟΜΙΑΣ ΚΑΙ ΟΙΚΟΝΟΜΙΚΩΝ',
+'Ειδική Υπηρεσία Διαχείρισης Προγράμματος «Ανταγωνιστικότητα»',
+'',
+'ΠΡΟΣΚΛΗΣΗ ΥΠΟΒΟΛΗΣ ΑΙΤΗΣΕΩΝ ΧΡΗΜΑΤΟΔΟΤΗΣΗΣ ΣΤΗ ΔΡΑΣΗ',
+'«Ψηφιακός και Πράσινος Μετασχηματισμός Μικρομεσαίων Επιχειρήσεων»',
+'Κωδικός πρόσκλησης: ΔΡΑΣΗ-2026-01     ΑΔΑ: 9ΩΧΨ46ΜΤΛΡ-ΨΞ4',
+'',
+'1. ΤΑΥΤΟΤΗΤΑ ΤΗΣ ΔΡΑΣΗΣ',
+'Η δράση εντάσσεται στο Πρόγραμμα «Ανταγωνιστικότητα» του ΕΣΠΑ 2021-2027 και συγχρηματοδοτείται από το Ευρωπαϊκό Ταμείο Περιφερειακής Ανάπτυξης (ΕΤΠΑ).',
+'Ο συνολικός προϋπολογισμός της δράσης ανέρχεται σε 120.000.000 € (δημόσια δαπάνη).',
+'Η ενίσχυση χορηγείται βάσει του Καν. (ΕΕ) 2831/2023 για τις ενισχύσεις ήσσονος σημασίας (de minimis).',
+'',
+'2. ΠΕΡΙΟΔΟΣ ΥΠΟΒΟΛΗΣ',
+'Ημερομηνία έναρξης υποβολής αιτήσεων: 15/09/2026 και ώρα 12:00.',
+'Καταληκτική ημερομηνία υποβολής αιτήσεων: 30/11/2026 και ώρα 15:00.',
+'Οι αιτήσεις υποβάλλονται αποκλειστικά ηλεκτρονικά μέσω του ΟΠΣΚΕ.',
+'',
+'3. ΔΙΚΑΙΟΥΧΟΙ ΚΑΙ ΠΡΟΫΠΟΘΕΣΕΙΣ ΣΥΜΜΕΤΟΧΗΣ',
+'Δικαιούχοι είναι υφιστάμενες πολύ μικρές, μικρές και μεσαίες επιχειρήσεις που:',
+'α) έχουν κλείσει τουλάχιστον 2 διαχειριστικές χρήσεις πριν την ημερομηνία υποβολής,',
+'β) απασχολούν τουλάχιστον 1 ΕΜΕ μισθωτής εργασίας κατά το έτος που προηγείται της υποβολής,',
+'γ) δραστηριοποιούνται σε επιλέξιμο ΚΑΔ κατά την υποβολή και καθ όλη τη διάρκεια υλοποίησης,',
+'δ) λειτουργούν νόμιμα και είναι φορολογικά και ασφαλιστικά ενήμερες.',
+'',
+'4. ΠΡΟΫΠΟΛΟΓΙΣΜΟΣ ΕΠΕΝΔΥΤΙΚΟΥ ΣΧΕΔΙΟΥ ΚΑΙ ΕΝΤΑΣΗ ΕΝΙΣΧΥΣΗΣ',
+'Ο επιχορηγούμενος προϋπολογισμός κάθε επενδυτικού σχεδίου κυμαίνεται από 20.000 € έως 200.000 €.',
+'Η ένταση ενίσχυσης ανέρχεται σε 60% του επιλέξιμου προϋπολογισμού. Η ιδιωτική συμμετοχή ανέρχεται σε 40%.',
+'Η διάρκεια υλοποίησης δεν μπορεί να υπερβαίνει τους 18 μήνες από την απόφαση ένταξης.',
+'',
+'5. ΠΕΡΙΟΧΕΣ ΕΦΑΡΜΟΓΗΣ ΚΑΙ ΕΝΤΑΣΗ ΑΝΑ ΠΕΡΙΦΕΡΕΙΑ',
+'Η δράση εφαρμόζεται στις Περιφέρειες Θεσσαλίας, Ηπείρου, Δυτικής Ελλάδας, Κεντρικής Μακεδονίας, Ανατολικής Μακεδονίας και Θράκης, Πελοποννήσου και Κρήτης.',
+'Η ένταση ενίσχυσης διαμορφώνεται ανά περιφέρεια ως εξής: Θεσσαλίας 60%, Ηπείρου 60%, Δυτικής Ελλάδας 60%, Κεντρικής Μακεδονίας 55%, Ανατολικής Μακεδονίας και Θράκης 60%, Πελοποννήσου 50%, Κρήτης 50%.',
+'Εξαιρείται η Περιφέρεια Αττικής.',
+'',
+'6. ΕΠΙΛΕΞΙΜΕΣ ΔΑΠΑΝΕΣ',
+'1. Κτηριακές εργασίες, ειδικές εγκαταστάσεις και διαμόρφωση περιβάλλοντος χώρου, έως 40% του επιχορηγούμενου προϋπολογισμού.',
+'2. Μηχανήματα και λοιπός παραγωγικός εξοπλισμός.',
+'3. Ψηφιακός εξοπλισμός, λογισμικό και υπηρεσίες cloud, έως 30% του προϋπολογισμού.',
+'4. Συστήματα ανανεώσιμων πηγών ενέργειας και εξοικονόμησης ενέργειας, έως 30%.',
+'5. Πιστοποίηση συστημάτων διαχείρισης και προϊόντων, έως 10%.',
+'6. Δαπάνες προβολής, προώθησης και συμμετοχής σε εκθέσεις, έως 10%.',
+'7. Συμβουλευτικές υπηρεσίες και τεχνική υποστήριξη, έως 5%.',
+'8. Μισθολογικό κόστος νέου προσωπικού, έως 20%.',
+'9. Μεταφορικά μέσα επαγγελματικής χρήσης, έως 15%.',
+'',
+'7. ΚΡΙΤΗΡΙΑ ΑΞΙΟΛΟΓΗΣΗΣ',
+'1. Ωριμότητα και πληρότητα του επενδυτικού σχεδίου 25%',
+'2. Συμβολή στον ψηφιακό μετασχηματισμό της επιχείρησης 20%',
+'3. Συμβολή στην εξοικονόμηση ενέργειας και στην πράσινη μετάβαση 20%',
+'4. Οικονομική κατάσταση και βιωσιμότητα της επιχείρησης 15%',
+'5. Δημιουργία νέων θέσεων εργασίας 10%',
+'6. Εξωστρέφεια και προσανατολισμός σε νέες αγορές 10%',
+'',
+'8. ΔΙΚΑΙΟΛΟΓΗΤΙΚΑ ΣΥΜΜΕΤΟΧΗΣ',
+'1. Ηλεκτρονική αίτηση χρηματοδότησης υπογεγραμμένη από τον νόμιμο εκπρόσωπο',
+'2. Καταστατικό και πιστοποιητικό ισχύουσας εκπροσώπησης ΓΕΜΗ',
+'3. Βεβαίωση έναρξης εργασιών και μεταβολών με τους ενεργούς ΚΑΔ',
+'4. Δηλώσεις φορολογίας εισοδήματος και Ε3 των δύο τελευταίων χρήσεων',
+'5. Πίνακες προσωπικού Ε4 και ΑΠΔ για τον υπολογισμό των ΕΜΕ',
+'6. Υπεύθυνη δήλωση σώρευσης ενισχύσεων ήσσονος σημασίας',
+'7. Προσφορές ή προτιμολόγια για το σύνολο των αιτούμενων δαπανών',
+'8. Τεχνική περιγραφή μηχανικού για τις κτηριακές δαπάνες',
+'9. Τίτλος ιδιοκτησίας ή μισθωτήριο του τόπου υλοποίησης',
+'10. Αποδεικτικά κάλυψης της ιδιωτικής συμμετοχής',
+'',
+'ΠΑΡΑΡΤΗΜΑ Ι — ΠΙΝΑΚΑΣ ΕΠΙΛΕΞΙΜΩΝ ΚΑΔ',
+'10.71 Αρτοποιία και παραγωγή νωπών ειδών ζαχαροπλαστικής',
+'10.71.11 Παραγωγή νωπού άρτου',
+'10.72 Παραγωγή παξιμαδιών και μπισκότων',
+'11.02 Παραγωγή οίνου από σταφύλια',
+'13.92 Κατασκευή έτοιμων κλωστοϋφαντουργικών ειδών',
+'16.23 Κατασκευή ξυλουργικών προϊόντων οικοδομικής',
+'20.42 Παραγωγή αρωμάτων και παρασκευασμάτων καλλωπισμού',
+'22.22 Κατασκευή πλαστικών ειδών συσκευασίας',
+'25.62 Μεταλλοτεχνία και κατεργασία μετάλλων',
+'25.62.20 Υπηρεσίες κατεργασίας μετάλλων',
+'31.09 Κατασκευή άλλων επίπλων',
+'32.99 Άλλες μεταποιητικές δραστηριότητες',
+'33.12 Επισκευή μηχανημάτων',
+'41.20 Κατασκευαστικές εργασίες κτηρίων',
+'45.20 Συντήρηση και επισκευή μηχανοκίνητων οχημάτων',
+'47.11 Λιανικό εμπόριο σε μη εξειδικευμένα καταστήματα τροφίμων',
+'47.91 Λιανικό εμπόριο μέσω διαδικτύου',
+'55.10 Ξενοδοχεία και παρόμοια καταλύματα',
+'56.10 Δραστηριότητες υπηρεσιών εστιατορίων',
+'56.10.11 Υπηρεσίες παροχής γευμάτων με πλήρη εξυπηρέτηση',
+'62.01 Δραστηριότητες προγραμματισμού ηλεκτρονικών συστημάτων',
+'62.02 Δραστηριότητες παροχής συμβουλών πληροφορικής',
+'71.12 Δραστηριότητες μηχανικών',
+'74.10 Δραστηριότητες ειδικευμένου σχεδιασμού',
+'82.99 Άλλες υπηρεσίες υποστήριξης επιχειρήσεων',
+'95.21 Επισκευή ηλεκτρονικών ειδών ευρείας κατανάλωσης',
+'96.02 Δραστηριότητες κομμωτηρίων και κουρείων'
+].join('\n');
+
+/* ── 18. Συμβάντα ─────────────────────────────────────────────────────── */
+function bind(){
+  $('#steps').addEventListener('click', e=>{
+    const b=e.target.closest('.step'); if(b) go(b.dataset.p);
+  });
+  $('#fabNext').addEventListener('click', ()=>{
+    const cur = PANES.find(p=>$('#'+p).classList.contains('on'));
+    go(PANES[Math.min(PANES.length-1, PANES.indexOf(cur)+1)]);
+  });
+
+  /* — αρχεία — */
+  const drop=$('#drop'), file=$('#file');
+  drop.addEventListener('click', ()=>file.click());
+  file.addEventListener('change', e=>handleFile(e.target.files[0]));
+  ['dragenter','dragover'].forEach(ev=>drop.addEventListener(ev,e=>{e.preventDefault();drop.classList.add('over');}));
+  ['dragleave','drop'].forEach(ev=>drop.addEventListener(ev,e=>{e.preventDefault();drop.classList.remove('over');}));
+  drop.addEventListener('drop', e=>{ if(e.dataTransfer.files[0]) handleFile(e.dataTransfer.files[0]); });
+  $('#btnPaste').addEventListener('click', ()=>{
+    const w=$('#pasteWrap'); w.style.display = w.style.display==='none'?'':'none';
+    if(w.style.display==='') $('#rawText').focus();
+  });
+  $('#btnAnalyzeText').addEventListener('click', ()=>runAnalyze($('#rawText').value,'επικόλληση'));
+  $('#p1').addEventListener('click', e=>{
+    if(e.target.closest('#qGo')){ S.unlocked=true; save(); markSteps(); go('p3'); return; }
+    if(e.target.closest('#qFix')){ S.unlocked=true; save(); markSteps(); go('p2'); return; }
+  });
+  $('#btnDemo').addEventListener('click', ()=>{ $('#rawText').value=DEMO; runAnalyze(DEMO,'δοκιμαστική πρόσκληση'); });
+  $('#btnLoadPrj').addEventListener('click', ()=>$('#filePrj').click());
+  $('#filePrj').addEventListener('change', async e=>{
+    const f=e.target.files[0]; if(!f) return;
+    try{
+      const j=JSON.parse(await f.text());
+      Object.assign(S,j);
+      S.call=Object.assign({kad:[],costs:[],crits:[],docs:[],secs:[],reqs:{},areas:[],regionRates:{}}, j.call||{});
+      migrateRegion(); save(); renderAll();
+      if(S.unlocked) go('p2'); else renderQuick();
+      toast('Το έργο φορτώθηκε');
+    }catch(err){ toast('Μη έγκυρο αρχείο έργου'); }
+  });
+
+  /* — βήμα 2: επεξεργασία ευρημάτων — */
+  const p2=$('#p2');
+  p2.addEventListener('input', e=>{
+    const t=e.target;
+    if(t.dataset.c!=null){ S.call[t.dataset.c]=t.value; save(); return; }
+    if(t.id==='kadManual'){ S.call._kadManual=t.value; save(); return; }
+    if(t.dataset.cost!=null){
+      const i=+t.dataset.cost, f=t.dataset.f;
+      if(f==='cap') S.call.costs[i].cap = t.value===''?null:grNum(t.value);
+      else S.call.costs[i].t = t.value;
+      save(); return;
+    }
+    if(t.dataset.crit!=null){
+      const i=+t.dataset.crit, f=t.dataset.f;
+      if(f==='w') S.call.crits[i].w = t.value===''?null:grNum(t.value);
+      else S.call.crits[i].t = t.value;
+      save(); return;
+    }
+  });
+  p2.addEventListener('change', e=>{
+    if(e.target.dataset.c!=null || e.target.id==='kadManual'){ renderAnalysis(); markSteps(); }
+  });
+  p2.addEventListener('click', e=>{
+    const dc=e.target.closest('[data-delcost]');
+    if(dc){ S.call.costs.splice(+dc.dataset.delcost,1); S.budget={}; save(); renderAnalysis(); return; }
+    const dr=e.target.closest('[data-delcrit]');
+    if(dr){ S.call.crits.splice(+dr.dataset.delcrit,1); save(); renderAnalysis(); return; }
+    const ar=e.target.closest('[data-area]');
+    if(ar){
+      const v=ar.dataset.area, i=(S.call.areas||[]).indexOf(v);
+      if(i<0) (S.call.areas=S.call.areas||[]).push(v); else S.call.areas.splice(i,1);
+      save(); renderAreas(); return;
+    }
+  });
+  $('#btnAddCost').addEventListener('click', ()=>{
+    S.call.costs.push({t:'Νέα κατηγορία δαπάνης', cap:null}); save(); renderAnalysis();
+  });
+  $('#btnAddCrit').addEventListener('click', ()=>{
+    S.call.crits.push({t:'Νέο κριτήριο', w:null}); save(); renderAnalysis();
+  });
+
+  /* — στοιχεία φορέα: τα ίδια πεδία υπάρχουν στο βήμα 1 και στο βήμα 3,
+       γι' αυτό ο χειρισμός δένεται στο έγγραφο και συγχρονίζει και τα δύο — */
+  document.addEventListener('input', e=>{
+    const k=e.target.dataset.k; if(!k) return;
+    S.co[k]=e.target.value;
+    if(k==='cRegion') S.co.cUnitReg='';          // άλλη περιφέρεια ⇒ άλλες ενότητες
+    save(); renderCompany(); markSteps();
+    if($('#p1').classList.contains('on')) renderQuick();
+  });
+  const p3=$('#p3');
+  p3.addEventListener('click', e=>{
+    const g=e.target.closest('[data-goal]'); if(!g) return;
+    const v=g.dataset.goal, i=S.goals.indexOf(v);
+    if(i<0) S.goals.push(v); else S.goals.splice(i,1);
+    save(); renderCompany();
+  });
+
+  /* — βήμα 4: αυτοαξιολόγηση — */
+  $('#p4').addEventListener('input', e=>{
+    if(e.target.dataset.score!=null){ S.scores[+e.target.dataset.score]=+e.target.value; save(); renderScore(); }
+  });
+
+  /* — βήμα 5: προϋπολογισμός — */
+  $('#p5').addEventListener('input', e=>{
+    if(e.target.dataset.bud!=null){
+      S.budget[+e.target.dataset.bud] = grNum(e.target.value)||0;
+      const cur=e.target;
+      renderBudget(); markSteps(); save();
+      const again=$(`[data-bud="${cur.dataset.bud}"]`);
+      if(again){ again.focus(); again.setSelectionRange&&again.setSelectionRange(again.value.length,again.value.length); }
+    }
+  });
+  $('#btnAutoBud').addEventListener('click', autoBudget);
+  $('#btnClearBud').addEventListener('click', ()=>{ S.budget={}; save(); renderBudget(); });
+  $('#btnCsv').addEventListener('click', exportCsv);
+
+  /* — βήμα 6: έγγραφο — */
+  $('#docOpts').addEventListener('click', e=>{
+    const c=e.target.closest('[data-part]'); if(!c) return;
+    S.parts[c.dataset.part]=!S.parts[c.dataset.part]; save(); renderDocOpts(); genDoc();
+  });
+  $('#btnGenDoc').addEventListener('click', ()=>{ genDoc(); markSteps(); toast('Η αίτηση συντάχθηκε'); });
+  $('#btnPrint').addEventListener('click', ()=>window.print());
+  $('#btnDocx').addEventListener('click', exportDocx);
+  $('#btnCopy').addEventListener('click', async ()=>{
+    const t=$('#docPrev').innerText;
+    try{ await navigator.clipboard.writeText(t); toast('Αντιγράφηκε — επικόλλησέ το στο ΟΠΣΚΕ'); }
+    catch(e){ toast('Η αντιγραφή δεν επιτράπηκε από τον browser'); }
+  });
+  $('#btnSavePrj').addEventListener('click', saveProject);
+
+  /* — βήμα 7: δικαιολογητικά — */
+  $('#p7').addEventListener('change', e=>{
+    const d=e.target.dataset.doc; if(d==null) return;
+    S.docsDone[d]=e.target.checked; save(); renderDocs(); markSteps();
+  });
+  $('#btnAddDoc').addEventListener('click', ()=>{
+    const v=prompt('Τίτλος δικαιολογητικού:');
+    if(v&&v.trim()){ S.docsExtra.push(v.trim()); save(); renderDocs(); }
+  });
+  $('#btnPrintDocs').addEventListener('click', ()=>window.print());
+}
+
+function renderAll(){
+  renderAnalysis(); renderCompany(); renderQuick(); renderElig();
+  renderBudget(); renderDocs(); renderDocOpts(); markSteps();
+}
+
+/* ── 19. Εκκίνηση ─────────────────────────────────────────────────────── */
+(function init(){
+  const had = load();
+  // Ό,τι έχει προεπιλογή στη φόρμα μπαίνει και στην κατάσταση, ώστε να
+  // εμφανίζεται σωστά στην αίτηση χωρίς να το αγγίξει ο χρήστης.
+  $$('[data-k]').forEach(el=>{
+    if(S.co[el.dataset.k]==null && el.value!=='') S.co[el.dataset.k]=el.value;
+  });
+  bind();
+  renderAll();
+  if(had && S.raw){
+    if(S.unlocked) go('p2'); else renderQuick();
+    toast('Επαναφορά προηγούμενου έργου',2200);
+  }
+  // Το βήμα 1 δεν χρειάζεται πλωτό «Επόμενο» — έχει τα δικά του κουμπιά.
+  $('#fabNext').style.display = $('#p1').classList.contains('on') ? 'none' : '';
+  if('serviceWorker' in navigator)
+    window.addEventListener('load', ()=>navigator.serviceWorker.register('sw.js').catch(()=>{}));
+})();
+</script>
+</body>
+</html>
