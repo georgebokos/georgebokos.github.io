@@ -13,7 +13,7 @@
 - `images/` — φωτογραφίες συνταγών
 - `build.py` + `.github/workflows/build-deploy.yml` — obfuscation και deploy στο `gh-pages`
 
-### ⚠️ Οι φάκελοι `diy/`, `dances/` και `espa/` ΔΕΝ είναι FoodDaily
+### ⚠️ Οι φάκελοι `diy/`, `dances/`, `espa/` και `selida/` ΔΕΝ είναι FoodDaily
 
 Στο ίδιο repository φιλοξενούνται και **εντελώς ξεχωριστές εφαρμογές**:
 
@@ -22,14 +22,15 @@
 | `diy/` | «Φτιάξ' το μόνος σου» — οδηγοί DIY | `/diy/` |
 | `dances/` | «Ελληνικοί Παραδοσιακοί Χοροί» | `/dances/` |
 | `espa/` | «ΕΣΠΑ Βοηθός» — ανάλυση πρόσκλησης & αίτηση στήριξης | `/espa/` |
+| `selida/` | «Η Σελίδα μου» — δημιουργία ιστοσελίδας επιχείρησης | `/selida/` |
 
 Μοιράζονται με το FoodDaily **μόνο** το domain και τη διαδικασία deploy.
 Καθεμιά έχει δικό της `manifest.json`, δικό της `sw.js` με δική του εμβέλεια,
 δικά της εικονίδια και δικό της `CLAUDE.md`.
 
 - Οι κανόνες αυτού του αρχείου (συνταγές, εικόνες, Play Store, συνδρομές) **δεν
-  ισχύουν** εκεί, και οι κανόνες των `diy/CLAUDE.md`, `dances/CLAUDE.md` και
-  `espa/CLAUDE.md` δεν ισχύουν εδώ.
+  ισχύουν** εκεί, και οι κανόνες των `diy/CLAUDE.md`, `dances/CLAUDE.md`,
+  `espa/CLAUDE.md` και `selida/CLAUDE.md` δεν ισχύουν εδώ.
 - Αλλαγή σε αυτούς τους φακέλους **δεν** απαιτεί αύξηση του `VERSION` του
   `service-worker.js` του FoodDaily — καθεμιά έχει δικό της.
 - Το `service-worker.js` του FoodDaily αγνοεί ρητά κάθε διαδρομή που ξεκινά με

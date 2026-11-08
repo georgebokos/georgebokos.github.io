@@ -51,7 +51,7 @@ def main():
     # φιλοξενούνται στο ίδιο domain: δική τους ταυτότητα, δικό τους manifest,
     # δικός τους service worker, δικά τους εικονίδια.
     # Αντιγράφονται αυτούσιες και ΔΕΝ περνούν από obfuscation.
-    COPY_DIRS = ['images', '.well-known', 'lang', 'diy', 'dances', 'espa']
+    COPY_DIRS = ['images', '.well-known', 'lang', 'diy', 'dances', 'espa', 'selida']
     for d in COPY_DIRS:
         src_d = os.path.join(SRC, d)
         if os.path.isdir(src_d):
