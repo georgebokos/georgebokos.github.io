@@ -1,16 +1,21 @@
 // FoodDaily Service Worker v3.5
-const VERSION = '2026-11-09-151';
-const CACHE = `fooddaily-2026-11-09-151`;
+const VERSION = '2026-11-09-152';
+const CACHE = `fooddaily-2026-11-09-152`;
 const ASSETS = [
   '/',
   '/index.html',
   '/manifest.json',
   '/icon-192.png',
-  '/icon-512.png'
+  '/icon-512.png',
+  // Τα νομικά κείμενα τα ελέγχει ο reviewer του Play και τα ανοίγει ο χρήστης
+  // από το Προφίλ. Χωρίς αυτά στη cache, offline σερβιριζόταν ΟΛΟΚΛΗΡΗ η
+  // εφαρμογή στη θέση τους — δεύτερο αντίγραφο αντί για τους όρους.
+  '/privacy.html',
+  '/terms.html'
 ];
 
 // Pages that must NOT fall back to /index.html
-const STANDALONE_PAGES = new Set(['/install.html']);
+const STANDALONE_PAGES = new Set(['/install.html', '/privacy.html', '/terms.html']);
 
 // Ξεχωριστές εφαρμογές που απλώς μοιράζονται το domain. Το FoodDaily δεν τις
 // αγγίζει καθόλου — έχουν δικό τους service worker με πιο συγκεκριμένη εμβέλεια.

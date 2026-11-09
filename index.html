@@ -1161,9 +1161,9 @@ body{padding-left:env(safe-area-inset-left,0px);padding-right:env(safe-area-inse
       <div class="tsnd-row" id="tdur-list"></div>
     </div>
     <div class="prof-legal">
-      <a href="https://georgebokos.github.io/privacy.html" target="_blank" rel="noopener noreferrer" data-i18n="prof_privacy">Πολιτική απορρήτου</a>
+      <a href="#" onclick="return openExternal('https://georgebokos.github.io/privacy.html')" data-i18n="prof_privacy">Πολιτική απορρήτου</a>
       <span>·</span>
-      <a href="https://georgebokos.github.io/terms.html" target="_blank" rel="noopener noreferrer" data-i18n="prof_terms">Όροι χρήσης</a>
+      <a href="#" onclick="return openExternal('https://georgebokos.github.io/terms.html')" data-i18n="prof_terms">Όροι χρήσης</a>
     </div>
     <div class="prof-prem-note" id="prof-prem-note"></div>
   </div>
@@ -1314,6 +1314,40 @@ body{padding-left:env(safe-area-inset-left,0px);padding-right:env(safe-area-inse
   };
   try{Object.defineProperty(window,'localStorage',{configurable:true,get:()=>shim});}catch(e){}
 })();
+// ── ΕΙΔΟΠΟΙΗΣΕΙΣ ΠΟΥ ΔΕΝ ΥΠΑΡΧΟΥΝ ────────────────────────────
+// Το Android System WebView — δηλαδή η έκδοση που έχουν ΟΛΟΙ οι χρήστες του
+// Play — ΔΕΝ υλοποιεί το Notification API: το window.Notification είναι
+// undefined. Δύο γραμμές μέσα στο init() το διάβαζαν χωρίς έλεγχο, οπότε η
+// εκκίνηση έσκαγε στη μέση: ο service worker ΔΕΝ καταχωρούνταν ποτέ, και μαζί
+// του χάνονταν η offline λειτουργία, η ειδοποίηση χρονομέτρου στο παρασκήνιο
+// και το άνοιγμα συνταγής από κοινοποιημένο σύνδεσμο.
+// ── ΕΞΩΤΕΡΙΚΟΙ ΣΥΝΔΕΣΜΟΙ ─────────────────────────────────────
+// Μέσα στην εφαρμογή του Play (WebView) το target="_blank" μπορεί να αγνοηθεί:
+// η σελίδα ανοίγει ΜΕΣΑ στο WebView, χωρίς header και χωρίς κουμπί επιστροφής,
+// και ο χρήστης κολλάει. Το Capacitor Browser ανοίγει Custom Tab με X.
+function openExternal(url){
+  try{
+    const B=window.Capacitor&&window.Capacitor.Plugins&&window.Capacitor.Plugins.Browser;
+    if(B&&B.open){B.open({url});return false;}
+  }catch(e){}
+  let w=null;
+  // ΠΡΟΣΟΧΗ: με μπλοκαρισμένα αναδυόμενα το window.open γυρίζει null ΧΩΡΙΣ
+  // να πετάξει σφάλμα — γι' αυτό ελέγχεται η επιστροφή, όχι μόνο το try.
+  try{w=window.open(url,'_blank','noopener');}catch(e){}
+  if(!w)location.href=url;
+  return false;
+}
+function notifPerm(){
+  try{return (typeof Notification!=='undefined'&&Notification)?notifPerm():'unsupported';}
+  catch(e){return 'unsupported';}
+}
+function notifAsk(){
+  try{
+    if(typeof Notification!=='undefined'&&Notification&&Notification.requestPermission)
+      return Promise.resolve(notifAsk());
+  }catch(e){}
+  return Promise.resolve('unsupported');
+}
 let curCat='all',curSec='daily',curSwCat='keik',curFestF='all',
     _meal=null,isTTS=false,recog=null,isLis=false,_guestScale=1,_curSrv=0,
     curLang='el',curMode='daily',featIdx=0,_featPool=[],_dailyShownIds=new Set();
@@ -1797,6 +1831,7 @@ lang_fail:'⚠️ Η γλώσσα δεν φορτώθηκε. Έλεγξε τη �
     pgate_s:'Αυτή η λειτουργία είναι διαθέσιμη στο Premium.',pgate_btn:'Σύντομα διαθέσιμο!',pgate_skip:'Κλείσιμο',
     ur_photo_alt:'Φωτογραφία πιάτου',mp_search_ph:'Αναζήτηση...',
     prof_title:'👤 Προφίλ & Προτιμήσεις',prof_dislikes:'Δεν μου αρέσει / Αποφεύγω',
+    y_tts_no:'Η εκφώνηση δεν υποστηρίζεται σε αυτή τη συσκευή.',
     y_diet_loose:'Λίγα πιάτα ταιριάζουν σε όλες τις επιλογές — η λίστα χαλάρωσε.',
     prof_privacy:'Πολιτική απορρήτου',prof_terms:'Όροι χρήσης',
     prof_diet:'🥗 Διατροφικός στόχος',prof_diet_sub:'Χωρίς επιλογή εμφανίζονται όλες οι συνταγές',
@@ -2066,6 +2101,7 @@ lang_fail:'⚠️ Language pack failed to load. Check your connection.',
     pgate_s:'This feature is available on Premium.',pgate_btn:'Coming soon!',pgate_skip:'Close',
     ur_photo_alt:'Dish photo',mp_search_ph:'Search...',
     prof_title:'👤 Profile & Preferences',prof_dislikes:"Dislikes / Avoid",
+    y_tts_no:'Speech is not supported on this device.',
     y_diet_loose:'Few dishes match every choice — the list has been relaxed.',
     prof_privacy:'Privacy policy',prof_terms:'Terms of service',
     prof_diet:'🥗 Nutrition goal',prof_diet_sub:'With nothing selected, every recipe is shown',
@@ -6097,7 +6133,7 @@ function openSW(cat,idx){
   const nutrSW=document.getElementById('ov-nutr');if(nutrSW)nutrSW.innerHTML='';
   document.getElementById('ov-stats').innerHTML=`<div class="ovstat"><label>${t('cal')}</label><span>${s.cal} / ${t('x7')}</span></div><div class="ovstat"><label>${t('srv')}</label><span>${s.srv}</span></div>`;
   buildIngTab(s);buildStepsTab(s);
-  document.getElementById('ot-pair').innerHTML=`<a class="ext-btn" href="https://www.google.com/search?q=${encodeURIComponent(curLang==='el'?s.q+' συνταγή':sweetName(s)+' '+t('y_q_recipe'))}" target="_blank">${t('ext')}</a>`;
+  document.getElementById('ot-pair').innerHTML=`<a class="ext-btn" href="#" onclick="return openExternal('https://www.google.com/search?q=${encodeURIComponent(curLang==='el'?s.q+' συνταγή':sweetName(s)+' '+t('y_q_recipe'))}')">${t('ext')}</a>`;
   const swTtsBtn=document.getElementById('ov-tts-btn');if(swTtsBtn)swTtsBtn.textContent=t('tts_p');
   const swTtsLbl=document.getElementById('ov-tts-lbl');if(swTtsLbl)swTtsLbl.textContent=sweetName(s);
   ovTab('ing');
@@ -6147,7 +6183,7 @@ function buildPairTab(m){
     ${saladHtml}
     ${plate?`<div class="pair-box"><div class="pair-t">${t('plate')}</div><div class="pair-d">${plate}</div></div>`:''}
     ${dipHtml?`<div class="pair-box"><div class="pair-t">🥣 ${t('x24')}</div>${dipHtml}</div>`:''}
-    <a class="ext-btn" href="https://www.google.com/search?q=${encodeURIComponent((mealName(m)||m.id)+' recipe')}" target="_blank">${t('ext')}</a>`;
+    <a class="ext-btn" href="#" onclick="return openExternal('https://www.google.com/search?q=${encodeURIComponent((mealName(m)||m.id)+' recipe')}')">${t('ext')}</a>`;
 }
 
 function ovTab(tab){
@@ -6478,7 +6514,10 @@ function ttsRate(){return 1.1;}
 function toggleTTS(){isTTS?stopTTS():startTTS();}
 function startTTS(){
   if(ttsPlugin()){nativeStartTTS();return;}
-  if(!_meal||!window.speechSynthesis)return;
+  if(!_meal)return;
+  // Σε WebView χωρίς φωνητική μηχανή το speechSynthesis υπάρχει αλλά δεν
+  // μιλάει ποτέ: ο χρήστης πατούσε το κουμπί και δεν γινόταν απολύτως τίποτα.
+  if(!window.speechSynthesis){showToast(t('y_tts_no'));return;}
   stopTTS();
   const doSpeak=()=>{
     const u=new SpeechSynthesisUtterance(buildTTSText(_meal));
@@ -7635,10 +7674,10 @@ function setMealForDay(dateStr,mealId){
   storeWeekPlanForSW(p);
   // Η υπενθύμιση προετοιμασίας («Αύριο: ...») χρειάζεται periodic sync ΑΝΕΞΑΡΤΗΤΑ από το αν είναι ενεργό το 🔔 ημερήσιων προτάσεων
   if(mealId&&isPremium()&&'Notification' in window){
-    if(Notification.permission==='granted'){
+    if(notifPerm()==='granted'){
       registerPeriodicSync();
-    }else if(Notification.permission==='default'){
-      Notification.requestPermission().then(perm=>{if(perm==='granted')registerPeriodicSync();});
+    }else if(notifPerm()==='default'){
+      notifAsk().then(perm=>{if(perm==='granted')registerPeriodicSync();});
     }
   }
   // Αν η μέρα που άλλαξε είναι η ΣΗΜΕΡΙΝΗ, συγχρόνισε αμέσως την πρώτη πρόταση ημέρας
@@ -7812,7 +7851,7 @@ async function storeWeekPlanForSW(plan){
 // Smart prep notification check (called when app is open)
 function checkPrepNotif(){
   if(!isPremium())return;
-  if(Notification.permission!=='granted')return;
+  if(notifPerm()!=='granted')return;
   const h=new Date().getHours();
   if(h<18||h>=22)return; // only 18:00–22:00
   const lastKey='fd_prep_notif_last';
@@ -7831,7 +7870,7 @@ function checkPrepNotif(){
   // Send via SW if available, else direct
   if(navigator.serviceWorker?.controller){
     navigator.serviceWorker.controller.postMessage({type:'SHOW_NOTIFICATION',title,body});
-  }else if(Notification.permission==='granted'){
+  }else if(notifPerm()==='granted'){
     new Notification(title,{body,icon:'/icon-192.png'});
   }
   localStorage.setItem(lastKey,today);
@@ -8031,7 +8070,7 @@ function genGuests(){
   const o=document.getElementById('g-occ').value;
   const d=Array.from(document.querySelectorAll('.dpill.on')).map(p=>p.textContent);
   const query=tf('y_guest_query',n,o+(d.length?' '+d.join(' '):''));
-  window.open('https://www.google.com/search?q='+encodeURIComponent(query),'_blank');
+  openExternal('https://www.google.com/search?q='+encodeURIComponent(query));
 }
 
 // ── i18n ─────────────────────────────────────────────────────
@@ -8245,14 +8284,14 @@ async function saveNotif(){
     // Κράτα την επιλογή του χρήστη ΑΜΕΣΩΣ (το τικ παραμένει ακόμη κι αν η άδεια εκκρεμεί)
     localStorage.setItem('notif_on','true');
     document.getElementById('bell').classList.add('on');
-    if(Notification.permission!=='granted'){
-      try{await Notification.requestPermission();}catch(e){}
+    if(notifPerm()!=='granted'){
+      try{await notifAsk();}catch(e){}
     }
     startNotifTimer();
     storeNotifPrefsForSW(time,'true');
     registerPeriodicSync();
     scheduleDailyNotifInSW();
-    if(Notification.permission==='denied'){
+    if(notifPerm()==='denied'){
       showToast(t('x57'));
     }else{
       showToast(t('x58'));
@@ -8277,10 +8316,10 @@ async function testNotif(){
     return;
   }
   if(!('Notification' in window)){showToast(t('x56'));return;}
-  if(Notification.permission!=='granted'){
-    try{const p=await Notification.requestPermission();}catch(e){}
-    if(Notification.permission==='denied'){showToast(t('x61'));return;}
-    if(Notification.permission!=='granted'){showToast(t('x62'));return;}
+  if(notifPerm()!=='granted'){
+    try{const p=await notifAsk();}catch(e){}
+    if(notifPerm()==='denied'){showToast(t('x61'));return;}
+    if(notifPerm()!=='granted'){showToast(t('x62'));return;}
   }
   await sendNotif();
   showToast(t('x60'));
@@ -8327,7 +8366,7 @@ function storeNotifPrefsForSW(time,on){
 // Called on every app open and on save — SW holds the scheduled setTimeout even when app is closed.
 function scheduleDailyNotifInSW(){
   if(localStorage.getItem('notif_on')!=='true')return;
-  if(Notification.permission!=='granted')return;
+  if(notifPerm()!=='granted')return;
   const now=new Date();
   const [h,m]=(localStorage.getItem('notif_time')||'09:00').split(':').map(Number);
   const next=new Date(now);next.setHours(h,m,0,0);
@@ -8343,7 +8382,7 @@ function scheduleDailyNotifInSW(){
 // On app open: if scheduled time has passed today with no notification → send now
 async function checkMissedNotif(){
   if(localStorage.getItem('notif_on')!=='true')return;
-  if(Notification.permission!=='granted')return;
+  if(notifPerm()!=='granted')return;
   const today=new Date().toDateString();
   if(localStorage.getItem('notif_last')===today)return;
   const [h,m]=(localStorage.getItem('notif_time')||'09:00').split(':').map(Number);
@@ -8366,7 +8405,7 @@ let _notifInt=null;
 function startNotifTimer(){
   if(_notifInt)clearInterval(_notifInt);
   _notifInt=setInterval(async ()=>{
-    if(localStorage.getItem('notif_on')!=='true'||Notification.permission!=='granted')return;
+    if(localStorage.getItem('notif_on')!=='true'||notifPerm()!=='granted')return;
     const nd=new Date(),t2=(localStorage.getItem('notif_time')||'09:00').split(':');
     const sched=new Date(nd);sched.setHours(+t2[0],+t2[1],0,0);
     // Χτύπα αν έφτασε/πέρασε η ώρα σήμερα και δεν έχει σταλεί ήδη (πιο ανθεκτικό από ακριβές λεπτό)
@@ -9357,7 +9396,7 @@ function saveCookTonight(){
   saveH(id);
   localStorage.setItem('fd_tonight',JSON.stringify({id,cookAt:cookAt.getTime()}));
   _showTonightBanner(id,cookAt);
-  if(delay>0&&Notification.permission==='granted'){
+  if(delay>0&&notifPerm()==='granted'){
     const en=curLang!=='el';
     _swSend({type:'SCHEDULE_ONE_SHOT_NOTIF',delay,title:t('x142'),body:en?(m.e+' '+mealName(m)+' needs '+m.time+' minutes. Start now!'):(m.e+' '+mealName(m)+' χρειάζεται '+m.time+" λεπτά. Ξεκίνα τώρα!"),tag:'fd-tonight'});
   }
@@ -9427,7 +9466,7 @@ function dismissTonightBanner(){
   if(localStorage.getItem('notif_on')==='true'){
     // Το bell αντικατοπτρίζει την ΕΠΙΛΟΓΗ του χρήστη (όπως το τικ στις ρυθμίσεις)
     document.getElementById('bell').classList.add('on');
-    if(Notification.permission==='granted'){
+    if(notifPerm()==='granted'){
       startNotifTimer();
       const _st=localStorage.getItem('notif_time')||'09:00';
       storeNotifPrefsForSW(_st,'true');
@@ -9438,7 +9477,7 @@ function dismissTonightBanner(){
   }
   // Υπενθύμιση προετοιμασίας εβδομαδιαίου προγράμματος: ανεξάρτητη από το 🔔 bell —
   // αν υπάρχει ήδη πρόγραμμα και άδεια ειδοποιήσεων, φρόντισε να είναι ενεργό το periodic sync
-  if(isPremium()&&Notification.permission==='granted'&&Object.keys(getWeekPlan()).length){
+  if(isPremium()&&notifPerm()==='granted'&&Object.keys(getWeekPlan()).length){
     registerPeriodicSync();
   }
   // Service Worker registration
