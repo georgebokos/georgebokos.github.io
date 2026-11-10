@@ -6606,10 +6606,17 @@ function isTwa(){
 }
 // Σκέτος browser ή PWA: ούτε Capacitor ούτε TWA.
 function isWebOnly(){return !hasNativeBilling()&&!isTwa();}
-// Δωρεάν πρόσβαση γνωριμίας: 3 ημέρες από την εγκατάσταση, ΧΩΡΙΣ κάρτα.
-// Είναι διαφορετικό από τη δοκιμή 7 ημερών του Google Play, που απαιτεί
-// τρόπο πληρωμής και ξεκινά μόνο όταν ο χρήστης πατήσει εγγραφή.
+// Δωρεάν πρόσβαση γνωριμίας, ΧΩΡΙΣ κάρτα. Είναι διαφορετική από τη δοκιμή
+// 7 ημερών του Google Play, που απαιτεί τρόπο πληρωμής και ξεκινά μόνο όταν
+// ο χρήστης πατήσει εγγραφή.
+//
+// Στην ΕΦΑΡΜΟΓΗ 3 ημέρες. Στο SITE μία: εκεί ο επισκέπτης μπορεί να πάρει νέα
+// γνωριμία όσες φορές θέλει καθαρίζοντας τα δεδομένα της σελίδας — στο κινητό
+// το εμποδίζει το Auto Backup του Android, στον browser τίποτα. Μία μέρα
+// αρκεί για να δει τι κάνει η εφαρμογή και να την κατεβάσει.
 const PREVIEW_DAYS=3;
+const PREVIEW_DAYS_WEB=1;
+function previewDays(){return isWebOnly()?PREVIEW_DAYS_WEB:PREVIEW_DAYS;}
 function previewStart(){
   let t=parseInt(localStorage.getItem('fd_preview_start')||'0')||0;
   if(!t){t=Date.now();try{localStorage.setItem('fd_preview_start',String(t));}catch(e){}}
@@ -6618,7 +6625,7 @@ function previewStart(){
 function previewDaysLeft(){
   let t=0;try{t=parseInt(localStorage.getItem('fd_preview_start')||'0')||0;}catch(e){}
   if(!t)return 0;
-  return Math.max(0,PREVIEW_DAYS-Math.floor((Date.now()-t)/86400000));
+  return Math.max(0,previewDays()-Math.floor((Date.now()-t)/86400000));
 }
 // Προσφέρεται όντως δωρεάν δοκιμή σε αυτόν τον χρήστη; Απαιτεί και πακέτο με
 // δοκιμαστική περίοδο από το κατάστημα, και να μην έχει ξαναϋπάρξει συνδρομή.
