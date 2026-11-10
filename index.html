@@ -1354,7 +1354,7 @@ function notifAsk(){
 }
 let curCat='all',curSec='daily',curSwCat='keik',curFestF='all',
     _meal=null,isTTS=false,recog=null,isLis=false,_guestScale=1,_curSrv=0,
-    curLang='el',curMode='daily',featIdx=0,_featPool=[],_dailyShownIds=new Set();
+    curLang='el',curMode='daily',featIdx=0,_featPool=[],_dailyShownIds=new Set();  // γεμίζει από το loadShownToday() στην εκκίνηση
 
 
 const TH={
@@ -5573,10 +5573,23 @@ function selMode(mode,btn){
   }
 }
 
+// Οι ήδη εμφανισμένες της ημέρας, ΑΠΟΘΗΚΕΥΜΕΝΕΣ: ήταν μόνο στη μνήμη, οπότε
+// ένα refresh ή μια βόλτα σε άλλη κατηγορία τις έσβηνε και οι «Νέες προτάσεις»
+// γύριζαν στις ίδιες 12 — ενώ η μοναδική δωρεάν ανανέωση είχε ήδη χρεωθεί.
+function loadShownToday(){
+  try{
+    const r=JSON.parse(localStorage.getItem('fd_shown_today')||'{}');
+    if(r&&r.d===new Date().toDateString()&&Array.isArray(r.ids))return new Set(r.ids);
+  }catch(e){}
+  return new Set();
+}
+function saveShownToday(){
+  try{localStorage.setItem('fd_shown_today',JSON.stringify(
+    {d:new Date().toDateString(),ids:[..._dailyShownIds]}));}catch(e){}
+}
 function selCat(cat,btn){
   document.querySelectorAll('#cat-row .cpill').forEach(b=>b.classList.remove('on'));
   if(btn)btn.classList.add('on');
-  _dailyShownIds.clear();
   curCat=cat; applyTheme(cat); renderMeals(cat);
 }
 
@@ -5587,6 +5600,7 @@ function newDailyMeals(){
   if(!limUse('shuffle')){openPremiumScreen();return;}
   // Σημείωσε τα τωρινά ως «ήδη εμφανισμένα» ώστε η επόμενη κλήση να φέρει εντελώς νέα
   _featPool.forEach(m=>_dailyShownIds.add(m.id));
+  saveShownToday();
   // Εκκαθάριση του αποθηκευμένου featured ώστε να αλλάξει κι αυτό
   localStorage.removeItem('fd_feat');
   featIdx=0;
@@ -5710,8 +5724,13 @@ function renderMeals(cat){
     if(cat==='all')pool=applyDietFilter(pool);
     // Εξαίρεση ήδη-εμφανισμένων (από «Νέες»): αν απομένουν ≥4, χρησιμοποίησέ τα
     if(cat==='all'&&_dailyShownIds.size>0){
+      // Το παλιό κατώφλι ήταν 4, ενώ η οθόνη δείχνει 12: όταν η δεξαμενή
+      // στένευε, εμφανίζονταν σιωπηλά 4 έως 11 κάρτες. Τώρα οι αθέατες μπαίνουν
+      // πρώτες και οι υπόλοιπες γεμίζουν, ώστε να είναι πάντα 12.
       const rem=pool.filter(m=>!_dailyShownIds.has(m.id));
-      if(rem.length>=4) pool=rem; else _dailyShownIds.clear();
+      if(rem.length>=12) pool=rem;
+      else if(rem.length) pool=[...rem,...pool.filter(m=>_dailyShownIds.has(m.id))];
+      else {_dailyShownIds.clear();saveShownToday();}
     }
   } else {
     pool=pool.filter(m=>m.cats.includes(cat)&&!m.quickOnly);
@@ -5863,26 +5882,45 @@ function renderMeals(cat){
     if(!_uid){_uid=Math.random().toString(36).slice(2)+Date.now().toString(36);try{localStorage.setItem('fd_uid',_uid);}catch(e){}}
     const _dSeed=(new Date().toDateString()+_uid).split('').reduce((h,c)=>(h*31+c.charCodeAt(0))|0,1);
     const _mHash=id=>id.split('').reduce((h,c)=>(h*37+c.charCodeAt(0))|0,_dSeed);
-    // Weighted random: priority επηρεάζει 30%, τυχαιότητα 70% — ποικιλία κάθε μέρα
+    // Κρατάμε τα 12 ΧΑΜΗΛΟΤΕΡΑ σκορ από ~200 συνταγές, δηλαδή την άκρη της
+    // κατανομής. Εκεί ένα σταθερό βάρος 0.3 δεν «επηρεάζει 30%» — κυριαρχεί:
+    // μετρήθηκε ότι οι συνταγές προτεραιότητας 3 έπαιρναν 0,1% των θέσεων.
+    // Με 0.10 η προτεραιότητα γέρνει τη ζυγαριά χωρίς να αποκλείει κανέναν.
     const _score=(m)=>{
       const p=MEAL_PRIORITY[m.id]||2;
       const weight=isSunday?(5-p):p; // Κυριακή: special πρώτα, αλλιώς simple πρώτα
       const normW=(weight-1)/3; // 0..1 ώστε priority & rand να είναι στην ίδια κλίμακα
       const rand=(_mHash(m.id)>>>0)/4294967295;
-      return normW*0.3 + rand*0.7; // πραγματικό 30% priority / 70% τυχαιότητα
+      return normW*0.10 + rand*0.90;
     };
     let fresh=pool.filter(m=>!rids.includes(m.id)&&!_cookedRecently(m.id));
     // Εξαίρεση όσων προτάθηκαν τις προηγούμενες μέρες ώστε κάθε μέρα να είναι διαφορετική
     const _prevShown=prevDaysShownIds();
+    // ΠΡΟΣΟΧΗ: παλιά, αν έμεναν 11 αθέατες αντί για 12, το φίλτρο ΟΛΟΚΛΗΡΟ
+    // έπεφτε και οι 11 ξανάμπαιναν στο ίδιο ταμείο με τις ~190 ήδη ιδωμένες —
+    // δηλαδή από «καμία επανάληψη» πηγαίναμε σε «έντεκα» μονομιάς.
+    // Τώρα μπαίνουν πρώτες οι αθέατες και οι υπόλοιπες γεμίζουν τη λίστα.
     const freshUnseen=fresh.filter(m=>!_prevShown.has(m.id));
-    if(freshUnseen.length>=12) fresh=freshUnseen; // αν δεν μένουν αρκετές, κράτα όλες
-    fresh=fresh.sort((a,b)=>_score(a)-_score(b));
+    const freshSeen=fresh.filter(m=>_prevShown.has(m.id));
+    fresh=[...freshUnseen.sort((a,b)=>_score(a)-_score(b)),
+           ...freshSeen.sort((a,b)=>_score(a)-_score(b))];
     let old=pool.filter(m=>rids.includes(m.id)&&!_cookedRecently(m.id)).sort((a,b)=>_score(a)-_score(b));
     // Με στενό διατροφικό φίλτρο μπορεί ΟΛΑ όσα επιβιώνουν να έχουν μαγειρευτεί
     // μέσα στην εβδομάδα — και η οθόνη έμενε τελείως άδεια, ενώ ο υπότιτλος
     // έλεγε «12 προτάσεις σήμερα». Καλύτερα επανάληψη παρά κενό.
     if(!fresh.length&&!old.length)old=pool.slice().sort((a,b)=>_score(a)-_score(b));
-    // Διανομή ποικιλίας: max 2 ανά κατηγορία
+    // Διανομή ποικιλίας — πλαφόν ΑΝΑΛΟΓΙΚΟ με το μέγεθος κάθε κατηγορίας.
+    //
+    // Με σταθερό «2 ανά κατηγορία», οι 4 πίτσες έπαιρναν τις ίδιες θέσεις με τα
+    // 71 κρεατικά: κάθε πίτσα εμφανιζόταν ~43 φορές τον χρόνο και τρία κρεατικά
+    // ούτε μία. Η αναλογία έπεφτε στο 101×. Με το αναλογικό πλαφόν πέφτει στο
+    // 10×, και οι κατηγορίες ανά ημέρα ανεβαίνουν από 6,6 σε 7,0.
+    //
+    // Υπολογίζεται από την ΤΡΕΧΟΥΣΑ δεξαμενή, οπότε προσαρμόζεται μόνο του
+    // όταν προστίθενται συνταγές — δεν χρειάζεται χειροκίνητη ενημέρωση.
+    const _catSizes={};
+    pool.forEach(m=>{const c=m.cats[0];if(c)_catSizes[c]=(_catSizes[c]||0)+1;});
+    const _catCap=c=>Math.max(1,Math.min(3,Math.round(12*(_catSizes[c]||0)/Math.max(1,pool.length))));
     const _catCount={};
     const varied=[];
     const leftover=[];
@@ -5895,8 +5933,8 @@ function renderMeals(cat){
       if(_img&&_usedImg.has(_img))continue;
       if(_img)_usedImg.add(_img);
       const c=m.cats[0];
-      if(!c||c==='salads'){leftover.push(m);continue;}
-      if((_catCount[c]||0)<2){_catCount[c]=(_catCount[c]||0)+1;varied.push(m);}
+      if(!c){leftover.push(m);continue;}
+      if((_catCount[c]||0)<_catCap(c)){_catCount[c]=(_catCount[c]||0)+1;varied.push(m);}
       else leftover.push(m);
       if(varied.length>=12)break;
     }
@@ -5943,7 +5981,10 @@ function renderMeals(cat){
         // Μπαίνει μπροστά· αν κάποια άλλη κάρτα έχει την ίδια φωτογραφία, φεύγει εκείνη.
         const _fimg=MEAL_IMAGES[stored.id];
         if(_fimg)show=show.filter(m=>MEAL_IMAGES[m.id]!==_fimg);
-        show.unshift({...MEALS[stored.id],id:stored.id});_featPool=show;si=0;
+        // Κοπή στα 12: χωρίς αυτήν το σύνολο γινόταν 13 και το ιστορικό
+        // κατέγραφε άλλα πιάτα από όσα είδε ο χρήστης.
+        show.unshift({...MEALS[stored.id],id:stored.id});show=show.slice(0,12);
+        _featPool=show;si=0;
       }
       featIdx=si>=0?si:0;
       if(si<0){localStorage.setItem('fd_feat',JSON.stringify({id:show[0].id,date:today}));storeFeaturedMealForSW(show[0]);}
@@ -9477,6 +9518,8 @@ function dismissTonightBanner(){
     const db=document.getElementById('dark-btn');if(db)db.textContent='☀️';
   }
   // Restore language preference
+  // Επαναφορά των ήδη εμφανισμένων της ημέρας (οι «Νέες προτάσεις» επιβιώνουν refresh)
+  try{_dailyShownIds=loadShownToday();}catch(e){}
   const _sl=_ls('fd_lang');
   if(_sl&&LANGS[_sl]&&_sl!==curLang){setLang(_sl);}else{applyLangTexts(curLang);}
   // Hero greeting + date
