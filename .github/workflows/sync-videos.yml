@@ -52,9 +52,12 @@ jobs:
         env:
           TOKEN: ${{ secrets.VIDEOS_REPO_TOKEN }}
         run: |
+          # Όσο δεν υπάρχει ακόμα το ιδιωτικό repo και το token, ο συγχρονισμός
+          # απλώς παραλείπεται. ΔΕΝ αποτυγχάνει: ένα κόκκινο Χ σε κάθε commit
+          # θα έκρυβε τα πραγματικά σφάλματα του deploy.
           if [ -z "$TOKEN" ]; then
-            echo "::error::Λείπει το secret VIDEOS_REPO_TOKEN — ο συγχρονισμός παραλείπεται."
-            exit 1
+            echo "::notice::Δεν έχει οριστεί VIDEOS_REPO_TOKEN — ο συγχρονισμός παραλείπεται."
+            exit 0
           fi
           cd out
           git init -q
