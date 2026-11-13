@@ -1,10 +1,10 @@
-name: Sync → fooddaily/videos
+name: Sync → fooddaily-videos
 
 # Καθρεφτίζει τον φάκελο των βίντεο και τα δεδομένα των συνταγών στο ιδιωτικό
-# fooddaily/videos, ώστε να τα βλέπουν οι αυτοματοποιημένες διαδικασίες.
+# georgebokos/fooddaily-videos, ώστε να τα βλέπουν οι αυτοματοποιημένες διαδικασίες.
 #
 # ΑΠΑΙΤΕΙ το secret VIDEOS_REPO_TOKEN: personal access token με δικαίωμα
-# εγγραφής ΜΟΝΟ στο fooddaily/videos. Settings → Secrets and variables →
+# εγγραφής ΜΟΝΟ στο georgebokos/fooddaily-videos. Settings → Secrets and variables →
 # Actions → New repository secret.
 #
 # Τρέχει μόνο όταν αλλάζει κάτι σχετικό — όχι σε κάθε commit.
@@ -48,7 +48,7 @@ jobs:
           cp lang/de.json               out/data/ 2>/dev/null || true
           cp .github/mirror-README.md   out/README.md
 
-      - name: Ώθηση στο fooddaily/videos
+      - name: Ώθηση στο georgebokos/fooddaily-videos
         env:
           TOKEN: ${{ secrets.VIDEOS_REPO_TOKEN }}
         run: |
@@ -65,7 +65,7 @@ jobs:
 
           ${{ github.event.head_commit.message }}"
           git branch -M main
-          git remote add origin "https://x-access-token:${TOKEN}@github.com/fooddaily/videos.git"
+          git remote add origin "https://x-access-token:${TOKEN}@github.com/georgebokos/fooddaily-videos.git"
           # Ο καθρέφτης γράφεται πάντα από την αρχή: η πηγή είναι το άλλο repo
           git push --force origin main
           echo "✓ Συγχρονίστηκε"
