@@ -1224,7 +1224,7 @@ body{padding-left:env(safe-area-inset-left,0px);padding-right:env(safe-area-inse
         <button class="srv-btn" onclick="changeProfSrv(1)">+</button>
       </div>
     </div>
-    <div style="font-size:12px;font-weight:600;color:var(--t3);letter-spacing:.06em;text-transform:uppercase;padding:14px 0 4px" data-i18n="set_reminders">🔔 Υπενθυμίσεις</div>
+    <div onclick="_diagTap()" style="font-size:12px;font-weight:600;color:var(--t3);letter-spacing:.06em;text-transform:uppercase;padding:14px 0 4px" data-i18n="set_reminders">🔔 Υπενθυμίσεις</div>
     <div class="nmod-row">
       <label data-i18n="set_enable">Ενεργοποίηση</label>
       <input type="checkbox" id="ntog">
@@ -7187,6 +7187,26 @@ async function renderNotifDiag(){
      ].join('<br>')
     +'<br>'+btn('testNotif()',en?'🔔 Test now':'🔔 Δοκιμή τώρα')
     +btn('testNotifIn60()',en?'⏱ Test in 1 min':'⏱ Δοκιμή σε 1′');
+}
+// Κρυφή χειρονομία: 5 γρήγορα πατήματα στον τίτλο «ΥΠΕΝΘΥΜΙΣΕΙΣ» ανοίγει ή
+// κλείνει το τεχνικό πάνελ. Χρειάζεται για έλεγχο πάνω στη συσκευή, όπου δεν
+// υπάρχουν εργαλεία προγραμματιστή. Ο απλός χρήστης δεν το βρίσκει ποτέ τυχαία.
+let _diagTaps=0,_diagTimer=null;
+function _diagTap(){
+  _diagTaps++;
+  clearTimeout(_diagTimer);
+  _diagTimer=setTimeout(()=>{_diagTaps=0;},1200);
+  if(_diagTaps<5)return;
+  _diagTaps=0;clearTimeout(_diagTimer);
+  let on=false;
+  try{
+    on=localStorage.getItem('fd_diag')!=='1';
+    if(on)localStorage.setItem('fd_diag','1');else localStorage.removeItem('fd_diag');
+  }catch(e){return;}
+  const en=curLang!=='el';
+  showToast(on?(en?'🔧 Diagnostics on':'🔧 Διαγνωστικό ενεργό')
+              :(en?'Diagnostics off':'Διαγνωστικό ανενεργό'));
+  try{renderNotifDiag();}catch(e){}
 }
 // Η αποφασιστική δοκιμή για «χτυπά με την εφαρμογή κλειστή»: προγραμματίζει
 // ειδοποίηση σε 1 λεπτό, ώστε ο χρήστης να κλείσει τελείως την εφαρμογή.
