@@ -1240,8 +1240,9 @@ body{padding-left:env(safe-area-inset-left,0px);padding-right:env(safe-area-inse
       <button class="nmod-save" onclick="saveNotif()" data-i18n="set_save">Αποθήκευση</button>
       <button class="nmod-cls" onclick="closeNotif()" data-i18n="ur_cancel">Άκυρο</button>
     </div>
-    <!-- Διαγνωστικό ειδοποιήσεων — γεμίζει από το renderNotifDiag() -->
-    <div id="ndiag" style="margin-top:12px;background:var(--lt);border-radius:12px;padding:11px 13px;font-size:12.5px;line-height:1.75;color:var(--t2)"></div>
+    <!-- Γεμίζει από το renderNotifDiag(). Για τον χρήστη: μόνο ένα κουμπί,
+         χωρίς πλαίσιο και χωρίς τεχνικά στοιχεία. -->
+    <div id="ndiag" style="display:none"></div>
     <div style="font-size:12px;font-weight:600;color:var(--t3);letter-spacing:.06em;text-transform:uppercase;padding:18px 0 4px" data-i18n="ab_hdr">ℹ️ Σχετικά με την εφαρμογή</div>
     <div style="background:var(--lt);border-radius:14px;padding:14px 16px;font-size:13.5px;color:var(--tx);line-height:1.6;">
       <div style="font-weight:800;font-size:15px;margin-bottom:8px;">🍽️ FoodDaily</div>
@@ -7152,23 +7153,21 @@ async function lnPendingList(){
 }
 async function renderNotifDiag(){
   const el=document.getElementById('ndiag');if(!el)return;
-  el.innerHTML='';el.style.display='none';
+  el.innerHTML='';el.style.display='none';el.removeAttribute('style');el.style.display='none';
   const en=curLang!=='el';
   const LN=lnPlugin();
   if(!LN)return;
   const btn=(fn,lbl)=>`<button class="nmod-cls" style="margin:8px 6px 0 0;padding:8px 13px;font-size:13px" onclick="${fn}">${lbl}</button>`;
   const exact=await lnExactSetting();
-  // ── ΟΡΑΤΟ ΣΤΟΝ ΧΡΗΣΤΗ: μόνο όταν υπάρχει κάτι να διορθώσει ──
+  // ── ΟΡΑΤΟ ΣΤΟΝ ΧΡΗΣΤΗ: ΜΟΝΟ ένα κουμπί, και μόνο όταν λείπει η άδεια ──
   // Από Android 12 η άδεια «ακριβή ξυπνητήρια» ΔΕΝ δίνεται αυτόματα. Χωρίς
   // αυτήν το Android αναβάλλει τις υπενθυμίσεις όταν η εφαρμογή είναι κλειστή
   // και το κινητό σε Doze — χτυπούν αργά ή καθόλου. Αφορά όλους τους χρήστες,
-  // γι' αυτό μένει ορατό· δεν είναι διαγνωστικό, είναι ρύθμιση.
+  // γι' αυτό μένει· δεν είναι διαγνωστικό, είναι ρύθμιση. Χωρίς πλαίσιο και
+  // χωρίς τεχνικά στοιχεία: μόνο το κουμπί που οδηγεί στην άδεια.
   if(exact!=='granted'&&exact!=='n/a'&&exact!=='error'&&LN.changeExactNotificationSetting){
     el.style.display='';
-    el.innerHTML=(en
-      ? '⏰ <b>Reminders may arrive late.</b><br>For them to ring on time while the app is closed, Android needs permission for exact alarms.'
-      : '⏰ <b>Οι υπενθυμίσεις μπορεί να αργούν.</b><br>Για να χτυπούν στην ώρα τους με την εφαρμογή κλειστή, το Android χρειάζεται άδεια για ακριβή ξυπνητήρια.')
-      +btn('lnAskExact()',en?'Allow':'Να επιτραπεί');
+    el.innerHTML=btn('lnAskExact()',en?'⏰ Allow exact alarms':'⏰ Ενεργοποίηση ακριβών ξυπνητηριών');
   }
   // ── ΚΡΥΦΟ ΤΕΧΝΙΚΟ ΠΑΝΕΛ (μόνο για έλεγχο) ──
   // Ενεργοποίηση: localStorage.setItem('fd_diag','1') — ο απλός χρήστης δεν
@@ -7178,7 +7177,8 @@ async function renderNotifDiag(){
   let perm='?';
   try{const s=await LN.checkPermissions();perm=(s&&s.display)||'?';}catch(e){perm='error';}
   const pend=await lnPendingList();
-  el.style.display='';
+  // Το πλαίσιο μπαίνει ΜΟΝΟ εδώ, στο κρυφό τεχνικό πάνελ.
+  el.style.cssText='margin-top:12px;background:var(--lt);border-radius:12px;padding:11px 13px;font-size:12.5px;line-height:1.75;color:var(--t2)';
   el.innerHTML+=(el.innerHTML?'<hr style="border:none;border-top:1px solid var(--bd);margin:10px 0">':'')
     +['Native plugin: ✅',
       (en?'Notification permission':'Άδεια ειδοποιήσεων')+': '+(perm==='granted'?'✅':'⚠️ '+perm),
