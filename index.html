@@ -7152,37 +7152,41 @@ async function lnPendingList(){
 }
 async function renderNotifDiag(){
   const el=document.getElementById('ndiag');if(!el)return;
+  el.innerHTML='';el.style.display='none';
   const en=curLang!=='el';
   const LN=lnPlugin();
-  const btn=(fn,lbl)=>`<button class="nmod-cls" style="margin:6px 6px 0 0;padding:7px 12px;font-size:12.5px" onclick="${fn}">${lbl}</button>`;
-  if(!LN){
-    el.innerHTML='<b>'+(en?'⚠️ Android notifications: NOT available'
-                          :'⚠️ Ειδοποιήσεις Android: ΜΗ διαθέσιμες')+'</b><br>'
-      +(en?'This build has no native notification plugin, so reminders only ring while the app is open or in the background — never when it is fully closed.'
-          :'Αυτή η έκδοση δεν έχει το native plugin ειδοποιήσεων, οπότε οι υπενθυμίσεις χτυπούν μόνο όσο η εφαρμογή είναι ανοιχτή ή στο παρασκήνιο — ποτέ όταν είναι τελείως κλειστή.')
-      +'<br>'+btn('testNotif()',en?'🔔 Test now':'🔔 Δοκιμή τώρα');
-    return;
+  if(!LN)return;
+  const btn=(fn,lbl)=>`<button class="nmod-cls" style="margin:8px 6px 0 0;padding:8px 13px;font-size:13px" onclick="${fn}">${lbl}</button>`;
+  const exact=await lnExactSetting();
+  // ── ΟΡΑΤΟ ΣΤΟΝ ΧΡΗΣΤΗ: μόνο όταν υπάρχει κάτι να διορθώσει ──
+  // Από Android 12 η άδεια «ακριβή ξυπνητήρια» ΔΕΝ δίνεται αυτόματα. Χωρίς
+  // αυτήν το Android αναβάλλει τις υπενθυμίσεις όταν η εφαρμογή είναι κλειστή
+  // και το κινητό σε Doze — χτυπούν αργά ή καθόλου. Αφορά όλους τους χρήστες,
+  // γι' αυτό μένει ορατό· δεν είναι διαγνωστικό, είναι ρύθμιση.
+  if(exact!=='granted'&&exact!=='n/a'&&exact!=='error'&&LN.changeExactNotificationSetting){
+    el.style.display='';
+    el.innerHTML=(en
+      ? '⏰ <b>Reminders may arrive late.</b><br>For them to ring on time while the app is closed, Android needs permission for exact alarms.'
+      : '⏰ <b>Οι υπενθυμίσεις μπορεί να αργούν.</b><br>Για να χτυπούν στην ώρα τους με την εφαρμογή κλειστή, το Android χρειάζεται άδεια για ακριβή ξυπνητήρια.')
+      +btn('lnAskExact()',en?'Allow':'Να επιτραπεί');
   }
+  // ── ΚΡΥΦΟ ΤΕΧΝΙΚΟ ΠΑΝΕΛ (μόνο για έλεγχο) ──
+  // Ενεργοποίηση: localStorage.setItem('fd_diag','1') — ο απλός χρήστης δεν
+  // το βλέπει ποτέ.
+  let dbg=false;try{dbg=localStorage.getItem('fd_diag')==='1';}catch(e){}
+  if(!dbg)return;
   let perm='?';
   try{const s=await LN.checkPermissions();perm=(s&&s.display)||'?';}catch(e){perm='error';}
-  const exact=await lnExactSetting();
   const pend=await lnPendingList();
-  const line=(k,v)=>k+': '+v;
-  const rows=[
-    line(en?'Native plugin':'Native plugin','✅'),
-    line(en?'Notification permission':'Άδεια ειδοποιήσεων',perm==='granted'?'✅':'⚠️ '+perm),
-    line(en?'Exact alarms':'Ακριβή ξυπνητήρια',
-      exact==='granted'?'✅':(exact==='n/a'?'—':'⚠️ '+exact)),
-    line(en?'Scheduled':'Προγραμματισμένες',
-      pend===null?'⚠️ error':(pend.length+(pend.length?' (id '+pend.map(n=>n.id).join(', ')+')':'')))
-  ];
-  let html=rows.join('<br>');
-  if(exact!=='granted'&&exact!=='n/a'&&LN.changeExactNotificationSetting){
-    html+='<br>'+btn('lnAskExact()',en?'⏰ Allow exact alarms':'⏰ Επιτρέπω ακριβή ξυπνητήρια');
-  }
-  html+='<br>'+btn('testNotif()',en?'🔔 Test now':'🔔 Δοκιμή τώρα')
-       +btn('testNotifIn60()',en?'⏱ Test in 1 min (then close the app)':'⏱ Δοκιμή σε 1′ (μετά κλείσε την εφαρμογή)');
-  el.innerHTML=html;
+  el.style.display='';
+  el.innerHTML+=(el.innerHTML?'<hr style="border:none;border-top:1px solid var(--bd);margin:10px 0">':'')
+    +['Native plugin: ✅',
+      (en?'Notification permission':'Άδεια ειδοποιήσεων')+': '+(perm==='granted'?'✅':'⚠️ '+perm),
+      (en?'Exact alarms':'Ακριβή ξυπνητήρια')+': '+(exact==='granted'?'✅':(exact==='n/a'?'—':'⚠️ '+exact)),
+      (en?'Scheduled':'Προγραμματισμένες')+': '+(pend===null?'⚠️ error':(pend.length+(pend.length?' (id '+pend.map(n=>n.id).join(', ')+')':'')))
+     ].join('<br>')
+    +'<br>'+btn('testNotif()',en?'🔔 Test now':'🔔 Δοκιμή τώρα')
+    +btn('testNotifIn60()',en?'⏱ Test in 1 min':'⏱ Δοκιμή σε 1′');
 }
 // Η αποφασιστική δοκιμή για «χτυπά με την εφαρμογή κλειστή»: προγραμματίζει
 // ειδοποίηση σε 1 λεπτό, ώστε ο χρήστης να κλείσει τελείως την εφαρμογή.
