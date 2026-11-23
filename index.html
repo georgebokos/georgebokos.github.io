@@ -8351,7 +8351,12 @@ async function saveNotif(){
       }else if(!sched||pending===0){
         showToast(t('x126'));
       }else{
-        showToast(en?`✅ Notifications enabled (${pending} scheduled)`:`✅ Ειδοποιήσεις ενεργές (${pending} προγραμματισμένες)`);
+        // Η καθημερινή είναι προγραμματισμένη για την ΩΡΑ που διάλεξε ο χρήστης,
+        // οπότε κατά την ενεργοποίηση δεν χτυπά τίποτα — και φαίνεται χαλασμένο
+        // («ενεργοποίησα και δεν χτύπησε»). Χτυπάμε μία φορά τώρα ως απόδειξη
+        // ότι το κανάλι δουλεύει, και λέμε ρητά πότε έρχεται η επόμενη.
+        try{await lnShowNow(t('x103'),en?`Notifications are on — daily at ${time}`:`Οι ειδοποιήσεις είναι ενεργές — καθημερινά στις ${time}`);}catch(e){}
+        showToast(en?`✅ On — daily at ${time} (${pending} scheduled)`:`✅ Ενεργές — καθημερινά στις ${time} (${pending} προγραμματισμένες)`);
       }
     }else{
       await lnCancel(LN_ID_DAILY);
@@ -8375,8 +8380,16 @@ async function saveNotif(){
     scheduleDailyNotifInSW();
     if(notifPerm()==='denied'){
       showToast(t('x57'));
+    }else if(notifPerm()!=='granted'){
+      // Μερικά WebView εκθέτουν το αντικείμενο Notification αλλά ΧΩΡΙΣ
+      // requestPermission: η άδεια δεν γίνεται ποτέ 'granted'. Παλιότερα εδώ
+      // εμφανιζόταν ψεύτικο «✅ ενεργοποιήθηκαν» και δεν χτυπούσε ποτέ τίποτα.
+      showToast(t('x56'));
     }else{
-      showToast(t('x58'));
+      // Ίδιος λόγος με το native: μία ειδοποίηση τώρα ως απόδειξη, και ρητή
+      // αναφορά της ώρας της επόμενης.
+      try{await sendNotif();}catch(e){}
+      showToast(curLang!=='el'?`✅ Notifications on — daily at ${time}`:`✅ Ειδοποιήσεις ενεργές — καθημερινά στις ${time}`);
     }
   } else {
     localStorage.setItem('notif_on','false');
