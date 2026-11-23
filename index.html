@@ -1240,6 +1240,8 @@ body{padding-left:env(safe-area-inset-left,0px);padding-right:env(safe-area-inse
       <button class="nmod-save" onclick="saveNotif()" data-i18n="set_save">Αποθήκευση</button>
       <button class="nmod-cls" onclick="closeNotif()" data-i18n="ur_cancel">Άκυρο</button>
     </div>
+    <!-- Διαγνωστικό ειδοποιήσεων — γεμίζει από το renderNotifDiag() -->
+    <div id="ndiag" style="margin-top:12px;background:var(--lt);border-radius:12px;padding:11px 13px;font-size:12.5px;line-height:1.75;color:var(--t2)"></div>
     <div style="font-size:12px;font-weight:600;color:var(--t3);letter-spacing:.06em;text-transform:uppercase;padding:18px 0 4px" data-i18n="ab_hdr">ℹ️ Σχετικά με την εφαρμογή</div>
     <div style="background:var(--lt);border-radius:14px;padding:14px 16px;font-size:13.5px;color:var(--tx);line-height:1.6;">
       <div style="font-weight:800;font-size:15px;margin-bottom:8px;">🍽️ FoodDaily</div>
@@ -7015,7 +7017,7 @@ function applyPremiumUnlocked(){
 // ── NATIVE ΕΙΔΟΠΟΙΗΣΕΙΣ (Capacitor Local Notifications) ────────
 // Το WebView δεν υποστηρίζει ειδοποιήσεις service worker, οπότε σε native
 // περιβάλλον χρησιμοποιούμε τις τοπικές ειδοποιήσεις του Android.
-const LN_ID_DAILY=1001, LN_ID_TIMER=1002, LN_ID_PREP=1004;
+const LN_ID_DAILY=1001, LN_ID_TIMER=1002, LN_ID_PREP=1004, LN_ID_TEST=1005;
 function lnPlugin(){
   try{return (window.Capacitor&&window.Capacitor.Plugins&&window.Capacitor.Plugins.LocalNotifications)||null;}
   catch(e){return null;}
@@ -7123,6 +7125,83 @@ async function lnSchedulePrep(plan){
       schedule:{at,allowWhileIdle:true}
     }]);
   }catch(e){}
+}
+
+// ── ΔΙΑΓΝΩΣΤΙΚΟ ΕΙΔΟΠΟΙΗΣΕΩΝ ───────────────────────────────────
+// Οι ειδοποιήσεις πρέπει να χτυπούν ΚΑΙ με την εφαρμογή τελείως κλειστή.
+// Αυτό το κάνει ΜΟΝΟ το AlarmManager του Android, μέσω του plugin
+// LocalNotifications. Ο service worker δεν μπορεί: τα setTimeout του ζουν όσο
+// ζει η διεργασία, γι' αυτό «στο παρασκήνιο χτυπά, κλειστή δεν χτυπά».
+// Τίποτα από αυτά δεν φαίνεται στον χρήστη, οπότε τα δείχνουμε εδώ.
+// ΜΟΝΟ ΑΝΑΓΝΩΣΗ — δεν αλλάζει καμία ρύθμιση από μόνο του.
+async function lnExactSetting(){
+  const LN=lnPlugin();
+  if(!LN||!LN.checkExactNotificationSetting)return 'n/a';
+  try{const r=await LN.checkExactNotificationSetting();return (r&&r.exact_alarm)||'unknown';}
+  catch(e){return 'error';}
+}
+async function lnAskExact(){
+  const LN=lnPlugin();
+  if(!LN||!LN.changeExactNotificationSetting){showToast(t('x56'));return;}
+  try{await LN.changeExactNotificationSetting();}catch(e){}
+  try{renderNotifDiag();}catch(e){}
+}
+async function lnPendingList(){
+  const LN=lnPlugin();if(!LN)return null;
+  try{const r=await LN.getPending();return (r&&r.notifications)||[];}catch(e){return null;}
+}
+async function renderNotifDiag(){
+  const el=document.getElementById('ndiag');if(!el)return;
+  const en=curLang!=='el';
+  const LN=lnPlugin();
+  const btn=(fn,lbl)=>`<button class="nmod-cls" style="margin:6px 6px 0 0;padding:7px 12px;font-size:12.5px" onclick="${fn}">${lbl}</button>`;
+  if(!LN){
+    el.innerHTML='<b>'+(en?'⚠️ Android notifications: NOT available'
+                          :'⚠️ Ειδοποιήσεις Android: ΜΗ διαθέσιμες')+'</b><br>'
+      +(en?'This build has no native notification plugin, so reminders only ring while the app is open or in the background — never when it is fully closed.'
+          :'Αυτή η έκδοση δεν έχει το native plugin ειδοποιήσεων, οπότε οι υπενθυμίσεις χτυπούν μόνο όσο η εφαρμογή είναι ανοιχτή ή στο παρασκήνιο — ποτέ όταν είναι τελείως κλειστή.')
+      +'<br>'+btn('testNotif()',en?'🔔 Test now':'🔔 Δοκιμή τώρα');
+    return;
+  }
+  let perm='?';
+  try{const s=await LN.checkPermissions();perm=(s&&s.display)||'?';}catch(e){perm='error';}
+  const exact=await lnExactSetting();
+  const pend=await lnPendingList();
+  const line=(k,v)=>k+': '+v;
+  const rows=[
+    line(en?'Native plugin':'Native plugin','✅'),
+    line(en?'Notification permission':'Άδεια ειδοποιήσεων',perm==='granted'?'✅':'⚠️ '+perm),
+    line(en?'Exact alarms':'Ακριβή ξυπνητήρια',
+      exact==='granted'?'✅':(exact==='n/a'?'—':'⚠️ '+exact)),
+    line(en?'Scheduled':'Προγραμματισμένες',
+      pend===null?'⚠️ error':(pend.length+(pend.length?' (id '+pend.map(n=>n.id).join(', ')+')':'')))
+  ];
+  let html=rows.join('<br>');
+  if(exact!=='granted'&&exact!=='n/a'&&LN.changeExactNotificationSetting){
+    html+='<br>'+btn('lnAskExact()',en?'⏰ Allow exact alarms':'⏰ Επιτρέπω ακριβή ξυπνητήρια');
+  }
+  html+='<br>'+btn('testNotif()',en?'🔔 Test now':'🔔 Δοκιμή τώρα')
+       +btn('testNotifIn60()',en?'⏱ Test in 1 min (then close the app)':'⏱ Δοκιμή σε 1′ (μετά κλείσε την εφαρμογή)');
+  el.innerHTML=html;
+}
+// Η αποφασιστική δοκιμή για «χτυπά με την εφαρμογή κλειστή»: προγραμματίζει
+// ειδοποίηση σε 1 λεπτό, ώστε ο χρήστης να κλείσει τελείως την εφαρμογή.
+async function testNotifIn60(){
+  const en=curLang!=='el';
+  const LN=lnPlugin();
+  if(!LN){showToast(t('x56'));return;}
+  if(!await lnEnsurePerm()){showToast(t('x125'));return;}
+  const ok=await lnSchedule([{
+    id:LN_ID_TEST,
+    title:t('x103'),
+    body:en?'Test ✅ — the app was closed and it still rang'
+           :'Δοκιμή ✅ — η εφαρμογή ήταν κλειστή και χτύπησε',
+    schedule:{at:new Date(Date.now()+60000),allowWhileIdle:true}
+  }]);
+  showToast(ok?(en?'⏱ In 1 minute — close the app completely now'
+                  :'⏱ Σε 1 λεπτό — κλείσε τελείως την εφαρμογή τώρα')
+              :t('x126'));
+  try{renderNotifDiag();}catch(e){}
 }
 
 // ── ANDROID HARDWARE BACK BUTTON (Capacitor) ───────────────────
@@ -8322,6 +8401,8 @@ function openNmod(){
   document.getElementById('ntime').value=localStorage.getItem('notif_time')||'09:00';
   const ds=parseInt(localStorage.getItem('fd_default_srv'))||2;
   const psvEl=document.getElementById('prof-srv-val');if(psvEl)psvEl.textContent=ds;
+  // Το διαγνωστικό δεν επιτρέπεται ΠΟΤΕ να σπάσει τις Ρυθμίσεις.
+  try{renderNotifDiag();}catch(e){}
 }
 function changeProfSrv(d){
   const el=document.getElementById('prof-srv-val');if(!el)return;
