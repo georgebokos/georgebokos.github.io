@@ -1,0 +1,911 @@
+<!DOCTYPE html>
+<html lang="el">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<title>Η Σελίδα μου — Ιστοσελίδα επιχείρησης σε 10 λεπτά</title>
+<meta name="description" content="Συμπλήρωσε τα στοιχεία της επιχείρησής σου και πάρε έτοιμη, επαγγελματική ιστοσελίδα σε λίγα λεπτά — χωρίς γνώσεις και χωρίς web designer.">
+<meta name="theme-color" content="#0f5c4d">
+<link rel="manifest" href="manifest.json">
+<link rel="icon" href="icon.svg" type="image/svg+xml">
+<link rel="apple-touch-icon" href="icon-192.png">
+<meta name="apple-mobile-web-app-capable" content="yes">
+<meta name="apple-mobile-web-app-title" content="Η Σελίδα μου">
+<style>
+:root{
+  --pri:#0f5c4d; --pri2:#147a66; --pri-soft:#e3f1ed; --sun:#ffd166; --cor:#ef6f4c;
+  --bg:#f4f7f6; --card:#fff; --ink:#15211e; --ink2:#5b6b67; --line:#dbe4e1; --line2:#edf2f0;
+  --ok:#0f7b46; --warn:#9a6400; --warn-bg:#fdf3dc;
+  --r:14px; --sh:0 1px 2px rgba(10,40,34,.06),0 6px 18px rgba(10,40,34,.07);
+}
+@media (prefers-color-scheme:dark){
+  :root:not([data-theme="light"]){
+    --pri:#5cc7ad; --pri2:#7fd8c1; --pri-soft:#133029; --bg:#0e1514; --card:#15201e;
+    --ink:#e5eeeb; --ink2:#9db1ab; --line:#26352f; --line2:#1b2724; --warn:#f0c264; --warn-bg:#2e2513;
+    --sh:0 1px 2px rgba(0,0,0,.3),0 6px 18px rgba(0,0,0,.35);
+  }
+}
+*{box-sizing:border-box}
+html,body{margin:0;padding:0}
+body{background:var(--bg);color:var(--ink);font:15px/1.55 system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;-webkit-text-size-adjust:100%}
+button,input,select,textarea{font:inherit;color:inherit}
+a{color:var(--pri)}
+
+/* ── Κεφαλίδα ── */
+.top{position:sticky;top:0;z-index:20;background:var(--pri);color:#fff;padding:10px 16px;padding-top:max(10px,env(safe-area-inset-top));display:flex;align-items:center;gap:10px}
+.top img{width:32px;height:32px;border-radius:8px}
+.top h1{font-size:17px;margin:0;line-height:1.2}
+.top small{display:block;font-weight:400;opacity:.8;font-size:12px}
+.top .sp{flex:1}
+.top button{background:rgba(255,255,255,.14);border:0;color:#fff;border-radius:10px;padding:8px 12px;cursor:pointer}
+.top button.pub{background:var(--sun);color:#3a2a00;font-weight:700}
+
+/* ── Διάταξη ── */
+.layout{display:grid;grid-template-columns:minmax(0,460px) minmax(0,1fr);gap:18px;padding:18px;max-width:1500px;margin:0 auto}
+.side{min-width:0}
+.prev{position:sticky;top:70px;height:calc(100vh - 88px);display:flex;flex-direction:column;min-width:0}
+.mtabs{display:none}
+@media (max-width:900px){
+  .layout{grid-template-columns:minmax(0,1fr);padding:12px 16px 90px}
+  .prev{position:static;height:auto}
+  .layout[data-view="form"] .prev,.layout[data-view="preview"] .side{display:none}
+  .mtabs{display:flex;position:fixed;left:0;right:0;bottom:0;z-index:30;background:var(--card);border-top:1px solid var(--line);padding:8px 12px;padding-bottom:max(8px,env(safe-area-inset-bottom));gap:8px}
+  .mtabs button{flex:1;border:1px solid var(--line);background:var(--card);border-radius:12px;padding:10px;font-weight:600;cursor:pointer}
+  .mtabs button.on{background:var(--pri);border-color:var(--pri);color:#fff}
+  .frame-wrap{height:72vh}
+}
+
+/* ── Βήματα ── */
+.steps{display:flex;gap:6px;margin-bottom:12px;overflow-x:auto;scrollbar-width:none}
+.steps button{flex:1 0 auto;border:1px solid var(--line);background:var(--card);border-radius:999px;padding:6px 12px;font-size:13px;cursor:pointer;white-space:nowrap;color:var(--ink2)}
+.steps button.on{background:var(--pri);color:#fff;border-color:var(--pri)}
+.steps button.done:not(.on){border-color:var(--pri);color:var(--pri)}
+.card{background:var(--card);border:1px solid var(--line);border-radius:var(--r);box-shadow:var(--sh);padding:18px;margin-bottom:14px}
+.card h2{font-size:18px;margin:0 0 4px}
+.card .lead{color:var(--ink2);margin:0 0 14px;font-size:14px}
+.step{display:none}.step.on{display:block}
+label{display:block;font-weight:600;font-size:13px;margin:12px 0 4px}
+label .opt{font-weight:400;color:var(--ink2)}
+input[type=text],input[type=tel],input[type=email],input[type=url],input[type=number],input[type=time],select,textarea{width:100%;border:1px solid var(--line);background:var(--bg);border-radius:10px;padding:10px 12px;outline:none}
+input:focus,select:focus,textarea:focus{border-color:var(--pri);box-shadow:0 0 0 3px var(--pri-soft)}
+textarea{min-height:110px;resize:vertical}
+.row{display:grid;grid-template-columns:1fr 1fr;gap:10px}
+@media (max-width:420px){.row{grid-template-columns:1fr}}
+.hint{font-size:12px;color:var(--ink2);margin-top:4px}
+.btn{display:inline-flex;align-items:center;justify-content:center;gap:6px;border:1px solid var(--line);background:var(--card);border-radius:10px;padding:9px 14px;cursor:pointer;font-weight:600;text-decoration:none;color:var(--ink)}
+.btn.pri{background:var(--pri);border-color:var(--pri);color:#fff}
+.btn.sm{padding:6px 10px;font-size:13px}
+.btn:disabled{opacity:.5;cursor:default}
+.nav{display:flex;justify-content:space-between;gap:10px;margin-top:16px}
+
+/* Κλάδοι */
+.sectors{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:10px}
+.sector{border:2px solid var(--line);border-radius:12px;padding:12px;cursor:pointer;background:var(--card);text-align:left}
+.sector b{display:block;font-size:14px;margin-top:4px}
+.sector span{font-size:26px}
+.sector small{color:var(--ink2);font-size:12px}
+.sector.on{border-color:var(--pri);background:var(--pri-soft)}
+
+/* Ωράριο */
+.hours{display:grid;gap:6px}
+.hrow{display:grid;grid-template-columns:44px auto 1fr 1fr;gap:8px;align-items:center}
+.hrow b{font-size:13px}
+.hrow input[type=time]{padding:7px 8px}
+.hrow input:disabled{opacity:.35}
+.sw{display:flex;align-items:center;gap:4px;font-size:12px;color:var(--ink2);white-space:nowrap}
+
+/* Λίστα υπηρεσιών */
+.items{display:grid;gap:8px}
+.item{display:grid;grid-template-columns:1fr 92px 34px;gap:6px;align-items:start;border:1px solid var(--line2);border-radius:10px;padding:8px;background:var(--bg)}
+.item input{background:var(--card)!important;padding:8px 10px!important}
+.item .d{grid-column:1/3}
+.item .x{border:0;background:none;cursor:pointer;font-size:18px;color:var(--ink2);padding:6px 0}
+
+/* Εμφάνιση */
+.colors{display:flex;flex-wrap:wrap;gap:8px;align-items:center}
+.colors button{width:34px;height:34px;border-radius:50%;border:3px solid var(--card);box-shadow:0 0 0 1px var(--line);cursor:pointer}
+.colors button.on{box-shadow:0 0 0 3px var(--ink)}
+.colors input[type=color]{width:38px;height:38px;border:0;padding:0;background:none;cursor:pointer}
+.styles{display:grid;grid-template-columns:repeat(3,1fr);gap:8px}
+.styles button{border:2px solid var(--line);border-radius:10px;padding:10px 6px;background:var(--card);cursor:pointer;font-size:13px}
+.styles button.on{border-color:var(--pri);background:var(--pri-soft)}
+.styles .f1{font-family:system-ui,sans-serif;font-weight:700}
+.styles .f2{font-family:Georgia,"Times New Roman",serif;font-weight:700}
+.styles .f3{font-weight:900;letter-spacing:.5px;text-transform:uppercase}
+.imgs{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px}
+.thumb{position:relative;width:76px;height:76px;border-radius:10px;overflow:hidden;border:1px solid var(--line);background:var(--bg) center/cover no-repeat}
+.thumb button{position:absolute;top:2px;right:2px;width:22px;height:22px;border-radius:50%;border:0;background:rgba(0,0,0,.6);color:#fff;cursor:pointer;font-size:12px;line-height:1}
+.drop{display:flex;align-items:center;justify-content:center;width:76px;height:76px;border:2px dashed var(--line);border-radius:10px;cursor:pointer;color:var(--ink2);font-size:24px}
+input[type=file]{display:none}
+
+/* Προεπισκόπηση */
+.pbar{display:flex;align-items:center;gap:8px;margin-bottom:8px}
+.pbar .url{flex:1;min-width:0;background:var(--card);border:1px solid var(--line);border-radius:999px;padding:6px 14px;font-size:13px;color:var(--ink2);white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.pbar .dev{display:flex;border:1px solid var(--line);border-radius:10px;overflow:hidden}
+.pbar .dev button{border:0;background:var(--card);padding:6px 10px;cursor:pointer}
+.pbar .dev button.on{background:var(--pri);color:#fff}
+.frame-wrap{flex:1;display:flex;justify-content:center;background:var(--line2);border:1px solid var(--line);border-radius:var(--r);overflow:hidden;min-height:0}
+.frame-wrap iframe{width:100%;height:100%;border:0;background:#fff;transition:width .25s}
+.frame-wrap.mobile iframe{width:390px;max-width:100%;border-left:1px solid var(--line);border-right:1px solid var(--line)}
+
+/* Πρόοδος */
+.meter{height:6px;background:var(--line2);border-radius:99px;overflow:hidden;margin:6px 0 2px}
+.meter i{display:block;height:100%;background:var(--pri);border-radius:99px;transition:width .3s}
+.todo{font-size:13px;color:var(--ink2);margin:8px 0 0;padding-left:18px}
+.todo li{margin:2px 0}
+
+/* Παράθυρο */
+.modal{position:fixed;inset:0;z-index:50;background:rgba(0,0,0,.45);display:none;align-items:center;justify-content:center;padding:16px}
+.modal.on{display:flex}
+.modal .box{background:var(--card);border-radius:18px;max-width:520px;width:100%;max-height:90vh;overflow:auto;padding:22px;box-shadow:0 20px 60px rgba(0,0,0,.3)}
+.modal h3{margin:0 0 6px;font-size:20px}
+.price{display:flex;align-items:baseline;gap:8px;margin:12px 0}
+.price b{font-size:40px;color:var(--pri);line-height:1}
+.price span{color:var(--ink2)}
+.incl{list-style:none;padding:0;margin:0 0 14px}
+.incl li{padding:5px 0 5px 26px;position:relative}
+.incl li:before{content:"✓";position:absolute;left:4px;color:var(--ok);font-weight:800}
+.domain{background:var(--pri-soft);border-radius:12px;padding:12px;margin:12px 0}
+.domain code{font-size:16px;font-weight:700;color:var(--pri);word-break:break-all}
+.note{background:var(--warn-bg);color:var(--warn);border-radius:10px;padding:10px 12px;font-size:13px;margin:10px 0}
+.toast{position:fixed;left:50%;bottom:90px;transform:translateX(-50%) translateY(20px);background:var(--ink);color:var(--bg);padding:10px 16px;border-radius:12px;opacity:0;transition:.25s;z-index:60;pointer-events:none;font-size:14px;max-width:calc(100% - 32px)}
+.toast.on{opacity:1;transform:translateX(-50%)}
+@media (max-width:900px){
+  .frame-wrap{flex:none;height:calc(100vh - 190px);min-height:420px}
+  .pbar .dev{display:none}
+}
+@media (max-width:520px){
+  .top small{display:none}
+  .top button.pub{padding:8px 10px}
+}
+</style>
+</head>
+<body>
+
+<header class="top">
+  <img src="icon.svg" alt="">
+  <h1>Η Σελίδα μου<small>Ιστοσελίδα επιχείρησης σε 10 λεπτά</small></h1>
+  <span class="sp"></span>
+  <button id="bReset" title="Νέα σελίδα από την αρχή">↺</button>
+  <button class="pub" id="bPublish">🚀 Δημοσίευση</button>
+</header>
+
+<main class="layout" id="layout" data-view="form">
+  <section class="side">
+    <div class="steps" id="steps"></div>
+
+    <!-- 1. Κλάδος -->
+    <div class="card step" data-step="0">
+      <h2>Τι επιχείρηση έχεις;</h2>
+      <p class="lead">Διάλεξε τον κλάδο και θα ετοιμάσουμε τη σελίδα με τα σωστά τμήματα και έτοιμα κείμενα. Όλα αλλάζουν μετά.</p>
+      <div class="sectors" id="sectors"></div>
+    </div>
+
+    <!-- 2. Στοιχεία -->
+    <div class="card step" data-step="1">
+      <h2>Τα στοιχεία σου</h2>
+      <p class="lead">Ό,τι θα έγραφες σε μια κάρτα επαγγελματία.</p>
+      <label for="f_name">Όνομα επιχείρησης</label>
+      <input type="text" id="f_name" data-k="name" maxlength="60" placeholder="π.χ. Ταβέρνα Ο Γιώργος">
+      <label for="f_tagline">Σύνθημα <span class="opt">— μία φράση</span></label>
+      <input type="text" id="f_tagline" data-k="tagline" maxlength="90">
+      <div class="hint" id="tagIdeas"></div>
+      <div class="row">
+        <div><label for="f_city">Περιοχή / πόλη</label><input type="text" id="f_city" data-k="city" maxlength="40" placeholder="π.χ. Καλαμάτα"></div>
+        <div><label for="f_since">Έτος ίδρυσης <span class="opt">(προαιρ.)</span></label><input type="number" id="f_since" data-k="since" min="1850" max="2100" placeholder="π.χ. 1998"></div>
+      </div>
+      <label for="f_address">Διεύθυνση</label>
+      <input type="text" id="f_address" data-k="address" maxlength="120" placeholder="π.χ. Αριστομένους 12, Καλαμάτα 241 00">
+      <div class="row">
+        <div><label for="f_phone">Τηλέφωνο</label><input type="tel" id="f_phone" data-k="phone" maxlength="20" placeholder="69xxxxxxxx"></div>
+        <div><label for="f_email">Email <span class="opt">(προαιρ.)</span></label><input type="email" id="f_email" data-k="email" maxlength="80"></div>
+      </div>
+      <div class="row">
+        <div><label for="f_afm">ΑΦΜ <span class="opt">(προαιρ.)</span></label><input type="text" id="f_afm" data-k="afm" maxlength="9" inputmode="numeric"></div>
+        <div><label for="f_gemi">Αρ. ΓΕΜΗ <span class="opt">(προαιρ.)</span></label><input type="text" id="f_gemi" data-k="gemi" maxlength="14" inputmode="numeric"></div>
+      </div>
+      <div class="hint">Τα ΑΦΜ και ΓΕΜΗ εμφανίζονται στο κάτω μέρος της σελίδας, όπως ζητά ο νόμος για τις επιχειρήσεις που προβάλλονται online.</div>
+      <div class="nav"><button class="btn" data-go="-1">← Πίσω</button><button class="btn pri" data-go="1">Συνέχεια →</button></div>
+    </div>
+
+    <!-- 3. Κείμενα & υπηρεσίες -->
+    <div class="card step" data-step="2">
+      <h2>Τι προσφέρεις</h2>
+      <p class="lead">Σου γράψαμε ένα πρώτο κείμενο. Άλλαξέ το ελεύθερα ή ζήτα άλλη πρόταση.</p>
+      <label for="f_about">Λίγα λόγια για εσάς</label>
+      <textarea id="f_about" data-k="about" maxlength="1200"></textarea>
+      <div style="margin-top:6px"><button class="btn sm" id="bAbout">🔄 Άλλη πρόταση κειμένου</button></div>
+      <label id="itemsLbl">Υπηρεσίες</label>
+      <div class="items" id="items"></div>
+      <div style="margin-top:8px;display:flex;gap:8px;flex-wrap:wrap">
+        <button class="btn sm" id="bAddItem">＋ Προσθήκη</button>
+        <button class="btn sm" id="bSampleItems">Έτοιμα παραδείγματα</button>
+      </div>
+      <div class="hint">Τιμή: γράψε σκέτο αριθμό (π.χ. 12) ή κείμενο (π.χ. «από 40€», «κατόπιν συνεννόησης»). Άφησέ την κενή αν δεν θέλεις να φαίνεται.</div>
+      <div class="nav"><button class="btn" data-go="-1">← Πίσω</button><button class="btn pri" data-go="1">Συνέχεια →</button></div>
+    </div>
+
+    <!-- 4. Ωράριο & επαφή -->
+    <div class="card step" data-step="3">
+      <h2>Ωράριο & επικοινωνία</h2>
+      <p class="lead">Η σελίδα δείχνει μόνη της αν είστε «Ανοιχτά τώρα».</p>
+      <div class="hours" id="hours"></div>
+      <div style="margin-top:8px"><button class="btn sm" id="bCopyHours">Ίδιο ωράριο με τη Δευτέρα για όλες τις ανοιχτές μέρες</button></div>
+      <label for="f_hnote">Σημείωση ωραρίου <span class="opt">(προαιρ.)</span></label>
+      <input type="text" id="f_hnote" data-k="hnote" maxlength="100" placeholder="π.χ. Τον Αύγουστο κλειστά 10–20/8">
+      <label>Κουμπιά επικοινωνίας</label>
+      <div class="row">
+        <label class="sw" style="margin:0"><input type="checkbox" data-k="viber"> Viber στο ίδιο κινητό</label>
+        <label class="sw" style="margin:0"><input type="checkbox" data-k="whatsapp"> WhatsApp στο ίδιο κινητό</label>
+      </div>
+      <div class="row">
+        <div><label for="f_fb">Facebook <span class="opt">(προαιρ.)</span></label><input type="url" id="f_fb" data-k="fb" placeholder="https://facebook.com/..."></div>
+        <div><label for="f_ig">Instagram <span class="opt">(προαιρ.)</span></label><input type="url" id="f_ig" data-k="ig" placeholder="https://instagram.com/..."></div>
+      </div>
+      <label class="sw" style="margin-top:12px"><input type="checkbox" data-k="map"> Χάρτης Google με τη διεύθυνση</label>
+      <div class="nav"><button class="btn" data-go="-1">← Πίσω</button><button class="btn pri" data-go="1">Συνέχεια →</button></div>
+    </div>
+
+    <!-- 5. Εμφάνιση -->
+    <div class="card step" data-step="4">
+      <h2>Εμφάνιση</h2>
+      <p class="lead">Χρώμα, στυλ και φωτογραφίες. Οι φωτογραφίες σμικρύνονται αυτόματα για να φορτώνει γρήγορα η σελίδα.</p>
+      <label>Χρώμα</label>
+      <div class="colors" id="colors"></div>
+      <label>Στυλ γραμματοσειράς</label>
+      <div class="styles" id="styles">
+        <button data-style="modern" class="f1">Σύγχρονο</button>
+        <button data-style="classic" class="f2">Κλασικό</button>
+        <button data-style="bold" class="f3">Έντονο</button>
+      </div>
+      <label>Λογότυπο <span class="opt">(προαιρ.)</span></label>
+      <div class="imgs" id="logoBox"></div>
+      <label>Κεντρική φωτογραφία</label>
+      <div class="imgs" id="heroBox"></div>
+      <div class="hint">Η μεγάλη φωτογραφία στην κορυφή. Καλύτερα οριζόντια, του χώρου ή της δουλειάς σας.</div>
+      <label>Φωτογραφίες γκαλερί <span class="opt">— έως 6</span></label>
+      <div class="imgs" id="galBox"></div>
+      <div class="nav"><button class="btn" data-go="-1">← Πίσω</button><button class="btn pri" data-go="1">Συνέχεια →</button></div>
+    </div>
+
+    <!-- 6. Έτοιμο -->
+    <div class="card step" data-step="5">
+      <h2>Σχεδόν έτοιμο 🎉</h2>
+      <p class="lead">Δες την προεπισκόπηση. Ό,τι λείπει φαίνεται παρακάτω.</p>
+      <div><b id="pct">0%</b> ολοκληρωμένο</div>
+      <div class="meter"><i id="meter"></i></div>
+      <ul class="todo" id="todo"></ul>
+      <div style="display:grid;gap:8px;margin-top:16px">
+        <button class="btn pri" id="bPublish2">🚀 Δημοσίευση στο internet</button>
+        <button class="btn" id="bDownload">⬇️ Λήψη του αρχείου της σελίδας</button>
+        <button class="btn" id="bExport">💾 Αποθήκευση στοιχείων (για συνέχεια σε άλλη συσκευή)</button>
+        <button class="btn" id="bImport">📂 Φόρτωση αποθηκευμένων στοιχείων</button>
+        <input type="file" id="fImport" accept="application/json,.json">
+      </div>
+      <div class="hint" style="margin-top:10px">Όλα όσα γράφεις μένουν μόνο στη συσκευή σου μέχρι να πατήσεις «Δημοσίευση».</div>
+      <div class="nav"><button class="btn" data-go="-1">← Πίσω</button><span></span></div>
+    </div>
+  </section>
+
+  <section class="prev">
+    <div class="pbar">
+      <div class="url" id="purl">🔒 η-επιχειρηση-σου.gr</div>
+      <div class="dev">
+        <button data-dev="desk" class="on" title="Υπολογιστής">🖥</button>
+        <button data-dev="mobile" title="Κινητό">📱</button>
+      </div>
+    </div>
+    <div class="frame-wrap" id="fw"><iframe id="frame" title="Προεπισκόπηση" sandbox="allow-scripts allow-popups"></iframe></div>
+  </section>
+</main>
+
+<nav class="mtabs" id="mtabs">
+  <button data-view="form" class="on">✏️ Στοιχεία</button>
+  <button data-view="preview">👁 Προεπισκόπηση</button>
+</nav>
+
+<div class="modal" id="mPub" role="dialog" aria-modal="true" aria-labelledby="mPubT">
+  <div class="box">
+    <h3 id="mPubT">Βάλε τη σελίδα σου στο internet</h3>
+    <div class="price"><b>99€</b><span>εφάπαξ — μετά 29€/χρόνο</span></div>
+    <ul class="incl">
+      <li>Δικό σου domain <b>.gr</b> για τον πρώτο χρόνο</li>
+      <li>Φιλοξενία, ασφαλής σύνδεση (https) και αντίγραφα ασφαλείας</li>
+      <li>Εμφάνιση στο Google με τα σωστά στοιχεία της επιχείρησης</li>
+      <li>Αλλαγές όποτε θέλεις, από την ίδια φόρμα</li>
+    </ul>
+    <div class="domain">Προτεινόμενη διεύθυνση:<br><code id="dom">—</code>
+      <div class="hint">Η διαθεσιμότητα ελέγχεται κατά την παραγγελία. Μπορείς να διαλέξεις και άλλη.</div>
+    </div>
+    <div class="note" id="pubNote">Η online πληρωμή ενεργοποιείται σύντομα. Προς το παρόν μπορείς να κατεβάσεις τη σελίδα και να τη δεις στον υπολογιστή σου.</div>
+    <div style="display:flex;gap:8px;flex-wrap:wrap;justify-content:flex-end">
+      <button class="btn" data-close>Κλείσιμο</button>
+      <a class="btn pri" id="bOrder" style="display:none">Παραγγελία</a>
+      <button class="btn pri" id="bDownload2">⬇️ Λήψη σελίδας</button>
+    </div>
+  </div>
+</div>
+
+<div class="toast" id="toast"></div>
+
+<script>
+'use strict';
+/* ═══════════════════════════════════════════════════════════════════════════
+   ΡΥΘΜΙΣΕΙΣ
+   ═══════════════════════════════════════════════════════════════════════════ */
+// Όταν στηθεί η πληρωμή (Stripe / Viva Wallet payment link), μπαίνει εδώ.
+// Κενό ⇒ το παράθυρο δημοσίευσης δείχνει μόνο «λήψη σελίδας».
+const ORDER_URL = '';
+const STORE_KEY = 'selida_draft_v1';
+const MAX_GALLERY = 6;
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   ΚΛΑΔΟΙ — ό,τι αλλάζει ανά είδος επιχείρησης
+   ═══════════════════════════════════════════════════════════════════════════ */
+const SECTORS = {
+  taverna:{ e:'🍽️', n:'Ταβέρνα / Εστιατόριο', sub:'μενού, κράτηση τραπεζιού', color:'#b4442c',
+    noun:'η κουζίνα μας', items:'Το μενού μας', item:'Πιάτο', cta:'Κράτηση τραπεζιού', place:'το μαγαζί μας',
+    tags:['Σπιτικό φαγητό, όπως παλιά','Γεύσεις που θυμίζουν σπίτι','Φρέσκα υλικά, ελληνική φιλοξενία'],
+    what:'παραδοσιακές συνταγές με φρέσκα υλικά της εποχής', why:'το φαγητό φτιάχνεται κάθε μέρα από την αρχή, όπως στο σπίτι',
+    high:['Σπιτικές συνταγές','Φρέσκα υλικά της εποχής','Φιλόξενη ατμόσφαιρα'],
+    sample:[['Χωριάτικη σαλάτα','Ντομάτα, αγγούρι, φέτα, ελιές Καλαμών','8.50'],['Μουσακάς','Με σπιτική μπεσαμέλ','11'],['Παϊδάκια αρνίσια','Στα κάρβουνα, με πατάτες','15'],['Γαύρος τηγανητός','Με λεμόνι','9']],
+    hours:['12:00','23:30'], closed:[] },
+  cafe:{ e:'☕', n:'Καφέ / Μπαρ', sub:'κατάλογος, ατμόσφαιρα', color:'#6b4a2f',
+    noun:'το καφέ μας', items:'Κατάλογος', item:'Προϊόν', cta:'Καλέστε μας', place:'τον χώρο μας',
+    tags:['Ο καφές της γειτονιάς σου','Καλός καφές, καλή παρέα','Η στάση σου για κάθε ώρα της μέρας'],
+    what:'καφέ από επιλεγμένους κόκκους, φρέσκα σνακ και γλυκά', why:'κάθε φλιτζάνι φτιάχνεται με μεράκι και η παρέα είναι πάντα καλή',
+    high:['Επιλεγμένος καφές','Φρέσκα σνακ & γλυκά','Ζεστός χώρος'],
+    sample:[['Freddo espresso','','3'],['Cappuccino','','3.50'],['Τοστ γαλοπούλα','Με τυρί Edam','3.50'],['Φυσικός χυμός πορτοκάλι','','4.50']],
+    hours:['07:30','23:00'], closed:[] },
+  beauty:{ e:'💇', n:'Κομμωτήριο / Αισθητική', sub:'τιμοκατάλογος, ραντεβού', color:'#a2457a',
+    noun:'το κομμωτήριό μας', items:'Τιμοκατάλογος', item:'Υπηρεσία', cta:'Κλείσε ραντεβού', place:'τον χώρο μας',
+    tags:['Η ομορφιά σου, η φροντίδα μας','Νιώσε όμορφα, κάθε μέρα','Στιλ που σου ταιριάζει'],
+    what:'κούρεμα, βαφή και περιποίηση με προϊόντα υψηλής ποιότητας', why:'ακούμε τι θέλεις και σε συμβουλεύουμε με ειλικρίνεια',
+    high:['Έμπειροι επαγγελματίες','Ποιοτικά προϊόντα','Εξυπηρέτηση με ραντεβού'],
+    sample:[['Κούρεμα γυναικείο','Με λούσιμο και στέγνωμα','20'],['Κούρεμα ανδρικό','','12'],['Βαφή ρίζας','','30'],['Μανικιούρ','','12']],
+    hours:['09:00','21:00'], closed:[0,1] },
+  trade:{ e:'🔧', n:'Τεχνίτης', sub:'υδραυλικός, ηλεκτρολόγος, κ.ά.', color:'#1f5fa8',
+    noun:'η δουλειά μας', items:'Υπηρεσίες', item:'Υπηρεσία', cta:'Καλέστε τώρα', place:'την περιοχή σας',
+    tags:['Γρήγορα, σωστά, με εγγύηση','Ο τεχνικός που εμπιστεύεσαι','Λύνουμε το πρόβλημα από την πρώτη φορά'],
+    what:'επισκευές, εγκαταστάσεις και συντήρηση για σπίτια και επιχειρήσεις', why:'ερχόμαστε στην ώρα μας, δίνουμε τιμή πριν ξεκινήσουμε και εγγυόμαστε τη δουλειά μας',
+    high:['Δωρεάν εκτίμηση κόστους','Συνέπεια στην ώρα','Εγγύηση εργασιών'],
+    sample:[['Επισκευή βλάβης','Εντοπισμός και αποκατάσταση','από 40€'],['Νέα εγκατάσταση','Σε σπίτια και καταστήματα','κατόπιν εκτίμησης'],['Συντήρηση','Περιοδικός έλεγχος',''],['Επείγουσες κλήσεις','Και Σαββατοκύριακα','']],
+    hours:['08:00','17:00'], closed:[0] },
+  office:{ e:'💼', n:'Γραφείο / Επαγγελματίας', sub:'λογιστής, δικηγόρος, γιατρός', color:'#24515e',
+    noun:'το γραφείο μας', items:'Υπηρεσίες', item:'Υπηρεσία', cta:'Κλείστε συνάντηση', place:'το γραφείο μας',
+    tags:['Αξιόπιστες λύσεις για εσάς και την επιχείρησή σας','Δίπλα σας σε κάθε βήμα','Εμπειρία, συνέπεια, εχεμύθεια'],
+    what:'ολοκληρωμένες υπηρεσίες για ιδιώτες και επιχειρήσεις', why:'κάθε υπόθεση έχει την προσωπική μας προσοχή, με ξεκάθαρη ενημέρωση σε κάθε βήμα',
+    high:['Προσωπική εξυπηρέτηση','Πολυετής εμπειρία','Ξεκάθαρες τιμές'],
+    sample:[['Τήρηση βιβλίων','Για ατομικές επιχειρήσεις και εταιρείες',''],['Φορολογικές δηλώσεις','Ιδιωτών και επιχειρήσεων',''],['Μισθοδοσία','',''],['Σύσταση επιχείρησης','Από την ιδέα μέχρι την έναρξη','']],
+    hours:['09:00','17:00'], closed:[0,6] },
+  stay:{ e:'🏡', n:'Ενοικιαζόμενα δωμάτια', sub:'δωμάτια, διαθεσιμότητα', color:'#1f7a8c',
+    noun:'τα δωμάτιά μας', items:'Τα δωμάτιά μας', item:'Δωμάτιο', cta:'Ρωτήστε διαθεσιμότητα', place:'το κατάλυμά μας',
+    tags:['Οι διακοπές που σου αξίζουν','Το σπίτι σου μακριά από το σπίτι','Ησυχία, θέα και ελληνική φιλοξενία'],
+    what:'καθαρά, άνετα δωμάτια σε ήσυχο σημείο', why:'σας υποδεχόμαστε σαν φίλους και φροντίζουμε για όλα όσο μένετε μαζί μας',
+    high:['Δωρεάν Wi-Fi','Κλιματισμός','Δωρεάν στάθμευση'],
+    sample:[['Δίκλινο','Με μπαλκόνι','από 55€/νύχτα'],['Τρίκλινο','','από 70€/νύχτα'],['Studio','Με κουζινάκι','από 65€/νύχτα'],['Οικογενειακό διαμέρισμα','Έως 5 άτομα','από 95€/νύχτα']],
+    hours:['08:00','22:00'], closed:[] },
+  shop:{ e:'🛍️', n:'Κατάστημα', sub:'προϊόντα, προσφορές', color:'#2f6e3b',
+    noun:'το κατάστημά μας', items:'Προϊόντα', item:'Προϊόν', cta:'Επικοινωνήστε', place:'το κατάστημά μας',
+    tags:['Ό,τι χρειάζεσαι, στη γειτονιά σου','Ποιότητα σε τίμιες τιμές','Επιλεγμένα προϊόντα, φιλική εξυπηρέτηση'],
+    what:'μεγάλη ποικιλία επιλεγμένων προϊόντων σε τίμιες τιμές', why:'σας εξυπηρετούμε προσωπικά και σας βοηθάμε να βρείτε αυτό που ψάχνετε',
+    high:['Μεγάλη ποικιλία','Τίμιες τιμές','Φιλική εξυπηρέτηση'],
+    sample:[['Νέες αφίξεις','Κάθε εβδομάδα',''],['Προσφορές μήνα','',''],['Δωροκάρτες','Σε όποιο ποσό θέλετε',''],['Παραγγελίες κατόπιν ζήτησης','','']],
+    hours:['09:00','21:00'], closed:[0] }
+};
+const DAYS = ['Κυρ','Δευ','Τρί','Τετ','Πέμ','Παρ','Σάβ'];
+const DAYS_FULL = ['Κυριακή','Δευτέρα','Τρίτη','Τετάρτη','Πέμπτη','Παρασκευή','Σάββατο'];
+const ORDER = [1,2,3,4,5,6,0];           // Δευτέρα πρώτη, όπως στην Ελλάδα
+const PALETTE = ['#b4442c','#c9772a','#2f6e3b','#0f5c4d','#1f7a8c','#1f5fa8','#24515e','#5b3f99','#a2457a','#6b4a2f','#222831'];
+const STEP_NAMES = ['1 · Κλάδος','2 · Στοιχεία','3 · Προσφορά','4 · Ωράριο','5 · Εμφάνιση','6 · Έτοιμο'];
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   ΚΑΤΑΣΤΑΣΗ
+   ═══════════════════════════════════════════════════════════════════════════ */
+function blank(){
+  return { v:1, step:0, sector:'', name:'', tagline:'', city:'', since:'', address:'', phone:'', email:'',
+    afm:'', gemi:'', about:'', aboutVar:0, aboutAuto:true, items:[], itemsAuto:true, hours:null, hnote:'',
+    viber:true, whatsapp:false, fb:'', ig:'', map:true, color:'#0f5c4d', style:'modern',
+    logo:'', hero:'', gallery:[] };
+}
+let S = load() || blank();
+
+function load(){
+  try{ const j = JSON.parse(localStorage.getItem(STORE_KEY)); return j && j.v===1 ? Object.assign(blank(), j) : null; }
+  catch(e){ return null; }
+}
+let saveWarned = false;
+function save(){
+  try{ localStorage.setItem(STORE_KEY, JSON.stringify(S)); }
+  catch(e){
+    if(!saveWarned){ saveWarned = true; toast('Οι φωτογραφίες είναι πολλές για αυτόματη αποθήκευση — χρησιμοποίησε «Αποθήκευση στοιχείων».'); }
+  }
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   ΒΟΗΘΗΤΙΚΑ
+   ═══════════════════════════════════════════════════════════════════════════ */
+const $ = s => document.querySelector(s);
+const $$ = s => [...document.querySelectorAll(s)];
+const esc = s => String(s ?? '').replace(/[&<>"']/g, c => ({'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;',"'":'&#39;'}[c]));
+const sec = () => SECTORS[S.sector] || SECTORS.shop;
+let toastT;
+function toast(msg){ const t=$('#toast'); t.textContent=msg; t.classList.add('on'); clearTimeout(toastT); toastT=setTimeout(()=>t.classList.remove('on'),3200); }
+
+// Μόνο http(s) σύνδεσμοι — ποτέ javascript: ή data:.
+function safeUrl(u){
+  u = String(u||'').trim(); if(!u) return '';
+  if(!/^https?:\/\//i.test(u)) u = 'https://' + u.replace(/^\/+/,'');
+  try{ const x = new URL(u); return /^https?:$/.test(x.protocol) ? x.href : ''; }catch(e){ return ''; }
+}
+const digits = s => String(s||'').replace(/\D/g,'');
+// Ελληνικό τηλέφωνο σε διεθνή μορφή (30…) για Viber / WhatsApp.
+function intlPhone(p){
+  let d = digits(p);
+  if(d.startsWith('0030')) d = d.slice(2);
+  if(d.length === 10 && /^[26]/.test(d)) d = '30' + d;
+  return d;
+}
+const isMobile = p => /^(30)?69\d{8}$/.test(intlPhone(p));
+function fmtPhone(p){
+  const d = digits(p);
+  if(d.length === 10) return d.slice(0,3)+' '+d.slice(3,6)+' '+d.slice(6);
+  return String(p||'').trim();
+}
+function fmtPrice(p){
+  p = String(p||'').trim(); if(!p) return '';
+  if(/^\d+([.,]\d{1,2})?$/.test(p)) return Number(p.replace(',','.')).toLocaleString('el-GR',{minimumFractionDigits:p.match(/[.,]/)?2:0,maximumFractionDigits:2}) + ' €';
+  return p;
+}
+// Ελληνικά → λατινικά, για πρόταση domain.
+const TR = {'α':'a','β':'v','γ':'g','δ':'d','ε':'e','ζ':'z','η':'i','θ':'th','ι':'i','κ':'k','λ':'l','μ':'m','ν':'n','ξ':'x','ο':'o','π':'p','ρ':'r','σ':'s','ς':'s','τ':'t','υ':'y','φ':'f','χ':'ch','ψ':'ps','ω':'o'};
+function slug(s){
+  s = String(s||'').toLowerCase().normalize('NFD').replace(/[̀-ͯ]/g,'');
+  s = s.replace(/ου/g,'ou').replace(/αι/g,'ai').replace(/ει/g,'ei').replace(/οι/g,'oi').replace(/μπ/g,'b').replace(/ντ/g,'nt').replace(/γκ/g,'gk');
+  s = [...s].map(c => TR[c] ?? c).join('');
+  return s.replace(/[^a-z0-9]+/g,'-').replace(/^-+|-+$/g,'').slice(0,40);
+}
+function domain(){ return (slug(S.name) || 'h-epixeirisi-sou') + '.gr'; }
+
+/* ── Κείμενα ── */
+function aboutVariants(){
+  const c = sec(), n = S.name.trim() ? `«${S.name.trim()}»` : 'κατάστημά μας', city = S.city.trim();
+  const since = /^\d{4}$/.test(S.since) ? S.since : '';
+  const yrs = since ? new Date().getFullYear() - Number(since) : 0;
+  const where = city ? ` στην περιοχή ${city}` : '';
+  const start = since ? `Από το ${since}` : 'Εδώ και χρόνια';
+  return [
+    `${start}, ${c.noun}${where} προσφέρει ${c.what}. Στο ${n} πιστεύουμε ότι η ποιότητα φαίνεται στις λεπτομέρειες: ${c.why}.\n\nΣας περιμένουμε!`,
+    `Καλώς ήρθατε στο ${n}!${city ? ` Βρισκόμαστε στην περιοχή ${city} και` : ''} ${city?'π':'Π'}ροσφέρουμε ${c.what}.${yrs>=5 ? ` Με εμπειρία ${yrs} ετών,` : ''} ${yrs>=5?'ξ':'Ξ'}έρουμε ότι αυτό που μετράει είναι η εμπιστοσύνη σας — γι' αυτό ${c.why}.`,
+    `${c.high.join(' · ')}.\n\nΣτο ${n}${where} θα βρείτε ${c.what}. Η δέσμευσή μας είναι απλή: ${c.why}. Επικοινωνήστε μαζί μας — θα χαρούμε να σας εξυπηρετήσουμε.`
+  ];
+}
+function autoAbout(){ const v = aboutVariants(); return v[S.aboutVar % v.length]; }
+function defaultHours(){
+  const c = sec(); const h = {};
+  for(let d=0; d<7; d++) h[d] = { c: c.closed.includes(d), a:c.hours[0], b:c.hours[1] };
+  return h;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   Η ΙΣΤΟΣΕΛΙΔΑ ΠΟΥ ΠΑΡΑΓΕΤΑΙ
+   Αυτόνομο αρχείο HTML: καμία εξωτερική βιβλιοθήκη, φωτογραφίες ενσωματωμένες.
+   Ό,τι γράφει ο χρήστης περνά ΠΑΝΤΑ από esc() / safeUrl().
+   ═══════════════════════════════════════════════════════════════════════════ */
+function buildSite(){
+  const c = sec(), col = /^#[0-9a-f]{6}$/i.test(S.color) ? S.color : c.color;
+  const name = S.name.trim() || 'Η επιχείρησή σας';
+  const tag = S.tagline.trim();
+  const about = (S.about.trim() || autoAbout());
+  const tel = digits(S.phone), ip = intlPhone(S.phone), mob = isMobile(S.phone);
+  const items = S.items.filter(i => i.n && i.n.trim());
+  const year = new Date().getFullYear();
+  const fb = safeUrl(S.fb), ig = safeUrl(S.ig);
+  const addr = S.address.trim();
+  const q = encodeURIComponent(addr || [name, S.city].filter(Boolean).join(' '));
+  const H = S.hours || defaultHours();
+  const font = S.style==='classic' ? 'Georgia,"Times New Roman",serif' : 'system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif';
+  const heroBg = S.hero ? `background-image:linear-gradient(rgba(0,0,0,.45),rgba(0,0,0,.55)),url(${S.hero})` : '';
+  const desc = about.replace(/\s+/g,' ').slice(0,155);
+
+  // Δομημένα δεδομένα για το Google (LocalBusiness).
+  const ldType = {taverna:'Restaurant',cafe:'CafeOrCoffeeShop',beauty:'HairSalon',trade:'HomeAndConstructionBusiness',office:'ProfessionalService',stay:'LodgingBusiness',shop:'Store'}[S.sector] || 'LocalBusiness';
+  const ld = { '@context':'https://schema.org', '@type':ldType, name, description:desc };
+  if(tel) ld.telephone = '+' + ip;
+  if(S.email.trim()) ld.email = S.email.trim();
+  if(addr) ld.address = { '@type':'PostalAddress', streetAddress:addr, addressLocality:S.city.trim()||undefined, addressCountry:'GR' };
+  const spec = ORDER.filter(d => !H[d].c).map(d => ({ '@type':'OpeningHoursSpecification', dayOfWeek:'https://schema.org/'+['Sunday','Monday','Tuesday','Wednesday','Thursday','Friday','Saturday'][d], opens:H[d].a, closes:H[d].b }));
+  if(spec.length) ld.openingHoursSpecification = spec;
+  const same = [fb, ig].filter(Boolean); if(same.length) ld.sameAs = same;
+  const ldJson = JSON.stringify(ld).replace(/</g,'\\u003c');
+
+  const callBtn = tel ? `<a class="btn" href="tel:+${ip}">📞 ${esc(c.cta)}</a>` : '';
+  const paras = about.split(/\n\s*\n/).map(p => `<p>${esc(p.trim()).replace(/\n/g,'<br>')}</p>`).join('');
+  const hoursRows = ORDER.map(d => `<tr data-d="${d}"><th>${DAYS_FULL[d]}</th><td>${H[d].c ? 'Κλειστά' : esc(H[d].a)+' – '+esc(H[d].b)}</td></tr>`).join('');
+  const hoursData = JSON.stringify(ORDER.reduce((o,d)=>(o[d]=H[d].c?null:[H[d].a,H[d].b],o),{}));
+
+  const nav = [['about','Ποιοι είμαστε'], items.length?['items',c.items]:null, S.gallery.length?['gallery','Φωτογραφίες']:null, ['hours','Ωράριο'], ['contact','Επικοινωνία']].filter(Boolean);
+
+  return `<!DOCTYPE html>
+<html lang="el">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>${esc(name)}${tag?' — '+esc(tag):''}</title>
+<meta name="description" content="${esc(desc)}">
+<meta property="og:title" content="${esc(name)}">
+<meta property="og:description" content="${esc(desc)}">
+<meta property="og:type" content="website">
+<meta name="theme-color" content="${col}">
+<script type="application/ld+json">${ldJson}<\/script>
+<style>
+:root{--c:${col};--ink:#1b1f23;--ink2:#5d6670;--bg:#fff;--soft:#f5f6f7;--line:#e6e8eb}
+*{box-sizing:border-box}html{scroll-behavior:smooth}
+body{margin:0;font:16px/1.65 system-ui,-apple-system,"Segoe UI",Roboto,Arial,sans-serif;color:var(--ink);background:var(--bg)}
+h1,h2,h3,.brand{font-family:${font};line-height:1.15}
+${S.style==='bold'?'h1,h2,.brand{font-weight:900;text-transform:uppercase;letter-spacing:.5px}':''}
+a{color:var(--c)}
+.wrap{max-width:1080px;margin:0 auto;padding:0 20px}
+header{position:sticky;top:0;z-index:10;background:rgba(255,255,255,.95);backdrop-filter:blur(8px);border-bottom:1px solid var(--line)}
+header .wrap{display:flex;align-items:center;gap:16px;height:64px}
+.brand{display:flex;align-items:center;gap:10px;font-weight:800;font-size:19px;color:var(--ink);text-decoration:none;min-width:0}
+.brand span{white-space:nowrap;overflow:hidden;text-overflow:ellipsis}
+.brand img{height:40px;width:auto;max-width:120px;object-fit:contain}
+nav{margin-left:auto;display:flex;gap:18px}
+nav a{color:var(--ink2);text-decoration:none;font-size:15px}nav a:hover{color:var(--c)}
+.hero{background:var(--c) center/cover no-repeat;color:#fff;padding:110px 0 100px;text-align:center}
+.hero h1{font-size:clamp(34px,6vw,60px);margin:0 0 12px}
+.hero p{font-size:clamp(17px,2.4vw,22px);margin:0 auto 28px;max-width:640px;opacity:.95}
+.cta{display:flex;gap:12px;justify-content:center;flex-wrap:wrap}
+.btn{display:inline-flex;align-items:center;gap:8px;background:var(--c);color:#fff;text-decoration:none;font-weight:700;padding:13px 22px;border-radius:999px;border:2px solid var(--c)}
+.hero .btn{background:#fff;color:var(--c);border-color:#fff}
+.btn.ghost{background:transparent;color:inherit;border-color:currentColor}
+.badge{display:inline-block;margin-top:22px;padding:6px 14px;border-radius:999px;background:rgba(255,255,255,.18);font-size:14px;font-weight:600}
+.badge.open:before{content:"● ";color:#5eea8f}.badge.closed:before{content:"● ";color:#ff8a80}
+section{padding:72px 0}section:nth-of-type(even){background:var(--soft)}
+h2{font-size:clamp(26px,4vw,36px);margin:0 0 24px}
+h2:after{content:"";display:block;width:48px;height:4px;border-radius:4px;background:var(--c);margin-top:12px}
+.about{display:grid;grid-template-columns:1.4fr 1fr;gap:40px;align-items:start}
+.about p{margin:0 0 14px;font-size:17px}
+.high{list-style:none;padding:0;margin:0;display:grid;gap:12px}
+.high li{background:var(--bg);border:1px solid var(--line);border-radius:14px;padding:16px 18px;font-weight:600;display:flex;gap:10px;align-items:center}
+.high li:before{content:"✓";display:grid;place-items:center;width:28px;height:28px;flex:none;border-radius:50%;background:var(--c);color:#fff;font-weight:800}
+.grid{display:grid;grid-template-columns:repeat(auto-fill,minmax(260px,1fr));gap:16px}
+.it{background:var(--bg);border:1px solid var(--line);border-radius:14px;padding:18px 20px}
+.it .t{display:flex;justify-content:space-between;gap:12px;align-items:baseline}
+.it h3{margin:0;font-size:18px}.it b{color:var(--c);white-space:nowrap}
+.it p{margin:6px 0 0;color:var(--ink2);font-size:15px}
+.gal{display:grid;grid-template-columns:repeat(auto-fill,minmax(220px,1fr));gap:12px}
+.gal img{width:100%;aspect-ratio:4/3;object-fit:cover;border-radius:14px;display:block}
+table{border-collapse:collapse;width:100%;max-width:480px}
+th,td{padding:10px 0;border-bottom:1px solid var(--line);text-align:left}th{font-weight:600}td{text-align:right;color:var(--ink2)}
+tr.today th,tr.today td{color:var(--c);font-weight:800}
+.hn{color:var(--ink2);margin-top:14px}
+.contact{display:grid;grid-template-columns:1fr 1.2fr;gap:32px}
+.cl{list-style:none;padding:0;margin:0 0 20px;display:grid;gap:12px;font-size:17px}
+.cl a{color:var(--ink);text-decoration:none}.cl a:hover{color:var(--c)}
+.btns{display:flex;flex-wrap:wrap;gap:10px}
+.btns .btn{padding:10px 18px;font-size:15px}
+.btns .btn.alt{background:var(--bg);color:var(--c)}
+.map{width:100%;min-height:320px;height:100%;border:0;border-radius:14px;background:var(--soft)}
+footer{background:#14171a;color:#aab2bb;padding:30px 0;font-size:14px}
+footer .wrap{display:flex;flex-wrap:wrap;gap:8px 20px;justify-content:space-between}
+footer a{color:#fff}
+.fab{position:fixed;right:16px;bottom:16px;width:58px;height:58px;border-radius:50%;background:var(--c);color:#fff;display:none;place-items:center;font-size:26px;text-decoration:none;box-shadow:0 6px 20px rgba(0,0,0,.25);z-index:20}
+@media (max-width:760px){nav{display:none}.about,.contact{grid-template-columns:1fr}.hero{padding:80px 0 70px}section{padding:54px 0}.fab{display:grid}header .btn{display:none}}
+</style>
+</head>
+<body>
+<header><div class="wrap">
+  <a class="brand" href="#top">${S.logo?`<img src="${S.logo}" alt="">`:''}<span>${esc(name)}</span></a>
+  <nav>${nav.map(([id,t])=>`<a href="#${id}">${esc(t)}</a>`).join('')}</nav>
+  ${tel?`<a class="btn" href="tel:+${ip}" style="padding:8px 16px">📞 ${esc(fmtPhone(S.phone))}</a>`:''}
+</div></header>
+
+<div class="hero" id="top" style="${heroBg}"><div class="wrap">
+  <h1>${esc(name)}</h1>
+  ${tag?`<p>${esc(tag)}</p>`:''}
+  <div class="cta">${callBtn}<a class="btn ghost" href="#contact">📍 Πού θα μας βρείτε</a></div>
+  <div class="badge" id="now" hidden></div>
+</div></div>
+
+<section id="about"><div class="wrap">
+  <h2>Ποιοι είμαστε</h2>
+  <div class="about"><div>${paras}</div><ul class="high">${c.high.map(h=>`<li>${esc(h)}</li>`).join('')}</ul></div>
+</div></section>
+
+${items.length?`<section id="items"><div class="wrap">
+  <h2>${esc(c.items)}</h2>
+  <div class="grid">${items.map(i=>`<div class="it"><div class="t"><h3>${esc(i.n)}</h3>${i.p?`<b>${esc(fmtPrice(i.p))}</b>`:''}</div>${i.d?`<p>${esc(i.d)}</p>`:''}</div>`).join('')}</div>
+</div></section>`:''}
+
+${S.gallery.length?`<section id="gallery"><div class="wrap">
+  <h2>Φωτογραφίες</h2>
+  <div class="gal">${S.gallery.map(g=>`<img src="${g}" alt="${esc(name)}" loading="lazy">`).join('')}</div>
+</div></section>`:''}
+
+<section id="hours"><div class="wrap">
+  <h2>Ωράριο</h2>
+  <table>${hoursRows}</table>
+  ${S.hnote.trim()?`<p class="hn">ℹ️ ${esc(S.hnote)}</p>`:''}
+</div></section>
+
+<section id="contact"><div class="wrap">
+  <h2>Επικοινωνία</h2>
+  <div class="contact"><div>
+    <ul class="cl">
+      ${addr?`<li>📍 ${esc(addr)}</li>`:''}
+      ${tel?`<li>📞 <a href="tel:+${ip}">${esc(fmtPhone(S.phone))}</a></li>`:''}
+      ${S.email.trim()?`<li>✉️ <a href="mailto:${esc(S.email.trim())}">${esc(S.email.trim())}</a></li>`:''}
+    </ul>
+    <div class="btns">
+      ${callBtn}
+      ${tel&&mob&&S.viber?`<a class="btn alt" href="viber://chat?number=%2B${ip}">💬 Viber</a>`:''}
+      ${tel&&mob&&S.whatsapp?`<a class="btn alt" href="https://wa.me/${ip}" target="_blank" rel="noopener">💬 WhatsApp</a>`:''}
+      ${addr?`<a class="btn alt" href="https://www.google.com/maps/search/?api=1&query=${q}" target="_blank" rel="noopener">🧭 Οδηγίες</a>`:''}
+      ${fb?`<a class="btn alt" href="${esc(fb)}" target="_blank" rel="noopener">Facebook</a>`:''}
+      ${ig?`<a class="btn alt" href="${esc(ig)}" target="_blank" rel="noopener">Instagram</a>`:''}
+    </div>
+  </div>
+  ${S.map&&addr?`<iframe class="map" title="Χάρτης" loading="lazy" referrerpolicy="no-referrer-when-downgrade" src="https://maps.google.com/maps?q=${q}&z=16&output=embed"></iframe>`:''}
+  </div>
+</div></section>
+
+<footer><div class="wrap">
+  <div>© ${year} ${esc(name)}${S.afm.trim()?` · ΑΦΜ ${esc(S.afm.trim())}`:''}${S.gemi.trim()?` · ΓΕΜΗ ${esc(S.gemi.trim())}`:''}</div>
+  <div>Η σελίδα δεν χρησιμοποιεί cookies παρακολούθησης.</div>
+</div></footer>
+${tel?`<a class="fab" href="tel:+${ip}" aria-label="Κλήση">📞</a>`:''}
+<script>
+(function(){var H=${hoursData};var n=new Date(),d=n.getDay(),m=n.getHours()*60+n.getMinutes();
+function t(s){var p=s.split(':');return +p[0]*60+(+p[1]);}
+var r=document.querySelector('tr[data-d="'+d+'"]');if(r)r.className='today';
+var h=H[d],b=document.getElementById('now');if(!b)return;var o=false;
+if(h){var a=t(h[0]),z=t(h[1]);o=z>a?(m>=a&&m<z):(m>=a||m<z);}
+b.hidden=false;b.className='badge '+(o?'open':'closed');b.textContent=o?'Ανοιχτά τώρα · έως '+h[1]:'Κλειστά τώρα';})();
+<\/script>
+</body>
+</html>`;
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   ΔΙΕΠΑΦΗ
+   ═══════════════════════════════════════════════════════════════════════════ */
+function renderSteps(){
+  $('#steps').innerHTML = STEP_NAMES.map((n,i)=>`<button data-s="${i}" class="${i===S.step?'on':''} ${stepDone(i)?'done':''}">${n}</button>`).join('');
+  $$('.step').forEach(el => el.classList.toggle('on', +el.dataset.step === S.step));
+}
+function stepDone(i){
+  return [ !!S.sector, !!(S.name.trim()&&S.phone.trim()), !!(S.about.trim()||S.items.length), !!S.hours, !!(S.hero||S.logo), false ][i];
+}
+function go(i){
+  if(i>0 && !S.sector){ toast('Διάλεξε πρώτα κλάδο.'); i = 0; }
+  S.step = Math.max(0, Math.min(STEP_NAMES.length-1, i));
+  renderSteps(); save();
+  if(S.step===5) renderTodo();
+  $('.side').scrollIntoView({block:'start'}); window.scrollTo({top:0});
+}
+
+function renderSectors(){
+  $('#sectors').innerHTML = Object.entries(SECTORS).map(([k,c]) =>
+    `<button class="sector ${S.sector===k?'on':''}" data-sec="${k}"><span>${c.e}</span><b>${c.n}</b><small>${c.sub}</small></button>`).join('');
+}
+function pickSector(k){
+  const changed = S.sector !== k;
+  S.sector = k;
+  if(changed){
+    const c = SECTORS[k];
+    S.color = c.color;
+    S.hours = defaultHours();
+    if(!S.items.length || S.itemsAuto) { S.items = c.sample.map(([n,d,p])=>({n,d,p})); S.itemsAuto = true; }
+    if(S.aboutAuto) S.about = '';
+  }
+  renderAll(); go(1);
+}
+
+function bindFields(){
+  $$('[data-k]').forEach(el => {
+    const k = el.dataset.k;
+    if(el.type==='checkbox') el.checked = !!S[k]; else el.value = S[k] ?? '';
+  });
+  if(S.aboutAuto) $('#f_about').value = autoAbout();
+}
+
+function renderTagIdeas(){
+  const c = sec();
+  $('#tagIdeas').innerHTML = 'Ιδέες: ' + c.tags.map((t,i)=>`<a href="#" data-tag="${i}">${esc(t)}</a>`).join(' · ');
+}
+
+function renderItems(){
+  const c = sec();
+  $('#itemsLbl').textContent = c.items;
+  $('#items').innerHTML = S.items.map((it,i)=>`
+    <div class="item" data-i="${i}">
+      <input type="text" data-f="n" value="${esc(it.n)}" placeholder="${esc(c.item)}" maxlength="60" aria-label="${esc(c.item)}">
+      <input type="text" data-f="p" value="${esc(it.p)}" placeholder="Τιμή" maxlength="30" aria-label="Τιμή">
+      <button class="x" data-del="${i}" title="Διαγραφή">✕</button>
+      <input class="d" type="text" data-f="d" value="${esc(it.d)}" placeholder="Περιγραφή (προαιρ.)" maxlength="120" aria-label="Περιγραφή">
+    </div>`).join('') || '<div class="hint">Δεν υπάρχει τίποτε ακόμα.</div>';
+}
+
+function renderHours(){
+  if(!S.hours) S.hours = defaultHours();
+  $('#hours').innerHTML = ORDER.map(d => { const h = S.hours[d]; return `
+    <div class="hrow" data-d="${d}">
+      <b>${DAYS[d]}</b>
+      <label class="sw" style="margin:0"><input type="checkbox" data-h="c" ${h.c?'':'checked'}> ανοιχτά</label>
+      <input type="time" data-h="a" value="${esc(h.a)}" ${h.c?'disabled':''} aria-label="${DAYS_FULL[d]} από">
+      <input type="time" data-h="b" value="${esc(h.b)}" ${h.c?'disabled':''} aria-label="${DAYS_FULL[d]} έως">
+    </div>`; }).join('');
+}
+
+function renderLook(){
+  const cols = [...new Set([sec().color, ...PALETTE])];
+  $('#colors').innerHTML = cols.map(c=>`<button data-col="${c}" style="background:${c}" class="${S.color.toLowerCase()===c?'on':''}" aria-label="Χρώμα ${c}"></button>`).join('')
+    + `<input type="color" id="colPick" value="${esc(S.color)}" title="Δικό σου χρώμα">`;
+  $$('#styles button').forEach(b => b.classList.toggle('on', b.dataset.style===S.style));
+  const box = (id, list, key, max) => {
+    $(id).innerHTML = list.map((src,i)=>`<div class="thumb" style="background-image:url(${src})"><button data-rm="${key}" data-i="${i}" title="Αφαίρεση">✕</button></div>`).join('')
+      + (list.length < max ? `<label class="drop" title="Προσθήκη φωτογραφίας">＋<input type="file" accept="image/*" data-up="${key}" ${max>1?'multiple':''}></label>` : '');
+  };
+  box('#logoBox', S.logo?[S.logo]:[], 'logo', 1);
+  box('#heroBox', S.hero?[S.hero]:[], 'hero', 1);
+  box('#galBox', S.gallery, 'gallery', MAX_GALLERY);
+}
+
+function completeness(){
+  const checks = [
+    [!!S.sector, 'Κλάδος'],
+    [!!S.name.trim(), 'Όνομα επιχείρησης'],
+    [!!S.tagline.trim(), 'Σύνθημα'],
+    [!!S.phone.trim(), 'Τηλέφωνο'],
+    [!!S.address.trim(), 'Διεύθυνση (για χάρτη και Google)'],
+    [S.items.some(i=>i.n&&i.n.trim()), sec().items],
+    [!!S.hero, 'Κεντρική φωτογραφία'],
+    [S.gallery.length>0, 'Φωτογραφίες γκαλερί'],
+    [!!S.logo, 'Λογότυπο'],
+    [!!(S.fb||S.ig), 'Facebook ή Instagram']
+  ];
+  return { pct: Math.round(checks.filter(c=>c[0]).length / checks.length * 100), miss: checks.filter(c=>!c[0]).map(c=>c[1]) };
+}
+function renderTodo(){
+  const {pct, miss} = completeness();
+  $('#pct').textContent = pct + '%';
+  $('#meter').style.width = pct + '%';
+  $('#todo').innerHTML = miss.length ? miss.map(m=>`<li>Λείπει: ${esc(m)}</li>`).join('') : '<li>Όλα είναι συμπληρωμένα 👌</li>';
+}
+
+let prevT;
+function preview(){
+  clearTimeout(prevT);
+  prevT = setTimeout(() => {
+    const f = $('#frame');
+    // Κρατάμε τη θέση κύλισης ώστε η προεπισκόπηση να μην πηδάει στην κορυφή.
+    let y = 0; try{ y = f.contentWindow.scrollY; }catch(e){}
+    f.srcdoc = buildSite().replace('</body>', `<script>scrollTo(0,${y|0})<\/script></body>`);
+    $('#purl').textContent = '🔒 ' + domain();
+  }, 250);
+}
+
+function renderAll(){
+  renderSectors(); renderSteps(); bindFields(); renderTagIdeas(); renderItems(); renderHours(); renderLook();
+  preview();
+}
+
+/* ── Φωτογραφίες: σμίκρυνση στη συσκευή, πριν αποθηκευτούν ── */
+function shrink(file, maxW, q, keepAlpha){
+  return new Promise((res, rej) => {
+    const url = URL.createObjectURL(file), img = new Image();
+    img.onload = () => {
+      const k = Math.min(1, maxW / img.width), w = Math.round(img.width*k), h = Math.round(img.height*k);
+      const cv = document.createElement('canvas'); cv.width = w; cv.height = h;
+      const cx = cv.getContext('2d');
+      if(!keepAlpha){ cx.fillStyle = '#fff'; cx.fillRect(0,0,w,h); }
+      cx.drawImage(img, 0, 0, w, h); URL.revokeObjectURL(url);
+      res(keepAlpha ? cv.toDataURL('image/png') : cv.toDataURL('image/jpeg', q));
+    };
+    img.onerror = () => { URL.revokeObjectURL(url); rej(new Error('img')); };
+    img.src = url;
+  });
+}
+async function upload(key, files){
+  try{
+    if(key==='logo') S.logo = await shrink(files[0], 360, .9, true);
+    else if(key==='hero') S.hero = await shrink(files[0], 1600, .78);
+    else for(const f of [...files].slice(0, MAX_GALLERY - S.gallery.length)) S.gallery.push(await shrink(f, 1000, .76));
+  }catch(e){ toast('Δεν διαβάστηκε η φωτογραφία. Δοκίμασε JPG ή PNG.'); }
+  renderLook(); save(); preview();
+}
+
+/* ── Λήψη / αποθήκευση ── */
+function download(name, text, type){
+  const a = document.createElement('a');
+  a.href = URL.createObjectURL(new Blob([text], {type}));
+  a.download = name; document.body.appendChild(a); a.click();
+  setTimeout(()=>{ URL.revokeObjectURL(a.href); a.remove(); }, 500);
+}
+function downloadSite(){
+  if(!S.name.trim()){ toast('Γράψε πρώτα το όνομα της επιχείρησης.'); go(1); return; }
+  download('index.html', buildSite(), 'text/html;charset=utf-8');
+  toast('Η σελίδα κατέβηκε ως index.html');
+}
+function openPublish(){
+  $('#dom').textContent = domain();
+  if(ORDER_URL){
+    const u = new URL(ORDER_URL); u.searchParams.set('domain', domain());
+    $('#bOrder').href = u.href; $('#bOrder').style.display = ''; $('#pubNote').style.display = 'none';
+  }
+  $('#mPub').classList.add('on');
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   ΣΥΜΒΑΝΤΑ
+   ═══════════════════════════════════════════════════════════════════════════ */
+document.addEventListener('click', e => {
+  const t = e.target.closest('button,a,[data-tag]'); if(!t) return;
+  if(t.dataset.sec) return pickSector(t.dataset.sec);
+  if(t.dataset.s !== undefined) return go(+t.dataset.s);
+  if(t.dataset.go) return go(S.step + Number(t.dataset.go));
+  if(t.dataset.tag !== undefined){ e.preventDefault(); S.tagline = sec().tags[+t.dataset.tag]; $('#f_tagline').value = S.tagline; save(); return preview(); }
+  if(t.dataset.del !== undefined){ S.items.splice(+t.dataset.del,1); S.itemsAuto=false; renderItems(); save(); return preview(); }
+  if(t.dataset.col){ S.color = t.dataset.col; renderLook(); save(); return preview(); }
+  if(t.dataset.style){ S.style = t.dataset.style; renderLook(); save(); return preview(); }
+  if(t.dataset.rm){ if(t.dataset.rm==='gallery') S.gallery.splice(+t.dataset.i,1); else S[t.dataset.rm]=''; renderLook(); save(); return preview(); }
+  if(t.dataset.dev){ $$('.dev button').forEach(b=>b.classList.toggle('on',b===t)); $('#fw').classList.toggle('mobile', t.dataset.dev==='mobile'); return; }
+  if(t.dataset.view){ $('#layout').dataset.view = t.dataset.view; $$('#mtabs button').forEach(b=>b.classList.toggle('on',b===t)); window.scrollTo({top:0}); return; }
+  if(t.hasAttribute('data-close')) return $('#mPub').classList.remove('on');
+  switch(t.id){
+    case 'bAbout': S.aboutVar++; S.aboutAuto = true; S.about=''; $('#f_about').value = autoAbout(); save(); return preview();
+    case 'bAddItem': S.items.push({n:'',d:'',p:''}); S.itemsAuto=false; renderItems(); $(`.item[data-i="${S.items.length-1}"] input`).focus(); return save();
+    case 'bSampleItems': S.items = sec().sample.map(([n,d,p])=>({n,d,p})); S.itemsAuto=true; renderItems(); save(); return preview();
+    case 'bCopyHours': { const m = S.hours[1]; ORDER.forEach(d=>{ if(!S.hours[d].c){ S.hours[d].a=m.a; S.hours[d].b=m.b; } }); renderHours(); save(); return preview(); }
+    case 'bPublish': case 'bPublish2': return openPublish();
+    case 'bDownload': case 'bDownload2': return downloadSite();
+    case 'bExport': return download('selida-' + (slug(S.name)||'stoixeia') + '.json', JSON.stringify(S), 'application/json');
+    case 'bImport': return $('#fImport').click();
+    case 'bReset':
+      if(confirm('Να σβηστούν όλα και να ξεκινήσεις από την αρχή;')){ S = blank(); try{localStorage.removeItem(STORE_KEY);}catch(e){} renderAll(); go(0); }
+      return;
+  }
+});
+$('#mPub').addEventListener('click', e => { if(e.target.id==='mPub') e.currentTarget.classList.remove('on'); });
+document.addEventListener('keydown', e => { if(e.key==='Escape') $('#mPub').classList.remove('on'); });
+
+document.addEventListener('input', e => {
+  const el = e.target;
+  if(el.dataset.k){
+    const k = el.dataset.k;
+    S[k] = el.type==='checkbox' ? el.checked : el.value;
+    if(k==='about') S.aboutAuto = false;
+    // Το αυτόματο κείμενο ακολουθεί όνομα / πόλη / έτος όσο δεν το έχει αγγίξει ο χρήστης.
+    if(['name','city','since'].includes(k) && S.aboutAuto) $('#f_about').value = autoAbout();
+  } else if(el.dataset.f){
+    const i = +el.closest('.item').dataset.i; S.items[i][el.dataset.f] = el.value; S.itemsAuto = false;
+  } else if(el.dataset.h){
+    const d = el.closest('.hrow').dataset.d, h = S.hours[d];
+    if(el.dataset.h==='c'){ h.c = !el.checked; renderHours(); } else h[el.dataset.h] = el.value;
+  } else if(el.id==='colPick'){ S.color = el.value; }
+  else return;
+  save(); preview();
+});
+document.addEventListener('change', e => {
+  const el = e.target;
+  if(el.dataset.up && el.files.length) upload(el.dataset.up, el.files);
+  if(el.id==='colPick') renderLook();
+  if(el.id==='fImport' && el.files[0]){
+    el.files[0].text().then(t => {
+      const j = JSON.parse(t); if(!j || j.v!==1) throw 0;
+      S = Object.assign(blank(), j); save(); renderAll(); go(S.step); toast('Τα στοιχεία φορτώθηκαν.');
+    }).catch(()=>toast('Το αρχείο δεν είναι αποθήκευση της «Σελίδας μου».'));
+    el.value = '';
+  }
+});
+
+renderAll(); go(S.step);
+
+if('serviceWorker' in navigator && location.protocol === 'https:'){
+  navigator.serviceWorker.register('sw.js', {scope:'./'}).catch(()=>{});
+}
+</script>
+</body>
+</html>

@@ -1,0 +1,20 @@
+{
+  "name": "Η Σελίδα μου — Ιστοσελίδα επιχείρησης σε 10 λεπτά",
+  "short_name": "Η Σελίδα μου",
+  "description": "Συμπλήρωσε τα στοιχεία της επιχείρησής σου και πάρε έτοιμη, επαγγελματική ιστοσελίδα σε λίγα λεπτά — χωρίς γνώσεις και χωρίς web designer.",
+  "id": "/selida/",
+  "start_url": "/selida/",
+  "scope": "/selida/",
+  "display": "standalone",
+  "background_color": "#f4f7f6",
+  "theme_color": "#0f5c4d",
+  "lang": "el",
+  "dir": "ltr",
+  "categories": ["business", "productivity"],
+  "icons": [
+    { "src": "icon-192.png",          "sizes": "192x192", "type": "image/png",     "purpose": "any" },
+    { "src": "icon-512.png",          "sizes": "512x512", "type": "image/png",     "purpose": "any" },
+    { "src": "icon-maskable-512.png", "sizes": "512x512", "type": "image/png",     "purpose": "maskable" },
+    { "src": "icon.svg",              "sizes": "any",     "type": "image/svg+xml", "purpose": "any" }
+  ]
+}
