@@ -7,6 +7,15 @@
      το περιεχόμενο περνά κάτω από τη μπάρα κατάστασης και τα κουμπιά πλοήγησης.
      Χωρίς αυτό, οι κανόνες ασφαλούς ζώνης παρακάτω επιστρέφουν πάντα 0. -->
 <meta name="viewport" content="width=device-width,initial-scale=1,maximum-scale=1,viewport-fit=cover">
+<!-- ΠΟΛΙΤΙΚΗ ΑΣΦΑΛΕΙΑΣ ΠΕΡΙΕΧΟΜΕΝΟΥ (CSP)
+     Το GitHub Pages δεν στέλνει HTTP headers, οπότε η πολιτική δηλώνεται εδώ.
+     Τι εμποδίζει: φόρτωση ξένου script, αποστολή δεδομένων σε ξένο διακομιστή,
+     plugins/Flash, iframes, αλλαγή του <base>, υποβολή φόρμας αλλού.
+     Το 'unsafe-inline' είναι ΑΠΑΡΑΙΤΗΤΟ: όλη η εφαρμογή είναι inline script και
+     onclick handlers σε ένα αρχείο. Μην προσθέσεις εξωτερικό host χωρίς λόγο.
+     ΠΡΟΣΟΧΗ: αν μετά από ενημέρωση η εφαρμογή του Play δεν ανοίγει, σβήσε ΜΟΝΟ
+     αυτό το meta και ανέβασε ξανά — τίποτα άλλο δεν εξαρτάται από αυτό. -->
+<meta http-equiv="Content-Security-Policy" content="default-src 'self'; script-src 'self' 'unsafe-inline' 'unsafe-eval'; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' data: https://fonts.gstatic.com; img-src 'self' data: blob: https://images.unsplash.com; media-src 'self' data: blob:; connect-src 'self' https://api.revenuecat.com; worker-src 'self'; manifest-src 'self'; object-src 'none'; frame-src 'none'; child-src 'none'; base-uri 'self'; form-action 'none'">
 <meta name="theme-color" content="#111111">
 <title>FoodDaily</title>
 <link rel="manifest" href="manifest.json">
@@ -1342,15 +1351,25 @@ function openExternal(url){
   return false;
 }
 function notifPerm(){
-  try{return (typeof Notification!=='undefined'&&Notification)?notifPerm():'unsupported';}
+  try{return (typeof Notification!=='undefined'&&Notification)?Notification.permission:'unsupported';}
   catch(e){return 'unsupported';}
 }
 function notifAsk(){
   try{
     if(typeof Notification!=='undefined'&&Notification&&Notification.requestPermission)
-      return Promise.resolve(notifAsk());
+      return Promise.resolve(Notification.requestPermission());
   }catch(e){}
   return Promise.resolve('unsupported');
+}
+// ── ΔΙΑΦΥΓΗ HTML ─────────────────────────────────────────────
+// Κάθε κείμενο που γράφει ο ΧΡΗΣΤΗΣ (σημειώσεις, υλικά ψυγείου, email, αναζήτηση)
+// περνά από εδώ πριν μπει σε innerHTML. Χωρίς αυτό, ένα «<img onerror=...>» μέσα
+// σε σημείωση εκτελείται σαν κώδικας κάθε φορά που ανοίγει η συνταγή — και στο
+// WebView της εφαρμογής ο κώδικας αυτός φτάνει στα native plugins.
+function esc(s){
+  return String(s==null?'':s)
+    .replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;')
+    .replace(/"/g,'&quot;').replace(/'/g,'&#39;');
 }
 let curCat='all',curSec='daily',curSwCat='keik',curFestF='all',
     _meal=null,isTTS=false,recog=null,isLis=false,_guestScale=1,_curSrv=0,
@@ -1563,7 +1582,7 @@ function submitNewsletter(){
   inp.style.borderColor='';
   localStorage.setItem('fd_nl_email',email);
   const wrap=document.getElementById('nl-form-wrap');
-  if(wrap){const _safe=email.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');wrap.innerHTML=`<div class="nl-done">${tf('y_nl_ok',_safe)}</div>`;}
+  if(wrap){const _safe=esc(email);wrap.innerHTML=`<div class="nl-done">${tf('y_nl_ok',_safe)}</div>`;}
 }
 
 function applyTheme(c){
@@ -7606,7 +7625,7 @@ function buildNotesTab(m,id){
     return;
   }
   const txt=getNotes(id);
-  wrap.innerHTML=`<div class="notes-wrap"><textarea class="notes-area" id="notes-ta" placeholder="${t('x122')}">${txt}</textarea><button class="notes-save-btn" onclick="saveNote('${id}',document.getElementById('notes-ta').value);showToast('${t('x123')}')">💾 ${t('x124')}</button></div>`;
+  wrap.innerHTML=`<div class="notes-wrap"><textarea class="notes-area" id="notes-ta" placeholder="${esc(t('x122'))}">${esc(txt)}</textarea><button class="notes-save-btn" onclick="saveNote('${id}',document.getElementById('notes-ta').value);showToast('${t('x123')}')">💾 ${t('x124')}</button></div>`;
 }
 
 // ── USER RECIPE FORM ────────────────────────────────────────────
@@ -8062,7 +8081,11 @@ function addTag(){
   const inp=document.getElementById('fridge-inp');
   const v=inp.value.trim();if(!v)return;
   const tag=document.createElement('div');tag.className='tag';
-  tag.innerHTML=v+` <button onclick="this.parentElement.remove();smartFridge()">×</button>`;
+  tag.appendChild(document.createTextNode(v+' '));
+  const x=document.createElement('button');
+  x.textContent='×';
+  x.onclick=function(){this.parentElement.remove();smartFridge();};
+  tag.appendChild(x);
   document.getElementById('tags').appendChild(tag);
   inp.value='';smartFridge();
 }
@@ -8233,7 +8256,7 @@ async function setLang(lang){
   try{renderWeekPlanDays();}catch(e){}
   const sgw=document.getElementById('sea-guide-wrap');if(sgw)sgw.innerHTML=buildSeasonalGuide();
   const nlEmail=localStorage.getItem('fd_nl_email');
-  if(nlEmail){const w=document.getElementById('nl-form-wrap');if(w)w.innerHTML=`<div class="nl-done">✅ ${t('x52')} ${nlEmail}</div>`;}
+  if(nlEmail){const w=document.getElementById('nl-form-wrap');if(w)w.innerHTML=`<div class="nl-done">✅ ${t('x52')} ${esc(nlEmail)}</div>`;}
   // If overlay is open, rebuild its translated content
   rebuildOverlayTexts();
 }
@@ -8759,7 +8782,7 @@ function doSearch(q){
   // πλέον στο MEALS, και η διπλή σάρωση έδινε διπλά αποτελέσματα.
   mg.style.display='none';
   if(results.length===0){
-    const _sq=q.replace(/&/g,'&amp;').replace(/</g,'&lt;').replace(/>/g,'&gt;').replace(/"/g,'&quot;');res.innerHTML=`<div class="search-empty">${tf('y_search_none','"<b>'+_sq+'</b>"')}</div>`;
+    const _sq=esc(q);res.innerHTML=`<div class="search-empty">${tf('y_search_none','"<b>'+_sq+'</b>"')}</div>`;
   } else {
     res.innerHTML=results.map(r=>`
       <div class="search-res-item" onclick="${r.onclick}">
@@ -9544,7 +9567,7 @@ function dismissTonightBanner(){
   if(sgw)sgw.innerHTML=buildSeasonalGuide();
   // #24 Newsletter — restore subscribed state
   const nlEmail=localStorage.getItem('fd_nl_email');
-  if(nlEmail){const w=document.getElementById('nl-form-wrap');if(w)w.innerHTML=`<div class="nl-done">${tf('y_nl_reg',nlEmail)}</div>`;}
+  if(nlEmail){const w=document.getElementById('nl-form-wrap');if(w)w.innerHTML=`<div class="nl-done">${tf('y_nl_reg',esc(nlEmail))}</div>`;}
   applyTheme('all');
   renderMeals('all');
   // Χωρίς αυτό, η μπάρα της αρχικής έλεγε το ουδέτερο μήνυμα μέχρι να
@@ -9625,7 +9648,7 @@ function dismissTonightBanner(){
   }catch(e){}
   // Open recipe from URL param ?r=id
   const _urlR=new URLSearchParams(location.search).get('r');
-  if(_urlR&&MEALS[_urlR])setTimeout(()=>openR(_urlR),500);
+  if(_urlR&&Object.prototype.hasOwnProperty.call(MEALS,_urlR))setTimeout(()=>openR(_urlR),500);
 })();
 
 // ── ΚΟΥΜΠΙ ΠΙΣΩ (Android/TWA): κλείνει την τρέχουσα οθόνη/modal αντί να βγαίνει από την εφαρμογή ──
